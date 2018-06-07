@@ -1,0 +1,145 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="分享改变世界"><title>写给大家看的算法书笔记 | 刘艳萍的博客</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/8.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">写给大家看的算法书笔记</h1><a id="logo" href="/.">刘艳萍的博客</a><p class="description">Tomorrow is another day</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 主页</i></a><a href="/archives/"><i class="fa fa-archive"> 文章归档</i></a><a href="/about/"><i class="fa fa-user"> 关于我</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">写给大家看的算法书笔记</h1><div class="post-meta">Jun 7, 2018<script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> 阅读</span></span></div><div class="post-content"><h4 id="一、什么是算法"><a href="#一、什么是算法" class="headerlink" title="一、什么是算法"></a>一、什么是算法</h4><ol>
+<li>算法是对特定问题的解决步骤（对信息进行排序、搜索目标信息等）；</li>
+</ol>
+<ul>
+<li>算法→更优质的算法→好的程序；</li>
+<li><p>算法的两个必要条件：</p>
+<ul>
+<li>准确性，证明方法——断言；</li>
+<li>可停止性（死循环不能看做算法）；</li>
+</ul>
+</li>
+<li><p>几种重要的算法：</p>
+<ul>
+<li>数论算法：<ul>
+<li>求解最大公约数的辗转相除法；</li>
+<li>求解联立方程的高斯消元法；</li>
+<li>求解定积分近似值的梯形公式;</li>
+<li>计算质数的艾拉斯托尼筛法;</li>
+</ul>
+</li>
+<li>排序算法(按序排列)：<ul>
+<li>选择排序；</li>
+<li>冒泡排序；</li>
+<li>插入排序；</li>
+<li>希尔排序;</li>
+<li>归并排序;</li>
+<li>快速排序；</li>
+</ul>
+</li>
+<li>搜索算法：（比较求同）<ul>
+<li>线性搜索；</li>
+<li>二分搜索；</li>
+</ul>
+</li>
+<li>字符串匹配算法：<ul>
+<li>简单字符串搜索；</li>
+<li>KMP算法；</li>
+<li>BM算法；</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>结构化编程思想：旨在高效描述程序，最大限度减少设计误差的方法论，其中的处理流程结构组合包括：</p>
+<ul>
+<li>顺序结构：按顺序处理；<br><img src="http://upload-images.jianshu.io/upload_images/1476489-9f036b6001ef4e07.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片来源于网络"></li>
+<li><p>选择结构：按条件处理；<br><img src="http://upload-images.jianshu.io/upload_images/1476489-68f37dd7d235e531.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片来源于网络"></p>
+</li>
+<li><p>循环结构：条件成立下，进行定量循环处理；<br><img src="http://upload-images.jianshu.io/upload_images/1476489-a41112c31c533ab9.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片来源于网络"></p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="二、-变量和数组"><a href="#二、-变量和数组" class="headerlink" title="二、 变量和数组"></a>二、 变量和数组</h4><ol>
+<li>算法由数据和处理构成；</li>
+</ol>
+<ul>
+<li>基本数据类型：<ul>
+<li>整数；</li>
+<li>浮点数；</li>
+<li>字符；</li>
+<li>布尔值；</li>
+<li>字符串；</li>
+</ul>
+</li>
+<li>描述数据信息的方法是数据值；</li>
+<li>变量是存放数据值的容器，变量的作用是使处理过程通用化，每个变量只能存放一个数据，变量名是区分不同变量的标记，变量名要能表示所装载的数据；</li>
+<li>把数据赋值给变量的过程叫代入；</li>
+<li>数组是用来保存大量同一数据类型值的，数组索引，即数组元素的位置标号，可以利用数组进行关联数据的处理；</li>
+<li>二维数组，数组元素沿横纵方向排列；</li>
+</ul>
+<h4 id="三、数据结构——高效的管理大量数据的构造"><a href="#三、数据结构——高效的管理大量数据的构造" class="headerlink" title="三、数据结构——高效的管理大量数据的构造"></a>三、数据结构——高效的管理大量数据的构造</h4><ol>
+<li><p>常用的数据结构：</p>
+<ul>
+<li><p><b>数组</b>，快速定位第N个数据；<br><img src="http://upload-images.jianshu.io/upload_images/1476489-5279810825a68703.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片来源于手机拍摄"></p>
+</li>
+<li><p><b>链表</b>，离散数据排序，快速插入删除数据（插入、删除数据不改变数据位置）。单向链表只能单向检索，元素由数据和“NEXT指针”构成，HEAD指针标记链表的第一个元素。双向链表元素由数据，PREV、NEXT指针构成，可向前向后检索数据，链表为空的状态，HEAD指针，TAIL指针分别存储“没有起始元素”、“没有末尾元素”的信息；<br><img src="http://upload-images.jianshu.io/upload_images/1476489-6113ee58c4fc1e74.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片来源于网络"></p>
+</li>
+<li><p><b>堆栈</b>（先进后出），数据操作：入栈→写入数据（push）→出栈（POP）→读取数据。考虑计算机优先级或者计算机管理子程序调用的顺序时用到；<br><img src="http://upload-images.jianshu.io/upload_images/1476489-21be1fcb8546bd49.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片来源于网络"></p>
+</li>
+<li><p><b>队列</b>（先进先出），应用在电文发放和接收中；<br><img src="http://upload-images.jianshu.io/upload_images/1476489-0789fc904f456296.gif?imageMogr2/auto-orient/strip" alt="图片来源于网络"></p>
+</li>
+<li><p><b>树</b>，管理父节点数据和子节点数据，二叉树一个父节点对用两个子节点，可以用数组来表示二叉树；<br><img src="http://upload-images.jianshu.io/upload_images/1476489-a812b66052043bd4.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片来源于手机拍摄"><br><img src="http://upload-images.jianshu.io/upload_images/1476489-061f5d3516622b9b.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片来源于手机拍摄"><br><img src="http://upload-images.jianshu.io/upload_images/1476489-f43abcb33e47957a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片来源于手机拍摄"></p>
+</li>
+<li><p>图，自由的表示各种关系的数据。图的分类：有向图（边有方向性）、加权图（边有权重）；<br><img src="http://upload-images.jianshu.io/upload_images/1476489-ea65bbf1f9b3b98b.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片来源于手机拍摄"></p>
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="四、算法基础"><a href="#四、算法基础" class="headerlink" title="四、算法基础"></a>四、算法基础</h4><ol>
+<li>循环处理和控制变量<ul>
+<li>循环处理：利用一个控制变量来管理循环次数，从而进行必要次数的处理；</li>
+<li>循环处理的步骤：<ul>
+<li>设置控制变量的初始值；</li>
+<li>判断循环条件，如果为true，进行以下3,4,步，否则为false，终止处理；</li>
+<li>执行循环体；</li>
+<li>改变控制变量，回到步骤2；</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li><p>利用循环处理使处理过程通用化；<br><b>案例：</b><br>计算1~N的整数的总和。<br>算法：<br><img src="http://upload-images.jianshu.io/upload_images/1476489-233c00b2f31f8e76.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>JavaScript代码：<br><img src="http://upload-images.jianshu.io/upload_images/1476489-4ea54b8cba9d8db1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+</li>
+<li><p>使用数组可以高效的处理大量数据<br><b>案例：</b><br>求斐波那契数列。<br>算法：<br><img src="http://upload-images.jianshu.io/upload_images/1476489-b0f7928c9e70b00c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>JavaScript代码：<br><img src="http://upload-images.jianshu.io/upload_images/1476489-aae2fafe110aeb4e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+</li>
+<li><p>数组求和<br><b>案例：</b><br>计算一年的营业额。<br>算法：<br><img src="http://upload-images.jianshu.io/upload_images/1476489-ca431aa7a661a3fe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>JavaScript代码：<br><img src="http://upload-images.jianshu.io/upload_images/1476489-2498e2f8f6979555.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+</li>
+<li><p>求平均值<br><b>案例：</b><br>求班级考试的平均分。<br>算法：<br><img src="http://upload-images.jianshu.io/upload_images/1476489-a288f74be53c16ba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>JavaScript代码：<br><img src="http://upload-images.jianshu.io/upload_images/1476489-a4ea9bb73708cdf4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+</li>
+<li><p>求数组数据中的最大值<br><b>案例：</b><br>求最高分。<br>算法：<br><img src="http://upload-images.jianshu.io/upload_images/1476489-5934e850b29830b9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>JavaScript代码：<br><img src="http://upload-images.jianshu.io/upload_images/1476489-393b1a7d9a9bc418.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+</li>
+<li><p>求数据中的最小值<br><b>案例：</b><br>求最低分。<br>算法：<br><img src="http://upload-images.jianshu.io/upload_images/1476489-7d3483e3bd32591a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>JavaScript代码：<br><img src="http://upload-images.jianshu.io/upload_images/1476489-a49e301d22d84669.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+</li>
+<li><p>为数组元素排序<br><b>案例：</b><br>为考试成绩排名。<br>算法：<br><img src="http://upload-images.jianshu.io/upload_images/1476489-2d67aeb495cc806e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>JavaScript代码：<br><img src="http://upload-images.jianshu.io/upload_images/1476489-34838194b6e477e3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+</li>
+<li><p>二维数组操作<br><b>案例</b><br>求全班学生不同科目考试合计总分。<br>算法：<br><img src="http://upload-images.jianshu.io/upload_images/1476489-bfadc73a743b91f7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>JavaScript代码：<br><img src="http://upload-images.jianshu.io/upload_images/1476489-b4681f4285738dc5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+</li>
+<li><p>求两个数的最大公约数<br><b>案例：</b><br>辗转相除法<br>算法：<br><img src="http://upload-images.jianshu.io/upload_images/1476489-460179a152a07806.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>JavaScript代码：<br><img src="http://upload-images.jianshu.io/upload_images/1476489-3fc4fb3e5c8ebb16.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+</li>
+</ul>
+<h4 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h4><ol>
+<li>几种常用的排序算法<ul>
+<li>桶排序<br>概念：<br>准备与待排序数据取值范围大小个数的木桶，利用这些木桶对数据进行保存、排序。<br>排序过程：<br>（1）准备好木桶数据，把其所有元素初始化为0；<br>（2）把保存排序数组（n个数据）的下标的变量i初始化为0；<br>（3）i小于n时，循环执行4~5；<br>（4）把data[i]代入变量value；<br>（5）bucket[value]加1；<br>（6）i加1；<br>（7）从bucket的起始元素开始，把每个数值非0的元素的下标按照数值（出现次数）取出来，排成一列。</li>
+<li>选择排序<br>概念：<br>遍历数据，把数据中的最大值（或最小值）与起始（或者末尾）数据进行交换。<br>排序过程：<br>（1）从“待排序部分”中找到最小值；<br>（2）把最小值和“待排序部分起始位置的元素”交换；<br>（3）“待排序部分”的起始位置向后移动一位；<br>（4）循环操作1~3，直至“待排序部分”只剩下一个元素。</li>
+<li>冒泡排序<br>对比相邻的两个数据，根据大小关系调整两个数据的顺序。</li>
+<li>插入排序<br>把目标数据按照正确的大小排列顺序插入相应的位置中。</li>
+<li>归并排序<br>把目标数据分割成更小的部分进行排序，更小的部分正确排序之后再合并起来。</li>
+<li>希尔排序<br>把目标数据按照一定的个数分成几个区域进行插入排序。</li>
+<li>快速排序<br>从目标数据中任意选取一个数据，以这个数据的值为分割点，把目标数据分割为两部分。这样循环操作下去进行排序。</li>
+</ul>
+</li>
+</ol>
+<h4 id="搜索算法"><a href="#搜索算法" class="headerlink" title="搜索算法"></a>搜索算法</h4><ol>
+<li>常用的搜索算法：<ul>
+<li>线性搜索（随机排布的数据列中使用，效率比较低）；</li>
+<li>二分搜索（已经排好序的数据列中使用，效率较高）；</li>
+<li>利用哈希表进行搜索（高效搜索）；</li>
+<li>简单字符串搜索（有长度的数据）；</li>
+<li>利用KMP算法 进行字符串搜索；</li>
+<li>利用BM算法进行字符串搜索。</li>
+</ul>
+</li>
+</ol>
+</div><div><ul class="post-copyright"><li class="post-copyright-author"><strong>本文作者：</strong>刘艳萍</li><li class="post-copyright-link"><strong>本文链接：</strong><a href="/2018/06/07/写给大家看的算法书笔记/">http://canace.site/2018/06/07/写给大家看的算法书笔记/</a></li><li class="post-copyright-license"><strong>版权声明：</strong>转载请注明出处</li></ul></div><br><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a class="article-share-link" data-url="http://canace.site/2018/06/07/写给大家看的算法书笔记/" data-id="cji4i28bh000quku8bcu62oge" data-qrcode="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACvUlEQVR42u3aQW4jMQwEQP//01lgbwvsyE1StHMonYIktqcUQGKafL3i9fN3PX0n+enT7zytp998bSw8PDy81qOfP+b88cmmbLxbsjV4eHh4e7z87ZJr4+lV56M/34jCk+Dh4eF9lXcuoHvr/Ax5EY+Hh4f3m3m9j4/K39blgYeHh/ctXn5w56V27/I4l+OLWQseHh5ezJsHsp//erG/h4eHh3fpsN5rU+XjAuWnxcPDw1vg9ZpM+WmcvH8eYVQ/Fw8PD2+DVw1bewFBvgXnQDa/tP659/Dw8PA+wkvi2iojf+0tNh4eHt4e71yw5tdDoZ2/0CT7z6bg4eHhrfHmY1WTUYPelRNFFXh4eHgLvN6/+km7q1p2966N8l8SDw8P7xKvyqge/Ungm5fm5bYcHh4e3lXez2Cdj/VbW5ZcA28aYHh4eHgLvLydPx+r6l0AzUIfDw8Pb4F3a7ypN0TVCyyqX+Ph4eHd5c0vhvzQz4/7wnBAPlOGh4eHd4lXHZnqPVBvdOBVXG/uPTw8PLyrvGpAMC9/8+GD3mvx8PDwPsm7O8lVbYBVw5HCSAEeHh7eVd5kLKAaIvSGwEYFNx4eHt5VXh6PFv7tLxbieUMrgb1JWfDw8PCWeb3goLpN+TVQDnzx8PDwFnjJQT8ZEaiOEZyfIf/zPM6U4eHh4Y15ecOpWhxXg9o86i3EzXh4eHgf4SVhQfWhqyHCreIbDw8Pb4NXHQKYRAy97cu3pjBAgIeHhzfg/RRXdVN6razqOEIURuDh4eFd4uUrH8bKj/heQV+Nm/Hw8PA2eL3x00Kc2opor43A4uHh4a3xJpdBtfwdBbLVmBgPDw/vq7zeIGl1bGvSNnssqfHw8PB+JW/7PZOteWyD4eHh4S3w5mFEr502KcSjOBgPDw9vgddrgCVjWL2RqWtzZHh4eHj3eX8ADUBzqE9dYH4AAAAASUVORK5CYII=">分享</a><div class="tags"></div><div class="post-nav"><a class="next" href="/2018/06/07/前端面试总结——读书郎/">前端面试总结——读书郎</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/分享/">分享</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">4</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/笔记/" style="font-size: 15px;">笔记</a> <a href="/tags/web/" style="font-size: 15px;">web</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/博客/" style="font-size: 15px;">博客</a> <a href="/tags/tensorflow-深度学习/" style="font-size: 15px;">tensorflow, 深度学习</a> <a href="/tags/科学上网/" style="font-size: 15px;">科学上网</a> <a href="/tags/python/" style="font-size: 15px;">python</a> <a href="/tags/面经/" style="font-size: 15px;">面经</a> <a href="/tags/影评/" style="font-size: 15px;">影评</a> <a href="/tags/深度学习-tensorflow/" style="font-size: 15px;">深度学习, tensorflow</a> <a href="/tags/生活/" style="font-size: 15px;">生活</a> <a href="/tags/操作系统/" style="font-size: 15px;">操作系统</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/06/07/写给大家看的算法书笔记/">写给大家看的算法书笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/07/前端面试总结——读书郎/">前端面试总结——读书郎</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/02/每周分享第二周（6-2）/">每周分享第二周（6.2）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/27/每周分享第一周（5-27）/">每周分享第一周（5.27）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/27/模型训练步骤/">Tensorflow 模型训练步骤</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/27/ubuntu下配置ss/">Ubuntu下配置ss</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/27/ubuntu下安装tensorflow/">Ubuntu 下 Tensorflow CPU Release 版安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/20/深度工作哲学解读/">深度工作哲学解读</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/20/关于写周报的笔记/">关于写周报的笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/20/登陆华南师范大学校园网的方法/">登陆华南师范大学校园网的方法</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="http://www.ruanyifeng.com/blog/" title="阮一峰的博客" target="_blank">阮一峰的博客</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2018 <a href="/." rel="nofollow">刘艳萍.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
