@@ -1,0 +1,61 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="分享改变世界"><title>每周分享第三周（6-8) | 刘艳萍的博客</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/8.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">每周分享第三周（6-8)</h1><a id="logo" href="/.">刘艳萍的博客</a><p class="description">Tomorrow is another day</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 主页</i></a><a href="/archives/"><i class="fa fa-archive"> 文章归档</i></a><a href="/about/"><i class="fa fa-user"> 关于我</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">每周分享第三周（6-8)</h1><div class="post-meta">Jun 8, 2018<span> | </span><span class="category"><a href="/categories/技术/">技术</a></span><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> 阅读</span></span></div><a class="disqus-comment-count" data-disqus-identifier="2018/06/08/每周分享第二周（6-8)/" href="/2018/06/08/每周分享第二周（6-8)/#disqus_thread"></a><div class="post-content"><h3 id="一、-技术"><a href="#一、-技术" class="headerlink" title="一、 技术"></a>一、 技术</h3><ol>
+<li>计算器的四则运算算法</li>
+</ol>
+<p>前几天在看自己之前写过的一些小项目，看到了大三写的<a href="https://canace22.github.io/calculate/" target="_blank" rel="noopener">简易计算器</a>，主要是实现四则运算和基本的归零操作。大概思路是把整个项目分成两大块，即显示部分和运算部分。首先捕捉鼠标按下的事件，获取按下的值，把数字存到一个num数组里，把符号保存到symbol数组里。显示部分是以连接num数字和symbol数字实现的。计算部分是通过边里符号数组，当是某个符号的时候就进行某个运算。比如，遍历到“+”的时候，就把“+”号前后的两个数进行加法操作。一开始这里是有问题的，因为我们的四则运算是遵循先乘除再加减的，所以这里如何保证做到这一点能？我采用的是把乘除的判断放在了加减之前，这样就可以做到了。</p>
+<ol start="2">
+<li>冒泡算法和快速排序算法怎么解释？用我自己的话来讲，冒泡算法就是就像我们在学校的时候排队，两两对比，个子高的站在前面，个子矮的站在后面，循环进行这种操作，最后就按照从高到矮的顺序排好队了。（当然你也可以从矮到高排的，同理）。快速排序算法就是以中间的同学为基准，两边进行对比，比中间同学高的站左边，比中间同学低的站右边，然后左右分出来的小块再循环进行这种对比，直到排序完成。</li>
+</ol>
+<h3 id="二、-笔记"><a href="#二、-笔记" class="headerlink" title="二、 笔记"></a>二、 笔记</h3><ol>
+<li><p><a href="http://canace.site/2018/06/08/sublime-text-nodeJS%E9%85%8D%E7%BD%AE/">Sublime Text3 配置node.js环境</a></p>
+</li>
+<li><p><a href="http://canace.site/2018/06/07/%E5%86%99%E7%BB%99%E5%A4%A7%E5%AE%B6%E7%9C%8B%E7%9A%84%E7%AE%97%E6%B3%95%E4%B9%A6%E7%AC%94%E8%AE%B0/"> 写给大家看的算法书笔记</a></p>
+</li>
+<li><p><a href="http://canace.site/2018/06/07/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93%E2%80%94%E2%80%94%E8%AF%BB%E4%B9%A6%E9%83%8E/">前端面试总结——读书郎</a></p>
+</li>
+</ol>
+</div><div><ul class="post-copyright"><li class="post-copyright-author"><strong>本文作者：</strong>刘艳萍</li><li class="post-copyright-link"><strong>本文链接：</strong><a href="/2018/06/08/每周分享第二周（6-8)/">http://canace.site/2018/06/08/每周分享第二周（6-8)/</a></li><li class="post-copyright-license"><strong>版权声明：</strong>转载请注明出处</li></ul></div><br><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a class="article-share-link" data-url="http://canace.site/2018/06/08/每周分享第二周（6-8)/" data-id="cji5pgcgq001yksu87fi9uar1" data-qrcode="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACI0lEQVR42u3aS27kMAwFwL7/pR0g28D2I+UOYKq0GkwMtUoLgh99PvE6flfv/48/6+yb6z0fWBgYGK9lHJert/X1blVqshsGBsYOjCRoPhu+q0H55swYGBgYcShc2Se/PgwMDIyVgFv9EgMDAyNnJEXsenGbp4lfrMUxMDBeyKiG0f/89xfnGxgYGC9hHAurOgD43sLAwJjNOEvOVmLd9Z7JN0nKGOWYGBgY4xgrjyR6bbi8VI6uHgMDYyij2larjhCuryCn3nyPgYExmlHdKEnX8nCZB/Fy8oqBgTGI0Uv7erA8XFbbdhgYGLMZeZOrWnD2Rgh5kMXAwNiH8ewwIA/H6408DAyMfRjVGjD5+XwMmf81CtYYGBhDGXm6lhy0Oh6ohvvTK8DAwNiA8dRI8qmHF8mvY2Bg7MmoHjdJ2nrPW8uPPDAwMEYzVtK+vErOG3C9lh8GBsYOjLz5VQ3B1YcUSwAMDIzRjDxRqzb3e8PR5GpuxgMYGBhDGSvPLKpjgN5xb86JgYGxAaP6wCKHrZe+0aVjYGCMZvQGjfmws3oF1fQRAwNjNuMorl5zrTqMrAZxDAyM2YyV/Co/aOHBRCtwY2Bg7MDIg2weHPOdV5p6p/MNDAyMoYy86k2Oe130PvwUDAMDA6PVesszt/VSFgMDAyMKdgvflI/7jTobAwPjJYx8GNDb86lfjN6MYGBgjGP0njj0GnC9NlyvbYeBgTGC8QNMDiy6nT1y/wAAAABJRU5ErkJggg==">分享</a><div class="tags"><a href="/tags/分享/">分享</a></div><div class="post-nav"><a class="next" href="/2018/06/08/盒模型/">盒模型</a></div><div id="disqus_thread"><div class="btn_click_load"><button class="disqus_click_btn">阅读评论（请确保 Disqus 可以正常加载）</button></div><script type="text/javascript">var disqus_config = function () {
+    this.page.url = 'http://canace.site/2018/06/08/每周分享第二周（6-8)/';
+    this.page.identifier = '2018/06/08/每周分享第二周（6-8)/';
+    this.page.title = '每周分享第三周（6-8)';
+  };</script><script type="text/javascript" id="disqus-lazy-load-script">$.ajax({
+url: 'https://disqus.com/next/config.json',
+timeout: 2500,
+type: 'GET',
+success: function(){
+  var d = document;
+  var s = d.createElement('script');
+  s.src = '//liu-yan-ping-de-bo-ke.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', + new Date());
+  (d.head || d.body).appendChild(s);
+  $('.disqus_click_btn').css('display', 'none');
+},
+error: function() {
+  $('.disqus_click_btn').css('display', 'block');
+}
+});</script><script type="text/javascript" id="disqus-click-load">$('.btn_click_load').click(() => {  //click to load comments
+    (() => { // DON'T EDIT BELOW THIS LINE
+        var d = document;
+        var s = d.createElement('script');
+        s.src = '//liu-yan-ping-de-bo-ke.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', + new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+    $('.disqus_click_btn').css('display','none');
+});</script><script type="text/javascript" id="disqus-count-script">$(function() {
+     var xhr = new XMLHttpRequest();
+     xhr.open('GET', '//disqus.com/next/config.json', true);
+     xhr.timeout = 2500;
+     xhr.onreadystatechange = function () {
+       if (xhr.readyState === 4 && xhr.status === 200) {
+         $('.post-meta .post-comments-count').show();
+         var s = document.createElement('script');
+         s.id = 'dsq-count-scr';
+         s.src = 'https://liu-yan-ping-de-bo-ke.disqus.com/count.js';
+         s.async = true;
+         (document.head || document.body).appendChild(s);
+       }
+     };
+     xhr.ontimeout = function () { xhr.abort(); };
+     xhr.send(null);
+   });
+</script></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a><span class="category-list-count">24</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">5</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/个人管理/" style="font-size: 15px;">个人管理</a> <a href="/tags/python/" style="font-size: 15px;">python</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/博客/" style="font-size: 15px;">博客</a> <a href="/tags/tensorflow/" style="font-size: 15px;">tensorflow</a> <a href="/tags/科学上网/" style="font-size: 15px;">科学上网</a> <a href="/tags/web/" style="font-size: 15px;">web</a> <a href="/tags/算法/" style="font-size: 15px;">算法</a> <a href="/tags/影评/" style="font-size: 15px;">影评</a> <a href="/tags/分享/" style="font-size: 15px;">分享</a> <a href="/tags/笔记/" style="font-size: 15px;">笔记</a> <a href="/tags/计算机网络/" style="font-size: 15px;">计算机网络</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/06/08/每周分享第二周（6-8)/">每周分享第三周（6-8)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/08/盒模型/">盒模型</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/08/布尔变量在项目中的应用/">布尔变量在项目中的应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/08/yml文件操作方法/">Yml 文件操作方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/08/python采坑集合/">Python2 => Python3 踩坑集合</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/08/sublime-text-nodeJS配置/">Sublime Text3 配置node.js环境</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/07/写给大家看的算法书笔记/">写给大家看的算法书笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/07/前端面试总结——读书郎/">前端面试总结——读书郎</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/02/每周分享第二周（6-2）/">每周分享第二周（6.2）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/27/每周分享第一周（5-27）/">每周分享第一周（5.27）</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-comment-o"> 最近评论</i></div><script type="text/javascript" src="//liu-yan-ping-de-bo-ke.disqus.com/recent_comments_widget.js?num_items=5&amp;hide_avatars=1&amp;avatar_size=32&amp;excerpt_length=20&amp;hide_mods=1"></script></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="http://www.ruanyifeng.com/blog/" title="阮一峰的博客" target="_blank">阮一峰的博客</a><ul></ul><a title="微信公众号：刘艳萍的博客" target="_blank">微信公众号：刘艳萍的博客</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2018 <a href="/." rel="nofollow">刘艳萍.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
