@@ -1,101 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-
-  
-  <title>Django-Channels | 刘艳萍的博客</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="写在前面，这个项目用到了 py 的全能框架 Django 来写 web 界面，其中引用了一个通道插件Django Channel。Django Channels 是为了解决 Django 只发送一个调用视图请求，却不断发送数据到客户端的问题而存在的。Django Channels 的实现机制大概是：生产者把消息推到通道队列中，再通过通道队列把消息传递给消费者之一。 一、 关于 Django 实现实">
-<meta name="keywords" content="python">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Django-Channels">
-<meta property="og:url" content="http://canace.site/2018/05/20/Django-channels/index.html">
-<meta property="og:site_name" content="刘艳萍的博客">
-<meta property="og:description" content="写在前面，这个项目用到了 py 的全能框架 Django 来写 web 界面，其中引用了一个通道插件Django Channel。Django Channels 是为了解决 Django 只发送一个调用视图请求，却不断发送数据到客户端的问题而存在的。Django Channels 的实现机制大概是：生产者把消息推到通道队列中，再通过通道队列把消息传递给消费者之一。 一、 关于 Django 实现实">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-05-20T08:52:24.285Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Django-Channels">
-<meta name="twitter:description" content="写在前面，这个项目用到了 py 的全能框架 Django 来写 web 界面，其中引用了一个通道插件Django Channel。Django Channels 是为了解决 Django 只发送一个调用视图请求，却不断发送数据到客户端的问题而存在的。Django Channels 的实现机制大概是：生产者把消息推到通道队列中，再通过通道队列把消息传递给消费者之一。 一、 关于 Django 实现实">
-  
-    <link rel="alternate" href="/atom.xml" title="刘艳萍的博客" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link rel="stylesheet" href="/css/style.css">
-</head>
-
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">刘艳萍的博客</a>
-      </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">Tomorrow is another day</a>
-        </h2>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://canace.site"></form>
-      </div>
-    </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main"><article id="post-Django-channels" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/05/20/Django-channels/" class="article-date">
-  <time datetime="2018-05-20T08:43:09.000Z" itemprop="datePublished">2018-05-20</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/技术/">技术</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      Django-Channels
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>写在前面，这个项目用到了 py 的全能框架 Django 来写 web 界面，其中引用了一个通道插件Django Channel。Django Channels 是为了解决 Django 只发送一个调用视图请求，却不断发送数据到客户端的问题而存在的。Django Channels 的实现机制大概是：生产者把消息推到通道队列中，再通过通道队列把消息传递给消费者之一。</p>
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="分享改变世界"><title>Django-Channels | 刘艳萍的博客</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/8.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Django-Channels</h1><a id="logo" href="/.">刘艳萍的博客</a><p class="description">Tomorrow is another day</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 主页</i></a><a href="/archives/"><i class="fa fa-archive"> 文章归档</i></a><a href="/about/"><i class="fa fa-user"> 关于我</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">Django-Channels</h1><div class="post-meta">May 20, 2018<span> | </span><span class="category"><a href="/categories/技术/">技术</a></span><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> 阅读</span></span></div><a class="disqus-comment-count" data-disqus-identifier="2018/05/20/Django-channels/" href="/2018/05/20/Django-channels/#disqus_thread"></a><div class="post-content"><p>写在前面，这个项目用到了 py 的全能框架 Django 来写 web 界面，其中引用了一个通道插件Django Channel。Django Channels 是为了解决 Django 只发送一个调用视图请求，却不断发送数据到客户端的问题而存在的。Django Channels 的实现机制大概是：生产者把消息推到通道队列中，再通过通道队列把消息传递给消费者之一。</p>
 <h5 id="一、-关于-Django-实现实时聊天应用"><a href="#一、-关于-Django-实现实时聊天应用" class="headerlink" title="一、 关于 Django 实现实时聊天应用"></a>一、 关于 Django 实现实时聊天应用</h5><p>Django 实现实时聊天应用一共分为以下几步：</p>
 <ol>
 <li><p>定义一个模型，用来表示聊天室和其中的消息；</p>
@@ -146,148 +49,49 @@
 </li>
 </ol>
 <h5 id="四、-tensorflow-组件"><a href="#四、-tensorflow-组件" class="headerlink" title="四、 tensorflow 组件"></a>四、 tensorflow 组件</h5><p>主要是用了tensorflow进行人机交互。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://canace.site/2018/05/20/Django-channels/" data-id="cjjcpi6aq00020su8uf4727pf" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
-
-    </footer>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2018/05/20/JS概谈/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          JS概谈
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2018/05/20/hexo入门/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Hexo 使用指南</div>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">分类</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tensorflow/">tensorflow</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/个人管理/">个人管理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分享/">分享</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博客/">博客</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/影评/">影评</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/科学上网/">科学上网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/计算机网络/">计算机网络</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签云</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/python/" style="font-size: 17.5px;">python</a> <a href="/tags/tensorflow/" style="font-size: 12.5px;">tensorflow</a> <a href="/tags/web/" style="font-size: 20px;">web</a> <a href="/tags/个人管理/" style="font-size: 10px;">个人管理</a> <a href="/tags/分享/" style="font-size: 15px;">分享</a> <a href="/tags/博客/" style="font-size: 12.5px;">博客</a> <a href="/tags/影评/" style="font-size: 12.5px;">影评</a> <a href="/tags/科学上网/" style="font-size: 10px;">科学上网</a> <a href="/tags/笔记/" style="font-size: 12.5px;">笔记</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/计算机网络/" style="font-size: 10px;">计算机网络</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">归档</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">最新文章</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2018/06/08/每周分享第三周（6-8)/">每周分享第三周（6-8)</a>
-          </li>
-        
-          <li>
-            <a href="/2018/06/08/盒模型/">盒模型</a>
-          </li>
-        
-          <li>
-            <a href="/2018/06/08/布尔变量在项目中的应用/">布尔变量在项目中的应用</a>
-          </li>
-        
-          <li>
-            <a href="/2018/06/08/yml文件操作方法/">Yml 文件操作方法</a>
-          </li>
-        
-          <li>
-            <a href="/2018/06/08/python采坑集合/">Python2 =&gt; Python3 踩坑集合</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2018 刘艳萍<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-<script src="/js/script.js"></script>
-
-
-
-  </div>
-</body>
-</html>
+</div><div><ul class="post-copyright"><li class="post-copyright-author"><strong>本文作者：</strong>刘艳萍</li><li class="post-copyright-link"><strong>本文链接：</strong><a href="/2018/05/20/Django-channels/">http://canace.site/2018/05/20/Django-channels/</a></li><li class="post-copyright-license"><strong>版权声明：</strong>转载请注明出处</li></ul></div><br><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a class="article-share-link" data-url="http://canace.site/2018/05/20/Django-channels/" data-id="cjjcpkp5200027cu8u7tq173q" data-qrcode="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACK0lEQVR42u3aQY7CMBAEQP7/afa60kLotpOVmFROCEHiyqE1Hs/jEV/P4Hr3y9/fH39+981pFwYGxtcy1haXPCy5w9pzXzwdAwPjBoxkEX9vnf/r+L9JTH9YMwYGBkYZr/kSk8DFwMDAuDpw8xITAwMD45jRBl8ex23T7fK9OAYGxhcy8q77/3++5HwDAwPjqxhXN+v37xatCgMDYzSjbaXlIxRtcLfDFhgYGPdh5BHZtv7btlrSnntLxcDAGM3YCce8rX9cCO4EeoTBwMAYwVjbWOaHl3lwH5M+FJEYGBhDGWtJnBSUO6FcD5lhYGDcmJEUavlmMlluzo7eKwYGxiBGPgCx0247dzriRWmIgYExmrEzGNHGdBvHUbMPAwNjNKMdJF1rve0cPBRtOAwMjBsw2mBdfFjZnivOYDEwMIYydg4X1yI4KSjrl4iBgTGakRdt+wcA7VDFfumJgYExg7G2xDyC86esDVtgYGDcgdE23dpyrW3Y7Q+NYWBgTGW0MboTqWc9622BiIGBcQNGcjyQl3T5oFi7ea5PYjEwMAYx8k3mWaXhI76K7SsGBsYgxrO81mJ6betbF4UYGBhDGTtht1PwrUV2PWyBgYExiNFGZB7Ea+VguwYMDIz7MNpDzbxk3B/FiOIbAwMDI9hAJoeU+X/rsTAMDAyMcvvalo/Ji/hwZwwMjBsw2sGvtUGufMtaj2JgYGCMZrRbx3zOYW36Y798xMDAGMT4AZia8C7R+225AAAAAElFTkSuQmCC">分享</a><div class="tags"><a href="/tags/python/">python</a></div><div class="post-nav"><a class="pre" href="/2018/05/20/JS概谈/">JS概谈</a><a class="next" href="/2018/05/20/hexo入门/">Hexo 使用指南</a></div><div id="disqus_thread"><div class="btn_click_load"><button class="disqus_click_btn">阅读评论（请确保 Disqus 可以正常加载）</button></div><script type="text/javascript">var disqus_config = function () {
+    this.page.url = 'http://canace.site/2018/05/20/Django-channels/';
+    this.page.identifier = '2018/05/20/Django-channels/';
+    this.page.title = 'Django-Channels';
+  };</script><script type="text/javascript" id="disqus-lazy-load-script">$.ajax({
+url: 'https://disqus.com/next/config.json',
+timeout: 2500,
+type: 'GET',
+success: function(){
+  var d = document;
+  var s = d.createElement('script');
+  s.src = '//liu-yan-ping-de-bo-ke.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', + new Date());
+  (d.head || d.body).appendChild(s);
+  $('.disqus_click_btn').css('display', 'none');
+},
+error: function() {
+  $('.disqus_click_btn').css('display', 'block');
+}
+});</script><script type="text/javascript" id="disqus-click-load">$('.btn_click_load').click(() => {  //click to load comments
+    (() => { // DON'T EDIT BELOW THIS LINE
+        var d = document;
+        var s = d.createElement('script');
+        s.src = '//liu-yan-ping-de-bo-ke.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', + new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+    $('.disqus_click_btn').css('display','none');
+});</script><script type="text/javascript" id="disqus-count-script">$(function() {
+     var xhr = new XMLHttpRequest();
+     xhr.open('GET', '//disqus.com/next/config.json', true);
+     xhr.timeout = 2500;
+     xhr.onreadystatechange = function () {
+       if (xhr.readyState === 4 && xhr.status === 200) {
+         $('.post-meta .post-comments-count').show();
+         var s = document.createElement('script');
+         s.id = 'dsq-count-scr';
+         s.src = 'https://liu-yan-ping-de-bo-ke.disqus.com/count.js';
+         s.async = true;
+         (document.head || document.body).appendChild(s);
+       }
+     };
+     xhr.ontimeout = function () { xhr.abort(); };
+     xhr.send(null);
+   });
+</script></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a><span class="category-list-count">24</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">5</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/个人管理/" style="font-size: 15px;">个人管理</a> <a href="/tags/web/" style="font-size: 15px;">web</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/博客/" style="font-size: 15px;">博客</a> <a href="/tags/tensorflow/" style="font-size: 15px;">tensorflow</a> <a href="/tags/科学上网/" style="font-size: 15px;">科学上网</a> <a href="/tags/python/" style="font-size: 15px;">python</a> <a href="/tags/算法/" style="font-size: 15px;">算法</a> <a href="/tags/影评/" style="font-size: 15px;">影评</a> <a href="/tags/分享/" style="font-size: 15px;">分享</a> <a href="/tags/笔记/" style="font-size: 15px;">笔记</a> <a href="/tags/计算机网络/" style="font-size: 15px;">计算机网络</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/06/08/每周分享第三周（6-8)/">每周分享第三周（6-8)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/08/盒模型/">盒模型</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/08/布尔变量在项目中的应用/">布尔变量在项目中的应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/08/yml文件操作方法/">Yml 文件操作方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/08/python采坑集合/">Python2 => Python3 踩坑集合</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/08/sublime-text-nodeJS配置/">Sublime Text3 配置node.js环境</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/07/写给大家看的算法书笔记/">写给大家看的算法书笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/07/前端面试总结——读书郎/">前端面试总结——读书郎</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/02/每周分享第二周（6-2）/">每周分享第二周（6.2）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/27/每周分享第一周（5-27）/">每周分享第一周（5.27）</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-comment-o"> 最近评论</i></div><script type="text/javascript" src="//liu-yan-ping-de-bo-ke.disqus.com/recent_comments_widget.js?num_items=5&amp;hide_avatars=1&amp;avatar_size=32&amp;excerpt_length=20&amp;hide_mods=1"></script></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="http://www.ruanyifeng.com/blog/" title="阮一峰的博客" target="_blank">阮一峰的博客</a><ul></ul><a title="微信公众号：刘艳萍的博客" target="_blank">微信公众号：刘艳萍的博客</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2018 <a href="/." rel="nofollow">刘艳萍.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
