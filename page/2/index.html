@@ -1,21 +1,774 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="分享改变世界"><title>刘艳萍的博客 | Tomorrow is another day</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/8.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">刘艳萍的博客</h1><a id="logo" href="/.">刘艳萍的博客</a><p class="description">Tomorrow is another day</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 主页</i></a><a href="/archives/"><i class="fa fa-archive"> 文章归档</i></a><a href="/about/"><i class="fa fa-user"> 关于我</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title"><a href="/2018/05/27/模型训练步骤/">Tensorflow 模型训练步骤</a></h1><div class="post-meta">2018-05-27</div><a class="disqus-comment-count" data-disqus-identifier="2018/05/27/模型训练步骤/" href="/2018/05/27/模型训练步骤/#disqus_thread"></a><div class="post-content"><h3 id="使用tensorflow进行算法设计、训练的步骤"><a href="#使用tensorflow进行算法设计、训练的步骤" class="headerlink" title="使用tensorflow进行算法设计、训练的步骤"></a>使用tensorflow进行算法设计、训练的步骤</h3><ol></div><p class="readmore"><a href="/2018/05/27/模型训练步骤/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2018/05/27/ubuntu下配置ss/">Ubuntu下配置ss</a></h1><div class="post-meta">2018-05-27</div><a class="disqus-comment-count" data-disqus-identifier="2018/05/27/ubuntu下配置ss/" href="/2018/05/27/ubuntu下配置ss/#disqus_thread"></a><div class="post-content"><ol>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>刘艳萍的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="分享改变世界">
+<meta name="keywords" content="web开发, python, 深度学习">
+<meta property="og:type" content="website">
+<meta property="og:title" content="刘艳萍的博客">
+<meta property="og:url" content="http://canace.site/page/2/index.html">
+<meta property="og:site_name" content="刘艳萍的博客">
+<meta property="og:description" content="分享改变世界">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="刘艳萍的博客">
+<meta name="twitter:description" content="分享改变世界">
+  
+    <link rel="alternate" href="/atom.xml" title="刘艳萍的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">刘艳萍的博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Tomorrow is another day</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://canace.site"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-模型训练步骤" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/27/模型训练步骤/" class="article-date">
+  <time datetime="2018-05-27T01:56:27.000Z" itemprop="datePublished">2018-05-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/27/模型训练步骤/">Tensorflow 模型训练步骤</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="使用tensorflow进行算法设计、训练的步骤"><a href="#使用tensorflow进行算法设计、训练的步骤" class="headerlink" title="使用tensorflow进行算法设计、训练的步骤"></a>使用tensorflow进行算法设计、训练的步骤</h3><ol>
+<li><p>定义算法公式，也就是神经网络forward时的计算；</p>
+</li>
+<li><p>定义loss，选定优化器，比如SGD，并指定优化器loss；</p>
+</li>
+<li><p>迭代的对数据集进行训练；</p>
+</li>
+<li><p>在测试集上对准确率进行评测；</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://canace.site/2018/05/27/模型训练步骤/" data-id="cjjcp84w3001misu81o7u171g" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tensorflow/">tensorflow</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-ubuntu下配置ss" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/27/ubuntu下配置ss/" class="article-date">
+  <time datetime="2018-05-27T01:49:30.000Z" itemprop="datePublished">2018-05-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/27/ubuntu下配置ss/">Ubuntu下配置ss</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
 <li><p>pip install shadowshocks</p>
 </li>
 <li><p>创建json文件，内容如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">&quot;server&quot;:&quot;ip&quot;, </span><br><span class="line">&quot;server_port&quot;:3002, </span><br><span class="line">&quot;local_port&quot;:1080, </span><br><span class="line">&quot;password&quot;:&quot;psd&quot;,</span><br><span class="line">&quot;timeout&quot;:600,</span><br><span class="line">&quot;method&quot;:&quot;加密方法&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div><p class="readmore"><a href="/2018/05/27/ubuntu下配置ss/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2018/05/27/ubuntu下安装tensorflow/">Ubuntu 下 Tensorflow CPU Release 版安装</a></h1><div class="post-meta">2018-05-27</div><a class="disqus-comment-count" data-disqus-identifier="2018/05/27/ubuntu下安装tensorflow/" href="/2018/05/27/ubuntu下安装tensorflow/#disqus_thread"></a><div class="post-content"><h3 id="安装-anaconda："><a href="#安装-anaconda：" class="headerlink" title="安装 anaconda："></a>安装 anaconda：</h3><ol>
-<li><p>下载<a href="https://repo.continuum.io/archive/" target="_blank" rel="noopener">anaconda3-4.2.0 linux 版本</a></p></div><p class="readmore"><a href="/2018/05/27/ubuntu下安装tensorflow/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2018/05/20/深度工作哲学解读/">深度工作哲学解读</a></h1><div class="post-meta">2018-05-20</div><a class="disqus-comment-count" data-disqus-identifier="2018/05/20/深度工作哲学解读/" href="/2018/05/20/深度工作哲学解读/#disqus_thread"></a><div class="post-content"><p>卡尔.纽波特的《深度工作》一书中提到，深度工作的哲学包括以下几种：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">&quot;server&quot;:&quot;ip&quot;, </span><br><span class="line">&quot;server_port&quot;:3002, </span><br><span class="line">&quot;local_port&quot;:1080, </span><br><span class="line">&quot;password&quot;:&quot;psd&quot;,</span><br><span class="line">&quot;timeout&quot;:600,</span><br><span class="line">&quot;method&quot;:&quot;加密方法&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>系统设置&gt;&gt;网络设置&gt;&gt;网络代理&gt;&gt;手动，填写socks主机和端口信息：127.0.0.1：1080</p>
+</li>
+<li><p>sslocal -c /home/canace/文档/ss.json 开启全局ss</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://canace.site/2018/05/27/ubuntu下配置ss/" data-id="cjjcp84vj000qisu89y45go0x" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/科学上网/">科学上网</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-ubuntu下安装tensorflow" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/27/ubuntu下安装tensorflow/" class="article-date">
+  <time datetime="2018-05-27T01:48:31.000Z" itemprop="datePublished">2018-05-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/27/ubuntu下安装tensorflow/">Ubuntu 下 Tensorflow CPU Release 版安装</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="安装-anaconda："><a href="#安装-anaconda：" class="headerlink" title="安装 anaconda："></a>安装 anaconda：</h3><ol>
+<li><p>下载<a href="https://repo.continuum.io/archive/" target="_blank" rel="noopener">anaconda3-4.2.0 linux 版本</a></p>
+</li>
+<li><p>到 anaconda 的下载目录下执行一下命令：<code>bash Anaconda3-4.2.0-Linux-x86_64.sh</code></p>
+</li>
+<li><p>接下来就是按照提示一步步的往下就行了，会自动安装各种包，直到结束</p>
+</li>
+<li><p><code>echo &#39;export PATH=&quot;/home/canace/anaconda3/bin:$PATH&quot;&#39;&gt;&gt; ~/.bashrc</code>&gt;&gt;<code>source ~/.bashrc</code>启用anaconda</p>
+</li>
+</ol>
+<h3 id="tensorflow-环境配置："><a href="#tensorflow-环境配置：" class="headerlink" title="tensorflow 环境配置："></a>tensorflow 环境配置：</h3><ol>
+<li>tensorflow 安装：<br><code>conda install tensorflow</code>（不要连代理，因为连了代理很可能装不成功）</li>
+</ol>
+<h4 id="PS"><a href="#PS" class="headerlink" title="PS:"></a>PS:</h4><h5 id="conda-常用命令："><a href="#conda-常用命令：" class="headerlink" title="conda 常用命令："></a>conda 常用命令：</h5><p>conda list：可以显示已经安装好的库。</p>
+<p>conda install 库名 ：可以直接安装想要的库。如：conda install tensorflow</p>
+<p>conda update 库名：升级库</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://canace.site/2018/05/27/ubuntu下安装tensorflow/" data-id="cjjcp84vg000nisu8piqf284g" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tensorflow/">tensorflow</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-深度工作哲学解读" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/20/深度工作哲学解读/" class="article-date">
+  <time datetime="2018-05-20T09:01:28.000Z" itemprop="datePublished">2018-05-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/随笔/">随笔</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/20/深度工作哲学解读/">深度工作哲学解读</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>卡尔.纽波特的《深度工作》一书中提到，深度工作的哲学包括以下几种：</p>
 <ol>
 <li><p>禁欲主义哲学；</p>
 </li>
-<li><p>双峰哲学；</p></div><p class="readmore"><a href="/2018/05/20/深度工作哲学解读/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2018/05/20/关于写周报的笔记/">关于写周报的笔记</a></h1><div class="post-meta">2018-05-20</div><a class="disqus-comment-count" data-disqus-identifier="2018/05/20/关于写周报的笔记/" href="/2018/05/20/关于写周报的笔记/#disqus_thread"></a><div class="post-content"><p>如果你上班了，你们公司会要求你写周报吗？如果你还是学生，你的父母或老师会要求你写周报吗？没人要求，还会自发性的写周报吗？写周报给你带来了什么样的改变？</p>
-<p>我是写周报的，虽然公司也要求写，但更多出于自发性的写，我把他当作GTD系统中的一部分，对我而言是CONTEXT，起承上启下的作用。</p></div><p class="readmore"><a href="/2018/05/20/关于写周报的笔记/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2018/05/20/登陆华南师范大学校园网的方法/">登陆华南师范大学校园网的方法</a></h1><div class="post-meta">2018-05-20</div><a class="disqus-comment-count" data-disqus-identifier="2018/05/20/登陆华南师范大学校园网的方法/" href="/2018/05/20/登陆华南师范大学校园网的方法/#disqus_thread"></a><div class="post-content"><p>最近刚装了unbuntu 系统,刚开始网络连接遇到了点小问题,原来是校园网不知道怎么认证,于是向好基友请教了下,得出快捷的方法如下:</p>
+<li><p>双峰哲学；</p>
+</li>
+<li><p>节奏哲学；</p>
+</li>
+<li><p>新闻工作者哲学；</p>
+</li>
+</ol>
+<p>以下是个人的一下理解：</p>
+<ol>
+<li><p>深度工作与浮浅工作相对，是一种排除外界干扰，长时间连续的集中全部精力于某一项活动的工作形式。</p>
+</li>
+<li><p>以上四种深度工作哲学按专注时间从长到短的顺序排列依次是：禁欲主义哲学 &gt; 双峰哲学 &gt; 节奏哲学 &gt; 新闻工作者哲学。</p>
+</li>
+<li><p>禁欲主义哲学主张工作中全力排除一切干扰，专注于工作，比如说作家隐居写作就是运用了这种深度工作哲学，适合使用这种哲学的人，一般是有很高的职业追求的人，并且这种人的职业看得到实际的产出，比如说作家一年要出多少本书。此外，使用这种哲学要求长时间的与世隔绝，过一种苦行僧式的生活。</p>
+</li>
+<li><p>双峰哲学是把生活中的时间分为部分，一部分用于深度工作，一部分用于浮浅工作。比如说一年有十二个月，可以预备三个月完全与世隔绝，用来进行深度工作。或者是每一周花一天完全与世隔绝进行深度工作。这种哲学要求要有大于一天的深度工作时间，可以说适合大部分人。</p>
+</li>
+<li><p>节奏哲学主张养成深度工作的习惯，每天花一部分的时间进行深度学习。比如八点半上班，可以五点起来进行深度工作到七点半。这是个人比较推崇的一种深度工作哲学，这种哲学可以保证每天都有一定的高效工作的时间，可以做任何自己想做的目标事物，坚持一段时间就能看到产出，还是很不错的，适合任何有有目标的人群。</p>
+</li>
+<li><p>新闻工作者哲学，顾名思义，像新闻工作者一样，随时可以进入状态。这种哲学只适合已熟使用其他哲学的少部分人，要求随时能够进入到深度工作的状态。</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://canace.site/2018/05/20/深度工作哲学解读/" data-id="cjjcp84wf0023isu88ybfottr" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-关于写周报的笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/20/关于写周报的笔记/" class="article-date">
+  <time datetime="2018-05-20T09:01:14.000Z" itemprop="datePublished">2018-05-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/随笔/">随笔</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/20/关于写周报的笔记/">关于写周报的笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>如果你上班了，你们公司会要求你写周报吗？如果你还是学生，你的父母或老师会要求你写周报吗？没人要求，还会自发性的写周报吗？写周报给你带来了什么样的改变？</p>
+<p>我是写周报的，虽然公司也要求写，但更多出于自发性的写，我把他当作GTD系统中的一部分，对我而言是CONTEXT，起承上启下的作用。</p>
+<ol>
+<li><p>区别</p>
+<p> (1) 被动写周报和主动记录反馈本周状态是有区别的，被动通常受命于人，属于履行任务，追求的是效率，希望尽可能快的完成；而主动写周报通常是自发性的，属于自我反省，追求的是问题的发现-解决-反馈，需要静下心来思考。</p>
+<p> (2) 工作周报和个人总结周报也是有区别的：</p>
+<p> (3) 内容上，工作周报只需要记录和工作相关的事情，而个人周报不仅需要总结工作，还需要总结生活、学习；</p>
+<p> (4) 深度上，由于工作周报通常是需要提交给部门老大看，因此在剖析问题、总结得失，自我反省上非常不深刻，甚至会出现避重就轻的问题，一份周报常常沦为简单对工作任务的概括和陈述；而个人周报则不容易出现这类问题，就好比面壁自省，谁还会在乎什么话该说还是不该说，都是自个儿的事；</p>
+</li>
+<li><p>方法</p>
+<p> (1) Step-1-回顾</p>
+<pre><code>A. 检查计划中关键项目/任务的完成进度是否符合预期；
+
+B. 反馈各项目/任务的执行结果，如：完成情况/未达预期的原因/失败的原因；
+
+C. 统计日程表中各任务的耗时情况是否正常，有没有效率特低或特高的情况，原因写到备注中；
+
+D. 回溯上一周面临的问题是否得到解决，解决方案是否有效，并对问题解决的过程进行概括；
+</code></pre><p> (2) Step-2-总结</p>
+<pre><code>A. 总结本周面临的新问题，描述问题并概括导致问题出现的原因，准备以何种解决方案应对？
+
+B. 对工作、学习、生活（主要是人际关系）三方面进行评估，一方面对重点任务进行陈述性总结，另一方面评估重点任务的完成质量
+</code></pre></li>
+<li><p>Step-3-计划</p>
+<p> (1) 列出能预见到的项目/任务，如：阅读书籍&lt;在你身边为你设计&gt;；</p>
+<p> (2) 细化任务，一方面要计划任务量，另一方面要计划时间分配，如：阅读到用研部分（P125页）完，睡前阅读30分钟，周末统一整理笔记</p>
+<p> OK，通过这三个步骤，基本上就可以写出一份到位的周报总结了，另外月报的方法也大同小异，可参考着写。</p>
+</li>
+</ol>
+<p>另外，以前还看到过别人周报中设置的一些关注点，可供大家参考：</p>
+<ol>
+<li><p>黄金时间分布段：目的是把重点任务分配到精力最集中，最不容易受干扰的时间段去做；</p>
+</li>
+<li><p>总结任务的分类，各分类下的任务量，无需脑力的Brain Dead任务和需要静下心做的Deep Time任务各占了多少时间</p>
+</li>
+<li><p>如果你有建立一个靠谱的理想，你每天花费多少时间在上面？</p>
+</li>
+<li><p>评估你的精力状况，避免因为安排太多任务而透支</p>
+</li>
+</ol>
+<p>一句话就是总结：你这周做了什么？做得怎么样？接下来你准备做什么？怎么去做？</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://canace.site/2018/05/20/关于写周报的笔记/" data-id="cjjcp84vq0011isu8qed1pikd" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/个人管理/">个人管理</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="ubuntu-登陆华南师范大学校园网的方法" class="article article-type-ubuntu" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/20/登陆华南师范大学校园网的方法/" class="article-date">
+  <time datetime="2018-05-20T09:00:51.000Z" itemprop="datePublished">2018-05-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/20/登陆华南师范大学校园网的方法/">登陆华南师范大学校园网的方法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近刚装了unbuntu 系统,刚开始网络连接遇到了点小问题,原来是校园网不知道怎么认证,于是向好基友请教了下,得出快捷的方法如下:</p>
 <ol>
 <li><p>下载学校网络的认证客户端,记住位置,一般都是默认下载地址是 Download.</p>
 </li>
-<li><p>使用快捷键<code>Ctrl+Alt+T</code>打开终端，使用命令 <code>cd ~/下载</code> 或 <code>cd ～/Downloads</code>（如果您的系统语言为英文）进入文件下载目录。</p></div><p class="readmore"><a href="/2018/05/20/登陆华南师范大学校园网的方法/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2018/05/20/天使之恋/">天使之恋</a></h1><div class="post-meta">2018-05-20</div><a class="disqus-comment-count" data-disqus-identifier="2018/05/20/天使之恋/" href="/2018/05/20/天使之恋/#disqus_thread"></a><div class="post-content"><p>天使之恋，是一部日本的爱情电影。电影主要讲述的是失足女高中生由里与得了脑肿瘤又不愿意做手术准备等死的光辉大叔的纯纯的爱情故事。其实，选择继续看这部电影，是因为一开头给了一个镜头，是在医院中，光辉大叔刚从检查室出来，遇到由里和她妈妈，并且插肩而过，当时就在想，这样医院中毫不相干的两个人怎么把他们联系起来呢？后来看到由里跟一个老人家在一起，以为她做了人家的小三，应该跟在医院邂逅的那个大叔无关，可是这个画面也给了大叔一个镜头。再后一点，看到由里跟一个女的在床上接吻，心想，可能由里是一个双性恋者。就是跟着这一个个线索，最后我才看到了这部电影的最深情节，17岁的高中女生与35岁的大叔的纯洁的爱情故事，非常动人。大叔即使知道由里之前做过援交女的种种劣迹，依然表示自己是真的爱由里。也许，这就是浪漫主义的剧情吧。现实中，大多数男人都表示，自己不能接受自己的女朋友有过不洁的行为，即使是自己的女朋友跟之前的男朋友有过什么，也是不能容忍的。</p></div><p class="readmore"><a href="/2018/05/20/天使之恋/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2018/05/20/海边的曼彻斯特/">海边的曼彻斯特</a></h1><div class="post-meta">2018-05-20</div><a class="disqus-comment-count" data-disqus-identifier="2018/05/20/海边的曼彻斯特/" href="/2018/05/20/海边的曼彻斯特/#disqus_thread"></a><div class="post-content"><p>看完这部影片，用一个词来形容就是安静，安静的环境下，平凡的生活，同时又夹杂着男主人过去的故事。很喜欢这种叙述方式，通过唯美的画面，渲染故事情节，将男主人公的伤心，悔恨，往事不堪回首等种种复杂心情，一一展现。</p>
+<li><p>使用快捷键<code>Ctrl+Alt+T</code>打开终端，使用命令 <code>cd ~/下载</code> 或 <code>cd ～/Downloads</code>（如果您的系统语言为英文）进入文件下载目录。</p>
+</li>
+<li><p><code>unzip *.zip</code> 解压刚刚下载的客户端压缩文件,</p>
+</li>
+<li><p>如果您的下载目录不止一个zip文件，请把名字打全一点，如：<code>unzip RG_*.zip</code>,RG为文件名.</p>
+</li>
+<li><p>如果提示unzip未安装，请安装它： <code>sudo apt-get install unzip</code> ；若提示输入密码，请输入您的系统账户密码，输入过程中不会有***的显示；若提示需要联网下载，请先用Wifi（比如手机热点），安装文件并不大。</p>
+<p>6以后的步骤,以后我们每次打开电脑都用这几行代码进行认证,可以复制到一个文件里,懒得每次都打代码</p>
+</li>
+<li><p><code>cd ~/下载</code>  –切换到安装目录</p>
+</li>
+<li><p><code>cd rjsup*</code>  –进入文件夹.</p>
+</li>
+<li><p><code>sudo chmod +x ./rjsupplicant.sh</code>  –给予sh文件最高权限</p>
+</li>
+<li><p><code>(sudo ./rj*.sh  --dhcp=1  --nic=enp2s0 --user=201*****  --password=****** &amp;)</code>进行认证,user后是校园网账号,password后是校园网密码.</p>
+</li>
+<li><p><code>service network-manager restart</code>  重新显示网络中心图标</p>
+<p>切记以后每次认证网络都用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd ~/下载</span><br><span class="line">cd rjsup*</span><br><span class="line">sudo chmod +x ./rjsupplicant.sh</span><br><span class="line">(sudo ./rj*.sh --dhcp=1 --nic=enp2s0 --user=20143702058 --password=232824 &amp;)</span><br><span class="line">service network-manager restart</span><br></pre></td></tr></table></figure>
+<p>这几行代码,一条代码执行完再执行下一条.</p>
+<p>本文是看完blackstorm的博客之后的笔记,因为对于小白来说,他写的文章太晦涩了,第一次看很懵懂,所以我就把他的文章简化了.</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://canace.site/2018/05/20/登陆华南师范大学校园网的方法/" data-id="cjjcp84wh0026isu8bp3ii8dg" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/计算机网络/">计算机网络</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-天使之恋" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/20/天使之恋/" class="article-date">
+  <time datetime="2018-05-20T09:00:11.000Z" itemprop="datePublished">2018-05-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/随笔/">随笔</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/20/天使之恋/">天使之恋</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>天使之恋，是一部日本的爱情电影。电影主要讲述的是失足女高中生由里与得了脑肿瘤又不愿意做手术准备等死的光辉大叔的纯纯的爱情故事。其实，选择继续看这部电影，是因为一开头给了一个镜头，是在医院中，光辉大叔刚从检查室出来，遇到由里和她妈妈，并且插肩而过，当时就在想，这样医院中毫不相干的两个人怎么把他们联系起来呢？后来看到由里跟一个老人家在一起，以为她做了人家的小三，应该跟在医院邂逅的那个大叔无关，可是这个画面也给了大叔一个镜头。再后一点，看到由里跟一个女的在床上接吻，心想，可能由里是一个双性恋者。就是跟着这一个个线索，最后我才看到了这部电影的最深情节，17岁的高中女生与35岁的大叔的纯洁的爱情故事，非常动人。大叔即使知道由里之前做过援交女的种种劣迹，依然表示自己是真的爱由里。也许，这就是浪漫主义的剧情吧。现实中，大多数男人都表示，自己不能接受自己的女朋友有过不洁的行为，即使是自己的女朋友跟之前的男朋友有过什么，也是不能容忍的。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://canace.site/2018/05/20/天使之恋/" data-id="cjjcp84vx001cisu8lddbkotr" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/影评/">影评</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-海边的曼彻斯特" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/20/海边的曼彻斯特/" class="article-date">
+  <time datetime="2018-05-20T08:59:59.000Z" itemprop="datePublished">2018-05-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/随笔/">随笔</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/20/海边的曼彻斯特/">海边的曼彻斯特</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>看完这部影片，用一个词来形容就是安静，安静的环境下，平凡的生活，同时又夹杂着男主人过去的故事。很喜欢这种叙述方式，通过唯美的画面，渲染故事情节，将男主人公的伤心，悔恨，往事不堪回首等种种复杂心情，一一展现。</p>
 <p>整部片围绕乔的葬礼，层层铺垫，叙事朴实而又不会让人觉得乏味。</p>
-<p>在看影片的过程中，我就想：要是自己能死于这样大雪纷飞的冬天里，那该多好啊，估计此生也无憾了吧。摇荡的海水也是我喜欢的，它使人冷静而又充满了哲思。</p></div><p class="readmore"><a href="/2018/05/20/海边的曼彻斯特/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2018/05/20/碎片化阅读知识系统化方法/">碎片化阅读知识系统化方法</a></h1><div class="post-meta">2018-05-20</div><a class="disqus-comment-count" data-disqus-identifier="2018/05/20/碎片化阅读知识系统化方法/" href="/2018/05/20/碎片化阅读知识系统化方法/#disqus_thread"></a><div class="post-content"><ol>
+<p>在看影片的过程中，我就想：要是自己能死于这样大雪纷飞的冬天里，那该多好啊，估计此生也无憾了吧。摇荡的海水也是我喜欢的，它使人冷静而又充满了哲思。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://canace.site/2018/05/20/海边的曼彻斯特/" data-id="cjjcp84wd0020isu8yfyrviai" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/影评/">影评</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-碎片化阅读知识系统化方法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/20/碎片化阅读知识系统化方法/" class="article-date">
+  <time datetime="2018-05-20T08:59:38.000Z" itemprop="datePublished">2018-05-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/随笔/">随笔</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/20/碎片化阅读知识系统化方法/">碎片化阅读知识系统化方法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
 <li><p>认识： 碎片化阅读分为两个维度，即阅读时间碎片化和阅读内容碎片化。</p>
 </li>
 <li><p>高效阅读是指在读完大量书籍之后能记住书中的有效信息，可以讲出读过的书的主要内容，能讲的核心是学会做笔记和整理笔记。</p>
-</li></div><p class="readmore"><a href="/2018/05/20/碎片化阅读知识系统化方法/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2018/05/20/wordpress安装/">Wordpress安装</a></h1><div class="post-meta">2018-05-20</div><a class="disqus-comment-count" data-disqus-identifier="2018/05/20/wordpress安装/" href="/2018/05/20/wordpress安装/#disqus_thread"></a><div class="post-content"><p><a href="https://codex.wordpress.org/zh-cn:%E5%AE%89%E8%A3%85_WordPress#.E6.AD.A5.E9.AA.A43:.E8.AE.BE.E7.BD.AEwp-config.php" target="_blank" rel="noopener">原文链接：</a></p></div><p class="readmore"><a href="/2018/05/20/wordpress安装/">阅读全文</a></p></div><nav class="page-navigator"><a class="extend prev" rel="prev" href="/">上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">下一页</a></nav><script id="dsq-count-scr" src="//liu-yan-ping-de-bo-ke.disqus.com/count.js" async></script></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a><span class="category-list-count">24</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">5</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/个人管理/" style="font-size: 15px;">个人管理</a> <a href="/tags/python/" style="font-size: 15px;">python</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/博客/" style="font-size: 15px;">博客</a> <a href="/tags/tensorflow/" style="font-size: 15px;">tensorflow</a> <a href="/tags/科学上网/" style="font-size: 15px;">科学上网</a> <a href="/tags/web/" style="font-size: 15px;">web</a> <a href="/tags/算法/" style="font-size: 15px;">算法</a> <a href="/tags/影评/" style="font-size: 15px;">影评</a> <a href="/tags/分享/" style="font-size: 15px;">分享</a> <a href="/tags/笔记/" style="font-size: 15px;">笔记</a> <a href="/tags/计算机网络/" style="font-size: 15px;">计算机网络</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/06/08/每周分享第三周（6-8)/">每周分享第三周（6-8)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/08/盒模型/">盒模型</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/08/布尔变量在项目中的应用/">布尔变量在项目中的应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/08/yml文件操作方法/">Yml 文件操作方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/08/python采坑集合/">Python2 => Python3 踩坑集合</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/08/sublime-text-nodeJS配置/">Sublime Text3 配置node.js环境</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/07/写给大家看的算法书笔记/">写给大家看的算法书笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/07/前端面试总结——读书郎/">前端面试总结——读书郎</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/02/每周分享第二周（6-2）/">每周分享第二周（6.2）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/27/每周分享第一周（5-27）/">每周分享第一周（5.27）</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-comment-o"> 最近评论</i></div><script type="text/javascript" src="//liu-yan-ping-de-bo-ke.disqus.com/recent_comments_widget.js?num_items=5&amp;hide_avatars=1&amp;avatar_size=32&amp;excerpt_length=20&amp;hide_mods=1"></script></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="http://www.ruanyifeng.com/blog/" title="阮一峰的博客" target="_blank">阮一峰的博客</a><ul></ul><a title="微信公众号：刘艳萍的博客" target="_blank">微信公众号：刘艳萍的博客</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2018 <a href="/." rel="nofollow">刘艳萍.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
+</li>
+<li><p>阅读材料分类，基础的分类：专业精读、兴趣泛读、休闲轻松（阅读材料分级）。</p>
+</li>
+<li><p>个人阅读时间规划（阅读时间分级），大致可以分为：长时段（周末超过2小时的长时段、晚饭后到睡前1-4小时不等的时间）、每日恒定时间（乘坐各种交通工具上下班/学的时间，午饭/晚饭前、后的半小时，学生的课间）、机动时间（偶然状况空闲）。随机时间的应对策略：随身带书或者阅读器（要求：能做笔记、输出笔记）。</p>
+</li>
+<li><p>阅读的材料与时间段合理 配比，比如：长时间段→阅读专业精读书目、每日恒定时间→阅读兴趣泛读书目、机动时间→阅读休闲轻松书目。注意：无论选用哪种时间与书目的配比类型，一周之内都需要一个完整的时间段来完成全部笔记的整理工作，只有这样才能永久性保证阅读质量。</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://canace.site/2018/05/20/碎片化阅读知识系统化方法/" data-id="cjjcp84wn002fisu8il96znnz" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="git-wordpress安装" class="article article-type-git" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/20/wordpress安装/" class="article-date">
+  <time datetime="2018-05-20T08:58:59.000Z" itemprop="datePublished">2018-05-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/20/wordpress安装/">Wordpress安装</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://codex.wordpress.org/zh-cn:%E5%AE%89%E8%A3%85_WordPress#.E6.AD.A5.E9.AA.A43:.E8.AE.BE.E7.BD.AEwp-config.php" target="_blank" rel="noopener">原文链接：</a></p>
+<ol>
+<li><p>下载并解压缩WordPress程序安装包</p>
+</li>
+<li><p>在你的网页服务器上为WordPress创建一个数据库, 并且创建一个MySQL 拥有所有权限可以进入和修改的用户</p>
+</li>
+<li><p>重命名 wp-config-sample.php 文件为 wp-config.php</p>
+</li>
+<li><p>把WordPress文件夹放在你服务器上想要放的地方:</p>
+<p>(1) 如果你想把通过顶级域名来访问你的WordPress博客 (例如 <a href="http://example.com/),移动或上传所有解压后的WordPress文件夹里面的文件(但不包括WordPress文件夹本身)" target="_blank" rel="noopener">http://example.com/),移动或上传所有解压后的WordPress文件夹里面的文件(但不包括WordPress文件夹本身)</a> 到你服务器的根目录下.</p>
+<p>(2) 如果你想通过子域名来访问你的博客(例如 <a href="http://example.com/blog/)" target="_blank" rel="noopener">http://example.com/blog/)</a>, 将wordpress 重命名为你想要的子目录名称， 接着上传至你的网站服务器。 例如，你想让WordPress 安装在子目录”blog”中，你就应该将”wordpress”这个文件夹重命名为”blog”，接着上传至你的网站服务器的根目录中。</p>
+</li>
+<li><p>在你喜欢的浏览器中访问wp-admin/install.php 以便启动安装程序.</p>
+<p>(1) 如果你在根目录下安装WordPress,，你应该访问: <a href="http://example.com/wp-admin/install.php" target="_blank" rel="noopener">http://example.com/wp-admin/install.php</a></p>
+<p>(2) 如果你将WordPress安装在子目录blog下，你应该访问: <a href="http://example.com/blog/wp-admin/install.php" target="_blank" rel="noopener">http://example.com/blog/wp-admin/install.php</a></p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://canace.site/2018/05/20/wordpress安装/" data-id="cjjcp84vl000uisu80qljjopk" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/博客/">博客</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">下一页 &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tensorflow/">tensorflow</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/个人管理/">个人管理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分享/">分享</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博客/">博客</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/影评/">影评</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/科学上网/">科学上网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/计算机网络/">计算机网络</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/python/" style="font-size: 17.5px;">python</a> <a href="/tags/tensorflow/" style="font-size: 12.5px;">tensorflow</a> <a href="/tags/web/" style="font-size: 20px;">web</a> <a href="/tags/个人管理/" style="font-size: 10px;">个人管理</a> <a href="/tags/分享/" style="font-size: 15px;">分享</a> <a href="/tags/博客/" style="font-size: 12.5px;">博客</a> <a href="/tags/影评/" style="font-size: 12.5px;">影评</a> <a href="/tags/科学上网/" style="font-size: 10px;">科学上网</a> <a href="/tags/笔记/" style="font-size: 12.5px;">笔记</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/计算机网络/" style="font-size: 10px;">计算机网络</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/06/08/每周分享第三周（6-8)/">每周分享第三周（6-8)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/08/盒模型/">盒模型</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/08/布尔变量在项目中的应用/">布尔变量在项目中的应用</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/08/yml文件操作方法/">Yml 文件操作方法</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/08/python采坑集合/">Python2 =&gt; Python3 踩坑集合</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 刘艳萍<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

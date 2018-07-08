@@ -1,18 +1,874 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="分享改变世界"><title>刘艳萍的博客 | Tomorrow is another day</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/8.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">刘艳萍的博客</h1><a id="logo" href="/.">刘艳萍的博客</a><p class="description">Tomorrow is another day</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 主页</i></a><a href="/archives/"><i class="fa fa-archive"> 文章归档</i></a><a href="/about/"><i class="fa fa-user"> 关于我</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title"><a href="/2018/06/08/每周分享第三周（6-8)/">每周分享第三周（6-8)</a></h1><div class="post-meta">2018-06-08</div><a class="disqus-comment-count" data-disqus-identifier="2018/06/08/每周分享第三周（6-8)/" href="/2018/06/08/每周分享第三周（6-8)/#disqus_thread"></a><div class="post-content"><h3 id="一、-技术"><a href="#一、-技术" class="headerlink" title="一、 技术"></a>一、 技术</h3><ol>
-<li><p>计算器的四则运算算法,前几天在看自己之前写过的一些小项目，看到了大三写的<a href="https://canace22.github.io/calculate/" target="_blank" rel="noopener">简易计算器</a>，主要是实现四则运算和基本的归零操作。大概思路是把整个项目分成两大块，即显示部分和运算部分。首先捕捉鼠标按下的事件，获取按下的值，把数字存到一个num数组里，把符号保存到symbol数组里。显示部分是以连接num数字和symbol数字实现的。计算部分是通过边里符号数组，当是某个符号的时候就进行某个运算。比如，遍历到“+”的时候，就把“+”号前后的两个数进行加法操作。一开始这里是有问题的，因为我们的四则运算是遵循先乘除再加减的，所以这里如何保证做到这一点能？我采用的是把乘除的判断放在了加减之前，这样就可以做到了。</p></div><p class="readmore"><a href="/2018/06/08/每周分享第三周（6-8)/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2018/06/08/盒模型/">盒模型</a></h1><div class="post-meta">2018-06-08</div><a class="disqus-comment-count" data-disqus-identifier="2018/06/08/盒模型/" href="/2018/06/08/盒模型/#disqus_thread"></a><div class="post-content"><h3 id="1-标准盒模型："><a href="#1-标准盒模型：" class="headerlink" title="1. 标准盒模型："></a>1. 标准盒模型：</h3><p>因为 <code>width = margin_box_width(left_width + right_width) + border_width + padding_box_width(left_width + right_width) + content_box_width</code>，所以，同样宽度的内容因为<code>margin</code>和<code>padding</code>值不一样，撑开了内容块的宽度，显示出来的效果不尽相同。为了解决这个问题，IE8+可以用设置<code>box-sizing：border-box</code>来避免内容块的宽度被撑开。因此，一般可以进行如下设置，使<code>content_box_width = width</code> 。 </p></div><p class="readmore"><a href="/2018/06/08/盒模型/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2018/06/08/布尔变量在项目中的应用/">布尔变量在项目中的应用</a></h1><div class="post-meta">2018-06-08</div><a class="disqus-comment-count" data-disqus-identifier="2018/06/08/布尔变量在项目中的应用/" href="/2018/06/08/布尔变量在项目中的应用/#disqus_thread"></a><div class="post-content"><p>在本次项目中，收获最大的一点应该就是学会了在项目中应用布尔变量了，以下谈谈我对布尔变量使用的一些看法。</p>
-<p>在本次项目中，有一个困扰了我许久的难题，那就是代码的逻辑问题，一开始由于各种逻辑混乱，导致插件效果不尽如人意，插件的控制效果很不理想，最后通过几个布尔变量，轻而易举的弄通了代码逻辑，也使插件很合乎我意的跑了起来，甚至还可以加以扩展。</p></div><p class="readmore"><a href="/2018/06/08/布尔变量在项目中的应用/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2018/06/08/yml文件操作方法/">Yml 文件操作方法</a></h1><div class="post-meta">2018-06-08</div><a class="disqus-comment-count" data-disqus-identifier="2018/06/08/yml文件操作方法/" href="/2018/06/08/yml文件操作方法/#disqus_thread"></a><div class="post-content"><ol>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>刘艳萍的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="分享改变世界">
+<meta name="keywords" content="web开发, python, 深度学习">
+<meta property="og:type" content="website">
+<meta property="og:title" content="刘艳萍的博客">
+<meta property="og:url" content="http://canace.site/index.html">
+<meta property="og:site_name" content="刘艳萍的博客">
+<meta property="og:description" content="分享改变世界">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="刘艳萍的博客">
+<meta name="twitter:description" content="分享改变世界">
+  
+    <link rel="alternate" href="/atom.xml" title="刘艳萍的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">刘艳萍的博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Tomorrow is another day</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://canace.site"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-每周分享第三周（6-8)" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/08/每周分享第三周（6-8)/" class="article-date">
+  <time datetime="2018-06-08T07:54:51.000Z" itemprop="datePublished">2018-06-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/08/每周分享第三周（6-8)/">每周分享第三周（6-8)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="一、-技术"><a href="#一、-技术" class="headerlink" title="一、 技术"></a>一、 技术</h3><ol>
+<li><p>计算器的四则运算算法,前几天在看自己之前写过的一些小项目，看到了大三写的<a href="https://canace22.github.io/calculate/" target="_blank" rel="noopener">简易计算器</a>，主要是实现四则运算和基本的归零操作。大概思路是把整个项目分成两大块，即显示部分和运算部分。首先捕捉鼠标按下的事件，获取按下的值，把数字存到一个num数组里，把符号保存到symbol数组里。显示部分是以连接num数字和symbol数字实现的。计算部分是通过边里符号数组，当是某个符号的时候就进行某个运算。比如，遍历到“+”的时候，就把“+”号前后的两个数进行加法操作。一开始这里是有问题的，因为我们的四则运算是遵循先乘除再加减的，所以这里如何保证做到这一点能？我采用的是把乘除的判断放在了加减之前，这样就可以做到了。</p>
+</li>
+<li><p>冒泡算法和快速排序算法怎么解释？用我自己的话来讲，冒泡算法就是就像我们在学校的时候排队，两两对比，个子高的站在前面，个子矮的站在后面，循环进行这种操作，最后就按照从高到矮的顺序排好队了。（当然你也可以从矮到高排的，同理）。快速排序算法就是以中间的同学为基准，两边进行对比，比中间同学高的站左边，比中间同学低的站右边，然后左右分出来的小块再循环进行这种对比，直到排序完成。</p>
+</li>
+</ol>
+<h3 id="二、-笔记"><a href="#二、-笔记" class="headerlink" title="二、 笔记"></a>二、 笔记</h3><ol>
+<li><p><a href="http://canace.site/2018/06/08/sublime-text-nodeJS%E9%85%8D%E7%BD%AE/">Sublime Text3 配置node.js环境</a></p>
+</li>
+<li><p><a href="http://canace.site/2018/06/07/%E5%86%99%E7%BB%99%E5%A4%A7%E5%AE%B6%E7%9C%8B%E7%9A%84%E7%AE%97%E6%B3%95%E4%B9%A6%E7%AC%94%E8%AE%B0/"> 写给大家看的算法书笔记</a></p>
+</li>
+<li><p><a href="http://canace.site/2018/06/07/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93%E2%80%94%E2%80%94%E8%AF%BB%E4%B9%A6%E9%83%8E/">前端面试总结——读书郎</a></p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://canace.site/2018/06/08/每周分享第三周（6-8)/" data-id="cjjcp84w8001tisu8gd1nerno" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/分享/">分享</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-盒模型" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/08/盒模型/" class="article-date">
+  <time datetime="2018-06-08T01:56:03.000Z" itemprop="datePublished">2018-06-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/08/盒模型/">盒模型</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-标准盒模型："><a href="#1-标准盒模型：" class="headerlink" title="1. 标准盒模型："></a>1. 标准盒模型：</h3><p>因为 <code>width = margin_box_width(left_width + right_width) + border_width + padding_box_width(left_width + right_width) + content_box_width</code>，所以，同样宽度的内容因为<code>margin</code>和<code>padding</code>值不一样，撑开了内容块的宽度，显示出来的效果不尽相同。为了解决这个问题，IE8+可以用设置<code>box-sizing：border-box</code>来避免内容块的宽度被撑开。因此，一般可以进行如下设置，使<code>content_box_width = width</code> 。 </p>
+<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">*&#123;</span><br><span class="line">            -webkit-box-sizing:border-box;</span><br><span class="line">            -moz-box-sizing:border-box;</span><br><span class="line">            box-sizing:border-box;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+</code></pre><h3 id="2-弹性盒模型："><a href="#2-弹性盒模型：" class="headerlink" title="2. 弹性盒模型："></a>2. 弹性盒模型：</h3><p>弹性布局相比传统的块布局要简洁很多，但是实现原理差别挺大的。首先，要想进行弹性布局，要设置<code>display:flex</code>，确定弹性容器。然后要知道弹性容器里面的内容块定位是由两条轴即主轴和测轴确定的。主轴由<code>flex-direction</code>属性值确定是横向还是纵向，<code>justify-content</code>属性则确定内容块在主轴上的分布形式。内容块在测轴上的分布形式由<code>align-item</code>确定，也可以用<code>align-self</code>确定单个的内容块分布形式，不过这会覆盖掉<code>align-item</code>的值。目前弹性盒布局还没有完全普及，PC端浏览器支持还不是很好，更多的是用于手机端的布局。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://canace.site/2018/06/08/盒模型/" data-id="cjjcp84wj0029isu8b57fh42r" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-布尔变量在项目中的应用" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/08/布尔变量在项目中的应用/" class="article-date">
+  <time datetime="2018-06-08T01:54:53.000Z" itemprop="datePublished">2018-06-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/08/布尔变量在项目中的应用/">布尔变量在项目中的应用</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在本次项目中，收获最大的一点应该就是学会了在项目中应用布尔变量了，以下谈谈我对布尔变量使用的一些看法。</p>
+<p>在本次项目中，有一个困扰了我许久的难题，那就是代码的逻辑问题，一开始由于各种逻辑混乱，导致插件效果不尽如人意，插件的控制效果很不理想，最后通过几个布尔变量，轻而易举的弄通了代码逻辑，也使插件很合乎我意的跑了起来，甚至还可以加以扩展。</p>
+<p>下面举个小栗子来说明布尔变量的简单使用吧：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">help =  False</span><br><span class="line"></span><br><span class="line">def getHelp():</span><br><span class="line">    help = True</span><br><span class="line"></span><br><span class="line">global help</span><br><span class="line">if help:</span><br><span class="line">    print(&apos;What can I do for you?)</span><br></pre></td></tr></table></figure>
+<p>从上面的例子我们可以看出，布尔变量可以很好的用来控制代码块的执行顺序，在插件中的应用则是很好的控制进入插件后的操作过程，从而实现逻辑清晰的插件。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://canace.site/2018/06/08/布尔变量在项目中的应用/" data-id="cjjcp84vz001fisu86wxc56fy" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-yml文件操作方法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/08/yml文件操作方法/" class="article-date">
+  <time datetime="2018-06-08T01:52:46.000Z" itemprop="datePublished">2018-06-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/08/yml文件操作方法/">Yml 文件操作方法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
 <li>文件读取方法示例：</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import yaml</span><br><span class="line">fr = open(&apos;yml_file_address&apos;, &apos;r&apos;,encoding=&apos;utf-8&apos;)</span><br><span class="line">data = yaml.load(fr)</span><br><span class="line">print(data)</span><br><span class="line">fr.close()</span><br></pre></td></tr></table></figure></div><p class="readmore"><a href="/2018/06/08/yml文件操作方法/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2018/06/08/python采坑集合/">Python2 =&gt; Python3 踩坑集合</a></h1><div class="post-meta">2018-06-08</div><a class="disqus-comment-count" data-disqus-identifier="2018/06/08/python采坑集合/" href="/2018/06/08/python采坑集合/#disqus_thread"></a><div class="post-content"><h3 id="1-报错内容："><a href="#1-报错内容：" class="headerlink" title="1. 报错内容："></a>1. 报错内容：</h3><p>ModuleNotFoundError: No module named ‘md5’</p>
-<h4 id="解析："><a href="#解析：" class="headerlink" title="解析："></a>解析：</h4><p>这是 python2 的库，python3 已经把它包含进 hashlib 库里了</p></div><p class="readmore"><a href="/2018/06/08/python采坑集合/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2018/06/08/sublime-text-nodeJS配置/">Sublime Text3 配置node.js环境</a></h1><div class="post-meta">2018-06-08</div><a class="disqus-comment-count" data-disqus-identifier="2018/06/08/sublime-text-nodeJS配置/" href="/2018/06/08/sublime-text-nodeJS配置/#disqus_thread"></a><div class="post-content"><p>前提：windows系统，你已经安装了Sublime Text3，电脑已经有node环境。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import yaml</span><br><span class="line">fr = open(&apos;yml_file_address&apos;, &apos;r&apos;,encoding=&apos;utf-8&apos;)</span><br><span class="line">data = yaml.load(fr)</span><br><span class="line">print(data)</span><br><span class="line">fr.close()</span><br></pre></td></tr></table></figure>
+<p>关于 yml 文件的操作，有一个专门的库 yaml ，yaml 直接给出了一个把 yml 文件读取到字典里的方法 load，所以要读取 yml 文件非常简单，只需要引入 yaml 库，用 python 的 open 方法打开文件，用 load 方法读取文件，就可以轻而易举的读取 yml 文件到字典里了。当然其中还是有点坑的，那就是解码的问题，因为默认读取的文件不是字符编码格式，所以要把它转换为字符编码，再传给 load。</p>
+<ol start="2">
+<li>文件写入方法示例：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import yaml</span><br><span class="line">fr = open(&apos;yml_file_address&apos;, &apos;w&apos;,encoding=&apos;utf-8&apos;)</span><br><span class="line">temp = &#123;&quot;fruits&quot;:&quot;banana&quot;&#125;</span><br><span class="line">data = yaml.dump(temp,fr, default_flow_style=False)</span><br><span class="line">print(data)</span><br><span class="line">fr.close()</span><br></pre></td></tr></table></figure>
+<p>yaml 库提供了一个 dump 方法，只需要打开文件，给出要写入的参数（字典形式等），调用 dump 方法就可以很快捷的写入信息到 yml 文件啦</p>
+<ol start="3">
+<li>这两个方法在项目中的运用：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">修改配置文件昵称</span><br><span class="line">def changeUserName(user):</span><br><span class="line">    fr = open(&apos;yml_file_address&apos;, &apos;r&apos;,encoding=&apos;utf-8&apos;)</span><br><span class="line">    data = yaml.load(fr)</span><br><span class="line">    fr.close()</span><br><span class="line">    data[&apos;robot_name_cn&apos;] = user</span><br><span class="line">    fr = open(&apos;yml_file_address&apos;, &apos;w&apos;, encoding=&apos;utf-8&apos;)</span><br><span class="line">    yaml.dump(data, fr, allow_unicode=True, default_flow_style=False)</span><br><span class="line">    fr.close()</span><br><span class="line">    return data[&apos;robot_name_cn&apos;]</span><br><span class="line">修改配置文件密码</span><br><span class="line">def changePassword(password):</span><br><span class="line">    fr = open(&apos;yml_file_address&apos;, &apos;r&apos;,encoding=&apos;utf-8&apos;)</span><br><span class="line">    data = yaml.load(fr)</span><br><span class="line">    fr.close()</span><br><span class="line">    data[&apos;password&apos;] = password</span><br><span class="line">    if &apos;password&apos; in data.keys():</span><br><span class="line">        fr = open(&apos;yml_file_address&apos;, &apos;w&apos;, encoding=&apos;utf-8&apos;)</span><br><span class="line">        yaml.dump(data, fr, allow_unicode=True, default_flow_style=False)</span><br><span class="line">        fr.close()</span><br><span class="line">        return data[&apos;password&apos;]</span><br><span class="line">    else:</span><br><span class="line">        fr = open(&apos;yml_file_address&apos;, &apos;a&apos;, encoding=&apos;utf-8&apos;)</span><br><span class="line">        yaml.dump(data, fr, allow_unicode=True, default_flow_style=False)</span><br><span class="line">        fr.close()</span><br><span class="line">        return data[&apos;password&apos;]</span><br></pre></td></tr></table></figure>
+<p>这是两个修改配置信息的函数 changeUserName（） 和 changePassword（），故名思议，就是修改密码和昵称，两个函数的思路都是一样的，先读取配置文件，把相应的信息替换进配置文件里，然后通过写入方法，把这两个信息写入文件中。</p>
+<p>其中的难点可能就是解码和生成 yaml 文件的样式问题了。一开始各种报解码错误，在打开文件的时候加一个 encoding，在写入函数中加一个 allow_unicode=True 搞定了。</p>
+<p>解决替换信息在文件中的样式问题， 是在写入函数中加入 default_flow_style=False 搞定的。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://canace.site/2018/06/08/yml文件操作方法/" data-id="cjjcp84vn000xisu80fw8rnbl" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-python采坑集合" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/08/python采坑集合/" class="article-date">
+  <time datetime="2018-06-08T01:47:51.000Z" itemprop="datePublished">2018-06-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/08/python采坑集合/">Python2 =&gt; Python3 踩坑集合</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-报错内容："><a href="#1-报错内容：" class="headerlink" title="1. 报错内容："></a>1. 报错内容：</h3><p>ModuleNotFoundError: No module named ‘md5’</p>
+<h4 id="解析："><a href="#解析：" class="headerlink" title="解析："></a>解析：</h4><p>这是 python2 的库，python3 已经把它包含进 hashlib 库里了</p>
+<h4 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h4><p>直接把对 md5 库的引用语句注释掉，改为引用 hashlib 库</p>
+<h3 id="2-报错内容："><a href="#2-报错内容：" class="headerlink" title="2. 报错内容："></a>2. 报错内容：</h3><p>AttributeError: module ‘sys’ has no attribute ‘setdefaultencoding’</p>
+<h4 id="解析：-1"><a href="#解析：-1" class="headerlink" title="解析："></a>解析：</h4><p>python2 的默认字符编码为 ASCII  编码，所以有 setdefaultencoding 这个方法转换为 utf-8 编码，而 python3 的默认字符编码是 unicode 编码，这种编码本身支持汉字，所以就不存在上述方法了</p>
+<h4 id="解决方法-1"><a href="#解决方法-1" class="headerlink" title="解决方法"></a>解决方法</h4><p>直接把该语句注释掉</p>
+<h3 id="3-报错内容："><a href="#3-报错内容：" class="headerlink" title="3. 报错内容："></a>3. 报错内容：</h3><p>ModuleNotFoundError: No module named ‘urlparse’</p>
+<h4 id="解析：-2"><a href="#解析：-2" class="headerlink" title="解析："></a>解析：</h4><p>urlparse 是python2 的库，python3已经把这个库重命名为 urllib.parse 了</p>
+<h4 id="解决方法-2"><a href="#解决方法-2" class="headerlink" title="解决方法"></a>解决方法</h4><p>把对 urlparse 库的引用语句注释掉，改为引用 urllib.parse 库</p>
+<h3 id="4-报错内容："><a href="#4-报错内容：" class="headerlink" title="4. 报错内容："></a>4. 报错内容：</h3><p>ModuleNotFoundError: No module named ‘urlparse’</p>
+<h4 id="解析：-3"><a href="#解析：-3" class="headerlink" title="解析："></a>解析：</h4><p>urlparse 是python2 的库，python3已经把这个库重命名为 urllib.parse 了</p>
+<h4 id="解决方法-3"><a href="#解决方法-3" class="headerlink" title="解决方法"></a>解决方法</h4><p>把对 urlparse 库的引用语句注释掉，改为引用 multiprocessing 库里了</p>
+<h3 id="5-报错内容："><a href="#5-报错内容：" class="headerlink" title="5. 报错内容："></a>5. 报错内容：</h3><p>ModuleNotFoundError: No module named ‘Queue’</p>
+<h4 id="解析：-4"><a href="#解析：-4" class="headerlink" title="解析："></a>解析：</h4><p>Queue 是python2 的库，python3已经把这个库加到 multiprocessing 里了</p>
+<h4 id="解决方法-4"><a href="#解决方法-4" class="headerlink" title="解决方法"></a>解决方法</h4><p>把对 Queue 库的引用语句注释掉，改为引用 <code>from multiprocessing import Queue</code></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://canace.site/2018/06/08/python采坑集合/" data-id="cjjcp84va000gisu8qktyhw9s" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-sublime-text-nodeJS配置" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/08/sublime-text-nodeJS配置/" class="article-date">
+  <time datetime="2018-06-08T01:32:52.000Z" itemprop="datePublished">2018-06-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/08/sublime-text-nodeJS配置/">Sublime Text3 配置node.js环境</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>前提：windows系统，你已经安装了Sublime Text3，电脑已经有node环境。</p>
 <h4 id="步骤："><a href="#步骤：" class="headerlink" title="步骤："></a>步骤：</h4><ul>
-<li>下载sublime的nodejs插件，需是集成Nodejs插件到sublime中，下载地址：<a href="https://github.com/tanepiper/SublimeText-Nodejs" target="_blank" rel="noopener">https://github.com/tanepiper/SublimeText-Nodejs</a></li></div><p class="readmore"><a href="/2018/06/08/sublime-text-nodeJS配置/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2018/06/07/写给大家看的算法书笔记/">写给大家看的算法书笔记</a></h1><div class="post-meta">2018-06-07</div><a class="disqus-comment-count" data-disqus-identifier="2018/06/07/写给大家看的算法书笔记/" href="/2018/06/07/写给大家看的算法书笔记/#disqus_thread"></a><div class="post-content"><h4 id="一、什么是算法"><a href="#一、什么是算法" class="headerlink" title="一、什么是算法"></a>一、什么是算法</h4><ol>
+<li>下载sublime的nodejs插件，需是集成Nodejs插件到sublime中，下载地址：<a href="https://github.com/tanepiper/SublimeText-Nodejs" target="_blank" rel="noopener">https://github.com/tanepiper/SublimeText-Nodejs</a></li>
+<li>解压zip文件， 并重命名文件夹“Nodejs”</li>
+<li>打开sublime，操作”preference” –&gt; “Browse packages”, 打开一个目录，这个目录是众多语言IDE插件的存放地。</li>
+<li>复制”Nodejs“文件夹到这个目录。 </li>
+<li>打开Nodejs文件夹，找到文件“Nodejs.sublime-build”， 拖拽到sublime，显示：<br><code><br>{<br>“cmd”: [“node”, “$file”],<br>“file_regex”: “^[ ]<em>File \”(…</em>?)\”, line ([0-9]*)”,<br>“selector”: “source.js”,<br>“shell”:true,<br>“encoding”: “cp1252”,<br>“windows”:<br>{<br>  “cmd”: [“taskkill /F /IM node.exe &amp; node”, “$file”]<br>},<br>“linux”:<br>{<br>  “cmd”: [“killall node; node”, “$file”]<br>}<br>}<br></code></li>
+<li>需要更改上面标注的地方， 要更改encoding为GB2312或者utf8，如果不更改此属性可能导致build nodejs代码时终端显示乱码。</li>
+<li>要用sublime打开文件“Nodejs.sublime-settings” 或者 设置“preference” –》 “package settings” –》 “Nodejs”  –》“setting-default” 打开文件并 更改成：<br><code><br>{<br>// save before running commands<br>“save_first”: true,<br>// if present, use this command instead of plain “node”<br>// e.g. “/usr/bin/node” or “C:\bin\node.exe”<br>“node_command”: /usr/bin/nodejs,<br>// Same for NPM command<br>“npm_command”: /usr/bin/npm,<br>// as ‘NODE_PATH’ environment variable for node runtime<br>“node_path”: false,<br>“expert_mode”: false,<br>“ouput_to_new_tab”: false<br>}<br></code><br>到此，已经配置好了。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://canace.site/2018/06/08/sublime-text-nodeJS配置/" data-id="cjjcp84vd000jisu8fmo360de" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-写给大家看的算法书笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/07/写给大家看的算法书笔记/" class="article-date">
+  <time datetime="2018-06-07T12:08:41.000Z" itemprop="datePublished">2018-06-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/07/写给大家看的算法书笔记/">写给大家看的算法书笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="一、什么是算法"><a href="#一、什么是算法" class="headerlink" title="一、什么是算法"></a>一、什么是算法</h4><ol>
 <li>算法是对特定问题的解决步骤（对信息进行排序、搜索目标信息等）；</li>
 </ol>
 <ul>
-<li>算法→更优质的算法→好的程序；</li></div><p class="readmore"><a href="/2018/06/07/写给大家看的算法书笔记/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2018/06/07/前端面试总结——读书郎/">前端面试总结——读书郎</a></h1><div class="post-meta">2018-06-07</div><a class="disqus-comment-count" data-disqus-identifier="2018/06/07/前端面试总结——读书郎/" href="/2018/06/07/前端面试总结——读书郎/#disqus_thread"></a><div class="post-content"><p>前几天在拉勾投的简历，今天下午下班后去面试，总的感觉是面试很专业很基础，自己太不专业了，大三到现在也只是自己写写小项目自己玩，真正聊技术的话，一点都不专业，专业名词没几个能说的上来，想到之前工作中用到的很多python知识点自己也是说不上来，只是会用，后来看到别人的教程，才知道自己一直用的东东原来是有专业名词的。</p></div><p class="readmore"><a href="/2018/06/07/前端面试总结——读书郎/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2018/06/02/每周分享第二周（6-2）/">每周分享第二周（6.2）</a></h1><div class="post-meta">2018-06-02</div><a class="disqus-comment-count" data-disqus-identifier="2018/06/02/每周分享第二周（6-2）/" href="/2018/06/02/每周分享第二周（6-2）/#disqus_thread"></a><div class="post-content"><blockquote>
+<li>算法→更优质的算法→好的程序；</li>
+<li><p>算法的两个必要条件：</p>
+<ul>
+<li>准确性，证明方法——断言；</li>
+<li>可停止性（死循环不能看做算法）；</li>
+</ul>
+</li>
+<li><p>几种重要的算法：</p>
+<ul>
+<li>数论算法：<ul>
+<li>求解最大公约数的辗转相除法；</li>
+<li>求解联立方程的高斯消元法；</li>
+<li>求解定积分近似值的梯形公式;</li>
+<li>计算质数的艾拉斯托尼筛法;</li>
+</ul>
+</li>
+<li>排序算法(按序排列)：<ul>
+<li>选择排序；</li>
+<li>冒泡排序；</li>
+<li>插入排序；</li>
+<li>希尔排序;</li>
+<li>归并排序;</li>
+<li>快速排序；</li>
+</ul>
+</li>
+<li>搜索算法：（比较求同）<ul>
+<li>线性搜索；</li>
+<li>二分搜索；</li>
+</ul>
+</li>
+<li>字符串匹配算法：<ul>
+<li>简单字符串搜索；</li>
+<li>KMP算法；</li>
+<li>BM算法；</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>结构化编程思想：旨在高效描述程序，最大限度减少设计误差的方法论，其中的处理流程结构组合包括：</p>
+<ul>
+<li>顺序结构：按顺序处理；<br><img src="http://upload-images.jianshu.io/upload_images/1476489-9f036b6001ef4e07.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片来源于网络"></li>
+<li><p>选择结构：按条件处理；<br><img src="http://upload-images.jianshu.io/upload_images/1476489-68f37dd7d235e531.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片来源于网络"></p>
+</li>
+<li><p>循环结构：条件成立下，进行定量循环处理；<br><img src="http://upload-images.jianshu.io/upload_images/1476489-a41112c31c533ab9.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片来源于网络"></p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="二、-变量和数组"><a href="#二、-变量和数组" class="headerlink" title="二、 变量和数组"></a>二、 变量和数组</h4><ol>
+<li>算法由数据和处理构成；</li>
+</ol>
+<ul>
+<li>基本数据类型：<ul>
+<li>整数；</li>
+<li>浮点数；</li>
+<li>字符；</li>
+<li>布尔值；</li>
+<li>字符串；</li>
+</ul>
+</li>
+<li>描述数据信息的方法是数据值；</li>
+<li>变量是存放数据值的容器，变量的作用是使处理过程通用化，每个变量只能存放一个数据，变量名是区分不同变量的标记，变量名要能表示所装载的数据；</li>
+<li>把数据赋值给变量的过程叫代入；</li>
+<li>数组是用来保存大量同一数据类型值的，数组索引，即数组元素的位置标号，可以利用数组进行关联数据的处理；</li>
+<li>二维数组，数组元素沿横纵方向排列；</li>
+</ul>
+<h4 id="三、数据结构——高效的管理大量数据的构造"><a href="#三、数据结构——高效的管理大量数据的构造" class="headerlink" title="三、数据结构——高效的管理大量数据的构造"></a>三、数据结构——高效的管理大量数据的构造</h4><ol>
+<li><p>常用的数据结构：</p>
+<ul>
+<li><p><b>数组</b>，快速定位第N个数据；<br><img src="http://upload-images.jianshu.io/upload_images/1476489-5279810825a68703.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片来源于手机拍摄"></p>
+</li>
+<li><p><b>链表</b>，离散数据排序，快速插入删除数据（插入、删除数据不改变数据位置）。单向链表只能单向检索，元素由数据和“NEXT指针”构成，HEAD指针标记链表的第一个元素。双向链表元素由数据，PREV、NEXT指针构成，可向前向后检索数据，链表为空的状态，HEAD指针，TAIL指针分别存储“没有起始元素”、“没有末尾元素”的信息；<br><img src="http://upload-images.jianshu.io/upload_images/1476489-6113ee58c4fc1e74.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片来源于网络"></p>
+</li>
+<li><p><b>堆栈</b>（先进后出），数据操作：入栈→写入数据（push）→出栈（POP）→读取数据。考虑计算机优先级或者计算机管理子程序调用的顺序时用到；<br><img src="http://upload-images.jianshu.io/upload_images/1476489-21be1fcb8546bd49.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片来源于网络"></p>
+</li>
+<li><p><b>队列</b>（先进先出），应用在电文发放和接收中；<br><img src="http://upload-images.jianshu.io/upload_images/1476489-0789fc904f456296.gif?imageMogr2/auto-orient/strip" alt="图片来源于网络"></p>
+</li>
+<li><p><b>树</b>，管理父节点数据和子节点数据，二叉树一个父节点对用两个子节点，可以用数组来表示二叉树；<br><img src="http://upload-images.jianshu.io/upload_images/1476489-a812b66052043bd4.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片来源于手机拍摄"><br><img src="http://upload-images.jianshu.io/upload_images/1476489-061f5d3516622b9b.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片来源于手机拍摄"><br><img src="http://upload-images.jianshu.io/upload_images/1476489-f43abcb33e47957a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片来源于手机拍摄"></p>
+</li>
+<li><p>图，自由的表示各种关系的数据。图的分类：有向图（边有方向性）、加权图（边有权重）；<br><img src="http://upload-images.jianshu.io/upload_images/1476489-ea65bbf1f9b3b98b.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片来源于手机拍摄"></p>
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="四、算法基础"><a href="#四、算法基础" class="headerlink" title="四、算法基础"></a>四、算法基础</h4><ol>
+<li>循环处理和控制变量<ul>
+<li>循环处理：利用一个控制变量来管理循环次数，从而进行必要次数的处理；</li>
+<li>循环处理的步骤：<ul>
+<li>设置控制变量的初始值；</li>
+<li>判断循环条件，如果为true，进行以下3,4,步，否则为false，终止处理；</li>
+<li>执行循环体；</li>
+<li>改变控制变量，回到步骤2；</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li><p>利用循环处理使处理过程通用化；<br><b>案例：</b><br>计算1~N的整数的总和。<br>算法：<br><img src="http://upload-images.jianshu.io/upload_images/1476489-233c00b2f31f8e76.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>JavaScript代码：<br><img src="http://upload-images.jianshu.io/upload_images/1476489-4ea54b8cba9d8db1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+</li>
+<li><p>使用数组可以高效的处理大量数据<br><b>案例：</b><br>求斐波那契数列。<br>算法：<br><img src="http://upload-images.jianshu.io/upload_images/1476489-b0f7928c9e70b00c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>JavaScript代码：<br><img src="http://upload-images.jianshu.io/upload_images/1476489-aae2fafe110aeb4e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+</li>
+<li><p>数组求和<br><b>案例：</b><br>计算一年的营业额。<br>算法：<br><img src="http://upload-images.jianshu.io/upload_images/1476489-ca431aa7a661a3fe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>JavaScript代码：<br><img src="http://upload-images.jianshu.io/upload_images/1476489-2498e2f8f6979555.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+</li>
+<li><p>求平均值<br><b>案例：</b><br>求班级考试的平均分。<br>算法：<br><img src="http://upload-images.jianshu.io/upload_images/1476489-a288f74be53c16ba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>JavaScript代码：<br><img src="http://upload-images.jianshu.io/upload_images/1476489-a4ea9bb73708cdf4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+</li>
+<li><p>求数组数据中的最大值<br><b>案例：</b><br>求最高分。<br>算法：<br><img src="http://upload-images.jianshu.io/upload_images/1476489-5934e850b29830b9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>JavaScript代码：<br><img src="http://upload-images.jianshu.io/upload_images/1476489-393b1a7d9a9bc418.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+</li>
+<li><p>求数据中的最小值<br><b>案例：</b><br>求最低分。<br>算法：<br><img src="http://upload-images.jianshu.io/upload_images/1476489-7d3483e3bd32591a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>JavaScript代码：<br><img src="http://upload-images.jianshu.io/upload_images/1476489-a49e301d22d84669.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+</li>
+<li><p>为数组元素排序<br><b>案例：</b><br>为考试成绩排名。<br>算法：<br><img src="http://upload-images.jianshu.io/upload_images/1476489-2d67aeb495cc806e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>JavaScript代码：<br><img src="http://upload-images.jianshu.io/upload_images/1476489-34838194b6e477e3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+</li>
+<li><p>二维数组操作<br><b>案例</b><br>求全班学生不同科目考试合计总分。<br>算法：<br><img src="http://upload-images.jianshu.io/upload_images/1476489-bfadc73a743b91f7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>JavaScript代码：<br><img src="http://upload-images.jianshu.io/upload_images/1476489-b4681f4285738dc5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+</li>
+<li><p>求两个数的最大公约数<br><b>案例：</b><br>辗转相除法<br>算法：<br><img src="http://upload-images.jianshu.io/upload_images/1476489-460179a152a07806.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>JavaScript代码：<br><img src="http://upload-images.jianshu.io/upload_images/1476489-3fc4fb3e5c8ebb16.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+</li>
+</ul>
+<h4 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h4><ol>
+<li>几种常用的排序算法<ul>
+<li>桶排序<br>概念：<br>准备与待排序数据取值范围大小个数的木桶，利用这些木桶对数据进行保存、排序。<br>排序过程：<br>（1）准备好木桶数据，把其所有元素初始化为0；<br>（2）把保存排序数组（n个数据）的下标的变量i初始化为0；<br>（3）i小于n时，循环执行4~5；<br>（4）把data[i]代入变量value；<br>（5）bucket[value]加1；<br>（6）i加1；<br>（7）从bucket的起始元素开始，把每个数值非0的元素的下标按照数值（出现次数）取出来，排成一列。</li>
+<li>选择排序<br>概念：<br>遍历数据，把数据中的最大值（或最小值）与起始（或者末尾）数据进行交换。<br>排序过程：<br>（1）从“待排序部分”中找到最小值；<br>（2）把最小值和“待排序部分起始位置的元素”交换；<br>（3）“待排序部分”的起始位置向后移动一位；<br>（4）循环操作1~3，直至“待排序部分”只剩下一个元素。</li>
+<li>冒泡排序<br>对比相邻的两个数据，根据大小关系调整两个数据的顺序。</li>
+<li>插入排序<br>把目标数据按照正确的大小排列顺序插入相应的位置中。</li>
+<li>归并排序<br>把目标数据分割成更小的部分进行排序，更小的部分正确排序之后再合并起来。</li>
+<li>希尔排序<br>把目标数据按照一定的个数分成几个区域进行插入排序。</li>
+<li>快速排序<br>从目标数据中任意选取一个数据，以这个数据的值为分割点，把目标数据分割为两部分。这样循环操作下去进行排序。</li>
+</ul>
+</li>
+</ol>
+<h4 id="搜索算法"><a href="#搜索算法" class="headerlink" title="搜索算法"></a>搜索算法</h4><ol>
+<li>常用的搜索算法：<ul>
+<li>线性搜索（随机排布的数据列中使用，效率比较低）；</li>
+<li>二分搜索（已经排好序的数据列中使用，效率较高）；</li>
+<li>利用哈希表进行搜索（高效搜索）；</li>
+<li>简单字符串搜索（有长度的数据）；</li>
+<li>利用KMP算法 进行字符串搜索；</li>
+<li>利用BM算法进行字符串搜索。</li>
+</ul>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://canace.site/2018/06/07/写给大家看的算法书笔记/" data-id="cjjcp84vu0019isu8n1zpcyaz" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-前端面试总结——读书郎" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/07/前端面试总结——读书郎/" class="article-date">
+  <time datetime="2018-06-07T11:58:34.000Z" itemprop="datePublished">2018-06-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/07/前端面试总结——读书郎/">前端面试总结——读书郎</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>前几天在拉勾投的简历，今天下午下班后去面试，总的感觉是面试很专业很基础，自己太不专业了，大三到现在也只是自己写写小项目自己玩，真正聊技术的话，一点都不专业，专业名词没几个能说的上来，想到之前工作中用到的很多python知识点自己也是说不上来，只是会用，后来看到别人的教程，才知道自己一直用的东东原来是有专业名词的。</p>
+<p>下面是面试的题目：</p>
+<ol>
+<li>js 知识点考察：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function fun()&#123;</span><br><span class="line">    console.log(this)</span><br><span class="line">&#125;</span><br><span class="line">fun()</span><br><span class="line">b = new fun()</span><br><span class="line">console.log(b)</span><br></pre></td></tr></table></figure>
+<p>（1） 以上结果分别是什么？</p>
+<p>第一个 this 指向全局作用域，所以打印的应该是window，这个我当时一时没反应过来，知道是指向全局作用域，但是具体打印出来的是什么，没反应过来。</p>
+<p>第二个b是fun函数的实例，继承了fun函数的所有特性，但是由于没有给这个实例传参，所以结果是undefined，这个我知道打印出来的是undefined，也知道原因，但是没有按着面试官走，没把实例这个名词说出来。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var a = 1</span><br><span class="line">function fun()&#123;</span><br><span class="line">    console.log(a)</span><br><span class="line">    if(true)&#123;</span><br><span class="line">        var a = 2</span><br><span class="line">        console.log(a)</span><br><span class="line">    &#125;</span><br><span class="line">    console.log(a)</span><br><span class="line">&#125;</span><br><span class="line">fun()</span><br><span class="line">console.log(a)</span><br></pre></td></tr></table></figure>
+<p>(2) 以上代码打印出来的分别是什么？为什么？</p>
+<p>第一个a打印出来是 undefined,因为作用域内不存在这个参数，默认返回undefined。第二个a打印出来是2，因为在if内申明了局部变量a并把2赋值给了这个参数。第三个a打印出来同样是2，因为这条语句在if作用域的下面，代码树是往下延伸的。第四个a打印出来是a，因为a=1属于这个作用域，而函数里的a它是共享不到的，要共享函数内的参数的话，可以用闭包。</p>
+<p>（3）第三个问题没太懂，问的是function除了argument外还有哪些内置xx？这个我没听清的用xx表示吧，你们懂的告诉我一声。</p>
+<ol start="2">
+<li>算法知识点考察</li>
+</ol>
+<p>（1）说说快排，这个我当时有点蒙圈了，因为好久之前接触的东东，都忘了，回来后补充解释如下：</p>
+<p>快速排序是从目标数据中任意选取一个数据，以这个数据的值为分割点，把目标数据分割为两部分。这样循环操作下去进行排序。这个在代码中用的挺多的，但是我没记住它的学名，没想起来。这个解释摘自我大二时候读《写给大家的算法书》的算法基础部分的笔记。</p>
+<p>（2）说说冒泡排序，同上，没打出来，回来后补充解释如下：</p>
+<p>冒泡排序是对比相邻的两个数据，根据大小关系调整两个数据的顺序。同样摘自大二的读书笔记。</p>
+<p>除了这些还有一些零零碎碎的知识点，我就不一一罗列了，列出这几个典型的吧，可能面试经验比较少，很多东西都准备不充分，背着自己的电脑就过去面试了，面试问到项目就拿出了自己的一些小项目出来，也比较随意，结果是其次，最主要的是面试挺欢乐，知道了自己在前端算法这一块还很薄弱，接下来得好好学学数据结构和算法了。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://canace.site/2018/06/07/前端面试总结——读书郎/" data-id="cjjcp84vs0014isu8ndcdzaxv" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-每周分享第二周（6-2）" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/02/每周分享第二周（6-2）/" class="article-date">
+  <time datetime="2018-06-02T09:00:11.000Z" itemprop="datePublished">2018-06-02</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/02/每周分享第二周（6-2）/">每周分享第二周（6.2）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
 <p>Tomorrow is another day.</p>
 </blockquote>
 <h3 id="一、-网站"><a href="#一、-网站" class="headerlink" title="一、 网站"></a>一、 网站</h3><ol>
-<li><p>8090，一个免费电影网站，可以免费看挺多高清电影的，不过有人说涉黄的视频也多，这个可以忽略，看自己想看的电影就可以了，免去了下载的流程。</p></div><p class="readmore"><a href="/2018/06/02/每周分享第二周（6-2）/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2018/05/27/每周分享第一周（5-27）/">每周分享第一周（5.27）</a></h1><div class="post-meta">2018-05-27</div><a class="disqus-comment-count" data-disqus-identifier="2018/05/27/每周分享第一周（5-27）/" href="/2018/05/27/每周分享第一周（5-27）/#disqus_thread"></a><div class="post-content"><h3 id="一、-网站"><a href="#一、-网站" class="headerlink" title="一、 网站"></a>一、 网站</h3><ol>
-<li><p><a href="http://putlockertv.ws/watch/dKoW20nd-westworld-season-2/episode-3.html" target="_blank" rel="noopener">putlockerTV</a> 在找西部世界第二季时接触到的一个视频网站，里面有很多热播的各个国家的电视剧可供免费观看，大部分还有不同语言的字母可选，我自己只看得懂英文，所以在看西部世界时就选的英文字母，体验还不错，果断收藏了。</p></div><p class="readmore"><a href="/2018/05/27/每周分享第一周（5-27）/">阅读全文</a></p></div><nav class="page-navigator"><span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">下一页</a></nav><script id="dsq-count-scr" src="//liu-yan-ping-de-bo-ke.disqus.com/count.js" async></script></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a><span class="category-list-count">24</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">5</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/个人管理/" style="font-size: 15px;">个人管理</a> <a href="/tags/python/" style="font-size: 15px;">python</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/博客/" style="font-size: 15px;">博客</a> <a href="/tags/tensorflow/" style="font-size: 15px;">tensorflow</a> <a href="/tags/科学上网/" style="font-size: 15px;">科学上网</a> <a href="/tags/web/" style="font-size: 15px;">web</a> <a href="/tags/算法/" style="font-size: 15px;">算法</a> <a href="/tags/影评/" style="font-size: 15px;">影评</a> <a href="/tags/分享/" style="font-size: 15px;">分享</a> <a href="/tags/笔记/" style="font-size: 15px;">笔记</a> <a href="/tags/计算机网络/" style="font-size: 15px;">计算机网络</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/06/08/每周分享第三周（6-8)/">每周分享第三周（6-8)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/08/盒模型/">盒模型</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/08/布尔变量在项目中的应用/">布尔变量在项目中的应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/08/yml文件操作方法/">Yml 文件操作方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/08/python采坑集合/">Python2 => Python3 踩坑集合</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/08/sublime-text-nodeJS配置/">Sublime Text3 配置node.js环境</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/07/写给大家看的算法书笔记/">写给大家看的算法书笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/07/前端面试总结——读书郎/">前端面试总结——读书郎</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/02/每周分享第二周（6-2）/">每周分享第二周（6.2）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/27/每周分享第一周（5-27）/">每周分享第一周（5.27）</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-comment-o"> 最近评论</i></div><script type="text/javascript" src="//liu-yan-ping-de-bo-ke.disqus.com/recent_comments_widget.js?num_items=5&amp;hide_avatars=1&amp;avatar_size=32&amp;excerpt_length=20&amp;hide_mods=1"></script></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="http://www.ruanyifeng.com/blog/" title="阮一峰的博客" target="_blank">阮一峰的博客</a><ul></ul><a title="微信公众号：刘艳萍的博客" target="_blank">微信公众号：刘艳萍的博客</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2018 <a href="/." rel="nofollow">刘艳萍.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
+<li><p>8090，一个免费电影网站，可以免费看挺多高清电影的，不过有人说涉黄的视频也多，这个可以忽略，看自己想看的电影就可以了，免去了下载的流程。</p>
+</li>
+<li><p>鸠摩搜索，一个可以搜索电子书资源 ，并免费下载的网站，看着不错，之前一直用周读下电子书来着，界面还是更喜欢周读，不过这个看着也还行。</p>
+</li>
+<li><p>谷歌翻译APP，据说可以进行各种语言的实时翻译，解决语言交流障碍问题，从此一部手机，一个APP走天下，挺起来还不错的样子。</p>
+</li>
+</ol>
+<h3 id="二、-书籍"><a href="#二、-书籍" class="headerlink" title="二、 书籍"></a>二、 书籍</h3><p>《放弃的艺术》，从心理学的角度探讨如何在适当的时候选择放弃，而不是一味坚持，看似感性，实则理性十足的一本书。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://canace.site/2018/06/02/每周分享第二周（6-2）/" data-id="cjjcp84wb001xisu88gywvc7v" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/分享/">分享</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-每周分享第一周（5-27）" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/27/每周分享第一周（5-27）/" class="article-date">
+  <time datetime="2018-05-27T01:59:16.000Z" itemprop="datePublished">2018-05-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/27/每周分享第一周（5-27）/">每周分享第一周（5.27）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="一、-网站"><a href="#一、-网站" class="headerlink" title="一、 网站"></a>一、 网站</h3><ol>
+<li><p><a href="http://putlockertv.ws/watch/dKoW20nd-westworld-season-2/episode-3.html" target="_blank" rel="noopener">putlockerTV</a> 在找西部世界第二季时接触到的一个视频网站，里面有很多热播的各个国家的电视剧可供免费观看，大部分还有不同语言的字母可选，我自己只看得懂英文，所以在看西部世界时就选的英文字母，体验还不错，果断收藏了。</p>
+</li>
+<li><p><a href="http://setosa.io/ev/markov-chains/" target="_blank" rel="noopener">马尔科夫链科普</a>，这篇文章是在阮一峰的每周分享看到的，读起来通俗易懂，还配合了多个动图，觉得写这个网页的人也是牛逼。</p>
+</li>
+<li><p><a href="https://repo.continuum.io/archive/" target="_blank" rel="noopener">Anaconda版本库</a>， 这个网页是在装tensorflow时，因为需要4.2.0版本，通过官网进来的，里面有Anaconda的各个版本可以下载。</p>
+</li>
+</ol>
+<h3 id="二、-书籍"><a href="#二、-书籍" class="headerlink" title="二、 书籍"></a>二、 书籍</h3><ol>
+<li><p><strong>《听见坚冰融化的声音》</strong>，这本书是刚发行的陈佩华老师写的书，主题是一些解毒成功者的故事，关于他们吸毒与原生家庭的关系以及戒毒过程中的故事，故事的叙述比较理性，还穿插了许多心理知识的科普，读来受益匪浅。</p>
+</li>
+<li><p><strong>《大家的日语》</strong>，大概是三月份时候买的书，用来学习日语的课本，一直没怎么翻，周四的时候心血来潮，开始学习，觉得比较像小学时候刚接触语文，给一些句子对话，每篇课文后面是单词表，单靠课本的话学起来比较吃力，还需要一些网上的视频辅助学习，搜了下，发现网易里面路德老师的免费日语教学还可以。</p>
+</li>
+<li><p><strong>《时间效率手册》</strong>，上个月买的书，看了大概三分之一吧，这几天又拾起来看，对于自律性比较差，处于迷茫阶段的我来说，还是不错的一本书，但是受不了里面的鸡血式的写作风格，很容易让人误以为是强鸡汤，令人厌恶，仔细翻翻还是有一定用的感觉。</p>
+</li>
+</ol>
+<h3 id="三、-笔记"><a href="#三、-笔记" class="headerlink" title="三、 笔记"></a>三、 笔记</h3><ol>
+<li><p><a href="http://canace.site/2018/05/27/%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E6%AD%A5%E9%AA%A4/">Tensorflow模型训练步骤</a></p>
+</li>
+<li><p><a href="http://canace.site/2018/05/27/ubuntu%E4%B8%8B%E9%85%8D%E7%BD%AEss/">ubuntu 下配置 ss</a></p>
+</li>
+<li><p><a href="http://canace.site/2018/05/27/ubuntu%E4%B8%8B%E5%AE%89%E8%A3%85tensorflow/">ubuntu 下 tensorflow CPU release 版安装</a></p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://canace.site/2018/05/27/每周分享第一周（5-27）/" data-id="cjjcp84w6001qisu87rjaec5x" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/分享/">分享</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">下一页 &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tensorflow/">tensorflow</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/个人管理/">个人管理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分享/">分享</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博客/">博客</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/影评/">影评</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/科学上网/">科学上网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/计算机网络/">计算机网络</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/python/" style="font-size: 17.5px;">python</a> <a href="/tags/tensorflow/" style="font-size: 12.5px;">tensorflow</a> <a href="/tags/web/" style="font-size: 20px;">web</a> <a href="/tags/个人管理/" style="font-size: 10px;">个人管理</a> <a href="/tags/分享/" style="font-size: 15px;">分享</a> <a href="/tags/博客/" style="font-size: 12.5px;">博客</a> <a href="/tags/影评/" style="font-size: 12.5px;">影评</a> <a href="/tags/科学上网/" style="font-size: 10px;">科学上网</a> <a href="/tags/笔记/" style="font-size: 12.5px;">笔记</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/计算机网络/" style="font-size: 10px;">计算机网络</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/06/08/每周分享第三周（6-8)/">每周分享第三周（6-8)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/08/盒模型/">盒模型</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/08/布尔变量在项目中的应用/">布尔变量在项目中的应用</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/08/yml文件操作方法/">Yml 文件操作方法</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/08/python采坑集合/">Python2 =&gt; Python3 踩坑集合</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 刘艳萍<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

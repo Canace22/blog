@@ -1,17 +1,775 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="分享改变世界"><title>刘艳萍的博客 | Tomorrow is another day</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/8.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">刘艳萍的博客</h1><a id="logo" href="/.">刘艳萍的博客</a><p class="description">Tomorrow is another day</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 主页</i></a><a href="/archives/"><i class="fa fa-archive"> 文章归档</i></a><a href="/about/"><i class="fa fa-user"> 关于我</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title"><a href="/2018/05/20/gitpage-hexo/">Gitpage+hexo</a></h1><div class="post-meta">2018-05-20</div><a class="disqus-comment-count" data-disqus-identifier="2018/05/20/gitpage-hexo/" href="/2018/05/20/gitpage-hexo/#disqus_thread"></a><div class="post-content"><p>大半天，一边折腾，一边查找各种文档，写出的这篇文档，不知道有没有把程序表示得足够简明，有不足之处望指明。</p>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>刘艳萍的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="分享改变世界">
+<meta name="keywords" content="web开发, python, 深度学习">
+<meta property="og:type" content="website">
+<meta property="og:title" content="刘艳萍的博客">
+<meta property="og:url" content="http://canace.site/page/3/index.html">
+<meta property="og:site_name" content="刘艳萍的博客">
+<meta property="og:description" content="分享改变世界">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="刘艳萍的博客">
+<meta name="twitter:description" content="分享改变世界">
+  
+    <link rel="alternate" href="/atom.xml" title="刘艳萍的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">刘艳萍的博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Tomorrow is another day</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://canace.site"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="git-gitpage-hexo" class="article article-type-git" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/20/gitpage-hexo/" class="article-date">
+  <time datetime="2018-05-20T08:58:02.000Z" itemprop="datePublished">2018-05-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/20/gitpage-hexo/">Gitpage+hexo</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>大半天，一边折腾，一边查找各种文档，写出的这篇文档，不知道有没有把程序表示得足够简明，有不足之处望指明。</p>
 <ol>
 <li><p>前提：已安装好nodeJS和git。</p>
 </li>
-<li><p>桌面右击进入gitbash，输入npm install -g hexo安装hexo，关闭gitbash。</p></div><p class="readmore"><a href="/2018/05/20/gitpage-hexo/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2018/05/20/JS概谈/">JS概谈</a></h1><div class="post-meta">2018-05-20</div><a class="disqus-comment-count" data-disqus-identifier="2018/05/20/JS概谈/" href="/2018/05/20/JS概谈/#disqus_thread"></a><div class="post-content"><p>话说 JavaScript 其实是诞生在一个特殊的时期，20世纪90年代，正值第三次科技革命<br>时期，互联网刚开始进入人们的生活。设想一下，在网速只有几十比特的那个时代，在登录注册时要花上很长一段时间等待服务器传回验证信息，会是怎样一种体验？简直是嘴上也不笑眯眯，心里千万句mmp吧？为了解决这个问题，网景公司着手设计出了JavaScript，与它的浏览器一起捆绑推出。</p></div><p class="readmore"><a href="/2018/05/20/JS概谈/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2018/05/20/Django-channels/">Django-Channels</a></h1><div class="post-meta">2018-05-20</div><a class="disqus-comment-count" data-disqus-identifier="2018/05/20/Django-channels/" href="/2018/05/20/Django-channels/#disqus_thread"></a><div class="post-content"><p>写在前面，这个项目用到了 py 的全能框架 Django 来写 web 界面，其中引用了一个通道插件Django Channel。Django Channels 是为了解决 Django 只发送一个调用视图请求，却不断发送数据到客户端的问题而存在的。Django Channels 的实现机制大概是：生产者把消息推到通道队列中，再通过通道队列把消息传递给消费者之一。</p></div><p class="readmore"><a href="/2018/05/20/Django-channels/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2018/05/20/hexo入门/">Hexo 使用指南</a></h1><div class="post-meta">2018-05-20</div><a class="disqus-comment-count" data-disqus-identifier="2018/05/20/hexo入门/" href="/2018/05/20/hexo入门/#disqus_thread"></a><div class="post-content"><p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p></div><p class="readmore"><a href="/2018/05/20/hexo入门/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2018/05/20/搭建 Django 博客系统/">搭建 Django 博客系统</a></h1><div class="post-meta">2018-05-20</div><a class="disqus-comment-count" data-disqus-identifier="2018/05/20/搭建 Django 博客系统/" href="/2018/05/20/搭建 Django 博客系统/#disqus_thread"></a><div class="post-content"><h5 id="一、-环境："><a href="#一、-环境：" class="headerlink" title="一、 环境："></a>一、 环境：</h5><p>win7系统、Django、python</p>
-<h5 id="二、-需求分析："><a href="#二、-需求分析：" class="headerlink" title="二、 需求分析："></a>二、 需求分析：</h5><p>实现博客的创建、编辑和删除功能，并开通后台admin,加入富文本编辑器，并入项目中</p></div><p class="readmore"><a href="/2018/05/20/搭建 Django 博客系统/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2017/05/25/TCP-IP三次握手/">TCP/IP三次握手</a></h1><div class="post-meta">2017-05-25</div><a class="disqus-comment-count" data-disqus-identifier="2017/05/25/TCP-IP三次握手/" href="/2017/05/25/TCP-IP三次握手/#disqus_thread"></a><div class="post-content"><ol>
+<li><p>桌面右击进入gitbash，输入npm install -g hexo安装hexo，关闭gitbash。</p>
+</li>
+<li><p>在电脑中建立一个名为【hexo】的文件夹，新建的文件夹右击打开gitbash，输入hexo init 命令，命令执行完后，根据提示接着执行 npm install 命令。</p>
+</li>
+<li><p>运行hexo server 命令，出现running字样说明Hexo Server已经启动了，在浏览器中打开<a href="http://localhost:4000/，可以看到生成的博客，按ctrl+C可以停止server；。" target="_blank" rel="noopener">http://localhost:4000/，可以看到生成的博客，按ctrl+C可以停止server；。</a></p>
+</li>
+<li><p>新打开一个git bash命令行窗口，cd到/D/hexo下，执行 hexo new “My New Post” 命令,可以生成一篇新的文章 “My New Post”，打开<a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000/</a> 可以预览到新生成的文章。</p>
+</li>
+<li><p>执行 hexo generate命令可以将markdown文章生成静态网页，该命令执行完后，会在 D:\Hexo\public\ 目录下生成一系列html，css等文件。</p>
+</li>
+<li><p>hexo new “My NewPost”会在D:\Hexo\source\ _posts目录下生成一个markdown文件：My-New-Post.md，可以使用一个支持markdown语法的编辑器（比如 Sublime Text 2）来编辑该文件。</p>
+</li>
+<li><p>部署博客到 github</p>
+<p>(1) 部署到Github前需要配置_config.yml文件，首先找到下面的内容</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">type:</span><br></pre></td></tr></table></figure>
+<p>(2) 然后将它们修改为</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">type: git（新版本的hexo必须用git，不然会出错）</span><br><span class="line">repository:git@github.com:zhchnchn/zhchnchn.git（新版本用SSH不然会出错）</span><br><span class="line">branch: gh-pages</span><br></pre></td></tr></table></figure>
+<p>(3) 执行 npm install hexo-deployer-git –save 命令（hexo3.0以上的版本必须在执行此命令后才能部署到git上）</p>
+<p> A. 执行 hexo clean，清除缓存</p>
+<p> B. 执行 hexo generate 更新生成静态网页</p>
+<p> C. 执行hexo deploy 命令部署博客到github上；</p>
+<p> D. 部署完成后，在浏览器中打开<a href="http://zhchnchn.github.io/（https://zhchnchn.github.io/）" target="_blank" rel="noopener">http://zhchnchn.github.io/（https://zhchnchn.github.io/）</a> ，正常显示网页，表明部署成功。</p>
+</li>
+</ol>
+<h3 id="注意两大坑"><a href="#注意两大坑" class="headerlink" title="注意两大坑:"></a>注意两大坑:</h3><ol>
+<li><p>deploy不了，3.0版本以上要执行这个命令： npm install hexo-deployer-git<br>–save，切记！不然可能一直error</p>
+</li>
+<li><p>然后部署到git上记得修改url，不然可能发布之后有些js和css文件路径找不到！</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://canace.site/2018/05/20/gitpage-hexo/" data-id="cjjcp84wl002cisu8xivvxcbo" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-JS概谈" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/20/JS概谈/" class="article-date">
+  <time datetime="2018-05-20T08:56:12.000Z" itemprop="datePublished">2018-05-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/20/JS概谈/">JS概谈</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>话说 JavaScript 其实是诞生在一个特殊的时期，20世纪90年代，正值第三次科技革命<br>时期，互联网刚开始进入人们的生活。设想一下，在网速只有几十比特的那个时代，在登录注册时要花上很长一段时间等待服务器传回验证信息，会是怎样一种体验？简直是嘴上也不笑眯眯，心里千万句mmp吧？为了解决这个问题，网景公司着手设计出了JavaScript，与它的浏览器一起捆绑推出。</p>
+<p>这里有个问题，那就是Java跟JavaScript有什么关系呢？毕竟单词里都带有相同的“Java”字节，难免会让人把他们联系在一起啊。这里只要记住Java跟JavaScript没有半毛钱关系，如果说勉强算得上有关系的话，那就是JavaScript在创立之初本名叫LiveScript，但是因为当时Java风头正足，为了蹭热点，改了名。</p>
+<p>JavaScript在诞生之初，有一些克隆兄弟，比如微软家推出的JScript。我们知道，克隆人的出现会影响社会秩序，编程语言亦然。论天下之大事，分久必合，合久必分，这个时候就继续一个统一的标准对这些脚本语言进行规范了，于是ECMA组织了一些大公司的程序员开始策划这个规范，ECMAScript第一代就这样诞生了。现在我们说的JavaScript其实是说对ECMAScript的实现。</p>
+<p>ECMAScript第一代出现后，很快就繁衍到了第二代，但是这一代的ECMAScript基本继承了第一代的特性，对JavaScript的语法、句法进行描述，没有做什么改动。到第三代的时候，ECMAScript已经开始成熟，可以被称为一门编程语言了，其中加入了新的的描述，比如支持错误处理、正则表达式等。第四代的ECMAScript可以说是废弃的一代，因为它的欲望太强了，试图改朝换代，把旧有的ECMAScript改得面目全非，最终没有被组织通过。第五代的ECMAScript可以说是经历了一个漫长的讨论孕育期终于在2009年发布了正式版，对ECMAScript特性进行了进一步的描述，包括引入模式，弥补JAVAScript松散的语言结构缺点，提供了更多方便快捷的新方法等。紧随着ECMAScript5之后，2015年演化出了ECMAScript6，这一代的ECMAScript是他自己看起来更像是一门系统的编程语言了，添加了箭头年符号简化函数的写法，强化了对象字面量等都使他看起来更像是年轻力壮的青年男子。进入壮年后的ECMAScript发展更加迅速了，2016年推出了第六代，新增了Array.prototype.includes和幂运算符。2017年又奋起直追，推出了第八代，新增了字符串填充、对象值遍历、对象的属性描述符获取、 函数参数列表与调用中的尾部逗号、异步函数、共享内存与原子操作等。</p>
+<p>所以，时至今日，ECMAScript也就是JavaScript的核心标准已经发展到了第八代，但是比较经常听到周围人提起的依然是ECMAScript6。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://canace.site/2018/05/20/JS概谈/" data-id="cjjcp84ut0005isu8liqofsst" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Django-channels" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/20/Django-channels/" class="article-date">
+  <time datetime="2018-05-20T08:43:09.000Z" itemprop="datePublished">2018-05-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/20/Django-channels/">Django-Channels</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>写在前面，这个项目用到了 py 的全能框架 Django 来写 web 界面，其中引用了一个通道插件Django Channel。Django Channels 是为了解决 Django 只发送一个调用视图请求，却不断发送数据到客户端的问题而存在的。Django Channels 的实现机制大概是：生产者把消息推到通道队列中，再通过通道队列把消息传递给消费者之一。</p>
+<h5 id="一、-关于-Django-实现实时聊天应用"><a href="#一、-关于-Django-实现实时聊天应用" class="headerlink" title="一、 关于 Django 实现实时聊天应用"></a>一、 关于 Django 实现实时聊天应用</h5><p>Django 实现实时聊天应用一共分为以下几步：</p>
+<ol>
+<li><p>定义一个模型，用来表示聊天室和其中的消息；</p>
+</li>
+<li><p>创建聊天室视图以及相应的 urls.py 和模板；</p>
+</li>
+<li><p>定义一个通道层；</p>
+</li>
+<li><p>创建通道路由；</p>
+</li>
+<li><p>替换 Django 的基于 HTTP/WSGI 的请求处理器；</p>
+</li>
+<li><p>运行应用</p>
+</li>
+</ol>
+<h5 id="二、-项目目录"><a href="#二、-项目目录" class="headerlink" title="二、 项目目录"></a>二、 项目目录</h5><p>主要包括以下文件。</p>
+<ol>
+<li><p><strong>urls.py</strong> 是Django 项目的 URL 声明，配置目录映射。</p>
+</li>
+<li><p><strong><em>init</em>.py</strong> 是一个空文件，告诉 python 该目录事一个 python 包。</p>
+</li>
+<li><p><strong>setting.py</strong> 是 Django 项目的配置文件，包括 template 模板 path 设置之类的。</p>
+</li>
+<li><p><strong>wsgi.py</strong> 是 WSGI 兼容的 Web 服务器入口。</p>
+</li>
+<li><p><strong>asgi.py</strong> 文件用于替换 Django 的基于 HTTP/WSGI 的请求处理器。</p>
+</li>
+<li><p><strong>production.py</strong> 创建队列消息。</p>
+</li>
+<li><p><strong>logger.py</strong> 提供 log 接口，记录 log，这里可以直接这么用，是因为在 setting 里已经配置过 logging 了。</p>
+</li>
+</ol>
+<h5 id="三、-网页文件"><a href="#三、-网页文件" class="headerlink" title="三、 网页文件"></a>三、 网页文件</h5><p>主要网页文件，相当于 Django 框架的一个应用实例，通过 urls.py 可以映射到该文件夹并进行页面或者函数的调用。</p>
+<ol>
+<li><p><strong>admin.py</strong> 文件调用了 Django 的网站后台管理模块，主要使用方式是在 Django 框架的url.py 中映射路径，激活该功能。</p>
+</li>
+<li><p><strong>apps.py</strong> 配置应用信息.</p>
+</li>
+<li><p><strong>consumer.py</strong> </p>
+<p> (1) 首先检测有没有新的请求要求打开 WebSocket,有的话,记录该请求产生的房间并给出回应。</p>
+<p> (2) 接着，检测有没有新的消息请求，有的话，先把它转换为json字段，然后把它放入消息队列，并给出回应，这个过程会一直执行，知道接下来收到客户端发出的结束请求为止。简言之，这个文档就是实现线程通信的，俗称实时通信。</p>
+</li>
+<li><p><strong>routing.py</strong> 通信路由，用于连接 WebSocket。</p>
+</li>
+<li><p><strong>view.py</strong> 视图页，渲染前端页面。</p>
+</li>
+<li><p><strong>accounts 文件夹</strong> 是用户组件。</p>
+</li>
+</ol>
+<h5 id="四、-tensorflow-组件"><a href="#四、-tensorflow-组件" class="headerlink" title="四、 tensorflow 组件"></a>四、 tensorflow 组件</h5><p>主要是用了tensorflow进行人机交互。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://canace.site/2018/05/20/Django-channels/" data-id="cjjcp84ud0001isu87knqio9w" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-hexo入门" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/20/hexo入门/" class="article-date">
+  <time datetime="2018-05-20T08:41:48.000Z" itemprop="datePublished">2018-05-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/20/hexo入门/">Hexo 使用指南</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://canace.site/2018/05/20/hexo入门/" data-id="cjjcp84v4000bisu8ff9fir4l" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/博客/">博客</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-搭建 Django 博客系统" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/20/搭建 Django 博客系统/" class="article-date">
+  <time datetime="2018-05-20T06:30:48.000Z" itemprop="datePublished">2018-05-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/20/搭建 Django 博客系统/">搭建 Django 博客系统</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="一、-环境："><a href="#一、-环境：" class="headerlink" title="一、 环境："></a>一、 环境：</h5><p>win7系统、Django、python</p>
+<h5 id="二、-需求分析："><a href="#二、-需求分析：" class="headerlink" title="二、 需求分析："></a>二、 需求分析：</h5><p>实现博客的创建、编辑和删除功能，并开通后台admin,加入富文本编辑器，并入项目中</p>
+<h5 id="三、-搭建-Django-网站："><a href="#三、-搭建-Django-网站：" class="headerlink" title="三、 搭建 Django 网站："></a>三、 搭建 Django 网站：</h5><ol>
+<li><p>检查 Django 版本信息，python &gt;&gt; import django &gt;&gt; django.get_version()</p>
+</li>
+<li><p>启动DOS命令窗口，切换到相应文件路径，输入：<code>django-admin startproject mysite(网站名称)</code> 命令，创建一个 blog 项目目录。</p>
+</li>
+<li><p><code>cd mysite</code> &gt; <code>ls -l</code> 查看项目目录，可以看到项目目录包括：<em>init</em>.py、manage.py、setting.py、urls.py。<em>init</em>.py 会把项目目录变成一个 python 包（相关模块的一个集合)，可以方便我们用 python的“点记号”来制定项目中的某个部分，比如mysite.urls。</p>
+</li>
+<li><p>manage.py 是项目的启动文件，我们完成之后，要在dos中启动的就是这个文件。</p>
+</li>
+<li><p>setting.py 顾名思义，项目的配置文件，主要用来配置数据库、变量之类的基础信息。</p>
+</li>
+<li><p>urls.py 有点像路由配置，就是一些路径的集合，方便在文件中调用。</p>
+</li>
+</ol>
+<h5 id="四、-搭建-Django-博客："><a href="#四、-搭建-Django-博客：" class="headerlink" title="四、 搭建 Django 博客："></a>四、 搭建 Django 博客：</h5><p><code>cd mysite</code> &lt; <code>python manage.py startapp blog</code> 利用 manage.py 创建博客app，可以看到生成了<em>init.py</em>、models.py、views.py。同样的,<em>init</em>.py 把博客变成了一个 python 包，model.py 和views.py 是两个空文件，先占着位置。</p>
+<h5 id="五、-修改配置文件："><a href="#五、-修改配置文件：" class="headerlink" title="五、 修改配置文件："></a>五、 修改配置文件：</h5><p>打开 setting.py ，找到 INSTALLED_APPS 元组，把 APP 以模块的形式添加到元组里。</p>
+<h5 id="六、-初始化后台数据库："><a href="#六、-初始化后台数据库：" class="headerlink" title="六、 初始化后台数据库："></a>六、 初始化后台数据库：</h5><ol>
+<li><p>由于使用的是 mysql 数据库，而 Django 默认的数据库是 SQLite3 ，所以需要修改 setting.py 文件中的数据库信息。</p>
+</li>
+<li><p>同步数据库信息：<code>python manage.py migrate</code> </p>
+</li>
+<li><p>创建超级管理员账号，用于登录 admin 初始化后台数据库</p>
+</li>
+<li><p>访问 admin 后台： <code>python manage.py runserver</code> 启动页面，然后在主页链接后面加上 admin 路径 /admin/，用新创建的超级用户登录，就可以看到管理者后台了。</p>
+</li>
+</ol>
+<h5 id="七、设计数据表"><a href="#七、设计数据表" class="headerlink" title="七、设计数据表"></a>七、设计数据表</h5><p>打开blog目录下的models.py文件，加入以下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">from django.db import models</span><br><span class="line"></span><br><span class="line"># Create your models here.</span><br><span class="line">class BlogsPost(models.Model):</span><br><span class="line">    title = models.CharField(max_length = 150)  # 博客标题</span><br><span class="line">    body = models.TextField()                   # 博客正文</span><br><span class="line">    timestamp = models.DateTimeField()          # 创建时间</span><br></pre></td></tr></table></figure>
+<p>然后执行 <code>python manage.py makemigrations blog</code> &gt; <code>python manage.py migrate</code> 命令，同步数据库。</p>
+<h5 id="八、-admin-后台管理搭建："><a href="#八、-admin-后台管理搭建：" class="headerlink" title="八、 admin 后台管理搭建："></a>八、 admin 后台管理搭建：</h5><ol>
+<li><p>打开 setting.py 文件，找到 INSTALLED_APPS 添加 <code>django.contrib.admin</code> 内置模块到元组里。</p>
+</li>
+<li><p>打开 urls.py ，配置 admin 的url映射，也就是添加<code>（r&#39;^admin/&#39;,include(django.contrib.admin.urls&#39;)),</code>到文件里。</p>
+</li>
+<li><p>注册 BlogPost model，打开 blog/models.py 文件，添加以下代码,启动项目，访问 admin 路径，就可以在后台添加 blog文章了。</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">from django.db import models</span><br><span class="line">from django.contrib import admin</span><br><span class="line"></span><br><span class="line"># Create your models here.</span><br><span class="line"></span><br><span class="line">class BlogsPost(models.Model):</span><br><span class="line">    title = models.CharField(max_length = 150)  # 博客标题</span><br><span class="line">    body = models.TextField()                   # 博客正文</span><br><span class="line">    timestamp = models.DateTimeField()          # 创建时间</span><br><span class="line"></span><br><span class="line">admin.site.register(BlogsPost,BlogPostAdmin)</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>但是我们发现这个 blog 管理界面有点丑，怎么办？添加一个列表展示类，就可以选择我们需要展示的内容了，代码如下,打开页面，点击 title 我们可以发现会按照 title 进行文章排序，点击其他两个，一样的效果。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">class BlogPostAdmin(admin.ModelAdmin):</span><br><span class="line">    list_display = (&apos;title&apos;, &apos;body&apos;,&apos;timestamp&apos;)</span><br></pre></td></tr></table></figure>
+<h5 id="九、-创建文章列表模板："><a href="#九、-创建文章列表模板：" class="headerlink" title="九、 创建文章列表模板："></a>九、 创建文章列表模板：</h5><p>在blog项目下创建templates目录（mysite/blog/templates/）,在目录下创建模板文件archive.html，内容如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;% for post in posts %&#125;</span><br><span class="line">    &lt;h2&gt;&#123;&#123; post.title &#125;&#125;&lt;/h2&gt;</span><br><span class="line">    &lt;p&gt;&#123;&#123; post.timestamp &#125;&#125;&lt;/p&gt;</span><br><span class="line">    &lt;p&gt;&#123;&#123; post.body &#125;&#125;&lt;/p&gt;</span><br><span class="line">&#123;% endfor %&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="十、创建视图模板"><a href="#十、创建视图模板" class="headerlink" title="十、创建视图模板"></a>十、创建视图模板</h5><p>打开mysite/blog/views.py文件，添加以下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">from django.template import loader,context</span><br><span class="line">from django.http import HttpResponse</span><br><span class="line">from matrixtech.blog.models import BlogsPost</span><br><span class="line"></span><br><span class="line"># Create your views here.</span><br><span class="line">def archive(request):</span><br><span class="line">    blog_list = BlogsPost.objects.all()  # 获取所有数据</span><br><span class="line">    t  = loader.get_template(&apos;archive.html&apos;)</span><br><span class="line">    c = context(&#123;&#123;&apos;posts&apos;: posts &#125;&#125;)</span><br><span class="line">    return HttpResponse(t.render(c))  # 返回blog.html页面</span><br></pre></td></tr></table></figure>
+<h5 id="十一、创建-blog-的url"><a href="#十一、创建-blog-的url" class="headerlink" title="十一、创建 blog 的url"></a>十一、创建 blog 的url</h5><ol>
+<li>在 mysite/urls 里创建url模式，添加如下代码</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">url(r&apos;^blog/&apos;, include(&apos;blog.urls&apos;))</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>在 blog/urls 定义 url，添加以下代码,重启服务，就可以访问 blog 了。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">from django.conf.urls.defaults import  *</span><br><span class="line">from matrixtech.blog.views import archive</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    url(r&apos;^$&apos;, archive),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h5 id="十二、-博客整合到网站中"><a href="#十二、-博客整合到网站中" class="headerlink" title="十二、 博客整合到网站中"></a>十二、 博客整合到网站中</h5><p>博客创建好之后，我需要把它整合到项目中，这里我主要是用链接的形式，把博客链接放在了主导航栏上，点击就会跳转到博客，博客导航栏有主页项，点击也可以调回来。方法是这样的：</p>
+<p>通过 url 匹配名称，查找资源位置，代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;&#123;% url &apos;blog&apos; %&#125;&quot;&gt;博客&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+<h5 id="十三、博客外观改善"><a href="#十三、博客外观改善" class="headerlink" title="十三、博客外观改善"></a>十三、博客外观改善</h5><ol>
+<li><p>外观改善主要是生成 templates 文件夹，在里面添加一个 archive.html 文件作为文章模板，还有各个 theme.html 文件作为页面主题模板，其中会涉及到一些 Django 模板语言，需要去了解下，感觉用起来爽歪歪。</p>
+</li>
+<li><p>除了模板语言之外，可以直接通过url来查找相关的。</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://canace.site/2018/05/20/搭建 Django 博客系统/" data-id="cjjcp84w1001jisu860og017j" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-TCP-IP三次握手" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/25/TCP-IP三次握手/" class="article-date">
+  <time datetime="2017-05-25T08:57:02.000Z" itemprop="datePublished">2017-05-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/25/TCP-IP三次握手/">TCP/IP三次握手</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
 <li><p>第一次 握手：客户端向服务器端发包，并且不确定服务器端是否收到，同时服务器端确认接受包；</p>
 </li>
 <li><p>第二次握手：服务器端向客户端发包作为回复，并且不确定客户端是否能接收自己发出的包，同时客户端收到包；</p>
-</li></div><p class="readmore"><a href="/2017/05/25/TCP-IP三次握手/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2017/05/09/git环境配置/">Git环境配置</a></h1><div class="post-meta">2017-05-09</div><a class="disqus-comment-count" data-disqus-identifier="2017/05/09/git环境配置/" href="/2017/05/09/git环境配置/#disqus_thread"></a><div class="post-content"><p>结合了一些网上的方法，结合自己配置的实际情况写的文档。</p>
+</li>
+<li><p>客户端发包回应服务器端，服务器端确认收到包，两边都确认能接收传递信息，通过快速连接，客户端发出初始信息，开始通信;<br>用简洁易懂的话说就是：</p>
+<p> A：在吗？亲（第一次握手）</p>
+<p> B：恩，有啥事？（第二次握手）</p>
+<p> A：我们来聊天吧。（第三次握手）</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://canace.site/2017/05/25/TCP-IP三次握手/" data-id="cjjcp84uk0002isu8qal096jx" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="git-git环境配置" class="article article-type-git" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/09/git环境配置/" class="article-date">
+  <time datetime="2017-05-09T08:58:31.000Z" itemprop="datePublished">2017-05-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/09/git环境配置/">Git环境配置</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>结合了一些网上的方法，结合自己配置的实际情况写的文档。</p>
 <ol>
-<li><p>下载git主程序，下载地址：<a href="https://git-scm.com/downloads，" target="_blank" rel="noopener">https://git-scm.com/downloads，</a> 双击安装包，一路next就行；</p></div><p class="readmore"><a href="/2017/05/09/git环境配置/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2017/05/09/git域名配置/">Git域名配置</a></h1><div class="post-meta">2017-05-09</div><a class="disqus-comment-count" data-disqus-identifier="2017/05/09/git域名配置/" href="/2017/05/09/git域名配置/#disqus_thread"></a><div class="post-content"><ol>
+<li><p>下载git主程序，下载地址：<a href="https://git-scm.com/downloads，" target="_blank" rel="noopener">https://git-scm.com/downloads，</a> 双击安装包，一路next就行；</p>
+</li>
+<li><p>对于技术小白的我来说，命令行神马的太复杂了，所以就需要一个git界面画的软件来帮助我啦，这个软件就是TortoiseGit，下载地址：<a href="https://tortoisegit.org/download/，" target="_blank" rel="noopener">https://tortoisegit.org/download/，</a> 分为32位版和64位版，下载时要选好，安装的时候也是一路next；</p>
+</li>
+<li><p>接下来就是解决怎么把本地项目关联发布到git上的问题了；</p>
+<p>(1) 首先打开git上的项目，复制git的HTTP地址；</p>
+<p>(2) 然后创打开硬盘里的一个目录，最好是专门开发用的目录，点右键，选择“Git Clone…”，将地址复制进去，点击OK；<br>(3) 出现Success提示，就代表clone成功了，close掉对话框，然后就出现了名为git项目的文件夹了；</p>
+</li>
+<li><p>本地改动保存为一个版本，我们以新建文件为例；</p>
+<p>(1) 首先，打开刚才生成文件夹，新建一个名为readme.txt的空文件；</p>
+<p>(2) 然后在这里鼠标右击，选择Git Commit -&gt; “master”…，会弹出一个对话框（注意：这里可能会提醒设置用户名、密码 和邮箱，点击确定，填写git账户的用户名和注册邮箱以及密码即可）；</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://canace.site/2017/05/09/git环境配置/" data-id="cjjcp84uy0007isu8b3cubugi" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="git-git域名配置" class="article article-type-git" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/09/git域名配置/" class="article-date">
+  <time datetime="2017-05-09T08:58:31.000Z" itemprop="datePublished">2017-05-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/09/git域名配置/">Git域名配置</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
 <li><p>在Godaddy购买的域名；</p>
 </li>
 <li><p>查找DNSpod解析域名，没什么难度，就是添加一条记录，保存而已，记得在添加域名到DNSpod之后，复制两个NS地址到godaddy的域名服务器下；</p>
-</li></div><p class="readmore"><a href="/2017/05/09/git域名配置/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2017/05/09/nodeJs配置/">nodeJs配置</a></h1><div class="post-meta">2017-05-09</div><a class="disqus-comment-count" data-disqus-identifier="2017/05/09/nodeJs配置/" href="/2017/05/09/nodeJs配置/#disqus_thread"></a><div class="post-content"><ol>
-<li><p>下载node.js安装包，下载地址： <a href="https://nodejs.org/dist/v4.4.3/node-v4.4.3-x64.msi，" target="_blank" rel="noopener">https://nodejs.org/dist/v4.4.3/node-v4.4.3-x64.msi，</a> 双击安装包，开始安装，一路next就行；</p></div><p class="readmore"><a href="/2017/05/09/nodeJs配置/">阅读全文</a></p></div><nav class="page-navigator"><a class="extend prev" rel="prev" href="/page/2/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span></nav><script id="dsq-count-scr" src="//liu-yan-ping-de-bo-ke.disqus.com/count.js" async></script></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a><span class="category-list-count">24</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">5</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/个人管理/" style="font-size: 15px;">个人管理</a> <a href="/tags/python/" style="font-size: 15px;">python</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/博客/" style="font-size: 15px;">博客</a> <a href="/tags/tensorflow/" style="font-size: 15px;">tensorflow</a> <a href="/tags/科学上网/" style="font-size: 15px;">科学上网</a> <a href="/tags/web/" style="font-size: 15px;">web</a> <a href="/tags/算法/" style="font-size: 15px;">算法</a> <a href="/tags/影评/" style="font-size: 15px;">影评</a> <a href="/tags/分享/" style="font-size: 15px;">分享</a> <a href="/tags/笔记/" style="font-size: 15px;">笔记</a> <a href="/tags/计算机网络/" style="font-size: 15px;">计算机网络</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/06/08/每周分享第三周（6-8)/">每周分享第三周（6-8)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/08/盒模型/">盒模型</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/08/布尔变量在项目中的应用/">布尔变量在项目中的应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/08/yml文件操作方法/">Yml 文件操作方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/08/python采坑集合/">Python2 => Python3 踩坑集合</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/08/sublime-text-nodeJS配置/">Sublime Text3 配置node.js环境</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/07/写给大家看的算法书笔记/">写给大家看的算法书笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/07/前端面试总结——读书郎/">前端面试总结——读书郎</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/02/每周分享第二周（6-2）/">每周分享第二周（6.2）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/27/每周分享第一周（5-27）/">每周分享第一周（5.27）</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-comment-o"> 最近评论</i></div><script type="text/javascript" src="//liu-yan-ping-de-bo-ke.disqus.com/recent_comments_widget.js?num_items=5&amp;hide_avatars=1&amp;avatar_size=32&amp;excerpt_length=20&amp;hide_mods=1"></script></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="http://www.ruanyifeng.com/blog/" title="阮一峰的博客" target="_blank">阮一峰的博客</a><ul></ul><a title="微信公众号：刘艳萍的博客" target="_blank">微信公众号：刘艳萍的博客</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2018 <a href="/." rel="nofollow">刘艳萍.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
+</li>
+<li><p>Git项目根目录下创建CNAME文件，把域名填进去，push就行了。</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://canace.site/2017/05/09/git域名配置/" data-id="cjjcp84uv0006isu8il31vpuu" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-nodeJs配置" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/09/nodeJs配置/" class="article-date">
+  <time datetime="2017-05-09T08:56:44.000Z" itemprop="datePublished">2017-05-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/09/nodeJs配置/">nodeJs配置</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>下载node.js安装包，下载地址： <a href="https://nodejs.org/dist/v4.4.3/node-v4.4.3-x64.msi，" target="_blank" rel="noopener">https://nodejs.org/dist/v4.4.3/node-v4.4.3-x64.msi，</a> 双击安装包，开始安装，一路next就行；</p>
+</li>
+<li><p>检测PATH环境变量是否配置了node.js，进入cmd界面，输入path命令，结果中环境变量出现了nodeJS字眼，说明环境变量配置成功了；</p>
+</li>
+<li><p>运行node -v命令，检测node.js版本，查看是否安装成功；</p>
+</li>
+<li><p>运行npm -v 命令，检测npm版本，查看是否安装成功；</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://canace.site/2017/05/09/nodeJs配置/" data-id="cjjcp84v6000cisu8qudof4a1" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/2/">&laquo; 上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tensorflow/">tensorflow</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/个人管理/">个人管理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分享/">分享</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博客/">博客</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/影评/">影评</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/科学上网/">科学上网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/计算机网络/">计算机网络</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/python/" style="font-size: 17.5px;">python</a> <a href="/tags/tensorflow/" style="font-size: 12.5px;">tensorflow</a> <a href="/tags/web/" style="font-size: 20px;">web</a> <a href="/tags/个人管理/" style="font-size: 10px;">个人管理</a> <a href="/tags/分享/" style="font-size: 15px;">分享</a> <a href="/tags/博客/" style="font-size: 12.5px;">博客</a> <a href="/tags/影评/" style="font-size: 12.5px;">影评</a> <a href="/tags/科学上网/" style="font-size: 10px;">科学上网</a> <a href="/tags/笔记/" style="font-size: 12.5px;">笔记</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/计算机网络/" style="font-size: 10px;">计算机网络</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/06/08/每周分享第三周（6-8)/">每周分享第三周（6-8)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/08/盒模型/">盒模型</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/08/布尔变量在项目中的应用/">布尔变量在项目中的应用</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/08/yml文件操作方法/">Yml 文件操作方法</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/08/python采坑集合/">Python2 =&gt; Python3 踩坑集合</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 刘艳萍<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
