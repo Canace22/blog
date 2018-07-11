@@ -1,0 +1,199 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="分享改变世界"><title>Git 安装配置及基本使用 | Canace 的博客</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/8.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Git 安装配置及基本使用</h1><a id="logo" href="/.">Canace 的博客</a><p class="description">Tomorrow is another day</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 主页</i></a><a href="/archives/"><i class="fa fa-archive"> 文章归档</i></a><a href="/about/"><i class="fa fa-user"> 关于我</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">Git 安装配置及基本使用</h1><div class="post-meta">Jul 11, 2018<span> | </span><span class="category"><a href="/categories/技术/">技术</a></span><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> 阅读</span></span></div><a class="disqus-comment-count" data-disqus-identifier="2018/07/11/git使用指南/" href="/2018/07/11/git使用指南/#disqus_thread"></a><div class="post-content"><ol>
+<li><p>从官网下载安装包，手动完成安装。</p>
+</li>
+<li><p>打开Git Bash命令行工具，执行命令ssh-keygen -t rsa -C Email-Addresss生成一个密钥对。</p>
+</li>
+<li><p>登录到GitLab，点击右上角你的用户头像，点击Edit Profile settings，点击SSH Keys，点击Add SSH Key，填写Title栏，复制用户目录下.ssh/id_rsa.pub文件的内容到Key，点击Add Key。</p>
+</li>
+<li><p>点击右上角的New project，填写完成后点击Create project新建一个仓库，点击Activity，点击SSH后复制SSH边上栏里的地址。</p>
+</li>
+<li><p>打开Git Bash命令行工具，切换到一个合适的目录，使用命令git clone 刚才复制的URL克隆创建的仓库。</p>
+</li>
+<li><p>进入目录cd 仓库名，执行命令git config –global user.email your-email， git config –global user.name your-name，设置你的个人信息。</p>
+</li>
+<li><p>执行命令：</p>
+</li>
+</ol>
+<p>echo “#Description” &gt; README.md，添加一个文件</p>
+<p>git status，查看当前状态，发现有未跟踪文件</p>
+<p>git add .，当前目录所有文件添加到暂存区</p>
+<p>git diff，比较当前工作区和暂存区有何不同</p>
+<p>git status，查看当前状态，发现有文件未提交</p>
+<p>git commit -m “注释”，把暂存区内容提交到本地仓库</p>
+<p>git push -u origin master，把本地仓库的提交推送到远程仓库</p>
+<p>git log，查看提交日志</p>
+<hr>
+<p>Git本地分支管理</p>
+<ol>
+<li>分支的创建、合并、删除</li>
+</ol>
+<p>git branch，显示所有分支</p>
+<p>git branch b1，从当前分支创建一个叫b1的分支</p>
+<p>git checkout b1，切换到b1分支</p>
+<p>git checkout -b b1，相当于以上两条命令的组合</p>
+<p>git checkout master，切换到master主分支</p>
+<p>git merge b1，把b1分支的代码合并到master上</p>
+<p>git branch -d b1，删除b1分支，不能在被删除分支上执行</p>
+<hr>
+<p>Git Tag标签管理</p>
+<ol>
+<li>标签的创建、删除</li>
+</ol>
+<p>git tag t1，从当前分支创建一个名为t1的标签</p>
+<p>git tag -d t1，删除名为t1的标签</p>
+<hr>
+<p>GitLib权限管理</p>
+<ul>
+<li><p>Owner 项目所有者，拥有所有的操作权限</p>
+</li>
+<li><p>Master 项目的管理者，除更改、删除项目元信息外其它操作均可</p>
+</li>
+<li><p>Developer 项目的开发人员，做一些开发工作，对受保护内容无权限</p>
+</li>
+<li><p>Reporter 项目的报告者，只有项目的读权限，可以创建代码片断</p>
+</li>
+<li><p>Guest 项目的游客，只能提交问题和评论内容</p>
+</li>
+</ul>
+<p>具体参见GitLab权限，为项目添加成员时可指定成员的身份权限。</p>
+<hr>
+<p>为什么要有分支</p>
+<p>建立分支的原因是 git 因为是分布式的，所以其核心就是分支，分支的意义在于，可以将项目代码按照功能、模块拆分成不同的分支。比如这个产品要加一个支付功能和一个登陆功能，可以创建两个分支，交给不同的开发人员并行开发。登陆功能先开发完，测试无误后合并改分支到 master 分支，master 分支部署上线。支付功能虽然没有开发完成，但是在另一条分支上，所以产品上线和功能开发完全不受影响。这才是分布式开发的高效模式。还有这样，以自己名字建立一个分支比如 xiancai，这个分支是已经做好的功能，随时可以合并到 master 上线，开发的时候，建立一个带功能前缀的分支，比如 xiancai-ninghao 、xiancai-ninghao 等等，开发完之后在合并到 xiancai，每次上线，把 xiancai 合并到 master 。总之分支的做重要的意义就是提高效率！！！ 这样方便团队开发，并且不会导致混乱。</p>
+<p>分支有如下几条：</p>
+<ol>
+<li><p>Master 主分支</p>
+</li>
+<li><p>Develop 分支</p>
+</li>
+<li><p>Feature 功能分支</p>
+</li>
+<li><p>Release 预发布分支</p>
+</li>
+<li><p>Hotfix（或者Fixbug） 分支</p>
+</li>
+</ol>
+<p>以上各分支之间的逻辑关系见下图；</p>
+<p>其中对于 Feature 功能分支有；</p>
+<ul>
+<li><p>从哪个分支分离开来：develop</p>
+</li>
+<li><p>必须要合并到哪个分支上：develop</p>
+</li>
+<li><p>的命名规范：除了 master，develop，release-，或者 hotfix- 以外的名字都可以比如可以用 feature-*的方式命名。</p>
+</li>
+</ul>
+<p>其中对于 Release 预发布分支有；</p>
+<ul>
+<li><p>从哪个分支分离开来： develop</p>
+</li>
+<li><p>必须要合并到哪个分支上：develop 与 master</p>
+</li>
+<li><p>分支的命名规范： release-*</p>
+</li>
+</ul>
+<p>其中对于 Hotfix（或者 Fixbug） 分支有；</p>
+<ul>
+<li><p>从哪个分支分离开来：master</p>
+</li>
+<li><p>必须要合并到哪个分支上：develop 与 master</p>
+</li>
+<li><p>分支的命名规范：hotfix-<em> 或者 fixbug-</em></p>
+</li>
+</ul>
+<p>主分支</p>
+<p>Master 主分支</p>
+<p>首先，代码库应该有一个、且仅有一个主分支。所有提供给用户使用的正式版本，都在这个主分支上发布。Git 主分支的名字，默认叫做 Master。它是自动建立的，版本库初始化以后，默认就是在主分支在进行开发。</p>
+<p>Develop 分支</p>
+<p>主分支只用来分布重大版本，日常开发应该在另一条分支上完成。我们把开发用的分支，叫做 Develop。</p>
+<p>创建分支</p>
+<p>git branch develop              #只创建分支</p>
+<p>git checkout develop  #创建并切换到 develop 分支</p>
+<p>合并分支</p>
+<p>git checkout master         #切换到主分支</p>
+<p>git merge –no-ff develop   #把 develop 合并到 master 分支，no-ff 选项的作用是保留原分支记录</p>
+<p>git branch -d develop       #删除 develop 分支     </p>
+<p>这里稍微解释一下，上一条命令的–no-ff参数是什么意思。默认情况下，Git执行”快进式合并”（fast-farward merge），会直接将Master分支指向Develop分支。</p>
+<p>次分支</p>
+<p>除了 master 与 develop 这两个主分支，在开发时还可以创建一些次分支，目的是让团队不同的成员之间可以平行开发，更容易跟踪功能，准备为生产的发行版，快速修复生产上的问题等等。这些分支生命周期有限，可以在用完以后删掉他们。</p>
+<p>Feature 功能分支</p>
+<p>Feature（功能） 分支，有时候也叫 Topic 分支。在这种分支上去开发新的功能。当开发功能的时候，这个功能属于哪个目标发行还不知道。功能如果一直在开发，对应的这个功能分支就可以一直存在，不过到最后还是要合并到 develop 分支上，或者如果不想要开发的这个功能了，可以直接扔掉它。</p>
+<p>功能名字的命名已经在上文中有提到。</p>
+<p>创建一个功能分支：</p>
+<p>git checkout -b feature-x develop</p>
+<p>开发完成后，将功能分支合并到develop分支：</p>
+<p>git checkout develop</p>
+<p>git merge –no-ff feature-x</p>
+<p>删除feature分支：</p>
+<p>git branch -d feature-x## Release 预发布分支</p>
+<p>它是指发布正式版本之前（即合并到Master分支之前），我们可能需要有一个预发布的版本进行测试。预发布分支是从Develop分支上面分出来的，预发布结束以后，必须合并进Develop和Master分支。它的命名，可以采用release-*的形式。</p>
+<p>创建一个预发布分支：</p>
+<p>git checkout -b release-1.2 develop  </p>
+<p>确认没有问题后，合并到master分支：</p>
+<p>git checkout master</p>
+<p>git merge –no-ff release-1.2</p>
+<p>#对合并生成的新节点，做一个标签</p>
+<p>git tag -a 1.2</p>
+<p>再合并到develop分支：</p>
+<p>git checkout develop</p>
+<p>git merge –no-ff release-1.2</p>
+<p>最后，删除预发布分支：</p>
+<p>git branch -d release-1.2</p>
+<p>Fixbug 修补bug分支</p>
+<p>最后一种是修补bug分支。软件正式发布以后，难免会出现bug。这时就需要创建一个分支，进行bug修补。 修补bug分支是从Master分支上面分出来的。修补结束以后，再合并进Master和Develop分支。它的命名，可以采用fixbug-*的形式。</p>
+<p>创建一个修补bug分支：</p>
+<p>git checkout -b fixbug-0.1 master</p>
+<p>修补结束后，合并到master分支：</p>
+<p>git checkout master</p>
+<p>git merge –no-ff fixbug-0.1</p>
+<p>git tag -a 0.1.1</p>
+<p>再合并到develop分支：</p>
+<p>git checkout develop</p>
+<p>git merge –no-ff fixbug-0.1</p>
+<p>最后，删除”修补bug分支”：</p>
+<p>git branch -d fixbug-0.1</p>
+</div><div><ul class="post-copyright"><li class="post-copyright-author"><strong>本文作者：</strong>Canace</li><li class="post-copyright-link"><strong>本文链接：</strong><a href="/2018/07/11/git使用指南/">http://canace.site/2018/07/11/git使用指南/</a></li><li class="post-copyright-license"><strong>版权声明：</strong>转载请注明出处</li></ul></div><br><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a class="article-share-link" data-url="http://canace.site/2018/07/11/git使用指南/" data-id="cjjh5e6vp000bpku8p65pw6is" data-qrcode="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACIUlEQVR42u3aMW7DMAwF0Nz/0unaoXY+SaWApafJcFNbzwNBkXy94vW+WMkvf9+/v766s2xhYGA8lvG+XcnmkhfPn//hI2JgYBzAuHpxcl0Npvf3759weR8DAwNj/JteMMXAwMBYu8U8HOdbx8DAwJgHvupfq4njV87iGBgYD2TkVff/v/5KfwMDA+NRjHdx3QfZpIhWDanRrjAwMLZm5AEux/QCd/WZGBgYJzN6xa88dOaNzPLnw8DAOIZR/efqK3tjYVEgxsDA2JSRFNmrQTYfs+g984+dY2BgbM3IE7K89ZgPW+TRMjoGY2BgbM2YdAPzTVQPrgs6rhgYGAcwegfdeco4KrphYGBszag2FO8Tx2oAzcEfAj0GBsamjF6ql7xmchwtFNowMDC2ZvSOlJNxisWZLAYGxgGMauqWf4gkUPZaCJfvwsDAOICRvyAfmKimlYUmJQYGxjGMVYOkvQ8xKd4VpkUwMDAezpiU5idFtGoLM2+dYmBg7MrIm5S9BC5PMSefDAMD4wTGpEzfG5XIP1xhWgQDA+MYxtrifrXE1uxUYmBgbMp4F1fvqFltRpZLfhgYGFsz8tVrIeQFuLxJUG2UYmBg7MHIg2zeDKgG6AXpIwYGxgGM3gBEnuQ1hyfyFikGBgbGILucF/IWD1tgYGAcwJgU2npbjMI9BgbGAYxeM2DVAXhB+MbAwNia0RtxSEbBJm2G5MkYGBgHMH4AF4Ii4IWYoaYAAAAASUVORK5CYII=">分享</a><div class="tags"><a href="/tags/git/">git</a></div><div class="post-nav"><a class="next" href="/2018/07/11/JS模态框blog/">JS 模态框————Angular</a></div><div id="disqus_thread"><div class="btn_click_load"><button class="disqus_click_btn">阅读评论（请确保 Disqus 可以正常加载）</button></div><script type="text/javascript">var disqus_config = function () {
+    this.page.url = 'http://canace.site/2018/07/11/git使用指南/';
+    this.page.identifier = '2018/07/11/git使用指南/';
+    this.page.title = 'Git 安装配置及基本使用';
+  };</script><script type="text/javascript" id="disqus-lazy-load-script">$.ajax({
+url: 'https://disqus.com/next/config.json',
+timeout: 2500,
+type: 'GET',
+success: function(){
+  var d = document;
+  var s = d.createElement('script');
+  s.src = '//liu-yan-ping-de-bo-ke.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', + new Date());
+  (d.head || d.body).appendChild(s);
+  $('.disqus_click_btn').css('display', 'none');
+},
+error: function() {
+  $('.disqus_click_btn').css('display', 'block');
+}
+});</script><script type="text/javascript" id="disqus-click-load">$('.btn_click_load').click(() => {  //click to load comments
+    (() => { // DON'T EDIT BELOW THIS LINE
+        var d = document;
+        var s = d.createElement('script');
+        s.src = '//liu-yan-ping-de-bo-ke.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', + new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+    $('.disqus_click_btn').css('display','none');
+});</script><script type="text/javascript" id="disqus-count-script">$(function() {
+     var xhr = new XMLHttpRequest();
+     xhr.open('GET', '//disqus.com/next/config.json', true);
+     xhr.timeout = 2500;
+     xhr.onreadystatechange = function () {
+       if (xhr.readyState === 4 && xhr.status === 200) {
+         $('.post-meta .post-comments-count').show();
+         var s = document.createElement('script');
+         s.id = 'dsq-count-scr';
+         s.src = 'https://liu-yan-ping-de-bo-ke.disqus.com/count.js';
+         s.async = true;
+         (document.head || document.body).appendChild(s);
+       }
+     };
+     xhr.ontimeout = function () { xhr.abort(); };
+     xhr.send(null);
+   });
+</script></div></div></div></div><div class="pure-u-1 pure-u-md-1-4"><div id="sidebar"><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a><span class="category-list-count">28</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">5</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/个人管理/" style="font-size: 15px;">个人管理</a> <a href="/tags/python/" style="font-size: 15px;">python</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/博客/" style="font-size: 15px;">博客</a> <a href="/tags/tensorflow/" style="font-size: 15px;">tensorflow</a> <a href="/tags/科学上网/" style="font-size: 15px;">科学上网</a> <a href="/tags/web/" style="font-size: 15px;">web</a> <a href="/tags/算法/" style="font-size: 15px;">算法</a> <a href="/tags/影评/" style="font-size: 15px;">影评</a> <a href="/tags/分享/" style="font-size: 15px;">分享</a> <a href="/tags/笔记/" style="font-size: 15px;">笔记</a> <a href="/tags/计算机网络/" style="font-size: 15px;">计算机网络</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/07/11/git使用指南/">Git 安装配置及基本使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/11/JS模态框blog/">JS 模态框————Angular</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/08/git常用命令/">Git常用命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/08/ubuntu配置前端环境/">Ubuntu 配置前端环境</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/08/每周分享第三周（6-8)/">每周分享第三周（6-8)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/08/盒模型/">盒模型</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/08/布尔变量在项目中的应用/">布尔变量在项目中的应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/08/yml文件操作方法/">Yml 文件操作方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/08/python采坑集合/">Python2 => Python3 踩坑集合</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/08/sublime-text-nodeJS配置/">Sublime Text3 配置node.js环境</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-comment-o"> 最近评论</i></div><script type="text/javascript" src="//liu-yan-ping-de-bo-ke.disqus.com/recent_comments_widget.js?num_items=5&amp;hide_avatars=1&amp;avatar_size=32&amp;excerpt_length=20&amp;hide_mods=1"></script></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="http://www.ruanyifeng.com/blog/" title="阮一峰的博客" target="_blank">阮一峰的博客</a><ul></ul><a title="微信公众号：刘艳萍的博客" target="_blank">微信公众号：刘艳萍的博客</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2018 <a href="/." rel="nofollow">Canace.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.css"><script type="text/javascript" color="160,160,160" opacity="0.5" zIndex="-1" count="50" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
