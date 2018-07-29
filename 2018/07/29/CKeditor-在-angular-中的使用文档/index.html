@@ -1,0 +1,82 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="分享改变世界"><title>CKeditor 在 Angular 中的使用文档 | Canace 的博客</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/8.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">CKeditor 在 Angular 中的使用文档</h1><a id="logo" href="/.">Canace 的博客</a><p class="description">Tomorrow is another day</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 主页</i></a><a href="/archives/"><i class="fa fa-archive"> 文章归档</i></a><a href="/about/"><i class="fa fa-user"> 关于我</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">CKeditor 在 Angular 中的使用文档</h1><div class="post-meta">Jul 29, 2018<span> | </span><span class="category"><a href="/categories/技术/">技术</a></span><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> 阅读</span></span></div><a class="disqus-comment-count" data-disqus-identifier="2018/07/29/CKeditor-在-angular-中的使用文档/" href="/2018/07/29/CKeditor-在-angular-中的使用文档/#disqus_thread"></a><div class="post-content"><ol>
+<li><p>下载 ckeditor;</p>
+</li>
+<li><p>把 ckeditor 解压并放到 angular 的 assets 文件中;</p>
+</li>
+<li><p>在 angular 的 index 文件中引用 ckeditor.js;</p>
+</li>
+<li><p>根据自己的需求修改 ckeditor 配置文件;</p>
+</li>
+<li><p>ckeditor相关配置说明:</p>
+</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">CKEDITOR.editorConfig = <span class="function"><span class="keyword">function</span>(<span class="params"> config </span>) </span>&#123;</span><br><span class="line">config.language = <span class="string">'zh-cn'</span>;          <span class="comment">// 编辑器语言</span></span><br><span class="line">config.skin = <span class="string">'moono'</span>;                <span class="comment">// 编辑器皮肤,需要下载并解压到 ckeditor 的 skins 文件夹下     </span></span><br><span class="line">config.allowedContent = <span class="literal">true</span>;   </span><br><span class="line">config.toolbar = <span class="string">'Full'</span>;                <span class="comment">// 工具条类型</span></span><br><span class="line">config.extraPlugins = <span class="string">'ckeditor_wiris'</span>;     <span class="comment">//  添加扩展插件 ckeditor_wiris</span></span><br><span class="line">config.toolbar_Full = [</span><br><span class="line">    [<span class="string">'Underline'</span>,<span class="string">'-'</span>,<span class="string">'Subscript'</span>,<span class="string">'Superscript'</span>,<span class="string">'RemoveFormat'</span>],</span><br><span class="line">    [<span class="string">'Image'</span>,<span class="string">'Table'</span>,<span class="string">'SpecialChar'</span>],</span><br><span class="line">    [ <span class="string">'ckeditor_wiris_formulaEditor'</span>]</span><br><span class="line">    ];                                                <span class="comment">// 配置工具条</span></span><br><span class="line">config.width = <span class="number">360</span>;                       <span class="comment">// 编辑器宽度设置</span></span><br><span class="line">config.resize_enabled = <span class="literal">false</span>;       <span class="comment">// 编辑器拖拽设置</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">CKEDITOR.plugins.addExternal(<span class="string">'ckeditor_wiris'</span>, <span class="string">'https://www.wiris.net/demo/plugins/ckeditor/'</span>, <span class="string">'plugin.js'</span>);          <span class="comment">// 扩展编辑器引用</span></span><br></pre></td></tr></table></figure>
+<ol start="6">
+<li><p>ckeditor 的使用有两种模式,一种是 inline 模式,使用方法是直接在相应的元素加上 contentable = “true” 即可生效, 第二种是 textarea 模式, 使用方法是以 class 的形式引用,这个我暂时还没有触及,之后再添加;</p>
+</li>
+<li><p>使用 ckeditor inline 模式会有一个广告,xx所见即所得编辑器, 这句话可以通过删除 ckeditor.js 文件中的一些语句来删掉,要删除的语句如下:</p>
+</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a.title = <span class="string">"string"</span> == <span class="keyword">typeof</span> d || !<span class="number">1</span> === d ? d : [a.lang.editor, a.name].join(<span class="string">", "</span>);</span><br></pre></td></tr></table></figure>
+<p>也可以通过设置 config.title = ‘ ‘， 去除编辑框的 title。</p>
+<ol start="8">
+<li>工具栏加数学公式插件的方法:</li>
+</ol>
+<p>(1) 下载 ckeditor_wiri , 下载asp版, 具体为什么,是因为我只学过asp.net, 看着有眼缘, 使用应该都没差吧;</p>
+<p>(2) config.js 添加如下语句:</p>
+<p>A. <code>config.extraPlugins = &#39;ckeditor_wiris&#39;;</code></p>
+<p>B. <code>[ &#39;ckeditor_wiris_formulaEditor&#39;]</code></p>
+<p>C. <code>CKEDITOR.plugins.addExternal(&#39;ckeditor_wiris&#39;, &#39;https://www.wiris.net/demo/plugins/ckeditor/&#39;, &#39;plugin.js&#39;);</code></p>
+<p>此外,要修改显示图标可以替换掉相应的icon</p>
+<ol start="9">
+<li><p>CKedditor inline 模式是默认初始化一个全局实例的，也就是在页面的所有地方用 contenteditable = true 都会初始化一个 inline 编辑器，而这并不是我们想要的结果，可以通过在 index.html 中添加以下语句，禁止自动初始化编辑器： <code>CKEDITOR.disableAutoInline = true;</code></p>
+</li>
+<li><p>禁用了默认初始化全局实例，我们要用的话，就自己在相应的组件初始化一个编辑器就行了，大概思路就是，创建一个 editors 变量用于存储 CKeditor 实例， 声明一个初始化编辑器的函数，函数接收所有类名为 ckeditor 的元素，遍历这些元素，在相应的节点上依次添加编辑器的实例（<br>CKEDITOR.inline(elements[i])），保存在 editors 中，在 ngAfterViewInit() 生命周期钩子中执行函数，目的是在文档加载完之后执行函数，因为一开始元素默认隐藏状态还没加载进来，初始化不了。在执行完了函数之后，为了提高性能，记得把初始化的实例都销毁掉。</p>
+</li>
+</ol>
+</div><div><ul class="post-copyright"><li class="post-copyright-author"><strong>本文作者：</strong>Canace</li><li class="post-copyright-link"><strong>本文链接：</strong><a href="/2018/07/29/CKeditor-在-angular-中的使用文档/">http://canace.site/2018/07/29/CKeditor-在-angular-中的使用文档/</a></li><li class="post-copyright-license"><strong>版权声明：</strong>转载请注明出处</li></ul></div><br><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a class="article-share-link" data-url="http://canace.site/2018/07/29/CKeditor-在-angular-中的使用文档/" data-id="cjk6knx7g0000uou8iabgr9mg" data-qrcode="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACuklEQVR42u3aMZLbMAwFUN//0snMtgntD4CQt3iqPLJM8bEgYICvV3z9+bn+/Xz69v2d6v3Tk9cuPDw8vNbUT9dkisl0k0knIxxHw8PDw1vjJcEgCQ+nZ95PYjLyBwseHh7eV3nvN+Xeb2+l9Xh4eHi/n1dNynNeL3jg4eHhPc9LihHJJCahJU/iV2oteHh4eDFvks5+6/ND/T08PDy8Yle9GiTyt1TT6+Zs8fDw8BZ4yeuTUFFtnr0fp3fcqvCPAQ8PD2/AqxZk8z//+bfzYvFxyfDw8PDWeHkJtZpY9w4f5G/5kKDj4eHhLfB6W/C1tlNxKZMjBf+5g4eHh7fAq267vQ36/eSq5d1qqQIPDw/vGd68qd8rZ1RLGIVFwcPDw7vES15TPViQB4DeEYRyGwwPDw/vEq+66U8aWtVgkyfcx8XFw8PDW+BVS7eTNLcaHvICR6GAi4eHh3eJN4Hl5eBkgfL2WB5s8PDw8O7yegWFXqOrWuCoJvqjM2V4eHh4MW/SWOpt6NUke5LK4+Hh4W3wotME46S5d7wg/+2HBhgeHh7eVV41VU2KCMmS9ZYyCS14eHh427xqmptPKy8uJGP23ouHh4e3wXsywZ0f6sobb3h4eHjbvGqCO2l0TZYyef5YpcbDw8Nb4OV/9ZPNOm+P5cWFXqMODw8P7y4vL9HOm1v5wYJ8Jh/GwcPDw1vm9a7XpStvwhVmgoeHh7fA6xVMqyWDSUnibnsMDw8Pb87bCAPzBD1Jl6MkGw8PD2+B90zKmxcgJocMqsuHh4eHN+FVJ7dX/M3xhZHx8PDw1ni9wkQeNnoHEarFiOPJCDw8PLwv8fK//ZMne4n+cQQ8PDy8X8NL7uepcC8dj+aDh4eHt8arFiPyHn2vfdULLddqLXh4eHhB5jk5EJCEh2YpIQgMZQweHh5en/cX3TMiFgI0KhQAAAAASUVORK5CYII=">分享</a><div class="tags"><a href="/tags/web/">web</a></div><div class="post-nav"><a class="pre" href="/2018/07/29/angular-导航栏与内容联动/">Angular 导航栏与内容联动</a><a class="next" href="/2018/07/11/git使用指南/">Git 安装配置及基本使用</a></div><div id="disqus_thread"><div class="btn_click_load"><button class="disqus_click_btn">阅读评论（请确保 Disqus 可以正常加载）</button></div><script type="text/javascript">var disqus_config = function () {
+    this.page.url = 'http://canace.site/2018/07/29/CKeditor-在-angular-中的使用文档/';
+    this.page.identifier = '2018/07/29/CKeditor-在-angular-中的使用文档/';
+    this.page.title = 'CKeditor 在 Angular 中的使用文档';
+  };</script><script type="text/javascript" id="disqus-lazy-load-script">$.ajax({
+url: 'https://disqus.com/next/config.json',
+timeout: 2500,
+type: 'GET',
+success: function(){
+  var d = document;
+  var s = d.createElement('script');
+  s.src = '//liu-yan-ping-de-bo-ke.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', + new Date());
+  (d.head || d.body).appendChild(s);
+  $('.disqus_click_btn').css('display', 'none');
+},
+error: function() {
+  $('.disqus_click_btn').css('display', 'block');
+}
+});</script><script type="text/javascript" id="disqus-click-load">$('.btn_click_load').click(() => {  //click to load comments
+    (() => { // DON'T EDIT BELOW THIS LINE
+        var d = document;
+        var s = d.createElement('script');
+        s.src = '//liu-yan-ping-de-bo-ke.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', + new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+    $('.disqus_click_btn').css('display','none');
+});</script><script type="text/javascript" id="disqus-count-script">$(function() {
+     var xhr = new XMLHttpRequest();
+     xhr.open('GET', '//disqus.com/next/config.json', true);
+     xhr.timeout = 2500;
+     xhr.onreadystatechange = function () {
+       if (xhr.readyState === 4 && xhr.status === 200) {
+         $('.post-meta .post-comments-count').show();
+         var s = document.createElement('script');
+         s.id = 'dsq-count-scr';
+         s.src = 'https://liu-yan-ping-de-bo-ke.disqus.com/count.js';
+         s.async = true;
+         (document.head || document.body).appendChild(s);
+       }
+     };
+     xhr.ontimeout = function () { xhr.abort(); };
+     xhr.send(null);
+   });
+</script></div></div></div></div><div class="pure-u-1 pure-u-md-1-4"><div id="sidebar"><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a><span class="category-list-count">32</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">5</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/个人管理/" style="font-size: 15px;">个人管理</a> <a href="/tags/web/" style="font-size: 15px;">web</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/博客/" style="font-size: 15px;">博客</a> <a href="/tags/tensorflow/" style="font-size: 15px;">tensorflow</a> <a href="/tags/科学上网/" style="font-size: 15px;">科学上网</a> <a href="/tags/python/" style="font-size: 15px;">python</a> <a href="/tags/算法/" style="font-size: 15px;">算法</a> <a href="/tags/影评/" style="font-size: 15px;">影评</a> <a href="/tags/分享/" style="font-size: 15px;">分享</a> <a href="/tags/笔记/" style="font-size: 15px;">笔记</a> <a href="/tags/计算机网络/" style="font-size: 15px;">计算机网络</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/07/29/hexo-博客迁移/">Hexo 博客迁移</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/29/CSS-小技巧/">CSS 小技巧</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/29/angular-导航栏与内容联动/">Angular 导航栏与内容联动</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/29/CKeditor-在-angular-中的使用文档/">CKeditor 在 Angular 中的使用文档</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/11/git使用指南/">Git 安装配置及基本使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/11/JS模态框blog/">JS 模态框————Angular</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/08/git常用命令/">Git常用命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/08/ubuntu配置前端环境/">Ubuntu 配置前端环境</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/08/每周分享第三周（6-8)/">每周分享第三周（6-8)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/08/盒模型/">盒模型</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-comment-o"> 最近评论</i></div><script type="text/javascript" src="//liu-yan-ping-de-bo-ke.disqus.com/recent_comments_widget.js?num_items=5&amp;hide_avatars=1&amp;avatar_size=32&amp;excerpt_length=20&amp;hide_mods=1"></script></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="http://www.ruanyifeng.com/blog/" title="阮一峰的博客" target="_blank">阮一峰的博客</a><ul></ul><a title="微信公众号：刘艳萍的博客" target="_blank">微信公众号：刘艳萍的博客</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2018 <a href="/." rel="nofollow">Canace.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.css"><script type="text/javascript" color="160,160,160" opacity="0.5" zIndex="-1" count="50" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
