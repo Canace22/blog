@@ -23,8 +23,7 @@
 </li>
 </ol>
 <hr>
-<p>###Git 本地分支管理</p>
-<ol>
+<h3 id="Git-本地分支管理"><a href="#Git-本地分支管理" class="headerlink" title="Git 本地分支管理"></a>Git 本地分支管理</h3><ol>
 <li><p>分支的创建、合并、删除</p>
 <p>git branch，显示所有分支</p>
 <p>git branch b1，从当前分支创建一个叫 b1 的分支</p>
@@ -36,16 +35,14 @@
 </li>
 </ol>
 <hr>
-<p>###Git Tag 标签管理</p>
-<ol>
+<h3 id="Git-Tag-标签管理"><a href="#Git-Tag-标签管理" class="headerlink" title="Git Tag 标签管理"></a>Git Tag 标签管理</h3><ol>
 <li><p>标签的创建、删除</p>
 <p>git tag t1，从当前分支创建一个名为 t1 的标签</p>
 <p>git tag -d t1，删除名为 t1 的标签</p>
 </li>
 </ol>
 <hr>
-<p>###GitLib 权限管理</p>
-<ul>
+<h3 id="GitLib-权限管理"><a href="#GitLib-权限管理" class="headerlink" title="GitLib 权限管理"></a>GitLib 权限管理</h3><ul>
 <li><p>Owner 项目所有者，拥有所有的操作权限</p>
 </li>
 <li><p>Master 项目的管理者，除更改、删除项目元信息外其它操作均可</p>
@@ -59,10 +56,8 @@
 </li>
 </ul>
 <hr>
-<p>###为什么要有分支</p>
-<pre><code>建立分支的原因是 git 因为是分布式的，所以其核心就是分支，分支的意义在于，可以将项目代码按照功能、模块拆分成不同的分支。比如这个产品要加一个支付功能和一个登陆功能，可以创建两个分支，交给不同的开发人员并行开发。登陆功能先开发完，测试无误后合并改分支到 master 分支，master 分支部署上线。支付功能虽然没有开发完成，但是在另一条分支上，所以产品上线和功能开发完全不受影响。这才是分布式开发的高效模式。还有这样，以自己名字建立一个分支比如 xiancai，这个分支是已经做好的功能，随时可以合并到 master 上线，开发的时候，建立一个带功能前缀的分支，比如 xiancai-ninghao 、xiancai-ninghao 等等，开发完之后在合并到 xiancai，每次上线，把 xiancai 合并到 master 。总之分支的做重要的意义就是提高效率！！！ 这样方便团队开发，并且不会导致混乱。
-</code></pre><p>###分支有如下几条：</p>
-<ol>
+<h3 id="为什么要有分支"><a href="#为什么要有分支" class="headerlink" title="为什么要有分支"></a>为什么要有分支</h3><p>建立分支的原因是 git 因为是分布式的，所以其核心就是分支，分支的意义在于，可以将项目代码按照功能、模块拆分成不同的分支。比如这个产品要加一个支付功能和一个登陆功能，可以创建两个分支，交给不同的开发人员并行开发。登陆功能先开发完，测试无误后合并改分支到 master 分支，master 分支部署上线。支付功能虽然没有开发完成，但是在另一条分支上，所以产品上线和功能开发完全不受影响。这才是分布式开发的高效模式。还有这样，以自己名字建立一个分支比如 xiancai，这个分支是已经做好的功能，随时可以合并到 master 上线，开发的时候，建立一个带功能前缀的分支，比如 xiancai-ninghao 、xiancai-ninghao 等等，开发完之后在合并到 xiancai，每次上线，把 xiancai 合并到 master 。总之分支的做重要的意义就是提高效率！！！ 这样方便团队开发，并且不会导致混乱。</p>
+<h3 id="分支有如下几条："><a href="#分支有如下几条：" class="headerlink" title="分支有如下几条："></a>分支有如下几条：</h3><ol>
 <li><p>Master 主分支</p>
 </li>
 <li><p>Develop 分支</p>
@@ -72,10 +67,9 @@
 <li><p>Release 预发布分支</p>
 </li>
 <li><p>Hotfix（或者 Fixbug） 分支</p>
-<p>以上各分支之间的逻辑关系见下图；</p>
-<p>其中对于 Feature 功能分支有；</p>
 </li>
 </ol>
+<p>其中对于 Feature 功能分支有:</p>
 <ul>
 <li><p>从哪个分支分离开来：develop</p>
 </li>
@@ -98,11 +92,8 @@
 <li><p>分支的命名规范：hotfix-_ 或者 fixbug-_</p>
 </li>
 </ul>
-<p>###主分支</p>
-<p>###Master 主分支</p>
-<pre><code>首先，代码库应该有一个、且仅有一个主分支。所有提供给用户使用的正式版本，都在这个主分支上发布。Git 主分支的名字，默认叫做 Master。它是自动建立的，版本库初始化以后，默认就是在主分支在进行开发。
-</code></pre><p>###Develop 分支</p>
-<pre><code>主分支只用来发布重大版本，日常开发应该在另一条分支上完成。我们把开发用的分支，叫做 Develop。
+<h3 id="主分支"><a href="#主分支" class="headerlink" title="主分支"></a>主分支</h3><h3 id="Master-主分支"><a href="#Master-主分支" class="headerlink" title="Master 主分支"></a>Master 主分支</h3><pre><code>首先，代码库应该有一个、且仅有一个主分支。所有提供给用户使用的正式版本，都在这个主分支上发布。Git 主分支的名字，默认叫做 Master。它是自动建立的，版本库初始化以后，默认就是在主分支在进行开发。
+</code></pre><h3 id="Develop-分支"><a href="#Develop-分支" class="headerlink" title="Develop 分支"></a>Develop 分支</h3><pre><code>主分支只用来发布重大版本，日常开发应该在另一条分支上完成。我们把开发用的分支，叫做 Develop。
 
 创建分支
 
@@ -119,10 +110,8 @@ git merge --no-ff develop   #把 develop 合并到 master 分支，no-ff 选项�
 git branch -d develop       #删除 develop 分支
 
 这里稍微解释一下，上一条命令的--no-ff参数是什么意思。默认情况下，Git执行&quot;快进式合并&quot;（fast-farward merge），会直接将Master分支指向Develop分支。
-</code></pre><p>###次分支</p>
-<pre><code>除了 master 与 develop 这两个主分支，在开发时还可以创建一些次分支，目的是让团队不同的成员之间可以平行开发，更容易跟踪功能，准备为生产的发行版，快速修复生产上的问题等等。这些分支生命周期有限，可以在用完以后删掉他们。
-</code></pre><p>###Feature 功能分支</p>
-<pre><code>Feature（功能） 分支，有时候也叫 Topic 分支。在这种分支上去开发新的功能。当开发功能的时候，这个功能属于哪个目标发行还不知道。功能如果一直在开发，对应的这个功能分支就可以一直存在，不过到最后还是要合并到 develop 分支上，或者如果不想要开发的这个功能了，可以直接扔掉它。
+</code></pre><h3 id="次分支"><a href="#次分支" class="headerlink" title="次分支"></a>次分支</h3><pre><code>除了 master 与 develop 这两个主分支，在开发时还可以创建一些次分支，目的是让团队不同的成员之间可以平行开发，更容易跟踪功能，准备为生产的发行版，快速修复生产上的问题等等。这些分支生命周期有限，可以在用完以后删掉他们。
+</code></pre><h3 id="Feature-功能分支"><a href="#Feature-功能分支" class="headerlink" title="Feature 功能分支"></a>Feature 功能分支</h3><pre><code>Feature（功能） 分支，有时候也叫 Topic 分支。在这种分支上去开发新的功能。当开发功能的时候，这个功能属于哪个目标发行还不知道。功能如果一直在开发，对应的这个功能分支就可以一直存在，不过到最后还是要合并到 develop 分支上，或者如果不想要开发的这个功能了，可以直接扔掉它。
 
 功能名字的命名已经在上文中有提到。
 
@@ -151,8 +140,7 @@ git checkout -b release-1.2 develop
 git checkout master
 
 git merge --no-ff release-1.2
-</code></pre><p>#对合并生成的新节点，做一个标签</p>
-<pre><code>git tag -a 1.2
+</code></pre><h1 id="对合并生成的新节点，做一个标签"><a href="#对合并生成的新节点，做一个标签" class="headerlink" title="对合并生成的新节点，做一个标签"></a>对合并生成的新节点，做一个标签</h1><pre><code>git tag -a 1.2
 
 再合并到develop分支：
 
@@ -189,7 +177,7 @@ git merge --no-ff fixbug-0.1
 最后，删除&quot;修补bug分支&quot;：
 
 git branch -d fixbug-0.1
-</code></pre></div><div><ul class="post-copyright"><li class="post-copyright-author"><strong>本文作者：</strong>Canace</li><li class="post-copyright-link"><strong>本文链接：</strong><a href="/2018/07/11/git使用指南/">https://canace.site/2018/07/11/git使用指南/</a></li><li class="post-copyright-license"><strong>版权声明：</strong>转载请注明出处</li></ul></div><br><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a class="article-share-link" data-url="https://canace.site/2018/07/11/git使用指南/" data-id="cjpt23evc000snwu80p5e7bwp" data-qrcode="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJ0lEQVR42u3aQW7DMAwEwPz/0+61QBt5STYFLI1PRhJbmhwIUuTrFV/Xj+v75+/u10+tP3994sLAwHgs41pe6wXWT615+d+UrIKBgXEC410Ey4Npb3P5ujd7xsDAwIh/81efYGBgYPxtwE3e0wuyGBgYGNUidn7elYM/WItjYGA8kJGfuv///Uf6GxgYGI9iXMUrCY69bV2DCwMDY29Gb5k8mZsPcBT2g4GBsSmjehBWhfWSwrzobZ7nYWBgPIoxOaCfR/pJa/NmXQwMjI0YydhW9Wi+d3CftEjfPoWBgXEAIw+jvXGueRJ58zYMDIytGetsMQ/H1fQuf8Oo14qBgbERo/dYvoleYVz+PQYGxqaMPGnLC9q8GM43ehPuMTAwtmZUG5bz9mc+YNFbEQMDY1dGtdSsHutXk8hqyoiBgbE3Y3LU1dtE9T7CYGBgHMDIxybyjU6GJ8rtAQwMjK0Zk7GtXksyKV97O8HAwNibUd1Er3LMC9demoiBgXEao9fazJO83rfRoRsGBsYBjF5SWF2+Go6jsI6BgXEAI0/Fqk3N6h9XbUhgYGDszZiMqFafytsA5VFXDAyMrRnVMNdrZyYthOpwxqi/gYGB8UBGHmTnaVz+R4wmRzAwMDZlzAcskvGyQktyUotjYGBgtIYzegliMpyBgYGB0bufbCupuX95GwYGxgGMvBmQtz+rY2T5AR8GBsZpjGrpmA+KzdPNSYjHwMDYgvEFfKeyUN9163UAAAAASUVORK5CYII=">分享</a><div class="tags"><a href="/tags/git/">git</a></div><div class="post-nav"><a class="pre" href="/2018/07/29/CKeditor-在-angular-中的使用文档/">CKeditor 在 Angular 中的使用文档</a><a class="next" href="/2018/07/11/JS模态框blog/">JS 模态框————Angular</a></div><div id="disqus_thread"><div class="btn_click_load"><button class="disqus_click_btn">阅读评论（请确保 Disqus 可以正常加载）</button></div><script type="text/javascript">var disqus_config = function () {
+</code></pre></div><div><ul class="post-copyright"><li class="post-copyright-author"><strong>本文作者：</strong>Canace</li><li class="post-copyright-link"><strong>本文链接：</strong><a href="/2018/07/11/git使用指南/">https://canace.site/2018/07/11/git使用指南/</a></li><li class="post-copyright-license"><strong>版权声明：</strong>转载请注明出处</li></ul></div><br><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a class="article-share-link" data-url="https://canace.site/2018/07/11/git使用指南/" data-id="cjpt2b5aa000soou8i9gz7ms2" data-qrcode="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJ0lEQVR42u3aQW7DMAwEwPz/0+61QBt5STYFLI1PRhJbmhwIUuTrFV/Xj+v75+/u10+tP3994sLAwHgs41pe6wXWT615+d+UrIKBgXEC410Ey4Npb3P5ujd7xsDAwIh/81efYGBgYPxtwE3e0wuyGBgYGNUidn7elYM/WItjYGA8kJGfuv///Uf6GxgYGI9iXMUrCY69bV2DCwMDY29Gb5k8mZsPcBT2g4GBsSmjehBWhfWSwrzobZ7nYWBgPIoxOaCfR/pJa/NmXQwMjI0YydhW9Wi+d3CftEjfPoWBgXEAIw+jvXGueRJ58zYMDIytGetsMQ/H1fQuf8Oo14qBgbERo/dYvoleYVz+PQYGxqaMPGnLC9q8GM43ehPuMTAwtmZUG5bz9mc+YNFbEQMDY1dGtdSsHutXk8hqyoiBgbE3Y3LU1dtE9T7CYGBgHMDIxybyjU6GJ8rtAQwMjK0Zk7GtXksyKV97O8HAwNibUd1Er3LMC9demoiBgXEao9fazJO83rfRoRsGBsYBjF5SWF2+Go6jsI6BgXEAI0/Fqk3N6h9XbUhgYGDszZiMqFafytsA5VFXDAyMrRnVMNdrZyYthOpwxqi/gYGB8UBGHmTnaVz+R4wmRzAwMDZlzAcskvGyQktyUotjYGBgtIYzegliMpyBgYGB0bufbCupuX95GwYGxgGMvBmQtz+rY2T5AR8GBsZpjGrpmA+KzdPNSYjHwMDYgvEFfKeyUN9163UAAAAASUVORK5CYII=">分享</a><div class="tags"><a href="/tags/git/">git</a></div><div class="post-nav"><a class="pre" href="/2018/07/29/CKeditor-在-angular-中的使用文档/">CKeditor 在 Angular 中的使用文档</a><a class="next" href="/2018/07/11/JS模态框blog/">JS 模态框————Angular</a></div><div id="disqus_thread"><div class="btn_click_load"><button class="disqus_click_btn">阅读评论（请确保 Disqus 可以正常加载）</button></div><script type="text/javascript">var disqus_config = function () {
     this.page.url = 'https://canace.site/2018/07/11/git使用指南/';
     this.page.identifier = '2018/07/11/git使用指南/';
     this.page.title = 'Git 安装配置及基本使用';
