@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>下拉列表的实现</title>
+      <link href="/2019/09/01/%E4%B8%8B%E6%8B%89%E5%88%97%E8%A1%A8%E7%9A%84%E5%AE%9E%E7%8E%B0/"/>
+      <url>/2019/09/01/%E4%B8%8B%E6%8B%89%E5%88%97%E8%A1%A8%E7%9A%84%E5%AE%9E%E7%8E%B0/</url>
+      
+        <content type="html"><![CDATA[<p>用别人的组件总有各种不可控的问题，而且不好维护，还是造轮子比较舒畅。</p><p>下拉列表是工作中经常用到的一个功能，点击按钮，显示下拉列表，点击列表中的项目显示对应的值到按钮中，这是下拉列表的常用交互。这里的一个比较有意思的点就是如何在点击别的地方时关闭列表。我采用的方法是监听组件最外层的 blur 事件，当该组件失去焦点时，关闭列表。由于按钮用的是 div 实现，默认 div 是没有 blur 事件的，这里添加一个 tabindex 属性， blur 就有效了。</p><p>demo：</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- html --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"dropDown-wrap"</span> <span class="attr">tabindex</span>=<span class="string">"1"</span> @<span class="attr">blur</span>=<span class="string">"hidden"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"dropDown"</span> @<span class="attr">click</span>=<span class="string">"isDropDown=!isDropDown"</span>&gt;</span></span><br><span class="line">    &#123;&#123;selected.name&#125;&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">svg</span> <span class="attr">class</span>=<span class="string">"arrow-right"</span> <span class="attr">role</span>=<span class="string">"presentation"</span> <span class="attr">v-show</span>=<span class="string">"isIcon"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">polyline</span> <span class="attr">points</span>=<span class="string">"7,0 14,7 7,14"</span> <span class="attr">fill</span>=<span class="string">"none"</span> <span class="attr">stroke-width</span>=<span class="string">"2px"</span> <span class="attr">stroke</span>=<span class="string">"#fff"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">svg</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"arrow-up"</span> <span class="attr">:class</span>=<span class="string">"&#123;isDropDown:isDropDown&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"dropDown-list"</span> <span class="attr">:class</span>=<span class="string">"&#123;isDropDown:isDropDown&#125;"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span></span></span><br><span class="line"><span class="tag">      <span class="attr">class</span>=<span class="string">"dropDown-item"</span></span></span><br><span class="line"><span class="tag">      <span class="attr">:class</span>=<span class="string">"&#123;isSelected:selected.id===item.id&#125;"</span></span></span><br><span class="line"><span class="tag">      <span class="attr">v-for</span>=<span class="string">"(item,index) in list"</span></span></span><br><span class="line"><span class="tag">      <span class="attr">:key</span>=<span class="string">"index"</span></span></span><br><span class="line"><span class="tag">      @<span class="attr">click</span>=<span class="string">"selectItem(item)"</span></span></span><br><span class="line"><span class="tag">    &gt;</span>&#123;&#123;item.name&#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">selectItem (item) &#123;</span><br><span class="line">  <span class="keyword">this</span>.$emit(<span class="string">'changeItem'</span>, item)</span><br><span class="line">  <span class="keyword">this</span>.isDropDown = <span class="literal">false</span></span><br><span class="line">&#125;,</span><br><span class="line">hidden () &#123;</span><br><span class="line">  <span class="keyword">this</span>.isDropDown = <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h4 id="三、Demo-地址"><a href="#三、Demo-地址" class="headerlink" title="三、Demo 地址"></a>三、Demo 地址</h4><p><a href="https://canace22.github.io/Demos/#/" target="_blank" rel="noopener">Demo</a> =&gt; 媒体 =&gt; 列表控件</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> web </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> vue 组件 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Canvas 画动态路径</title>
       <link href="/2019/08/25/Canvas%E7%94%BB%E5%8A%A8%E6%80%81%E8%B7%AF%E5%BE%84/"/>
       <url>/2019/08/25/Canvas%E7%94%BB%E5%8A%A8%E6%80%81%E8%B7%AF%E5%BE%84/</url>
@@ -33,7 +58,7 @@
       <link href="/2019/08/17/npm%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
       <url>/2019/08/17/npm%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
       
-        <content type="html"><![CDATA[<p>1、安装</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">npm i &lt;package&gt;</span><br><span class="line"></span><br><span class="line">npm i &lt;package&gt; -g</span><br><span class="line"></span><br><span class="line">npm i &lt;package&gt; --save-dev</span><br><span class="line"></span><br><span class="line">npm install @myco/my-package</span><br></pre></td></tr></table></figure><p>2、切换源</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 长久切换</span><br><span class="line">npm config set registry &lt;https://registry.npm.taobao.org&gt;</span><br><span class="line"></span><br><span class="line"># 临时切换</span><br><span class="line">npm --registry https://registry.npm.taobao.org install express</span><br></pre></td></tr></table></figure><p>3、添加私有源</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config set &lt;@myco&gt;:registry &lt;http://reg.example.com&gt;</span><br></pre></td></tr></table></figure>]]></content>
+        <content type="html"><![CDATA[<p>1、安装</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">npm i &lt;package&gt;</span><br><span class="line"></span><br><span class="line">npm i &lt;package&gt; -g</span><br><span class="line"></span><br><span class="line">npm i &lt;package&gt; --save-dev</span><br><span class="line"></span><br><span class="line">npm install @myco/my-package</span><br></pre></td></tr></table></figure><p>2、切换源</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 长久切换</span><br><span class="line">npm config set registry &lt;https://registry.npm.taobao.org&gt;</span><br><span class="line"></span><br><span class="line"># 临时切换</span><br><span class="line">npm --registry https://registry.npm.taobao.org install express</span><br></pre></td></tr></table></figure><p>3、添加私有源</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// 需要先登录</span><br><span class="line">npm config set &lt;@myco&gt;:registry &lt;http://reg.example.com&gt;</span><br><span class="line">.npmrc</span><br><span class="line">registry=https://registry.npmjs.org/</span><br><span class="line">//registry.npm.dreamdev.cn/:_password=&lt;password&gt;</span><br><span class="line">//registry.npm.dreamdev.cn/:username=&lt;user&gt;</span><br><span class="line">//registry.npm.dreamdev.cn/:email=&lt;email&gt;</span><br><span class="line">//registry.npm.dreamdev.cn/:always-auth=false</span><br><span class="line">@myco:registry= &lt;http://reg.example.com&gt;</span><br><span class="line">https://registry.npm.dreamdev.cn/=</span><br></pre></td></tr></table></figure>]]></content>
       
       
       <categories>
@@ -2179,11 +2204,11 @@
     
     
     <entry>
-      <title>Git域名配置</title>
-      <link href="/2017/05/09/git%E5%9F%9F%E5%90%8D%E9%85%8D%E7%BD%AE/"/>
-      <url>/2017/05/09/git%E5%9F%9F%E5%90%8D%E9%85%8D%E7%BD%AE/</url>
+      <title>Git环境配置</title>
+      <link href="/2017/05/09/git%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
+      <url>/2017/05/09/git%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</url>
       
-        <content type="html"><![CDATA[<ol><li><p>在 Godaddy 购买的域名；</p></li><li><p>查找 DNSpod 解析域名，没什么难度，就是添加一条记录，保存而已，记得在添加域名到 DNSpod 之后，复制两个 NS 地址到 godaddy 的域名服务器下；</p></li><li><p>Git 项目根目录下创建 CNAME 文件，把域名填进去，push 就行了。</p></li></ol>]]></content>
+        <content type="html"><![CDATA[<p>结合了一些网上的方法，结合自己配置的实际情况写的文档。</p><ol><li><p>下载 git 主程序，下载地址：<a href="https://git-scm.com/downloads，" target="_blank" rel="noopener">https://git-scm.com/downloads，</a> 双击安装包，一路 next 就行；</p></li><li><p>对于技术小白的我来说，命令行神马的太复杂了，所以就需要一个 git 界面画的软件来帮助我啦，这个软件就是 TortoiseGit，下载地址：<a href="https://tortoisegit.org/download/，" target="_blank" rel="noopener">https://tortoisegit.org/download/，</a> 分为 32 位版和 64 位版，下载时要选好，安装的时候也是一路 next；</p></li><li><p>接下来就是解决怎么把本地项目关联发布到 git 上的问题了；</p></li></ol><p>(1) 首先打开 git 上的项目，复制 git 的 HTTP 地址；</p><p>(2) 然后创打开硬盘里的一个目录，最好是专门开发用的目录，点右键，选择“Git Clone…”，将地址复制进去，点击 OK；<br>(3) 出现 Success 提示，就代表 clone 成功了，close 掉对话框，然后就出现了名为 git 项目的文件夹了；</p><ol start="4"><li>本地改动保存为一个版本，我们以新建文件为例；</li></ol><p>(1) 首先，打开刚才生成文件夹，新建一个名为 readme.txt 的空文件；</p><p>(2) 然后在这里鼠标右击，选择 Git Commit -&gt; “master”…，会弹出一个对话框（注意：这里可能会提醒设置用户名、密码 和邮箱，点击确定，填写 git 账户的用户名和注册邮箱以及密码即可）；</p>]]></content>
       
       
       <categories>
@@ -2204,11 +2229,11 @@
     
     
     <entry>
-      <title>Git环境配置</title>
-      <link href="/2017/05/09/git%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
-      <url>/2017/05/09/git%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</url>
+      <title>Git域名配置</title>
+      <link href="/2017/05/09/git%E5%9F%9F%E5%90%8D%E9%85%8D%E7%BD%AE/"/>
+      <url>/2017/05/09/git%E5%9F%9F%E5%90%8D%E9%85%8D%E7%BD%AE/</url>
       
-        <content type="html"><![CDATA[<p>结合了一些网上的方法，结合自己配置的实际情况写的文档。</p><ol><li><p>下载 git 主程序，下载地址：<a href="https://git-scm.com/downloads，" target="_blank" rel="noopener">https://git-scm.com/downloads，</a> 双击安装包，一路 next 就行；</p></li><li><p>对于技术小白的我来说，命令行神马的太复杂了，所以就需要一个 git 界面画的软件来帮助我啦，这个软件就是 TortoiseGit，下载地址：<a href="https://tortoisegit.org/download/，" target="_blank" rel="noopener">https://tortoisegit.org/download/，</a> 分为 32 位版和 64 位版，下载时要选好，安装的时候也是一路 next；</p></li><li><p>接下来就是解决怎么把本地项目关联发布到 git 上的问题了；</p></li></ol><p>(1) 首先打开 git 上的项目，复制 git 的 HTTP 地址；</p><p>(2) 然后创打开硬盘里的一个目录，最好是专门开发用的目录，点右键，选择“Git Clone…”，将地址复制进去，点击 OK；<br>(3) 出现 Success 提示，就代表 clone 成功了，close 掉对话框，然后就出现了名为 git 项目的文件夹了；</p><ol start="4"><li>本地改动保存为一个版本，我们以新建文件为例；</li></ol><p>(1) 首先，打开刚才生成文件夹，新建一个名为 readme.txt 的空文件；</p><p>(2) 然后在这里鼠标右击，选择 Git Commit -&gt; “master”…，会弹出一个对话框（注意：这里可能会提醒设置用户名、密码 和邮箱，点击确定，填写 git 账户的用户名和注册邮箱以及密码即可）；</p>]]></content>
+        <content type="html"><![CDATA[<ol><li><p>在 Godaddy 购买的域名；</p></li><li><p>查找 DNSpod 解析域名，没什么难度，就是添加一条记录，保存而已，记得在添加域名到 DNSpod 之后，复制两个 NS 地址到 godaddy 的域名服务器下；</p></li><li><p>Git 项目根目录下创建 CNAME 文件，把域名填进去，push 就行了。</p></li></ol>]]></content>
       
       
       <categories>
