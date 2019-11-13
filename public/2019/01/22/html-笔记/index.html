@@ -1,0 +1,146 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.9.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="分享改变世界"><title>Html 笔记 | Canace 的博客</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/8.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Html 笔记</h1><a id="logo" href="/.">Canace 的博客</a><p class="description">Tomorrow is another day</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 主页</i></a><a href="/archives/"><i class="fa fa-archive"> 文章归档</i></a><a href="/about/"><i class="fa fa-user"> 关于我</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">Html 笔记</h1><div class="post-meta">Jan 22, 2019<span> | </span><span class="category"><a href="/categories/web/">web</a></span><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> 阅读</span></span><span class="post-time"><span class="post-meta-item-text"> | </span><span class="post-meta-item-icon"><i class="fa fa-keyboard-o"></i><span class="post-count"> 658</span><span class="post-meta-item-text"> 字</span></span></span><span class="post-time"> | <span class="post-meta-item-icon"><i class="fa fa-hourglass-half"></i><span class="post-count"> 2</span><span class="post-meta-item-text"> 分钟</span></span></span></div><a class="disqus-comment-count" data-disqus-identifier="2019/01/22/html-笔记/" href="/2019/01/22/html-笔记/#disqus_thread"></a><div class="post-content"><p>html 笔记</p>
+<a id="more"></a>
+<h2 id="一、html-是什么？"><a href="#一、html-是什么？" class="headerlink" title="一、html 是什么？"></a>一、html 是什么？</h2><ol>
+<li><p>html 是使用标记标签来描述网页的一种标记语言。</p>
+</li>
+<li><p>html 文档 = 网页。</p>
+</li>
+<li><p>除了空元素，其他元素都要闭合</p>
+</li>
+<li><p>推荐使用小写</p>
+</li>
+<li><p>大多数元素具有以下属性：class、id、style、title</p>
+</li>
+</ol>
+<h2 id="二、常用元素："><a href="#二、常用元素：" class="headerlink" title="二、常用元素："></a>二、常用元素：</h2><ol>
+<li><p>标题：h</p>
+</li>
+<li><p>段落：p</p>
+</li>
+<li><p>图形：img、canvas</p>
+</li>
+<li><p>链接：a</p>
+<p>A. 新的浏览器中打开链接（target=“_blank”)</p>
+<p>B. 链接到同一个页面的不同位置：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#C4"</span>&gt;</span>查看 Chapter 4。<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">name</span>=<span class="string">"C4"</span>&gt;</span>Chapter 4<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>C. 创建邮件链接：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"mailto:someone@microsoft.com?subject=Hello%20again"</span>&gt;</span>发送邮件<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>水平线：hr</p>
+</li>
+<li><p>折行：br</p>
+</li>
+<li><p>文本格式化：b（粗体）、em（强调）、i（斜体）、small（小号）、strong（加重语气）、sub（下标字）、sup（上标字）、ins（插入字）、del（删除字）</p>
+</li>
+<li><p>预格式文本：pre</p>
+</li>
+<li><p>地址：address</p>
+</li>
+<li><p>块引用：blockquote</p>
+</li>
+<li><p>著作标题：cite</p>
+</li>
+<li><p>表格：table、caption（标题）、tr（行）、th（表头）、td（单元格）、colspan（跨行属性）、rowspan（跨列属性）、cellpadding（单元格间距）、</p>
+</li>
+<li><p>列表：ul（无序列表，type：disc、circle、square）、ol（有序列表，type：A、a、I、i）、li（列表项）</p>
+</li>
+<li><p>语义元素：header（页眉）、nav（导航链接的容器）、section（章节）、article（独立的文章）、aside（侧栏）、footer（页脚）</p>
+</li>
+<li><p>表单：form(action、method, target)、<a href="&#39;http://www.w3school.com.cn/html/html_form_input_types.asp&#39;">input</a>(name、value、输入限制、输入类型)、select、option（selected）、textarea、button、datalist</p>
+</li>
+<li><p>媒体元素：audio、embed、video</p>
+</li>
+<li><p>其他：div、span</p>
+</li>
+</ol>
+<h2 id="三、元素分类："><a href="#三、元素分类：" class="headerlink" title="三、元素分类："></a>三、元素分类：</h2><ol>
+<li><p>块级元素：在浏览器显示时，通常会以新行来开始和结束</p>
+</li>
+<li><p>内联元素：内联元素在显示时通常不会以新行开始</p>
+</li>
+</ol>
+<h2 id="四、url-组成：scheme-host-domain-port-path-filename"><a href="#四、url-组成：scheme-host-domain-port-path-filename" class="headerlink" title="四、url 组成：scheme://host.domain:port/path/filename"></a>四、url 组成：scheme://host.domain:port/path/filename</h2><ol>
+<li><p>scheme - 因特网服务的类型。最常见的类型是 http， 还包括：https、ftp、file</p>
+</li>
+<li><p>host - 域主机（http 的默认主机是 www）</p>
+</li>
+<li><p>domain - 域名，比如 w3school.com.cn</p>
+</li>
+<li><p>:port - 端口号（http 的默认端口号是 80）</p>
+</li>
+<li><p>path - 服务器上的路径（如果省略，则文档必须位于网站的根目录中）。</p>
+</li>
+<li><p>filename - 文档/资源的名称</p>
+</li>
+</ol>
+<h2 id="五、HTML-图形"><a href="#五、HTML-图形" class="headerlink" title="五、HTML 图形"></a>五、HTML 图形</h2><ol>
+<li><p>canvas：</p>
+<p>(1) 本质：创建画布，使用 JavaScript 画布上绘制图像，本身不具备绘图功能。</p>
+<p>(2) 绘图步骤：获取元素(getContext(“2d”)) =&gt; 设置形状、样式等</p>
+<p>(3) 常用属性：fillStyle、</p>
+<p>(4) 常用事件：getContext、fillRect、moveTo、lineTo、stroke、beginPath、arc、closePath、fill、createLinearGradient、drawImageaddColorStop</p>
+</li>
+<li><p>svg：</p>
+<p>(1) 本质：可伸缩的矢量图形</p>
+<p>(2) 图形创建方式：使用 xml 定义</p>
+<p>(3) 特性：图像在放大或改变尺寸的情况下其图形质量不变</p>
+</li>
+</ol>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ol>
+<li><p>响应式 web 设计（RWD，Responsive Web Design）， 是能够以可变尺寸传递网页的一种网页布局模式。</p>
+</li>
+<li><p>实体符号：<a href="http://www.w3school.com.cn/html/html_entities.asp" target="_blank" rel="noopener">http://www.w3school.com.cn/html/html_entities.asp</a></p>
+</li>
+</ol>
+</div><div><ul class="post-copyright"><li class="post-copyright-author"><strong>本文作者：</strong>Canace</li><li class="post-copyright-link"><strong>本文链接：</strong><a href="/2019/01/22/html-笔记/">https://canace.site/2019/01/22/html-笔记/</a></li><li class="post-copyright-license"><strong>版权声明：</strong>转载请注明出处</li></ul></div><br><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a class="article-share-link" data-url="https://canace.site/2019/01/22/html-笔记/" data-id="ck2xc4ss0002afbx0nyxakans" data-qrcode="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACK0lEQVR42u3aMXICMQwF0Nz/0puWFF6+ZJOZFc9VBhbsR6FIln5+4nW9rOTda7Fe3139vdrlwMLAwHgs47pd+QbJp3rg+2cwMDC+h7E61uqZ3vb3Oyb7Ll/HwMDAiJ859QoGBgbG2YCbfE9eBmNgYGDsFLH3pCQp7KWGh2txDAyMBzLyW/f///sj/Q0MDIxHMa7iyhuQvWNdrYWBgTGbkW/ziYGJXuK4/CwGBsYXMPIvrbY2q6G5egYMDIzZjJ2gWb38ymF54+FPhouBgTGUkbQG8zbATmqYhOMkrcTAwJjHqG5ZxVTDd7N4xsDAGM2ojkokJWsejnuNhOh/BQYGxjjGztVbLzRXg3L1dQwMjHmM6jV9tRnZG92opowYGBizGc2HigVntZ2w81kMDIxJjHwYojo80StTmykpBgbGaMapIJsf4j6MVivvNzNuGBgYoxk7A1t5m6F62Rf96BgYGKMZvUv86phFXuhu5X4YGBijGTuNxgNX+RgYGBi3SeEOLAnKSWszSVLfDFtgYGB8AePU+OknwvSBLgcGBsY4Rt4A2C9Eq8Nnb1JDDAyMQYyruKrTDr02QHnUFQMDYzSjOlSRF6U77cz86GUMBgbGYxnVkdM88CUjYvmPUv6lMTAwxjHOXsNVj1VNPTEwMDB6rco84Oaw+2/AwMDAOHC91TpWUnMv2wMYGBijGdURijzW9S7a8pCNgYHxDYxe6dgLx3nboNp4wMDAGMr4BRDJnTv5/RoBAAAAAElFTkSuQmCC">分享</a><div class="tags"><a href="/tags/html/">html</a></div><div class="post-nav"><a class="pre" href="/2019/01/26/css-笔记/">CSS 基础</a><a class="next" href="/2019/01/06/python3安装/">Python3 安装</a></div><div id="disqus_thread"><div class="btn_click_load"><button class="disqus_click_btn">阅读评论（请确保 Disqus 可以正常加载）</button></div><script type="text/javascript">var disqus_config = function () {
+    this.page.url = 'https://canace.site/2019/01/22/html-笔记/';
+    this.page.identifier = '2019/01/22/html-笔记/';
+    this.page.title = 'Html 笔记';
+  };</script><script type="text/javascript" id="disqus-lazy-load-script">$.ajax({
+url: 'https://disqus.com/next/config.json',
+timeout: 2500,
+type: 'GET',
+success: function(){
+  var d = document;
+  var s = d.createElement('script');
+  s.src = '//liu-yan-ping-de-bo-ke.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', + new Date());
+  (d.head || d.body).appendChild(s);
+  $('.disqus_click_btn').css('display', 'none');
+},
+error: function() {
+  $('.disqus_click_btn').css('display', 'block');
+}
+});</script><script type="text/javascript" id="disqus-click-load">$('.btn_click_load').click(() => {  //click to load comments
+    (() => { // DON'T EDIT BELOW THIS LINE
+        var d = document;
+        var s = d.createElement('script');
+        s.src = '//liu-yan-ping-de-bo-ke.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', + new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+    $('.disqus_click_btn').css('display','none');
+});</script><script type="text/javascript" id="disqus-count-script">$(function() {
+     var xhr = new XMLHttpRequest();
+     xhr.open('GET', '//disqus.com/next/config.json', true);
+     xhr.timeout = 2500;
+     xhr.onreadystatechange = function () {
+       if (xhr.readyState === 4 && xhr.status === 200) {
+         $('.post-meta .post-comments-count').show();
+         var s = document.createElement('script');
+         s.id = 'dsq-count-scr';
+         s.src = 'https://liu-yan-ping-de-bo-ke.disqus.com/count.js';
+         s.async = true;
+         (document.head || document.body).appendChild(s);
+       }
+     };
+     xhr.ontimeout = function () { xhr.abort(); };
+     xhr.send(null);
+   });
+</script></div></div></div></div><div class="pure-u-1 pure-u-md-1-4"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="站内搜索" type="text" name="q" results="0"><div id="local-search-result"></div></div></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web/">web</a><span class="category-list-count">61</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/博客/">博客</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/深度学习/">深度学习</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">算法</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/系统/">系统</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/语言/">语言</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/项目管理/">项目管理</a><span class="category-list-count">10</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/css/" style="font-size: 15px;">css</a> <a href="/tags/canvas/" style="font-size: 15px;">canvas</a> <a href="/tags/django/" style="font-size: 15px;">django</a> <a href="/tags/KNN/" style="font-size: 15px;">KNN</a> <a href="/tags/CKeditor/" style="font-size: 15px;">CKeditor</a> <a href="/tags/angular/" style="font-size: 15px;">angular</a> <a href="/tags/js/" style="font-size: 15px;">js</a> <a href="/tags/mysql/" style="font-size: 15px;">mysql</a> <a href="/tags/http/" style="font-size: 15px;">http</a> <a href="/tags/egg/" style="font-size: 15px;">egg</a> <a href="/tags/ci/" style="font-size: 15px;">ci</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/html/" style="font-size: 15px;">html</a> <a href="/tags/文本转换/" style="font-size: 15px;">文本转换</a> <a href="/tags/vue/" style="font-size: 15px;">vue</a> <a href="/tags/linux/" style="font-size: 15px;">linux</a> <a href="/tags/矩阵/" style="font-size: 15px;">矩阵</a> <a href="/tags/nodeJs/" style="font-size: 15px;">nodeJs</a> <a href="/tags/npm/" style="font-size: 15px;">npm</a> <a href="/tags/笔记/" style="font-size: 15px;">笔记</a> <a href="/tags/2D/" style="font-size: 15px;">2D</a> <a href="/tags/编辑器/" style="font-size: 15px;">编辑器</a> <a href="/tags/tensorflow/" style="font-size: 15px;">tensorflow</a> <a href="/tags/react/" style="font-size: 15px;">react</a> <a href="/tags/ts/" style="font-size: 15px;">ts</a> <a href="/tags/科学上网/" style="font-size: 15px;">科学上网</a> <a href="/tags/环境配置/" style="font-size: 15px;">环境配置</a> <a href="/tags/wordpress/" style="font-size: 15px;">wordpress</a> <a href="/tags/webpack/" style="font-size: 15px;">webpack</a> <a href="/tags/vue-组件/" style="font-size: 15px;">vue 组件</a> <a href="/tags/文本操作/" style="font-size: 15px;">文本操作</a> <a href="/tags/leetcode/" style="font-size: 15px;">leetcode</a> <a href="/tags/个人管理/" style="font-size: 15px;">个人管理</a> <a href="/tags/分页/" style="font-size: 15px;">分页</a> <a href="/tags/性能优化/" style="font-size: 15px;">性能优化</a> <a href="/tags/面试/" style="font-size: 15px;">面试</a> <a href="/tags/algorithmn-simple/" style="font-size: 15px;">algorithmn-simple</a> <a href="/tags/影评/" style="font-size: 15px;">影评</a> <a href="/tags/经验/" style="font-size: 15px;">经验</a> <a href="/tags/小程序/" style="font-size: 15px;">小程序</a> <a href="/tags/日语/" style="font-size: 15px;">日语</a> <a href="/tags/开发风格/" style="font-size: 15px;">开发风格</a> <a href="/tags/Django/" style="font-size: 15px;">Django</a> <a href="/tags/正则/" style="font-size: 15px;">正则</a> <a href="/tags/分享/" style="font-size: 15px;">分享</a> <a href="/tags/PWA/" style="font-size: 15px;">PWA</a> <a href="/tags/翻页/" style="font-size: 15px;">翻页</a> <a href="/tags/3D/" style="font-size: 15px;">3D</a> <a href="/tags/项目模块化/" style="font-size: 15px;">项目模块化</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/11/13/mac安装mysql/">Mac 安装 Mysql</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/12/pixi基础/">Pixi 极简教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/12/计算机图形学-2/">计算机图形学 —————— 空间中的物体（2）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/11/计算机图形学-1/">计算机图形学 ———— 空间中的物体（1）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/08/项目模块化原则/">项目模块化原则</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/08/文件命名踩坑记录/">文件命名为什么提倡用英文小写字母而不用大写字母</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/05/说说网页自适应和响应式布局/">说说网页自适应和响应式布局</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/01/react-hooks创建电影app/">React Hooks 创建电影 App</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/26/canvas绘制雪碧图导出/">Canvas绘制雪碧图导出</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/26/添加骨架屏/">Web 优化 ——— 添加骨架屏</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="https://canace22.github.io/Demos/#/" title="demos" target="_blank">demos</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2019 <a href="/." rel="nofollow">Canace.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.css"><script type="text/javascript" src="/js/search.js?v=0.0.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+   search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" color="160,160,160" opacity="0.5" zindex="-1" count="50" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>

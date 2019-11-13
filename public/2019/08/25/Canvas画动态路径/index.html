@@ -1,0 +1,107 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.9.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="分享改变世界"><title>Canvas 画动态路径 | Canace 的博客</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/8.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Canvas 画动态路径</h1><a id="logo" href="/.">Canace 的博客</a><p class="description">Tomorrow is another day</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 主页</i></a><a href="/archives/"><i class="fa fa-archive"> 文章归档</i></a><a href="/about/"><i class="fa fa-user"> 关于我</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">Canvas 画动态路径</h1><div class="post-meta">Aug 25, 2019<span> | </span><span class="category"><a href="/categories/web/">web</a></span><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> 阅读</span></span><span class="post-time"><span class="post-meta-item-text"> | </span><span class="post-meta-item-icon"><i class="fa fa-keyboard-o"></i><span class="post-count"> 343</span><span class="post-meta-item-text"> 字</span></span></span><span class="post-time"> | <span class="post-meta-item-icon"><i class="fa fa-hourglass-half"></i><span class="post-count"> 1</span><span class="post-meta-item-text"> 分钟</span></span></span></div><a class="disqus-comment-count" data-disqus-identifier="2019/08/25/Canvas画动态路径/" href="/2019/08/25/Canvas画动态路径/#disqus_thread"></a><div class="post-content"><p>这个函数是一个用于画 canvas 路径的，也就是把 canvas 画线的过程演示出来的一个东东。采用的是纯 js 和 canvas 描绘方法。当然前提是得有路径的点集，不然画不了。</p>
+<a id="more"></a>
+<h4 id="一、参数列表"><a href="#一、参数列表" class="headerlink" title="一、参数列表"></a>一、参数列表</h4><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>config.color</td>
+<td>String</td>
+<td>路径颜色</td>
+</tr>
+<tr>
+<td>config.path</td>
+<td>Object</td>
+<td>路径的点集</td>
+</tr>
+<tr>
+<td>config.padding.left</td>
+<td>Number</td>
+<td>路径图的左偏移值</td>
+</tr>
+<tr>
+<td>config.padding.top</td>
+<td>Number</td>
+<td>路径图的上偏移值</td>
+</tr>
+<tr>
+<td>config.img</td>
+<td>HTMLElement</td>
+<td>描绘路径的图</td>
+</tr>
+<tr>
+<td>config.sw</td>
+<td>Number</td>
+<td>描绘路径图的原始宽</td>
+</tr>
+<tr>
+<td>config.sh</td>
+<td>Number</td>
+<td>描绘路径图的原始高</td>
+</tr>
+<tr>
+<td>config.scale</td>
+<td>Number</td>
+<td>缩放尺度</td>
+</tr>
+</tbody>
+</table>
+<h4 id="二、函数"><a href="#二、函数" class="headerlink" title="二、函数"></a>二、函数</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">drawPolygon</span>(<span class="params">config</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">"canvas"</span>);</span><br><span class="line">  <span class="keyword">const</span> ctx = canvas.getContext(<span class="string">"2d"</span>);</span><br><span class="line">  <span class="keyword">let</span> t = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">const</span> [scale, path, color, sw, sh, padding, handleEl] = [</span><br><span class="line">    config.scale,</span><br><span class="line">    config.path,</span><br><span class="line">    config.color,</span><br><span class="line">    config.sw,</span><br><span class="line">    config.sh,</span><br><span class="line">    config.padding,</span><br><span class="line">    config.handleEl</span><br><span class="line">  ];</span><br><span class="line">  ctx.clearRect(<span class="number">0</span>, <span class="number">0</span>, canvas.width, canvas.height);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> draw = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (t &gt;= config.path.length) &#123;</span><br><span class="line">      clearInterval(clock);</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ctx.clearRect(<span class="number">0</span>, <span class="number">0</span>, canvas.width, canvas.height);</span><br><span class="line">    t += <span class="number">2</span>;</span><br><span class="line">    ctx.beginPath();</span><br><span class="line">    ctx.moveTo(</span><br><span class="line">      path[<span class="number">0</span>].x * scale + padding.left,</span><br><span class="line">      path[<span class="number">0</span>].y * scale + padding.top</span><br><span class="line">    );</span><br><span class="line">    <span class="keyword">if</span> (t &gt; path.length) &#123;</span><br><span class="line">      t = path.length;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (handleEl) &#123;</span><br><span class="line">      ctx.drawImage(</span><br><span class="line">        handleEl,</span><br><span class="line">        path[t - <span class="number">1</span>].x * scale + padding.left,</span><br><span class="line">        (path[t - <span class="number">1</span>].y - <span class="number">240</span>) * scale + padding.top,</span><br><span class="line">        sw * scale,</span><br><span class="line">        sh * scale</span><br><span class="line">      );</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; t; i++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (config.path[i]) &#123;</span><br><span class="line">        ctx.lineTo(</span><br><span class="line">          config.path[i].x * scale + config.padding.left,</span><br><span class="line">          config.path[i].y * scale + config.padding.top</span><br><span class="line">        );</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    ctx.strokeStyle = color || <span class="string">"#07B1CA"</span>;</span><br><span class="line">    ctx.lineWidth = <span class="number">3</span>;</span><br><span class="line">    ctx.stroke();</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> clock = setInterval(draw, <span class="number">50</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="三、Demo-地址"><a href="#三、Demo-地址" class="headerlink" title="三、Demo 地址"></a>三、Demo 地址</h4><p><a href="https://canace22.github.io/Demos/#/" target="_blank" rel="noopener">Demo</a> =&gt; 绘图 =&gt; canvas 路径</p>
+</div><div><ul class="post-copyright"><li class="post-copyright-author"><strong>本文作者：</strong>Canace</li><li class="post-copyright-link"><strong>本文链接：</strong><a href="/2019/08/25/Canvas画动态路径/">https://canace.site/2019/08/25/Canvas画动态路径/</a></li><li class="post-copyright-license"><strong>版权声明：</strong>转载请注明出处</li></ul></div><br><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a class="article-share-link" data-url="https://canace.site/2019/08/25/Canvas画动态路径/" data-id="ck2xc4sr40002fbx0kwi3dafk" data-qrcode="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACLElEQVR42u3aQXLDIAwF0Nz/0u5Mtx2cL0EzMTxWmdTFvC5UCen1itf1u/5+vn9m9Fv3n0f7L1gYGBiPZVy3K3/Z6Jm1+wypGBgYBzB6ATQJkXlIvWe/OTMGBgZGEDTvqdVvMDAwMOYDbp4Ojt5SJWFgYGDkoTMqKePjVhPQBbU4BgbGAxkzjYH//vyh/gYGBsYXM67imgm+vcZD9C4MDIytGfflZVI6zl+c9ZLFV/VwGBgYD2dUt04u4HJS9VKvjMHAwNiCMTMwkV/3JwlitZzGwMA4gTFfrFZTw1UBOqrFMTAwNmXkIbh6iF65G7U/MTAwtmZ8pj+YB9w8xVxQkWNgYDyQkV/cJ82DKrhHwsDAOIeRDEnkI2LVNK73UwwMjHMY+RGr6Vq1AZA0L4d/MgwMjMMY+SVaNaT2xrymClcMDIwtGKuGJHpNzV55XB4Ow8DAeDijd5ReU3O+YTAEY2BgbM2ojo32NuqNbvSuAjEwMPZmJAlfWR9f5FWfHO6AgYGxHaM6BtG7jKvutuC/AQYGxnaM5Jt8qGJmkKLZisDAwNiasWq7ajuzF1jfnAoDA2NTxlVcMwE3B1dbCxgYGHsz1l6WrbpQ+1C5i4GB8ShGHmTzNLF6xAXpIwYGxgGMJCwm4GoHtTpw9qaRiYGBcTwjT/V6xWde9A4HwjAwMDAWUQtdizwZxcDAOICRNwOar2kVvYXiFgMDY2tGrzFQvSzLU8bq0AYGBsbWjB90cWC+kIFH/wAAAABJRU5ErkJggg==">分享</a><div class="tags"><a href="/tags/canvas/">canvas</a></div><div class="post-nav"><a class="pre" href="/2019/09/01/下拉列表的实现/">下拉列表的实现</a><a class="next" href="/2019/08/17/npm常用命令/">Npm 常用命令</a></div><div id="disqus_thread"><div class="btn_click_load"><button class="disqus_click_btn">阅读评论（请确保 Disqus 可以正常加载）</button></div><script type="text/javascript">var disqus_config = function () {
+    this.page.url = 'https://canace.site/2019/08/25/Canvas画动态路径/';
+    this.page.identifier = '2019/08/25/Canvas画动态路径/';
+    this.page.title = 'Canvas 画动态路径';
+  };</script><script type="text/javascript" id="disqus-lazy-load-script">$.ajax({
+url: 'https://disqus.com/next/config.json',
+timeout: 2500,
+type: 'GET',
+success: function(){
+  var d = document;
+  var s = d.createElement('script');
+  s.src = '//liu-yan-ping-de-bo-ke.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', + new Date());
+  (d.head || d.body).appendChild(s);
+  $('.disqus_click_btn').css('display', 'none');
+},
+error: function() {
+  $('.disqus_click_btn').css('display', 'block');
+}
+});</script><script type="text/javascript" id="disqus-click-load">$('.btn_click_load').click(() => {  //click to load comments
+    (() => { // DON'T EDIT BELOW THIS LINE
+        var d = document;
+        var s = d.createElement('script');
+        s.src = '//liu-yan-ping-de-bo-ke.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', + new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+    $('.disqus_click_btn').css('display','none');
+});</script><script type="text/javascript" id="disqus-count-script">$(function() {
+     var xhr = new XMLHttpRequest();
+     xhr.open('GET', '//disqus.com/next/config.json', true);
+     xhr.timeout = 2500;
+     xhr.onreadystatechange = function () {
+       if (xhr.readyState === 4 && xhr.status === 200) {
+         $('.post-meta .post-comments-count').show();
+         var s = document.createElement('script');
+         s.id = 'dsq-count-scr';
+         s.src = 'https://liu-yan-ping-de-bo-ke.disqus.com/count.js';
+         s.async = true;
+         (document.head || document.body).appendChild(s);
+       }
+     };
+     xhr.ontimeout = function () { xhr.abort(); };
+     xhr.send(null);
+   });
+</script></div></div></div></div><div class="pure-u-1 pure-u-md-1-4"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="站内搜索" type="text" name="q" results="0"><div id="local-search-result"></div></div></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web/">web</a><span class="category-list-count">61</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/博客/">博客</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/深度学习/">深度学习</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">算法</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/系统/">系统</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/语言/">语言</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/项目管理/">项目管理</a><span class="category-list-count">10</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/css/" style="font-size: 15px;">css</a> <a href="/tags/canvas/" style="font-size: 15px;">canvas</a> <a href="/tags/django/" style="font-size: 15px;">django</a> <a href="/tags/KNN/" style="font-size: 15px;">KNN</a> <a href="/tags/CKeditor/" style="font-size: 15px;">CKeditor</a> <a href="/tags/angular/" style="font-size: 15px;">angular</a> <a href="/tags/js/" style="font-size: 15px;">js</a> <a href="/tags/mysql/" style="font-size: 15px;">mysql</a> <a href="/tags/http/" style="font-size: 15px;">http</a> <a href="/tags/egg/" style="font-size: 15px;">egg</a> <a href="/tags/ci/" style="font-size: 15px;">ci</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/html/" style="font-size: 15px;">html</a> <a href="/tags/文本转换/" style="font-size: 15px;">文本转换</a> <a href="/tags/vue/" style="font-size: 15px;">vue</a> <a href="/tags/linux/" style="font-size: 15px;">linux</a> <a href="/tags/矩阵/" style="font-size: 15px;">矩阵</a> <a href="/tags/nodeJs/" style="font-size: 15px;">nodeJs</a> <a href="/tags/npm/" style="font-size: 15px;">npm</a> <a href="/tags/笔记/" style="font-size: 15px;">笔记</a> <a href="/tags/2D/" style="font-size: 15px;">2D</a> <a href="/tags/编辑器/" style="font-size: 15px;">编辑器</a> <a href="/tags/tensorflow/" style="font-size: 15px;">tensorflow</a> <a href="/tags/react/" style="font-size: 15px;">react</a> <a href="/tags/ts/" style="font-size: 15px;">ts</a> <a href="/tags/科学上网/" style="font-size: 15px;">科学上网</a> <a href="/tags/环境配置/" style="font-size: 15px;">环境配置</a> <a href="/tags/wordpress/" style="font-size: 15px;">wordpress</a> <a href="/tags/webpack/" style="font-size: 15px;">webpack</a> <a href="/tags/vue-组件/" style="font-size: 15px;">vue 组件</a> <a href="/tags/文本操作/" style="font-size: 15px;">文本操作</a> <a href="/tags/leetcode/" style="font-size: 15px;">leetcode</a> <a href="/tags/个人管理/" style="font-size: 15px;">个人管理</a> <a href="/tags/分页/" style="font-size: 15px;">分页</a> <a href="/tags/性能优化/" style="font-size: 15px;">性能优化</a> <a href="/tags/面试/" style="font-size: 15px;">面试</a> <a href="/tags/algorithmn-simple/" style="font-size: 15px;">algorithmn-simple</a> <a href="/tags/影评/" style="font-size: 15px;">影评</a> <a href="/tags/经验/" style="font-size: 15px;">经验</a> <a href="/tags/小程序/" style="font-size: 15px;">小程序</a> <a href="/tags/日语/" style="font-size: 15px;">日语</a> <a href="/tags/开发风格/" style="font-size: 15px;">开发风格</a> <a href="/tags/Django/" style="font-size: 15px;">Django</a> <a href="/tags/正则/" style="font-size: 15px;">正则</a> <a href="/tags/分享/" style="font-size: 15px;">分享</a> <a href="/tags/PWA/" style="font-size: 15px;">PWA</a> <a href="/tags/翻页/" style="font-size: 15px;">翻页</a> <a href="/tags/3D/" style="font-size: 15px;">3D</a> <a href="/tags/项目模块化/" style="font-size: 15px;">项目模块化</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/11/13/mac安装mysql/">Mac 安装 Mysql</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/12/pixi基础/">Pixi 极简教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/12/计算机图形学-2/">计算机图形学 —————— 空间中的物体（2）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/11/计算机图形学-1/">计算机图形学 ———— 空间中的物体（1）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/08/项目模块化原则/">项目模块化原则</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/08/文件命名踩坑记录/">文件命名为什么提倡用英文小写字母而不用大写字母</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/05/说说网页自适应和响应式布局/">说说网页自适应和响应式布局</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/01/react-hooks创建电影app/">React Hooks 创建电影 App</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/26/canvas绘制雪碧图导出/">Canvas绘制雪碧图导出</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/26/添加骨架屏/">Web 优化 ——— 添加骨架屏</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="https://canace22.github.io/Demos/#/" title="demos" target="_blank">demos</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2019 <a href="/." rel="nofollow">Canace.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.css"><script type="text/javascript" src="/js/search.js?v=0.0.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+   search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" color="160,160,160" opacity="0.5" zindex="-1" count="50" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
