@@ -23,7 +23,7 @@ valine: ## https://valine.js.org
   notify: false ## Mail notifier, see https://github.com/xCss/Valine/wiki/Valine-评论系统中的邮件提醒设置
   verify: false ## Validation code.
   placeholder: Just so so ## Comment box placeholders.
-  avatar: "mm" ## Gravatar type, see https://github.com/xCss/Valine/wiki/avatar-setting-for-valine
+  avatar: 'mm' ## Gravatar type, see https://github.com/xCss/Valine/wiki/avatar-setting-for-valine
   pageSize: 10 ## Number of comments per page.
   guest_info: nick,mail,link ## Attributes of reviewers.
 
@@ -74,13 +74,15 @@ menu:
 widgets: ## Six widgets in sidebar provided: search, category, tag, recent_posts, rencent_comments and links.
   - search
   - category
+  - links
   - tag
   - recent_posts
-  - links
 
 links:
   - title: demos
     url: https://canace22.github.io/Demos/#/
+  - title: 算法
+    url: https://github.com/learningStack/leetcode-note
 
 timeline:
   - num: 1

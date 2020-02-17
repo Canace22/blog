@@ -77,10 +77,21 @@ pagination_dir: page
 ## Themes: https://hexo.io/themes/
 theme: maupassant
 
+# 搜索设置
 search:
   path: search.xml
   field: post
   content: true
+
+# rss 设置
+feed:
+  type: atom
+  path: atom.xml
+  limit: 20
+  hub:
+  content:
+  content_limit:
+  content_limit_delim: " "
 
 ##Deployment
 #Docs:https://hexo.io/docs/deployment.html
