@@ -1,14 +1,13 @@
 ---
-title: pixi 极简教程
+title: PixiJs 极简教程
+categories: web
+tags: PixiJs
+descroption: 一个极简的 PixiJs 教程
 comments: true
 date: 2019-11-12 08:36:10
-categories: web
-tags: 2D
 ---
 
-pixi.js 是比较常用的 canvas 库，用来展示 2d 的平面图，相比 canvas，封装了更多的功能，也更简单容易上手，但是其官网的文档写得极其的简陋，可阅读性很差，综合了一些其他的文档，写出了这份极简教程，让小白也可以拿来即用。
-
-<!--more-->
+PixiJs 是比较常用的 canvas 库，用来展示 2d 的平面图，相比 canvas，封装了更多的功能，也更简单容易上手，但是其官网的文档写得极其的简陋，可阅读性很差，综合了一些其他的文档，写出了这份极简教程，让小白也可以拿来即用。
 
 ### 一、创建画布
 
@@ -28,7 +27,7 @@ let app = new Application({
   height: 256,
   antialiasing: true,
   transparent: false,
-  resolution: 1
+  resolution: 1,
 });
 // 把新创建的 canvas 画布挂载到对应的节点上
 this.$refs.container.appendChild(app.view);
@@ -38,14 +37,14 @@ this.$refs.container.appendChild(app.view);
 
 ```js
 //canvas 全屏样式
-app.renderer.view.style.position = "absolute";
-app.renderer.view.style.width = window.innerWidth + "px";
-app.renderer.view.style.height = window.innerHeight + "px";
-app.renderer.view.style.display = "block";
+app.renderer.view.style.position = 'absolute';
+app.renderer.view.style.width = window.innerWidth + 'px';
+app.renderer.view.style.height = window.innerHeight + 'px';
+app.renderer.view.style.display = 'block';
 
 //`renderer.view` 代表原始的 `<canvas>`标签.
 //给 canvas 加条虚线，就像平常操作 canvas 一样
-app.renderer.view.style.border = "1px dashed black";
+app.renderer.view.style.border = '1px dashed black';
 
 //重置画布大小
 app.renderer.resize(512, 512);
@@ -60,7 +59,7 @@ app.renderer.backgroundColor = 0x000000;
 
 ```js
 // 创建一个 cat 精灵
-const texture = Texture.from("./img/pixi/cat.png");
+const texture = Texture.from('./img/pixi/cat.png');
 const cat = new Sprite(texture);
 // 把新创建的精灵加到舞台上
 app.stage.addChild(cat);
@@ -70,12 +69,12 @@ app.stage.addChild(cat);
 
 ```js
 loader
-  .add(["./img/pixi/cat.png", "./img/pixi/blob.png", "./img/pixi/explorer.png"])
+  .add(['./img/pixi/cat.png', './img/pixi/blob.png', './img/pixi/explorer.png'])
   .load(() => {
     //创建精灵
-    let cat = new Sprite(resources["./img/pixi/cat.png"].texture),
-      blob = new Sprite(resources["./img/pixi/blob.png"].texture),
-      explorer = new Sprite(resources["./img/pixi/explorer.png"].texture);
+    let cat = new Sprite(resources['./img/pixi/cat.png'].texture),
+      blob = new Sprite(resources['./img/pixi/blob.png'].texture),
+      explorer = new Sprite(resources['./img/pixi/explorer.png'].texture);
 
     //把新创建的精灵加到舞台上
     app.stage.addChild(cat);
@@ -104,8 +103,8 @@ cat.visible = false;
 4、加载雪碧图
 
 ```js
-loader.add("./img/pixi/tileset.png").load(() => {
-  let texture = TextureCache["./img/pixi/tileset.png"];
+loader.add('./img/pixi/tileset.png').load(() => {
+  let texture = TextureCache['./img/pixi/tileset.png'];
 
   // 图片在雪碧图上的位置截取 new Rectangle(x, y, w, h)
   let rectangle = new Rectangle(192, 128, 64, 64);
@@ -125,19 +124,19 @@ loader.add("./img/pixi/tileset.png").load(() => {
 
 ```js
 Loader.add({
-  name: "treasure",
-  url: "./img/pixi/treasureHunter.json"
+  name: 'treasure',
+  url: './img/pixi/treasureHunter.json',
 }).load((loader, resources) => {
   let dungeon, explorer, treasure, door;
-  const things = resources["treasure"].textures;
+  const things = resources['treasure'].textures;
 
-  dungeon = new Sprite(things["dungeon.png"]);
+  dungeon = new Sprite(things['dungeon.png']);
   app.stage.addChild(dungeon);
 
-  explorer = new Sprite(things["explorer.png"]);
+  explorer = new Sprite(things['explorer.png']);
   app.stage.addChild(explorer);
 
-  treasure = new Sprite(things["treasure.png"]);
+  treasure = new Sprite(things['treasure.png']);
   app.stage.addChild(treasure);
 
   loader.reset();
