@@ -1,0 +1,196 @@
+---
+title: css background-image 的应用
+categories: web
+tags: css
+description: background-image 实现一些特殊效果
+comments: true
+date: 2020-05-20 09:42:10
+---
+
+### 一、多背景叠加
+
+![背景叠加](/images/snow-other.png)
+
+```css
+/* 多背景图 */
+.more-img {
+  background-image: url(https://image.flaticon.com/icons/svg/748/748122.svg),
+    url(./snow.jpg);
+  background-position: center, top;
+  background-repeat: repeat, no-repeat;
+  background-size: contain, cover;
+}
+```
+
+### 二、三角形背景
+
+![三角形背景](/images/triggle-bg.png)
+
+```html
+<!-- 三角形背景 -->
+<div class="day bg-image"></div>
+<div class="night bg-image"></div>
+```
+
+```css
+body {
+  margin: 0;
+  padding: 0;
+}
+.bg-image {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  background-image: url(./snow.jpg);
+}
+.day {
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.night {
+  background-size: cover;
+  background-repeat: no-repeat;
+  clip-path: polygon(100vw 0, 0% 0vh, 100vw 100vh);
+  filter: brightness(0.6);
+}
+```
+
+### 三、背景图叠加渐变
+
+![背景图叠加渐变](/images/gradient-bg.png)
+
+```css
+.gradient {
+  background-image: linear-gradient(
+      4deg,
+      rgba(38, 8, 31, 0.75) 30%,
+      rgba(213, 49, 127, 0.3) 45%,
+      rgba(232, 120, 12, 0.3) 100%
+    ), url('./snow.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+}
+```
+
+### 四、背景颜色切换动画
+
+![背景颜色切换动画](/images/bg-animation.gif)
+
+```css
+/* clolor animate */
+.color-animateion {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  animation: background-overlay-animation 1s ease-in-out infinite;
+}
+@keyframes background-overlay-animation {
+  0% {
+    background-image: linear-gradient(
+        4deg,
+        rgba(255, 78, 36, 0.3) 50%,
+        rgba(255, 78, 36, 0.3) 100%
+      ), url('./snow.jpg');
+  }
+  25% {
+    background-image: linear-gradient(
+        4deg,
+        rgba(213, 49, 127, 0.3) 50%,
+        rgba(213, 49, 127, 0.3) 100%
+      ), url('./snow.jpg');
+  }
+  50% {
+    background-image: linear-gradient(
+        4deg,
+        rgba(36, 182, 255, 0.3) 50%,
+        rgba(36, 182, 255, 1) 100%
+      ), url('./snow.jpg');
+  }
+  100% {
+    background-image: linear-gradient(
+        4deg,
+        rgba(0, 255, 254, 0.3) 50%,
+        rgba(0, 255, 254, 0.3) 100%
+      ), url('./snow.jpg');
+  }
+}
+```
+
+### 五、网格背景
+
+![网格背景](/images/grid-bg.png)
+
+```html
+<div class="container">
+  <div class="item_img"></div>
+  <div class="item"></div>
+  <div class="item_img"></div>
+  <div class="item"></div>
+  <div class="item"></div>
+  <div class="item_img"></div>
+  <div class="item"></div>
+  <div class="item_img"></div>
+  <div class="item"></div>
+  <div class="item"></div>
+  <div class="item_img"></div>
+  <div class="item"></div>
+  <div class="item_img"></div>
+  <div class="item"></div>
+  <div class="item_img"></div>
+  <div class="item"></div>
+</div>
+```
+
+```css
+/* 网格背景图 */
+.container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgb(255, 235, 192);
+  display: grid;
+  grid-template-columns: 25fr 30fr 25fr 20fr;
+  grid-template-rows: 20fr 45fr 5fr 30fr;
+}
+.item_img {
+  background-image: url('./24.jpeg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+}
+```
+
+### 六、图像设置为文本颜色
+
+![图片底色文字](/images/bg-text.png)
+
+```html
+<body class="center>
+  <h1 class="img-color">Hello world!</h1>
+</body>
+```
+
+```css
+/* 把图像设置为文本颜色 */
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  text-align: center;
+  min-height: 100vh;
+  font-size: 120px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.img-color {
+  background-image: url('./24.jpeg');
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+```
