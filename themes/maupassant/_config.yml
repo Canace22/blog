@@ -83,7 +83,8 @@ links:
     url: https://canace22.github.io/Demos/#/
   - title: 算法
     url: https://github.com/learningStack/leetcode-note
-
+  - title: 原创书籍
+    url: https://canace22.github.io/softwareengineering/
 timeline:
   - num: 1
     word: 2014/06/12-Start

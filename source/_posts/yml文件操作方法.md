@@ -2,8 +2,8 @@
 title: yml 文件操作方法
 comments: true
 date: 2018-06-08 09:52:46
-categories: python
-tags: 文本操作
+categories: 服务端
+tags: python
 ---
 
 1. 文件读取方法示例：

@@ -4,12 +4,12 @@
 
 # Site
 title: Canace 的博客
-subtitle: Tomorrow is another day
+subtitle: 好记性不如烂笔头，坐在岸上学不会游泳
 description: 分享改变世界
 keywords: web开发, 计算机图形学, 深度学习, 前端开发
 author: Canace
 language: zh-CN
-timezone:
+# timezone: 
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'

@@ -4,27 +4,25 @@ categories: web
 tags: css
 description: background-image 实现一些特殊效果
 comments: true
-date: 2020-05-20 09:42:10
+toc: true
+date: 2020-07-08 09:42:10
 ---
 
 ### 一、多背景叠加
 
-![背景叠加](/images/snow-other.png)
-
 ```css
 /* 多背景图 */
 .more-img {
-  background-image: url(https://image.flaticon.com/icons/svg/748/748122.svg),
-    url(./snow.jpg);
+  background-image: url(https://image.flaticon.com/icons/svg/748/748122.svg),url(./snow.jpg);
   background-position: center, top;
   background-repeat: repeat, no-repeat;
-  background-size: contain, cover;
+  background-size: 16px 16px, cover;
 }
 ```
 
-### 二、三角形背景
+![背景叠加](/images/snow-other.png)
 
-![三角形背景](/images/triggle-bg.png)
+### 二、三角形背景
 
 ```html
 <!-- 三角形背景 -->
@@ -55,9 +53,9 @@ body {
 }
 ```
 
-### 三、背景图叠加渐变
+![三角形背景](/images/triggle-bg.png)
 
-![背景图叠加渐变](/images/gradient-bg.png)
+### 三、背景图叠加渐变
 
 ```css
 .gradient {
@@ -74,9 +72,9 @@ body {
 }
 ```
 
-### 四、背景颜色切换动画
+![背景图叠加渐变](/images/gradient-bg.png)
 
-![背景颜色切换动画](/images/bg-animation.gif)
+### 四、背景颜色切换动画
 
 ```css
 /* clolor animate */
@@ -118,10 +116,9 @@ body {
   }
 }
 ```
+![背景颜色切换动画](/images/bg-animation.gif)
 
 ### 五、网格背景
-
-![网格背景](/images/grid-bg.png)
 
 ```html
 <div class="container">
@@ -164,9 +161,9 @@ body {
 }
 ```
 
-### 六、图像设置为文本颜色
+![网格背景](/images/grid-bg.png)
 
-![图片底色文字](/images/bg-text.png)
+### 六、图像设置为文本颜色
 
 ```html
 <body class="center>
@@ -194,3 +191,21 @@ body {
   color: transparent;
 }
 ```
+
+![图片底色文字](/images/bg-text.png)
+
+### 七、背景图半透明叠加
+
+使用 cross-fade 函数通过背景融合的方式实现背景图的效果，目前只支持 (url1, url2, percent) 的方式，(url percent, url percent) 这种方式试了下，没效果。
+
+```css
+.cross-fade-image {
+  width: 300px; 
+  height: 300px;
+  background: no-repeat center / contain;
+  background-image: -webkit-cross-fade(url(beach.jpeg), url(pet.png), 65%);
+  background-image: cross-fade(url(beach.jpeg), url(pet.png),65%);   
+}
+```
+
+![背景图半透明叠加示例](/images/bg-semi-transparent.png)

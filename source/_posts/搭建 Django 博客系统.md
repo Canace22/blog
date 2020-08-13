@@ -2,8 +2,8 @@
 title: 搭建 Django 博客系统
 date: 2018-05-20 14:30:48
 updated: 2018-05-20 15:10:00
-categories: python
-tags: Django
+categories: 服务端
+tags:  python
 comments: true
 ---
 

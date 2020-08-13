@@ -2,8 +2,8 @@
 title: python3 安装
 comments: true
 date: 2019-01-06 17:42:32
-categories: python
-tags: 笔记
+categories: 服务端
+tags: python
 ---
 
 python3 安装指南

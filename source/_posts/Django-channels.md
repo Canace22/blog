@@ -1,8 +1,8 @@
 ---
 title: Django-channels
 date: 2018-05-20 16:43:09
-categories: python
-tags: django
+categories: 服务端
+tags:  python
 comments: true
 ---
 

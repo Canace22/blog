@@ -2,8 +2,8 @@
 title: python2 => python3 踩坑集合
 comments: true
 date: 2018-06-08 09:47:51
-categories: python
-tags: 笔记
+categories: 服务端
+tags: python
 ---
 
 python2 => python3 踩坑集合

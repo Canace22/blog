@@ -1,8 +1,7 @@
 ---
-title: nodeJS笔记
+title: nodeJS基础
 categories: web
 tags: nodeJs
-description: nodeJS 课程笔记
 comments: true
 toc: true
 date: 2019-11-30 07:03:40
