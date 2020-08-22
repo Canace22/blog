@@ -2,7 +2,6 @@
 title: 首屏时间(FCP) VS 白屏时间(FP)
 categories: web
 tags: 性能优化
-description: 最近发现做了这么多的首屏优化，一直都是把白屏时间((FP))和首屏(FCP)时间算在一起，也就是页面打开之前 dom 没渲染出来，我就把他归为首屏时间。时间上这里专业点可以分为首屏和白屏两个阶段，这篇文章就讲讲二者的区别，以及计算方法。
 comments: true
 toc: true
 date: 2020-04-01 08:58:25
