@@ -1,7 +1,7 @@
 ---
 title: CSS 小技巧
 comments: true
-date: 2020-03-25 08:41:22
+date: 2020-08-31 15:02:22
 categories: web
 tags: css
 toc: true
@@ -83,7 +83,9 @@ wrap {
 }
 ```
 
-### 五、Android 端，img 和 button，点击之后出现一块阴影区域，一开始以为是 user-select 作怪，设置为 none 无果，后来发现是 curser：pointer 的锅，在 Android 端 cursor 设置为 none，即可解决问题
+### 五、Android 端阴影
+
+Android 端，img 和 button，点击之后出现一块阴影区域，一开始以为是 user-select 作怪，设置为 none 无果，后来发现是 curser：pointer 的锅，在 Android 端 cursor 设置为 none，即可解决问题
 
 ### 六、导航条样式操作
 
