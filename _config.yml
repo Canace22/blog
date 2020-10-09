@@ -4,7 +4,7 @@
 
 # Site
 title: Canace 的博客
-subtitle: 虽然知道万事皆空，仍然能够生活得兴致勃勃
+subtitle: 软件工程没有银弹
 description: 分享改变世界
 keywords: web开发, 计算机图形学, 深度学习, 前端开发, js, html, css
 author: Canace
@@ -42,7 +42,7 @@ relative_link: false
 future: true
 highlight:
   enable: true
-  line_number: true
+  line_number: false
   auto_detect: true
   tab_replace:
 
@@ -56,7 +56,7 @@ index_generator:
   order_by: -date
 
 # Category & Tag
-default_category: uncategorized
+default_category: web
 category_map:
 tag_map:
 
