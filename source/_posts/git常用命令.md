@@ -1,7 +1,7 @@
 ---
 title: git 文档
 comments: true
-date: 2020-06-18 11:05:12
+date: 2020-10-09 22:00:12
 categories: 项目管理
 description: 根据平常经验整理的 git 文档
 tags: git
@@ -175,5 +175,34 @@ git remote add origin <repositry>
 #### 2、ping 不同 github.com 报 403
 
 可能是设置了代理，`shift+command+G` => `/private/etc` => 复制 hosts 文件，把里面关于 github 的设置去掉，保存，替换回去 => 重启浏览器或命令界面，可以正常 ping 了
+
+#### 3、不小心上传了大文件，一直存在记录解决方法
+
+(1) 找出历史提交文件中占用空间大的文件
+
+```git 
+git rev-list --objects --all | grep "$(git verify-pack -v .git/objects/pack/*.idx | sort -k 
+3 -n | tail -5 | awk '{print$1}')"
+```
+
+(2) 重写commit，删除大文件
+
+```git
+git filter-branch --force --index-filter 'git rm -rf --cached --ignore-unmatch <file-name>' --prune-empty --tag-name-filter cat -- --all
+```
+
+(3) 强制 push
+
+```
+git push -f
+```
+
+(4) 清理和回收空间
+
+```git
+rm -rf .git/refs/original/
+git reflog expire --expire=now --all
+git gc --prune=now
+```
 
 
