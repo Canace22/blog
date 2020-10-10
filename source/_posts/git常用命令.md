@@ -1,7 +1,7 @@
 ---
 title: git 文档
 comments: true
-date: 2020-10-09 22:00:12
+date: 2020-10-10 10:48:12
 categories: 项目管理
 description: 根据平常经验整理的 git 文档
 tags: git
@@ -105,6 +105,14 @@ git branch --set-upstream-to=origin/master master
 (3) 查看所有成员的未合并提交总数
 
 `git shortlog -sn --no-merges`
+
+(4) 查看所有分支的最新提交
+
+`git  branch -v`
+
+(5) 查看所有分支的最新提交及对应的远程分支
+
+`git branch -vv`
 
 ### 三、远程仓库操作
 
