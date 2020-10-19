@@ -89,17 +89,17 @@ menu:
 
 widgets: ## Six widgets in sidebar provided: search, category, tag, recent_posts, rencent_comments and links.
   - search
-  - category
   - tag
-  - recent_posts
+  - category
   # - recent_comments
-  # - links
+  - links
+  - recent_posts
 
 links:
+  - title: 算法
+    url: https://github.com/Canace22/leetcode
   - title: demos
     url: https://canace22.github.io/Demos/#/
-  - title: 算法
-    url: https://github.com/learningStack/leetcode-note
 
 timeline:
   - num: 1
