@@ -6,10 +6,6 @@ categories: 项目管理
 tags: npm
 ---
 
-npm 常用命令
-
-<!--more-->
-
 1、安装
 
 ```npm

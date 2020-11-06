@@ -4,7 +4,7 @@ categories: web
 tags: 单元测试
 comments: true
 toc: true
-date: 2020-10-19 16:25:02
+date: 2020-10-28 16:25:02
 ---
 ### 一、Vue-cli 安装测试模块
 
@@ -18,6 +18,8 @@ npm install --save-dev @vue/test-utils @vue/cli-plugin-unit-jest
 
 ```js
 module.exports = {
+  // 显示每一个测试的结果
+  verbose: true,
   // support the same @ -> src alias mapping in source code
   moduleNameMapper: {
     "^@/(.*)$": "<rootDir>/src/$1"
@@ -28,7 +30,7 @@ module.exports = {
     // tell Jest to handle `*.vue` files
     "vue"
   ],
-  // 测试覆盖率
+  // 测试覆盖率相关
   collectCoverage: true,
   coverageReporters: ["html"]
 };
@@ -39,7 +41,7 @@ module.exports = {
 (1) 安装相关依赖
 
 ```shell
-npm install --save-dev babel-jest @vue/cli-plugin-babel/preset
+npm install --save-dev @vue/cli-plugin-babel
 ```
 
 (2) jest.config.js 添加以下配置
@@ -82,4 +84,55 @@ package.json script 加一个脚本配置: `"test:unit": "vue-cli-service test:u
 PASS  tests/example.spec.js
 ✓ test sum (1ms)
 ```
+
+### 三、测试覆盖率
+
+1、配置
+
+```json
+{
+  collectCoverage: true,
+  // 报告形式
+  coverageReporters: ["html", "text-summary"],
+  //需要测试覆盖率的文件路径
+  collectCoverageFrom: [ 
+    "src/**/*.{js,vue}",
+    "!src/App.vue",
+    "!src/main.js",
+    "!src/router.js",
+    "!src/plugin/*.{js,ts,vue}",
+    "!src/store.js"
+  ],
+   /**
+   * 指定测试最低覆盖率
+   * 一般由开发人员商定，项目复杂程序越高，覆盖率指数越低
+   */
+  coverageThreshold: {
+    global: {
+      branches: 80,
+      functions: 80,
+      lines: 80,
+      statements: 80
+    }
+  }
+}
+```
+
+2、报告中的几个指标说明
+
+(1) Statements: 语句覆盖率
+
+(2) Branches: 选择分支覆盖率
+
+(3) Functions: 函数覆盖率
+
+(4) Lines: 行覆盖率
+
+3、tips
+
+静态组件是不会被输出到覆盖率报告的(没有操作方法的组件)
+
+
+
+
 
