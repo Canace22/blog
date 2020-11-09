@@ -3,12 +3,8 @@ title: KNN算法
 comments: true
 date: 2019-03-30 13:31:24
 categories: 算法
-tags: KNN
+tags: algorithmn
 ---
-
-KNN 算法概述
-
-<!--more-->
 
 ## KNN 算法是做什么的
 

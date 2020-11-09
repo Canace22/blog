@@ -1,7 +1,7 @@
 ---
 title: Homebrew 常用命令
 categories: 系统
-tags: mac
+tags: 系统操作
 description: Homebrew 常用命令集合
 comments: true
 date: 2020-01-02 11:00:01

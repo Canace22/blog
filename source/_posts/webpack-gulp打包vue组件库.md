@@ -1,7 +1,7 @@
 ---
 title: webpack+gulp 打包 vue 组件库
 categories: web
-tags: vue 组件库
+tags: vue
 description: 参照 element-ui 实现按需引入的 vue 组件库
 comments: true
 date: 2020-05-15 08:44:46
