@@ -3,12 +3,8 @@ title: typescript 使用
 comments: true
 date: 2019-02-18 08:39:39
 categories: web
-tags: ts
+tags: 静态类型检测
 ---
-
-typescript 使用笔记
-
-<!--more-->
 
 1.  安装： `npm i -g typescript`
 
