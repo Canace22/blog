@@ -3,6 +3,7 @@ title: flow简易教程
 categories: web
 tags: 静态类型检测
 comments: true
+toc: true
 date: 2020-11-09 16:59:07
 ---
 ## 一、初始化
@@ -104,4 +105,8 @@ getColor("danger");  // Works!
 getColor("error");   // Error!
 ```
 
-上述 demo 中要求只能输入文字集合 ["success","warning","danger"] 中的一个，其他的值均会被认为是错误的
+上述 demo 中要求只能输入文字集合 `["success","warning","danger"]` 中的一个，其他的值均会被认为是错误的
+
+### 4、数组
+
+形如: `var arr: Array<number> = [1, 2, 3]`
