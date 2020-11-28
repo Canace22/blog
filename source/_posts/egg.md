@@ -1,18 +1,14 @@
 ---
-title: egg
+title: Egg 快速上手
 comments: true
-date: 2019-08-04 12:35:16
-categories: web
-tags: egg
+date: 2020-11-27 14:31:16
+categories: 服务端
+tags: nodeJs
 ---
-
-egg 笔记
-
-<!--more-->
 
 ## 一、入门
 
-### 1、初始化项目
+### 1. 初始化项目
 
 ```js
 // 利用脚手架初始化项目
@@ -23,11 +19,11 @@ npm i
 yarn dev
 ```
 
-### 2、 安装并配置模板引擎插件
+### 2. 安装并配置模板引擎插件
 
-(1)、安装：`npm i egg-view-nunjucks --save`
+(1) 安装：`npm i egg-view-nunjucks --save`
 
-(2)、开启插件：
+(2) 开启插件：
 
 ```js
 // config/plugin.js
@@ -47,7 +43,8 @@ config.view = {
 };
 ```
 
-### 3、创建模板文件
+## 二、开始使用
+### 1. 创建模板文件
 
 ```html
 <!-- app/view/news/list.tpl -->
@@ -68,7 +65,7 @@ config.view = {
 </html>
 ```
 
-### 4、创建静态资源文件 news.css 到 public/css
+### 2. 创建静态资源文件 news.css 到 public/css
 
 ```css
 ul {
@@ -97,7 +94,7 @@ ul {
 }
 ```
 
-### 5、添加 Controller 和 Router
+### 3. 添加 Controller 和 Router
 
 (1)、新建 news.js 到 //app/controller
 
@@ -132,7 +129,7 @@ module.exports = NewsController;
 
 (3)、查看效果：`yarn dev` => 打开 http://127.0.0.1:7002/news
 
-### 6、编写业务逻辑,爬取 hacker-news 数据
+### 4. 编写业务逻辑,爬取 hacker-news 数据
 
 (1) 新建目录：// app/service/news.js，这里请求时设置了 proxy，是因为 hacker-news 的 api 被墙了
 
@@ -198,7 +195,7 @@ config.news = {
 };
 ```
 
-### 7、编写扩展插件 moment，美化时间
+### 5. 编写扩展插件 moment，美化时间
 
 ```js
 // 下载 moment 插件
@@ -233,7 +230,7 @@ exports.relativeTime = time => moment(new Date(time * 1000)).fromNow();
 </html>
 ```
 
-### 8、站点禁止百度爬虫访问
+### 6. 站点禁止百度爬虫访问
 
 (1) app/middleware/robot.js
 
@@ -265,7 +262,7 @@ config.robot = {
 };
 ```
 
-## 9、单元测试
+### 7. 单元测试
 
 (1) // test/app/middleware/robot.test.js
 
