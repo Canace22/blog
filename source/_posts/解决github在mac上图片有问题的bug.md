@@ -12,8 +12,8 @@ date: 2020-02-17 21:35:02
 
 ```
 # GitHub Start
-192.30.253.112    github.com
-192.30.253.119    gist.github.com
+# 192.30.253.112    github.com
+# 192.30.253.119    gist.github.com
 199.232.28.133    assets-cdn.github.com
 199.232.28.133    raw.githubusercontent.com
 199.232.28.133    gist.githubusercontent.com
