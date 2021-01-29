@@ -1,34 +1,42 @@
 ---
-title: 解决github在mac上图片有问题的bug
+title: 解决github图片破裂问题
 categories: 系统
 tags: 系统操作
 comments: true
 date: 2020-02-17 21:35:02
 ---
+这个问题主要是 host 问题，修改一下正确的 host 即可
+
+## mac
 
 `sudo vi /etc/hosts`
 
 `i` insert
 
+## win
+
+打开 C:\Windows\System32\drivers\etc\hosts
+
+## 修改 host 文件 ip
+
 ```
 # GitHub Start
 # 192.30.253.112    github.com
 # 192.30.253.119    gist.github.com
-199.232.28.133    assets-cdn.github.com
-199.232.28.133    raw.githubusercontent.com
-199.232.28.133    gist.githubusercontent.com
-199.232.28.133    cloud.githubusercontent.com
-199.232.28.133    camo.githubusercontent.com
-199.232.28.133    avatars0.githubusercontent.com
-199.232.28.133    avatars1.githubusercontent.com
-199.232.28.133    avatars2.githubusercontent.com
-199.232.28.133    avatars3.githubusercontent.com
-199.232.28.133    avatars4.githubusercontent.com
-199.232.28.133    avatars5.githubusercontent.com
-199.232.28.133    avatars6.githubusercontent.com
-199.232.28.133    avatars7.githubusercontent.com
-199.232.28.133    avatars8.githubusercontent.com
- # GitHub End
+151.101.184.133    assets-cdn.github.com
+151.101.184.133    raw.githubusercontent.com
+151.101.184.133    gist.githubusercontent.com
+151.101.184.133    cloud.githubusercontent.com
+151.101.184.133    camo.githubusercontent.com
+151.101.184.133    avatars.githubusercontent.com
+151.101.184.133    avatars0.githubusercontent.com
+151.101.184.133    avatars1.githubusercontent.com
+151.101.184.133    avatars2.githubusercontent.com
+151.101.184.133    avatars3.githubusercontent.com
+151.101.184.133    avatars4.githubusercontent.com
+151.101.184.133    avatars5.githubusercontent.com
+151.101.184.133    avatars6.githubusercontent.com
+151.101.184.133    avatars7.githubusercontent.com
+151.101.184.133    avatars8.githubusercontent.com
+# GitHub End 
 ```
-
-`esc => :wq`
