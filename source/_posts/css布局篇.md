@@ -102,7 +102,6 @@ A、父元素一定，子元素为单行内联文本
 ```css
 .parent {
   width: 260px;
-  height: 100px;
   line-height: 100px;
   border: 1px solid purple;
 }
@@ -120,11 +119,15 @@ B、父元素一定，子元素为多行内联文本
 
 ```css
 .parent {
-  display: table-cell;
+  width: 300px;
+  line-height: 300px;
+  border: 1px solid;
+  margin: 0 20px;
+}
+.child {
+  display: inline-block;
+  line-height: 30px;
   vertical-align: middle;
-  width: 260px;
-  height: 100px;
-  border: 1px solid purple;
 }
 ```
 
@@ -147,14 +150,14 @@ C、子元素为块级元素
   position: absolute;
   top: 0;
   bottom: 0;
-  left: 0;
-  right: 0;
   width: 100px;
   height: 100px;
   margin: auto;
   border: 1px solid purple;
 }
 ```
+
+除了这种方法，也可以用上一种方法实现
 
 D、flex 布局
 
@@ -167,7 +170,7 @@ D、flex 布局
 ```css
 .parent {
   display: flex;
-  align-item: center;
+  align-items: center;
   width: 500px;
   height: 500px;
   border: 1px solid purple;

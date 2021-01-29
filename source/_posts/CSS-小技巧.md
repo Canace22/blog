@@ -165,3 +165,17 @@ input[type="checkbox"] {
   }
 }
 ```
+
+## 竖排显示文本，数字横排
+
+从右向左竖排显示文本
+
+```css
+writing-mode: vertical-rl;
+```
+
+数字横排
+
+```css
+text-combine-upright: all;  
+```
