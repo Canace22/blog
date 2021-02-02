@@ -3,7 +3,7 @@ title: 四个JS小技巧
 comments: true
 date: 2019-07-16 23:12:58
 categories: web
-tags: js
+tags: JavaScript
 ---
 
 ## 一、尽早结束

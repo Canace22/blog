@@ -3,7 +3,7 @@ title: javaScript 函数
 comments: true
 date: 2018-10-22 19:51:48
 categories: web
-tags: js
+tags: JavaScript
 toc: true
 ---
 

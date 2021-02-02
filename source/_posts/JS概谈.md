@@ -2,7 +2,7 @@
 title: JS 概谈
 date: 2018-05-20 16:56:12
 categories: web
-tags: js
+tags: JavaScript
 comments: true
 ---
 

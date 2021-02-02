@@ -1,7 +1,7 @@
 ---
 title: 好玩的 console
 categories: web
-tags: js
+tags: JavaScript
 description: 一切要从昨天打开知乎控制台说起，昨天打开知乎控制台看到了 acii 图形的打印，比较好奇怎么画出来的，首先想肯定要用 console 吧，那么到底使用什么姿势 console 出来的呢？emmm，然后就有了这个
 comments: true
 date: 2020-07-18 11:25:26

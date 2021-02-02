@@ -1,7 +1,7 @@
 ---
 title: Proxy 实现观察者模式
 categories: web
-tags: js
+tags: JavaScript
 description:  使用 es6 Proxy 实现观察者模式
 comments: true
 date: 2020-05-28 10:11:14
