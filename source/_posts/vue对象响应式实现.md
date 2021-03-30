@@ -1,17 +1,16 @@
 ---
-title: Vue 源码笔记
+title: Vue 对象响应式实现
 categories: web
 tags: vue
 comments: true
 toc: true
-description: Vue 源码笔记
+description: 数据变化侦测的实现
 date: 2020-03-03 09:59:23
 ---
 
-### 一、数据变化侦测的实现
+## 一、数据变化侦测的实现
 
-在 Object 对象中有个 defineProperty 方法可以直接在一个对象上定义一个新属性，或者修改一个对象的现有属性， 并返回这个对象，该方法接收三个参数，分别是：需要修改属性值的 obj，要定义或修改的属性名称 prop，将被定义或修改的属性描述符 descriptor。其中描述符中有 get 和 set 两个方法，当对应的属性被读取时，会触发对象的 get 方法，当对应属性的值被重置时，会触发对象的 set 方法。Vue 就是利用这一特性实现数据的变化侦测的，下面看一下一个简单的模拟 Vue
-数据侦测的 Demo：
+在 Object 对象中有个 defineProperty 方法可以直接在一个对象上定义一个新属性，或者修改一个对象的现有属性， 并返回这个对象，该方法接收三个参数，分别是：需要修改属性值的 obj，要定义或修改的属性名称 prop，将被定义或修改的属性描述符 descriptor。其中描述符中有 get 和 set 两个方法，当对应的属性被读取时，会触发对象的 get 方法，当对应属性的值被重置时，会触发对象的 set 方法。Vue 就是利用这一特性实现数据的变化侦测的，下面看一下一个简单的模拟 Vue 数据侦测的 Demo：
 
 ```js
 let data = {
@@ -87,7 +86,7 @@ export class Observer {
 }
 ```
 
-### 二、数据驱动视图的实现
+## 二、数据驱动视图的实现
 
 数据驱动视图，怎么去更新对应的视图，这里引入了依赖管理器 Dep，用于操作视图数组，在 getter 中收集依赖，把对应的依赖存入数组中，在 setter 中通知依赖更新，当依赖数组更新时，会触发 Watcher 类，对视图进行更新。
 
@@ -157,6 +156,6 @@ export function defineReactive (
 }
 ```
 
-### 三、数据侦测的 bug
+## 三、数据侦测的 bug
 
 当我们向 object 数据里添加一对新的 key/value 或删除一对已有的 key/value 时，它是无法观测到的，导致当我们对 object 数据添加或删除值时，无法通知依赖，无法驱动视图进行响应式更新，这里的解决方法是手动 set 新的 key/value 或者 delete。对于数组元素的增删，可使用 push、unshift、splice，触发数据变化，修改数组元素同样可使用 set 和 delete 方法。
