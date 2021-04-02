@@ -1,364 +1,149 @@
 ---
 title: CSS 布局篇
 comments: true
-date: 2019-08-11 10:45:33
+date: 2021-04-02 10:45:33
 categories: web
+toc: true
 tags: css
 ---
 
-css 基本布局介绍，包括元素的水平、垂直居中，单列布局、三列布局等，文章分析了多种情况下的布局方案，参考自知乎《css 十八般武艺全在这里了》。
+css 基本布局介绍，包括元素的水平、垂直居中，单列布局、三列布局等，文章分析了多种情况下的布局方案。
 
 <!--more-->
 
-一、布局
+## 一、居中
 
-1、居中
+### 1. 水平居中
 
-(1) 水平居中
+**(1) 基于盒型的实现**
 
-A、子元素行内元素
+- 子元素行内元素
 
-```html
-<div class="parent">
-  <span class="child">子元素为行内元素</span>
-</div>
-```
+<p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="css,result" data-user="AnnaLoveLife" data-slug-hash="WNGKJKj" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="水平居中——子元素行内元素">
+  <span>See the Pen <a href="https://codepen.io/AnnaLoveLife/pen/WNGKJKj">
+  水平居中——子元素行内元素</a> by Anna (<a href="https://codepen.io/AnnaLoveLife">@AnnaLoveLife</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
 
-```css
-.parent {
-  text-align: center;
-  width: 200px;
-  height: 100px;
-  border: 1px solid purple;
-}
-```
+- 子元素为定宽块状元素
 
-B、子元素为定宽块状元素
+<p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="css,result" data-user="AnnaLoveLife" data-slug-hash="oNBZELg" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="水平居中——子元素为定宽块状元素">
+  <span>See the Pen <a href="https://codepen.io/AnnaLoveLife/pen/oNBZELg">
+  水平居中——子元素为定宽块状元素</a> by Anna (<a href="https://codepen.io/AnnaLoveLife">@AnnaLoveLife</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
 
-```html
-<div class="parent">
-  <div class="child">定宽子元素</div>
-</div>
-```
+- 子元素为不定宽块状元素
 
-```css
-.parent {
-  width: 200px;
-  height: 100px;
-  border: 1px solid purple;
-}
-.child {
-  width: 100px;
-  height: 20px;
-  margin: auto;
-}
-```
+<p class="codepen" data-height="310" data-theme-id="dark" data-default-tab="css,result" data-user="AnnaLoveLife" data-slug-hash="BapWYpd" style="height: 310px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="水平居中——子元素为不定宽块状元素">
+  <span>See the Pen <a href="https://codepen.io/AnnaLoveLife/pen/BapWYpd">
+  水平居中——子元素为不定宽块状元素</a> by Anna (<a href="https://codepen.io/AnnaLoveLife">@AnnaLoveLife</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
 
-C、子元素为不定宽块状元素
+**(2) 基于 flex 的实现**
 
-```html
-<div class="parent">
-  <div class="child">子元素为不定宽块状元素</div>
-</div>
-```
+<p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="css,result" data-user="AnnaLoveLife" data-slug-hash="VwPpQba" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="水平居中——基于 flex 的实现">
+  <span>See the Pen <a href="https://codepen.io/AnnaLoveLife/pen/VwPpQba">
+  水平居中——基于 flex 的实现</a> by Anna (<a href="https://codepen.io/AnnaLoveLife">@AnnaLoveLife</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
 
-```css
-.parent {
-  text-align: center;
-  width: 200px;
-  height: 100px;
-  border: 1px solid purple;
-}
-.child {
-  display: inline;
-}
-```
+### 2. 垂直居中
 
-D、flex 布局
+**(1) 基于盒模型的实现**
 
-```html
-<div class="parent">
-  <div class="child">flex 布局</div>
-</div>
-```
+- 父元素一定，子元素为单行内联文本
 
-```css
-.parent {
-  display: flex;
-  justify-content: center;
-}
-```
+<p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="css,result" data-user="AnnaLoveLife" data-slug-hash="KKaWQvB" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="垂直居中——父元素一定，子元素为单行内联文本">
+  <span>See the Pen <a href="https://codepen.io/AnnaLoveLife/pen/KKaWQvB">
+  垂直居中——父元素一定，子元素为单行内联文本</a> by Anna (<a href="https://codepen.io/AnnaLoveLife">@AnnaLoveLife</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
 
-(2) 垂直居中
+- 父元素一定，子元素为多行内联文本
 
-A、父元素一定，子元素为单行内联文本
+<p class="codepen" data-height="411" data-theme-id="dark" data-default-tab="css,result" data-user="AnnaLoveLife" data-slug-hash="wvgJyyy" style="height: 411px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="垂直居中——父元素一定，子元素为多行内联文本">
+  <span>See the Pen <a href="https://codepen.io/AnnaLoveLife/pen/wvgJyyy">
+  垂直居中——父元素一定，子元素为多行内联文本</a> by Anna (<a href="https://codepen.io/AnnaLoveLife">@AnnaLoveLife</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
 
-```html
-<div class="parent">
-  <div class="child">父元素一定，子元素为单行内联文本</div>
-</div>
-```
+- 子元素为块级元素
 
-```css
-.parent {
-  width: 260px;
-  line-height: 100px;
-  border: 1px solid purple;
-}
-```
+<p class="codepen" data-height="405" data-theme-id="dark" data-default-tab="css,result" data-user="AnnaLoveLife" data-slug-hash="MWJpVBy" style="height: 405px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="垂直居中——子元素为块级元素">
+  <span>See the Pen <a href="https://codepen.io/AnnaLoveLife/pen/MWJpVBy">
+  垂直居中——子元素为块级元素</a> by Anna (<a href="https://codepen.io/AnnaLoveLife">@AnnaLoveLife</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
 
-B、父元素一定，子元素为多行内联文本
+**(2) 基于 flex 的实现**
 
-```html
-<div class="parent">
-  <div class="child">
-    父元素一定，子元素为多行内联文本父元素一定，子元素为多行内联文本父元素一定，子元素为多行内联文本父元素一定，子元素为多行内联文本
-  </div>
-</div>
-```
+<p class="codepen" data-height="410" data-theme-id="dark" data-default-tab="css,result" data-user="AnnaLoveLife" data-slug-hash="ExZWEGX" style="height: 410px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="垂直居中——基于 flex 的实现">
+  <span>See the Pen <a href="https://codepen.io/AnnaLoveLife/pen/ExZWEGX">
+  垂直居中——基于 flex 的实现</a> by Anna (<a href="https://codepen.io/AnnaLoveLife">@AnnaLoveLife</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
 
-```css
-.parent {
-  width: 300px;
-  line-height: 300px;
-  border: 1px solid;
-  margin: 0 20px;
-}
-.child {
-  display: inline-block;
-  line-height: 30px;
-  vertical-align: middle;
-}
-```
+## 二、单列布局
 
-C、子元素为块级元素
+### 1. header、content、footer 为浏览器宽度
 
-```html
-<div class="parent">
-  <div class="child"></div>
-</div>
-```
+<p class="codepen" data-height="339" data-theme-id="dark" data-default-tab="css,result" data-user="AnnaLoveLife" data-slug-hash="BapWrMg" style="height: 339px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="单列布局——header、content、footer 为浏览器宽度">
+  <span>See the Pen <a href="https://codepen.io/AnnaLoveLife/pen/BapWrMg">
+  单列布局——header、content、footer 为浏览器宽度</a> by Anna (<a href="https://codepen.io/AnnaLoveLife">@AnnaLoveLife</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
 
-```css
-.parent {
-  width: 500px;
-  height: 500px;
-  border: 1px solid purple;
-}
+### 2. header、footer 宽度为浏览器宽度，content 宽度小于浏览器宽度居中
 
-.child {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 100px;
-  height: 100px;
-  margin: auto;
-  border: 1px solid purple;
-}
-```
+<p class="codepen" data-height="390" data-theme-id="dark" data-default-tab="css,result" data-user="AnnaLoveLife" data-slug-hash="NWdpYQP" style="height: 390px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="单列布局—— header、footer 宽度为浏览器宽度，content 宽度小于浏览器宽度居中">
+  <span>See the Pen <a href="https://codepen.io/AnnaLoveLife/pen/NWdpYQP">
+  单列布局—— header、footer 宽度为浏览器宽度，content 宽度小于浏览器宽度居中</a> by Anna (<a href="https://codepen.io/AnnaLoveLife">@AnnaLoveLife</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
 
-除了这种方法，也可以用上一种方法实现
+## 三、三列布局
 
-D、flex 布局
+### 1. 基于盒模型的实现
 
-```html
-<div class="parent">
-  <div class="child"></div>
-</div>
-```
+- **float + margin**
 
-```css
-.parent {
-  display: flex;
-  align-items: center;
-  width: 500px;
-  height: 500px;
-  border: 1px solid purple;
-}
-```
+两边元素固定宽度，利用浮动性，使中间元素填充剩余空间，删除左右的其中一个，则可以实现一个元素固定，另一个元素填充剩余空间
 
-2、单列布局
+<p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="css,result" data-user="AnnaLoveLife" data-slug-hash="QWdprwy" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="三列布局——float + margin">
+  <span>See the Pen <a href="https://codepen.io/AnnaLoveLife/pen/QWdprwy">
+  三列布局——float + margin</a> by Anna (<a href="https://codepen.io/AnnaLoveLife">@AnnaLoveLife</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
 
-(1) header、content、footer 宽度相同
+- **position + margin**
 
-```html
-<div class="layout">
-  <div class="header">头部</div>
-  <div class="content">内容</div>
-  <div class="footer">尾部</div>
-</div>
-```
+左右元素绝对定位，中间元素的 margin-left、margin-right 对应左右元素的宽度
 
-```css
-.layout {
-  /*   width: 960px; */
-  /*设置width当浏览器窗口宽度小于960px时，单列布局不会自适应。*/
-  max-width: 960px;
-  margin: 0 auto;
-}
+<p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="css,result" data-user="AnnaLoveLife" data-slug-hash="yLgMjoX" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="三列布局——position + margin">
+  <span>See the Pen <a href="https://codepen.io/AnnaLoveLife/pen/yLgMjoX">
+  三列布局——position + margin</a> by Anna (<a href="https://codepen.io/AnnaLoveLife">@AnnaLoveLife</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
 
-.header {
-  width: 100%;
-  height: 72px;
-  background: palegoldenrod;
-}
+### 2. 基于 flex 实现三栏布局
 
-.content {
-  width: 100%;
-  height: calc(100% - 144px);
-  background: rgb(27, 27, 26);
-}
-
-.footer {
-  width: 100%;
-  height: 72px;
-  background: rgb(211, 211, 75);
-}
-```
-
-(2) header、footer 宽度为浏览器宽度，content 宽度小于浏览器宽度居中
-
-```html
-<div class="header">
-  <div class="layout">头部</div>
-</div>
-<div class="content" class="layout">内容</div>
-<div class="footer">
-  <div class="layout">尾部</div>
-</div>
-```
-
-```css
-.layout {
-  /*   width: 960px; */
-  /*设置width当浏览器窗口宽度小于960px时，单列布局不会自适应。*/
-  max-width: 960px;
-  height: 100%;
-  margin: 0 auto;
-}
-
-.header,
-.footer {
-  width: 100%;
-  height: 72px;
-  background: rgb(211, 211, 75);
-}
-
-.content {
-  width: 960px;
-  height: calc(100% - 144px);
-  background: rgb(27, 27, 26);
-  margin: auto;
-}
-```
-
-3、三列布局
-
-(1) float + margin，要点两边元素固定宽度，中间元素的 margin-left、margin-right 对应左右元素的宽，先写两侧栏，再写主面板
-
-```html
-<div class="content">
-  <div class="sub">sub</div>
-  <div class="extra">extra</div>
-  <div class="main">main</div>
-</div>
-```
-
-```css
-.content {
-  width: 100%;
-  height: 100%;
-}
-
-.sub {
-  float: left;
-  width: 20%;
-  height: 100%;
-  background: rgb(56, 165, 238);
-}
-
-.extra {
-  float: right;
-  width: 10%;
-  height: 100%;
-  background: rgb(56, 165, 238);
-}
-
-.main {
-  margin-left: 20%;
-  margin-right: 10%;
-}
-```
-
-(2) position + margin，左右元素绝对定位，中间元素的 margin-left、margin-right 对应左右元素的宽度
-
-```html
-<div class="sub">left</div>
-<div class="main">main</div>
-<div class="extra">right</div>
-```
-
-```css
-.sub,
-.extra {
-  position: absolute;
-  top: 0;
-  width: 200px;
-  height: 100%;
-  background: rgb(56, 165, 238);
-}
-
-.sub {
-  left: 0;
-}
-
-.extra {
-  right: 0;
-}
-
-.main {
-  margin: 0 200px;
-}
-```
-
-(3) flex
-
-```html
-<div class="layout">
-  <aside class="aside">侧边栏宽度固定</aside>
-  <div class="main">主内容栏宽度自适应</div>
-</div>
-<div class="layout">
-  <div class="main">主内容栏宽度自适应</div>
-  <aside class="aside">侧边栏宽度固定</aside>
-</div>
-<div class="layout">
-  <aside class="aside">左侧边栏宽度固定</aside>
-  <div class="main">主内容栏宽度自适应</div>
-  <aside class="aside">右侧边栏宽度固定</aside>
-</div>
-<div class="layout">
-  <aside class="aside">第1个侧边栏宽度固定</aside>
-  <aside class="aside">第2个侧边栏宽度固定</aside>
-  <div class="main">主内容栏宽度自适应</div>
-</div>
-<div class="layout">
-  <div class="main">主内容栏宽度自适应</div>
-  <aside class="aside">第1个侧边栏宽度固定</aside>
-  <aside class="aside">第2个侧边栏宽度固定</aside>
-</div>
-```
-
-```css
-.layout {
-  display: flex;
-}
-
-.main {
-  flex: 1;
-}
-
-.aside {
-  width: 200px;
-}
-```
+<p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="css,result" data-user="AnnaLoveLife" data-slug-hash="vYgxjeq" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="三列布局——基于 flex">
+  <span>See the Pen <a href="https://codepen.io/AnnaLoveLife/pen/vYgxjeq">
+  三列布局——基于 flex</a> by Anna (<a href="https://codepen.io/AnnaLoveLife">@AnnaLoveLife</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
