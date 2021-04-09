@@ -1,7 +1,7 @@
 ---
 title: 防不胜防的 bug —————— chrom 翻译惹的祸
 categories: web
-tags: 经验
+tags: 工作总结
 description:  bug 天上来，想不到的 bug 之 翻译有什么错
 comments: true
 date: 2020-03-31 17:23:39
