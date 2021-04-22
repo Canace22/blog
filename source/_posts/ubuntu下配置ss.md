@@ -2,7 +2,6 @@
 title: ubuntu 下配置ss
 date: 2018-05-27 09:49:30
 categories: 系统
-tags: 科学上网
 comments: true
 ---
 

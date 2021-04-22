@@ -1,7 +1,6 @@
 ---
 title: SS 安装
 categories: 系统
-tags: 科学上网
 description: ss 安装步骤
 comments: true
 date: 2019-11-21 10:46:15

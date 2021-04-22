@@ -3,7 +3,7 @@ title: vue-config 配置模板
 comments: true
 date: 2018-10-22 19:33:31
 categories: web
-tags: vue
+tags: 工程化
 ---
 
 ```js

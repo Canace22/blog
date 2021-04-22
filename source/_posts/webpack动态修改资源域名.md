@@ -1,7 +1,7 @@
 ---
 title: webpack 动态修改资源域名
 categories: web
-tags: 工作总结
+tags: 工程化
 description: webpack 动态修改资源域名方法分享
 comments: true
 date: 2021-04-09 17:15:37

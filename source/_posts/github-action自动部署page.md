@@ -1,7 +1,7 @@
 ---
 title: 使用 github action 编译 Vue 发布到 github page
 categories: web
-tags: tag
+tags: git
 description: 之前发布的静态页面都是用 travis ci 集成发布的，github action 也发布一段时间了，今天试试看使用 github action 编译 Vue 发布到 github page
 comments: true
 date: 2021-03-22 16:26:56

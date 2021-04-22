@@ -1,7 +1,7 @@
 ---
 title: Vscode 简介
 categories: web
-tags: 编辑器
+tags: 开发环境
 description: 工欲善其事必先利其器，前端开发工具我用的是 vscode，vscode 有很多快捷的调试方法和一些插件，这里就总结一下这两方面的东西
 comments: true
 toc: true

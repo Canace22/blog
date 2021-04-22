@@ -1,8 +1,7 @@
 ---
 title: hexo 使用指南
 date: 2018-05-20 16:41:48
-categories: 博客
-tags: hexo
+categories: 技术小白网站搭建指南
 comments: true
 ---
 

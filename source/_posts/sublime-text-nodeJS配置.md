@@ -1,8 +1,8 @@
 ---
-title: sublime text3 配置node.js环境
+title: sublime text3 配置 node.js 环境
 date: 2018-06-08 09:32:52
 categories: web
-tags: 编辑器
+tags: 开发环境
 ---
 
 前提：windows 系统，你已经安装了 Sublime Text3，电脑已经有 node 环境。

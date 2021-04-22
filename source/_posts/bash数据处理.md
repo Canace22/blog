@@ -1,7 +1,6 @@
 ---
 title: bash 数据处理
 categories: 系统
-tags: bash
 description: bash 数据处理运用
 comments: true
 date: 2020-01-04 10:22:54

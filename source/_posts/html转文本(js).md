@@ -1,9 +1,9 @@
 ---
-title: js-html转文本
+title: js-html 转文本
 comments: true
 date: 2018-08-25 10:40:58
 categories: web
-tags: 文本转换
+tags: 富文本
 ---
 
 最近在折腾用 js 实现 html 转文本的东东，包括 html 转 docx、doc 以及 pdf 等文档，首选当然是用别人造好的轮子啦。

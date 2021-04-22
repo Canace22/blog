@@ -1,5 +1,4 @@
 ---
-layout: git
 title: git环境配置
 date: 2017-05-09 16:58:31
 categories: 项目管理

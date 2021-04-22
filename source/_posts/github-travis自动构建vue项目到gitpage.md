@@ -1,9 +1,9 @@
 ---
-title: github+travis自动构建vue项目到gitpage
+title: github  + travis 自动构建 vue 项目到 gitpage
 comments: true
 date: 2019-08-04 12:27:25
 categories: 项目管理
-tags: ci
+tags: git
 ---
 
 github + travis 自动构建 vue 项目到 gitpage

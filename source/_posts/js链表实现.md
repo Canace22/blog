@@ -1,7 +1,7 @@
 ---
 title: js链表实现
 categories: 算法
-tags: 数据结构
+tags: algorithmn
 description: js 的链表实现详解
 comments: true
 toc: true

@@ -1,7 +1,7 @@
 ---
 title: 前端 docker 指南
 categories: web
-tags: docker
+tags: devOps
 description: docker 在前端自动化部署中经常用到，平常都是别人配置好的，只其所以不知其然，自己走一遍，做个笔记
 comments: true
 date: 2020-09-16 09:16:49

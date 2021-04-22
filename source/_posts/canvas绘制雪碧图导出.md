@@ -1,9 +1,9 @@
 ---
-title: canvas绘制雪碧图导出
+title: canvas 绘制雪碧图导出
 comments: true
 date: 2019-10-26 17:19:41
 categories: web
-tags: canvas
+tags: webGL
 ---
 
 在开发中，我们经常会用到雪碧图，有时候 UI 可能给了很多小图，没有给到雪碧图，为了减少请求，我们会选择自己去在线生成或 ps，但是这样太繁琐了，能不能我们用一个函数实现呢？网上很多方案是借助 webpack 实现这个功能的，但是我想能不能简单点，于是就有了这个 demo，目前该 demo 可以合成雪碧图导出，但是没有导出对应的坐标 json 文件，后期再完善，先这样。

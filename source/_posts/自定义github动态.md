@@ -1,7 +1,7 @@
 ---
 title: 自定义 github 动态
 categories: web
-tags: 项目管理
+tags: git
 description: 自定义 github 动态
 comments: true
 date: 2020-07-20 10:28:27

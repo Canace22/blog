@@ -1,7 +1,7 @@
 ---
 title: vscode代码格式化总结
 categories: web
-tags: 编辑器
+tags: 开发环境
 comments: true
 date: 2020-03-30 10:17:59
 ---
