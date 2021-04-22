@@ -1,6 +1,11 @@
 extends base
+block meta
+  meta(itemprop="name", content=page.title)
+  meta(itemprop="image", content=config.image)
+  meta(property="og:image", content=config.image)
+  meta(name="description", itemprop="description", content=page.content)
 block title
-  title= page.title + ' | ' + config.title
+  title= page.title 
 block content
   .post
     h1.post-title= page.title
