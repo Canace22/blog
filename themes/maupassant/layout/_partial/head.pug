@@ -5,6 +5,12 @@ head
     meta(content='black-translucent', name='apple-mobile-web-app-status-bar-style')
     meta(content='telephone=no', name='format-detection')
     meta(name='description', content=config.description)
+    //- seo start
+    meta(itemprop="name", content=page.title)
+    meta(itemprop="image", content=config.image)
+    meta(property="og:image", content=page.image)
+    meta(name="description", itemprop="description", content=page.content)
+    //- seo end
     block title
     link(rel='stylesheet', type='text/css', href=url_for(theme.css) + '/style.css' + '?v=' + theme.version)
     if theme.dark == true

@@ -9,6 +9,7 @@ description: canace 的博客
 keywords: web开发, 计算机图形学, 深度学习, 前端开发, js, html, css
 author: Canace
 language: zh-CN
+image: https://canace.site/images/snow-other.png
 # timezone: 
 
 # URL
@@ -17,7 +18,7 @@ url: https://canace.site/
 root: /
 ## url: https://yoursite.com
 ## root: /
-permalink: :year/:month/:day/:title/
+permalink: :title/ # :year/:month/:day/:title/
 permalink_defaults:
 
 # Directory
@@ -37,7 +38,7 @@ titlecase: true # Transform title into titlecase
 external_link.enable: true # Open external links in new tab
 filename_case: 0
 render_drafts: false
-post_asset_folder: true
+post_asset_folder: false
 relative_link: true
 future: true
 highlight:
