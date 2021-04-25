@@ -1,7 +1,7 @@
 ---
 title: three.js 基础实战 —— 创建画布
 categories: web
-tags: CG
+tags: webGL
 comments: true
 toc: true
 date: 2020-09-14 15:54:50
