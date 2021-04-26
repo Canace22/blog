@@ -39,4 +39,4 @@ CSRF 产生原因：浏览器发起请求会默认带上包括会话 cookie 在�
 
 参考资源：
 
-[Cross-Site Request Forgery Prevention Cheat Sheet]([https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html](https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html))
+[Cross-Site Request Forgery Prevention Cheat Sheet]([https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html]
