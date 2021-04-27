@@ -98,5 +98,5 @@ feed:
 #Docs:https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repository: https://github.com/Canace22/blog.git
+  repository: git@github.com:Canace22/blog.git
   branch: master
