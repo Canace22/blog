@@ -4,58 +4,97 @@ categories: 源码学习
 tags: lodash
 description: lodash slice 函数学习
 comments: true
-date: 2021-01-26 11:15:40
+toc: true
+date: 2021-05-21 11:15:40
 ---
-slice 的源码和我的注释如下：
+## 一、Why lodash slice
+
+首先我们先来想一个问题，JavaScript Array 不是已经有 slice 方法了吗，为什么这里还要多次一举，重新实现一遍呢？源码上面有一句注释
+
+> This method is used instead of [`Array#slice`](https://mdn.io/Array/slice) to ensure dense arrays are returned
+
+这里说到的 dense arrays 就是有内容的数组，而不是没有内容的空数组, 先看一下原生 slice 切割数组的一个例子：
 
 ```js
-// slice 函数接收三个参数分别是:
-// array(需要处理的数组)、start(开始截取子数组的索引)以及 end(结束截取子数组的索引)
-function slice(array, start, end) {
-  // 判断传入的 array 类型是否正确，若传入的是 null, 取 length 属性会报错
-  // 所以把 length 设置为 0，否则，length 取数组的长度
-  let length = array == null ? 0 : array.length
-  // 根据 length 的值判断数组是否为空或传入的类型不对，是的话，返回空数组
-  if (!length) {
-    return []
-  }
-  // 判断传入的 start 参数值是否正确，不正确的话设置为 0
-  start = start == null ? 0 : start
-  // 判断是否有传入 end 参数，没传的话，默认是数组长度
-  end = end === undefined ? length : end
-  // 若 start 为负值，则判断一下 start 的绝对值是否大于当前数组长度
-  // 超过数组长度的话，把 start 设置为 0，否则取倒数位置
-  if (start < 0) {
-    start = -start > length ? 0 : (length + start)
-  }
-  // 判断 end 参数值是否超出数组长度，超出的话，就取数组长度为结束索引
-  end = end > length ? length : end
-  // 结束索引若为负数，那就取倒数位置
-  if (end < 0) {
-    end += length
-  }
-  // 判断 start 和 end的大小，合理的情况是 start < end
-  // 所以当开始索引大于结束索引时，不合理的区间，截取长度设置为0
-  // 合理的话把 end - start 的结果转为十进制数后，赋值给 length
-  length = start > end ? 0 : ((end - start) >>> 0)
-  // 把 start 转换为十进制数
-  start >>>= 0
+var a = new Array(3)
+var b = a.slice()
+console.log(b); // [ <3 empty items> ]
+b.forEach((el) => {
+  console.log('b item:',el)
+})
+```
 
-  let index = -1
-  // 经过上面的步骤，得到了新数组的长度 length，创建一个长度为 length 的新数组
-  const result = new Array(length)
-  // 从 0 开始遍历 length，逐个取 array 偏移 start 位的值，填充到新数组中
-  while (++index < length) {
-    result[index] = array[index + start]
+上述例子中我们创建了一个长度为 3 的数组，然后用 slice 切割放到 b 里面，打印 b，返回的是 `[ <3 empty items> ]`，可见这是一个有长度，但是没内容的数组，也就是 sparse arrays，直译为稀疏数组，不好听，不管还是叫英文吧。接着我们遍历了一下 b，发现 b 里面的内容并没有执行，说明 sparse array 并不会被迭代。
+
+接着我们再来看看用 lodash slice 切割数组的一个例子：
+
+```js
+var a = new Array(3)
+var b = slice(a)
+console.log(b); // [ undefined, undefined, undefined ]
+b.forEach((el) => {
+  console.log('b item:',el)
+})
+var c = b.map(function (x, i) {
+  return i;
+});
+console.log(c) // [(0, 1, 2)];
+```
+
+可以看到用 lodash slice 返回的是 dense array，也就是既有长度又有内容的数组，这时候我们再去遍历这个数组，可以看到已经生效了。使用 dense array 有什么好处呢？有的时候我们可能会生成一个空数组用来遍历生成一些新的空选项，这个时候使用 dense array 就比较方便了。
+
+## 二、怎么保证返回的值正确？
+
+先来看一段 demo
+
+```js
+console.log(slice([1,2,3,4],{}));
+```
+
+这段示例返回了一个空数组，咦，我明明传的是一个对象，他怎么没有报错呢？我们简化一下源码看看
+
+```js
+function slice(array, start, end) {
+  let length = array == null ? 0 : array.length;
+  if (!length) {
+    return [];
   }
-  return result
+  start = start == null ? 0 : start; // start = {}
+  end = end === undefined ? length : end; // end = length
+  end = end > length ? length : end; // end = length
+  length = start > end ? 0 : (end - start) >>> 0; //length = 0
+  start >>>= 0;  // start = 0
+
+  let index = -1;
+  const result = new Array(length); // result = []
+  while (++index < length) {
+    result[index] = array[index + start];
+  }
+  return result;
 }
 ```
 
-从上面的源码分析我们可以看出，这个 slice 函数相对于原生的 slice 方法，优势在于：
+从我的注释可以可以看出为什么我们输入的 start 是 `{}`,却可以返回空数组而没有报错，秘诀在于使用了 `>>>`, 这个符号叫做无符号右移操作符，`>>>0` 作用是保证值是有意义的正整数，若无意义则缺省为 0，这里 `{}>>>0` 会被转换为 0，因此不会报错。
 
-(1) 传入的 array 即使不是数组，也不会抛出异常，而是会返回一个空数组，这在工作中可以解决那些数据类型传错会抛出错误导致程序崩溃的问题
+再来看一段 demo
 
-(2) 函数式的调用，更加简单易懂
+```js
+console.log(slice([1, 2, 3, 4])); // [1, 2, 3, 4]
+```
 
-这段代码对参数做了全面细致的校验，从而保证可以返回正确的值，很值得我们学习。
+这段示例我们没有给 start 值，没有报错，返回了完整的数组。这又是什么原理呢？源码中有这么一句
+
+```js
+start = start == null ? 0 : start
+```
+
+可是我们的 start 不是 undefined 吗？这里用到了二元操作符 `==` 的其中一个规则，null == undefined。
+
+
+
+
+参考文献：
+
+[JavaScript: sparse arrays vs. dense arrays](https://2ality.com/2012/06/dense-arrays.html)
+
+[lodash 源码](https://github.com/lodash/lodash)
