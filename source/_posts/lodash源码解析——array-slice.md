@@ -9,7 +9,7 @@ date: 2021-05-21 11:15:40
 ---
 ## 一、Why lodash slice
 
-首先我们先来想一个问题，JavaScript Array 不是已经有 slice 方法了吗，为什么这里还要多次一举，重新实现一遍呢？源码上面有一句注释
+首先我们先来想一个问题，JavaScript Array 不是已经有 slice 方法了吗，为什么这里还要多此一举，重新实现一遍呢？源码上面有一句注释
 
 > This method is used instead of [`Array#slice`](https://mdn.io/Array/slice) to ensure dense arrays are returned
 
