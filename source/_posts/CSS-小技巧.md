@@ -39,34 +39,6 @@ description: 本文收录日常开发中一些 css 小技巧。
 
 Android 端，img 和 button，点击之后出现一块阴影区域，一开始以为是 user-select 作怪，设置为 none 无果，后来发现是 curser：pointer 的锅，在 Android 端 cursor 设置为 none，即可解决问题
 
-## 导航条样式操作
-
-```css
-/* The emerging W3C standard
-that is currently Firefox-only */
-* {
-  scrollbar-width: thin;
-  scrollbar-color: blue orange;
-}
-
-/* Works on Chrome/Edge/Safari */
-*::-webkit-scrollbar {
-  width: 12px;
-}
-*::-webkit-scrollbar-track {
-  background: orange;
-}
-*::-webkit-scrollbar-thumb {
-  background-color: blue;
-  border-radius: 20px;
-  border: 3px solid orange;
-}
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: rgb(14, 77, 136);
-}
-```
-
 ## 利用 max-height 实现展开、收起效果
 
 ```css
