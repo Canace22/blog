@@ -1,8 +1,8 @@
 ---
-title: Vscode 简介
+title: VSCode 使用指南
 categories: web
 tags: 开发环境
-description: 工欲善其事必先利其器，前端开发工具我用的是 vscode，vscode 有很多快捷的调试方法和一些插件，这里就总结一下这两方面的东西
+description: 工欲善其事必先利其器，前端开发工具我用的是 VSCode，VSCode 有很多快捷的调试方法和一些插件，这里就总结一下这两方面的东西
 comments: true
 toc: true
 date: 2021-03-17 08:44:36
