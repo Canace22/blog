@@ -6,7 +6,7 @@
   <link href="https://canace.site/atom.xml" rel="self"/>
   
   <link href="https://canace.site/"/>
-  <updated>2021-07-21T01:49:49.908Z</updated>
+  <updated>2021-07-27T02:42:38.730Z</updated>
   <id>https://canace.site/</id>
   
   <author>
@@ -17,11 +17,34 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>KPI vs OKR</title>
+    <link href="https://canace.site/kpi-vs-okr/"/>
+    <id>https://canace.site/kpi-vs-okr/</id>
+    <published>2021-07-27T02:17:12.000Z</published>
+    <updated>2021-07-27T02:42:38.730Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="随笔" scheme="https://canace.site/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>关于广告拦截插件的一些思考</title>
     <link href="https://canace.site/%E5%85%B3%E4%BA%8E%E5%B9%BF%E5%91%8A%E6%8B%A6%E6%88%AA%E6%8F%92%E4%BB%B6%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%9D%E8%80%83/"/>
     <id>https://canace.site/%E5%85%B3%E4%BA%8E%E5%B9%BF%E5%91%8A%E6%8B%A6%E6%88%AA%E6%8F%92%E4%BB%B6%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%9D%E8%80%83/</id>
     <published>2021-07-21T01:36:56.000Z</published>
-    <updated>2021-07-21T01:49:49.908Z</updated>
+    <updated>2021-07-21T01:50:29.968Z</updated>
     
     
       
@@ -462,29 +485,6 @@
     
     
     <category term="devOps" scheme="https://canace.site/tags/devOps/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>关于做技术这件事</title>
-    <link href="https://canace.site/%E5%85%B3%E4%BA%8E%E5%81%9A%E6%8A%80%E6%9C%AF%E8%BF%99%E4%BB%B6%E4%BA%8B/"/>
-    <id>https://canace.site/%E5%85%B3%E4%BA%8E%E5%81%9A%E6%8A%80%E6%9C%AF%E8%BF%99%E4%BB%B6%E4%BA%8B/</id>
-    <published>2021-04-30T03:11:58.000Z</published>
-    <updated>2021-04-30T03:44:27.993Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
-    
-    
-    
-    <category term="随笔" scheme="https://canace.site/categories/%E9%9A%8F%E7%AC%94/"/>
-    
     
   </entry>
   
