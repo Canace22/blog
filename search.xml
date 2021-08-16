@@ -4,6 +4,56 @@
   
     
     <entry>
+      <title>校验字符串是否有意义</title>
+      <link href="/%E6%A0%A1%E9%AA%8C%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
+      <url>/%E6%A0%A1%E9%AA%8C%E5%AD%97%E7%AC%A6%E4%B8%B2/</url>
+      
+        <content type="html"><![CDATA[<p>项目中有一个表单，初始化根据服务端返回的数据渲染，服务端返回的是一个对象，有些字段的值为 ‘NULL’ 这种形式的，渲染出来没什么意义，一般都会转换为空。这种形式的字符串布尔值是 false，而且是对象的值，不好一键转换，这里就需要写一个函数去做校验了。这里我写了个简单的转换函数如下:</p><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">checkVal</span>(<span class="params">val</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> isSense = <span class="function"><span class="params">checkStr</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">typeof</span> checkStr !== <span class="string">&#x27;string&#x27;</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> checkStr;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">const</span> noSense = [<span class="string">&#x27;null&#x27;</span>, <span class="string">&#x27;undefinded&#x27;</span>];</span><br><span class="line">        <span class="keyword">const</span> str = checkStr.toLowerCase();</span><br><span class="line">        <span class="keyword">return</span> noSense.includes(str) ? <span class="string">&#x27;&#x27;</span> : checkStr;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">const</span> isObject = <span class="function"><span class="params">value</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> type = <span class="keyword">typeof</span> value;</span><br><span class="line">        <span class="keyword">return</span> value != <span class="literal">null</span> &amp;&amp; (type === <span class="string">&#x27;object&#x27;</span> || type === <span class="string">&#x27;function&#x27;</span>);</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">if</span> (isObject(val)) &#123;</span><br><span class="line">        <span class="keyword">const</span> keys = <span class="built_in">Object</span>.keys(val);</span><br><span class="line">        <span class="keyword">let</span> newVal = <span class="built_in">Object</span>.create(<span class="literal">null</span>);</span><br><span class="line">        keys.forEach(<span class="function"><span class="params">el</span> =&gt;</span> &#123;</span><br><span class="line">            newVal[el] = isSense(val[el]);</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="keyword">return</span> newVal;</span><br><span class="line">    &#125;</span><br><span class="line">    isSense(val);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>首先判断输入值是否为对象，不是对象的话我们就直接处理了，这里的处理也很简单，值不在无意义数组里面，就返回原始值否则返回空。若输入值是一个对象，则遍历一下 key，当前 key 对应的值若是无意义值返回空，否则返回原始值。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> web </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> JavaScript </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Ant-Design-Vue 那些坑</title>
+      <link href="/ant-design%E9%82%A3%E4%BA%9B%E5%9D%91/"/>
+      <url>/ant-design%E9%82%A3%E4%BA%9B%E5%9D%91/</url>
+      
+        <content type="html"><![CDATA[<p>最近项目中用到了 ant-design-vue，对于内部系统来说，ant 的风格是比较好的，但是组件的使用比较难自定义，这是我个人一个比较深的感受吧，下面记录一下使用中遇到的一些坑。</p><h2 id="dropdown"><a href="#dropdown" class="headerlink" title="dropdown"></a>dropdown</h2><p>dropdown 组件的 menu 默认会被添加到 body 元素上，使用默认的设置，在列表中会出现点击之后失去焦点位置偏移的问题，解决这个问题的方法是设置一个 menu 的容器</p><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">&lt;a-dropdown</span><br><span class="line">    getPopupContainer=&#123;<span class="function"><span class="params">triggerNode</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> triggerNode.parentNode || <span class="built_in">document</span>.body;</span><br><span class="line">    &#125;&#125;</span><br><span class="line">&gt;</span><br><span class="line">&lt;/a-dropdown&gt;</span><br></pre></td></tr></table></figure><h2 id="select"><a href="#select" class="headerlink" title="select"></a>select</h2><p>设置了 v-model，给了一个默认值空，placeholder 没显示出来，这里是因为 select 组件的逻辑是值为 undefined 时才显示 placeholder，这里就需要把 v-model 绑定的变量默认值设为 undefined，这个其实挺奇葩的，一般我们是不会给变量设置 undefined 值的，这里就只能这么干。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> web </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> vue </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Vue 你这是怎么了</title>
       <link href="/Vue%E6%80%8E%E4%B9%88%E4%BA%86/"/>
       <url>/Vue%E6%80%8E%E4%B9%88%E4%BA%86/</url>
