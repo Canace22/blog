@@ -213,4 +213,38 @@ git reflog expire --expire=now --all
 git gc --prune=now
 ```
 
+#### 4、git 大小写不敏感，修改后找不到依赖
 
+可以使用 git mv 命令替换一下
+
+```git 
+git mv [file] [newfile] 
+```
+
+#### 5. git pull 报一堆 warning
+
+切了 zsh，每次 git  pull 就报下面的 warning，很多行，看着有点无语
+
+```sh
+hint: Pulling without specifying how to reconcile divergent branches is
+hint: discouraged. You can squelch this message by running one of the following
+hint: commands sometime before your next pull:
+hint: 
+hint:   git config pull.rebase false  # merge (the default strategy)
+hint:   git config pull.rebase true   # rebase
+hint:   git config pull.ff only       # fast-forward only
+hint: 
+hint: You can replace "git config" with "git config --global" to set a default
+hint: preference for all repositories. You can also pass --rebase, --no-rebase,
+hint: or --ff-only on the command line to override the configured default per
+hint: invocation.
+```
+
+原因是 git pull 每次产生一个令人迷惑的 commit，会被认为是有问题的操作，要解决这个问题可以在 git  pull 的时候不要创建新的 commit。
+
+```bash
+# 局部
+git pull --ff-only
+# 全局
+git config --global pull.ff only
+```
