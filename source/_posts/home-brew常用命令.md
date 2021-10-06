@@ -16,6 +16,18 @@ Homebrew 不会将文件安装到它本身目录之外，所以可将 Homebrew �
 
 ### 二、常用命令
 
+安装 Homebrew
+
+```sh
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+卸载
+
+```sh
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)"
+```
+
 ```brew
 // 搜索包
 brew search mysql
