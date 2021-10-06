@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Ffmpeg 抽取视频音轨</title>
+      <link href="/ffmpeg%E6%8A%BD%E5%8F%96%E8%A7%86%E9%A2%91%E9%9F%B3%E8%BD%A8/"/>
+      <url>/ffmpeg%E6%8A%BD%E5%8F%96%E8%A7%86%E9%A2%91%E9%9F%B3%E8%BD%A8/</url>
+      
+        <content type="html"><![CDATA[<p>看 youtube 上有些视频的音乐很好听，就想抽出来当自己的歌单，懒得去用市面上的软件，觉得麻烦，想到了 ffmpeg。 mac 可以用 homebrew 下载,过程比较烦，每次装都要更新，更新很久才开始下载，于是切了清华源，快一点。</p><p>安装好 ffmpeg 之后要抽离音轨就很简单了</p><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># &lt;path&gt;.mp4 视频文件路径</span></span><br><span class="line"><span class="comment"># -f mp3 mp3编码</span></span><br><span class="line"><span class="comment"># -ar 16000 音频采样率</span></span><br><span class="line"><span class="comment"># &lt;path&gt;.mp3输出的音频文件路径</span></span><br><span class="line">ffmpeg -i &lt;path&gt;.mp4 -f mp3 -ar 16000 &lt;path&gt;.mp3</span><br></pre></td></tr></table></figure><p>这样只能一次转一个，比较麻烦，我有好几个要转，懒得在命令行一个个敲，写个脚本遍历也很简单</p><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> var <span class="keyword">in</span> cannon 500-miles</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    ffmpeg -i &lt;path&gt;/<span class="variable">$var</span>.mp4 -f mp3 -ar 16000 &lt;path&gt;/<span class="variable">$var</span>.mp3</span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$var</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 服务端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> ffmpeg </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>晨跑</title>
       <link href="/%E6%99%A8%E8%B7%91%E7%AC%AC%E4%B8%80%E5%A4%A9/"/>
       <url>/%E6%99%A8%E8%B7%91%E7%AC%AC%E4%B8%80%E5%A4%A9/</url>
@@ -3337,7 +3362,7 @@
       <link href="/home-brew%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
       <url>/home-brew%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
       
-        <content type="html"><![CDATA[<h3 id="一、是什么"><a href="#一、是什么" class="headerlink" title="一、是什么"></a>一、是什么</h3><p>Homebrew 是一个包管理器，用于安装 Apple 没有预装但我们需要的 UNIX 工具。</p><p>Homebrew 会将软件包安装到独立目录(/usr/local/Cellar)，并将其文件软链接至/usr/local。</p><p>Homebrew 不会将文件安装到它本身目录之外，所以可将 Homebrew 安装到任意位置。</p><h3 id="二、常用命令"><a href="#二、常用命令" class="headerlink" title="二、常用命令"></a>二、常用命令</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 搜索包</span><br><span class="line">brew search mysql</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 安装包</span><br><span class="line">brew install mysql</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 查看包信息，比如目前的版本，依赖，安装后注意事项等</span><br><span class="line">brew info mysql</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 卸载包</span><br><span class="line">brew uninstall wget</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 显示已安装的包</span><br><span class="line">brew list</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 查看brew的帮助</span><br><span class="line">brew –help</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 更新， 这会更新 Homebrew 自己</span><br><span class="line">brew update</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 检查是否有新版本，这会列出所有安装的包里，可以升级的项目</span><br><span class="line">brew outdated</span><br><span class="line">brew outdated mysql</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 升级所有可以升级的软件</span><br><span class="line">brew upgrade</span><br><span class="line">brew upgrade mysql</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 清理不需要的版本极其安装包缓存</span><br><span class="line">brew cleanup</span><br><span class="line">brew cleanup mysql</span><br></pre></td></tr></table></figure>]]></content>
+        <content type="html"><![CDATA[<h3 id="一、是什么"><a href="#一、是什么" class="headerlink" title="一、是什么"></a>一、是什么</h3><p>Homebrew 是一个包管理器，用于安装 Apple 没有预装但我们需要的 UNIX 工具。</p><p>Homebrew 会将软件包安装到独立目录(/usr/local/Cellar)，并将其文件软链接至/usr/local。</p><p>Homebrew 不会将文件安装到它本身目录之外，所以可将 Homebrew 安装到任意位置。</p><h3 id="二、常用命令"><a href="#二、常用命令" class="headerlink" title="二、常用命令"></a>二、常用命令</h3><p>安装 Homebrew</p><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">/bin/bash -c <span class="string">&quot;<span class="subst">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)</span>&quot;</span></span><br></pre></td></tr></table></figure><p>卸载</p><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">/bin/bash -c <span class="string">&quot;<span class="subst">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)</span>&quot;</span></span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 搜索包</span><br><span class="line">brew search mysql</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 安装包</span><br><span class="line">brew install mysql</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 查看包信息，比如目前的版本，依赖，安装后注意事项等</span><br><span class="line">brew info mysql</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 卸载包</span><br><span class="line">brew uninstall wget</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 显示已安装的包</span><br><span class="line">brew list</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 查看brew的帮助</span><br><span class="line">brew –help</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 更新， 这会更新 Homebrew 自己</span><br><span class="line">brew update</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 检查是否有新版本，这会列出所有安装的包里，可以升级的项目</span><br><span class="line">brew outdated</span><br><span class="line">brew outdated mysql</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 升级所有可以升级的软件</span><br><span class="line">brew upgrade</span><br><span class="line">brew upgrade mysql</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 清理不需要的版本极其安装包缓存</span><br><span class="line">brew cleanup</span><br><span class="line">brew cleanup mysql</span><br></pre></td></tr></table></figure>]]></content>
       
       
       <categories>

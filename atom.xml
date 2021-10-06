@@ -6,7 +6,7 @@
   <link href="https://canace.site/atom.xml" rel="self"/>
   
   <link href="https://canace.site/"/>
-  <updated>2021-10-03T03:28:16.981Z</updated>
+  <updated>2021-10-06T03:13:25.530Z</updated>
   <id>https://canace.site/</id>
   
   <author>
@@ -17,11 +17,36 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Ffmpeg 抽取视频音轨</title>
+    <link href="https://canace.site/ffmpeg%E6%8A%BD%E5%8F%96%E8%A7%86%E9%A2%91%E9%9F%B3%E8%BD%A8/"/>
+    <id>https://canace.site/ffmpeg%E6%8A%BD%E5%8F%96%E8%A7%86%E9%A2%91%E9%9F%B3%E8%BD%A8/</id>
+    <published>2021-10-06T03:04:03.000Z</published>
+    <updated>2021-10-06T03:13:25.530Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="服务端" scheme="https://canace.site/categories/%E6%9C%8D%E5%8A%A1%E7%AB%AF/"/>
+    
+    
+    <category term="ffmpeg" scheme="https://canace.site/tags/ffmpeg/"/>
+    
+  </entry>
+  
+  <entry>
     <title>晨跑</title>
     <link href="https://canace.site/%E6%99%A8%E8%B7%91%E7%AC%AC%E4%B8%80%E5%A4%A9/"/>
     <id>https://canace.site/%E6%99%A8%E8%B7%91%E7%AC%AC%E4%B8%80%E5%A4%A9/</id>
     <published>2021-10-03T02:43:32.000Z</published>
-    <updated>2021-10-03T03:28:16.981Z</updated>
+    <updated>2021-10-06T03:03:09.957Z</updated>
     
     
       
@@ -464,25 +489,6 @@
     
     
     <category term="http" scheme="https://canace.site/tags/http/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Lodash 源码解析 —— Slice</title>
-    <link href="https://canace.site/lodash%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%E2%80%94%E2%80%94array-slice/"/>
-    <id>https://canace.site/lodash%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%E2%80%94%E2%80%94array-slice/</id>
-    <published>2021-05-21T03:15:40.000Z</published>
-    <updated>2021-05-24T01:38:57.078Z</updated>
-    
-    
-    <summary type="html">lodash slice 函数学习</summary>
-    
-    
-    
-    <category term="源码学习" scheme="https://canace.site/categories/%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-    <category term="lodash" scheme="https://canace.site/tags/lodash/"/>
     
   </entry>
   
