@@ -240,11 +240,24 @@ hint: or --ff-only on the command line to override the configured default per
 hint: invocation.
 ```
 
-原因是 git pull 每次产生一个令人迷惑的 commit，会被认为是有问题的操作，要解决这个问题可以在 git  pull 的时候不要创建新的 commit。
+原因是 git pull 每次产生一个令人迷惑的 commit，会被认为是有问题的操作，根据提示，要解决这个问题可以在 git  pull 的时候不要创建新的 commit,或者使用变基
 
 ```bash
 # 局部
 git pull --ff-only
 # 全局
 git config --global pull.ff only
+# 变基
+git config pull.rebase false  # merge (the default strategy)
+git config pull.rebase true   # rebase
 ```
+
+#### 6. git pull 代理问题
+
+早上拉代码看到这个错误，一看端口号是我科学上网的端口，应该是代理问题
+
+```
+error: RPC failed; curl 7 Failed to connect to 127.0.0.1 port 1080: Connection refused
+```
+
+解决方法，取消全局代理 `unset http_proxy`
