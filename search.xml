@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Docker 打包本地 Web 项目发布到服务端</title>
+      <link href="/docker%E6%96%87%E6%A1%A3/"/>
+      <url>/docker%E6%96%87%E6%A1%A3/</url>
+      
+        <content type="html"><![CDATA[<h2 id="一、Docker-入门"><a href="#一、Docker-入门" class="headerlink" title="一、Docker 入门"></a>一、Docker 入门</h2><h3 id="构建镜像"><a href="#构建镜像" class="headerlink" title="构建镜像"></a>构建镜像</h3><p><code>docker build -t &lt;image-name&gt; .</code></p><ul><li>-t 指定要创建的目标镜像名</li><li><strong>.</strong> ：Dockerfile 文件所在目录，可以指定Dockerfile 的绝对路径</li><li>设置镜像标签: <code>docker build -t image-name:tag</code></li></ul><h3 id="运行应用程序"><a href="#运行应用程序" class="headerlink" title="运行应用程序"></a>运行应用程序</h3><p><code>docker run --name &lt;container-name&gt; -d -p 8080:80 &lt;image-name&gt; /bin/echo &quot;Hello world&quot;</code></p><ul><li>docker run：运行应用程序</li><li><code>&lt;image-name&gt;</code>： 指定要运行的镜像，Docker 首先从本地主机上查找镜像是否存在，如果不存在，Docker 就会从镜像仓库 Docker Hub 下载公共镜像</li><li><code>/bin/echo &quot;Hello world&quot;</code><strong>:</strong> 在启动的容器里执行的命令</li><li><code>—name</code> 指定容器名称</li><li><code>-d</code> 后台运行</li><li><code>-p</code> 指定端口映射</li></ul><h3 id="运行交互式的容器"><a href="#运行交互式的容器" class="headerlink" title="运行交互式的容器"></a>运行交互式的容器</h3><p>示例：<code>docker run -it &lt;image-name&gt; /bin/bash</code></p><ul><li><strong>t:</strong> 在新容器内指定一个伪终端或终端。</li><li><strong>i:</strong> 允许对容器内的标准输入 (STDIN) 进行交互。</li><li>通过运行 exit 命令或者使用 CTRL+D 来退出容器</li></ul><h3 id="进入容器"><a href="#进入容器" class="headerlink" title="进入容器"></a>进入容器</h3><p><code>docker exec -it 容器ID /bin/bash</code></p><h3 id="停止容器"><a href="#停止容器" class="headerlink" title="停止容器"></a>停止容器</h3><p><code>docker stop &lt;容器ID &gt;</code></p><h3 id="查看所有容器状态"><a href="#查看所有容器状态" class="headerlink" title="查看所有容器状态"></a>查看所有容器状态</h3><p><strong><code>docker ps -a</code></strong></p><h3 id="启动一个已停止的容器"><a href="#启动一个已停止的容器" class="headerlink" title="启动一个已停止的容器"></a>启动一个已停止的容器</h3><p><code>docker start &lt;容器ID&gt;</code></p><h3 id="导出容器快照"><a href="#导出容器快照" class="headerlink" title="导出容器快照"></a>导出容器快照</h3><p><code>docker export 容器ID &gt; name.tar</code></p><h3 id="导入容器"><a href="#导入容器" class="headerlink" title="导入容器"></a>导入容器</h3><p><code>docker import url</code></p><h3 id="删除容器"><a href="#删除容器" class="headerlink" title="删除容器"></a>删除容器</h3><p><code>docker rm -f 容器ID</code> 或者 <code>docker rm 容器名称</code></p><h3 id="端口映射"><a href="#端口映射" class="headerlink" title="端口映射"></a>端口映射</h3><ul><li>-P 随机映射</li><li>指定端口映射: -p 80:10086</li><li>查看容器端口的映射情况：<code>docker port 容器ID</code></li></ul><p>1### 查看所有镜像</p><p><strong><code>docker images</code></strong></p><h3 id="删除镜像"><a href="#删除镜像" class="headerlink" title="删除镜像"></a>删除镜像</h3><p><code>docker rmi 镜像名称</code></p><h2 id="二、使用-docker-打包本地-web-项目发布到服务端概述"><a href="#二、使用-docker-打包本地-web-项目发布到服务端概述" class="headerlink" title="二、使用 docker 打包本地 web 项目发布到服务端概述"></a>二、使用 docker 打包本地 web 项目发布到服务端概述</h2><h3 id="1、把本地项目打包成一个-docker-镜像"><a href="#1、把本地项目打包成一个-docker-镜像" class="headerlink" title="1、把本地项目打包成一个 docker 镜像"></a>1、把本地项目打包成一个 docker 镜像</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker build -t &lt;image-name&gt; .</span><br></pre></td></tr></table></figure><h3 id="2、推送打包好的镜像到镜像容器服务"><a href="#2、推送打包好的镜像到镜像容器服务" class="headerlink" title="2、推送打包好的镜像到镜像容器服务"></a>2、推送打包好的镜像到镜像容器服务</h3><p>把 docker 镜像推送到阿里云镜像服务器需要先去阿里云镜像服务创建一个空间和一个仓库</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 登录阿里云容器服务</span></span><br><span class="line">docker login --username=[username] registry.cn-hangzhou.aliyuncs.com</span><br><span class="line"><span class="comment"># 给镜像打 tag</span></span><br><span class="line">docker tag [ImageId] registry.cn-hangzhou.aliyuncs.com/[命名空间]/[仓库名]:[镜像版本号]</span><br><span class="line"><span class="comment"># 推送到阿里云容器仓库</span></span><br><span class="line">docker push registry.cn-hangzhou.aliyuncs.com/[命名空间]/[仓库名]:[镜像版本号]</span><br></pre></td></tr></table></figure><h3 id="3、拉取阿里云容器镜像并运行"><a href="#3、拉取阿里云容器镜像并运行" class="headerlink" title="3、拉取阿里云容器镜像并运行"></a>3、拉取阿里云容器镜像并运行</h3><p>服务器拉取阿里云容器镜像，拉取的前提是先要登录，如上</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 拉取刚刚上传的镜像</span></span><br><span class="line">docker pull registry.cn-hangzhou.aliyuncs.com/[命名空间]/[仓库名]:[镜像版本号]</span><br><span class="line"><span class="comment"># 创建并运行容器</span></span><br><span class="line">docker run --name blog -d -p 5000:80 registry.cn-hangzhou.aliyuncs.com/命名空间]/[仓库名]:[镜像版本号]</span><br></pre></td></tr></table></figure><p>打开服务器 IP:端口号，就可以看到内容了，完美</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> web </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> devOps </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Ffmpeg 抽取视频音轨</title>
       <link href="/ffmpeg%E6%8A%BD%E5%8F%96%E8%A7%86%E9%A2%91%E9%9F%B3%E8%BD%A8/"/>
       <url>/ffmpeg%E6%8A%BD%E5%8F%96%E8%A7%86%E9%A2%91%E9%9F%B3%E8%BD%A8/</url>

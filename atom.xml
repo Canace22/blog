@@ -6,7 +6,7 @@
   <link href="https://canace.site/atom.xml" rel="self"/>
   
   <link href="https://canace.site/"/>
-  <updated>2021-10-06T03:13:25.530Z</updated>
+  <updated>2021-11-20T13:46:08.414Z</updated>
   <id>https://canace.site/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Docker 打包本地 Web 项目发布到服务端</title>
+    <link href="https://canace.site/docker%E6%96%87%E6%A1%A3/"/>
+    <id>https://canace.site/docker%E6%96%87%E6%A1%A3/</id>
+    <published>2021-11-20T13:22:28.000Z</published>
+    <updated>2021-11-20T13:46:08.414Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="web" scheme="https://canace.site/categories/web/"/>
+    
+    
+    <category term="devOps" scheme="https://canace.site/tags/devOps/"/>
+    
+  </entry>
   
   <entry>
     <title>Ffmpeg 抽取视频音轨</title>
@@ -464,31 +489,6 @@
     
     
     <category term="JavaScript" scheme="https://canace.site/tags/JavaScript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>解决 Github Dns 污染问题</title>
-    <link href="https://canace.site/%E8%A7%A3%E5%86%B3github-dns%E6%B1%A1%E6%9F%93%E9%97%AE%E9%A2%98/"/>
-    <id>https://canace.site/%E8%A7%A3%E5%86%B3github-dns%E6%B1%A1%E6%9F%93%E9%97%AE%E9%A2%98/</id>
-    <published>2021-05-22T01:17:08.000Z</published>
-    <updated>2021-05-22T04:13:43.428Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
-    
-    
-    
-    <category term="系统" scheme="https://canace.site/categories/%E7%B3%BB%E7%BB%9F/"/>
-    
-    
-    <category term="http" scheme="https://canace.site/tags/http/"/>
     
   </entry>
   
