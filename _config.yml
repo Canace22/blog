@@ -113,8 +113,8 @@ live2d:
     use: live2d-widget-model-hijiki 
   display:
     position: right
-    width: 450
-    height: 450
+    width: 200
+    height: 200
   mobile:
     show: true
   react:
