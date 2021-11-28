@@ -6,10 +6,10 @@
 docker build -t blog .
 
 docker login --username=1402779770@qq.com registry.cn-hangzhou.aliyuncs.com
-docker tag 5c7bbfc9e76d registry.cn-hangzhou.aliyuncs.com/canace/blog:v2
-docker push registry.cn-hangzhou.aliyuncs.com/canace/blog:v2
+docker tag 047041f452b0 registry.cn-hangzhou.aliyuncs.com/canace/blog:v1
+docker push registry.cn-hangzhou.aliyuncs.com/canace/blog:v1
 
-docker pull registry.cn-hangzhou.aliyuncs.com/canace/blog:v2
+docker pull registry.cn-hangzhou.aliyuncs.com/canace/blog:v1
 
-docker run --name blog -d -p 5000:80 registry.cn-hangzhou.aliyuncs.com/canace/blog:v2
+docker run --name blog -d -p 80:80 registry.cn-hangzhou.aliyuncs.com/canace/blog:v1
 ```
