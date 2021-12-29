@@ -4,9 +4,10 @@ categories: web
 tags: devOps
 description: docker 在前端自动化部署中经常用到，平常都是别人配置好的，只其所以不知其然，自己走一遍，做个笔记
 comments: true
+toc: true
 date: 2020-09-16 09:16:49
 ---
-### 一、下载
+## 一、下载
 
 mac，下载完之后安装即可
 
@@ -14,9 +15,9 @@ mac，下载完之后安装即可
 
 (2) 创建容器：`docker run -dp 80:80 docker/getting-started`
 
-### 二、nginx docker
+## 二、nginx docker
 
-#### 1、新建 docker 文件夹
+### 1、新建 docker 文件夹
 
 (1) 文件夹下新建 Dockerfile 文件, 内容如下
 
@@ -55,25 +56,25 @@ server {
 }
 ```
 
-#### 2、编译 docker 镜像
+### 2、编译 docker 镜像
 
 ```
 docker build -t <webserver> -f docker/Dockerfile .
 ```
 
-#### 3、上传镜像
+### 3、上传镜像
 
 ```
 docker push
 ```
 
-#### 4、关闭容器
+### 4、关闭容器
 
 ```
 docker container stop web
 ```
 
-#### 5、创建容器, 并将容器指向一个镜像版本
+### 5、创建容器, 并将容器指向一个镜像版本
 
 ```docker
 docker run -it --rm -d -p 80:80 --name web <webserver>

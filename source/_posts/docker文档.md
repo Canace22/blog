@@ -8,7 +8,7 @@ date: 2021-11-20 21:22:28
 ---
 ## 一、Docker 入门
 
-### 构建镜像
+### 1、构建镜像
 
 `docker build -t <image-name> .`
 
@@ -16,7 +16,7 @@ date: 2021-11-20 21:22:28
 - **.** ：Dockerfile 文件所在目录，可以指定Dockerfile 的绝对路径
 - 设置镜像标签: `docker build -t image-name:tag`
 
-### 运行应用程序
+### 2、运行应用程序
 
 `docker run --name <container-name> -d -p 8080:80 <image-name> /bin/echo "Hello world"`
 
@@ -27,7 +27,7 @@ date: 2021-11-20 21:22:28
 - `-d` 后台运行
 - `-p` 指定端口映射
 
-### 运行交互式的容器
+### 3、运行交互式的容器
 
 示例：`docker run -it <image-name> /bin/bash`
 
@@ -35,47 +35,49 @@ date: 2021-11-20 21:22:28
 - **i:** 允许对容器内的标准输入 (STDIN) 进行交互。
 - 通过运行 exit 命令或者使用 CTRL+D 来退出容器
 
-### 进入容器
+### 4、进入容器
 
 `docker exec -it 容器ID /bin/bash`
 
-### 停止容器
+### 5、停止容器
 
 `docker stop <容器ID >`
 
-### 查看所有容器状态
+### 6、查看所有容器状态
 
 **`docker ps -a`**
 
-### 启动一个已停止的容器
+### 7、启动一个已停止的容器
 
 `docker start <容器ID>`
 
-### 导出容器快照
+### 8、导出容器快照
 
 `docker export 容器ID > name.tar`
 
-### 导入容器
+### 9、导入容器
 
 `docker import url`
 
-### 删除容器
+### 10、删除容器
 
 `docker rm -f 容器ID` 或者 `docker rm 容器名称`
 
-### 端口映射
+### 11、端口映射
 
 - -P 随机映射
 - 指定端口映射: -p 80:10086
 - 查看容器端口的映射情况：`docker port 容器ID`
 
-1### 查看所有镜像
+### 12、查看所有镜像
 
 **`docker images`**
 
-### 删除镜像
+### 13、删除镜像
 
 `docker rmi 镜像名称`
+
+了解了大概的基础之后，下面开始实战篇。
 
 ## 二、使用 docker 打包本地 web 项目发布到服务端概述
 
