@@ -1,7 +1,6 @@
 ---
 title: 找出两个有序数组的中值
 categories: 算法
-tags: algorithmn
 comments: true
 date: 2020-08-03 10:01:18
 ---
