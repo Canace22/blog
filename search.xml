@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>原地删除数组中的重复值</title>
+      <link href="/removeDuplicates/"/>
+      <url>/removeDuplicates/</url>
+      
+        <content type="html"><![CDATA[<h2 id="来源"><a href="#来源" class="headerlink" title="来源"></a>来源</h2><p><a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/">26. Remove Duplicates from Sorted Array</a></p><h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>题目要求原地删除数组中的重复项，返回修改后数组的长度，其实也就是在当前数组中操作，得出不重复项长度的意思。这里我使用双指针的方法解题，声明快指针 i 和慢指针 j，都初始化为 1。用快指针遍历数组,若两个连续项不相等，说明不重复，把 nums[i] 放到 nums[j], j 向前挪动一个位置。慢指针 j 即为不重复项的长度。</p><figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">removeDuplicates</span>(<span class="params">nums: <span class="built_in">number</span>[]</span>): <span class="title">number</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (nums.length === <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">let</span> i: <span class="built_in">number</span> = <span class="number">1</span>,</span><br><span class="line">    j: <span class="built_in">number</span> = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">for</span> (; i &lt; nums.length; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (nums[i] !== nums[i - <span class="number">1</span>]) &#123;</span><br><span class="line">      nums[j] = nums[i];</span><br><span class="line">      j++;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> j;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Prisma 入门指南</title>
       <link href="/prisma%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/"/>
       <url>/prisma%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/</url>
@@ -83,7 +102,7 @@
       <link href="/%E6%99%A8%E8%B7%91%E7%AC%AC%E4%B8%80%E5%A4%A9/"/>
       <url>/%E6%99%A8%E8%B7%91%E7%AC%AC%E4%B8%80%E5%A4%A9/</url>
       
-        <content type="html"><![CDATA[<p>国庆的第一天跟李先森跑去体验公司的酒店了，看电影打游戏，还发现了一本不错的书，村上村树的《当我谈跑步时，我谈些什么》。这本书主要讲的是村上村树在跑步过程中的一些感想，没有花很大的文笔去写跑步带来诸如健康之类的有点，而是侧重写一些回忆，一些故事，感觉挺有趣的，当晚看完一章我就立刻下单了这本书。</p><p>受到这本书的影响吧，我就想体验下户外晨跑是怎么一种感觉，今天一早起来就去晨跑了，雨后的清晨，加之节假日，外面人很少，只有一早在忙碌的环卫工人，目之所及很清新，空气里也透着点雨后独有的味道，很舒服。从小区触发，沿着排洪渠跑到小区旁边的村子，竟然才 1 公里，平常散步走这条路总感觉很远，也许是不同的心态，使我对这条路的长度认知出现了偏差。</p><p>跑完步在村子里买两份早餐散步回来经过一段路，远远的可以看得到小区的建筑群，村子里是家里那种独栋的房子，给人的感觉就是这边是乡下的田园风光，那边是城市的反差，我心里想我这是住在城乡结合部啊。</p><p>话虽如此，我还是比较喜欢住在这里的，安静，有家的感觉。之前在广州就让我有种异乡人的感觉，这里不会，所以很多同事都问过我为什么要在这里住，又不方便又贵，换到别处可能更便宜，更方便，我每次都说是因为刚来珠海就住这里习惯了，现在想想这只是部分因素吧，更多的是我想要这种家的感觉，就是那种农村生活惯了的人，不太喜欢过于城市化的环境。也因为这个，我总是跟李先生说买房子不要买城区或者海边那些很现代化的，贵而且环境确实喜欢不起来。</p><p>户外晨跑第一天，听着摇滚，晨跑，思考，感觉还不错。</p><p><img src="/images/chenpao.jpeg" alt="晨跑途中的风景"></p>]]></content>
+        <content type="html"><![CDATA[<p>国庆的第一天跟李先森跑去体验公司的酒店了，看电影打游戏，还发现了一本不错的书，村上村树的《当我谈跑步时，我谈些什么》。这本书主要讲的是村上村树在跑步过程中的一些感想，没有花很大的文笔去写跑步带来诸如健康之类的优点，而是侧重写一些回忆，一些故事，感觉挺有趣的，当晚看完一章我就立刻下单了这本书。</p><p>受到这本书的影响吧，我就想体验下户外晨跑是怎么一种感觉，今天一早起来就去晨跑了，雨后的清晨，加之节假日，外面人很少，只有一早在忙碌的环卫工人，目之所及很清新，空气里也透着点雨后独有的味道，很舒服。从小区出发，沿着排洪渠跑到小区旁边的村子，竟然才 1 公里，平常散步走这条路总感觉很远，也许是不同的心态，使我对这条路的长度认知出现了偏差。</p><p>跑完步在村子里买两份早餐散步回来经过一段路，远远的可以看得到小区的建筑群，村子里是家里那种独栋的房子，给人的感觉就是这边是乡下的田园风光，那边是城市的反差，我心里想我这是住在城乡结合部啊。</p><p>话虽如此，我还是比较喜欢住在这里的，安静，有家的感觉。之前在广州就让我有种异乡人的感觉，这里不会，所以很多同事都问过我为什么要在这里住，又不方便又贵，换到别处可能更便宜，更方便，我每次都说是因为刚来珠海就住这里习惯了，现在想想这只是部分因素吧，更多的是我想要这种家的感觉，就是那种农村生活惯了的人，不太喜欢过于城市化的环境。也因为这个，我总是跟李先生说买房子不要买城区或者海边那些很现代化的，贵而且环境确实喜欢不起来。</p><p>户外晨跑第一天，听着摇滚，晨跑，思考，感觉还不错。</p><p><img src="/images/chenpao.jpeg" alt="晨跑途中的风景"></p>]]></content>
       
       
       <categories>
@@ -869,12 +888,6 @@
           
       </categories>
       
-      
-        <tags>
-            
-            <tag> algorithmn </tag>
-            
-        </tags>
       
     </entry>
     
@@ -1677,12 +1690,6 @@
       </categories>
       
       
-        <tags>
-            
-            <tag> algorithmn </tag>
-            
-        </tags>
-      
     </entry>
     
     
@@ -1770,12 +1777,6 @@
           
       </categories>
       
-      
-        <tags>
-            
-            <tag> algorithmn </tag>
-            
-        </tags>
       
     </entry>
     
@@ -2028,12 +2029,6 @@
       </categories>
       
       
-        <tags>
-            
-            <tag> algorithmn </tag>
-            
-        </tags>
-      
     </entry>
     
     
@@ -2053,12 +2048,6 @@
       </categories>
       
       
-        <tags>
-            
-            <tag> algorithmn </tag>
-            
-        </tags>
-      
     </entry>
     
     
@@ -2077,12 +2066,6 @@
           
       </categories>
       
-      
-        <tags>
-            
-            <tag> algorithmn </tag>
-            
-        </tags>
       
     </entry>
     
@@ -2153,37 +2136,6 @@
       </categories>
       
       
-        <tags>
-            
-            <tag> algorithmn </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>原地删除数组中的重复值</title>
-      <link href="/removeDuplicates/"/>
-      <url>/removeDuplicates/</url>
-      
-        <content type="html"><![CDATA[<h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><figure class="highlight md"><table><tr><td class="code"><pre><span class="line">Given a sorted array nums, remove the duplicates in-place such that each element</span><br><span class="line"> appear only once and return the new length.</span><br><span class="line"></span><br><span class="line">Do not allocate extra space for another array, you must do this by modifying the</span><br><span class="line"> input array in-place with O(1) extra memory.</span><br><span class="line"></span><br><span class="line">Example 1:</span><br><span class="line">Given nums = [1,1,2],</span><br><span class="line">Your function should return length = 2, with the first two elements of nums being</span><br><span class="line"> 1 and 2 respectively.</span><br><span class="line">It doesn&#x27;t matter what you leave beyond the returned length.</span><br><span class="line"></span><br><span class="line">Example 2:</span><br><span class="line">Given nums = [0,0,1,1,1,2,2,3,3,4],</span><br><span class="line">Your function should return length = 5, with the first five elements of nums being</span><br><span class="line"> modified to 0, 1, 2, 3, and 4 respectively.</span><br><span class="line">It doesn&#x27;t matter what values are set beyond the returned length.</span><br><span class="line">Clarification:</span><br><span class="line"></span><br><span class="line">Confused why the returned value is an integer but your answer is an array?</span><br><span class="line"></span><br><span class="line">Note that the input array is passed in by reference, which means modification to </span><br><span class="line">the input array will be known to the caller as well.</span><br><span class="line"></span><br><span class="line">Internally you can think of this:</span><br><span class="line"></span><br><span class="line">// nums is passed in by reference. (i.e., without making a copy)</span><br><span class="line">int len = removeDuplicates(nums);</span><br><span class="line"></span><br><span class="line">// any modification to nums in your function would be known by the caller.</span><br><span class="line">// using the length returned by your function, it prints the first len elements.</span><br><span class="line">for (int i = 0; i &lt; len; i++) &#123;</span><br><span class="line"><span class="code">    print(nums[i]);</span></span><br><span class="line"><span class="code">&#125;</span></span><br></pre></td></tr></table></figure><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>1、设置双指针 i, j, 其中指针 j 每次向前移动一步</p><p>2、 遍历 nums，当 nums[i] !== nums[j] 时，说明不是重复元素, 指针 i 向前挪动一步， 同时把 nums[j] 赋值给 nums[i]</p><p>3、结果返回 i + 1</p><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number[]&#125;</span> <span class="variable">nums</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;number&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> removeDuplicates = <span class="function"><span class="keyword">function</span> (<span class="params">nums</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> len = nums.length;</span><br><span class="line">  <span class="keyword">if</span> (!len) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">let</span> i = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> j = i; j &lt; len; j++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (nums[j] !== nums[i]) &#123;</span><br><span class="line">      i++;</span><br><span class="line">      nums[i] = nums[j];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> i + <span class="number">1</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> test = [</span><br><span class="line">  [<span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>],</span><br><span class="line">  [<span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">4</span>],</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line">test.forEach(<span class="function"><span class="params">ele</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> result = removeDuplicates(ele);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;result:&#x27;</span>, result);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><p>题目的要求是拿到不重复元素的长度，其实上述方法以及把不重复元素都放在了 (0, n) 位，要取不重复元素集合只需要切割 (0, res) 就可以了。通过不断的用不重复的下一个元素替换掉当前的重复元素，达到去重的目的，细细品味，还是很有意思的。</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 算法 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> algorithmn </tag>
-            
-        </tags>
-      
     </entry>
     
     
@@ -2202,12 +2154,6 @@
           
       </categories>
       
-      
-        <tags>
-            
-            <tag> algorithmn </tag>
-            
-        </tags>
       
     </entry>
     
@@ -2252,12 +2198,6 @@
           
       </categories>
       
-      
-        <tags>
-            
-            <tag> algorithmn </tag>
-            
-        </tags>
       
     </entry>
     
@@ -2678,12 +2618,6 @@
       </categories>
       
       
-        <tags>
-            
-            <tag> algorithmn </tag>
-            
-        </tags>
-      
     </entry>
     
     
@@ -2803,12 +2737,6 @@
       </categories>
       
       
-        <tags>
-            
-            <tag> algorithmn </tag>
-            
-        </tags>
-      
     </entry>
     
     
@@ -2827,12 +2755,6 @@
           
       </categories>
       
-      
-        <tags>
-            
-            <tag> algorithmn </tag>
-            
-        </tags>
       
     </entry>
     
@@ -2903,12 +2825,6 @@
       </categories>
       
       
-        <tags>
-            
-            <tag> algorithmn </tag>
-            
-        </tags>
-      
     </entry>
     
     
@@ -2927,12 +2843,6 @@
           
       </categories>
       
-      
-        <tags>
-            
-            <tag> algorithmn </tag>
-            
-        </tags>
       
     </entry>
     
@@ -3178,12 +3088,6 @@
       </categories>
       
       
-        <tags>
-            
-            <tag> algorithmn </tag>
-            
-        </tags>
-      
     </entry>
     
     
@@ -3202,12 +3106,6 @@
           
       </categories>
       
-      
-        <tags>
-            
-            <tag> algorithmn </tag>
-            
-        </tags>
       
     </entry>
     
@@ -3228,12 +3126,6 @@
       </categories>
       
       
-        <tags>
-            
-            <tag> algorithmn </tag>
-            
-        </tags>
-      
     </entry>
     
     
@@ -3252,12 +3144,6 @@
           
       </categories>
       
-      
-        <tags>
-            
-            <tag> algorithmn </tag>
-            
-        </tags>
       
     </entry>
     
@@ -3302,12 +3188,6 @@
           
       </categories>
       
-      
-        <tags>
-            
-            <tag> algorithmn </tag>
-            
-        </tags>
       
     </entry>
     
@@ -3465,12 +3345,6 @@
           
       </categories>
       
-      
-        <tags>
-            
-            <tag> algorithmn </tag>
-            
-        </tags>
       
     </entry>
     
@@ -3836,12 +3710,6 @@
       </categories>
       
       
-        <tags>
-            
-            <tag> algorithmn </tag>
-            
-        </tags>
-      
     </entry>
     
     
@@ -3860,12 +3728,6 @@
           
       </categories>
       
-      
-        <tags>
-            
-            <tag> algorithmn </tag>
-            
-        </tags>
       
     </entry>
     
@@ -4255,12 +4117,6 @@
       </categories>
       
       
-        <tags>
-            
-            <tag> algorithmn </tag>
-            
-        </tags>
-      
     </entry>
     
     
@@ -4348,12 +4204,6 @@
           
       </categories>
       
-      
-        <tags>
-            
-            <tag> algorithmn </tag>
-            
-        </tags>
       
     </entry>
     
@@ -4892,12 +4742,6 @@
           
       </categories>
       
-      
-        <tags>
-            
-            <tag> algorithmn </tag>
-            
-        </tags>
       
     </entry>
     
@@ -5601,12 +5445,6 @@
           
       </categories>
       
-      
-        <tags>
-            
-            <tag> algorithmn </tag>
-            
-        </tags>
       
     </entry>
     

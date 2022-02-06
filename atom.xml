@@ -6,7 +6,7 @@
   <link href="https://canace.site/atom.xml" rel="self"/>
   
   <link href="https://canace.site/"/>
-  <updated>2021-12-29T06:22:23.352Z</updated>
+  <updated>2022-02-06T02:37:31.751Z</updated>
   <id>https://canace.site/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>原地删除数组中的重复值</title>
+    <link href="https://canace.site/removeDuplicates/"/>
+    <id>https://canace.site/removeDuplicates/</id>
+    <published>2022-01-11T01:10:08.000Z</published>
+    <updated>2022-02-06T02:37:31.751Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="算法" scheme="https://canace.site/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Prisma 入门指南</title>
@@ -96,7 +119,7 @@
     <link href="https://canace.site/%E6%99%A8%E8%B7%91%E7%AC%AC%E4%B8%80%E5%A4%A9/"/>
     <id>https://canace.site/%E6%99%A8%E8%B7%91%E7%AC%AC%E4%B8%80%E5%A4%A9/</id>
     <published>2021-10-03T02:43:32.000Z</published>
-    <updated>2021-10-06T03:03:09.957Z</updated>
+    <updated>2022-02-06T02:38:28.333Z</updated>
     
     
       
@@ -472,29 +495,6 @@
     
     
     <category term="css" scheme="https://canace.site/tags/css/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>我辞职了</title>
-    <link href="https://canace.site/%E6%88%91%E8%BE%9E%E8%81%8C%E4%BA%86/"/>
-    <id>https://canace.site/%E6%88%91%E8%BE%9E%E8%81%8C%E4%BA%86/</id>
-    <published>2021-06-04T08:11:36.000Z</published>
-    <updated>2021-06-04T08:21:37.383Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
-    
-    
-    
-    <category term="随笔" scheme="https://canace.site/categories/%E9%9A%8F%E7%AC%94/"/>
-    
     
   </entry>
   
