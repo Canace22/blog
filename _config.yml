@@ -104,7 +104,7 @@ deploy:
 live2d:
   enable: true
   scriptFrom: local
-  pluginRootPath: node_modules/
+  pluginRootPath: live2dw/
   pluginJsPath: lib/
   pluginModelPath: assets/
   tagMode: false
@@ -116,6 +116,6 @@ live2d:
     width: 200
     height: 200
   mobile:
-    show: true
+    show: false
   react:
     opacity: 0.7
