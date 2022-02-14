@@ -4,6 +4,50 @@
   
     
     <entry>
+      <title>知识焦虑</title>
+      <link href="/%E7%9F%A5%E8%AF%86%E7%84%A6%E8%99%91/"/>
+      <url>/%E7%9F%A5%E8%AF%86%E7%84%A6%E8%99%91/</url>
+      
+        <content type="html"><![CDATA[<p>最近总感觉有点焦虑，想业余做点什么事情，但是真正回到家，抱着笔记本，又发呆半天不知道要干嘛。好像没什么特别感兴趣的事情想去做，这种状态使我感觉更加的不自在。现在好像有点理解海子的《面朝大海，春暖花开》了，很想对生活充满热情，去做很多的事情，但是现实是喂马、劈柴、周游世界一样都没去做。好久没写文了，发个文绉绉的牢骚，附上海子的诗</p><p>从明天起，做一个幸福的人<br>喂马、劈柴、周游世界<br>从明天起，关心粮食和蔬菜<br>我有一所房子，面朝大海，春暖花开</p><p>从明天起，和每一个亲人通信<br>告诉他们我的幸福<br>那幸福的闪电告诉我的<br>我将告诉每一个人</p><p>给每一条河每一座山取一个温暖的名字<br>陌生人，我也为你祝福<br>愿你有一个灿烂的前程<br>愿你有情人终成眷属<br>愿你在尘世获得幸福<br>我只愿面朝大海，春暖花开</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 随笔 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>WebRTC</title>
+      <link href="/WebRTC/"/>
+      <url>/WebRTC/</url>
+      
+        <content type="html"><![CDATA[<p>浏览器点对点传输无效的原因：</p><ul><li>穿透阻止直连的防火墙失败</li><li>B 端没有公网 IP</li><li>路由器不支持直连，需要加一个中继服务器</li></ul><h2 id="NAT"><a href="#NAT" class="headerlink" title="NAT"></a>NAT</h2><p>NAT(Network Address Translation)指的是网络地址转换，常部署在一个组织的网络出口位置<br>类型：完全圆锥型NAT、受限圆锥型NAT和端口受限圆锥型NAT，对称型NAT（前三种可以通过 STUN 穿透）<br>穿越技术、方法主要有：</p><ul><li>应用层网关；</li><li>中间件技术；</li><li>打洞技术(Hole Punching)；</li><li>Relay(服务器中转)技术。</li></ul><h2 id="STUN"><a href="#STUN" class="headerlink" title="STUN"></a>STUN</h2><p>STUN（Session Traversal Utilities for NAT，NAT会话穿越应用程序），是基于UDP的完整的穿透NAT的解决方案<br>公网寻址<br>作用机制，客户端发送消息给 STUN 服务器，服务器返回该客户端的公网地址和该客户端位于哪种类型的NAT之后以及NAT为某一个本地端口所绑定的公网端端口</p><h2 id="TURN"><a href="#TURN" class="headerlink" title="TURN"></a>TURN</h2><p>TURN（Traversal Using Relay NAT，通过Relay方式穿越NAT），是一种数据传输协议<br>原理与 STUN 类似，主要用在使用STUN无法穿透的场景下</p><h2 id="ICE"><a href="#ICE" class="headerlink" title="ICE"></a>ICE</h2><p>ICE（Interactive Connectivity Establishment，互动式连接建立）。ICE定义了穿越方法而不是协议。ICE整合了STUN与TURN。ICE使用STUN进行打洞，若失败，则使用TURN进行中转。<br>一个支持浏览器点对点连接的协议框架，使用 STUN 或 TURN 作为中继服务器，实现 NAT 穿透，进行点对点连接<br>建立连接步骤：收集候选地址 =&gt; 连通性检查 =&gt; 数据传输</p><h2 id="signaling"><a href="#signaling" class="headerlink" title="signaling"></a>signaling</h2><p>参考文献：<br><a href="https://blog.jianchihu.net/webrtc-av-transport-basis-nat-traversal.html#toc-10">WebRTC音视频传输基础：NAT穿透</a><br><a href="https://webrtc.org/getting-started/overview?hl=en">webrtc官方文档</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/WebRTC_API">WebRTC API</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> web </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> tag </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>原地删除数组中的重复值</title>
       <link href="/removeDuplicates/"/>
       <url>/removeDuplicates/</url>
