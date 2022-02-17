@@ -114,6 +114,12 @@ git branch --set-upstream-to=origin/master master
 
 `git branch -vv`
 
+### 三、分支合并
+
+1、普通的合并: `git merge <branch> --no-ff`
+
+2、合并一部分 commit: `git cherry-pick <commit hash>`
+
 ### 三、远程仓库操作
 
 (1) 改变 git 远程仓库
