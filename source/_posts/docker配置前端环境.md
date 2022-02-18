@@ -19,7 +19,7 @@ date: 2022-02-16 09:19:25
 - -w /app — 设置容器的工作目录为/app
 - node:16-alpine — 所使用的容器镜像
 
-![shell-alias](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/bd61e7f7-818e-45b9-9b59-2147cff76ad4/Untitled.png)
+![shell-alias](/images/anatomy-of-a-docker-alias.png)
 
 2、运行 `source ~/.zshrc`
 
