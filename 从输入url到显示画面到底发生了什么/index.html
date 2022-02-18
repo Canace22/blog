@@ -1,0 +1,250 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="canace 的博客"><title>从浏览器地址栏输入 URL 到界面被渲染出来看前端知识 | Canace 的博客</title><link rel="stylesheet" type="text/css" href="../css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/normalize.css/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="../favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="../favicon.ico"><link rel="apple-touch-icon" href="../apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="../apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="../atom.xml"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/clipboard/dist/clipboard.min.js"></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.js"></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.css"><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.1.1"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">从浏览器地址栏输入 URL 到界面被渲染出来看前端知识</h1><a id="logo" href="../.">Canace 的博客</a><p class="description">Tomorrow is another day</p></div><div id="nav-menu"><a class="current" href="../."><i class="fa fa-home"> 主页</i></a><a href="../archives/"><i class="fa fa-archive"> 文章归档</i></a><a href="../about/"><i class="fa fa-user"> 关于我</i></a><a href="../atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">从浏览器地址栏输入 URL 到界面被渲染出来看前端知识</h1><div class="post-meta">2020-10-12<span> | </span><span class="category"><a href="../categories/web/">web</a></span><script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> 阅读</span></span><span class="post-time"><span class="post-meta-item-text"> | </span><span class="post-meta-item-icon"><i class="fa fa-keyboard-o"></i><span class="post-count"> 3.9k</span><span class="post-meta-item-text"> 字</span></span></span><span class="post-time"> | <span class="post-meta-item-icon"><i class="fa fa-clock-o"></i><span class="post-count"> 14</span><span class="post-meta-item-text"> 分钟</span></span></span></div><a class="disqus-comment-count" data-disqus-identifier="从输入url到显示画面到底发生了什么/" href="#disqus_thread"></a><div class="clear"><div class="toc-article" id="toc"><div class="toc-title">文章目录</div><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E4%BB%8E%E8%BE%93%E5%85%A5-URL-%E5%88%B0-DNS-%E8%A7%A3%E6%9E%90"><span class="toc-text">一、从输入 URL 到 DNS 解析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#DNS-%E8%A7%A3%E6%9E%90"><span class="toc-text">DNS 解析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B-VS-%E7%BA%BF%E7%A8%8B"><span class="toc-text">进程 VS 线程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BF%9B%E7%A8%8B-%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B"><span class="toc-text">浏览器进程&#x2F;线程模型</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5%E5%BB%BA%E7%AB%8B%E5%88%B0%E8%8E%B7%E5%8F%96%E5%86%85%E5%AE%B9%E6%96%AD%E5%BC%80"><span class="toc-text">二、网络连接建立到获取内容断开</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5"><span class="toc-text">1、三次握手建立连接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%B8%8E%E6%9C%8D%E5%8A%A1%E7%AB%AF-http-%E4%BA%A4%E4%BA%92"><span class="toc-text">2、客户端与服务端 http 交互</span></a></li></ol></li></ol></div></div><div class="post-content"><p>经常会有各种文章啥的都有提到从浏览器地址栏输入 URL 到浏览器渲染出页面的过程是怎样的。</p>
+<p>之前我的认识是：DNS 解析，请求静态资源，渲染页面。</p>
+<p>然而，事实上我还是太不专业了，看到的都只是一些表象，从表象往专业看，其实这里蕴含了多个方向的前端知识，下面就来谈谈个人的一些拙见。</p>
+<h3 id="一、从输入-URL-到-DNS-解析"><a href="#一、从输入-URL-到-DNS-解析" class="headerlink" title="一、从输入 URL 到 DNS 解析"></a>一、从输入 URL 到 DNS 解析</h3><p>浏览器每开一个窗口，就会新建一个进程，这个可以打开 chrome 的 task manager 或者 win 的任务管理器自行验证。在浏览器地址栏输入一个网址，比如 <a href="https://canace.site:8080/a?name=b">https://canace.site:8080/a?name=b</a>, 回车, 浏览器回去解析这个 URL，这个例子解析出来的结构可能是这样的</p>
+<figure class="highlight avrasm"><table><tr><td class="code"><pre><span class="line"><span class="symbol">protocol:</span> <span class="string">&quot;https:&quot;</span></span><br><span class="line"><span class="symbol">host:</span> <span class="string">&quot;canace.site&quot;</span></span><br><span class="line"><span class="symbol">port:</span> <span class="string">&quot;8080&quot;</span></span><br><span class="line"><span class="symbol">path:</span> <span class="string">&quot;/a&quot;</span></span><br><span class="line"><span class="symbol">query:</span> &#123;name: a&#125;</span><br></pre></td></tr></table></figure>
+<p>拿到 URL 的解析之后，浏览器内核进程根据 url 解析出的协议和域名，开一个网络请求线程。</p>
+<h4 id="DNS-解析"><a href="#DNS-解析" class="headerlink" title="DNS 解析"></a>DNS 解析</h4><p>完成以上步骤后，通过 DNS 查询去找出”canace.site”对应的 ip 地址, DNS 的查找顺序一般是: 浏览器缓存(chrome://net-internals/#DNS) =&gt; 操作系统缓存 =&gt; 本地host文件 -&gt; 路由器缓存 =&gt; ISP(网络运营商，比如电信) DNS缓存 =&gt; 顶级DNS服务器/根DNS服务器, 可以看出 DNS 寻址还是会花点时间的，所以在一个页面中还是用少一点域名比较好。</p>
+<p>这里有个比较有意思的应用,就是有的时候手机上能用到 wifi，但是电脑不行，网上的教程一般是建议改 DNS 为: 114.114.114.114 或者 8.8.8.8，114.114.114.114 这个地址是国内移动、电信和联通通用的DNS,8.8.8.8 是谷歌提供的全球通用的 DNS,修改本地 DNS 为这两个地址，对于使用 DNS 引导内容分发的网站，解析成功率相对来说更高, 而且速度相对快且稳定。</p>
+<p>既然 DNS 可以被修改，那么必然会存在安全隐患，这里就要讲到 DNS 劫持了，这里需要思考 DNS 劫持是什么,DNS 劫持是怎么实现的,DNS 劫持有哪几种等，下面来理一下:</p>
+<p><strong>DNS 劫持是什么</strong></p>
+<p>DNS 劫持即通过某种技术手段，篡改正确域名和IP地址的映射关系，使得域名映射到了错误的IP地址，因此可以认为DNS劫持是一种DNS重定向攻击</p>
+<p><strong>DNS 劫持的分类</strong></p>
+<p>按照寻址路径，DNS 劫持可以分为以下几类: </p>
+<p><strong>(1)本地DNS劫持</strong></p>
+<ul>
+<li><p>黑客通过木马病毒或者恶意程序入侵电脑，串改 DNS 配置(hosts 文件, DNS 服务器地址或者 DNS 缓存等)</p>
+</li>
+<li><p>黑客利用路由器漏洞或者破解路由器管理账号入侵路由器并篡改 DNS 配置</p>
+</li>
+<li><p>一些企业代理设备针对企业内部场景对特定的域名做 DNS 劫持并解析为指定的结果</p>
+</li>
+</ul>
+<p><strong>(2)DNS解析路径劫持</strong></p>
+<p>发生在客户端和服务端网络通信阶段</p>
+<ul>
+<li><p>DNS 请求转发, 通过技术手段(中间盒子，软件等)将DNS流量重定向到其他DNS服务器</p>
+</li>
+<li><p>DNS 请求复制, 利用分光等设备将DNS查询复制到网络设备，并先于正常应答返回DNS劫持的结果</p>
+</li>
+<li><p>DNS 请求代答, 网络设备或者软件直接代替DNS服务器对DNS查询进行应答</p>
+</li>
+</ul>
+<p><strong>(3)篡改DNS服务器记录</strong></p>
+<p>黑客非法入侵DNS服务器记录管理账号，直接修改DNS记录的行为</p>
+<p>上面提到了进程和线程，就顺带说一下这两个经常被搞混的难兄难弟。</p>
+<h4 id="进程-VS-线程"><a href="#进程-VS-线程" class="headerlink" title="进程 VS 线程"></a>进程 VS 线程</h4><p>(1) 进程是 cpu 资源分配的最小单位，系统会为每一个进程分配一定的内存</p>
+<p>(2) 进程之间相互独立</p>
+<p>(3) 线程是 cpu 调度的最小单位</p>
+<p>(4) 一个进程由一个或多个线程组成</p>
+<p>(5) 同一进程下的各个线程之间共享程序的内存空间（包括代码段、数据集、堆等）</p>
+<h4 id="浏览器进程-线程模型"><a href="#浏览器进程-线程模型" class="headerlink" title="浏览器进程/线程模型"></a>浏览器进程/线程模型</h4><p>浏览器是多进程的，每打开一个标签页会创建一个新的进程(有时会进行进程合并)</p>
+<p>浏览器的主要进程包括以下几种:</p>
+<p>(1) <strong>Browser进程</strong>, 浏览器的主进程（负责协调、主控），只有一个, Browser进程的作用有以下几个:</p>
+<ul>
+<li><p>负责浏览器界面显示，与用户交互。如前进，后退等</p>
+</li>
+<li><p>负责各个页面的管理，创建和销毁其他进程</p>
+</li>
+<li><p>将Renderer进程得到的内存中的Bitmap，绘制到用户界面上</p>
+</li>
+<li><p>网络资源的管理，下载等</p>
+</li>
+</ul>
+<p>Browser进程的主要线程有以下几种:</p>
+<ul>
+<li><p>UI线程: 控制浏览器上的按钮及输入框</p>
+</li>
+<li><p>网络线程: 处理网络请求，从网上获取数据</p>
+</li>
+<li><p>storage线程: 控制文件等的访问</p>
+</li>
+</ul>
+<p>(2) <strong>浏览器渲染进程, 亦被称为浏览器内核进程, Renderer进程,</strong> 内部是多线程的, Renderer 进程默认每个 Tab 页面一个进程，互不影响,主要用于页面渲染，脚本执行，事件处理等，Renderer 进程包括的主要线程如下:</p>
+<p>(3) <strong>GUI渲染线程</strong></p>
+<ul>
+<li><p>负责渲染浏览器界面，解析 HTML，CSS，构建 DOM 树和 RenderObject 树，布局和绘制等。</p>
+</li>
+<li><p>当界面需要重绘（Repaint）或由于某种操作引发回流(reflow)时，该线程就会执行</p>
+</li>
+<li><p>GUI 渲染线程与 JS 引擎线程是互斥的，当 JS 引擎执行时 GUI 线程会被挂起（相当于被冻结了），GUI 更新会被保存在一个队列中等到JS 引擎空闲时立即被执行。</p>
+</li>
+</ul>
+<p>(4) <strong>JS 引擎线程</strong></p>
+<ul>
+<li><p>也称为JS内核，负责处理 Javascript 脚本程序（例如V8引擎）</p>
+</li>
+<li><p>JS 引擎线程负责解析 Javascript 脚本，运行代码</p>
+</li>
+<li><p>JS 引擎一直等待着任务队列中任务的到来，然后加以处理，一个Tab页（renderer进程）中无论什么时候都只有一个 JS 线程在运行JS程序</p>
+</li>
+<li><p>GUI 渲染线程与 JS 引擎线程是互斥的，所以如果JS执行的时间过长，这样就会造成页面的渲染不连贯，导致页面渲染加载阻塞。<br>需要大量计算的时候，可以创建一个 Web Worker，向浏览器申请多开一个线程, 专门用于计算 </p>
+</li>
+</ul>
+<p>(5) <strong>事件触发线程</strong></p>
+<ul>
+<li><p>归属于浏览器而不是 JS 引擎，用来控制事件循环</p>
+</li>
+<li><p>当 JS 引擎执行代码块如setTimeOut时（也可来自浏览器内核的其他线程,如鼠标点击、AJAX异步请求等），会将对应任务添加到事件线程中</p>
+</li>
+<li><p>当对应的事件符合触发条件被触发时，该线程会把事件添加到待处理队列的队尾，等待 JS 引擎的处理</p>
+</li>
+<li><p>由于 JS 的单线程关系，所以这些待处理队列中的事件都得排队等待 JS 引擎处理（当 JS 引擎空闲时才会去执行）</p>
+</li>
+</ul>
+<p>(6) <strong>定时触发器线程</strong></p>
+<ul>
+<li><p>传说中的 setInterval 与 setTimeout 所在线程</p>
+</li>
+<li><p>浏览器定时计数器并不是由 JavaScript 引擎计数的,（因为 JavaScript 引擎是单线程的, 如果处于阻塞线程状态就会影响记计时的准确）因此通过单独线程来计时并触发定时（计时完毕后，添加到事件队列中，等待 JS 引擎空闲后执行）</p>
+</li>
+<li><p>W3C 在 HTML 标准中规定，规定要求 setTimeout 中低于 4ms 的时间间隔算为 4ms</p>
+</li>
+</ul>
+<p>(7) <strong>异步 http 请求线程</strong></p>
+<ul>
+<li><p>XMLHttpRequest 在连接后是通过浏览器新开一个网络线程请求</p>
+</li>
+<li><p>将检测到状态变更时，如果设置有回调函数，异步线程就产生状态变更事件，将这个回调再放入事件队列中。再由 JavaScript 引擎执行。</p>
+</li>
+</ul>
+<p>(8) <strong>Subframe 进程</strong></p>
+<p>iframe 的渲染 — Site Isolation, Site Isolation 机制从 Chrome 67 开始默认启用，这种机制允许在同一个 Tab 下的跨站 iframe 使用单独的进程来渲染</p>
+<h3 id="二、网络连接建立到获取内容断开"><a href="#二、网络连接建立到获取内容断开" class="headerlink" title="二、网络连接建立到获取内容断开"></a>二、网络连接建立到获取内容断开</h3><p>DNS 解析完成之后，会向对应 ip 的服务器发起请求，从发起请求到请求完毕经历了三次握手、客户端与服务端 http 交互以及四次挥手，下面来具体讲讲这三个阶段都发生了什么</p>
+<h4 id="1、三次握手建立连接"><a href="#1、三次握手建立连接" class="headerlink" title="1、三次握手建立连接"></a>1、三次握手建立连接</h4><p><strong>(1) 三次握手的作用</strong></p>
+<ul>
+<li><p>明确客户端和服务端的收、发能力是否正常</p>
+</li>
+<li><p>指定服务端和客户端的初始化序列号为后面的可靠性传送做准备</p>
+</li>
+</ul>
+<p><strong>(2) 三次握手的过程</strong></p>
+<ul>
+<li><p>客户端给服务端发一个 SYN 报文，并指明客户端的初始化序列号 ISN(c)。此时客户端处于 SYN_SEND 状态</p>
+</li>
+<li><p>服务端发送自己的 SYN 报文作为应答，同样指明自己的ISN(s)。为了确认客户端的 SYN，将 ISN(c)+1 作为 ACK 数值。这样，每发送一个SYN，序列号就会加 1, 如果有丢失的情况，则会重传, 此时服务器处于 SYN_RCVD 的状态</p>
+</li>
+<li><p>为了确认服务器端的 SYN，客户端将 ISN(s)+1 作为返回的 ACK 数值, 此时客户端处于 ESTABLISHED 状态。服务器收到 ACK 报文之后，也处于 ESTABLISHED 状态，双方建立起连接成功</p>
+</li>
+</ul>
+<p><strong>(3) SYN 攻击</strong></p>
+<p>服务器端的资源分配是在二次握手时分配的，而客户端的资源是在完成三次握手时分配的，所以服务器容易受到 SYN 洪泛攻击。</p>
+<p>SYN 攻击就是 Client 在短时间内伪造大量不存在的 IP 地址，并向 Server 不断地发送 SYN 包，Server 则回复确认包，并等待 Client确认，由于源地址不存在，因此 Server 需要不断重发直至超时，这些伪造的 SYN 包将长时间占用未连接队列，导致正常的 SYN 请求因为队列满而被丢弃，从而引起网络拥塞甚至系统瘫痪。SYN 攻击是一种典型的 DoS/DDoS 攻击。</p>
+<h4 id="2、客户端与服务端-http-交互"><a href="#2、客户端与服务端-http-交互" class="headerlink" title="2、客户端与服务端 http 交互"></a>2、客户端与服务端 http 交互</h4><p>前后端的交互用的一般是 http 协议, 经常会涉及到的内容包括 http 报文头部信息, 状态码, 缓存, 跨域等</p>
+<p><strong>(1) http 报文结构</strong></p>
+<p>随便打开一个网页查看网络请求，都会发现有三个一样的字段: General、Response Header 以及 Request Header, 在网页调试中，我们也经常会去看这三个地方</p>
+<p><strong>General(通用头部)</strong></p>
+<p>在获取网页内容时，会把网页文件的地址和请求方法放到 http 报文头部,请求完之后，控制台一般会有以下的一些信息</p>
+<figure class="highlight oxygene"><table><tr><td class="code"><pre><span class="line">Request Url: 请求的web服务器地址</span><br><span class="line"></span><br><span class="line">Request <span class="function"><span class="keyword">Method</span>:</span> 请求方式</span><br><span class="line">（Get、POST、OPTIONS、PUT、HEAD、DELETE、CONNECT、TRACE）</span><br><span class="line"></span><br><span class="line">Status Code: 请求的返回状态码，如<span class="number">200</span>代表成功</span><br><span class="line"></span><br><span class="line">Remote Address: 请求的远程服务器地址（会转为IP）</span><br></pre></td></tr></table></figure>
+<p>上面是对每个字段的描述，其中 method 按照协议可以分为</p>
+<ul>
+<li><p>HTTP1.0 method: GET, POST 和 HEAD</p>
+</li>
+<li><p>HTTP1.1 method: GET、POST、HEAD、OPTIONS, PUT, DELETE, TRACE 和 CONNECT</p>
+</li>
+</ul>
+<p>常用状态码分类:</p>
+<ul>
+<li><p>1xx——指示信息，表示请求已接收，继续处理</p>
+</li>
+<li><p>2xx——成功，表示请求已被成功接收、理解、接受</p>
+</li>
+<li><p>3xx——重定向，要完成请求必须进行更进一步的操作</p>
+</li>
+<li><p>4xx——客户端错误，请求有语法错误或请求无法实现</p>
+</li>
+<li><p>5xx——服务器端错误，服务器未能实现合法的请求</p>
+</li>
+</ul>
+<p>常用状态码:</p>
+<ul>
+<li><p>200——表明该请求被成功地完成，所请求的资源发送回客户端</p>
+</li>
+<li><p>304——自从上次请求后，请求的网页未修改过，请客户端使用本地缓存</p>
+</li>
+<li><p>400——客户端请求有错（譬如可以是安全模块拦截）</p>
+</li>
+<li><p>401——请求未经授权</p>
+</li>
+<li><p>403——禁止访问（譬如可以是未登录时禁止）</p>
+</li>
+<li><p>404——资源未找到</p>
+</li>
+<li><p>500——服务器内部错误</p>
+</li>
+<li><p>503——服务不可用</p>
+</li>
+</ul>
+<p><strong>Request Header(请求头部)</strong></p>
+<p>常用请求头部</p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line">Accept: 接收类型，表示浏览器支持的MIME类型</span><br><span class="line">（对标服务端返回的Content-Type）</span><br><span class="line"></span><br><span class="line">Accept-Encoding：浏览器支持的压缩类型,如gzip等,超出类型不能接收</span><br><span class="line"></span><br><span class="line">Content-Type：客户端发送出去实体内容的类型</span><br><span class="line"></span><br><span class="line">缓存相关</span><br><span class="line">Cache-Control: 指定请求和响应遵循的缓存机制，如no-cache</span><br><span class="line"><span class="function"><span class="title">If-Modified-Since</span><span class="params">(http1.<span class="number">0</span>)</span></span>：对应服务端的Last-Modified，用来匹配看文件是否变动，只能精确到<span class="number">1s</span>之内</span><br><span class="line"><span class="function"><span class="title">Expires</span><span class="params">(http1.<span class="number">0</span>)</span></span>：缓存控制，在这个时间内不会请求，直接使用缓存，而且是服务端时间</span><br><span class="line"><span class="function"><span class="title">Max-age</span><span class="params">(http1.<span class="number">1</span>)</span></span>：代表资源在本地缓存多少秒，有效时间内不会请求，而是使用缓存</span><br><span class="line"><span class="function"><span class="title">If-None-Match</span><span class="params">(http1.<span class="number">1</span>)</span></span>：对应服务端的ETag，用来匹配文件内容是否改变（非常精确）</span><br><span class="line"></span><br><span class="line">Cookie: 有cookie并且同域访问时会自动带上</span><br><span class="line"></span><br><span class="line">Connection: 当浏览器与服务器通信时对于长连接如何进行处理,如keep-alive</span><br><span class="line"></span><br><span class="line">Host：请求的服务器URL</span><br><span class="line"></span><br><span class="line">Origin：最初的请求是从哪里发起的（只会精确到端口）,Origin比Referer更尊重隐私</span><br><span class="line"></span><br><span class="line">Referer：该页面的来源URL(适用于所有类型的请求，会精确到详细页面地址，csrf拦截常用到这个字段)</span><br><span class="line"></span><br><span class="line">User-Agent：用户客户端的一些必要信息，如UA头部等</span><br></pre></td></tr></table></figure>
+<p><strong>Response Header(响应头部)</strong></p>
+<p>常用响应头部</p>
+<figure class="highlight mathematica"><table><tr><td class="code"><pre><span class="line"><span class="variable">Access</span><span class="operator">-</span><span class="built_in">Control</span><span class="operator">-</span><span class="variable">Allow</span><span class="operator">-</span><span class="variable">Headers</span><span class="operator">:</span> 服务器端允许的请求<span class="variable">Headers</span></span><br><span class="line"><span class="variable">Access</span><span class="operator">-</span><span class="built_in">Control</span><span class="operator">-</span><span class="variable">Allow</span><span class="operator">-</span><span class="variable">Methods</span><span class="operator">:</span> 服务器端允许的请求方法</span><br><span class="line"><span class="variable">Access</span><span class="operator">-</span><span class="built_in">Control</span><span class="operator">-</span><span class="variable">Allow</span><span class="operator">-</span><span class="variable">Origin</span><span class="operator">:</span> 服务器端允许的请求<span class="variable">Origin</span>头部（譬如为<span class="operator">*</span>）</span><br><span class="line"></span><br><span class="line"><span class="variable">Content</span><span class="operator">-</span><span class="variable">Type</span>：服务端返回的实体内容的类型</span><br><span class="line"></span><br><span class="line"><span class="built_in">Date</span>：数据从服务器发送的时间</span><br><span class="line"></span><br><span class="line">缓存相关</span><br><span class="line"><span class="variable">Cache</span><span class="operator">-</span><span class="built_in">Control</span>：告诉浏览器或其他客户，什么环境可以安全的缓存文档</span><br><span class="line"><span class="built_in">Last</span><span class="operator">-</span><span class="variable">Modified</span>：请求资源的最后修改时间</span><br><span class="line"><span class="variable">Expires</span>：应该在什么时候认为文档已经过期<span class="operator">,</span>从而不再缓存它</span><br><span class="line"><span class="built_in">Max</span><span class="operator">-</span><span class="variable">age</span>：客户端的本地资源应该缓存多少秒，开启了<span class="variable">Cache</span><span class="operator">-</span><span class="built_in">Control</span>后有效</span><br><span class="line"><span class="variable">ETag</span>：请求变量的实体标签的当前值</span><br><span class="line"></span><br><span class="line"><span class="built_in">Set</span><span class="operator">-</span><span class="variable">Cookie</span>：设置和页面关联的<span class="variable">cookie</span>，服务器通过这个头部把<span class="variable">cookie</span>传给客户端</span><br><span class="line"></span><br><span class="line"><span class="variable">Keep</span><span class="operator">-</span><span class="variable">Alive</span>：如果客户端有<span class="variable">keep</span><span class="operator">-</span><span class="variable">alive</span>，服务端也会有响应（如<span class="variable">timeout</span><span class="operator">=</span><span class="number">38</span>）</span><br><span class="line"></span><br><span class="line"><span class="variable">Server</span>：服务器的一些相关信息</span><br></pre></td></tr></table></figure>
+<p>跨域请求时，请求头部的Origin要匹配响应头部的Access-Control-Allow-Origin，否则会报跨域错误</p>
+<p>在使用缓存时，请求头部的If-Modified-Since、If-None-Match分别和响应头部的Last-Modified、ETag对应</p>
+<p>写的有点累，得空再写了</p>
+<p>未完待续……</p>
+<p>参考文献:</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/86538629">聊一聊DNS劫持那些事</a></p>
+<p><a target="_blank" rel="noopener" href="https://dailc.github.io/2018/03/12/whenyouenteraurl.html">从输入URL到页面加载的过程？如何由一道题完善自己的前端知识体系！</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/47407398">图解浏览器的基本工作原理</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/zhezhebie/article/details/79191776">常用dns114.114.114.114与8.8.8.8的区别</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/53374516">“三次握手，四次挥手”你真的懂吗？</a></p>
+<p><a target="_blank" rel="noopener" href="https://juejin.im/post/6844903958624878606">面试官，不要再问我三次握手和四次挥手</a></p>
+</div><div class="post-copyright"><script type="text/javascript" src="/js/copyright.js" successtext="复制成功!"></script><link rel="stylesheet" type="text/css" href="/css/copyright.css"><p><span>本文标题：</span>从浏览器地址栏输入 URL 到界面被渲染出来看前端知识</p><p><span>文章作者：</span>Canace</p><p><span>发布时间：</span>2020-10-12</p><p><span>最后更新：</span>2022-02-17</p><p><span>原始链接：</span><a href="/从输入url到显示画面到底发生了什么/">https://canace.site/%E4%BB%8E%E8%BE%93%E5%85%A5url%E5%88%B0%E6%98%BE%E7%A4%BA%E7%94%BB%E9%9D%A2%E5%88%B0%E5%BA%95%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88/</a><span class="copy-path"><i class="fa fa-clipboard" data-clipboard-text="https://canace.site/%E4%BB%8E%E8%BE%93%E5%85%A5url%E5%88%B0%E6%98%BE%E7%A4%BA%E7%94%BB%E9%9D%A2%E5%88%B0%E5%BA%95%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88/"></i></span></p><p><span>版权声明：</span>转载请注明出处</p></div><br><script type="text/javascript" src="../js/share.js?v=0.0.0" async></script><a class="article-share-link" data-url="https://canace.site/%E4%BB%8E%E8%BE%93%E5%85%A5url%E5%88%B0%E6%98%BE%E7%A4%BA%E7%94%BB%E9%9D%A2%E5%88%B0%E5%BA%95%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88/" data-id="ckzseui9x00c00ux0244j9zwj" data-qrcode="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAT4AAAE+CAAAAAAxUyPsAAAFTElEQVR42u3awY7iMBAEUP7/p1lpb6uZhKpuZw47LycEIXGekWhX+/WKj/ff4/79r6+v3vn6aTuGZDz5NWfjeeHDhw8fPnwjvvftcTWs5NOELH/nfqqSp8vPycePDx8+fPjwzfjaQiEBvR/6Znr2U5iUWVFhhA8fPnz48D3Gd39mO8SkvEiW8ZsooS2G8OHDhw8fvp/ka5fimwdug/gkVkiKG3z48OHDh+9n+DaL6jwgaKPz5Mw2wsj5Dvc68OHDhw8fvnWp8b++Pnzgw4cPHz58cSN5s9WsHUNbuJxqkM808OHDhw8fvtmzt4vhdpk9iwP2hdSsAZ8H9/jw4cOHD9+erw3o2ymZ8c2a9HlYnxdA35yJDx8+fPjwxXwJ2awJPStfim1h5Rjatnr0s8CHDx8+fPiO8p0K69tWdL7dbdOtbuODKKbHhw8fPnz4Pn+3aF3PSoo8CGgX/LPwog0gDnQ/8OHDhw8fvosNam1Z0DbIZ+e3YfpmOgtKfPjw4cOHb8R3qhRoHy8P1o8t5svW+IenwIcPHz58+CY961dblMwa53kbftMUbyc4L4wur4MPHz58+PDFfLNNWu3Cvl2it9H5qXu1jXl8+PDhw4ev5UsKhfbvf1MQzF7no81DjToywIcPHz58+OKwfrZcbxvVs4D+iUKqbSFEWQs+fPjw4cO35nvHx6awaIunluZUQP/Nt/Dhw4cPH75FPTBbYCd//7MCog01nih6iiYBPnz48OHDF/DlW9NmTej767Tb4J54vRkPPnz48OHD1/Lllz712O0d28bALIbIS5bL8gUfPnz48OEL+PJofvYACXF7RA3sUShQh/748OHDhw/fmm9/6dmyfx+mt0XJ7O6rig8fPnz48P16vk0bOyGb9e2LoHzUvM835BXQ+PDhw4cPX8x3trXcxgRt4D4LEdotdMV2N3z48OHDhy/my//m25bzLEzP7zsrhmZTPhwoPnz48OHDd+iYUebL+HZtnizsV2nKWVx8+PDhw/eL+fK/8KQQybHaxva+bMqnodgWgA8fPnz48JV8+cI7j933Q5+VOHkDoA33V0kMPnz48OHDd9HtzS/aFjF547yN12flRf68dYKCDx8+fPjwLRrMSYhwf7R102wMSTnShvJ5wIEPHz58+PDlfBuItkW9j+Zn5+fjySf41f6m8OHDhw8fvjKab9vnbfu5GO4ouG9/Ivn048OHDx8+fC1fAjS75WyIbXQ+Cw7yiR/uL8CHDx8+fPguVrv5Qj0/Z9OKnkG37fB21X9Z8eHDhw8fPnwlXx4B5IVIXsRsIoC2hdA214e9Dnz48OHDh6/sKbeXONv83rft27Kmbe3jw4cPHz58M74Woi0O2q1jm4fMw4K8SIqa4vjw4cOHD1/M1w40x2oDhVMxenLmpmAqihh8+PDhw4cvLmUSiE0Uvk84NmH6LE3Bhw8fPnz4zvJtLpGXKXkZlBcfeRTShgt1axwfPnz48OG7vWMSAcw2h52916wxn0cD7bPgw4cPHz58G7520KcC97Zs2gQcp1r1/1wTHz58+PDhW/PljeEcZVOUnOKYbU37MGH48OHDhw9fyTf7805uthnErMSZTV4b3A8nEh8+fPjw4YtXvklAn1DOmuVtkyAZW3vfqFmODx8+fPjwlXx5AZEMZdaofiICyIP+4b3w4cOHDx++h/n2NG2JkJw5w0paCFFkgA8fPnz48D3At4+/2+9uyp1Z5JHQ48OHDx8+fHu+djPZpoGdN+OTgmaWn8+Oy8gAHz58+PDhm4xw9bVZK7q9ct4yb8P9U/fChw8fPnz4Lu71Bx9ZnjZHIufMAAAAAElFTkSuQmCC">分享</a><div class="tags"><a href="../tags/http/"><i class="fa fa-tag"></i>http</a></div><div class="post-nav"><a class="pre" href="../vue-test-unit/">Vue 单元测试</a><a class="next" href="../git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">Git 文档</a></div><div id="disqus_thread"><div class="btn_click_load"><button class="disqus_click_btn">阅读评论（请确保 Disqus 可以正常加载）</button></div><script type="text/javascript">var disqus_config = function () {
+    this.page.url = 'https://canace.site/从输入url到显示画面到底发生了什么/';
+    this.page.identifier = '从输入url到显示画面到底发生了什么/';
+    this.page.title = '从浏览器地址栏输入 URL 到界面被渲染出来看前端知识';
+  };</script><script type="text/javascript" id="disqus-lazy-load-script">$.ajax({
+url: 'https://disqus.com/next/config.json',
+timeout: 2500,
+type: 'GET',
+success: function(){
+  var d = document;
+  var s = d.createElement('script');
+  s.src = '//liu-yan-ping-de-bo-ke.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', + new Date());
+  (d.head || d.body).appendChild(s);
+  $('.disqus_click_btn').css('display', 'none');
+},
+error: function() {
+  $('.disqus_click_btn').css('display', 'block');
+}
+});</script><script type="text/javascript" id="disqus-click-load">$('.btn_click_load').click(() => {  //click to load comments
+    (() => { // DON'T EDIT BELOW THIS LINE
+        var d = document;
+        var s = d.createElement('script');
+        s.src = '//liu-yan-ping-de-bo-ke.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', + new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+    $('.disqus_click_btn').css('display','none');
+});</script><script type="text/javascript" id="disqus-count-script">$(function() {
+     var xhr = new XMLHttpRequest();
+     xhr.open('GET', '//disqus.com/next/config.json', true);
+     xhr.timeout = 2500;
+     xhr.onreadystatechange = function () {
+       if (xhr.readyState === 4 && xhr.status === 200) {
+         $('.post-meta .post-comments-count').show();
+         var s = document.createElement('script');
+         s.id = 'dsq-count-scr';
+         s.src = 'https://liu-yan-ping-de-bo-ke.disqus.com/count.js';
+         s.async = true;
+         (document.head || document.body).appendChild(s);
+       }
+     };
+     xhr.ontimeout = function () { xhr.abort(); };
+     xhr.send(null);
+   });
+</script></div></div></div></div><div class="pure-u-1 pure-u-md-1-4"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="../categories/web/">web</a><span class="category-list-count">144</span></li><li class="category-list-item"><a class="category-list-link" href="../categories/%E6%8A%80%E6%9C%AF%E5%B0%8F%E7%99%BD%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/">技术小白网站搭建指南</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="../categories/%E6%9C%8D%E5%8A%A1%E7%AB%AF/">服务端</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="../categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">深度学习</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="../categories/%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0/">源码学习</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="../categories/%E7%AE%97%E6%B3%95/">算法</a><span class="category-list-count">23</span></li><li class="category-list-item"><a class="category-list-link" href="../categories/%E7%B3%BB%E7%BB%9F/">系统</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="../categories/%E8%AF%AD%E8%A8%80/">语言</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../categories/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">阅读笔记</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="../categories/%E9%9A%8F%E7%AC%94/">随笔</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="../categories/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/">项目管理</a><span class="category-list-count">17</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="../tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" style="font-size: 15px;">性能优化</a> <a href="../tags/%E5%AF%8C%E6%96%87%E6%9C%AC/" style="font-size: 15px;">富文本</a> <a href="../tags/css/" style="font-size: 15px;">css</a> <a href="../tags/webGL/" style="font-size: 15px;">webGL</a> <a href="../tags/python/" style="font-size: 15px;">python</a> <a href="../tags/JavaScript/" style="font-size: 15px;">JavaScript</a> <a href="../tags/flutter/" style="font-size: 15px;">flutter</a> <a href="../tags/angular/" style="font-size: 15px;">angular</a> <a href="../tags/mysql/" style="font-size: 15px;">mysql</a> <a href="../tags/%E7%A7%91%E6%99%AE/" style="font-size: 15px;">科普</a> <a href="../tags/http/" style="font-size: 15px;">http</a> <a href="../tags/vue/" style="font-size: 15px;">vue</a> <a href="../tags/web%E5%AE%89%E5%85%A8/" style="font-size: 15px;">web安全</a> <a href="../tags/%E5%B7%A5%E7%A8%8B%E5%8C%96/" style="font-size: 15px;">工程化</a> <a href="../tags/Go/" style="font-size: 15px;">Go</a> <a href="../tags/devOps/" style="font-size: 15px;">devOps</a> <a href="../tags/nodeJs/" style="font-size: 15px;">nodeJs</a> <a href="../tags/ffmpeg/" style="font-size: 15px;">ffmpeg</a> <a href="../tags/%E9%9D%99%E6%80%81%E7%B1%BB%E5%9E%8B%E6%A3%80%E6%B5%8B/" style="font-size: 15px;">静态类型检测</a> <a href="../tags/git/" style="font-size: 15px;">git</a> <a href="../tags/html/" style="font-size: 15px;">html</a> <a href="../tags/lodash/" style="font-size: 15px;">lodash</a> <a href="../tags/npm/" style="font-size: 15px;">npm</a> <a href="../tags/react/" style="font-size: 15px;">react</a> <a href="../tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" style="font-size: 15px;">开发环境</a> <a href="../tags/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/" style="font-size: 15px;">单元测试</a> <a href="../tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 15px;">小程序</a> <a href="../tags/%E6%AD%A3%E5%88%99/" style="font-size: 15px;">正则</a> <a href="../tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 15px;">浏览器</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 相关链接</i></div><ul></ul><a href="https://github.com/Canace22/leetcode" title="算法" target="_blank">算法</a><ul></ul><a href="https://canace22.github.io/Demos/#/" title="demos" target="_blank">demos</a></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="../docker%E9%85%8D%E7%BD%AE%E5%89%8D%E7%AB%AF%E7%8E%AF%E5%A2%83/">使用 Docker 配置前端环境</a></li><li class="post-list-item"><a class="post-list-link" href="../%E7%9F%A5%E8%AF%86%E7%84%A6%E8%99%91/">知识焦虑</a></li><li class="post-list-item"><a class="post-list-link" href="../WebRTC/">WebRTC</a></li><li class="post-list-item"><a class="post-list-link" href="../removeDuplicates/">原地删除数组中的重复值</a></li><li class="post-list-item"><a class="post-list-link" href="../prisma%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/">Prisma 入门指南</a></li><li class="post-list-item"><a class="post-list-link" href="../docker%E6%96%87%E6%A1%A3/">Docker 打包本地 Web 项目发布到服务端</a></li><li class="post-list-item"><a class="post-list-link" href="../ffmpeg%E6%8A%BD%E5%8F%96%E8%A7%86%E9%A2%91%E9%9F%B3%E8%BD%A8/">Ffmpeg 抽取视频音轨</a></li><li class="post-list-item"><a class="post-list-link" href="../%E6%99%A8%E8%B7%91%E7%AC%AC%E4%B8%80%E5%A4%A9/">晨跑</a></li><li class="post-list-item"><a class="post-list-link" href="../%E6%A0%A1%E9%AA%8C%E5%AD%97%E7%AC%A6%E4%B8%B2/">校验字符串是否有意义</a></li><li class="post-list-item"><a class="post-list-link" href="../ant-design%E9%82%A3%E4%BA%9B%E5%9D%91/">Ant-Design-Vue 那些坑</a></li></ul></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2022 <a href="../." rel="nofollow">Canace 的博客.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="../js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.js" async></script><script type="text/javascript" src="../js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.css"><link rel="stylesheet" type="text/css" href="../css/search.css?v=0.0.0"><script type="text/javascript" src="../js/search.js?v=0.0.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+   search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" color="160,160,160" opacity="0.5" zIndex="-1" count="50" src="//cdn.jsdelivr.net/npm/canvas-nest.js/dist/canvas-nest.min.js"></script><script type="text/javascript" src="/js/copycode.js" successtext="复制成功!"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css"><script type="text/javascript" src="../js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="../js/smartresize.js?v=0.0.0"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":200,"height":200},"mobile":{"show":false},"react":{"opacity":0.7},"log":false});</script></body></html>
