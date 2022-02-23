@@ -3,6 +3,7 @@ title: Vue 你这是怎么了
 categories: web
 tags: vue
 comments: true
+toc: true
 date: 2021-08-02 11:11:43
 ---
 ## 一、对象初始化
@@ -51,3 +52,7 @@ function aviodRepeatRouter() {
 }
 aviodRepeatRouter();
 ```
+
+## 三、native 修饰符滥用
+
+native 修饰符用于监听根元素上的原生事件，这里很容易造成滥用，滥用可能会导致触发几次同一个方法，比如一个下拉框，在 option 上使用了  click.native 修饰符可能会触发两次，一次是根元素的 click, 一次是本身的 click。
