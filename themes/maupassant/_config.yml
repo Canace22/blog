@@ -93,13 +93,15 @@ widgets: ## Six widgets in sidebar provided: search, category, tag, recent_posts
   - tag
   # - recent_comments
   - links
-  - recent_posts
+  # - recent_posts
 
 links:
-  - title: 算法
-    url: https://github.com/Canace22/leetcode
-  - title: demos
-    url: https://canace22.github.io/Demos/#/
+  - title: Git 文档
+    url: /git常用命令
+  # - title: 算法
+  #   url: https://github.com/Canace22/leetcode
+  # - title: demos
+  #   url: https://canace22.github.io/Demos/#/
 
 timeline:
   - num: 1
@@ -110,25 +112,6 @@ timeline:
     word: 2015/02/18-DDD
   - num: 4
     word: More
-
-# live2d:
-#   enable: true
-#   scriptFrom: local
-#   pluginRootPath: node_modules/
-#   pluginJsPath: lib/
-#   pluginModelPath: assets/
-#   tagMode: false
-#   debug: false
-#   model:
-#     use: live2d-widget-model-tororo 
-#   display:
-#     position: right
-#     width: 150
-#     height: 300
-#   mobile:
-#     show: true
-#   react:
-#     opacity: 0.7
 
 mathjax: true
 
