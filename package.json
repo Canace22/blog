@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "./test.sh"
+    "serve": "./test.sh s",
+    "build": "./test.sh d",
+    "commit": "./commit.sh"
   },
   "hexo": {
     "version": "5.1.1"

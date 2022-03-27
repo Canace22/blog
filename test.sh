@@ -1,3 +1,4 @@
 hexo cl
 hexo g 
-hexo s
+echo ${1}
+hexo ${1}
