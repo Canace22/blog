@@ -1,5 +1,5 @@
 ---
-title: mac 调试 ios 真机上 web 网页的方法
+title: MAC 调试 IOS 真机上 Web 网页的方法
 categories: web
 tags: 开发环境
 comments: true
