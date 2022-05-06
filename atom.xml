@@ -6,7 +6,7 @@
   <link href="https://canace.site/atom.xml" rel="self"/>
   
   <link href="https://canace.site/"/>
-  <updated>2022-05-02T16:19:06.494Z</updated>
+  <updated>2022-05-06T03:53:10.240Z</updated>
   <id>https://canace.site/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>文字走马灯实现</title>
+    <link href="https://canace.site/%E7%BA%AFcss%E5%AE%9E%E7%8E%B0%E6%96%87%E5%AD%97%E8%B5%B0%E9%A9%AC%E7%81%AF/"/>
+    <id>https://canace.site/%E7%BA%AFcss%E5%AE%9E%E7%8E%B0%E6%96%87%E5%AD%97%E8%B5%B0%E9%A9%AC%E7%81%AF/</id>
+    <published>2022-05-06T01:07:32.000Z</published>
+    <updated>2022-05-06T03:53:10.240Z</updated>
+    
+    
+    <summary type="html">文字走马灯实现方法</summary>
+    
+    
+    
+    <category term="web" scheme="https://canace.site/categories/web/"/>
+    
+    
+    <category term="css" scheme="https://canace.site/tags/css/"/>
+    
+  </entry>
   
   <entry>
     <title>第一期：一周碎碎念</title>
@@ -468,29 +487,6 @@
     
     
     <category term="JavaScript" scheme="https://canace.site/tags/JavaScript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>2021 生日寄语</title>
-    <link href="https://canace.site/2021%E7%94%9F%E6%97%A5%E5%AF%84%E8%AF%AD/"/>
-    <id>https://canace.site/2021%E7%94%9F%E6%97%A5%E5%AF%84%E8%AF%AD/</id>
-    <published>2021-06-23T01:16:00.000Z</published>
-    <updated>2022-02-17T08:39:24.893Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
-    
-    
-    
-    <category term="随笔" scheme="https://canace.site/categories/%E9%9A%8F%E7%AC%94/"/>
-    
     
   </entry>
   
