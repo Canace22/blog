@@ -74,6 +74,11 @@ git checkout -b <branch>
 
 `git tag -a <版本号> -m <描述信息>` => `git push origin <版本号>`
 
+(3) 删除 tag
+
+本地：`git tag -d tagname`
+远程: `git push -d origin tagname`
+
 #### 4、分支推送
 
 (1) 新的分支推送到远程并跟踪
