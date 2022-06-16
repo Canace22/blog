@@ -6,7 +6,7 @@
   <link href="https://canace.site/atom.xml" rel="self"/>
   
   <link href="https://canace.site/"/>
-  <updated>2022-05-15T03:00:36.893Z</updated>
+  <updated>2022-06-16T03:22:37.982Z</updated>
   <id>https://canace.site/</id>
   
   <author>
@@ -17,20 +17,33 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>JavaScript 奇技淫巧</title>
+    <link href="https://canace.site/JavaScript%E5%A5%87%E6%8A%80%E6%B7%AB%E5%B7%A7/"/>
+    <id>https://canace.site/JavaScript%E5%A5%87%E6%8A%80%E6%B7%AB%E5%B7%A7/</id>
+    <published>2022-06-16T02:22:01.000Z</published>
+    <updated>2022-06-16T03:22:37.982Z</updated>
+    
+    
+    <summary type="html">如题，这篇文章收集一些平常见过的一些 JS 奇技淫巧。</summary>
+    
+    
+    
+    <category term="web" scheme="https://canace.site/categories/web/"/>
+    
+    
+    <category term="JavaScript" scheme="https://canace.site/tags/JavaScript/"/>
+    
+  </entry>
+  
+  <entry>
     <title>第二期：一周碎碎念</title>
     <link href="https://canace.site/issue-2/"/>
     <id>https://canace.site/issue-2/</id>
     <published>2022-05-15T01:55:24.000Z</published>
-    <updated>2022-05-15T03:00:36.893Z</updated>
+    <updated>2022-06-16T03:36:18.257Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
+    <summary type="html">Canace 的一周碎碎念第二期</summary>
     
     
     
@@ -44,16 +57,10 @@
     <link href="https://canace.site/issue-1/"/>
     <id>https://canace.site/issue-1/</id>
     <published>2022-05-02T15:31:23.000Z</published>
-    <updated>2022-05-02T16:19:06.494Z</updated>
+    <updated>2022-06-16T03:35:25.804Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
+    <summary type="html">Canace 的一周碎碎念第一期</summary>
     
     
     
@@ -67,16 +74,10 @@
     <link href="https://canace.site/mac%E8%B0%83%E8%AF%95ios%E7%9C%9F%E6%9C%BA%E4%B8%8Aweb%E7%BD%91%E9%A1%B5%E7%9A%84%E6%96%B9%E6%B3%95/"/>
     <id>https://canace.site/mac%E8%B0%83%E8%AF%95ios%E7%9C%9F%E6%9C%BA%E4%B8%8Aweb%E7%BD%91%E9%A1%B5%E7%9A%84%E6%96%B9%E6%B3%95/</id>
     <published>2022-03-30T08:53:10.000Z</published>
-    <updated>2022-05-02T15:14:18.580Z</updated>
+    <updated>2022-06-16T03:32:00.956Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
+    <summary type="html">最近有个项目 web 项目在 ios 上显示异常，看不到日志也不知道什么问题。网上有很多实现方法，看了看都是抄来抄去的，细节不是很全，我就记录下自己的操作过程吧，免得下次忘了难找。</summary>
     
     
     
@@ -466,31 +467,6 @@
     
     
     <category term="nodeJs" scheme="https://canace.site/tags/nodeJs/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>离开页面弹窗</title>
-    <link href="https://canace.site/%E7%A6%BB%E5%BC%80%E9%A1%B5%E9%9D%A2%E5%BC%B9%E7%AA%97/"/>
-    <id>https://canace.site/%E7%A6%BB%E5%BC%80%E9%A1%B5%E9%9D%A2%E5%BC%B9%E7%AA%97/</id>
-    <published>2021-06-28T01:13:32.000Z</published>
-    <updated>2022-02-17T08:39:24.954Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
-    
-    
-    
-    <category term="web" scheme="https://canace.site/categories/web/"/>
-    
-    
-    <category term="JavaScript" scheme="https://canace.site/tags/JavaScript/"/>
     
   </entry>
   
