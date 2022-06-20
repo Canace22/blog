@@ -1,6 +1,6 @@
 ---
 title: 第三期：一周碎碎念
-categories: web
+categories: 一周碎碎念
 description: Canace 的一周碎碎念第三期
 author: Canace
 comments: true
