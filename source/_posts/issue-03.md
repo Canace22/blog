@@ -12,15 +12,15 @@ date: 2022-06-20 09:14:09
 
 ## 资源
 
-1、[wasm 封装的 ffmpeg 库]([https://github.com/sunface/rust-course](https://github.com/ffmpegwasm/ffmpeg.wasm))
+1、[wasm 封装的 ffmpeg 库](https://github.com/ffmpegwasm/ffmpeg.wasm)
 
 wasm封装的ffmpeg库，可以用于浏览器端和 nodeJS 应用程序
 
-2、[图解设计模式]([https://refactoring.guru/design-patterns/catalog](https://refactoring.guru/design-patterns/catalog))
+2、[图解设计模式](https://refactoring.guru/design-patterns/catalog)
 
 插图有点可爱的设计模式文章
 
-3、[计算机教育中缺失的一课]([https://missing-semester-cn.github.io/](https://missing-semester-cn.github.io/))
+3、[计算机教育中缺失的一课](https://missing-semester-cn.github.io/)
 
 这个系列的文章讲解了一些计算机领域常用的工具比如 shell，vim 等
 
@@ -28,23 +28,23 @@ wasm封装的ffmpeg库，可以用于浏览器端和 nodeJS 应用程序
 
 一份 HTML 多份 CSS 设计典范
 
-5、[浅谈 HTML 语义化与前端结构]([https://nicolasgallagher.com/about-html-semantics-front-end-architecture/](https://nicolasgallagher.com/about-html-semantics-front-end-architecture/))
+5、[浅谈 HTML 语义化与前端结构](https://nicolasgallagher.com/about-html-semantics-front-end-architecture/)
 
 浅谈 HTML 语义化与前端结构
 
-6、[CSS 最佳实践]([https://www.smashingmagazine.com/2013/10/challenging-css-best-practices-atomic-approach/](https://www.smashingmagazine.com/2013/10/challenging-css-best-practices-atomic-approach/))
+6、[CSS 最佳实践](https://www.smashingmagazine.com/2013/10/challenging-css-best-practices-atomic-approach/)
 
 atomic 理论讲解
 
-7、[CSS Class 语义化]([https://www.w3.org/QA/Tips/goodclassnames](https://www.w3.org/QA/Tips/goodclassnames))
+7、[CSS Class 语义化](https://www.w3.org/QA/Tips/goodclassnames)
 
 关于 CSS Class 的取名建议
 
-8、[一些开发原则]([https://martinrue.com/my-engineering-axioms/](https://martinrue.com/my-engineering-axioms/))
+8、[一些开发原则](https://martinrue.com/my-engineering-axioms/)
 
 一些看着还行的开发原则
 
-9、[一些前端问题]([https://github.com/h5bp/Front-end-Developer-Interview-Questions](https://github.com/h5bp/Front-end-Developer-Interview-Questions))
+9、[一些前端问题](https://github.com/h5bp/Front-end-Developer-Interview-Questions)
 
 github star 53k 的前端问题集合，可以通过解答这些问题，了解自己的基础
 
@@ -52,11 +52,11 @@ github star 53k 的前端问题集合，可以通过解答这些问题，了解�
 
 讲解很详细的从用户输入内容到浏览器渲染出页面的文章
 
-11、[中文技术文档写作规范]([https://github.com/ruanyf/document-style-guide](https://github.com/ruanyf/document-style-guide)）
+11、[中文技术文档写作规范](https://github.com/ruanyf/document-style-guide)
 
 阮一峰老师写的中文技术文档写作规范
 
-12、[浏览器工作原理与实践]([https://blog.poetries.top/browser-working-principle/](https://blog.poetries.top/browser-working-principle/))
+12、[浏览器工作原理与实践](https://blog.poetries.top/browser-working-principle/)
 
 提出了一些浏览器工作原理相关的问题，做了简单回答
 
