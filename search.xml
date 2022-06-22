@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>获取 DOM Style 的正确姿势</title>
+      <link href="/get-css-style/"/>
+      <url>/get-css-style/</url>
+      
+        <content type="html"><![CDATA[<p>今天在写一个很简单的 demo 时发现获取 dom.style.width 一直都是空的，打印 dom.style 里面设置的其他属性也都是空的，这就很玄学了。明明设置了几个 css 属性，怎么拿到的全是空呢？先来看看我的 demo:</p><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span></span><br><span class="line"><span class="css">  <span class="selector-tag">body</span> &#123;</span></span><br><span class="line"><span class="css">    <span class="attribute">margin</span>: <span class="number">0</span>;</span></span><br><span class="line">  &#125;</span><br><span class="line">  #status &#123;</span><br><span class="line"><span class="css">    <span class="attribute">width</span>: <span class="number">10px</span>;</span></span><br><span class="line"><span class="css">    <span class="attribute">height</span>: <span class="number">10px</span>;</span></span><br><span class="line"><span class="css">    <span class="attribute">background</span>: orange;</span></span><br><span class="line">  &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;status&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">updateProgress</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> div = <span class="built_in">document</span>.getElementById(<span class="string">&quot;status&quot;</span>);</span><br><span class="line">  <span class="built_in">console</span>.log(div.style.width)</span><br><span class="line">  <span class="keyword">var</span> width = +div.style.width.replace(<span class="string">&#x27;px&#x27;</span>,<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">  div.style.width = width + <span class="number">5</span> + <span class="string">&quot;px&quot;</span>;</span><br><span class="line">  <span class="keyword">if</span> (width &lt; <span class="built_in">window</span>.innerWidth) &#123;</span><br><span class="line">    requestAnimationFrame(updateProgress);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">requestAnimationFrame(updateProgress);</span><br></pre></td></tr></table></figure><p>上面的例子，第一次打印的是个空，说明第一次是没有获取到 width 值的，第二次之后能打印到数据，这其中有什么差异呢？demo 中可以看到我的 css 样式写在了 style 标签里面，进了函数之后直接设置为了行内样式，这就是二者的区别。这里引用一下 MDN 的描述</p><blockquote><p>The HTMLElement.style property is not useful for completely learning about the styles applied on the element, since it represents only the CSS declarations set in the element’s inline style attribute, not those that come from style rules elsewhere, such as style rules in the section, or external style sheets. To get the values of all CSS properties for an element you should use Window.getComputedStyle() instead.</p></blockquote><p>上面的意思就是 HTMLElement.style 并没有写入我们设置的所有 css 属性，只写入了行内 css 属性，要获取其他地方的属性可以使用 Window.getComputedStyle() 方法，下面来改进一下 demo</p><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">updateProgress</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> div = <span class="built_in">document</span>.getElementById(<span class="string">&quot;status&quot;</span>);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="built_in">window</span>.getComputedStyle(div).width);</span><br><span class="line">  <span class="keyword">var</span> width = +<span class="built_in">window</span>.getComputedStyle(div).width.replace(<span class="string">&#x27;px&#x27;</span>,<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">  div.style.width = width + <span class="number">5</span> + <span class="string">&quot;px&quot;</span>;</span><br><span class="line">  <span class="keyword">if</span> (width &lt; <span class="built_in">window</span>.innerWidth) &#123;</span><br><span class="line">    requestAnimationFrame(updateProgress);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">requestAnimationFrame(updateProgress);</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> web </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> css </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>第三期：一周碎碎念</title>
       <link href="/issue-03/"/>
       <url>/issue-03/</url>
