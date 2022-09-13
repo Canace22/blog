@@ -6,7 +6,7 @@
   <link href="https://canace.site/atom.xml" rel="self"/>
   
   <link href="https://canace.site/"/>
-  <updated>2022-07-25T05:46:28.406Z</updated>
+  <updated>2022-09-13T01:12:44.082Z</updated>
   <id>https://canace.site/</id>
   
   <author>
@@ -15,6 +15,42 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>第六期：一周碎碎念</title>
+    <link href="https://canace.site/issue-06/"/>
+    <id>https://canace.site/issue-06/</id>
+    <published>2022-09-13T00:39:19.000Z</published>
+    <updated>2022-09-13T01:12:44.082Z</updated>
+    
+    
+    <summary type="html">Canace 的一周碎碎念第六期</summary>
+    
+    
+    
+    <category term="一周碎碎念" scheme="https://canace.site/categories/%E4%B8%80%E5%91%A8%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>字符串与代码的严谨性</title>
+    <link href="https://canace.site/%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%8E%E4%BB%A3%E7%A0%81%E7%9A%84%E4%B8%A5%E8%B0%A8%E6%80%A7/"/>
+    <id>https://canace.site/%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%8E%E4%BB%A3%E7%A0%81%E7%9A%84%E4%B8%A5%E8%B0%A8%E6%80%A7/</id>
+    <published>2022-08-19T06:12:25.000Z</published>
+    <updated>2022-09-13T00:37:28.682Z</updated>
+    
+    
+    <summary type="html">忏悔下工作中遇到的问题</summary>
+    
+    
+    
+    <category term="web" scheme="https://canace.site/categories/web/"/>
+    
+    
+    <category term="JavaScript" scheme="https://canace.site/tags/JavaScript/"/>
+    
+  </entry>
   
   <entry>
     <title>JavaScript 在 V8 引擎浏览器上是怎么执行的</title>
@@ -40,7 +76,7 @@
     <link href="https://canace.site/issue-05/"/>
     <id>https://canace.site/issue-05/</id>
     <published>2022-07-24T10:44:15.000Z</published>
-    <updated>2022-07-24T12:34:34.205Z</updated>
+    <updated>2022-09-13T00:45:56.687Z</updated>
     
     
     <summary type="html">Canace 的一周碎碎念第五期</summary>
@@ -57,7 +93,7 @@
     <link href="https://canace.site/issue-04/"/>
     <id>https://canace.site/issue-04/</id>
     <published>2022-07-10T09:03:29.000Z</published>
-    <updated>2022-07-24T11:07:53.589Z</updated>
+    <updated>2022-09-13T00:45:51.866Z</updated>
     
     
     <summary type="html">Canace 的一周碎碎念第四期</summary>
@@ -93,7 +129,7 @@
     <link href="https://canace.site/issue-03/"/>
     <id>https://canace.site/issue-03/</id>
     <published>2022-06-20T01:14:09.000Z</published>
-    <updated>2022-06-20T01:40:14.723Z</updated>
+    <updated>2022-09-13T00:45:46.251Z</updated>
     
     
     <summary type="html">Canace 的一周碎碎念第三期</summary>
@@ -148,7 +184,7 @@
     <link href="https://canace.site/issue-2/"/>
     <id>https://canace.site/issue-2/</id>
     <published>2022-05-15T01:55:24.000Z</published>
-    <updated>2022-06-16T03:36:18.257Z</updated>
+    <updated>2022-09-13T00:45:07.665Z</updated>
     
     
     <summary type="html">Canace 的一周碎碎念第二期</summary>
@@ -165,7 +201,7 @@
     <link href="https://canace.site/issue-1/"/>
     <id>https://canace.site/issue-1/</id>
     <published>2022-05-02T15:31:23.000Z</published>
-    <updated>2022-06-16T03:35:25.804Z</updated>
+    <updated>2022-09-13T00:45:40.827Z</updated>
     
     
     <summary type="html">Canace 的一周碎碎念第一期</summary>
@@ -381,54 +417,6 @@
     
     
     <category term="devOps" scheme="https://canace.site/tags/devOps/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Ffmpeg 抽取视频音轨</title>
-    <link href="https://canace.site/ffmpeg%E6%8A%BD%E5%8F%96%E8%A7%86%E9%A2%91%E9%9F%B3%E8%BD%A8/"/>
-    <id>https://canace.site/ffmpeg%E6%8A%BD%E5%8F%96%E8%A7%86%E9%A2%91%E9%9F%B3%E8%BD%A8/</id>
-    <published>2021-10-06T03:04:03.000Z</published>
-    <updated>2022-02-17T08:39:24.902Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
-    
-    
-    
-    <category term="服务端" scheme="https://canace.site/categories/%E6%9C%8D%E5%8A%A1%E7%AB%AF/"/>
-    
-    
-    <category term="ffmpeg" scheme="https://canace.site/tags/ffmpeg/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>晨跑</title>
-    <link href="https://canace.site/%E6%99%A8%E8%B7%91%E7%AC%AC%E4%B8%80%E5%A4%A9/"/>
-    <id>https://canace.site/%E6%99%A8%E8%B7%91%E7%AC%AC%E4%B8%80%E5%A4%A9/</id>
-    <published>2021-10-03T02:43:32.000Z</published>
-    <updated>2022-02-17T08:39:24.946Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
-    
-    
-    
-    <category term="随笔" scheme="https://canace.site/categories/%E9%9A%8F%E7%AC%94/"/>
-    
     
   </entry>
   
