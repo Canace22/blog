@@ -10,7 +10,7 @@ date: 2022-07-24 18:44:15
 
 每当跟朋友谈论起阅读，我们会聊到这本书讲了什么，最喜欢里面里面哪些章节段落，为什么会喜欢它。但是，所有书籍都适合这么去评价分析吗？答案是否定的。我们会阅读很多题材的书籍资料，比如技术，文学等等，对于不同的书籍我们的关注点是不一样的。比如说我阅读小说的习惯是看情节，看环境，而不会特别去分析里面的人物，或者花很多时间去思考怎么评价他，为什么？因为我觉得文学之所以称之为文学，而不叫做人物志，是因为他是把人物放到了特定的想象空间去，作者想展现给我们的不是这个任务本身，而是通过人物去渲染他所处的环境，体现出环境的空间感。但是对于有教导意义的技术类书籍，我会概览目录，看下大致讲了什么，哪些值得我精读，哪些只需要粗略了解，因为技术书籍或者资料的目的性是比较强的，他之所以存在，就是为了给予我们某方面的指导，这类资料也是无需做过度的评价的，更不需要过多的想象力。
 
-## 资源
+## 资料
 
 1、[How To Ask Questions The Smart Way](http://www.catb.org/~esr/faqs/smart-questions.html)
 
@@ -47,7 +47,3 @@ date: 2022-07-24 18:44:15
 9、[在线编程环境](https://stackblitz.com/)
 
 很方便的在线编程环境，可以快速创建不同框架项目，性能很好，对于需要临时写不同框架 demo 的需求来说，比 codepen 体验好
-
-## 有趣
-
-![关于人生的漫画](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/49b8b06a-983f-4a37-840c-886a7df6a4b5/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220724%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220724T123347Z&X-Amz-Expires=86400&X-Amz-Signature=53f1db542c03aaac2853edfaa973358e6875ba33f9957a02a82138509556f1aa&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22&x-id=GetObject)
