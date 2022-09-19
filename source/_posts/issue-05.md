@@ -1,5 +1,5 @@
 ---
-title: 第五期：一周碎碎念
+title: 一周碎碎念——Vol.05：阅读的艺术
 categories: 一周碎碎念
 description: Canace 的一周碎碎念第五期
 author: Canace

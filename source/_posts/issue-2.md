@@ -1,5 +1,5 @@
 ---
-title: 第二期：一周碎碎念
+title: 一周碎碎念——Vol.02：团队对个人的影响
 categories: 一周碎碎念
 comments: true
 description: 'Canace 的一周碎碎念第二期'

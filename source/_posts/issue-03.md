@@ -1,5 +1,5 @@
 ---
-title: 第三期：一周碎碎念
+title: 一周碎碎念——Vol.03：关于职业选择
 categories: 一周碎碎念
 description: Canace 的一周碎碎念第三期
 author: Canace
