@@ -1,5 +1,5 @@
 ---
-title: 一周碎碎念——Vol.06：羊了个羊为什么会火起来
+title: Vol.06：羊了个羊为什么会火起来
 categories: 一周碎碎念
 description: Canace 的一周碎碎念第六期
 author: Canace
