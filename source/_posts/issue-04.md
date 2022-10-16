@@ -1,5 +1,5 @@
 ---
-title: 一周碎碎念——Vol.04：子非鱼，安知鱼之乐也
+title: Vol.04：子非鱼，安知鱼之乐也
 categories: 一周碎碎念
 description: Canace 的一周碎碎念第四期
 author: Canace
