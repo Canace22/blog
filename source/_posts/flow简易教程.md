@@ -1,7 +1,7 @@
 ---
-title: flow简易教程
+title: flow 简易教程
 categories: web
-tags: 静态类型检测
+tags: flow
 comments: true
 toc: true
 date: 2020-11-09 16:59:07

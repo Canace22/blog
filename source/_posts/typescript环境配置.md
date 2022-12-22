@@ -4,7 +4,7 @@ comments: true
 toc: true
 date: 2020-11-23 10:14:39
 categories: web
-tags: 静态类型检测
+tags: TypeScript
 ---
 
 ## 一、快速上手
