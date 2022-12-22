@@ -6,7 +6,7 @@
   <link href="https://canace.site/atom.xml" rel="self"/>
   
   <link href="https://canace.site/"/>
-  <updated>2022-12-04T06:01:00.073Z</updated>
+  <updated>2022-12-09T09:58:56.595Z</updated>
   <id>https://canace.site/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>构建 TypeScript 库</title>
+    <link href="https://canace.site/%E6%9E%84%E5%BB%BAts%E5%BA%93/"/>
+    <id>https://canace.site/%E6%9E%84%E5%BB%BAts%E5%BA%93/</id>
+    <published>2022-12-09T09:53:22.000Z</published>
+    <updated>2022-12-09T09:58:56.595Z</updated>
+    
+    
+    <summary type="html">构建 TypeScript 库简易指南</summary>
+    
+    
+    
+    <category term="web" scheme="https://canace.site/categories/web/"/>
+    
+    
+    <category term="TypeScript" scheme="https://canace.site/tags/TypeScript/"/>
+    
+  </entry>
   
   <entry>
     <title>Vol.10：直面死亡</title>
@@ -366,31 +385,6 @@
     
     
     <category term="git" scheme="https://canace.site/tags/git/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>使用 Docker 配置前端环境</title>
-    <link href="https://canace.site/docker%E9%85%8D%E7%BD%AE%E5%89%8D%E7%AB%AF%E7%8E%AF%E5%A2%83/"/>
-    <id>https://canace.site/docker%E9%85%8D%E7%BD%AE%E5%89%8D%E7%AB%AF%E7%8E%AF%E5%A2%83/</id>
-    <published>2022-02-16T01:19:25.000Z</published>
-    <updated>2022-02-18T12:52:13.322Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
-    
-    
-    
-    <category term="web" scheme="https://canace.site/categories/web/"/>
-    
-    
-    <category term="devOps" scheme="https://canace.site/tags/devOps/"/>
     
   </entry>
   
