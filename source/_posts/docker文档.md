@@ -4,7 +4,7 @@ categories: web
 tags: devOps
 toc: true
 comments: true
-date: 2021-11-20 21:22:28
+date: 2023-01-16 09:58:28
 ---
 ## 一、Docker 入门
 
@@ -25,7 +25,7 @@ date: 2021-11-20 21:22:28
 - `/bin/echo "Hello world"`**:** 在启动的容器里执行的命令
 - `—name` 指定容器名称
 - `-d` 后台运行
-- `-p` 指定端口映射
+- `-p <docker-host-port>:<container-port>` 指定端口映射
 
 ### 3、运行交互式的容器
 
