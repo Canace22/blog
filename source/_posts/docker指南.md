@@ -1,11 +1,11 @@
 ---
-title: 前端 docker 指南
+title: 静态文件使用 nginx 部署到 docker 方法
 categories: web
 tags: devOps
 description: docker 在前端自动化部署中经常用到，平常都是别人配置好的，只其所以不知其然，自己走一遍，做个笔记
 comments: true
 toc: true
-date: 2020-09-16 09:16:49
+date: 2023-01-16 09:16:49
 ---
 ## 一、下载
 
@@ -59,7 +59,7 @@ server {
 ### 2、编译 docker 镜像
 
 ```
-docker build -t <webserver> -f docker/Dockerfile .
+docker build -t <image-name> -f docker/Dockerfile .
 ```
 
 ### 3、上传镜像
@@ -77,5 +77,5 @@ docker container stop web
 ### 5、创建容器, 并将容器指向一个镜像版本
 
 ```docker
-docker run -it --rm -d -p 80:80 --name web <webserver>
+docker run -it --rm -d -p 80:80 --name web <image-name>
 ```
