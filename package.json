@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "serve": "./test.sh s",
+    "serve": "./serve.sh",
     "build": "./test.sh d",
     "commit": "./commit.sh"
   },
