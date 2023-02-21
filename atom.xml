@@ -6,7 +6,7 @@
   <link href="https://canace.site/atom.xml" rel="self"/>
   
   <link href="https://canace.site/"/>
-  <updated>2022-12-09T09:58:56.595Z</updated>
+  <updated>2023-02-10T05:33:08.248Z</updated>
   <id>https://canace.site/</id>
   
   <author>
@@ -15,6 +15,73 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>软件开发随想</title>
+    <link href="https://canace.site/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E9%9A%8F%E6%83%B3/"/>
+    <id>https://canace.site/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E9%9A%8F%E6%83%B3/</id>
+    <published>2023-02-10T02:46:08.000Z</published>
+    <updated>2023-02-10T05:33:08.248Z</updated>
+    
+    
+    <summary type="html">软件开发随想</summary>
+    
+    
+    
+    <category term="随想" scheme="https://canace.site/categories/%E9%9A%8F%E6%83%B3/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>前端 XX Docker 化</title>
+    <link href="https://canace.site/%E5%89%8D%E7%AB%AF_xx_docker%E5%8C%96/"/>
+    <id>https://canace.site/%E5%89%8D%E7%AB%AF_xx_docker%E5%8C%96/</id>
+    <published>2023-01-16T03:07:31.000Z</published>
+    <updated>2023-02-07T02:15:31.960Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="web" scheme="https://canace.site/categories/web/"/>
+    
+    
+    <category term="devOps" scheme="https://canace.site/tags/devOps/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Docker 打包本地 Web 项目发布到服务端</title>
+    <link href="https://canace.site/docker%E6%96%87%E6%A1%A3/"/>
+    <id>https://canace.site/docker%E6%96%87%E6%A1%A3/</id>
+    <published>2023-01-16T01:58:28.000Z</published>
+    <updated>2023-02-07T01:51:48.975Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="web" scheme="https://canace.site/categories/web/"/>
+    
+    
+    <category term="devOps" scheme="https://canace.site/tags/devOps/"/>
+    
+  </entry>
   
   <entry>
     <title>构建 TypeScript 库</title>
@@ -316,75 +383,6 @@
     
     <category term="一周碎碎念" scheme="https://canace.site/categories/%E4%B8%80%E5%91%A8%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>MAC 调试 IOS 真机上 Web 网页的方法</title>
-    <link href="https://canace.site/mac%E8%B0%83%E8%AF%95ios%E7%9C%9F%E6%9C%BA%E4%B8%8Aweb%E7%BD%91%E9%A1%B5%E7%9A%84%E6%96%B9%E6%B3%95/"/>
-    <id>https://canace.site/mac%E8%B0%83%E8%AF%95ios%E7%9C%9F%E6%9C%BA%E4%B8%8Aweb%E7%BD%91%E9%A1%B5%E7%9A%84%E6%96%B9%E6%B3%95/</id>
-    <published>2022-03-30T08:53:10.000Z</published>
-    <updated>2022-06-16T03:32:00.956Z</updated>
-    
-    
-    <summary type="html">最近有个项目 web 项目在 ios 上显示异常，看不到日志也不知道什么问题。网上有很多实现方法，看了看都是抄来抄去的，细节不是很全，我就记录下自己的操作过程吧，免得下次忘了难找。</summary>
-    
-    
-    
-    <category term="web" scheme="https://canace.site/categories/web/"/>
-    
-    
-    <category term="开发环境" scheme="https://canace.site/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>浅谈可视化表单设计</title>
-    <link href="https://canace.site/%E6%B5%85%E8%B0%88%E5%8F%AF%E8%A7%86%E5%8C%96%E8%A1%A8%E5%8D%95%E8%AE%BE%E8%AE%A1/"/>
-    <id>https://canace.site/%E6%B5%85%E8%B0%88%E5%8F%AF%E8%A7%86%E5%8C%96%E8%A1%A8%E5%8D%95%E8%AE%BE%E8%AE%A1/</id>
-    <published>2022-03-28T05:19:53.000Z</published>
-    <updated>2022-03-28T06:31:42.389Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
-    
-    
-    
-    <category term="web" scheme="https://canace.site/categories/web/"/>
-    
-    
-    <category term="工程化" scheme="https://canace.site/tags/%E5%B7%A5%E7%A8%8B%E5%8C%96/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>关于分支管理的一点感想</title>
-    <link href="https://canace.site/%E5%85%B3%E4%BA%8E%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86%E7%9A%84%E4%B8%80%E7%82%B9%E6%84%9F%E6%83%B3/"/>
-    <id>https://canace.site/%E5%85%B3%E4%BA%8E%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86%E7%9A%84%E4%B8%80%E7%82%B9%E6%84%9F%E6%83%B3/</id>
-    <published>2022-02-23T01:44:35.000Z</published>
-    <updated>2022-02-27T03:19:57.515Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
-    
-    
-    
-    <category term="项目管理" scheme="https://canace.site/categories/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/"/>
-    
-    
-    <category term="git" scheme="https://canace.site/tags/git/"/>
     
   </entry>
   

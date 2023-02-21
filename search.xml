@@ -4,6 +4,75 @@
   
     
     <entry>
+      <title>软件开发随想</title>
+      <link href="/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E9%9A%8F%E6%83%B3/"/>
+      <url>/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E9%9A%8F%E6%83%B3/</url>
+      
+        <content type="html"><![CDATA[<ol><li>永远不要太信任数据，必须做好数据的完备性校验。</li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 随想 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>前端 XX Docker 化</title>
+      <link href="/%E5%89%8D%E7%AB%AF_xx_docker%E5%8C%96/"/>
+      <url>/%E5%89%8D%E7%AB%AF_xx_docker%E5%8C%96/</url>
+      
+        <content type="html"><![CDATA[<h2 id="一、nginx-docker-化"><a href="#一、nginx-docker-化" class="headerlink" title="一、nginx docker 化"></a>一、nginx docker 化</h2><h3 id="1、新建-docker-文件夹"><a href="#1、新建-docker-文件夹" class="headerlink" title="1、新建 docker 文件夹"></a>1、新建 docker 文件夹</h3><p>(1) 文件夹下新建 Dockerfile 文件, 内容如下</p><figure class="highlight docker"><table><tr><td class="code"><pre><span class="line"><span class="keyword">FROM</span> nginx:latest</span><br><span class="line"><span class="keyword">COPY</span><span class="bash"> dist /usr/share/nginx/html</span></span><br><span class="line"><span class="comment">#　修改nginx的配置项</span></span><br><span class="line"><span class="keyword">COPY</span><span class="bash"> docker/default.conf /etc/nginx/conf.d</span></span><br></pre></td></tr></table></figure><p>(2) nginx 配置端口映射，文件夹下新建 default.conf 文件, 内容如下:</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen       80;</span><br><span class="line">    server_name  _;</span><br><span class="line"></span><br><span class="line">    #charset koi8-r;</span><br><span class="line">    #access_log  &#x2F;var&#x2F;log&#x2F;nginx&#x2F;host.access.log  main;</span><br><span class="line"></span><br><span class="line">    location &#x2F; &#123;</span><br><span class="line">        root   &#x2F;usr&#x2F;share&#x2F;nginx&#x2F;html;</span><br><span class="line">        index  index.html index.htm;</span><br><span class="line">        try_files $uri $uri&#x2F; &#x2F;index.html;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    #error_page  404              &#x2F;404.html;</span><br><span class="line"></span><br><span class="line">    # redirect server error pages to the static page &#x2F;50x.html</span><br><span class="line">    #</span><br><span class="line">    error_page   500 502 503 504  &#x2F;50x.html;</span><br><span class="line">    location &#x3D; &#x2F;50x.html &#123;</span><br><span class="line">        root   &#x2F;usr&#x2F;share&#x2F;nginx&#x2F;html;</span><br><span class="line">        try_files $uri $uri&#x2F; &#x2F;index.html;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="2、编译-docker-镜像"><a href="#2、编译-docker-镜像" class="headerlink" title="2、编译 docker 镜像"></a>2、编译 docker 镜像</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">docker build -t &lt;image-name&gt; -f docker/Dockerfile .</span><br></pre></td></tr></table></figure><h3 id="3、创建容器-并将容器指向一个镜像版本"><a href="#3、创建容器-并将容器指向一个镜像版本" class="headerlink" title="3、创建容器, 并将容器指向一个镜像版本"></a>3、创建容器, 并将容器指向一个镜像版本</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">docker run -d -p &lt;host-port&gt;:&lt;container-port&gt; --name &lt;container-name&gt; &lt;image-name&gt;</span><br></pre></td></tr></table></figure><h2 id="二、Node-js-服务-docker-化"><a href="#二、Node-js-服务-docker-化" class="headerlink" title="二、Node.js 服务 docker 化"></a>二、Node.js 服务 docker 化</h2><h3 id="1、Dockerfile-文件"><a href="#1、Dockerfile-文件" class="headerlink" title="1、Dockerfile 文件"></a>1、Dockerfile 文件</h3><figure class="highlight docker"><table><tr><td class="code"><pre><span class="line"><span class="keyword">FROM</span> node:<span class="number">14</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Create app directory</span></span><br><span class="line"><span class="keyword">WORKDIR</span><span class="bash"> /usr/src/app</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Install app dependencies</span></span><br><span class="line"><span class="comment"># A wildcard is used to ensure both package.json AND package-lock.json are copied</span></span><br><span class="line"><span class="comment"># where available (npm@5+)</span></span><br><span class="line"><span class="keyword">COPY</span><span class="bash"> package*.json ./</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> npm install</span></span><br><span class="line"><span class="comment"># If you are building your code for production</span></span><br><span class="line"><span class="comment"># RUN npm ci --only=production</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Bundle app source</span></span><br><span class="line"><span class="keyword">COPY</span><span class="bash"> . .</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">EXPOSE</span> <span class="number">8002</span></span><br><span class="line"><span class="keyword">CMD</span><span class="bash"> [ <span class="string">&quot;node&quot;</span>, <span class="string">&quot;servers.js&quot;</span> ] <span class="comment"># 用 node 启动服务</span></span></span><br><span class="line"><span class="comment"># CMD [ &quot;npm&quot;, &quot;start&quot; ] 用 npm cli 启动服务</span></span><br></pre></td></tr></table></figure><h3 id="2、编译-docker-镜像-1"><a href="#2、编译-docker-镜像-1" class="headerlink" title="2、编译 docker 镜像"></a>2、编译 docker 镜像</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">docker build -t &lt;image-name&gt; -f docker/Dockerfile .</span><br></pre></td></tr></table></figure><h3 id="3、创建容器-并将容器指向一个镜像版本-1"><a href="#3、创建容器-并将容器指向一个镜像版本-1" class="headerlink" title="3、创建容器, 并将容器指向一个镜像版本"></a>3、创建容器, 并将容器指向一个镜像版本</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">docker run -d -p &lt;host-port&gt;:&lt;container-port&gt; --name &lt;container-name&gt; &lt;image-name&gt;</span><br></pre></td></tr></table></figure><p>参考文献：<br><a href="https://nodejs.org/zh-cn/docs/guides/nodejs-docker-webapp/">把一个 Node.js web 应用程序给 Docker 化</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> web </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> devOps </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Docker 打包本地 Web 项目发布到服务端</title>
+      <link href="/docker%E6%96%87%E6%A1%A3/"/>
+      <url>/docker%E6%96%87%E6%A1%A3/</url>
+      
+        <content type="html"><![CDATA[<h2 id="一、Docker-入门"><a href="#一、Docker-入门" class="headerlink" title="一、Docker 入门"></a>一、Docker 入门</h2><h3 id="1、构建镜像"><a href="#1、构建镜像" class="headerlink" title="1、构建镜像"></a>1、构建镜像</h3><p><code>docker build -t &lt;image-name&gt; .</code></p><ul><li>-t 指定要创建的目标镜像名</li><li><strong>.</strong> ：Dockerfile 文件所在目录，可以指定Dockerfile 的绝对路径</li><li>设置镜像标签: <code>docker build -t image-name:tag</code></li></ul><h3 id="2、运行应用程序"><a href="#2、运行应用程序" class="headerlink" title="2、运行应用程序"></a>2、运行应用程序</h3><p><code>docker run --name &lt;container-name&gt; -d -p 8080:80 &lt;image-name&gt; /bin/echo &quot;Hello world&quot;</code></p><ul><li>docker run：运行应用程序</li><li><code>&lt;image-name&gt;</code>： 指定要运行的镜像，Docker 首先从本地主机上查找镜像是否存在，如果不存在，Docker 就会从镜像仓库 Docker Hub 下载公共镜像</li><li><code>/bin/echo &quot;Hello world&quot;</code><strong>:</strong> 在启动的容器里执行的命令</li><li><code>—name</code> 指定容器名称</li><li><code>-d</code> 后台运行</li><li><code>-p &lt;docker-host-port&gt;:&lt;container-port&gt;</code> 指定端口映射</li></ul><h3 id="3、运行交互式的容器"><a href="#3、运行交互式的容器" class="headerlink" title="3、运行交互式的容器"></a>3、运行交互式的容器</h3><p>示例：<code>docker run -it &lt;image-name&gt; /bin/bash</code></p><ul><li><strong>t:</strong> 在新容器内指定一个伪终端或终端。</li><li><strong>i:</strong> 允许对容器内的标准输入 (STDIN) 进行交互。</li><li>通过运行 exit 命令或者使用 CTRL+D 来退出容器</li></ul><h3 id="4、进入容器"><a href="#4、进入容器" class="headerlink" title="4、进入容器"></a>4、进入容器</h3><p><code>docker exec -it 容器ID /bin/bash</code></p><h3 id="5、停止容器"><a href="#5、停止容器" class="headerlink" title="5、停止容器"></a>5、停止容器</h3><p><code>docker stop &lt;容器ID &gt;</code></p><h3 id="6、查看所有容器状态"><a href="#6、查看所有容器状态" class="headerlink" title="6、查看所有容器状态"></a>6、查看所有容器状态</h3><p><strong><code>docker ps -a</code></strong></p><h3 id="7、启动一个已停止的容器"><a href="#7、启动一个已停止的容器" class="headerlink" title="7、启动一个已停止的容器"></a>7、启动一个已停止的容器</h3><p><code>docker start &lt;容器ID&gt;</code></p><h3 id="8、导出容器快照"><a href="#8、导出容器快照" class="headerlink" title="8、导出容器快照"></a>8、导出容器快照</h3><p><code>docker export 容器ID &gt; name.tar</code></p><h3 id="9、导入容器"><a href="#9、导入容器" class="headerlink" title="9、导入容器"></a>9、导入容器</h3><p><code>docker import url</code></p><h3 id="10、删除容器"><a href="#10、删除容器" class="headerlink" title="10、删除容器"></a>10、删除容器</h3><p><code>docker rm -f 容器ID</code> 或者 <code>docker rm 容器名称</code></p><h3 id="11、端口映射"><a href="#11、端口映射" class="headerlink" title="11、端口映射"></a>11、端口映射</h3><ul><li>-P 随机映射</li><li>指定端口映射: -p 80:10086</li><li>查看容器端口的映射情况：<code>docker port 容器ID</code></li></ul><h3 id="12、查看所有镜像"><a href="#12、查看所有镜像" class="headerlink" title="12、查看所有镜像"></a>12、查看所有镜像</h3><p><strong><code>docker images</code></strong></p><h3 id="13、删除镜像"><a href="#13、删除镜像" class="headerlink" title="13、删除镜像"></a>13、删除镜像</h3><p><code>docker rmi 镜像名称</code></p><p>了解了大概的基础之后，下面开始实战篇。</p><h2 id="二、使用-docker-打包本地-web-项目发布到服务端概述"><a href="#二、使用-docker-打包本地-web-项目发布到服务端概述" class="headerlink" title="二、使用 docker 打包本地 web 项目发布到服务端概述"></a>二、使用 docker 打包本地 web 项目发布到服务端概述</h2><h3 id="1、把本地项目打包成一个-docker-镜像"><a href="#1、把本地项目打包成一个-docker-镜像" class="headerlink" title="1、把本地项目打包成一个 docker 镜像"></a>1、把本地项目打包成一个 docker 镜像</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker build -t &lt;image-name&gt; .</span><br></pre></td></tr></table></figure><h3 id="2、推送打包好的镜像到镜像容器服务"><a href="#2、推送打包好的镜像到镜像容器服务" class="headerlink" title="2、推送打包好的镜像到镜像容器服务"></a>2、推送打包好的镜像到镜像容器服务</h3><p>把 docker 镜像推送到阿里云镜像服务器需要先去阿里云镜像服务创建一个空间和一个仓库</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 登录阿里云容器服务</span></span><br><span class="line">docker login --username=[username] registry.cn-hangzhou.aliyuncs.com</span><br><span class="line"><span class="comment"># 给镜像打 tag</span></span><br><span class="line">docker tag [ImageId] registry.cn-hangzhou.aliyuncs.com/[命名空间]/[仓库名]:[镜像版本号]</span><br><span class="line"><span class="comment"># 推送到阿里云容器仓库</span></span><br><span class="line">docker push registry.cn-hangzhou.aliyuncs.com/[命名空间]/[仓库名]:[镜像版本号]</span><br></pre></td></tr></table></figure><h3 id="3、拉取阿里云容器镜像并运行"><a href="#3、拉取阿里云容器镜像并运行" class="headerlink" title="3、拉取阿里云容器镜像并运行"></a>3、拉取阿里云容器镜像并运行</h3><p>服务器拉取阿里云容器镜像，拉取的前提是先要登录，如上</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 拉取刚刚上传的镜像</span></span><br><span class="line">docker pull registry.cn-hangzhou.aliyuncs.com/[命名空间]/[仓库名]:[镜像版本号]</span><br><span class="line"><span class="comment"># 创建并运行容器</span></span><br><span class="line">docker run --name blog -d -p 5000:80 registry.cn-hangzhou.aliyuncs.com/命名空间]/[仓库名]:[镜像版本号]</span><br></pre></td></tr></table></figure><p>打开服务器 IP:端口号，就可以看到内容了，完美</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> web </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> devOps </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>构建 TypeScript 库</title>
       <link href="/%E6%9E%84%E5%BB%BAts%E5%BA%93/"/>
       <url>/%E6%9E%84%E5%BB%BAts%E5%BA%93/</url>
@@ -507,6 +576,31 @@
     
     
     <entry>
+      <title>常用正则表达式</title>
+      <link href="/%E5%B8%B8%E7%94%A8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
+      <url>/%E5%B8%B8%E7%94%A8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</url>
+      
+        <content type="html"><![CDATA[<h3 id="一、html-相关"><a href="#一、html-相关" class="headerlink" title="一、html 相关"></a>一、html 相关</h3><p>1、去掉所有 html 标签，并保留内容: <code>/&lt;[^&gt;]+&gt;/g</code></p><p>2、去除 html 注释并删除其中的内容: <code>/&lt;!--[\s\S]*--&gt;/g</code></p><h3 id="二、字符串匹配"><a href="#二、字符串匹配" class="headerlink" title="二、字符串匹配"></a>二、字符串匹配</h3><p>1、匹配任意空白字符: <code>/\s+/</code></p><p>2、匹配中文字符: <code>[\u4E00-\u9FA5]+</code></p><p>3、IP地址：<code>/((2[0-4]\d|25[0-5]|[01]?\d\d?)\.)&#123;3&#125;(2[0-4]\d|25[0-5]|[01]?\d\d?)/</code></p><h3 id="三、字符截取"><a href="#三、字符截取" class="headerlink" title="三、字符截取"></a>三、字符截取</h3><p>1、截取两个字符串之间的内容</p><p>示例1：</p><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="string">&#x27;21312tsdasd&#x27;</span>.match(<span class="regexp">/3(\S*)d/</span>)[<span class="number">1</span>] <span class="comment">//匹配3和d之间的内容，输出 12tsdas</span></span><br></pre></td></tr></table></figure><p>示例2：</p><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="string">&#x27;$&#123;a&#125;-$&#123;b&#125;&#x27;</span>.match(<span class="regexp">/(?&lt;=\$&#123;).+?(?=\&#125;)/g</span>) <span class="comment">// 使用零宽断言，获取所有$&#123;&#125;包裹的内容，输出[&#x27;a&#x27;,&#x27;b&#x27;]</span></span><br></pre></td></tr></table></figure><p>2、截取某个字符串前面的内容，同上，不过拿掉了前面的字符串</p><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;21312tsdasd&quot;</span>.match(<span class="regexp">/(\S*)d/</span>)[<span class="number">1</span>]; <span class="comment">// 21312tsdas</span></span><br></pre></td></tr></table></figure><p>3、截取某个字符串后面的内容，第一个示例拿掉后面的字符</p><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;21312tsdasd&quot;</span>.match(<span class="regexp">/12(\S*)/</span>)[<span class="number">1</span>];  <span class="comment">// tsdasd</span></span><br></pre></td></tr></table></figure><p>附：</p><h3 id="常用元字符"><a href="#常用元字符" class="headerlink" title="常用元字符"></a>常用元字符</h3><ul><li>. - 匹配除换行符以外的任意字符</li><li>\w - 匹配字母或数字或下划线或汉字</li><li>\s - 匹配任意的空白符</li><li>\d - 匹配数字</li><li>\b - 匹配单词的开始或结束</li><li>^ - 匹配字符串的开始</li><li>$ - 匹配字符串的结束</li></ul><h3 id="常用限定符"><a href="#常用限定符" class="headerlink" title="常用限定符"></a>常用限定符</h3><ul><li><ul><li><ul><li>重复零次或更多次</li></ul></li></ul></li><li><ul><li><ul><li>重复一次或更多次</li></ul></li></ul></li><li>? - 重复零次或一次</li><li>{n} - 重复n次</li><li>{n,} - 重复n次或更多次</li><li>{n,m} - 重复n到m次</li></ul><h3 id="常用的反义代码"><a href="#常用的反义代码" class="headerlink" title="常用的反义代码"></a>常用的反义代码</h3><ul><li>\W - 匹配任意不是字母，数字，下划线，汉字的字符</li><li>\S - 匹配任意不是空白符的字符</li><li>\D - 匹配任意非数字的字符</li><li>\B - 匹配不是单词开头或结束的位置</li><li><sup><a href="#fn_x" id="reffn_x">x</a></sup> - 匹配除了x以外的任意字符</li><li><sup><a href="#fn_aeiou" id="reffn_aeiou">aeiou</a></sup> - 匹配除了aeiou这几个字母以外的任意字符</li></ul><p>参考文献：</p><p><a href="https://deerchao.cn/tutorials/regex/regex.htm">正则表达式30分钟入门</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> web </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 正则 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>原地删除数组中的重复值</title>
       <link href="/removeDuplicates/"/>
       <url>/removeDuplicates/</url>
@@ -543,31 +637,6 @@
         <tags>
             
             <tag> nodeJs </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Docker 打包本地 Web 项目发布到服务端</title>
-      <link href="/docker%E6%96%87%E6%A1%A3/"/>
-      <url>/docker%E6%96%87%E6%A1%A3/</url>
-      
-        <content type="html"><![CDATA[<h2 id="一、Docker-入门"><a href="#一、Docker-入门" class="headerlink" title="一、Docker 入门"></a>一、Docker 入门</h2><h3 id="1、构建镜像"><a href="#1、构建镜像" class="headerlink" title="1、构建镜像"></a>1、构建镜像</h3><p><code>docker build -t &lt;image-name&gt; .</code></p><ul><li>-t 指定要创建的目标镜像名</li><li><strong>.</strong> ：Dockerfile 文件所在目录，可以指定Dockerfile 的绝对路径</li><li>设置镜像标签: <code>docker build -t image-name:tag</code></li></ul><h3 id="2、运行应用程序"><a href="#2、运行应用程序" class="headerlink" title="2、运行应用程序"></a>2、运行应用程序</h3><p><code>docker run --name &lt;container-name&gt; -d -p 8080:80 &lt;image-name&gt; /bin/echo &quot;Hello world&quot;</code></p><ul><li>docker run：运行应用程序</li><li><code>&lt;image-name&gt;</code>： 指定要运行的镜像，Docker 首先从本地主机上查找镜像是否存在，如果不存在，Docker 就会从镜像仓库 Docker Hub 下载公共镜像</li><li><code>/bin/echo &quot;Hello world&quot;</code><strong>:</strong> 在启动的容器里执行的命令</li><li><code>—name</code> 指定容器名称</li><li><code>-d</code> 后台运行</li><li><code>-p</code> 指定端口映射</li></ul><h3 id="3、运行交互式的容器"><a href="#3、运行交互式的容器" class="headerlink" title="3、运行交互式的容器"></a>3、运行交互式的容器</h3><p>示例：<code>docker run -it &lt;image-name&gt; /bin/bash</code></p><ul><li><strong>t:</strong> 在新容器内指定一个伪终端或终端。</li><li><strong>i:</strong> 允许对容器内的标准输入 (STDIN) 进行交互。</li><li>通过运行 exit 命令或者使用 CTRL+D 来退出容器</li></ul><h3 id="4、进入容器"><a href="#4、进入容器" class="headerlink" title="4、进入容器"></a>4、进入容器</h3><p><code>docker exec -it 容器ID /bin/bash</code></p><h3 id="5、停止容器"><a href="#5、停止容器" class="headerlink" title="5、停止容器"></a>5、停止容器</h3><p><code>docker stop &lt;容器ID &gt;</code></p><h3 id="6、查看所有容器状态"><a href="#6、查看所有容器状态" class="headerlink" title="6、查看所有容器状态"></a>6、查看所有容器状态</h3><p><strong><code>docker ps -a</code></strong></p><h3 id="7、启动一个已停止的容器"><a href="#7、启动一个已停止的容器" class="headerlink" title="7、启动一个已停止的容器"></a>7、启动一个已停止的容器</h3><p><code>docker start &lt;容器ID&gt;</code></p><h3 id="8、导出容器快照"><a href="#8、导出容器快照" class="headerlink" title="8、导出容器快照"></a>8、导出容器快照</h3><p><code>docker export 容器ID &gt; name.tar</code></p><h3 id="9、导入容器"><a href="#9、导入容器" class="headerlink" title="9、导入容器"></a>9、导入容器</h3><p><code>docker import url</code></p><h3 id="10、删除容器"><a href="#10、删除容器" class="headerlink" title="10、删除容器"></a>10、删除容器</h3><p><code>docker rm -f 容器ID</code> 或者 <code>docker rm 容器名称</code></p><h3 id="11、端口映射"><a href="#11、端口映射" class="headerlink" title="11、端口映射"></a>11、端口映射</h3><ul><li>-P 随机映射</li><li>指定端口映射: -p 80:10086</li><li>查看容器端口的映射情况：<code>docker port 容器ID</code></li></ul><h3 id="12、查看所有镜像"><a href="#12、查看所有镜像" class="headerlink" title="12、查看所有镜像"></a>12、查看所有镜像</h3><p><strong><code>docker images</code></strong></p><h3 id="13、删除镜像"><a href="#13、删除镜像" class="headerlink" title="13、删除镜像"></a>13、删除镜像</h3><p><code>docker rmi 镜像名称</code></p><p>了解了大概的基础之后，下面开始实战篇。</p><h2 id="二、使用-docker-打包本地-web-项目发布到服务端概述"><a href="#二、使用-docker-打包本地-web-项目发布到服务端概述" class="headerlink" title="二、使用 docker 打包本地 web 项目发布到服务端概述"></a>二、使用 docker 打包本地 web 项目发布到服务端概述</h2><h3 id="1、把本地项目打包成一个-docker-镜像"><a href="#1、把本地项目打包成一个-docker-镜像" class="headerlink" title="1、把本地项目打包成一个 docker 镜像"></a>1、把本地项目打包成一个 docker 镜像</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker build -t &lt;image-name&gt; .</span><br></pre></td></tr></table></figure><h3 id="2、推送打包好的镜像到镜像容器服务"><a href="#2、推送打包好的镜像到镜像容器服务" class="headerlink" title="2、推送打包好的镜像到镜像容器服务"></a>2、推送打包好的镜像到镜像容器服务</h3><p>把 docker 镜像推送到阿里云镜像服务器需要先去阿里云镜像服务创建一个空间和一个仓库</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 登录阿里云容器服务</span></span><br><span class="line">docker login --username=[username] registry.cn-hangzhou.aliyuncs.com</span><br><span class="line"><span class="comment"># 给镜像打 tag</span></span><br><span class="line">docker tag [ImageId] registry.cn-hangzhou.aliyuncs.com/[命名空间]/[仓库名]:[镜像版本号]</span><br><span class="line"><span class="comment"># 推送到阿里云容器仓库</span></span><br><span class="line">docker push registry.cn-hangzhou.aliyuncs.com/[命名空间]/[仓库名]:[镜像版本号]</span><br></pre></td></tr></table></figure><h3 id="3、拉取阿里云容器镜像并运行"><a href="#3、拉取阿里云容器镜像并运行" class="headerlink" title="3、拉取阿里云容器镜像并运行"></a>3、拉取阿里云容器镜像并运行</h3><p>服务器拉取阿里云容器镜像，拉取的前提是先要登录，如上</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 拉取刚刚上传的镜像</span></span><br><span class="line">docker pull registry.cn-hangzhou.aliyuncs.com/[命名空间]/[仓库名]:[镜像版本号]</span><br><span class="line"><span class="comment"># 创建并运行容器</span></span><br><span class="line">docker run --name blog -d -p 5000:80 registry.cn-hangzhou.aliyuncs.com/命名空间]/[仓库名]:[镜像版本号]</span><br></pre></td></tr></table></figure><p>打开服务器 IP:端口号，就可以看到内容了，完美</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> web </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> devOps </tag>
             
         </tags>
       
@@ -783,25 +852,6 @@
     
     
     <entry>
-      <title>2021 生日寄语</title>
-      <link href="/2021%E7%94%9F%E6%97%A5%E5%AF%84%E8%AF%AD/"/>
-      <url>/2021%E7%94%9F%E6%97%A5%E5%AF%84%E8%AF%AD/</url>
-      
-        <content type="html"><![CDATA[<p>一年一度的破壳日，想写点什么给未来的自己。</p><p>人总喜欢用年龄来给自己打标签，什么年龄该做什么，什么年龄不该做什么都有相应的约定俗成的规矩。比如读大学之前，父母会说好好学习，将来考个好大学，选个好专业。出社会之前，父母又会说好好学习，不要想谈恋爱这些杂七杂八的，将来找份好工作。毕业了，父母又会说好好工作，去考个驾照，买个房吧，结婚了父母还会说什么时候要孩子，得趁年轻早点要。诸如此类的父母眼中我们到了什么年纪该做什么，这说的是家里的标签映射。社会上也有标签映射，比如过了三十还不结婚的女性可能会被打上剩女的标签，三十五会被打上中年的标签，随之而来的还有中年危机。那么我们自己呢？很多人也会给自己贴上相应的标签，可能有些自己不自知。我一直的思想是尽量不给自己打标签，客观的看待自己的处境，而这也是我余生需要贯彻的一个思想之一，我不要你觉得，我要我觉得，这并不是说不顾及他人的感受，而是思想上的自我吧。</p><p>我近年来时常会在思考人活着的意义是什么，一生很短暂，也很漫长，所以我时常感到恐惧，发自内心深处的恐惧，害怕自己会如一粒尘土一般悄然离开这个世界，糜烂于大地之中，那个时候我将不复存在。但是转念一想，我本来就是不存在的，只是父母给了我生命让我突然出现在了这个世界，而我却无比留恋这个世界，舍不得离开，甚至为此感到恐惧，所以说生命是值得敬畏的，我必须要保证自己的健康，尽量少做有损自己健康的事情，自律自爱，珍爱生命，为了可以更长久的看这个世界。</p><p>一直很感谢生命中出现的两个男人，父亲和丈夫。在我人生中的一些迷茫阶段不敢迈出下一步时，父亲教导我要往前看，不要害怕结果，想好了就去做，每个人的经历不同，别人的经历只能做参考，并不代表我去做也会是一样的结果，于是我勇敢的迈出了不少步子。在我失意难过时，丈夫会想尽各种办法让我走出来，重新绽放笑脸，甚至不惜牺牲自己，勇敢的跟我吵架，被我打，而我总是会哭着笑出来。父亲给了我生命，让我学会站起来，丈夫在努力的不让我有阴暗面。当我蜷缩在自己的壳里的时候，父亲会柔声细语的鼓励我，丈夫会敲打我，就是这么男人成就了如今的我，一个勇敢，自信，阳光，单纯的我。这里我说到了单纯，不是想当然的夸自己，事实上在很多方面我仍然是比较单纯的，小心思很少，也不怎么会拐弯抹角，要说拐弯抹角也只是文人的委婉而已。</p><p>对于职业，我的想法是人一生中可能会有不同的职业阶段，一辈子做一件事情很了不起，一辈子做很多事情也很精彩，我能做的可能就是根据实际情况调整吧，当前能做的事情可能就是做好目前的工作，同时对自己感兴趣的方向做一些拓展，并付诸实践。</p><p>洋洋洒洒一堆文字，我想说的是，对于自己的人生需要有一定的规划，家庭也好，自我也好，工作也好，但是也不能被规划所束缚，审时度势也很重要，当进则进，当止则止。这也是我所信奉的水的哲学的一种体现吧，一抔清水在不同的容器里形状不同，但是本质还是那一抔水，保持本心，适应不同的环境。</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 随笔 </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>CSS 实现圆环进度条</title>
       <link href="/css%E5%AE%9E%E7%8E%B0%E5%9C%86%E7%8E%AF%E8%BF%9B%E5%BA%A6%E6%9D%A1/"/>
       <url>/css%E5%AE%9E%E7%8E%B0%E5%9C%86%E7%8E%AF%E8%BF%9B%E5%BA%A6%E6%9D%A1/</url>
@@ -965,25 +1015,6 @@
             <tag> css </tag>
             
         </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>我辞职了</title>
-      <link href="/%E6%88%91%E8%BE%9E%E8%81%8C%E4%BA%86/"/>
-      <url>/%E6%88%91%E8%BE%9E%E8%81%8C%E4%BA%86/</url>
-      
-        <content type="html"><![CDATA[<p>如题，其实想辞职有一段时间了。去年下半年前端老大走了，那个时候其实也是一个职业迷茫期吧，也想辞职，但是因为结婚等种种事宜，一直没有辞职。年底结婚回来发现婚假也扣钱，工资少了很多，说实话当时觉得挺生气的，找老大和行政要说法，无果。</p><p>到今年初，我过来的这个组还有整个部门的人也陆陆续续的跑路，整个技术氛围开始变得很奇怪，感觉大家都没什么工作热情了，做事也拖拖沓沓的，各自迷茫，我也在考虑真的得换个环境了，温水煮青蛙，真的会把自己耗死的。</p><p>三四月份面试了一些公司，拿了一些 offer，但是感觉还是挺迷茫的，不知道自己要的是什么，所以拿的 offer 都拒绝了。就这么迷茫了一段时间，这周一还是下定决心裸辞了，想休息一段时间静下来想想自己到底想要什么，再去选择，否则饥不择食的，到时候还会继续这种状态。</p><p>虽说是裸辞，感觉自己提了之后心态平和多了，也没那么多负面情绪了，整个人轻松了不少，我想我这个决策是对的吧。</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 随笔 </category>
-          
-      </categories>
-      
       
     </entry>
     
@@ -2079,31 +2110,6 @@
     
     
     <entry>
-      <title>前端 Docker 指南</title>
-      <link href="/docker%E6%8C%87%E5%8D%97/"/>
-      <url>/docker%E6%8C%87%E5%8D%97/</url>
-      
-        <content type="html"><![CDATA[<h2 id="一、下载"><a href="#一、下载" class="headerlink" title="一、下载"></a>一、下载</h2><p>mac，下载完之后安装即可</p><p>(1) 下载: <a href="https://hub.docker.com/editions/community/docker-ce-desktop-mac/">地址</a></p><p>(2) 创建容器：<code>docker run -dp 80:80 docker/getting-started</code></p><h2 id="二、nginx-docker"><a href="#二、nginx-docker" class="headerlink" title="二、nginx docker"></a>二、nginx docker</h2><h3 id="1、新建-docker-文件夹"><a href="#1、新建-docker-文件夹" class="headerlink" title="1、新建 docker 文件夹"></a>1、新建 docker 文件夹</h3><p>(1) 文件夹下新建 Dockerfile 文件, 内容如下</p><figure class="highlight docker"><table><tr><td class="code"><pre><span class="line"><span class="keyword">FROM</span> nginx:latest</span><br><span class="line"><span class="keyword">COPY</span><span class="bash"> dist /usr/share/nginx/html</span></span><br><span class="line"><span class="comment">#　修改nginx的配置项</span></span><br><span class="line"><span class="keyword">COPY</span><span class="bash"> docker/default.conf /etc/nginx/conf.d</span></span><br></pre></td></tr></table></figure><p>(2) 端口映射，文件夹下新建 default.conf 文件, 内容如下:</p><figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen       <span class="number">80</span>;</span><br><span class="line">    server_name  _;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#charset koi8-r;</span></span><br><span class="line">    <span class="comment">#access_log  /var/log/nginx/host.access.log  main;</span></span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        root   <span class="regexp">/usr/</span>share<span class="regexp">/nginx/</span>html;</span><br><span class="line">        index  index.html index.htm;</span><br><span class="line">        try_files <span class="variable">$uri</span> <span class="variable">$uri</span><span class="regexp">/ /i</span>ndex.html;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#error_page  404              /404.html;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># redirect server error pages to the static page /50x.html</span></span><br><span class="line">    <span class="comment">#</span></span><br><span class="line">    error_page   <span class="number">500</span> <span class="number">502</span> <span class="number">503</span> <span class="number">504</span>  /<span class="number">50</span>x.html;</span><br><span class="line">    location = /<span class="number">50</span>x.html &#123;</span><br><span class="line">        root   <span class="regexp">/usr/</span>share<span class="regexp">/nginx/</span>html;</span><br><span class="line">        try_files <span class="variable">$uri</span> <span class="variable">$uri</span><span class="regexp">/ /i</span>ndex.html;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="2、编译-docker-镜像"><a href="#2、编译-docker-镜像" class="headerlink" title="2、编译 docker 镜像"></a>2、编译 docker 镜像</h3><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">docker build -t <span class="tag">&lt;<span class="name">webserver</span>&gt;</span> -f docker/Dockerfile .</span><br></pre></td></tr></table></figure><h3 id="3、上传镜像"><a href="#3、上传镜像" class="headerlink" title="3、上传镜像"></a>3、上传镜像</h3><figure class="highlight avrasm"><table><tr><td class="code"><pre><span class="line">docker <span class="keyword">push</span></span><br></pre></td></tr></table></figure><h3 id="4、关闭容器"><a href="#4、关闭容器" class="headerlink" title="4、关闭容器"></a>4、关闭容器</h3><figure class="highlight arduino"><table><tr><td class="code"><pre><span class="line">docker container stop web</span><br></pre></td></tr></table></figure><h3 id="5、创建容器-并将容器指向一个镜像版本"><a href="#5、创建容器-并将容器指向一个镜像版本" class="headerlink" title="5、创建容器, 并将容器指向一个镜像版本"></a>5、创建容器, 并将容器指向一个镜像版本</h3><figure class="highlight docker"><table><tr><td class="code"><pre><span class="line">docker <span class="keyword">run</span><span class="bash"> -it --rm -d -p 80:80 --name web &lt;webserver&gt;</span></span><br></pre></td></tr></table></figure>]]></content>
-      
-      
-      <categories>
-          
-          <category> web </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> devOps </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>three.js 基础实战 —— 创建画布</title>
       <link href="/three-js%E5%9F%BA%E7%A1%80%E5%AE%9E%E6%88%98/"/>
       <url>/three-js%E5%9F%BA%E7%A1%80%E5%AE%9E%E6%88%98/</url>
@@ -2121,31 +2127,6 @@
         <tags>
             
             <tag> webGL </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>常用正则表达式</title>
-      <link href="/%E5%B8%B8%E7%94%A8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
-      <url>/%E5%B8%B8%E7%94%A8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</url>
-      
-        <content type="html"><![CDATA[<h3 id="1、-html-相关"><a href="#1、-html-相关" class="headerlink" title="1、 html 相关"></a>1、 html 相关</h3><p>(1) 去掉所有 html 标签，并保留内容: <code>/&lt;[^&gt;]+&gt;/g</code></p><p>(2) 去除 html 注释并删除其中的内容: <code>/&lt;!--[\s\S]*--&gt;/g</code></p><h3 id="2、-字符串匹配"><a href="#2、-字符串匹配" class="headerlink" title="2、 字符串匹配"></a>2、 字符串匹配</h3><p>(1) 匹配任意空白字符: <code>/\s+/</code></p><p>(2) 匹配中文字符: <code>[\u4E00-\u9FA5]+</code></p><h3 id="3、-字符截取"><a href="#3、-字符截取" class="headerlink" title="3、 字符截取"></a>3、 字符截取</h3><p>(1) 截取两个字符串之间的内容 </p><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">strSplitBetween</span> (<span class="params">str</span>) </span>&#123;</span><br><span class="line">  str = str.match(<span class="regexp">/3(\S*)d/</span>)[<span class="number">1</span>];</span><br><span class="line">  <span class="keyword">return</span> str</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> test = strSplitBetween(<span class="string">&#x27;21312tsdasd&#x27;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(test); <span class="comment">// 12tsdas</span></span><br></pre></td></tr></table></figure><p>(2) 截取某个字符串前面的内容，同上，不过拿掉了前面的字符串</p><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">strSplitBefore</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">  str = str.match(<span class="regexp">/(\S*)d/</span>)[<span class="number">1</span>];</span><br><span class="line">  <span class="keyword">return</span> str;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> test = strSplitBefore(<span class="string">&quot;21312tsdasd&quot;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(test); <span class="comment">// 21312tsdas</span></span><br></pre></td></tr></table></figure><p>(3) 截取某个字符串后面的内容，第一个示例拿掉后面的字符</p><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">strSplitafter</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">  str = str.match(<span class="regexp">/12(\S*)/</span>)[<span class="number">1</span>];</span><br><span class="line">  <span class="keyword">return</span> str;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> test = strSplitafter(<span class="string">&quot;21312tsdasd&quot;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(test);  <span class="comment">// tsdasd</span></span><br></pre></td></tr></table></figure>]]></content>
-      
-      
-      <categories>
-          
-          <category> web </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 正则 </tag>
             
         </tags>
       
@@ -2736,7 +2717,7 @@
       <link href="/6%E4%B8%AA%E5%B8%B8%E8%A7%81%E7%9A%84%E7%BD%91%E7%AB%99%E5%8F%AF%E7%94%A8%E6%80%A7%E9%97%AE%E9%A2%98%E5%8F%8A%E5%85%B6%E4%BF%AE%E6%AD%A3%E6%96%B9%E6%B3%95/"/>
       <url>/6%E4%B8%AA%E5%B8%B8%E8%A7%81%E7%9A%84%E7%BD%91%E7%AB%99%E5%8F%AF%E7%94%A8%E6%80%A7%E9%97%AE%E9%A2%98%E5%8F%8A%E5%85%B6%E4%BF%AE%E6%AD%A3%E6%96%B9%E6%B3%95/</url>
       
-        <content type="html"><![CDATA[<h3 id="一、文字对比度低"><a href="#一、文字对比度低" class="headerlink" title="一、文字对比度低"></a>一、文字对比度低</h3><h4 id="1、-影响"><a href="#1、-影响" class="headerlink" title="1、 影响"></a>1、 影响</h4><p>文字对比度过低，对弱视群体、手机用户以及老年人不友好</p><h4 id="2、修正方法"><a href="#2、修正方法" class="headerlink" title="2、修正方法"></a>2、修正方法</h4><p>(1) 使用 lighthouse 评估文字对比度</p><p>(2) 使用相关<a href="https://dequeuniversity.com/rules/axe/3.5/color-contrast 调整文字对比度">工具</a>，根据 WCAG 规定，比较适合的文字对比度是 4.5:1</p><h3 id="二、图片没有替代文字"><a href="#二、图片没有替代文字" class="headerlink" title="二、图片没有替代文字"></a>二、图片没有替代文字</h3><h4 id="1、影响"><a href="#1、影响" class="headerlink" title="1、影响"></a>1、影响</h4><p>对于一些弱视或者盲人群体，阅读网站可能需要播放文字信息，屏幕阅读器是无法识别图片信息的</p><h4 id="2、修正方法-1"><a href="#2、修正方法-1" class="headerlink" title="2、修正方法"></a>2、修正方法</h4><p>(1) 使用 img 元素，直接在 alt 属性里添加图片描述信息</p><p>(2) 如果图片在 background 属性里，可以在 aria-label 属性里添加相应的描述信息</p><p>(3) 如果图片描述的是其他元素的信息，可以在 aria-labelledby 属性里添加对应的描述</p><p>(4) 若图片本身没有意义，可以加一个空的 alt 属性，屏幕阅读器会略过，继续往下阅读</p><h3 id="三、空链接和空按钮"><a href="#三、空链接和空按钮" class="headerlink" title="三、空链接和空按钮"></a>三、空链接和空按钮</h3><h4 id="1、影响-1"><a href="#1、影响-1" class="headerlink" title="1、影响"></a>1、影响</h4><p>链接个按钮的文字应该能被屏幕阅读器识别，这也包括作为按钮或链接的图片替换文字。在网页中我们经常会使用一些图标作为按钮或者链接，比如下面这样：</p><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span>&gt;</span>+<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;...&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;twitter.svg&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure><p>以上 demo 中的按钮和链接确实描述信息，屏幕阅读器会理解为”加按钮”, 链接可能会被阅读为图片的文件名或者链接名，这会让不懂该网站的人感到很迷惑</p><h4 id="2、修正方法-2"><a href="#2、修正方法-2" class="headerlink" title="2、修正方法"></a>2、修正方法</h4><p>在按钮或链接元素的 aria-label 属性中加上描述信息，比如这样</p><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">aria-label</span>=<span class="string">&quot;Add a playlist&quot;</span>&gt;</span>+<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;...&quot;</span> <span class="attr">aria-label</span>=<span class="string">&quot;View our Twitter page&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;twitter.svg&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure><h3 id="四、缺少表单输入标签"><a href="#四、缺少表单输入标签" class="headerlink" title="四、缺少表单输入标签"></a>四、缺少表单输入标签</h3><h4 id="1、影响-2"><a href="#1、影响-2" class="headerlink" title="1、影响"></a>1、影响</h4><p>一个缺少表单输入标签的栗子：</p><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">label</span>&gt;</span>Name<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>Name<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> /&gt;</span></span><br></pre></td></tr></table></figure><p>(1) 提升屏幕阅读体验</p><p>(2) 扩大小屏幕可点击范围</p><h4 id="2、修正方法-3"><a href="#2、修正方法-3" class="headerlink" title="2、修正方法"></a>2、修正方法</h4><p>(1) 把 input 元素放到 label 元素里</p><p>(2) 给 label 元素一个 for 属性，指向 input 元素的 id</p><p>(3) 给 input 元素添加 aria-labelledby 属性，写入描述信息元素的 id</p><p>这是栗子：</p><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">label</span>&gt;</span>Name: <span class="tag">&lt;<span class="name">input</span> /&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;name&quot;</span>&gt;</span>Name<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">&quot;name&quot;</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;name&quot;</span>&gt;</span>Name<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">aria-labelledby</span>=<span class="string">&quot;name&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure><h3 id="五、缺少文档语言描述"><a href="#五、缺少文档语言描述" class="headerlink" title="五、缺少文档语言描述"></a>五、缺少文档语言描述</h3><h4 id="1、影响-3"><a href="#1、影响-3" class="headerlink" title="1、影响"></a>1、影响</h4><p>如果一个网页没有在文档元素中加 lang 属性，屏幕阅读器会把网页的语言默认为阅读器的默认配置语言。若用户是多语言者，可能并不会用屏幕阅读器的默认语言去阅读网页，若使用了错误的语言库阅读发音可能会很奇怪，可能会造成网页不可用</p><h4 id="2、修正方法-4"><a href="#2、修正方法-4" class="headerlink" title="2、修正方法"></a>2、修正方法</h4><p>给 html 元素添加 lang 属性,可以在<a href="http://www.iana.org/assignments/language-subtag-registry/language-subtag-registry">这里</a> 或<a href="https://r12a.github.io/app-subtags/">这里</a> 查找所有的语言描述</p><!-- 简要翻译自: https://blog.scottlogic.com/2020/07/02/6-most-common-accessibility-problems.html#empty-links-and-empty-buttons -->]]></content>
+        <content type="html"><![CDATA[<h3 id="一、文字对比度低"><a href="#一、文字对比度低" class="headerlink" title="一、文字对比度低"></a>一、文字对比度低</h3><h4 id="1、-影响"><a href="#1、-影响" class="headerlink" title="1、 影响"></a>1、 影响</h4><p>文字对比度过低，对弱视群体、手机用户以及老年人不友好</p><h4 id="2、修正方法"><a href="#2、修正方法" class="headerlink" title="2、修正方法"></a>2、修正方法</h4><p>(1) 使用 lighthouse 评估文字对比度</p><p>(2) 使用相关<a href="https://dequeuniversity.com/rules/axe/3.5/color-contrast 调整文字对比度">工具</a>，根据 WCAG 规定，比较适合的文字对比度是 4.5:1</p><h3 id="二、图片没有替代文字"><a href="#二、图片没有替代文字" class="headerlink" title="二、图片没有替代文字"></a>二、图片没有替代文字</h3><h4 id="1、影响"><a href="#1、影响" class="headerlink" title="1、影响"></a>1、影响</h4><p>对于一些弱视或者盲人群体，阅读网站可能需要播放文字信息，屏幕阅读器是无法识别图片信息的</p><h4 id="2、修正方法-1"><a href="#2、修正方法-1" class="headerlink" title="2、修正方法"></a>2、修正方法</h4><p>(1) 使用 img 元素，直接在 alt 属性里添加图片描述信息</p><p>(2) 如果图片在 background 属性里，可以在 aria-label 属性里添加相应的描述信息</p><p>(3) 如果图片描述的是其他元素的信息，可以在 aria-labelledby 属性里添加对应的描述</p><p>(4) 若图片本身没有意义，可以加一个空的 alt 属性，屏幕阅读器会略过，继续往下阅读</p><h3 id="三、空链接和空按钮"><a href="#三、空链接和空按钮" class="headerlink" title="三、空链接和空按钮"></a>三、空链接和空按钮</h3><h4 id="1、影响-1"><a href="#1、影响-1" class="headerlink" title="1、影响"></a>1、影响</h4><p>链接个按钮的文字应该能被屏幕阅读器识别，这也包括作为按钮或链接的图片替换文字。在网页中我们经常会使用一些图标作为按钮或者链接，比如下面这样：</p><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span>&gt;</span>+<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;...&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;twitter.svg&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure><p>以上 demo 中的按钮和链接确实描述信息，屏幕阅读器会理解为”加按钮”, 链接可能会被阅读为图片的文件名或者链接名，这会让不懂该网站的人感到很迷惑</p><h4 id="2、修正方法-2"><a href="#2、修正方法-2" class="headerlink" title="2、修正方法"></a>2、修正方法</h4><p>在按钮或链接元素的 aria-label 属性中加上描述信息，比如这样</p><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">aria-label</span>=<span class="string">&quot;Add a playlist&quot;</span>&gt;</span>+<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;...&quot;</span> <span class="attr">aria-label</span>=<span class="string">&quot;View our Twitter page&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;twitter.svg&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure><h3 id="四、缺少表单输入标签"><a href="#四、缺少表单输入标签" class="headerlink" title="四、缺少表单输入标签"></a>四、缺少表单输入标签</h3><h4 id="1、影响-2"><a href="#1、影响-2" class="headerlink" title="1、影响"></a>1、影响</h4><p>一个缺少表单输入标签的栗子：</p><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">label</span>&gt;</span>Name<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>Name<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> /&gt;</span></span><br></pre></td></tr></table></figure><p>(1) 提升屏幕阅读体验</p><p>(2) 扩大小屏幕可点击范围</p><h4 id="2、修正方法-3"><a href="#2、修正方法-3" class="headerlink" title="2、修正方法"></a>2、修正方法</h4><p>(1) 把 input 元素放到 label 元素里</p><p>(2) 给 label 元素一个 for 属性，指向 input 元素的 id</p><p>(3) 给 input 元素添加 aria-labelledby 属性，写入描述信息元素的 id</p><p>这是栗子：</p><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">label</span>&gt;</span>Name: <span class="tag">&lt;<span class="name">input</span> /&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;name&quot;</span>&gt;</span>Name<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">&quot;name&quot;</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;name&quot;</span>&gt;</span>Name<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">aria-labelledby</span>=<span class="string">&quot;name&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure><h3 id="五、缺少文档语言描述"><a href="#五、缺少文档语言描述" class="headerlink" title="五、缺少文档语言描述"></a>五、缺少文档语言描述</h3><h4 id="1、影响-3"><a href="#1、影响-3" class="headerlink" title="1、影响"></a>1、影响</h4><p>如果一个网页没有在文档元素中加 lang 属性，屏幕阅读器会把网页的语言默认为阅读器的默认配置语言。若用户是多语言者，可能并不会用屏幕阅读器的默认语言去阅读网页，若使用了错误的语言库阅读发音可能会很奇怪，可能会造成网页不可用</p><h4 id="2、修正方法-4"><a href="#2、修正方法-4" class="headerlink" title="2、修正方法"></a>2、修正方法</h4><p>给 html 元素添加 lang 属性,可以在<a href="http://www.iana.org/assignments/language-subtag-registry/language-subtag-registry">这里</a> 或<a href="https://r12a.github.io/app-subtags/">这里</a> 查找所有的语言描述</p><p>参考文档:</p><p><a href="https://blog.scottlogic.com/2020/07/02/6-most-common-accessibility-problems.html#empty-links-and-empty-buttons">The 6 Most Common Accessibility Problems (and How to Fix Them)</a></p>]]></content>
       
       
       <categories>
@@ -5464,25 +5445,6 @@
             <tag> 开发环境 </tag>
             
         </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>前端面试总结——读书郎</title>
-      <link href="/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93%E2%80%94%E2%80%94%E8%AF%BB%E4%B9%A6%E9%83%8E/"/>
-      <url>/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93%E2%80%94%E2%80%94%E8%AF%BB%E4%B9%A6%E9%83%8E/</url>
-      
-        <content type="html"><![CDATA[<p>前几天在拉勾投的简历，今天下午下班后去面试，总的感觉是面试很专业很基础，自己太不专业了，大三到现在也只是自己写写小项目自己玩，真正聊技术的话，一点都不专业，专业名词没几个能说的上来，想到之前工作中用到的很多 python 知识点自己也是说不上来，只是会用，后来看到别人的教程，才知道自己一直用的东东原来是有专业名词的。</p><p>下面是面试的题目：</p><ol><li>js 知识点考察：</li></ol><figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line">function <span class="function"><span class="title">fun</span><span class="params">()</span></span>&#123;</span><br><span class="line">    console.log(<span class="keyword">this</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="title">fun</span><span class="params">()</span></span></span><br><span class="line">b = new <span class="function"><span class="title">fun</span><span class="params">()</span></span></span><br><span class="line">console.log(b)</span><br></pre></td></tr></table></figure><p>（1） 以上结果分别是什么？</p><p>第一个 this 指向全局作用域，所以打印的应该是 window，这个我当时一时没反应过来，知道是指向全局作用域，但是具体打印出来的是什么，没反应过来。</p><p>第二个 b 是 fun 函数的实例，继承了 fun 函数的所有特性，但是由于没有给这个实例传参，所以结果是 undefined，这个我知道打印出来的是 undefined，也知道原因，但是没有按着面试官走，没把实例这个名词说出来。</p><figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span></span><br><span class="line">function <span class="function"><span class="title">fun</span><span class="params">()</span></span>&#123;</span><br><span class="line">    console.log(a)</span><br><span class="line">    <span class="keyword">if</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">        <span class="keyword">var</span> a = <span class="number">2</span></span><br><span class="line">        console.log(a)</span><br><span class="line">    &#125;</span><br><span class="line">    console.log(a)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="title">fun</span><span class="params">()</span></span></span><br><span class="line">console.log(a)</span><br></pre></td></tr></table></figure><p>(2) 以上代码打印出来的分别是什么？为什么？</p><p>第一个 a 打印出来是 undefined,因为作用域内不存在这个参数，默认返回 undefined。第二个 a 打印出来是 2，因为在 if 内申明了局部变量 a 并把 2 赋值给了这个参数。第三个 a 打印出来同样是 2，因为这条语句在 if 作用域的下面，代码树是往下延伸的。第四个 a 打印出来是 a，因为 a=1 属于这个作用域，而函数里的 a 它是共享不到的，要共享函数内的参数的话，可以用闭包。</p><p>（3）第三个问题没太懂，问的是 function 除了 argument 外还有哪些内置 xx？这个我没听清的用 xx 表示吧，你们懂的告诉我一声。</p><ol><li>算法知识点考察</li></ol><p>（1）说说快排，这个我当时有点蒙圈了，因为好久之前接触的东东，都忘了，回来后补充解释如下：</p><p>快速排序是从目标数据中任意选取一个数据，以这个数据的值为分割点，把目标数据分割为两部分。这样循环操作下去进行排序。这个在代码中用的挺多的，但是我没记住它的学名，没想起来。这个解释摘自我大二时候读《写给大家的算法书》的算法基础部分的笔记。</p><p>（2）说说冒泡排序，同上，没打出来，回来后补充解释如下：</p><p>冒泡排序是对比相邻的两个数据，根据大小关系调整两个数据的顺序。同样摘自大二的阅读笔记。</p><p>除了这些还有一些零零碎碎的知识点，我就不一一罗列了，列出这几个典型的吧，可能面试经验比较少，很多东西都准备不充分，背着自己的电脑就过去面试了，面试问到项目就拿出了自己的一些小项目出来，也比较随意，结果是其次，最主要的是面试挺欢乐，知道了自己在前端算法这一块还很薄弱，接下来得好好学学数据结构和算法了。</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> web </category>
-          
-      </categories>
-      
       
     </entry>
     
