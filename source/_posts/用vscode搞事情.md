@@ -62,6 +62,10 @@ marp，全称 Markdown Presentation Ecosystem，可以方便快捷的利用 md �
 
 ![marp 使用示例](/images/marp.png)
 
+### 9. 代码助手
+
+最近各种AI工具比较火，付费的比如GitHub官方的`Copilot`，免费的比如`Codeium`、`tabnine`等，可以用来做智能代码补全
+
 ## 二、调试开发篇
 
 ### 1、配置模板，减少重复输入代码的次数
