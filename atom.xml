@@ -6,7 +6,7 @@
   <link href="https://canace.site/atom.xml" rel="self"/>
   
   <link href="https://canace.site/"/>
-  <updated>2023-05-26T00:50:48.406Z</updated>
+  <updated>2023-07-01T03:42:44.613Z</updated>
   <id>https://canace.site/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Js时区</title>
+    <link href="https://canace.site/js%E6%97%B6%E5%8C%BA/"/>
+    <id>https://canace.site/js%E6%97%B6%E5%8C%BA/</id>
+    <published>2023-06-29T01:15:56.000Z</published>
+    <updated>2023-07-01T03:42:44.613Z</updated>
+    
+    
+    <summary type="html">JavaScript时区转换</summary>
+    
+    
+    
+    <category term="web" scheme="https://canace.site/categories/web/"/>
+    
+    
+    <category term="JavaScript" scheme="https://canace.site/tags/JavaScript/"/>
+    
+  </entry>
   
   <entry>
     <title>软件开发随想</title>
@@ -361,23 +380,6 @@
     
     
     <summary type="html">Canace 的一周碎碎念第二期</summary>
-    
-    
-    
-    <category term="一周碎碎念" scheme="https://canace.site/categories/%E4%B8%80%E5%91%A8%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Vol.01：为什么要开始写这个系列的杂文</title>
-    <link href="https://canace.site/issue-1/"/>
-    <id>https://canace.site/issue-1/</id>
-    <published>2022-05-02T15:31:23.000Z</published>
-    <updated>2023-05-26T00:50:48.363Z</updated>
-    
-    
-    <summary type="html">Canace 的一周碎碎念第一期</summary>
     
     
     
