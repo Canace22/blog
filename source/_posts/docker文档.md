@@ -5,6 +5,7 @@ tags: devOps
 toc: true
 comments: true
 date: 2023-01-16 09:58:28
+description: docker 打包本地 web 项目发布到服务端方法
 ---
 ## 一、Docker 入门
 
