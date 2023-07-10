@@ -4,6 +4,7 @@ categories: 一周碎碎念
 comments: true
 description: 'Canace 的一周碎碎念第一期'
 date: 2022-05-02 23:31:23
+toc: true
 ---
 ## 为什么要开始写这个系列的杂文
 
