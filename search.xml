@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Vue3 实战笔记</title>
+      <link href="/vue3-notes/"/>
+      <url>/vue3-notes/</url>
+      
+        <content type="html"><![CDATA[<h2 id="一、错误提示处理"><a href="#一、错误提示处理" class="headerlink" title="一、错误提示处理"></a>一、错误提示处理</h2><p>1.<code>Virtual script not found, may missing &lt;script lang=&quot;ts&quot;&gt; / &quot;allowJs&quot;: true / jsconfig.json.volar</code></p><ul><li><p>VS Code, 执行命令<code>Ctrl/Cmd+Shift+P</code>  输入<code>Volar&gt;Reload Project</code>提示会消失</p></li><li><p>另一种方法是新建<code>jsconfig.json</code>文件，写入如下配置:</p><figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;compilerOptions&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;allowJs&quot;</span>: <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li></ul><h2 id="二、遇到问题的Vue3语法"><a href="#二、遇到问题的Vue3语法" class="headerlink" title="二、遇到问题的Vue3语法"></a>二、遇到问题的Vue3语法</h2><ol><li><p>ref 函数返回值修改，只能通过加<code>.value</code>进行修改，附上响应式实现对比图<br><img src="/images/vue3-ref.png" alt="响应式实现对比"></p></li><li><p>父组件获取子组件实例，注意子组件一定要暴露对应的属性和方法，父组件才能拿到，不然可能一直都是空的实例，demo 如下</p></li></ol><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 子组件</span></span><br><span class="line"><span class="keyword">const</span> formRef = ref(<span class="literal">null</span>);</span><br><span class="line">defineExpose(&#123;</span><br><span class="line">  formRef</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 父组件</span></span><br><span class="line"><span class="keyword">const</span> childRef = ref(<span class="literal">null</span>);</span><br><span class="line"><span class="built_in">console</span>.log(childRef.value.formRef);</span><br></pre></td></tr></table></figure><h2 id="三、Vue-工具"><a href="#三、Vue-工具" class="headerlink" title="三、Vue 工具"></a>三、Vue 工具</h2><ol><li><p><a href="https://vueuse.org/">VueUse</a>：Vue 工具集</p></li><li><p>VSCode插件</p></li></ol><ul><li><p><a href="https://github.com/vuejs/language-tools">Vue Language Features (Volar)</a>: vuetur的升级版</p></li><li><p><a href="https://github.com/sdras/vue-vscode-snippets">Vue VSCode Snippets</a>:一些 vue 模板，从 vue2 就开始用到现在，一键初始化单组件页面很方便</p></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> web </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> vue </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Vol.11：对五年工作的复盘</title>
       <link href="/issue-11/"/>
       <url>/issue-11/</url>
