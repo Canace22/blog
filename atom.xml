@@ -6,7 +6,7 @@
   <link href="https://canace.site/atom.xml" rel="self"/>
   
   <link href="https://canace.site/"/>
-  <updated>2023-08-06T03:50:25.166Z</updated>
+  <updated>2023-11-20T00:31:18.556Z</updated>
   <id>https://canace.site/</id>
   
   <author>
@@ -15,6 +15,23 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Vol.12：我们的上限在哪里</title>
+    <link href="https://canace.site/issue-12/"/>
+    <id>https://canace.site/issue-12/</id>
+    <published>2023-11-20T00:00:08.000Z</published>
+    <updated>2023-11-20T00:31:18.556Z</updated>
+    
+    
+    <summary type="html">Canace 的一周碎碎念第十二期</summary>
+    
+    
+    
+    <category term="一周碎碎念" scheme="https://canace.site/categories/%E4%B8%80%E5%91%A8%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>森林里的蚂蚁和吵架的大象夫妇</title>
@@ -59,11 +76,11 @@
   </entry>
   
   <entry>
-    <title>Vol.11：对五年工作的复盘</title>
+    <title>Vol.11：一些关于工作的思考</title>
     <link href="https://canace.site/issue-11/"/>
     <id>https://canace.site/issue-11/</id>
     <published>2023-07-09T07:56:48.000Z</published>
-    <updated>2023-07-10T00:48:48.655Z</updated>
+    <updated>2023-11-18T07:02:14.821Z</updated>
     
     
     <summary type="html">Canace 的一周碎碎念第十一期</summary>
@@ -360,25 +377,6 @@
     
     <category term="一周碎碎念" scheme="https://canace.site/categories/%E4%B8%80%E5%91%A8%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>函数柯里化</title>
-    <link href="https://canace.site/%E5%87%BD%E6%95%B0%E6%9F%AF%E9%87%8C%E5%8C%96/"/>
-    <id>https://canace.site/%E5%87%BD%E6%95%B0%E6%9F%AF%E9%87%8C%E5%8C%96/</id>
-    <published>2022-06-17T03:30:17.000Z</published>
-    <updated>2023-05-26T00:50:48.383Z</updated>
-    
-    
-    <summary type="html">浅谈函数柯里化</summary>
-    
-    
-    
-    <category term="web" scheme="https://canace.site/categories/web/"/>
-    
-    
-    <category term="JavaScript" scheme="https://canace.site/tags/JavaScript/"/>
     
   </entry>
   
