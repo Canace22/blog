@@ -68,7 +68,8 @@ git checkout -b <branch>
 
 (1) 版本回退
 
-`git reset --hard <head>` => `git push -f`
+- 本地版本回退：`git reset [--hard] <head>` 
+- 远程版本回退：`git reset [--hard] <head>` => `git push -f`
 
 (2) 远程分支打版本标签
 
@@ -76,14 +77,14 @@ git checkout -b <branch>
 
 (3) 删除 tag
 
-本地：`git tag -d tagname`
-远程: `git push -d origin tagname`
+- 本地：`git tag -d tagname`
+- 远程: `git push -d origin tagname`
 
 #### 4、分支推送
 
-(1) 新的分支推送到远程并跟踪
+(1) 新的分支推送到远程并跟踪：`git push --set-upstream origin <branch>`
 
-`git push --set-upstream origin <branch>`
+(2) 更新commit信息: `git rebase -i HEAD~<n>`=>要修改的pick改为'reword'，保存=>更新描述信息，确认更新的文件信息是否有误，无误就`git rebase --continue`
 
 #### 5、分支暂存
 
@@ -96,9 +97,9 @@ git branch --set-upstream-to=origin/develop develop
 git branch --set-upstream-to=origin/master master
 ```
 
-#### 7、分支状态查看
+#### 7、日志查看
 
-(1) 查看 log 树状图：
+(1) 查看 log 图：
 
 `git log --oneline --graph --decorate --all`
 
@@ -119,11 +120,15 @@ git branch --set-upstream-to=origin/master master
 
 `git branch -vv`
 
+(6) 查询某个人某段时间的commit
+
+`git log --author=canace --since="2023-08-01"/until="yesterday"`
+
 ### 三、分支合并
 
 1、普通的合并: `git merge <branch> --no-ff`
 
-2、合并一部分 commit: `git cherry-pick <commit hash>`
+2、合并某个commit: `git cherry-pick <commit hash>`
 
 ### 三、远程仓库操作
 
