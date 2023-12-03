@@ -1,7 +1,7 @@
 ---
 title: 从浏览器地址栏输入 URL 到界面被渲染出来看前端知识
 categories: web
-tags: http
+tags: 网络
 comments: true
 toc: true
 date: 2020-10-12 17:23:53
@@ -14,7 +14,7 @@ date: 2020-10-12 17:23:53
 
 ### 一、从输入 URL 到 DNS 解析
 
-浏览器每开一个窗口，就会新建一个进程，这个可以打开 chrome 的 task manager 或者 win 的任务管理器自行验证。在浏览器地址栏输入一个网址，比如 https://canace.site:8080/a?name=b, 回车, 浏览器回去解析这个 URL，这个例子解析出来的结构可能是这样的
+浏览器每开一个窗口，就会新建一个进程，这个可以打开 chrome 的 task manager 或者 win 的任务管理器自行验证。在浏览器地址栏输入一个网址，比如 https://canace.site:8080/a?name=b, 回车, 浏览器会去解析这个 URL，这个例子解析出来的结构可能是这样的
 
 ```
 protocol: "https:"

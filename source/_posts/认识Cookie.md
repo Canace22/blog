@@ -1,7 +1,7 @@
 ---
 title: 认识 Cookie
 categories: web
-tags: http
+tags: 网络
 description: 说说 Cookie 相关知识
 comments: true
 toc: true

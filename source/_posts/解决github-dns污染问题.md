@@ -1,7 +1,7 @@
 ---
 title: 解决 github dns 污染问题
 categories: 系统
-tags: http
+tags: 网络
 comments: true
 date: 2021-05-22 09:17:08
 ---
