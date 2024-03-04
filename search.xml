@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>去除数组对象中与子节点Id重复的父节点</title>
+      <link href="/%E5%8E%BB%E9%99%A4%E6%95%B0%E7%BB%84%E5%AF%B9%E8%B1%A1%E4%B8%AD%E4%B8%8E%E5%AD%90%E8%8A%82%E7%82%B9id%E9%87%8D%E5%A4%8D%E7%9A%84%E7%88%B6%E8%8A%82%E7%82%B9/"/>
+      <url>/%E5%8E%BB%E9%99%A4%E6%95%B0%E7%BB%84%E5%AF%B9%E8%B1%A1%E4%B8%AD%E4%B8%8E%E5%AD%90%E8%8A%82%E7%82%B9id%E9%87%8D%E5%A4%8D%E7%9A%84%E7%88%B6%E8%8A%82%E7%82%B9/</url>
+      
+        <content type="html"><![CDATA[<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">filterTree</span>(<span class="params">tree</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> levelMap = <span class="keyword">new</span> <span class="built_in">Map</span>();</span><br><span class="line">  <span class="keyword">const</span> result = [];</span><br><span class="line">  <span class="keyword">const</span> setLevel = <span class="function">(<span class="params">tree, level = <span class="number">1</span></span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> index = <span class="number">0</span>; index &lt; tree.length; index++) &#123;</span><br><span class="line">      <span class="keyword">const</span> element = tree[index];</span><br><span class="line">      element.level = level;</span><br><span class="line">      <span class="keyword">if</span> (!levelMap.has(element.id)) &#123;</span><br><span class="line">        levelMap.set(element.id, level);</span><br><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (levelMap.get(element.id) &lt; level) &#123;</span><br><span class="line">        levelMap.set(element.id, level);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (element.children?.length) &#123;</span><br><span class="line">        setLevel(element.children, element.level + <span class="number">1</span>);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">  setLevel(tree);</span><br><span class="line">  <span class="keyword">return</span> tree.filter(<span class="function">(<span class="params">v</span>) =&gt;</span></span><br><span class="line">    levelMap.get(v.id) ? levelMap.get(v.id) === <span class="number">1</span> : <span class="literal">true</span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输入</span></span><br><span class="line"><span class="keyword">let</span> tree = [</span><br><span class="line">  &#123;</span><br><span class="line">    id: <span class="number">1</span>,</span><br><span class="line">    children: [</span><br><span class="line">      &#123;</span><br><span class="line">        id: <span class="number">2</span>,</span><br><span class="line">        children: [</span><br><span class="line">          &#123;</span><br><span class="line">            id: <span class="number">3</span></span><br><span class="line">          &#125;</span><br><span class="line">        ]</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    id: <span class="number">4</span>,</span><br><span class="line">    children: [</span><br><span class="line">      &#123;</span><br><span class="line">        id: <span class="number">5</span></span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    id: <span class="number">3</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    id: <span class="number">5</span></span><br><span class="line">  &#125;</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出</span></span><br><span class="line">[</span><br><span class="line">  &#123;</span><br><span class="line">    id: <span class="number">1</span>,</span><br><span class="line">    children: [</span><br><span class="line">      &#123;</span><br><span class="line">        id: <span class="number">2</span>,</span><br><span class="line">        children: [</span><br><span class="line">          &#123;</span><br><span class="line">            id: <span class="number">3</span></span><br><span class="line">          &#125;</span><br><span class="line">        ]</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    id: <span class="number">4</span>,</span><br><span class="line">    children: [</span><br><span class="line">      &#123;</span><br><span class="line">        id: <span class="number">5</span></span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(filterTree(tree));</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> JavaScript </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>JavaScript 自带的对象深拷贝方法</title>
       <link href="/JavaScript%E8%87%AA%E5%B8%A6%E7%9A%84%E5%AF%B9%E8%B1%A1%E6%B7%B1%E6%8B%B7%E8%B4%9D%E6%96%B9%E6%B3%95/"/>
       <url>/JavaScript%E8%87%AA%E5%B8%A6%E7%9A%84%E5%AF%B9%E8%B1%A1%E6%B7%B1%E6%8B%B7%E8%B4%9D%E6%96%B9%E6%B3%95/</url>
