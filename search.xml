@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>统计数组对象的元素总数</title>
+      <link href="/%E7%BB%9F%E8%AE%A1%E6%95%B0%E7%BB%84%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%85%83%E7%B4%A0%E6%80%BB%E6%95%B0/"/>
+      <url>/%E7%BB%9F%E8%AE%A1%E6%95%B0%E7%BB%84%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%85%83%E7%B4%A0%E6%80%BB%E6%95%B0/</url>
+      
+        <content type="html"><![CDATA[<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getTreeCount</span>(<span class="params">treeArr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> count = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; treeArr.length; i++) &#123;</span><br><span class="line">    count++;</span><br><span class="line">    <span class="keyword">if</span> (treeArr[i].children) &#123;</span><br><span class="line">      count += getTreeCount(treeArr[i].children);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> count;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 输入</span></span><br><span class="line"><span class="keyword">let</span> tree = [</span><br><span class="line">  &#123;</span><br><span class="line">    id: <span class="number">1</span>,</span><br><span class="line">    children: [</span><br><span class="line">      &#123;</span><br><span class="line">        id: <span class="number">2</span>,</span><br><span class="line">        children: [</span><br><span class="line">          &#123;</span><br><span class="line">            id: <span class="number">3</span></span><br><span class="line">          &#125;</span><br><span class="line">        ]</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    id: <span class="number">4</span>,</span><br><span class="line">    children: [</span><br><span class="line">      &#123;</span><br><span class="line">        id: <span class="number">5</span></span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出</span></span><br><span class="line"><span class="number">5</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(getTreeCount(tree));</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> JavaScript </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>去除数组对象中与子节点Id重复的父节点</title>
       <link href="/%E5%8E%BB%E9%99%A4%E6%95%B0%E7%BB%84%E5%AF%B9%E8%B1%A1%E4%B8%AD%E4%B8%8E%E5%AD%90%E8%8A%82%E7%82%B9id%E9%87%8D%E5%A4%8D%E7%9A%84%E7%88%B6%E8%8A%82%E7%82%B9/"/>
       <url>/%E5%8E%BB%E9%99%A4%E6%95%B0%E7%BB%84%E5%AF%B9%E8%B1%A1%E4%B8%AD%E4%B8%8E%E5%AD%90%E8%8A%82%E7%82%B9id%E9%87%8D%E5%A4%8D%E7%9A%84%E7%88%B6%E8%8A%82%E7%82%B9/</url>
