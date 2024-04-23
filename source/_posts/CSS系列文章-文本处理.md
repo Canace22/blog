@@ -38,11 +38,11 @@ chrom 默认有字体限制最小是 12px，也就是小于 12 px 的字号都�
 
 4、**Windows 中常见内置中文字体和对应英文名称**
 
-![Windows 中常见内置中文字体和对应英文名称](/images/win-font.png)
+![Windows 中常见内置中文字体和对应英文名称](https://raw.githubusercontent.com/Canace22/Assets/main/images/win-font.png)
 
 5、**OS X 常见内置中文字体和对应英文名称**
 
-![OS X 常见内置中文字体和对应英文名称](/images/osx-font.png)
+![OS X 常见内置中文字体和对应英文名称](https://raw.githubusercontent.com/Canace22/Assets/main/images/osx-font.png)
  
 ### 三、font-weight
 

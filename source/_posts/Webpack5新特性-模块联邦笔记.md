@@ -7,7 +7,7 @@ comments: true
 toc: true
 date: 2020-04-03 09:07:28
 ---
-<!-- ![NPM 方式共享模块图解](/images/npm.jpeg) -->
+<!-- ![NPM 方式共享模块图解](https://raw.githubusercontent.com/Canace22/Assets/main/images/npm.jpeg) -->
 ### 一、NPM 方式共享模块
 
 #### 1、模块共享方式
@@ -18,11 +18,11 @@ date: 2020-04-03 09:07:28
 
 需要走本地编译
 
-![NPM 方式共享模块图解](/images/npm.jpeg)
+![NPM 方式共享模块图解](https://raw.githubusercontent.com/Canace22/Assets/main/images/npm.jpeg)
 
 ### 二、UMD 方式共享模块
 
-![UMD 方式共享模块图解](/images/umd.jpeg)
+![UMD 方式共享模块图解](https://raw.githubusercontent.com/Canace22/Assets/main/images/umd.jpeg)
 
 #### 1、模块共享方式
 
@@ -34,7 +34,7 @@ date: 2020-04-03 09:07:28
 
 ### 三、微前端方式共享模块（MFE）
 
-![微前端方式共享模块图解](/images/mfe.jpeg)
+![微前端方式共享模块图解](https://raw.githubusercontent.com/Canace22/Assets/main/images/mfe.jpeg)
 
 #### 1、模块共享方式
 
@@ -50,7 +50,7 @@ date: 2020-04-03 09:07:28
 
 ### 四、模块联邦方式共享模块( Federated Module)
 
-![微前端方式共享模块图解](/images/fm.jpeg)
+![微前端方式共享模块图解](https://raw.githubusercontent.com/Canace22/Assets/main/images/fm.jpeg)
 
 #### 1、模块共享方式
 

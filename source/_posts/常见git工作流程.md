@@ -8,7 +8,7 @@ date: 2020-08-10 10:22:38
 ---
 ### 一、简单的 Git 工作流程
 
-![简单的 Git 工作流程图](/images/Basic-git-workflow.png)
+![简单的 Git 工作流程图](https://raw.githubusercontent.com/Canace22/Assets/main/images/Basic-git-workflow.png)
 
 最简单的 Git 工作流程是只有一个 master 分支。开发者直接把代码 commit 到 master 分支并且用该分支进行发版等操作，即不分测试版和正式版，由始至终使用一份代码，因此，这份代码的记录都是在同一分支的。
 
@@ -30,7 +30,7 @@ date: 2020-08-10 10:22:38
 
 为了解决上述问题，这两个开发者可以各自从 master 分支切出一个独立分支，当其中一个人手头的功能写完之后，可以自行合并到 master 分支进行发布，而无需等待另一个功能完成再一起发布。
 
-![Git 功能分支工作流程图](/images/Feature-Branch-git-workflow.png)
+![Git 功能分支工作流程图](https://raw.githubusercontent.com/Canace22/Assets/main/images/Feature-Branch-git-workflow.png)
 
 这种工作流程的优点是可以愉快的进行代码写作而无需担心会产生一堆的代码冲突
 
@@ -42,7 +42,7 @@ date: 2020-08-10 10:22:38
 
 develop 分支往往表示下一版产品最新一次交付变更的状态，开发者从 develop 分支切出相应的功能分支，若该功能完成，则合并到 develop 分支进行测试，若无冲突，合并到 master 分支。
 
-![有开发者分支的功能分支工作流程图](/images/feature-branch-with-develop-git-workflow.png)
+![有开发者分支的功能分支工作流程图](https://raw.githubusercontent.com/Canace22/Assets/main/images/feature-branch-with-develop-git-workflow.png)
 
 这种工作流程的有点是，允许团队可以持续交付新的功能到 develop 分支进行测试，合并到 master 分支进行发版。此外，这也会为我们的团队降低烦人的代码维护成本。
 
@@ -64,7 +64,7 @@ hot-fix 分支是唯一一个从 master 分支切出并且合并回 master 的�
 
 一旦该分支合并到 master 并且发布出去了，应该合并回 develop 分支，以确保从 develop 分支切出的新功能分支拿到的是最新代码。
 
-![Gitflow 工作流程图](/images/GitFlow-git-workflow.png)
+![Gitflow 工作流程图](https://raw.githubusercontent.com/Canace22/Assets/main/images/GitFlow-git-workflow.png)
 
 该工作流程由 Vincent Driessen 首次发布并广受欢迎，目前，已被广泛适用于具有预定发布周期的组织。
 

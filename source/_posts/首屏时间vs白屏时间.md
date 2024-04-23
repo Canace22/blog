@@ -22,7 +22,7 @@ date: 2020-04-01 08:58:25
 
 当浏览器开始渲染页面，白屏触发，这时候你如果设置了背景颜色的话，就可以看到页面出现了背景色。
 
-![白屏示例图](/images/first-paint-example.png)
+![白屏示例图](https://raw.githubusercontent.com/Canace22/Assets/main/images/first-paint-example.png)
 
 白屏会在页面加载之前触发，在这段时间里，不会呈现任何内容和信息给用户。虽然背景色会很快完成绘制，但是实际的内容和交互可能要花很长的时间去加载，因此，白屏时间过长，会让用户认为我们的页面不能用或可用性差。可以通过适当调整页面结构，来优化网页。
 
@@ -30,7 +30,7 @@ date: 2020-04-01 08:58:25
 
 当页面绘制完第一个 DOM 内容，会触发首屏，这里的内容可以是文字、图片或者是 canvas。
 
-![首屏示例图](/images/first-contentful-paint-example.png)
+![首屏示例图](https://raw.githubusercontent.com/Canace22/Assets/main/images/first-contentful-paint-example.png)
 
 首屏决定了网页的用户体验，因为它会标记实际内容何时加载到页面中，而不仅仅是标记页面的变化状态。因为关注的是内容，所以该指标可以了解用户何时收到消耗性信息，比如文本，视觉效果等，这比通过背景改变或样式改变对用户体验进行评估更有用。
 

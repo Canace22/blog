@@ -20,7 +20,7 @@ console.log(
 );
 ```
 
-![console-color](/images/console-color.png)
+![console-color](https://raw.githubusercontent.com/Canace22/Assets/main/images/console-color.png)
 
 ### 二、复杂数据结构打印成表格
 
@@ -36,7 +36,7 @@ var price = [
 console.table(price);
 ```
 
-![console-table](/images/console-table.png)
+![console-table](https://raw.githubusercontent.com/Canace22/Assets/main/images/console-table.png)
 
 2、 对象，一维对象的 key 为行的名称，二维对象的 key 为列的名称
 
@@ -50,7 +50,7 @@ var info = {
 console.table(info);
 ```
 
-![console-table-obj](/images/console-table-obj.png)
+![console-table-obj](https://raw.githubusercontent.com/Canace22/Assets/main/images/console-table-obj.png)
 
 ### 四、查看代码执行时间
 

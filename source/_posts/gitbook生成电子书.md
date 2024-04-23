@@ -18,7 +18,7 @@ gitbook serve
 
 效果图：
 
-![git book init](/images/gitbook-website.png)
+![git book init](https://raw.githubusercontent.com/Canace22/Assets/main/images/gitbook-website.png)
 
 3、 生成 ssh 秘钥: 
 

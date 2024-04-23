@@ -11,7 +11,7 @@ date: 2020-04-23 08:59:17
 
 CSS 画圆我们应该都知道，给定宽高，border-radius 值设置为 50%，比如这样：
 
-![圆](/images/circle.png)
+![圆](https://raw.githubusercontent.com/Canace22/Assets/main/images/circle.png)
 
 ```html
 <div class="circle"></div>
@@ -30,7 +30,7 @@ CSS 画圆我们应该都知道，给定宽高，border-radius 值设置为 50%�
 
 扇形跟三角形很像，只是有一条边为弧，那么可以效仿画三角形去画扇形。想一下我们一般画三角形会怎么画呢？先看看画四个 1/4 正方形的等边三角形，可以这么画：
 
-![四个1/4正三角形](/images/triggle.png)
+![四个1/4正三角形](https://raw.githubusercontent.com/Canace22/Assets/main/images/triggle.png)
 
 ```html
 <div class="triggle"></div>
@@ -52,7 +52,7 @@ CSS 画圆我们应该都知道，给定宽高，border-radius 值设置为 50%�
 
 那么画一个 1/4 三角形呢？可以在纯色正方形的上面盖一层正方形，比如这样：
 
-![一个 1/4 三角形](/images/triggle-one.png)
+![一个 1/4 三角形](https://raw.githubusercontent.com/Canace22/Assets/main/images/triggle-one.png)
 
 ```html
 <div class="triggle"></div>
@@ -80,7 +80,7 @@ CSS 画圆我们应该都知道，给定宽高，border-radius 值设置为 50%�
 
 从上面的例子可以知道画一个三角形的例子，仿照上面的例子，我们画出一个 1/4 圆：
 
-![1/4 圆](/images/1-4circle.png)
+![1/4 圆](https://raw.githubusercontent.com/Canace22/Assets/main/images/1-4circle.png)
 
 ```html
 <div class="rad"></div>
@@ -109,7 +109,7 @@ CSS 画圆我们应该都知道，给定宽高，border-radius 值设置为 50%�
 
 调整一下，画 1/2 圆：
 
-![1/2 圆](/images/1-2circle.png)
+![1/2 圆](https://raw.githubusercontent.com/Canace22/Assets/main/images/1-2circle.png)
 
 ```css
 .rad {
@@ -138,7 +138,7 @@ CSS 画圆我们应该都知道，给定宽高，border-radius 值设置为 50%�
 
 给上述伪元素加一个旋转值，即可画任意弧度的扇形：
 
-![各种弧度圆](/images/percent-circle.png)
+![各种弧度圆](https://raw.githubusercontent.com/Canace22/Assets/main/images/percent-circle.png)
 
 ```html
 <div class="rad"></div>
@@ -183,7 +183,7 @@ CSS 画圆我们应该都知道，给定宽高，border-radius 值设置为 50%�
 
 上述例子中会发现 0.8 弧度的扇形是不对的，这里因为我们设置的是右半边透明所以这里调整一下
 
-![各种弧度圆修正版](/images/percent-circle-per.png)
+![各种弧度圆修正版](https://raw.githubusercontent.com/Canace22/Assets/main/images/percent-circle-per.png)
 
 ```html
 <div class="rad"></div>

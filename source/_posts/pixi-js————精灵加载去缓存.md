@@ -35,11 +35,11 @@ function loadBaseImgs() {
 
 看起来没毛病，跟 PixiJs 开发者说的解决方案一样，但是在第一次的时候还是打印了很多,warning 内容都是 `Texture added to the cache with an id [...] that already had an entry`, 这句话告诉我们 map 中已经有了该 id 的键值对，看 PixiJs 的 issue 发现开发者说这个不影响，只是提示而已。感受一下两百多条提示，你就会发现很有必要去掉它，谁知道因为这个会发生什么呢。
 
-![warning](/images/warning.png)
+![warning](https://raw.githubusercontent.com/Canace22/Assets/main/images/warning.png)
 
 很吓人吧，然后跳到给出 warning 的地方
 
-![warning-code](/images/wraning-code.png)
+![warning-code](https://raw.githubusercontent.com/Canace22/Assets/main/images/wraning-code.png)
 
 可以看到这段代码
 

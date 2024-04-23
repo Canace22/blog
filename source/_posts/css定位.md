@@ -13,7 +13,7 @@ CSS position 总共分为以下几种类型：static、relative、absolute、fix
 
 static 是 position 的默认值，元素处于正常文档流，在该值下，元素设置 top、left 等位置信息和 z-index 无效。
 
-![static](/images/static.png)
+![static](https://raw.githubusercontent.com/Canace22/Assets/main/images/static.png)
 
 **demo**
 
@@ -51,7 +51,7 @@ static 是 position 的默认值，元素处于正常文档流，在该值下，
 
 relative 定位，元素处于正常文档流，父元素会对该元素留有一定的空间，left、top 等位置设置，相对于当前元素偏移。该设置对 table 类的属性不支持。
 
-![relative](/images/relative.png)
+![relative](https://raw.githubusercontent.com/Canace22/Assets/main/images/relative.png)
 
 **demo**
 
@@ -77,7 +77,7 @@ relative 定位，元素处于正常文档流，父元素会对该元素留有�
 
 absolute 定位，元素被移除正常文档流，父元素不会对该元素留空间。left、top 等位置设置，相对于非 static 定位的祖先元素偏移。
 
-![absolute](/images/absolute.png)
+![absolute](https://raw.githubusercontent.com/Canace22/Assets/main/images/absolute.png)
 
 **demo**
 
@@ -103,7 +103,7 @@ absolute 定位，元素被移除正常文档流，父元素不会对该元素�
 
 fixed 定位，元素脱离正常文档流，父元素不会对该元素留空间。left、top 等位置设置，相对于视口偏移。
 
-![fixed](/images/fixed.png)
+![fixed](https://raw.githubusercontent.com/Canace22/Assets/main/images/fixed.png)
 
 **demo**
 
@@ -129,7 +129,7 @@ fixed 定位，元素脱离正常文档流，父元素不会对该元素留空�
 
 sticky 定位，元素处于正常文档流，left、top 等位置设置，相对于最近滚动祖先偏移。
 
-![sticky](/images/sticky.png)
+![sticky](https://raw.githubusercontent.com/Canace22/Assets/main/images/sticky.png)
 
 **demo**
 

@@ -7,7 +7,6 @@ author: Canace
 comments: true
 date: 2024-03-04 13:56:22
 ---
-
 ```js
 function filterTree(tree) {
   let levelMap = new Map();

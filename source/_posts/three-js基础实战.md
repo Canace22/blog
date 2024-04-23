@@ -57,7 +57,7 @@ scene.add(cube);
 
 以上把一个网格模式下的正方体添加到了画布上，不难看出 three.js 的组织方式可以用下图表示
 
-![three.js 组织方式](/images/threejs-1cube-no-light-scene.svg)
+![three.js 组织方式](https://raw.githubusercontent.com/Canace22/Assets/main/images/threejs-1cube-no-light-scene.svg)
 
 ### 三、渲染物体
 

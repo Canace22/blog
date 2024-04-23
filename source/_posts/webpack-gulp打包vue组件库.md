@@ -51,11 +51,11 @@ src/index.js 是全部组件的编译文件入口，由 components.json 文件�
 
 综上可以整理出如下组件构建图：
 
-![组件构件图](/images/webpack-component.png)
+![组件构件图](https://raw.githubusercontent.com/Canace22/Assets/main/images/webpack-component.png)
 
 组件构建出来其实是有问题的，按需引入的时候找不到样式，所以这里样式需要单独构建，构建方式如下：
 
-![css 构件图](/images/css-gulp.png)
+![css 构件图](https://raw.githubusercontent.com/Canace22/Assets/main/images/css-gulp.png)
 
 以上就是该项目的架构设计思路，接下来要解决的是一些构建的问题。
 

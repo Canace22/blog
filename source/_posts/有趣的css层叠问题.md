@@ -33,7 +33,7 @@ date: 2021-01-07 09:28:36
 
 有意思的是当我们去掉所有的 z-index 后，现有的结果展示出来的效果如下图：
 
-![stacking-demo](/images/stacking-demo.png)
+![stacking-demo](https://raw.githubusercontent.com/Canace22/Assets/main/images/stacking-demo.png)
 
 demo 可以看[这里](https://codepen.io/AnnaLoveLife/pen/dypexrM?editors=1100)
 

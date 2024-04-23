@@ -19,7 +19,7 @@ date: 2020-07-08 09:42:10
 }
 ```
 
-![背景叠加](/images/snow-other.png)
+![背景叠加](https://raw.githubusercontent.com/Canace22/Assets/main/images/snow-other.png)
 
 ### 二、三角形背景
 
@@ -52,7 +52,7 @@ body {
 }
 ```
 
-![三角形背景](/images/triggle-bg.png)
+![三角形背景](https://raw.githubusercontent.com/Canace22/Assets/main/images/triggle-bg.png)
 
 ### 三、背景图叠加渐变
 
@@ -71,7 +71,7 @@ body {
 }
 ```
 
-![背景图叠加渐变](/images/gradient-bg.png)
+![背景图叠加渐变](https://raw.githubusercontent.com/Canace22/Assets/main/images/gradient-bg.png)
 
 ### 四、背景颜色切换动画
 
@@ -115,7 +115,7 @@ body {
   }
 }
 ```
-![背景颜色切换动画](/images/bg-animation.gif)
+![背景颜色切换动画](https://raw.githubusercontent.com/Canace22/Assets/main/images/bg-animation.gif)
 
 ### 五、网格背景
 
@@ -160,7 +160,7 @@ body {
 }
 ```
 
-![网格背景](/images/grid-bg.png)
+![网格背景](https://raw.githubusercontent.com/Canace22/Assets/main/images/grid-bg.png)
 
 ### 六、图像设置为文本颜色
 
@@ -191,7 +191,7 @@ body {
 }
 ```
 
-![图片底色文字](/images/bg-text.png)
+![图片底色文字](https://raw.githubusercontent.com/Canace22/Assets/main/images/bg-text.png)
 
 ### 七、背景图半透明叠加
 
@@ -207,4 +207,4 @@ body {
 }
 ```
 
-![背景图半透明叠加示例](/images/bg-semi-transparent.png)
+![背景图半透明叠加示例](https://raw.githubusercontent.com/Canace22/Assets/main/images/bg-semi-transparent.png)

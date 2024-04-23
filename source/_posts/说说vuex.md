@@ -10,7 +10,7 @@ date: 2020-08-10 09:01:18
 
 上周在做项目的时候，有一个模块用到了一个章节组件，一个 content 组件，其中章节组件调用了一个 tree 组价用来递归章节列表。选中章节组件中的项，需要更新到 content 的已选章节部分，取消章节选项，已选章节也需要删除对应的项，此外，删除已选章节中的某一项，也需要更新左侧章节列表，比如这样：
 
-![示例](/images/vuex-ex.gif)
+![示例](https://raw.githubusercontent.com/Canace22/Assets/main/images/vuex-ex.gif)
 
 我一开始的做法是使用组件间传数据，但是实践之后会发现一些问题，比如选中框是 checkbox 双向数据绑定，这里有三个组件，传来传去的容易绕，状态更新稍有一些逻辑问题可能会找半天。想了一会，去问了前端大佬，感觉豁然开朗，写久了小程序，我竟然把 vuex 给忘了，这种场景不就很适合用 vuex 嘛。 不过归根究底，还是我对 vuex 的使用场景没有研究过，导致用的时候想不起他来，下面就是我研究之后的一些结论啦。
 
@@ -63,7 +63,7 @@ var vmB = new Vue({
 
 上面提到了 Flux，那么 Flux 是什么呢？Flux 是一种软件架构思想，facebook 在该思想的基础上实现了 Flux 框架，但是我们这里要讲的是 Vuex 所借鉴的 Flux 思想。Flux 把数据的流动分为四个阶段，View(视图层)、Action(视图层发出的消息)、Dispatcher(用来接收Actions、执行回调函数) 以及 Store(用来存放应用的状态，一旦发生变动，就提醒Views要更新页面)，他们之间的流动方式是这样的：
 
-![Flux 数据流](/images/flux.png)
+![Flux 数据流](https://raw.githubusercontent.com/Canace22/Assets/main/images/flux.png)
 
 从上图可以看出，Flux 思想下的数据流动是单向的
 

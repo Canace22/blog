@@ -27,7 +27,7 @@ date: 2023-07-11 08:28:12
 ## 二、遇到问题的Vue3语法
 
 1. ref 函数返回值修改，只能通过加`.value`进行修改，附上响应式实现对比图
-![响应式实现对比](/images/vue3-ref.png)
+![响应式实现对比](https://raw.githubusercontent.com/Canace22/Assets/main/images/vue3-ref.png)
 
 2. 父组件获取子组件实例，注意子组件一定要暴露对应的属性和方法，父组件才能拿到，不然可能一直都是空的实例，demo 如下
 
