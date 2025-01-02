@@ -6,7 +6,7 @@
   <link href="https://canace.site/atom.xml" rel="self"/>
   
   <link href="https://canace.site/"/>
-  <updated>2025-01-01T02:46:09.684Z</updated>
+  <updated>2025-01-02T09:35:58.230Z</updated>
   <id>https://canace.site/</id>
   
   <author>
@@ -15,6 +15,23 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Node.js 版本管理</title>
+    <link href="https://canace.site/node%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/"/>
+    <id>https://canace.site/node%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/</id>
+    <published>2025-01-02T09:27:33.000Z</published>
+    <updated>2025-01-02T09:35:58.230Z</updated>
+    
+    
+    <summary type="html">nodeJs 版本管理笔记</summary>
+    
+    
+    
+    <category term="web" scheme="https://canace.site/categories/web/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>2024年终总结</title>
@@ -364,25 +381,6 @@
     
     
     <category term="devOps" scheme="https://canace.site/tags/devOps/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>构建 TypeScript 库</title>
-    <link href="https://canace.site/%E6%9E%84%E5%BB%BAts%E5%BA%93/"/>
-    <id>https://canace.site/%E6%9E%84%E5%BB%BAts%E5%BA%93/</id>
-    <published>2022-12-09T09:53:22.000Z</published>
-    <updated>2023-05-26T00:50:48.395Z</updated>
-    
-    
-    <summary type="html">构建 TypeScript 库简易指南</summary>
-    
-    
-    
-    <category term="web" scheme="https://canace.site/categories/web/"/>
-    
-    
-    <category term="TypeScript" scheme="https://canace.site/tags/TypeScript/"/>
     
   </entry>
   
