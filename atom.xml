@@ -6,7 +6,7 @@
   <link href="https://canace.site/atom.xml" rel="self"/>
   
   <link href="https://canace.site/"/>
-  <updated>2025-01-02T09:35:58.230Z</updated>
+  <updated>2025-02-28T08:55:21.523Z</updated>
   <id>https://canace.site/</id>
   
   <author>
@@ -17,11 +17,45 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Node.js 版本管理</title>
+    <title>Web端版本更新弹窗实现</title>
+    <link href="https://canace.site/%E7%BD%91%E9%A1%B5%E7%89%88%E6%9C%AC%E6%9B%B4%E6%96%B0%E5%BC%B9%E7%AA%97%E5%AE%9E%E7%8E%B0/"/>
+    <id>https://canace.site/%E7%BD%91%E9%A1%B5%E7%89%88%E6%9C%AC%E6%9B%B4%E6%96%B0%E5%BC%B9%E7%AA%97%E5%AE%9E%E7%8E%B0/</id>
+    <published>2025-02-28T07:06:04.000Z</published>
+    <updated>2025-02-28T08:55:21.523Z</updated>
+    
+    
+    <summary type="html">记录轮询简单实现网页更新客户端弹窗方案</summary>
+    
+    
+    
+    <category term="web" scheme="https://canace.site/categories/web/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>常用的Unix终端命令</title>
+    <link href="https://canace.site/%E5%B8%B8%E7%94%A8%E7%BB%88%E7%AB%AF%E5%91%BD%E4%BB%A4/"/>
+    <id>https://canace.site/%E5%B8%B8%E7%94%A8%E7%BB%88%E7%AB%AF%E5%91%BD%E4%BB%A4/</id>
+    <published>2025-01-13T02:50:49.000Z</published>
+    <updated>2025-01-13T05:34:33.493Z</updated>
+    
+    
+    <summary type="html">在开发过程中，掌握一些基本的Unix终端命令，可以极大地提高工作效率，本文介绍一些常用的Unix终端命令。</summary>
+    
+    
+    
+    <category term="web" scheme="https://canace.site/categories/web/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Node.js 版本管理工具概览</title>
     <link href="https://canace.site/node%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/"/>
     <id>https://canace.site/node%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/</id>
     <published>2025-01-02T09:27:33.000Z</published>
-    <updated>2025-01-02T09:35:58.230Z</updated>
+    <updated>2025-02-07T09:52:58.630Z</updated>
     
     
     <summary type="html">nodeJs 版本管理笔记</summary>
@@ -343,44 +377,6 @@
     
     
     <category term="JavaScript" scheme="https://canace.site/tags/JavaScript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>前端 XX Docker 化</title>
-    <link href="https://canace.site/%E5%89%8D%E7%AB%AF_xx_docker%E5%8C%96/"/>
-    <id>https://canace.site/%E5%89%8D%E7%AB%AF_xx_docker%E5%8C%96/</id>
-    <published>2023-01-16T03:07:31.000Z</published>
-    <updated>2023-07-09T07:38:50.233Z</updated>
-    
-    
-    <summary type="html">前端 XX docker 化方案</summary>
-    
-    
-    
-    <category term="web" scheme="https://canace.site/categories/web/"/>
-    
-    
-    <category term="devOps" scheme="https://canace.site/tags/devOps/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Docker 打包本地 Web 项目发布到服务端</title>
-    <link href="https://canace.site/docker%E6%96%87%E6%A1%A3/"/>
-    <id>https://canace.site/docker%E6%96%87%E6%A1%A3/</id>
-    <published>2023-01-16T01:58:28.000Z</published>
-    <updated>2023-07-09T07:39:40.665Z</updated>
-    
-    
-    <summary type="html">docker 打包本地 web 项目发布到服务端方法</summary>
-    
-    
-    
-    <category term="web" scheme="https://canace.site/categories/web/"/>
-    
-    
-    <category term="devOps" scheme="https://canace.site/tags/devOps/"/>
     
   </entry>
   
