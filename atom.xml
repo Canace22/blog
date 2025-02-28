@@ -6,7 +6,7 @@
   <link href="https://canace.site/atom.xml" rel="self"/>
   
   <link href="https://canace.site/"/>
-  <updated>2025-02-28T08:55:21.523Z</updated>
+  <updated>2025-02-28T09:12:27.414Z</updated>
   <id>https://canace.site/</id>
   
   <author>
@@ -21,10 +21,10 @@
     <link href="https://canace.site/%E7%BD%91%E9%A1%B5%E7%89%88%E6%9C%AC%E6%9B%B4%E6%96%B0%E5%BC%B9%E7%AA%97%E5%AE%9E%E7%8E%B0/"/>
     <id>https://canace.site/%E7%BD%91%E9%A1%B5%E7%89%88%E6%9C%AC%E6%9B%B4%E6%96%B0%E5%BC%B9%E7%AA%97%E5%AE%9E%E7%8E%B0/</id>
     <published>2025-02-28T07:06:04.000Z</published>
-    <updated>2025-02-28T08:55:21.523Z</updated>
+    <updated>2025-02-28T09:12:27.414Z</updated>
     
     
-    <summary type="html">记录轮询简单实现网页更新客户端弹窗方案</summary>
+    <summary type="html">记录轮询简单实现网页更新Web端弹窗方案，主要内容包括:常用消息推送方案介绍、网页更新方法概述以及基于轮询的网页更新弹窗实现demo展示</summary>
     
     
     
