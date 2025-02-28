@@ -1,5 +1,5 @@
 ---
-title: Node.js 版本管理
+title: Node.js 版本管理工具概览
 categories: web
 description: nodeJs 版本管理笔记
 author: Canace
@@ -9,10 +9,10 @@ date: 2025-01-02 17:27:33
 ---
 几种常用的 Node.js 版本管理工具及其使用方法：
 
-### 1. **`nvm`（Node Version Manager）**
+## 一、 **`nvm`（Node Version Manager）**
 `nvm` 是最流行的 Node.js 版本管理工具，支持安装、切换和卸载多个 Node.js 版本。
 
-#### 安装 `nvm`
+1、安装 `nvm`
 打开终端，运行以下命令安装 `nvm`：
 
 ```bash
@@ -33,7 +33,7 @@ source ~/.bashrc # 如果你Bash
 nvm --version
 ```
 
-#### 常用命令
+2、常用命令
 - **安装指定版本**：
   ```bash
   nvm install 18  # 安装 Node.js 18.x 最新版本
@@ -56,19 +56,17 @@ nvm --version
   nvm uninstall 16.14.0
   ```
 
----
-
-### 2. **`n`**
+## 二、**`n`**
 `n` 是另一个简单的 Node.js 版本管理工具，使用起来更加轻量。
 
-#### 安装 `n`
+1、安装 `n`
 首先安装 `n`：
 
 ```bash
 npm install -g n
 ```
 
-#### 常用命令
+2、常用命令
 - **安装最新稳定版**：
   ```bash
   n lts
@@ -90,12 +88,10 @@ npm install -g n
   n rm 16.14.0
   ```
 
----
-
-### 3. **`fnm`（Fast Node Manager）**
+## 三、 **`fnm`（Fast Node Manager）**
 `fnm` 是一个基于 Rust 的快速 Node.js 版本管理工具，性能优于 `nvm`。
 
-#### 安装 `fnm`
+1、安装 `fnm`
 Homebrew 安装：
 
 ```bash
@@ -122,7 +118,7 @@ source ~/.bashrc # 如果你Bash
 fnm --version
 ```
 
-#### 常用命令
+2、常用命令
 - **安装指定版本**：
   ```bash
   fnm install 18
@@ -140,12 +136,10 @@ fnm --version
   fnm list
   ```
 
----
-
-### 4. **`asdf`**
+## 四、 **`asdf`**
 `asdf` 是一个通用的版本管理工具，支持多种语言和工具，包括 Node.js。
 
-#### 安装 `asdf`
+1、安装 `asdf`
 Homebrew 安装：
 
 ```bash
@@ -166,12 +160,12 @@ echo -e "\n. $(brew --prefix asdf)/libexec/asdf.sh" >> ~/.bashrc # Bash
 source ~/.zshrc  # 或者 source ~/.bashrc
 ```
 
-#### 安装 Node.js 插件
+2、安装 Node.js 插件
 ```bash
 asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
 ```
 
-#### 常用命令
+3、常用命令
 - **安装指定版本**：
   ```bash
   asdf install nodejs 18.0.0
@@ -185,17 +179,15 @@ asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
   asdf list nodejs
   ```
 
----
-
-### 5. **Homebrew**
+## 五、 **Homebrew**
 如果你不需要频繁切换版本，可以直接Homebrew 安装和管理 Node.js。
 
-#### 安装 Node.js
+1、安装 Node.js
 ```bash
 brew install node
 ```
 
-#### 切换版本
+2、切换版本
 卸载当前版本并安装其他版本：
 
 ```bash
@@ -203,9 +195,7 @@ brew uninstall node
 brew install node@18
 ```
 
----
-
-### 总结
+## 六、总结
 - 如果需要频繁切换版本，推荐`nvm` 或 `fnm`。
 - 如果喜欢轻量工具，可以选择 `n`。
 - 如果需要管理多种语言和工具，可以选择 `asdf`。
