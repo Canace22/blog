@@ -3,6 +3,7 @@ title: 用 Cursor 提高工作效率实战笔记
 categories: web
 description: 总结最近一段时间使用 Cursor 的体会，记录一些使用经验
 author: Canace
+toc: true
 comments: true
 date: 2025-03-11 09:11:33
 ---
@@ -24,10 +25,17 @@ Agent 模式强大在哪里？先让我们来回顾一下近几年 AI 的发展�
 ### 3. 使用指南
 
 - 常用默认快捷键
+
 ```bash
 Cmd/Ctrl + K # 输入自然语言描述,生成代码
 Cmd/Ctrl + L # 打开聊天框，进行提问和调试
 ```
+
+- 定义响应规则
+
+我们可以通过设置 rules 来自定义 AI 的行为，比如让他默认用中文回答问题，除此之外还可以针对不同的项目设置不同的规则。
+
+![cursor rules](https://raw.githubusercontent.com/Canace22/Assets/main/cursor-rules.png)
 
 - tips
 ```md
@@ -36,14 +44,35 @@ Cmd/Ctrl + L # 打开聊天框，进行提问和调试
 在函数上方输入 ///，自动生成注释
 ```
 
+更多想想内容可以看看[官网指南](https://docs.cursor.com/get-started/introduction)
 
-## 基于当前项目，抽离组件库
+## 二、从 0 到 1 编写前端项目
 
-## 优化代码
+### 前端项目初始化
 
-## 新增功能
+使用 Cursor Agent 模式初始化前端项目，相比于使用脚手架更加便捷，只需要输入我们想要的配置即可，省去了繁琐的操作步骤。 比如我们输入 【初始化 web 前端项目，要求：使用element-plus+vue3，vue3 使用Composition API，css 预编译器使用 scss，打包工具使用 webpack，需要生成readme文件】，只需要在 Agent 生成完项目文件后 <accept all> 就初始完一个完整的前端项目了。
 
-## 更新文档
+但是这只针对熟练了解前端技术的开发人员提高工作效率，对于前端小白，还是使用多轮对话的方式逐步细化自己需求才能达到这个效果。
+
+### 根据图片生成响应式页面
+
+【@frontend 根据图片生成响应式web页面】上传图片获取页面描述。以上提示词也会写一些页面代码，但是有时候不准确，我们根据他返回的描述再去让他生成，会更加精准，因为大模型的描述更有条理，也更符合规范。接着输入以上描述，生成响应式 UI 界面，调一调就能看到效果啦
+
+### 自动修复命令行错误
+
+使用 Cursor Agent 模式可以很方便的修复命令行报错，只需要 @terminal，选择对应的终端，可以找到对应的错误并修复
+
+![cursor_terminal](https://raw.githubusercontent.com/Canace22/Assets/main/cursor-terminal.png)
+
+### 更新文档
+
+### 优化代码
+
+### 新增功能
+
+## 更多高阶实践
+
+### 基于当前项目，抽离组件库
 
 ## 从 0 到 1 实践新技术
 
