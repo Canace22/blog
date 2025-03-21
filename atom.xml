@@ -6,7 +6,7 @@
   <link href="https://canace.site/atom.xml" rel="self"/>
   
   <link href="https://canace.site/"/>
-  <updated>2025-02-28T09:12:27.414Z</updated>
+  <updated>2025-03-21T02:21:47.877Z</updated>
   <id>https://canace.site/</id>
   
   <author>
@@ -17,11 +17,28 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>用 Cursor 提高工作效率实战笔记</title>
+    <link href="https://canace.site/%E7%94%A8cursor%E6%8F%90%E9%AB%98%E5%B7%A5%E4%BD%9C%E6%95%88%E7%8E%87%E5%AE%9E%E6%88%98%E7%AC%94%E8%AE%B0/"/>
+    <id>https://canace.site/%E7%94%A8cursor%E6%8F%90%E9%AB%98%E5%B7%A5%E4%BD%9C%E6%95%88%E7%8E%87%E5%AE%9E%E6%88%98%E7%AC%94%E8%AE%B0/</id>
+    <published>2025-03-11T01:11:33.000Z</published>
+    <updated>2025-03-21T02:21:47.877Z</updated>
+    
+    
+    <summary type="html">总结最近一段时间使用 Cursor 的体会，记录一些使用经验</summary>
+    
+    
+    
+    <category term="web" scheme="https://canace.site/categories/web/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>Web端版本更新弹窗实现</title>
     <link href="https://canace.site/%E7%BD%91%E9%A1%B5%E7%89%88%E6%9C%AC%E6%9B%B4%E6%96%B0%E5%BC%B9%E7%AA%97%E5%AE%9E%E7%8E%B0/"/>
     <id>https://canace.site/%E7%BD%91%E9%A1%B5%E7%89%88%E6%9C%AC%E6%9B%B4%E6%96%B0%E5%BC%B9%E7%AA%97%E5%AE%9E%E7%8E%B0/</id>
     <published>2025-02-28T07:06:04.000Z</published>
-    <updated>2025-02-28T09:12:27.414Z</updated>
+    <updated>2025-03-03T01:36:34.580Z</updated>
     
     
     <summary type="html">记录轮询简单实现网页更新Web端弹窗方案，主要内容包括:常用消息推送方案介绍、网页更新方法概述以及基于轮询的网页更新弹窗实现demo展示</summary>
@@ -358,25 +375,6 @@
     
     <category term="一周碎碎念" scheme="https://canace.site/categories/%E4%B8%80%E5%91%A8%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>时区、时间戳？</title>
-    <link href="https://canace.site/js%E6%97%B6%E5%8C%BA/"/>
-    <id>https://canace.site/js%E6%97%B6%E5%8C%BA/</id>
-    <published>2023-06-29T01:15:56.000Z</published>
-    <updated>2023-07-01T03:44:05.774Z</updated>
-    
-    
-    <summary type="html">JavaScript时区转换</summary>
-    
-    
-    
-    <category term="web" scheme="https://canace.site/categories/web/"/>
-    
-    
-    <category term="JavaScript" scheme="https://canace.site/tags/JavaScript/"/>
     
   </entry>
   
