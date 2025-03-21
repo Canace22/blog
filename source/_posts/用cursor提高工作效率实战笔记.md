@@ -7,13 +7,14 @@ toc: true
 comments: true
 date: 2025-03-11 09:11:33
 ---
+
 最近全民 AI 热，跟朋友交流了一下，发现自己好像有点落后了，还在用 VSCode + Codium 这种代码补全模式和 VSCode Snippet，这种模式已经提升了不少工作效率，但是相比于 Cursor 的 Agent 模式，感觉差别还是比较大的。下面做一个粗略的介绍，然后从几个方面来讲讲 Cursor 可以从哪些方面提高开发人员的工作效率。
 
 ## 一、入门
 
-### 1. Cursor是什么
+### 1. Cursor 是什么
 
-Cursor 是基于开源编辑器 VSCode 写的，基本继承了 VSCode 的所有特性，包括界面，快捷键等，用法基本跟 VSCode 一致。 有人也许会说，我们已经用习惯 VSCode 了，为什么要切换到 Cursor 呢？要说利用 AI 进行代码补全、重构、生成测试用例等，VSCode 通过安装插件也能做到，这就不得不提到 Cursor的 Agent 模式了。截止到我写这篇文章，查了一下，VSCode 暂时是没有官方实现 Agent 模式的。
+Cursor 是基于开源编辑器 VSCode 写的，基本继承了 VSCode 的所有特性，包括界面，快捷键等，用法基本跟 VSCode 一致。 有人也许会说，我们已经用习惯 VSCode 了，为什么要切换到 Cursor 呢？要说利用 AI 进行代码补全、重构、生成测试用例等，VSCode 通过安装插件也能做到，这就不得不提到 Cursor 的 Agent 模式了。截止到我写这篇文章，查了一下，VSCode 暂时是没有官方实现 Agent 模式的。
 
 Agent 模式强大在哪里？先让我们来回顾一下近几年 AI 的发展历程：一开始是纯文字的多轮对话，就算是生成周报这种也只是加长上下文、加入 rag 召回。后来大家发现，langchain + tools 这种模式可以做 AI 技能，这样每次跟 AI 对话会判断要调哪个 tool ，这就是豆包那些划词翻译、解释、总结的基础。然后就是基于这些去做自动化，比如 computer-use / browser-use ，最近很火的 manus 也是这样的。看了这段话，是不是还是一脸懵逼，Agent 到底牛逼在哪里？换句话说，现在的 VSCode 代码补全模式和 Agent 模式有什么区别呢？Cursor 本身的厉害之处在于，它能够选择合适的代码片段给 AI ，利用 AI 做代码补全和生成，它会帮你根据当前代码库实现功能，所有关联的文件都会改，还会创建还原点帮你恢复回去，相当于是真正的有人在代理你写代码了，而不是你指导他写，就像网上有个梗：不要指导 AI 干活，让 AI 自己做决定干什么。
 
@@ -35,9 +36,10 @@ Cmd/Ctrl + L # 打开聊天框，进行提问和调试
 
 我们可以通过设置 rules 来自定义 AI 的行为，比如让他默认用中文回答问题，除此之外还可以针对不同的项目设置不同的规则。
 
-![cursor rules](https://raw.githubusercontent.com/Canace22/Assets/main/cursor-rules.png)
+![cursor-rules](https://Canace22.github.io/picx-images-hosting/20250321/cursor-rules.2rvaq7smgf.webp)
 
 - tips
+
 ```md
 聊天框都可以使用 @ 或 # 链接上下文
 
@@ -48,34 +50,86 @@ Cmd/Ctrl + L # 打开聊天框，进行提问和调试
 
 ## 二、从 0 到 1 编写前端项目
 
-### 前端项目初始化
+### 1. 前端项目初始化
 
-使用 Cursor Agent 模式初始化前端项目，相比于使用脚手架更加便捷，只需要输入我们想要的配置即可，省去了繁琐的操作步骤。 比如我们输入 【初始化 web 前端项目，要求：使用element-plus+vue3，vue3 使用Composition API，css 预编译器使用 scss，打包工具使用 webpack，需要生成readme文件】，只需要在 Agent 生成完项目文件后 <accept all> 就初始完一个完整的前端项目了。
+使用 Cursor Agent 模式初始化前端项目，相比于使用脚手架更加便捷，只需要输入我们想要的配置即可，省去了繁琐的操作步骤。 比如我们输入 【初始化 web 前端项目，要求：使用 element-plus+vue3，vue3 使用 Composition API，css 预编译器使用 scss，打包工具使用 webpack，需要生成 readme 文件】，只需要在 Agent 生成完项目文件后 <accept all> 就初始完一个完整的前端项目了。
 
 但是这只针对熟练了解前端技术的开发人员提高工作效率，对于前端小白，还是使用多轮对话的方式逐步细化自己需求才能达到这个效果。
 
-### 根据图片生成响应式页面
+### 2. 根据图片生成响应式页面
 
-【@frontend 根据图片生成响应式web页面】上传图片获取页面描述。以上提示词也会写一些页面代码，但是有时候不准确，我们根据他返回的描述再去让他生成，会更加精准，因为大模型的描述更有条理，也更符合规范。接着输入以上描述，生成响应式 UI 界面，调一调就能看到效果啦
+#### 上传图片+prompt
 
-### 自动修复命令行错误
+【@frontend 根据图片生成响应式 web 页面】上传图片获取页面描述。以上提示词也会写一些页面代码，但是有时候不准确，我们根据他返回的描述再去让他生成，会更加精准，因为大模型的描述更有条理，也更符合规范。接着输入以上描述，生成响应式 UI 界面，调一调就能看到效果啦。
+
+这里顺带提一下低代码，我们知道低代码这个概念已经出现一段时间了，曾经火了一阵子，很快热度就下去了，很多公司和开源项目都做了实践，但是真正完全用这一套的比较少，拖拉拽生成界面不是很便捷吗？对于外行人来说甚至是一个很牛逼的东西，拖一拖就可以生成界面，都不用自己写代码，对于前端来说应该也是很编辑了，减少编码成本。现实确实很残酷的，我想过为什么低代码或者说无代码为什么火不起来，没想明白，今天看了阮一峰写的，感觉恍然大悟。界面应该是遵循底层函数标准生成的，而不是本末倒置，先生成代码，再不断的改底层去适配上层 UI，这样反而会加大我们的工作量，效率更低下，所以在实际项目中，我们虽然也说自己是低代码，但是实现逻辑跟拖拉拽生成代码的逻辑都是反过来的，我们先从底层支持各种 UI 组件，然后上层拖拉拽，让用户自己拖出想要的界面再去保存起来，这样的逻辑才是对的。
+
+那么我们这里说到的使用 AI 进行图片转代码，跟低代码有什么不同呢？看起来好像没什么不同，但是如果用 Agent 模式，基于我们的项目上下文进项 UI 代码生成，就有点我们上面说的用户拖拉拽生成界面的味道了，本质上还是调用我们实现的 UI 组件，去生成界面，在我看来这是没毛病的，相比低代码，确实是能提升我们的工作效率。图片生成界面只适用于快速出原型，具体的交互还是得我们指导 AI 一步步去实现，然后微调。所以我觉得，AI 可以是我们的影子军队，但是短时间内是绝对做不了暗影君王自己去打怪升级的。
+
+#### figma + mcp server
+
+Cursor 另一个比较强大的功能是支持配置 MCP（Model Context Protocol） 服务，这可以极大的增强对话上下文，这里以一个开源的 MCP 服务 [Figma-Context-MCP](https://github.com/GLips/Figma-Context-MCP?tab=readme-ov-file) ，看看使用 MCP 服务能做什么。
+
+要使用 Figma-Context-MCP，我们需要进行以下几个设置
+
+```bash
+# 使用 npm 在本地跑 server
+npx figma-developer-mcp --figma-api-key=<your-figma-api-key>
+
+# or
+pnpx figma-developer-mcp --figma-api-key=<your-figma-api-key>
+
+# or
+yarn dlx figma-developer-mcp --figma-api-key=<your-figma-api-key>
+
+# or
+bunx figma-developer-mcp --figma-api-key=<your-figma-api-key>
+```
+
+```json
+// 打开 Cursor 的设置，配置刚刚起的 MCP服务
+{
+  "mcpServers": {
+    "server-name": {
+      "url": "http://localhost:3333/sse",
+      "env": {
+        "API_KEY": "your-figma-api-key"
+      }
+    }
+  }
+}
+```
+
+设置完之后会看到配置界面长这样
+
+![MCP 配置成功](https://Canace22.github.io/picx-images-hosting/image.491frxekup.webp)
+
+配置成功之后，就可以在 agent 模式下使用了，比如这样【@frontend  create a Response component base on @https://www.figma.com/design/6Vr41TIAkUhRv1LVQWAcFb/【devops】报表?node-id=7-636&t=dgsm1GzcryfWHhPe-4 】生成的界面感觉还行
+
+![基于项目生成的代码](https://Canace22.github.io/picx-images-hosting/image.ica6pq05y.webp)
+
+![生成的界面](https://Canace22.github.io/picx-images-hosting/image.7i0jom4fdz.webp)
+
+### 3. 从 0 到 1 实践新技术
 
 使用 Cursor Agent 模式可以很方便的修复命令行报错，只需要 @terminal，选择对应的终端，可以找到对应的错误并修复
 
 ![cursor_terminal](https://raw.githubusercontent.com/Canace22/Assets/main/cursor-terminal.png)
 
-### 更新文档
-
-### 优化代码
+## 更多实践
 
 ### 新增功能
 
-## 更多高阶实践
+### 更新文档
 
 ### 基于当前项目，抽离组件库
-
-## 从 0 到 1 实践新技术
 
 ## 查找 Bug
 
 ## 自动搭建开发环境
+
+参考文献
+
+[Visual programming is stuck on the form](https://interjectedfuture.com/visual-programming-is-stuck-on-the-form/)
+
+[Cursor 官网指南](https://docs.cursor.com/get-started/introduction)
