@@ -108,6 +108,8 @@ bunx figma-developer-mcp --figma-api-key=<your-figma-api-key>
 
 ![基于项目生成的代码](https://Canace22.github.io/picx-images-hosting/image.ica6pq05y.webp)
 
+![figma 原设计](https://Canace22.github.io/picx-images-hosting/20250321/image.2ks2usjt4s.webp)
+
 ![生成的界面](https://Canace22.github.io/picx-images-hosting/image.7i0jom4fdz.webp)
 
 ### 3. 从 0 到 1 实践新技术
