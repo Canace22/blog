@@ -31,7 +31,7 @@ Cursor Agent 模式本身的厉害之处在于，它能够选择合适的代码�
 - 安装：根据自己的环境[下载](https://www.cursor.com/)，安装好后会自动同步本地 VSCode 的配置到 Cursor，若本地没有用过 VSCode，可以参照我的[这篇文章](https://canace.site/%E7%94%A8vscode%E6%90%9E%E4%BA%8B%E6%83%85/)配置一个。另外，应该大家都知道 VSCode 可以同步配置到不同终端吧，之前配置过的话，登录一下，也能把配置更新到本地，同步到 Cursor。
 - mac 默认是没有右键打开的，需要用 Automator 配置一下点击文件或文件夹右键用 Cursor 打开项目或文件(具体的操作自己问 AI)。Windows 安装的时候各种都通过交互式对话框帮我们配好了，一路 next 就好了。
 
-### 3. 使用指南
+### 4. 使用指南
 
 - 常用默认快捷键
 
@@ -78,7 +78,7 @@ Cmd/Ctrl + L # 打开聊天框，进行提问和调试
 
 #### figma + mcp server
 
-Cursor 另一个比较强大的功能是支持配置 MCP（Model Context Protocol） 服务，这可以极大的增强对话上下文，这里以一个开源的 MCP 服务 [Figma-Context-MCP](https://github.com/GLips/Figma-Context-MCP?tab=readme-ov-file) ，看看使用 MCP 服务能做什么。
+Cursor 另一个比较强大的功能是支持配置 MCP（Model Context Protocol） 服务，这可以极大的增强对话上下文，这里以一个开源的 MCP 服务 [Figma-Context-MCP](https://github.com/GLips/Figma-Context-MCP?tab=readme-ov-file) 为例，看看使用 MCP 服务能做什么。
 
 要使用 Figma-Context-MCP，我们需要进行以下几个设置
 
@@ -122,26 +122,44 @@ bunx figma-developer-mcp --figma-api-key=<your-figma-api-key>
 
 ![生成的界面](https://Canace22.github.io/picx-images-hosting/image.7i0jom4fdz.webp)
 
-### 3. 从 0 到 1 实践新技术
+### 3. 在新的文件中仿写之前实现过的逻辑
 
-使用 Cursor Agent 模式可以很方便的修复命令行报错，只需要 @terminal，选择对应的终端，可以找到对应的错误并修复
+要在新的文件中仿写之前实现过的逻辑，可以这样跟 Cursor 说【基于 @Index.vue 完善 @MsgCard.vue 组件中 dev-trigger-ref 相关功能】
 
-![cursor_terminal](https://raw.githubusercontent.com/Canace22/Assets/main/cursor-terminal.png)
+![image](https://Canace22.github.io/picx-images-hosting/20250324/image.67xmmnzxgq.png)
 
-## 更多实践
+### 4. 懒人文档更新助手
 
-### 新增功能
+Cursor 可以基于我们的代码生成文档，也可以根据我们的需求做更改，生成的文档质量可能不是那么高，没法很好的表达，但是对于章节结构类类的更新，组件、函数说明等可以说是懒人神器了，可以直接让 Cursor 改或者让它改完我们做一个微调。
 
-### 更新文档
+### 5. 从 0 到 1 实践新技术
 
-### 基于当前项目，抽离组件库
+前端技术几年一大变，各种技术五花八门，有时候我们的项目可能会涉及到一些我们没怎么接触过的技术，这时候我们按照以往阅读文档，慢慢自己摸索写 demo 的方式可能要花点时间。实践出真知，Cursor 可以用他清晰的逻辑，带我们一步一步操作，附带解释，充当师傅领进门里的师傅，带我们快速通过项目，了解一门新技术。比如我最近想了解AI聊天工具是怎么开发出来的，我可以跟他说【@index.js 基于qwen.js，使用langchain + tools调用大模型，实现两个工具功能：天气查询和地理位置查询，并添加聊天对话界面】，他就会输出一段 demo 加上说明，稍加调试，一个可用的聊天应用 demo 就出来了。
 
-### 查找 Bug
+## 三、更多实践
 
-### 自动搭建开发环境
+### 1. 运维助手
+
+上面的 MCP 服务，对于运维小白的我来说，要写个脚本部署到云端是比较难的，脚本命令规则太多了，记不住，我得各种查资料，可能得花不少时间才能成功部署完成，但是如果使用 Cursor，我可以在十分钟内就部署好一个可用的 MCP 服务
+
+- 编写部署脚本
+
+![image](https://Canace22.github.io/picx-images-hosting/20250324/image.4qrhkuga9e.webp)
+
+- 编写本地测试脚本
+
+![image](https://Canace22.github.io/picx-images-hosting/20250324/image.6ikgfrcs3d.webp)
+
+### 2. 查找 Bug
+
+使用 Cursor Agent 模式可以很方便的做调试，修复命令行报错，只需要 @terminal，选择对应的终端，可以找到对应的错误并修复
 
 参考文献
 
 [Visual programming is stuck on the form](https://interjectedfuture.com/visual-programming-is-stuck-on-the-form/)
 
 [Cursor 官网指南](https://docs.cursor.com/get-started/introduction)
+
+[现成的MCP服务资源](https://mcp.so/)
+
+[一些开源的 MCP 服务](https://github.com/modelcontextprotocol/servers?tab=readme-ov-file)
