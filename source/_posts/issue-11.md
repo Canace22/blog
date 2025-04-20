@@ -1,7 +1,7 @@
 ---
 title: Vol.11：一些关于工作的思考
-categories: 一周碎碎念
-description: Canace 的一周碎碎念第十一期
+categories: 七日谈
+description: Canace 的七日谈第十一期
 author: Canace
 comments: true
 date: 2023-07-09 15:56:48

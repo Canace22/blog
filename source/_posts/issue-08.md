@@ -1,7 +1,7 @@
 ---
 title: Vol.08：无论男女都应当追求些什么
-categories: 一周碎碎念
-description: Canace 的一周碎碎念第八期
+categories: 七日谈
+description: Canace 的七日谈第八期
 author: Canace
 comments: true
 date: 2022-11-06 08:57:32

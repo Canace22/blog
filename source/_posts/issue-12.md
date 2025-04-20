@@ -1,7 +1,7 @@
 ---
 title: Vol.12：我们的上限在哪里
-categories: 一周碎碎念
-description: Canace 的一周碎碎念第十二期
+categories: 七日谈
+description: Canace 的七日谈第十二期
 author: Canace
 comments: true
 date: 2023-11-20 08:00:08

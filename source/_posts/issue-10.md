@@ -1,7 +1,7 @@
 ---
 title: Vol.10：直面死亡
-categories: 一周碎碎念
-description: Canace 的一周碎碎念第十期
+categories: 七日谈
+description: Canace 的七日谈第十期
 author: Canace
 comments: true
 date: 2022-12-04 12:12:32

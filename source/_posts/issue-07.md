@@ -1,7 +1,7 @@
 ---
 title: Vol.07：假如再给我七天假期我想做什么
-categories: 一周碎碎念
-description: Canace 的一周碎碎念第七期
+categories: 七日谈
+description: Canace 的七日谈第七期
 author: Canace
 comments: true
 date: 2022-10-08 08:57:32

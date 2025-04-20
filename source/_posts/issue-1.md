@@ -1,8 +1,8 @@
 ---
 title: Vol.01：为什么要开始写这个系列的杂文
-categories: 一周碎碎念
+categories: 七日谈
 comments: true
-description: 'Canace 的一周碎碎念第一期'
+description: 'Canace 的七日谈第一期'
 date: 2022-05-02 23:31:23
 toc: true
 ---

@@ -1,7 +1,7 @@
 ---
 title: Vol.06：羊了个羊为什么会火起来
-categories: 一周碎碎念
-description: Canace 的一周碎碎念第六期
+categories: 七日谈
+description: Canace 的七日谈第六期
 author: Canace
 comments: true
 date: 2022-09-13 08:39:19

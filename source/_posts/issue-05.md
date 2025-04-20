@@ -1,7 +1,7 @@
 ---
 title: Vol.05：阅读的艺术
-categories: 一周碎碎念
-description: Canace 的一周碎碎念第五期
+categories: 七日谈
+description: Canace 的七日谈第五期
 author: Canace
 comments: true
 date: 2022-07-24 18:44:15

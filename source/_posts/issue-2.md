@@ -1,8 +1,8 @@
 ---
 title: Vol.02：团队对个人的影响
-categories: 一周碎碎念
+categories: 七日谈
 comments: true
-description: 'Canace 的一周碎碎念第二期'
+description: 'Canace 的七日谈第二期'
 date: 2022-05-15 09:55:24
 toc: true
 ---

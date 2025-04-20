@@ -1,7 +1,7 @@
 ---
 title: Vol.04：子非鱼，安知鱼之乐也
-categories: 一周碎碎念
-description: Canace 的一周碎碎念第四期
+categories: 七日谈
+description: Canace 的七日谈第四期
 author: Canace
 comments: true
 date: 2022-07-10 17:03:29

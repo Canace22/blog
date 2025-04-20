@@ -1,7 +1,7 @@
 ---
 title: Vol.03：关于职业选择
-categories: 一周碎碎念
-description: Canace 的一周碎碎念第三期
+categories: 七日谈
+description: Canace 的七日谈第三期
 author: Canace
 comments: true
 date: 2022-06-20 09:14:09
