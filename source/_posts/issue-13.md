@@ -3,6 +3,7 @@ title: Vol.13：科幻电影照进现实
 categories: 七日谈
 description: Canace 的七日谈第十三期
 author: Canace
+toc: true
 comments: true
 date: 2025-04-20 17:00:08
 ---
