@@ -1,0 +1,33 @@
+{
+	// Place your Blog workspace snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
+	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
+	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
+	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
+	// Placeholders with the same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"scope": "javascript,typescript",
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+	"blog snippet": {
+		"scope": "blog",
+		"prefix": "blog",
+		"body": [
+			"---",
+			"title: 用 vscode 搞事情",
+			"categories: web",
+			"tags: 编辑器",
+			"description: 突发奇想，写一篇 vscode 的各种骚操作文章，这些骚操作有些用的多，有些被遗忘在角落，根本想不起来，有必要把他们记录下来。",
+			"comments: true",
+			"date: 2020-07-01 08:44:36",
+			"---"
+		],
+		"description": "blog"
+	}
+}
