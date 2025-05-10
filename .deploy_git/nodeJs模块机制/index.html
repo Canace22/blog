@@ -1,0 +1,105 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="canace 的博客"><title>nodeJs 模块机制 | Canace 的博客</title><link rel="stylesheet" type="text/css" href="../css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/normalize.css/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="../favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="../favicon.ico"><link rel="apple-touch-icon" href="../apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="../apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="../atom.xml"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/clipboard/dist/clipboard.min.js"></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.js"></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.css"><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.2"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">nodeJs 模块机制</h1><a id="logo" href="../.">Canace 的博客</a><p class="description">Tomorrow is another day</p></div><div id="nav-menu"><a class="current" href="../."><i class="fa fa-home"> 主页</i></a><a href="../archives/"><i class="fa fa-archive"> 文章归档</i></a><a href="../about/"><i class="fa fa-user"> 关于我</i></a><a href="../atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">nodeJs 模块机制</h1><div class="post-meta">2021-06-28<span> | </span><span class="category"><a href="../categories/web/">web</a></span><script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> 阅读</span></span><span class="post-time"><span class="post-meta-item-text"> | </span><span class="post-meta-item-icon"><i class="fa fa-keyboard-o"></i><span class="post-count"> 796</span><span class="post-meta-item-text"> 字</span></span></span><span class="post-time"> | <span class="post-meta-item-icon"><i class="fa fa-clock-o"></i><span class="post-count"> 2</span><span class="post-meta-item-text"> 分钟</span></span></span></div><a class="disqus-comment-count" data-disqus-identifier="nodeJs模块机制/" href="#disqus_thread"></a><div class="post-content"><p>在讲模块机制之前，先来说说 CommonJs 规范，我们知道在打包的时候经常会看到 cjs 这个选项，这里的 cjs，我自己之前是一直以为就是commonJs，实际上这是 node 对 CommonJs 的实现，是 node 的模块机制。</p>
+<p>ComonJs 规范范围除了模块规范之外，还有二进制、Buffer、字符集编码、I/O 流、进程环境、文件系统、套接字、单元测试、Web 服务器网关接口以及包管理等规范。</p>
+<p>既然 node 模块机制是 CommonJs 的一种实现，那么 CommonJs 的模块规范是怎样的呢？CommonJs 的模块规范主要做了如下定义：</p>
+<p><strong>模块引用</strong>：通过 require 引入模块</p>
+<p><strong>模块定义</strong>：module 对象代表模块自身，通过 exports 属性导出当前模块的变量或对象</p>
+<p><strong>模块标识</strong>：必须是符合小驼峰命名的字符串，或者是文件路径（相对路径、绝对路径）</p>
+<p>接下来讲讲 nodeJs 的模块机制是怎么实现的，当我们用 require 引入某个模块时，会经历以下三个过程：路径分析，文件定位以及编译执行。再来讲讲每个步骤分别发生了什么。</p>
+<p><strong>路径分析</strong></p>
+<ul>
+<li><p>核心模块，加载速度快，加载优先级仅次于缓存加载</p>
+</li>
+<li><p>路径形式的文件模块：把路径转换为真实路径</p>
+</li>
+<li><p>自定义模块：沿当前路径往上逐级递归查找，最深可以查找到根目录下的 node_modules，由于路径查找速度比较慢，所以加载速度也会比较慢</p>
+</li>
+</ul>
+<p>基于以上因素，为提高模块加载速度，在模块引入时，引入顺序应该为：核心模块 -&gt; 路径形式的文件模块 -&gt; 第三方模块</p>
+<p><strong>文件定位</strong></p>
+<ul>
+<li><p>模块标识不含文件扩展名，按照 .js，.json，.node 的优先级补充扩展名，该过程是阻塞式的引入，因此 .json, .node 文件带上扩展名，可以加快加载速度</p>
+</li>
+<li><p>若模块标识不是文件名，查找当前目录下的 package.json 文件，把 main 属性的值作为文件路径进行定位</p>
+</li>
+<li><p>若当前目录下不存在 package.json 文件，把模块标识当成一个目录名称，将 index 作为模块默认文件名，找不到模块会抛出查找失败错误    </p>
+</li>
+</ul>
+<p><strong>编译执行</strong></p>
+<ul>
+<li>新建模块对象，模块对象的定义如下           </li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Module</span>(<span class="params">id, parent</span>) &#123; </span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">id</span> = id;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">exports</span> = &#123;&#125;; </span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">parent</span> = parent;</span><br><span class="line">  <span class="keyword">if</span> (parent &amp;&amp; parent.<span class="property">children</span>) &#123;</span><br><span class="line">    parent.<span class="property">children</span>.<span class="title function_">push</span>(<span class="variable language_">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">filename</span> = <span class="literal">null</span>; </span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">loaded</span> = <span class="literal">false</span>; </span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">children</span> = [];</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">paths</span> = []</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">path</span> = <span class="literal">null</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>根据路径载入文件并编译，不同文件的载入方式不同</p>
+<ul>
+<li><p>.js 文件通过 fs 模块同步读取后编译</p>
+</li>
+<li><p>.node 文件通过 dlopen 方法加载编译后的二进制文件</p>
+</li>
+<li><p>.json 文件，通过 fs 模块同步读取后，使用 JSON.parse 解析返回结果</p>
+</li>
+<li><p>其他都按 .js 文件载入</p>
+</li>
+</ul>
+</li>
+<li><p>编译成功的文件模块，以文件路径为索引，缓存到 Module._cache 对象上，核心模块缓存到 NativeModule._cache对象上</p>
+</li>
+</ul>
+<p>参考文献：</p>
+<p>深入浅出 nodeJs</p>
+</div><div class="post-copyright"><script type="text/javascript" src="/js/copyright.js" successtext="复制成功!"></script><link rel="stylesheet" type="text/css" href="/css/copyright.css"><p><span>本文标题：</span>nodeJs 模块机制</p><p><span>文章作者：</span>Canace</p><p><span>发布时间：</span>2021-06-28</p><p><span>最后更新：</span>2023-05-26</p><p><span>原始链接：</span><a href="/nodeJs模块机制/">https://canace.site/nodeJs%E6%A8%A1%E5%9D%97%E6%9C%BA%E5%88%B6/</a><span class="copy-path"><i class="fa fa-clipboard" data-clipboard-text="https://canace.site/nodeJs%E6%A8%A1%E5%9D%97%E6%9C%BA%E5%88%B6/"></i></span></p><p><span>版权声明：</span>转载请注明出处</p></div><br><script type="text/javascript" src="../js/share.js?v=0.0.0" async></script><a class="article-share-link" data-url="https://canace.site/nodeJs%E6%A8%A1%E5%9D%97%E6%9C%BA%E5%88%B6/" data-id="cmahp4e0u00a9pqx0fpqu51to" data-qrcode="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACsUlEQVR42u3aQW4jMQwEwPz/01lgTznEdjcpeb1AzcmYJCOVAgxpkl9f8fX999rf+Xn/5/X8d54/7cCFh4eHN9r6o+vRYpu/3Tw5XxcPDw/vNu95MJgt3waDPMwke8bDw8P7BN7zl/ipw0rAeHh4eP8XL7/THlaSOuPh4eF9Dm+fIuclgxb/ploLHh4eXsxrG2Cf8Plifw8PDw9v0VXfB4xZGWLWbPtlh3h4eHgXeGfLtbPmVrLKbCgBDw8P7wZvMw41GyPIiwhtMfdFlQUPDw/vEC95Neff8dshgLzQkIeoqL+Hh4eHd5S3CQOboYF2uKp4Mh4eHt5R3qltzZLdU6n8wzt4eHh4l3mnSrf551mxI/kH4OHh4d3m5UFis92kMXa42YaHh4f3Rl4+YtUGmLaVtSn14uHh4d3gbVpW7Qs9X2VfUMbDw8O7x5s1+JP7bZjJxxGKoIWHh4d3gVfHkBg/a2vlyXSNxMPDwzvEaxmbF/2+ytoGITw8PLzbvLzQkKfas0g1Gyn45Zl4eHh4l3ltkt0mx7N0uQ0kRe0ZDw8Pb8S78WqejRps1i2mt/Dw8PAO8ZIH5VtsAcnW8yOLatV4eHh4a15eVmjLuPlwVZ6s5604PDw8vBu8tvXV/nTW6NqXJ+pTwcPDw4t5+xZXW5zdDGPlx42Hh4d3j5c3wPJkt91oXlZoDwgPDw/vBi//ep8XI/Km/qyQMfsCgIeHh3eK911eObVNrPdp/Yu4h4eHh3eIN5tWmjW32ie0hQ88PDy8d/LyplQePNpRqllCX0xG4OHh4V3gtaNRs9b+PvDUVRY8PDy8D+AlGXobPPYJ9IuUGg8PD+8f8dpUOAFsBguiQIKHh4d3jTcrRmzmFPJEvD2UY7UWPDw8vHjoKg8em5JEEkLy0vCqy4eHh4eX8v4AUIfQdfV1FvEAAAAASUVORK5CYII=">分享</a><div class="tags"><a href="../tags/nodeJs/"><i class="fa fa-tag"></i>nodeJs</a></div><div class="post-nav"><a class="pre" href="../%E5%85%B3%E4%BA%8E%E5%B9%BF%E5%91%8A%E6%8B%A6%E6%88%AA%E6%8F%92%E4%BB%B6%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%9D%E8%80%83/">关于广告拦截插件的一些思考</a><a class="next" href="../%E7%A6%BB%E5%BC%80%E9%A1%B5%E9%9D%A2%E5%BC%B9%E7%AA%97/">离开页面弹窗</a></div><div id="disqus_thread"><div class="btn_click_load"><button class="disqus_click_btn">阅读评论（请确保 Disqus 可以正常加载）</button></div><script type="text/javascript">var disqus_config = function () {
+    this.page.url = 'https://canace.site/nodeJs模块机制/';
+    this.page.identifier = 'nodeJs模块机制/';
+    this.page.title = 'nodeJs 模块机制';
+  };</script><script type="text/javascript" id="disqus-lazy-load-script">$.ajax({
+url: 'https://disqus.com/next/config.json',
+timeout: 2500,
+type: 'GET',
+success: function(){
+  var d = document;
+  var s = d.createElement('script');
+  s.src = '//liu-yan-ping-de-bo-ke.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', + new Date());
+  (d.head || d.body).appendChild(s);
+  $('.disqus_click_btn').css('display', 'none');
+},
+error: function() {
+  $('.disqus_click_btn').css('display', 'block');
+}
+});</script><script type="text/javascript" id="disqus-click-load">$('.btn_click_load').click(() => {  //click to load comments
+    (() => { // DON'T EDIT BELOW THIS LINE
+        var d = document;
+        var s = d.createElement('script');
+        s.src = '//liu-yan-ping-de-bo-ke.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', + new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+    $('.disqus_click_btn').css('display','none');
+});</script><script type="text/javascript" id="disqus-count-script">$(function() {
+     var xhr = new XMLHttpRequest();
+     xhr.open('GET', '//disqus.com/next/config.json', true);
+     xhr.timeout = 2500;
+     xhr.onreadystatechange = function () {
+       if (xhr.readyState === 4 && xhr.status === 200) {
+         $('.post-meta .post-comments-count').show();
+         var s = document.createElement('script');
+         s.id = 'dsq-count-scr';
+         s.src = 'https://liu-yan-ping-de-bo-ke.disqus.com/count.js';
+         s.async = true;
+         (document.head || document.body).appendChild(s);
+       }
+     };
+     xhr.ontimeout = function () { xhr.abort(); };
+     xhr.send(null);
+   });
+</script></div></div></div></div><div class="pure-u-1 pure-u-md-1-4"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="../categories/web/">web</a><span class="category-list-count">164</span></li><li class="category-list-item"><a class="category-list-link" href="../categories/%E4%B8%83%E6%97%A5%E8%B0%88/">七日谈</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="../categories/%E5%8D%9A%E5%AE%A2%E7%9B%B8%E5%85%B3/">博客相关</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="../categories/%E6%9C%8D%E5%8A%A1%E7%AB%AF/">服务端</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="../categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">深度学习</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="../categories/%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0/">源码学习</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="../categories/%E7%AE%97%E6%B3%95/">算法</a><span class="category-list-count">25</span></li><li class="category-list-item"><a class="category-list-link" href="../categories/%E7%B3%BB%E7%BB%9F/">系统</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="../categories/%E8%AF%AD%E8%A8%80/">语言</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../categories/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">阅读笔记</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="../categories/%E9%9A%8F%E7%AC%94/">随笔</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="../categories/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/">项目管理</a><span class="category-list-count">18</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="../tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 15px;">浏览器</a> <a href="../tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" style="font-size: 15px;">性能优化</a> <a href="../tags/%E5%AF%8C%E6%96%87%E6%9C%AC/" style="font-size: 15px;">富文本</a> <a href="../tags/css/" style="font-size: 15px;">css</a> <a href="../tags/webGL/" style="font-size: 15px;">webGL</a> <a href="../tags/python/" style="font-size: 15px;">python</a> <a href="../tags/flutter/" style="font-size: 15px;">flutter</a> <a href="../tags/JavaScript/" style="font-size: 15px;">JavaScript</a> <a href="../tags/angular/" style="font-size: 15px;">angular</a> <a href="../tags/mysql/" style="font-size: 15px;">mysql</a> <a href="../tags/%E7%A7%91%E6%99%AE/" style="font-size: 15px;">科普</a> <a href="../tags/%E7%BD%91%E7%BB%9C/" style="font-size: 15px;">网络</a> <a href="../tags/vue/" style="font-size: 15px;">vue</a> <a href="../tags/%E5%B7%A5%E7%A8%8B%E5%8C%96/" style="font-size: 15px;">工程化</a> <a href="../tags/web%E5%AE%89%E5%85%A8/" style="font-size: 15px;">web安全</a> <a href="../tags/Go/" style="font-size: 15px;">Go</a> <a href="../tags/devOps/" style="font-size: 15px;">devOps</a> <a href="../tags/nodeJs/" style="font-size: 15px;">nodeJs</a> <a href="../tags/tag/" style="font-size: 15px;">tag</a> <a href="../tags/ffmpeg/" style="font-size: 15px;">ffmpeg</a> <a href="../tags/flow/" style="font-size: 15px;">flow</a> <a href="../tags/git/" style="font-size: 15px;">git</a> <a href="../tags/html/" style="font-size: 15px;">html</a> <a href="../tags/lodash/" style="font-size: 15px;">lodash</a> <a href="../tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" style="font-size: 15px;">开发环境</a> <a href="../tags/npm/" style="font-size: 15px;">npm</a> <a href="../tags/react/" style="font-size: 15px;">react</a> <a href="../tags/TypeScript/" style="font-size: 15px;">TypeScript</a> <a href="../tags/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/" style="font-size: 15px;">单元测试</a> <a href="../tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 15px;">小程序</a> <a href="../tags/%E6%AD%A3%E5%88%99/" style="font-size: 15px;">正则</a> <a href="../tags/%E8%AF%BB%E4%B9%A6/" style="font-size: 15px;">读书</a> <a href="../tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" style="font-size: 15px;">计算机基础</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 常用文档</i></div><ul></ul><a href="/git常用命令" title="Git 文档" target="_blank">Git 文档</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2025 <a href="../." rel="nofollow">Canace 的博客</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="../js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.js" async></script><script type="text/javascript" src="../js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.css"><link rel="stylesheet" type="text/css" href="../css/search.css?v=0.0.0"><script type="text/javascript" src="../js/search.js?v=0.0.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+   search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" color="160,160,160" opacity="0.5" zIndex="-1" count="50" src="//cdn.jsdelivr.net/npm/canvas-nest.js/dist/canvas-nest.min.js"></script><script type="text/javascript" src="/js/copycode.js" successtext="复制成功!"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css"><script type="text/javascript" src="../js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="../js/smartresize.js?v=0.0.0"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":200,"height":200},"mobile":{"show":false},"react":{"opacity":0.7},"log":false});</script></body></html>
