@@ -6,7 +6,7 @@
   <link href="https://canace.site/atom.xml" rel="self"/>
   
   <link href="https://canace.site/"/>
-  <updated>2025-05-17T09:29:07.647Z</updated>
+  <updated>2025-05-17T09:58:25.420Z</updated>
   <id>https://canace.site/</id>
   
   <author>
@@ -15,6 +15,23 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Vol15：初创项目/产品，怎么做用户留存</title>
+    <link href="https://canace.site/issue-15/"/>
+    <id>https://canace.site/issue-15/</id>
+    <published>2025-05-17T09:39:20.000Z</published>
+    <updated>2025-05-17T09:58:25.420Z</updated>
+    
+    
+    <summary type="html">Canace的七日谈第十五期</summary>
+    
+    
+    
+    <category term="web" scheme="https://canace.site/categories/web/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Vol14：如何延长下班时间</title>
@@ -349,29 +366,6 @@
     
     
     <category term="七日谈" scheme="https://canace.site/categories/%E4%B8%83%E6%97%A5%E8%B0%88/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>森林里的蚂蚁和吵架的大象夫妇</title>
-    <link href="https://canace.site/%E8%9A%82%E8%9A%81/"/>
-    <id>https://canace.site/%E8%9A%82%E8%9A%81/</id>
-    <published>2023-08-04T00:02:56.000Z</published>
-    <updated>2025-05-17T09:29:07.753Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
-    
-    
-    
-    <category term="随笔" scheme="https://canace.site/categories/%E9%9A%8F%E7%AC%94/"/>
     
     
   </entry>
