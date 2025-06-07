@@ -6,7 +6,7 @@
   <link href="https://canace.site/atom.xml" rel="self"/>
   
   <link href="https://canace.site/"/>
-  <updated>2025-05-17T09:58:25.420Z</updated>
+  <updated>2025-06-07T07:21:40.667Z</updated>
   <id>https://canace.site/</id>
   
   <author>
@@ -15,6 +15,23 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Notion+Chrome 书签打造个人知识库</title>
+    <link href="https://canace.site/%E4%B8%AA%E4%BA%BA%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
+    <id>https://canace.site/%E4%B8%AA%E4%BA%BA%E7%9F%A5%E8%AF%86%E5%BA%93/</id>
+    <published>2025-06-07T07:19:24.000Z</published>
+    <updated>2025-06-07T07:21:40.667Z</updated>
+    
+    
+    <summary type="html">Notion+Chrome 书签打造个人知识库实践</summary>
+    
+    
+    
+    <category term="web" scheme="https://canace.site/categories/web/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Vol15：初创项目/产品，怎么做用户留存</title>
@@ -350,23 +367,6 @@
     
     
     <category term="网络" scheme="https://canace.site/tags/%E7%BD%91%E7%BB%9C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Vol.12：我们的上限在哪里</title>
-    <link href="https://canace.site/issue-12/"/>
-    <id>https://canace.site/issue-12/</id>
-    <published>2023-11-20T00:00:08.000Z</published>
-    <updated>2025-05-17T09:29:07.644Z</updated>
-    
-    
-    <summary type="html">Canace 的七日谈第十二期</summary>
-    
-    
-    
-    <category term="七日谈" scheme="https://canace.site/categories/%E4%B8%83%E6%97%A5%E8%B0%88/"/>
-    
     
   </entry>
   
