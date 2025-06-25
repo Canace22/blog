@@ -1,7 +1,7 @@
 ---
 title: ubuntu 下 tensorflow CPU release 版安装
 date: 2018-05-27 09:48:31
-categories: 深度学习
+categories: AI
 comments: true
 ---
 
