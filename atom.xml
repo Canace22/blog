@@ -6,7 +6,7 @@
   <link href="https://canace.site/atom.xml" rel="self"/>
   
   <link href="https://canace.site/"/>
-  <updated>2025-06-25T01:15:36.153Z</updated>
+  <updated>2025-09-13T08:23:51.765Z</updated>
   <id>https://canace.site/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>首次尝试95%都是垃圾：一位工程师使用Claude Code的6周之旅</title>
+    <link href="https://canace.site/translateUseClaudeCode/"/>
+    <id>https://canace.site/translateUseClaudeCode/</id>
+    <published>2025-09-13T07:32:58.000Z</published>
+    <updated>2025-09-13T08:23:51.765Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="AI" scheme="https://canace.site/categories/AI/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Notion+Chrome书签打造个人知识库</title>
@@ -348,25 +371,6 @@
     
     
     <category term="JavaScript" scheme="https://canace.site/tags/JavaScript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>浅谈 DNS 污染</title>
-    <link href="https://canace.site/%E6%B5%85%E8%B0%88DNS%E6%B1%A1%E6%9F%93/"/>
-    <id>https://canace.site/%E6%B5%85%E8%B0%88DNS%E6%B1%A1%E6%9F%93/</id>
-    <published>2023-12-03T14:41:30.000Z</published>
-    <updated>2025-05-17T09:29:07.732Z</updated>
-    
-    
-    <summary type="html">浅谈 DNS 污染</summary>
-    
-    
-    
-    <category term="web" scheme="https://canace.site/categories/web/"/>
-    
-    
-    <category term="网络" scheme="https://canace.site/tags/%E7%BD%91%E7%BB%9C/"/>
     
   </entry>
   
