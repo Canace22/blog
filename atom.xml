@@ -6,7 +6,7 @@
   <link href="https://canace.site/atom.xml" rel="self"/>
   
   <link href="https://canace.site/"/>
-  <updated>2025-09-13T08:23:51.765Z</updated>
+  <updated>2025-09-13T11:42:34.645Z</updated>
   <id>https://canace.site/</id>
   
   <author>
@@ -17,11 +17,34 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>你不是在面试，你是在为职位试镜</title>
+    <link href="https://canace.site/interviewStrategy/"/>
+    <id>https://canace.site/interviewStrategy/</id>
+    <published>2025-09-13T11:34:51.000Z</published>
+    <updated>2025-09-13T11:42:34.645Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="职场" scheme="https://canace.site/categories/%E8%81%8C%E5%9C%BA/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>首次尝试95%都是垃圾：一位工程师使用Claude Code的6周之旅</title>
     <link href="https://canace.site/translateUseClaudeCode/"/>
     <id>https://canace.site/translateUseClaudeCode/</id>
     <published>2025-09-13T07:32:58.000Z</published>
-    <updated>2025-09-13T08:23:51.765Z</updated>
+    <updated>2025-09-13T11:38:11.260Z</updated>
     
     
       
@@ -349,25 +372,6 @@
     
     
     <category term="算法" scheme="https://canace.site/categories/%E7%AE%97%E6%B3%95/"/>
-    
-    
-    <category term="JavaScript" scheme="https://canace.site/tags/JavaScript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JavaScript 自带的对象深拷贝方法</title>
-    <link href="https://canace.site/JavaScript%E8%87%AA%E5%B8%A6%E7%9A%84%E5%AF%B9%E8%B1%A1%E6%B7%B1%E6%8B%B7%E8%B4%9D%E6%96%B9%E6%B3%95/"/>
-    <id>https://canace.site/JavaScript%E8%87%AA%E5%B8%A6%E7%9A%84%E5%AF%B9%E8%B1%A1%E6%B7%B1%E6%8B%B7%E8%B4%9D%E6%96%B9%E6%B3%95/</id>
-    <published>2024-03-01T06:03:09.000Z</published>
-    <updated>2025-05-17T09:29:07.590Z</updated>
-    
-    
-    <summary type="html">介绍 JavaScript 自带的对象深拷贝方法</summary>
-    
-    
-    
-    <category term="web" scheme="https://canace.site/categories/web/"/>
     
     
     <category term="JavaScript" scheme="https://canace.site/tags/JavaScript/"/>
