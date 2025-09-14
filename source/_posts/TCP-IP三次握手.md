@@ -1,8 +1,8 @@
 ---
 title: TCP/IP三次握手
 date: 2017-05-25 16:57:02
-categories: Web开发
-tags: 网络
+categories: 编程基础
+tags: 计算机科学
 ---
 
 TCP/IP 三次握手描述

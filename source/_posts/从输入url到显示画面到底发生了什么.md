@@ -1,7 +1,7 @@
 ---
 title: 从浏览器地址栏输入 URL 到界面被渲染出来看前端知识
-categories: Web开发
-tags: 网络
+categories: 编程基础
+tags: 计算机科学
 comments: true
 toc: true
 date: 2020-10-12 17:23:53

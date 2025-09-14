@@ -1,7 +1,7 @@
 ---
 title: 解决 github dns 污染问题
-categories: 工程化与运维
-tags: 网络
+categories: 编程基础
+tags: 计算机科学
 comments: true
 date: 2021-05-22 09:17:08
 ---

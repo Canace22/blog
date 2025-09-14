@@ -1,7 +1,7 @@
 ---
 title: Vue 单元测试
-categories: Web开发
-tags: 单元测试
+categories: 工程化与运维
+tags: 代码质量
 comments: true
 toc: true
 date: 2020-10-28 16:25:02

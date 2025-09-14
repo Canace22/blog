@@ -1,7 +1,7 @@
 ---
 title: 认识 Cookie
-categories: Web开发
-tags: 网络
+categories: 编程基础
+tags: 计算机科学
 description: 说说 Cookie 相关知识
 comments: true
 toc: true

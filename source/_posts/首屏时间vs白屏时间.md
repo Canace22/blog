@@ -1,6 +1,6 @@
 ---
 title: 首屏时间(FCP) VS 白屏时间(FP)
-categories: Web开发
+categories: 工程化与运维
 tags: 性能优化
 comments: true
 toc: true

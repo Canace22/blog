@@ -1,8 +1,8 @@
 ---
 title: 浅谈 DNS 污染
-categories: Web开发
+categories: 编程基础
+tags: 计算机科学
 description: 浅谈 DNS 污染
-tags: 网络
 author: Canace
 comments: true
 date: 2023-12-03 22:41:30

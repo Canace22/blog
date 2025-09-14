@@ -3,8 +3,8 @@ title: 前端 XX docker 化
 comments: true
 toc: true
 date: 2023-01-16 11:07:31
-categories: web
-tags: devOps
+categories: 工程化与运维
+tags: 构建与部署
 description: 前端 XX docker 化方案
 ---
 ## 一、nginx docker 化

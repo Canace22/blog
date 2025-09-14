@@ -1,7 +1,7 @@
 ---
 title: 使用 docker 配置前端环境
 categories: 工程化与运维
-tags: devOps
+tags: 构建与部署
 comments: true
 date: 2022-02-16 09:19:25
 ---
