@@ -1,7 +1,7 @@
 ---
 title: Flutter 学习笔记（一）—— 快速上手
 categories: Web开发
-tags: flutter
+tags: 跨端方案
 toc: true
 description: flutter 快速上手指南
 comments: true

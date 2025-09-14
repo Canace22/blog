@@ -1,7 +1,7 @@
 ---
 title: flow 简易教程
 categories: Web开发
-tags: flow
+tags: JavaScript&TypeScript
 comments: true
 toc: true
 date: 2020-11-09 16:59:07

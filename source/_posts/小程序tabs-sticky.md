@@ -1,7 +1,7 @@
 ---
 title: 小程序 tabs-sticky
 categories: Web开发
-tags: 小程序
+tags: 跨端方案
 description: 小程序 sticky 的正确使用姿势
 comments: true
 date: 2020-07-20 15:05:34
