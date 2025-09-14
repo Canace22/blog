@@ -1,7 +1,7 @@
 ---
 title: 去除数组对象中与子节点id重复的父节点
 categories: 编程基础
-tags: JavaScript
+tags: JavaScript&TypeScript
 description: 去除数组对象中与子节点id重复的父节点
 author: Canace
 comments: true

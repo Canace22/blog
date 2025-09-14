@@ -1,7 +1,7 @@
 ---
 title: JavaScript 灵魂拷问
 categories: Web开发
-tags: JavaScript
+tags: JavaScript&TypeScript
 description: 一些有趣的 JavaScript 问题解答
 comments: true
 date: 2021-02-03 11:44:15

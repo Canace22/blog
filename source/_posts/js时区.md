@@ -1,7 +1,7 @@
 ---
 title: 时区、时间戳？
 categories: Web开发
-tags: JavaScript
+tags: JavaScript&TypeScript
 description: JavaScript时区转换
 author: Canace
 comments: true

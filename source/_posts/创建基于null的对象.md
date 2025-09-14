@@ -1,7 +1,7 @@
 ---
 title: 创建基于 null 的对象
 categories: Web开发
-tags: JavaScript
+tags: JavaScript&TypeScript
 description: 关于对象创建的一点看法
 comments: true
 date: 2021-03-12 14:49:45

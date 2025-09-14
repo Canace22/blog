@@ -1,7 +1,7 @@
 ---
 title: 理解 instanceof
 categories: Web开发
-tags: JavaScript
+tags: JavaScript&TypeScript
 comments: true
 date: 2021-06-21 09:19:09
 ---

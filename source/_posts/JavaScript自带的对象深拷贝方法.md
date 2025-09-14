@@ -1,7 +1,7 @@
 ---
 title: JavaScript 自带的对象深拷贝方法
 categories: Web开发
-tags: JavaScript
+tags: JavaScript&TypeScript
 description: 介绍 JavaScript 自带的对象深拷贝方法
 author: Canace
 comments: true

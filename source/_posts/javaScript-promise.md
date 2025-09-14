@@ -3,7 +3,7 @@ title: javaScript-promise
 comments: true
 date: 2018-10-22 19:50:42
 categories: Web开发
-tags: JavaScript
+tags: JavaScript&TypeScript
 ---
 
 promise 对于管理异步状态很有用，可以串行执行异步任务，也可以并行执行异步任务，下面是一个简单的串行执行一步步任务的例子：

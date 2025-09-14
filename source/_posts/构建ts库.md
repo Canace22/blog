@@ -1,7 +1,7 @@
 ---
 title: 构建 TypeScript 库
 categories: Web开发
-tags: TypeScript
+tags: JavaScript&TypeScript
 description: 构建 TypeScript 库简易指南
 author: Canace
 comments: true

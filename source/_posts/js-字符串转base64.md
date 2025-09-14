@@ -1,7 +1,7 @@
 ---
 title: Js 字符串转 base64
 categories: Web开发
-tags: JavaScript
+tags: JavaScript&TypeScript
 comments: true
 date: 2021-04-23 13:56:12
 ---

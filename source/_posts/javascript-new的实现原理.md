@@ -1,7 +1,7 @@
 ---
 title: JavaScript new 关键字的实现原理
 categories: Web开发
-tags: JavaScript
+tags: JavaScript&TypeScript
 comments: true
 date: 2021-04-24 11:38:18
 ---

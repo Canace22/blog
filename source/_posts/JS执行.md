@@ -1,7 +1,7 @@
 ---
 title: JavaScript 在 V8 引擎浏览器上是怎么执行的
 categories: Web开发
-tags: JavaScript
+tags: JavaScript&TypeScript
 description: JavaScript 在 V8 引擎浏览器上的执行机制
 author: Canace
 comments: true

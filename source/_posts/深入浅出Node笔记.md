@@ -2,7 +2,7 @@
 title: 深入浅出Node笔记
 date: 2020-06-21 22:30:57
 categories: Web开发
-tags: JavaScript
+tags: JavaScript&TypeScript
 toc: true
 description: 深入浅出 NodeJs 笔记
 ---

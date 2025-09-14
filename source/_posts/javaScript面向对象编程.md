@@ -3,7 +3,7 @@ title: javaScript 面向对象编程
 comments: true
 date: 2018-10-22 19:52:57
 categories: Web开发
-tags: JavaScript
+tags: JavaScript&TypeScript
 toc: true
 ---
 

@@ -4,7 +4,7 @@ comments: true
 toc: true
 date: 2020-11-23 10:14:39
 categories: Web开发
-tags: TypeScript
+tags: JavaScript&TypeScript
 ---
 
 ## 一、快速上手

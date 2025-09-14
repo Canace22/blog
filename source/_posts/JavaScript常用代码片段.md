@@ -1,7 +1,7 @@
 ---
 title: JavaScript 常用代码片段
 categories: Web开发
-tags: JavaScript
+tags: JavaScript&TypeScript
 toc: true
 description: 在工作中，无论是业务逻辑处理还是数据操作，避免不了出现同样的代码片段，有的时候可能一时想不起来，需要想半天，这里做一个整理
 comments: true

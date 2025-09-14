@@ -2,7 +2,7 @@
 title: JS 概谈
 date: 2018-05-20 16:56:12
 categories: Web开发
-tags: JavaScript
+tags: JavaScript&TypeScript
 comments: true
 ---
 
