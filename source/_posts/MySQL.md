@@ -3,7 +3,7 @@ title: centos7 安装 MySQL
 comments: true
 date: 2019-03-09 18:58:56
 categories: 工程化与运维
-tags: mysql
+tags: [后端, API&服务]
 ---
 
 centos7 安装 MySQL
