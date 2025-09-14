@@ -1,6 +1,6 @@
 ---
 title: NPM Package.json 字段列表(包括非官方字段)
-categories: web
+categories: Web开发
 tags: npm
 comments: true
 toc: true

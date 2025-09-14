@@ -1,7 +1,7 @@
 ---
 title: CSS 定位
-categories: web
-tags: css
+categories: Web开发
+tags: [前端,CSS]
 description: css 定位知识总结及 demo 展示
 comments: true
 toc: true

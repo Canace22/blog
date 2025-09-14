@@ -2,7 +2,7 @@
 title: git 文档
 comments: true
 date: 2020-10-10 10:48:12
-categories: 项目管理
+categories: 工程化与运维
 description: 根据平常经验整理的 git 文档
 tags: git
 toc: true

@@ -1,7 +1,7 @@
 ---
 title: git环境配置
 date: 2017-05-09 16:58:31
-categories: 项目管理
+categories: 工程化与运维
 tags: git
 comments: true
 ---

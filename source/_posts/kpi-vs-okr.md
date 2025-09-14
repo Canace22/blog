@@ -1,6 +1,6 @@
 ---
 title: KPI vs OKR
-categories: 随笔
+categories: 软技能与思考
 comments: true
 date: 2021-07-27 10:17:12
 ---

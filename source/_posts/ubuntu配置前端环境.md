@@ -2,7 +2,7 @@
 title: ubuntu 配置前端环境
 comments: true
 date: 2018-07-08 18:56:11
-categories: web
+categories: Web开发
 tags: 开发环境
 ---
 

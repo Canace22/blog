@@ -1,6 +1,6 @@
 ---
 title: three.js 基础实战 —— 创建画布
-categories: web
+categories: Web开发
 tags: webGL
 comments: true
 toc: true

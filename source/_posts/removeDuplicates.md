@@ -1,6 +1,6 @@
 ---
 title: 原地删除数组中的重复值
-categories: 算法
+categories: 编程基础
 comments: true
 date: 2022-01-11 9:10:08
 ---

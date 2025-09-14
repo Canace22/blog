@@ -3,7 +3,7 @@ title: Git 安装配置及分支管理
 comments: true
 toc: true
 date: 2020-06-22 09:03:11
-categories: 项目管理
+categories: 工程化与运维
 tags: git
 description: Git 安装配置及分支管理指南
 ---

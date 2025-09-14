@@ -1,6 +1,6 @@
 ---
 title: Homebrew 常用命令
-categories: 系统
+categories: 工程化与运维
 description: Homebrew 常用命令集合
 comments: true
 date: 2020-01-02 11:00:01

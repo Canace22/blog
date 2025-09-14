@@ -2,7 +2,7 @@
 title: hexo 博客迁移
 comments: true
 date: 2018-07-29 16:13:33
-categories: 博客相关
+categories: 网站建设
 ---
 
 hexo 博客迁移

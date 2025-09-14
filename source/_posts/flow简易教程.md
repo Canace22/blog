@@ -1,6 +1,6 @@
 ---
 title: flow 简易教程
-categories: web
+categories: Web开发
 tags: flow
 comments: true
 toc: true

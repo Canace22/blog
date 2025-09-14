@@ -2,8 +2,8 @@
 title: vue动态改变title
 comments: true
 date: 2018-10-22 19:40:00
-categories: web
-tags: vue
+categories: Web开发
+tags: [Vue,框架与库]
 ---
 
 1. 代码：

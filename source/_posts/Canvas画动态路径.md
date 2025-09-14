@@ -2,7 +2,7 @@
 title: Canvas 画动态路径
 comments: true
 date: 2019-08-25 11:04:28
-categories: web
+categories: Web开发
 tags: webGL
 ---
 

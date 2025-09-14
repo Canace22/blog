@@ -1,7 +1,7 @@
 ---
 title: nodeJs 配置
 date: 2017-05-09 16:56:44
-categories: web
+categories: Web开发
 tags: nodeJs
 comments: true
 ---

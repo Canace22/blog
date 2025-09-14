@@ -1,7 +1,7 @@
 ---
 title: Vue3 实战笔记
-categories: web
-tags: vue
+categories: Web开发
+tags: [前端, Vue, 框架与库]
 description: Vue3 实战笔记
 author: Canace
 comments: true

@@ -1,6 +1,6 @@
 ---
 title: Vol.03：关于职业选择
-categories: 七日谈
+categories: 软技能与思考
 description: Canace 的七日谈第三期
 author: Canace
 comments: true

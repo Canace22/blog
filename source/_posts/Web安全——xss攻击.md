@@ -1,6 +1,6 @@
 ---
 title: Web安全 —— XSS攻击
-categories: web
+categories: Web开发
 tags: web安全
 description: XSS 是比较古老的 web 安全攻击，本文将讲述 XSS 攻击是什么，有哪些类型以及如何进行 XSS 攻击
 comments: true

@@ -1,7 +1,7 @@
 ---
 title: Vue 数据驱动视图更新实现
-categories: web
-tags: vue
+categories: Web开发
+tags: [Vue,前端,框架与库]
 comments: true
 date: 2021-04-29 14:31:39
 ---

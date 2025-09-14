@@ -2,8 +2,8 @@
 title: html 笔记
 comments: true
 date: 2019-01-22 13:58:20
-categories: web
-tags: html
+categories: Web开发
+tags: [前端,html]
 ---
 
 html 笔记

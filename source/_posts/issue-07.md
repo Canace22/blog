@@ -1,6 +1,6 @@
 ---
 title: Vol.07：假如再给我七天假期我想做什么
-categories: 七日谈
+categories: 软技能与思考
 description: Canace 的七日谈第七期
 author: Canace
 comments: true

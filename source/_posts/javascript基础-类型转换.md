@@ -1,6 +1,6 @@
 ---
 title: JavaScript 基础 —— 类型转换
-categories: web
+categories: Web开发
 tags: JavaScript
 description: javascript 基础系列之类型转换，顾名思义，梳理一下类型转换相关的知识点
 comments: true

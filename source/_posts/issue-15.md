@@ -1,6 +1,6 @@
 ---
 title: Vol15：初创项目/产品，怎么做用户留存
-categories: web
+categories: Web开发
 description: Canace的七日谈第十五期
 author: Canace
 comments: true

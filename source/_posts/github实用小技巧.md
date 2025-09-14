@@ -1,6 +1,6 @@
 ---
 title: github 实用小技巧
-categories: 项目管理
+categories: 工程化与运维
 tags: git
 description: 一般人不知道的 github 使用姿势
 comments: true

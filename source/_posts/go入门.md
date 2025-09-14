@@ -1,7 +1,7 @@
 ---
 title: 第一个 Go 程序
-categories: 服务端
-tags:  Go
+categories: Web开发
+tags:  [服务端,Go]
 comments: true
 date: 2020-11-25 15:54:05
 ---

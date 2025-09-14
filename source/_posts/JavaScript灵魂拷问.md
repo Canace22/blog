@@ -1,6 +1,6 @@
 ---
 title: JavaScript 灵魂拷问
-categories: web
+categories: Web开发
 tags: JavaScript
 description: 一些有趣的 JavaScript 问题解答
 comments: true

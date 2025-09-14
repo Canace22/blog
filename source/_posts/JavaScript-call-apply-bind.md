@@ -1,6 +1,6 @@
 ---
 title: JavaScript call、apply 和 bind
-categories: web
+categories: Web开发
 tags: JavaScript
 description: 梳理 JavaScript call、apply 和 bind 知识点，对这部分内容做一个深入理解
 comments: true

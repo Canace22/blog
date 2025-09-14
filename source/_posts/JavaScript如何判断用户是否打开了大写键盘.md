@@ -1,6 +1,6 @@
 ---
 title: JavaScript 如何判断用户是否打开了大写键盘
-categories: web
+categories: Web开发
 tags: JavaScript
 description: 记录 JavaScript 判断用户是否打开了大写键盘的方法
 author: Canace

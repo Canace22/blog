@@ -2,8 +2,8 @@
 title: CSS 小技巧
 comments: true
 date: 2020-11-28 12:02:22
-categories: web
-tags: css
+categories: Web开发
+tags: [前端,CSS]
 toc: true
 description: 本文收录日常开发中一些 css 小技巧。
 ---

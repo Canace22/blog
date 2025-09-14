@@ -2,7 +2,7 @@
 title: gitlab ci 配置模板
 comments: true
 date: 2018-10-22 19:29:20
-categories: 项目管理
+categories: 工程化与运维
 tags: git
 ---
 

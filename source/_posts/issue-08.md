@@ -1,6 +1,6 @@
 ---
 title: Vol.08：无论男女都应当追求些什么
-categories: 七日谈
+categories: 软技能与思考
 description: Canace 的七日谈第八期
 author: Canace
 comments: true

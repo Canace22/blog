@@ -1,6 +1,6 @@
 ---
 title: setTimeout 模拟 setInterval
-categories: web
+categories: Web开发
 tags: JavaScript
 description: 本文主要讲一下为什么要用 setTimeout 去模拟 setInterval，以及如何实现
 comments: true

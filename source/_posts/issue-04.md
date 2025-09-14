@@ -1,6 +1,6 @@
 ---
 title: Vol.04：子非鱼，安知鱼之乐也
-categories: 七日谈
+categories: 软技能与思考
 description: Canace 的七日谈第四期
 author: Canace
 comments: true

@@ -1,6 +1,6 @@
 ---
 title: centos 服务器登录配置
-categories: 系统
+categories: 工程化与运维
 comments: true
 date: 2020-11-18 10:03:10
 ---

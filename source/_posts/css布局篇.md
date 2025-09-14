@@ -2,9 +2,9 @@
 title: CSS 常用布局及解决方案
 comments: true
 date: 2021-06-05 10:45:33
-categories: web
+categories: Web开发
 toc: true
-tags: css
+tags: [前端,CSS]
 ---
 
 CSS 常用布局包括元素的水平、垂直居中，单栏布局、三栏布局等，本文分析多种情况下的布局方案。

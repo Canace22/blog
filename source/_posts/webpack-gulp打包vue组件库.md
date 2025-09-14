@@ -1,6 +1,6 @@
 ---
 title: webpack+gulp 打包 vue 组件库
-categories: web
+categories: Web开发
 tags: 工程化
 description: 参照 element-ui 实现按需引入的 vue 组件库
 comments: true

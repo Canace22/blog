@@ -2,7 +2,7 @@
 title: CKeditor 在 angular 中的使用文档
 comments: true
 date: 2018-07-29 16:07:31
-categories: web
+categories: Web开发
 tags: 富文本
 ---
 

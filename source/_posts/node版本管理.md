@@ -1,6 +1,6 @@
 ---
 title: Node.js 版本管理工具概览
-categories: web
+categories: Web开发
 description: nodeJs 版本管理笔记
 author: Canace
 toc: true

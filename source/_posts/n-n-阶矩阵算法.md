@@ -2,7 +2,7 @@
 title: "n * n 阶矩阵算法 "
 comments: true
 date: 2018-07-30 21:42:14
-categories: 算法
+categories: 编程基础
 
 ---
 

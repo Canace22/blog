@@ -1,6 +1,6 @@
 ---
 title: hexo 支持数学公式
-categories: 博客相关
+categories: 网站建设
 comments: true
 date: 2020-09-01 10:54:48
 ---

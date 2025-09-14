@@ -2,7 +2,7 @@
 title: canvas 绘制雪碧图导出
 comments: true
 date: 2019-10-26 17:19:41
-categories: web
+categories: Web开发
 tags: webGL
 ---
 

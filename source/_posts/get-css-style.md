@@ -1,7 +1,7 @@
 ---
 title: 获取 DOM style 的正确姿势
-categories: web
-tags: css
+categories: Web开发
+tags: [前端,CSS]
 description: 获取 DOM style 的正确姿势
 author: Canace
 comments: true

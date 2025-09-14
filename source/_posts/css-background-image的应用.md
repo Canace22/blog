@@ -1,7 +1,7 @@
 ---
 title: css background-image 的应用
-categories: web
-tags: css
+categories: Web开发
+tags: [前端,CSS]
 description: background-image 实现一些特殊效果
 comments: true
 toc: true

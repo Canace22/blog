@@ -1,6 +1,6 @@
 ---
 title: NP/P/NPC 都是何方神圣
-categories: 算法
+categories: 编程基础
 tags: 科普
 description: NP/P/NPC 科普
 comments: true

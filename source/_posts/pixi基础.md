@@ -1,6 +1,6 @@
 ---
 title: PixiJs 极简教程
-categories: web
+categories: Web开发
 tags: webGL
 descroption: 一个极简的 PixiJs 教程
 comments: true

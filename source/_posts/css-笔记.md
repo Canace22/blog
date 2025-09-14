@@ -2,8 +2,8 @@
 title: CSS 基础
 comments: true
 date: 2019-01-26 13:55:01
-categories: web
-tags: css
+categories: Web开发
+tags: [前端,CSS]
 ---
 
 css 基础知识笔记，包括专业术语介绍、css 流概述等，具体内容可以查看全文

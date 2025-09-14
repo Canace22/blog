@@ -1,6 +1,6 @@
 ---
 title: 从浏览器地址栏输入 URL 到界面被渲染出来看前端知识
-categories: web
+categories: Web开发
 tags: 网络
 comments: true
 toc: true

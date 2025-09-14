@@ -1,6 +1,6 @@
 ---
 title: Windows 奇技淫巧
-categories: 系统
+categories: 工程化与运维
 comments: true
 date: 2020-12-04 09:59:51
 ---

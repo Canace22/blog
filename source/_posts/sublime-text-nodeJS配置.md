@@ -1,7 +1,7 @@
 ---
 title: sublime text3 配置 node.js 环境
 date: 2018-06-08 09:32:52
-categories: web
+categories: Web开发
 tags: 开发环境
 ---
 

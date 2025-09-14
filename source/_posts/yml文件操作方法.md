@@ -2,7 +2,7 @@
 title: yml 文件操作方法
 comments: true
 date: 2018-06-08 09:52:46
-categories: 服务端
+categories: Web开发
 tags: python
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: prisma 入门指南
-categories: web
+categories: Web开发
 tags: nodeJs
 comments: true
 toc: true

@@ -2,7 +2,7 @@
 title: mac 安装 mysql
 comments: true
 date: 2019-11-13 08:42:51
-categories: 服务端
+categories: Web开发
 tags: mysql
 ---
 

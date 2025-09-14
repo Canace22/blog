@@ -2,7 +2,7 @@
 title: Vscode 配置 wsl 并配置 node 环境
 comments: true
 date: 2018-12-18 08:57:19
-categories: web
+categories: Web开发
 tags: 开发环境
 ---
 

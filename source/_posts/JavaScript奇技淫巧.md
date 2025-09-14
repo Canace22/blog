@@ -1,6 +1,6 @@
 ---
 title: JavaScript 奇技淫巧
-categories: web
+categories: Web开发
 tags: JavaScript
 description: '如题，这篇文章收集一些平常见过的一些 JS 奇技淫巧。'
 comments: true

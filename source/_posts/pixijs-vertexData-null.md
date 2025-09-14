@@ -1,6 +1,6 @@
 ---
 title: pixijs Graphics vertexData 采坑
-categories: web
+categories: Web开发
 tags: webGL
 description: 最近项目中遇到了一个 Graphics 对象，打印出来 vertexData 有数据，但是单独打印却没有，因为是引用类型，我猜应该是数据后面加进去才会出现这个问题，然而，调试了半天也没找到问题
 comments: true

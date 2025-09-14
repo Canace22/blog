@@ -1,6 +1,6 @@
 ---
 title: Flutter 学习笔记（一）—— 快速上手
-categories: web
+categories: Web开发
 tags: flutter
 toc: true
 description: flutter 快速上手指南

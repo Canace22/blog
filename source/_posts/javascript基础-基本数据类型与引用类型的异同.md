@@ -1,6 +1,6 @@
 ---
 title: JavaScript基础 —— 基本数据类型与引用类型的异同
-categories: web
+categories: Web开发
 tags: JavaScript
 description: javascript 基础系列之基本数据类型与引用类型的异同
 comments: true

@@ -1,6 +1,6 @@
 ---
 title: Vol.09：原来我也可以
-categories: 七日谈
+categories: 软技能与思考
 description: Canace 的七日谈第九期
 author: Canace
 comments: true

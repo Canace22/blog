@@ -1,6 +1,6 @@
 ---
 title: docker 打包本地 web 项目发布到服务端
-categories: web
+categories: 工程化与运维
 tags: devOps
 toc: true
 comments: true

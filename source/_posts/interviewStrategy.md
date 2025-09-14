@@ -1,6 +1,6 @@
 ---
 title: 你不是在面试，你是在为职位试镜
-categories: 职场
+categories: 软技能与思考
 author: Canace
 comments: true
 toc: true

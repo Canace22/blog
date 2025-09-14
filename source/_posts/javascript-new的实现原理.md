@@ -1,6 +1,6 @@
 ---
 title: JavaScript new 关键字的实现原理
-categories: web
+categories: Web开发
 tags: JavaScript
 comments: true
 date: 2021-04-24 11:38:18

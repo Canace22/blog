@@ -1,7 +1,7 @@
 ---
 title: HTTP 笔记
-categories: web
-tags: 网络
+categories: 编程基础
+tags: HTTP
 comments: true
 toc: true
 date: 2021-05-17 09:00:47

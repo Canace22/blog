@@ -1,7 +1,7 @@
 ---
 title: ubuntu 下配置ss
 date: 2018-05-27 09:49:30
-categories: 系统
+categories: 工程化与运维
 comments: true
 ---
 

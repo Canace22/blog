@@ -1,7 +1,7 @@
 ---
 title: CSS 系列文章——CSS 基础知多少
-categories: web
-tags: css
+categories: Web开发
+tags: [前端,CSS]
 comments: true
 toc: true
 date: 2020-08-27 10:00:17

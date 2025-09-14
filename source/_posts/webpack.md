@@ -2,7 +2,7 @@
 title: webpack
 comments: true
 date: 2019-08-04 12:29:56
-categories: 项目管理
+categories: 工程化与运维
 tags: 工程化
 ---
 ## 一、安装

@@ -1,7 +1,7 @@
 ---
 title: CSS 系列文章 —— 文本处理
-categories: web
-tags: css
+categories: Web开发
+tags: [前端,CSS]
 comments: true
 toc: true
 date: 2020-09-04 09:15:17

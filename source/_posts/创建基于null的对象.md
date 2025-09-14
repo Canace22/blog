@@ -1,6 +1,6 @@
 ---
 title: 创建基于 null 的对象
-categories: web
+categories: Web开发
 tags: JavaScript
 description: 关于对象创建的一点看法
 comments: true
