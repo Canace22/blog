@@ -2,7 +2,7 @@
 title: git域名配置
 date: 2017-05-09 16:58:31
 categories: 工程化与运维
-tags: git
+tags: 开发工具
 comments: true
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: NP/P/NPC 都是何方神圣
 categories: 编程基础
-tags: 科普
+tags: 计算机科学
 description: NP/P/NPC 科普
 comments: true
 date: 2020-01-16 10:14:17

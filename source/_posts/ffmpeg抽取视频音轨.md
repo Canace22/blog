@@ -1,7 +1,7 @@
 ---
 title: ffmpeg 抽取视频音轨
-categories: Web开发
-tags: ffmpeg
+categories: 工程化与运维
+tags: 开发工具
 comments: true
 date: 2021-10-06 11:04:03
 ---

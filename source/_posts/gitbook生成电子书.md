@@ -1,7 +1,7 @@
 ---
 title: gitbook 生成电子书
 categories: 工程化与运维
-tags: git
+tags: 开发工具
 description: 使用 Gitbook CLI, Github Pages, Github Actions CI/CD, 和 Calibre 生成电子书
 comments: true
 date: 2020-05-17 13:54:19

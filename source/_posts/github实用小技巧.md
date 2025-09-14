@@ -1,7 +1,7 @@
 ---
 title: github 实用小技巧
 categories: 工程化与运维
-tags: git
+tags: 开发工具
 description: 一般人不知道的 github 使用姿势
 comments: true
 date: 2020-04-24 08:49:17

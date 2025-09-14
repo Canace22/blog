@@ -2,7 +2,7 @@
 title: gitpage 搭建 hexo 博客
 date: 2018-05-20 16:58:02
 categories: 工程化与运维
-tags: git
+tags: 开发工具
 comments: true
 ---
 

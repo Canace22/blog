@@ -1,7 +1,7 @@
 ---
 title: three.js 基础实战 —— 创建画布
 categories: Web开发
-tags: webGL
+tags: [前端,CSS与可视化]
 comments: true
 toc: true
 date: 2020-09-14 15:54:50

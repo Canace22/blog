@@ -3,7 +3,7 @@ title: github  + travis 自动构建 vue 项目到 gitpage
 comments: true
 date: 2019-08-04 12:27:25
 categories: 工程化与运维
-tags: git
+tags: 开发工具
 ---
 
 github + travis 自动构建 vue 项目到 gitpage
