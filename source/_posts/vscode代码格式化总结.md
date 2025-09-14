@@ -1,7 +1,7 @@
 ---
 title: vscode代码格式化总结
-categories: Web开发
-tags: 开发环境
+categories: 工程化与运维
+tags: 开发工具
 comments: true
 date: 2020-03-30 10:17:59
 ---

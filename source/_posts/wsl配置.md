@@ -2,8 +2,8 @@
 title: Vscode 配置 wsl 并配置 node 环境
 comments: true
 date: 2018-12-18 08:57:19
-categories: Web开发
-tags: 开发环境
+categories: 工程化与运维
+tags: 开发工具
 ---
 
 1. 下载 WSL Guideline，里面会有配置安装 wsl 相关说明

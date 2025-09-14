@@ -1,7 +1,7 @@
 ---
 title: NPM Package.json 字段列表(包括非官方字段)
 categories: Web开发
-tags: npm
+tags: 开发工具
 comments: true
 toc: true
 date: 2020-09-02 16:58:59

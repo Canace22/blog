@@ -3,7 +3,7 @@ title: npm 常用命令
 comments: true
 date: 2019-08-17 13:53:16
 categories: 工程化与运维
-tags: npm
+tags: 开发工具
 ---
 
 ## 1、安装

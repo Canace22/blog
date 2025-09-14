@@ -1,7 +1,7 @@
 ---
 title: 用 Cursor 提高工作效率实战笔记
-categories: 拓展领域
-tags: AI
+categories: 工程化与运维
+tags: 开发工具
 description: 总结最近一段时间使用 Cursor 的体会，记录一些使用经验
 author: Canace
 toc: true
