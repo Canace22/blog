@@ -1,6 +1,6 @@
 ---
 title: 常见 git 工作流程
-categories: 项目管理
+categories: 工程化与运维
 tags: git
 comments: true
 toc: true

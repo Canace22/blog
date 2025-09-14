@@ -1,7 +1,7 @@
 ---
 title: 说说 Vuex
-categories: web
-tags: vue
+categories: Web开发
+tags: Vue
 comments: true
 toc: true
 date: 2020-08-10 09:01:18

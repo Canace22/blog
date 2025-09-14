@@ -2,7 +2,7 @@
 title: 网页或html元素在浏览器上全屏解决方案
 comments: true
 date: 2019-02-20 15:05:52
-categories: web
+categories: Web开发
 tags: JavaScript
 ---
 

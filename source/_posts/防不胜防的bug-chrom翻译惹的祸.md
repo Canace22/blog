@@ -1,6 +1,6 @@
 ---
 title: 防不胜防的 bug —— chrome 翻译惹的祸
-categories: web
+categories: Web开发
 tags: 浏览器
 description:  bug 天上来，想不到的 bug 之 翻译有什么错
 comments: true

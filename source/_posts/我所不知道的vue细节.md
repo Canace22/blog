@@ -1,7 +1,7 @@
 ---
 title: 我所不知道的 Vue 细节
-categories: web
-tags: vue
+categories: Web开发
+tags: [Vue, JavaScript, 框架与库]
 comments: true
 date: 2021-05-13 08:52:31
 ---

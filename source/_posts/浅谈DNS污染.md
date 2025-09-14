@@ -1,6 +1,6 @@
 ---
 title: 浅谈 DNS 污染
-categories: web
+categories: Web开发
 description: 浅谈 DNS 污染
 tags: 网络
 author: Canace

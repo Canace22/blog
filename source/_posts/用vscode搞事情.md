@@ -1,6 +1,6 @@
 ---
 title: VSCode 使用指南
-categories: web
+categories: Web开发
 tags: 开发环境
 description: 工欲善其事必先利其器，前端开发工具我用的是 VSCode，VSCode 有很多快捷的调试方法和一些插件，这里就总结一下这两方面的东西
 comments: true

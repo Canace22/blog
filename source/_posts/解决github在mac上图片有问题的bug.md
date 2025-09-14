@@ -1,6 +1,6 @@
 ---
 title: 解决github图片破裂问题
-categories: 系统
+categories: 工程化与运维
 tags: git
 comments: true
 date: 2020-02-17 21:35:02

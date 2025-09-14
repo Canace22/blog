@@ -1,6 +1,6 @@
 ---
 title: 自定义 github 动态
-categories: web
+categories: Web开发
 tags: git
 description: 自定义 github 动态
 comments: true

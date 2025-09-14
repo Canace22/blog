@@ -1,6 +1,6 @@
 ---
 title: 小程序 tabs-sticky
-categories: web
+categories: Web开发
 tags: 小程序
 description: 小程序 sticky 的正确使用姿势
 comments: true

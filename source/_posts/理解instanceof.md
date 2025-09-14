@@ -1,6 +1,6 @@
 ---
 title: 理解 instanceof
-categories: web
+categories: Web开发
 tags: JavaScript
 comments: true
 date: 2021-06-21 09:19:09
