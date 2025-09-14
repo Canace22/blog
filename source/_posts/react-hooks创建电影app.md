@@ -3,7 +3,7 @@ title: react hooks 创建电影 app
 comments: true
 date: 2019-11-01 08:32:51
 categories: Web开发
-tags: react
+tags: [前端,框架与库]
 ---
 
 使用 react hooks 搭建一个电影 App，该 demo 属于一个极简版，参考自一个外国哥们写的 《How to build a movie search app using React Hooks》，文章的核心围绕用 react hook 搭建一个电影 App 的关键步骤展开，没有多余的描述，代码可以开箱即用，欢迎食用。

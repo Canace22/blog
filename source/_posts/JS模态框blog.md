@@ -3,7 +3,7 @@ title: JS 模态框————angular
 comments: true
 date: 2018-07-11 20:32:55
 categories: Web开发
-tags: angular
+tags: [前端,框架与库]
 ---
 
 最近有个功能要做，要用到模态框，了解了一下，可以引用 boostrap + jquery 实现，但是看了看还要引用两个库，麻烦，自己写还来得快点，自己写还有个好处，想写成什么样都行。

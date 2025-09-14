@@ -3,7 +3,7 @@ title: html 笔记
 comments: true
 date: 2019-01-22 13:58:20
 categories: Web开发
-tags: [前端,html]
+tags: 前端
 ---
 
 html 笔记
