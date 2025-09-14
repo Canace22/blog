@@ -1,7 +1,7 @@
 ---
 title: 时间复杂度 VS 空间复杂度
 categories: 编程基础
-tags: 算法
+tags: 计算机科学
 comments: true
 mathjax: true
 date: 2020-09-01 09:25:37

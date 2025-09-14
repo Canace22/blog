@@ -1,7 +1,7 @@
 ---
 title: lodash 源码解析 —— chunk
-categories: 源码学习
-tags: lodash
+categories: Web开发
+tags: 框架与库
 description: lodash chunk 函数学习
 comments: true
 date: 2021-01-26 09:24:31

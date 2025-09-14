@@ -1,7 +1,7 @@
 ---
 title: lodash 源码解析 —— slice
-categories: 源码学习
-tags: lodash
+categories: Web开发
+tags: 框架与库
 description: lodash slice 函数学习
 comments: true
 toc: true

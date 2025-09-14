@@ -3,6 +3,7 @@ title: KNN算法
 comments: true
 date: 2019-03-30 13:31:24
 categories: 编程基础
+tags: 计算机科学
 ---
 
 ## KNN 算法是做什么的
