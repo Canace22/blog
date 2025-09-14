@@ -1,7 +1,7 @@
 ---
 title: CSS 定位详解
 categories: Web开发
-tags: [前端,CSS]
+tags: [前端,CSS与可视化 ]
 description: 详细讲解 position 属性几个值的区别，并新加了新属性 sticky 的讲解。
 comments: true
 date: 2019-11-28 08:35:29
