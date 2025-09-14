@@ -3,7 +3,7 @@ title: CKeditor 在 angular 中的使用文档
 comments: true
 date: 2018-07-29 16:07:31
 categories: Web开发
-tags: 富文本
+tags: [前端,框架与库]
 ---
 
 CKeditor 是比较好用的一款所见即所得编辑器，有多种模式可供选择，里面还可集成 leText 等第三方插件，也可以自己开发一些插件，推荐使用。上手也很简单，但是在 angular 中使用还是要费一点时间，配置上也要花点时间。

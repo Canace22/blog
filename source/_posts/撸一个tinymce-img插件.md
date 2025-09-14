@@ -1,7 +1,7 @@
 ---
 title: 从零开始撸一个 tinymce 图片上传插件
 categories: Web开发
-tags: 富文本
+tags: [前端,框架与库]
 comments: true
 date: 2020-11-19 19:49:19
 ---
