@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>博客文章分类</title>
+      <link href="/blogCategory/"/>
+      <url>/blogCategory/</url>
+      
+        <content type="html"><![CDATA[<p>根据开发工作流整理博客文章分类，开发工作流梳理如下：<strong>基础理论</strong> -&gt; <strong>技术实现</strong> -&gt; <strong>工程实践</strong> -&gt; <strong>软技能</strong>，下面是分类逻辑</p><figure class="highlight 1c"><table><tr><td class="code"><pre><span class="line">.</span><br><span class="line">├── <span class="number">1</span>. 编程基础 <span class="punctuation">(</span>Programming Foundations<span class="punctuation">)</span></span><br><span class="line">│   ├── 计算机科学 <span class="punctuation">(</span>Computer Science<span class="punctuation">)</span>  <span class="comment">// 算法, 计算机网络, 操作系统等</span></span><br><span class="line">│   └── 编程语言 <span class="punctuation">(</span>Programming Languages<span class="punctuation">)</span> <span class="comment">// 语言特性, 语法对比等</span></span><br><span class="line">│   └── 系统设计 <span class="punctuation">(</span>System Design<span class="punctuation">)</span> <span class="comment">// 替换原有的&quot;系统&quot;</span></span><br><span class="line">│ </span><br><span class="line">├── <span class="number">2</span>. Web 开发 <span class="punctuation">(</span>Web Development<span class="punctuation">)</span>  <span class="comment">// 拆分庞大的 &quot;web&quot; 分类</span></span><br><span class="line">│   ├── 前端 <span class="punctuation">(</span>Frontend<span class="punctuation">)</span></span><br><span class="line">│   │   ├── JavaScript <span class="meta">&amp; TypeScript</span></span><br><span class="line">│   │   ├── 框架与库 <span class="punctuation">(</span>Frameworks <span class="meta">&amp; Libs) <span class="comment">// Vue, React, Angular 等</span></span></span><br><span class="line">│   │   ├── CSS 与可视化 <span class="punctuation">(</span>CSS <span class="meta">&amp; Visualization) <span class="comment">// CSS, WebGL, Canvas 等</span></span></span><br><span class="line">│   │   └── 跨端方案 <span class="punctuation">(</span>Cross<span class="punctuation">-</span>Platform<span class="punctuation">)</span> <span class="comment">// 小程序, Flutter 等</span></span><br><span class="line">│   │</span><br><span class="line">│   └── 后端 <span class="punctuation">(</span>Backend<span class="punctuation">)</span></span><br><span class="line">│       ├── Node.js</span><br><span class="line">│       ├── Go / Python / 其他</span><br><span class="line">│       ├── 数据库 <span class="punctuation">(</span>Databases<span class="punctuation">)</span> <span class="comment">// MySQL, Redis 等</span></span><br><span class="line">│       └── API <span class="meta">&amp; 服务 (API &amp; Services)</span></span><br><span class="line">│</span><br><span class="line">├── <span class="number">3</span>. 工程化与运维 <span class="punctuation">(</span>Engineering <span class="meta">&amp; DevOps)</span></span><br><span class="line">│   ├── 构建与部署 <span class="punctuation">(</span>Build <span class="meta">&amp; Deployment) <span class="comment">// Webpack, Vite, CI/CD, Docker</span></span></span><br><span class="line">│   ├── 性能优化 <span class="punctuation">(</span>Performance<span class="punctuation">)</span></span><br><span class="line">│   ├── 代码质量 <span class="punctuation">(</span>Code Quality<span class="punctuation">)</span> <span class="comment">// 单元测试, 代码规范, Eslint</span></span><br><span class="line">│   └── 开发工具 <span class="punctuation">(</span>Dev Tools<span class="punctuation">)</span> <span class="comment">// Git, VSCode, Npm, Shell 脚本等</span></span><br><span class="line">│</span><br><span class="line">├── <span class="number">4</span>. 人工智能 <span class="punctuation">(</span>AI<span class="punctuation">)</span></span><br><span class="line">│</span><br><span class="line">├── <span class="number">5</span>. 软技能与思考 <span class="punctuation">(</span>Soft Skills <span class="meta">&amp; Reflections)</span></span><br><span class="line">│   ├── 项目管理 <span class="punctuation">(</span>Project Management<span class="punctuation">)</span></span><br><span class="line">│   ├── 职业发展 <span class="punctuation">(</span>Career Development<span class="punctuation">)</span> <span class="comment">// 替换原有的&quot;职场&quot;</span></span><br><span class="line">│   ├── 读书笔记 <span class="punctuation">(</span>Reading Notes<span class="punctuation">)</span></span><br><span class="line">│   └── 随笔 <span class="punctuation">(</span>Essays <span class="meta">&amp; Musings) <span class="comment">// &quot;随笔&quot;, &quot;七日谈&quot;可以归入这里</span></span></span><br><span class="line">│</span><br><span class="line">└── <span class="number">6</span>. 网站建设 <span class="punctuation">(</span>Site Meta<span class="punctuation">)</span> <span class="comment">// 替换&quot;博客相关&quot;</span></span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 网站建设 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>你不是在面试，你是在为职位试镜</title>
       <link href="/interviewStrategy/"/>
       <url>/interviewStrategy/</url>
@@ -13,7 +32,7 @@
       
       <categories>
           
-          <category> 职场 </category>
+          <category> 软技能与思考 </category>
           
       </categories>
       
@@ -32,10 +51,16 @@
       
       <categories>
           
-          <category> AI </category>
+          <category> 工程化与运维 </category>
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> 开发工具 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -51,10 +76,16 @@
       
       <categories>
           
-          <category> web </category>
+          <category> 工程化与运维 </category>
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> 开发工具 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -70,7 +101,7 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
@@ -89,7 +120,7 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
@@ -108,7 +139,7 @@
       
       <categories>
           
-          <category> 七日谈 </category>
+          <category> 软技能与思考 </category>
           
       </categories>
       
@@ -127,10 +158,16 @@
       
       <categories>
           
-          <category> AI </category>
+          <category> 工程化与运维 </category>
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> 开发工具 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -146,7 +183,7 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
@@ -165,10 +202,16 @@
       
       <categories>
           
-          <category> web </category>
+          <category> 编程基础 </category>
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> 系统 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -184,7 +227,7 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
@@ -203,10 +246,16 @@
       
       <categories>
           
-          <category> web </category>
+          <category> 软技能与思考 </category>
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> 随笔 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -222,7 +271,7 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
@@ -241,7 +290,7 @@
       
       <categories>
           
-          <category> 随笔 </category>
+          <category> 软技能与思考 </category>
           
       </categories>
       
@@ -260,7 +309,7 @@
       
       <categories>
           
-          <category> 随笔 </category>
+          <category> 软技能与思考 </category>
           
       </categories>
       
@@ -279,7 +328,7 @@
       
       <categories>
           
-          <category> 随笔 </category>
+          <category> 软技能与思考 </category>
           
       </categories>
       
@@ -298,14 +347,14 @@
       
       <categories>
           
-          <category> 阅读笔记 </category>
+          <category> 软技能与思考 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 读书 </tag>
+            <tag> 随笔 </tag>
             
         </tags>
       
@@ -323,14 +372,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> JavaScript </tag>
+            <tag> JavaScript&amp;TypeScript </tag>
             
         </tags>
       
@@ -348,14 +397,16 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> tag </tag>
+            <tag> 前端 </tag>
+            
+            <tag> 框架与库 </tag>
             
         </tags>
       
@@ -373,14 +424,14 @@
       
       <categories>
           
-          <category> 算法 </category>
+          <category> 编程基础 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> JavaScript </tag>
+            <tag> 计算机科学 </tag>
             
         </tags>
       
@@ -398,14 +449,14 @@
       
       <categories>
           
-          <category> 算法 </category>
+          <category> 编程基础 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> JavaScript </tag>
+            <tag> JavaScript&amp;TypeScript </tag>
             
         </tags>
       
@@ -423,14 +474,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> JavaScript </tag>
+            <tag> JavaScript&amp;TypeScript </tag>
             
         </tags>
       
@@ -448,14 +499,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> 编程基础 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 网络 </tag>
+            <tag> 计算机科学 </tag>
             
         </tags>
       
@@ -473,7 +524,7 @@
       
       <categories>
           
-          <category> 七日谈 </category>
+          <category> 软技能与思考 </category>
           
       </categories>
       
@@ -492,7 +543,7 @@
       
       <categories>
           
-          <category> 随笔 </category>
+          <category> 软技能与思考 </category>
           
       </categories>
       
@@ -511,14 +562,16 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> vue </tag>
+            <tag> 前端 </tag>
+            
+            <tag> 框架与库 </tag>
             
         </tags>
       
@@ -536,7 +589,7 @@
       
       <categories>
           
-          <category> 七日谈 </category>
+          <category> 软技能与思考 </category>
           
       </categories>
       
@@ -555,14 +608,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> JavaScript </tag>
+            <tag> JavaScript&amp;TypeScript </tag>
             
         </tags>
       
@@ -580,14 +633,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> 工程化与运维 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> devOps </tag>
+            <tag> 构建与部署 </tag>
             
         </tags>
       
@@ -605,14 +658,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> 工程化与运维 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> devOps </tag>
+            <tag> 构建与部署 </tag>
             
         </tags>
       
@@ -630,14 +683,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> TypeScript </tag>
+            <tag> JavaScript&amp;TypeScript </tag>
             
         </tags>
       
@@ -655,7 +708,7 @@
       
       <categories>
           
-          <category> 七日谈 </category>
+          <category> 软技能与思考 </category>
           
       </categories>
       
@@ -674,14 +727,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 计算机基础 </tag>
+            <tag> 计算机科学 </tag>
             
         </tags>
       
@@ -699,7 +752,7 @@
       
       <categories>
           
-          <category> 七日谈 </category>
+          <category> 软技能与思考 </category>
           
       </categories>
       
@@ -718,7 +771,7 @@
       
       <categories>
           
-          <category> 七日谈 </category>
+          <category> 软技能与思考 </category>
           
       </categories>
       
@@ -737,7 +790,7 @@
       
       <categories>
           
-          <category> 七日谈 </category>
+          <category> 软技能与思考 </category>
           
       </categories>
       
@@ -756,7 +809,7 @@
       
       <categories>
           
-          <category> 七日谈 </category>
+          <category> 软技能与思考 </category>
           
       </categories>
       
@@ -775,14 +828,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> JavaScript </tag>
+            <tag> JavaScript&amp;TypeScript </tag>
             
         </tags>
       
@@ -800,14 +853,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> JavaScript </tag>
+            <tag> JavaScript&amp;TypeScript </tag>
             
         </tags>
       
@@ -825,7 +878,7 @@
       
       <categories>
           
-          <category> 七日谈 </category>
+          <category> 软技能与思考 </category>
           
       </categories>
       
@@ -844,7 +897,7 @@
       
       <categories>
           
-          <category> 七日谈 </category>
+          <category> 软技能与思考 </category>
           
       </categories>
       
@@ -863,14 +916,16 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> css </tag>
+            <tag> 前端 </tag>
+            
+            <tag> CSS与可视化 </tag>
             
         </tags>
       
@@ -888,7 +943,7 @@
       
       <categories>
           
-          <category> 七日谈 </category>
+          <category> 软技能与思考 </category>
           
       </categories>
       
@@ -907,14 +962,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> JavaScript </tag>
+            <tag> JavaScript&amp;TypeScript </tag>
             
         </tags>
       
@@ -932,14 +987,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> JavaScript </tag>
+            <tag> JavaScript&amp;TypeScript </tag>
             
         </tags>
       
@@ -957,7 +1012,7 @@
       
       <categories>
           
-          <category> 七日谈 </category>
+          <category> 软技能与思考 </category>
           
       </categories>
       
@@ -976,7 +1031,7 @@
       
       <categories>
           
-          <category> 七日谈 </category>
+          <category> 软技能与思考 </category>
           
       </categories>
       
@@ -995,14 +1050,16 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 开发环境 </tag>
+            <tag> 前端 </tag>
+            
+            <tag> 跨端方案 </tag>
             
         </tags>
       
@@ -1020,16 +1077,10 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
-      
-        <tags>
-            
-            <tag> 工程化 </tag>
-            
-        </tags>
       
     </entry>
     
@@ -1045,14 +1096,14 @@
       
       <categories>
           
-          <category> 项目管理 </category>
+          <category> 工程化与运维 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> git </tag>
+            <tag> 开发工具 </tag>
             
         </tags>
       
@@ -1070,14 +1121,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> 工程化与运维 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> devOps </tag>
+            <tag> 构建与部署 </tag>
             
         </tags>
       
@@ -1095,7 +1146,7 @@
       
       <categories>
           
-          <category> 随笔 </category>
+          <category> 软技能与思考 </category>
           
       </categories>
       
@@ -1114,7 +1165,7 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
@@ -1133,14 +1184,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> 编程基础 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 正则 </tag>
+            <tag> 编程语言 </tag>
             
         </tags>
       
@@ -1158,7 +1209,7 @@
       
       <categories>
           
-          <category> 算法 </category>
+          <category> 编程基础 </category>
           
       </categories>
       
@@ -1177,14 +1228,16 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> nodeJs </tag>
+            <tag> 服务端 </tag>
+            
+            <tag> Node.js </tag>
             
         </tags>
       
@@ -1202,14 +1255,14 @@
       
       <categories>
           
-          <category> 服务端 </category>
+          <category> 工程化与运维 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> ffmpeg </tag>
+            <tag> 开发工具 </tag>
             
         </tags>
       
@@ -1227,7 +1280,7 @@
       
       <categories>
           
-          <category> 随笔 </category>
+          <category> 软技能与思考 </category>
           
       </categories>
       
@@ -1246,14 +1299,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> JavaScript </tag>
+            <tag> JavaScript&amp;TypeScript </tag>
             
         </tags>
       
@@ -1271,14 +1324,16 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> vue </tag>
+            <tag> 前端 </tag>
+            
+            <tag> 框架与库 </tag>
             
         </tags>
       
@@ -1296,14 +1351,16 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> vue </tag>
+            <tag> 前端 </tag>
+            
+            <tag> 框架与库 </tag>
             
         </tags>
       
@@ -1321,7 +1378,7 @@
       
       <categories>
           
-          <category> 随笔 </category>
+          <category> 软技能与思考 </category>
           
       </categories>
       
@@ -1340,7 +1397,7 @@
       
       <categories>
           
-          <category> 随笔 </category>
+          <category> 软技能与思考 </category>
           
       </categories>
       
@@ -1359,14 +1416,16 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> nodeJs </tag>
+            <tag> 服务端 </tag>
+            
+            <tag> Node.js </tag>
             
         </tags>
       
@@ -1384,14 +1443,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> JavaScript </tag>
+            <tag> JavaScript&amp;TypeScript </tag>
             
         </tags>
       
@@ -1409,14 +1468,16 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> css </tag>
+            <tag> 前端 </tag>
+            
+            <tag> CSS与可视化 </tag>
             
         </tags>
       
@@ -1434,14 +1495,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> JavaScript </tag>
+            <tag> JavaScript&amp;TypeScript </tag>
             
         </tags>
       
@@ -1459,14 +1520,16 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> vue </tag>
+            <tag> 前端 </tag>
+            
+            <tag> 框架与库 </tag>
             
         </tags>
       
@@ -1484,14 +1547,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> css </tag>
+            <tag> CSS与可视化 </tag>
             
         </tags>
       
@@ -1509,14 +1572,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> css </tag>
+            <tag> CSS与可视化 </tag>
             
         </tags>
       
@@ -1534,7 +1597,7 @@
       
       <categories>
           
-          <category> 随笔 </category>
+          <category> 软技能与思考 </category>
           
       </categories>
       
@@ -1553,14 +1616,16 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> css </tag>
+            <tag> 前端 </tag>
+            
+            <tag> CSS与可视化 </tag>
             
         </tags>
       
@@ -1578,14 +1643,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> JavaScript </tag>
+            <tag> JavaScript&amp;TypeScript </tag>
             
         </tags>
       
@@ -1603,14 +1668,14 @@
       
       <categories>
           
-          <category> 系统 </category>
+          <category> 编程基础 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 网络 </tag>
+            <tag> 计算机科学 </tag>
             
         </tags>
       
@@ -1628,14 +1693,14 @@
       
       <categories>
           
-          <category> 源码学习 </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> lodash </tag>
+            <tag> 框架与库 </tag>
             
         </tags>
       
@@ -1653,14 +1718,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> JavaScript </tag>
+            <tag> JavaScript&amp;TypeScript </tag>
             
         </tags>
       
@@ -1678,14 +1743,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> 编程基础 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 网络 </tag>
+            <tag> 计算机科学 </tag>
             
         </tags>
       
@@ -1703,14 +1768,16 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> vue </tag>
+            <tag> 前端 </tag>
+            
+            <tag> 框架与库 </tag>
             
         </tags>
       
@@ -1728,14 +1795,14 @@
       
       <categories>
           
-          <category> 项目管理 </category>
+          <category> 工程化与运维 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> devOps </tag>
+            <tag> 构建与部署 </tag>
             
         </tags>
       
@@ -1753,7 +1820,7 @@
       
       <categories>
           
-          <category> 随笔 </category>
+          <category> 软技能与思考 </category>
           
       </categories>
       
@@ -1772,14 +1839,16 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> vue </tag>
+            <tag> 前端 </tag>
+            
+            <tag> 框架与库 </tag>
             
         </tags>
       
@@ -1797,14 +1866,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> JavaScript </tag>
+            <tag> JavaScript&amp;TypeScript </tag>
             
         </tags>
       
@@ -1822,14 +1891,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> JavaScript </tag>
+            <tag> JavaScript&amp;TypeScript </tag>
             
         </tags>
       
@@ -1847,14 +1916,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> 编程基础 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> web安全 </tag>
+            <tag> 计算机科学 </tag>
             
         </tags>
       
@@ -1872,7 +1941,7 @@
       
       <categories>
           
-          <category> 随笔 </category>
+          <category> 软技能与思考 </category>
           
       </categories>
       
@@ -1891,7 +1960,7 @@
       
       <categories>
           
-          <category> web </category>
+          <category> 工程化与运维 </category>
           
       </categories>
       
@@ -1916,14 +1985,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> 工程化与运维 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 工程化 </tag>
+            <tag> 构建与部署 </tag>
             
         </tags>
       
@@ -1941,10 +2010,16 @@
       
       <categories>
           
-          <category> 算法 </category>
+          <category> 编程基础 </category>
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> 计算机科学 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -1960,14 +2035,16 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 浏览器 </tag>
+            <tag> 前端 </tag>
+            
+            <tag> 跨端方案 </tag>
             
         </tags>
       
@@ -1985,14 +2062,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> web安全 </tag>
+            <tag> 计算机科学 </tag>
             
         </tags>
       
@@ -2010,14 +2087,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> 编程基础 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 网络 </tag>
+            <tag> 计算机科学 </tag>
             
         </tags>
       
@@ -2035,14 +2112,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> 工程化与运维 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> git </tag>
+            <tag> 开发工具 </tag>
             
         </tags>
       
@@ -2060,14 +2137,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> web安全 </tag>
+            <tag> 计算机科学 </tag>
             
         </tags>
       
@@ -2085,14 +2162,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> 工程化与运维 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 开发环境 </tag>
+            <tag> 开发工具 </tag>
             
         </tags>
       
@@ -2110,14 +2187,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> JavaScript </tag>
+            <tag> JavaScript&amp;TypeScript </tag>
             
         </tags>
       
@@ -2135,7 +2212,7 @@
       
       <categories>
           
-          <category> web </category>
+          <category> 工程化与运维 </category>
           
       </categories>
       
@@ -2160,14 +2237,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> JavaScript </tag>
+            <tag> JavaScript&amp;TypeScript </tag>
             
         </tags>
       
@@ -2185,7 +2262,7 @@
       
       <categories>
           
-          <category> 阅读笔记 </category>
+          <category> 软技能与思考 </category>
           
       </categories>
       
@@ -2204,14 +2281,14 @@
       
       <categories>
           
-          <category> 源码学习 </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> lodash </tag>
+            <tag> 框架与库 </tag>
             
         </tags>
       
@@ -2229,14 +2306,16 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> css </tag>
+            <tag> 前端 </tag>
+            
+            <tag> CSS与可视化 </tag>
             
         </tags>
       
@@ -2254,14 +2333,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> JavaScript </tag>
+            <tag> JavaScript&amp;TypeScript </tag>
             
         </tags>
       
@@ -2279,7 +2358,7 @@
       
       <categories>
           
-          <category> 系统 </category>
+          <category> 工程化与运维 </category>
           
       </categories>
       
@@ -2298,14 +2377,16 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> css </tag>
+            <tag> 前端 </tag>
+            
+            <tag> CSS与可视化 </tag>
             
         </tags>
       
@@ -2323,14 +2404,16 @@
       
       <categories>
           
-          <category> 服务端 </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> Go </tag>
+            <tag> 服务端 </tag>
+            
+            <tag> Python/Go/其他 </tag>
             
         </tags>
       
@@ -2348,14 +2431,16 @@
       
       <categories>
           
-          <category> 服务端 </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> nodeJs </tag>
+            <tag> 服务端 </tag>
+            
+            <tag> Node.js </tag>
             
         </tags>
       
@@ -2373,14 +2458,16 @@
       
       <categories>
           
-          <category> 服务端 </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> Go </tag>
+            <tag> 服务端 </tag>
+            
+            <tag> Python/Go/其他 </tag>
             
         </tags>
       
@@ -2398,14 +2485,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> TypeScript </tag>
+            <tag> JavaScript&amp;TypeScript </tag>
             
         </tags>
       
@@ -2423,14 +2510,16 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 富文本 </tag>
+            <tag> 前端 </tag>
+            
+            <tag> 框架与库 </tag>
             
         </tags>
       
@@ -2448,7 +2537,7 @@
       
       <categories>
           
-          <category> 系统 </category>
+          <category> 工程化与运维 </category>
           
       </categories>
       
@@ -2467,14 +2556,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> flow </tag>
+            <tag> JavaScript&amp;TypeScript </tag>
             
         </tags>
       
@@ -2492,14 +2581,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 小程序 </tag>
+            <tag> 跨端方案 </tag>
             
         </tags>
       
@@ -2517,14 +2606,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> 工程化与运维 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 单元测试 </tag>
+            <tag> 代码质量 </tag>
             
         </tags>
       
@@ -2542,14 +2631,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> 编程基础 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 网络 </tag>
+            <tag> 计算机科学 </tag>
             
         </tags>
       
@@ -2567,14 +2656,14 @@
       
       <categories>
           
-          <category> 项目管理 </category>
+          <category> 工程化与运维 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> git </tag>
+            <tag> 开发工具 </tag>
             
         </tags>
       
@@ -2592,14 +2681,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> JavaScript </tag>
+            <tag> JavaScript&amp;TypeScript </tag>
             
         </tags>
       
@@ -2617,14 +2706,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> JavaScript </tag>
+            <tag> JavaScript&amp;TypeScript </tag>
             
         </tags>
       
@@ -2642,14 +2731,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> JavaScript </tag>
+            <tag> JavaScript&amp;TypeScript </tag>
             
         </tags>
       
@@ -2667,14 +2756,16 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> webGL </tag>
+            <tag> 前端 </tag>
+            
+            <tag> CSS与可视化 </tag>
             
         </tags>
       
@@ -2692,10 +2783,16 @@
       
       <categories>
           
-          <category> 算法 </category>
+          <category> 编程基础 </category>
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> 计算机科学 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -2711,14 +2808,16 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> css </tag>
+            <tag> 前端 </tag>
+            
+            <tag> CSS与可视化 </tag>
             
         </tags>
       
@@ -2736,14 +2835,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> npm </tag>
+            <tag> 开发工具 </tag>
             
         </tags>
       
@@ -2761,7 +2860,7 @@
       
       <categories>
           
-          <category> 博客相关 </category>
+          <category> 网站建设 </category>
           
       </categories>
       
@@ -2780,10 +2879,16 @@
       
       <categories>
           
-          <category> 算法 </category>
+          <category> 编程基础 </category>
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> 计算机科学 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -2799,14 +2904,16 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> css </tag>
+            <tag> 前端 </tag>
+            
+            <tag> CSS与可视化 </tag>
             
         </tags>
       
@@ -2824,14 +2931,16 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> css </tag>
+            <tag> 前端 </tag>
+            
+            <tag> CSS与可视化 </tag>
             
         </tags>
       
@@ -2849,14 +2958,16 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> css </tag>
+            <tag> 前端 </tag>
+            
+            <tag> CSS与可视化 </tag>
             
         </tags>
       
@@ -2874,14 +2985,16 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> css </tag>
+            <tag> 前端 </tag>
+            
+            <tag> CSS与可视化 </tag>
             
         </tags>
       
@@ -2899,14 +3012,16 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> css </tag>
+            <tag> 前端 </tag>
+            
+            <tag> CSS与可视化 </tag>
             
         </tags>
       
@@ -2924,14 +3039,16 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> css </tag>
+            <tag> 前端 </tag>
+            
+            <tag> CSS与可视化 </tag>
             
         </tags>
       
@@ -2949,14 +3066,16 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> css </tag>
+            <tag> 前端 </tag>
+            
+            <tag> CSS与可视化 </tag>
             
         </tags>
       
@@ -2974,7 +3093,7 @@
       
       <categories>
           
-          <category> 阅读笔记 </category>
+          <category> 软技能与思考 </category>
           
       </categories>
       
@@ -2993,7 +3112,7 @@
       
       <categories>
           
-          <category> 阅读笔记 </category>
+          <category> 软技能与思考 </category>
           
       </categories>
       
@@ -3012,7 +3131,7 @@
       
       <categories>
           
-          <category> 阅读笔记 </category>
+          <category> 软技能与思考 </category>
           
       </categories>
       
@@ -3031,10 +3150,16 @@
       
       <categories>
           
-          <category> 算法 </category>
+          <category> 编程基础 </category>
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> JavaScript&amp;TypeScript </tag>
+            
+        </tags>
       
     </entry>
     
@@ -3050,26 +3175,7 @@
       
       <categories>
           
-          <category> 算法 </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>生成指定范围的随机数组</title>
-      <link href="/%E7%94%9F%E6%88%90%E6%8C%87%E5%AE%9A%E8%8C%83%E5%9B%B4%E7%9A%84%E9%9A%8F%E6%9C%BA%E6%95%B0%E7%BB%84-1/"/>
-      <url>/%E7%94%9F%E6%88%90%E6%8C%87%E5%AE%9A%E8%8C%83%E5%9B%B4%E7%9A%84%E9%9A%8F%E6%9C%BA%E6%95%B0%E7%BB%84-1/</url>
-      
-        <content type="html"><![CDATA[<p>输入范围，输出随机组成的数组，比如输入 minNum、maxNum、option，返回 minNum 与 maxNum 间的随机数组构成的 option 长度的数组。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>1、 求出随机数的范围 maxNum - minNum + 1</p><p>2、指定范围的随机数算法 Math.random() * len</p><p>3、 遍历 option,若生成的随机数不在 minNum 与 maxNum 范围内，则重新计算，否则，添加随机数到数组</p><p>4、 返回随机数组成的数组</p><h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">MakeRandomList</span>(<span class="params">minNum, maxNum, option</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> res = [];</span><br><span class="line">  <span class="keyword">const</span> len = maxNum - minNum + <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; option; i++) &#123;</span><br><span class="line">    <span class="keyword">const</span> random = <span class="title class_">Math</span>.<span class="title function_">floor</span>(<span class="title class_">Math</span>.<span class="title function_">random</span>() * len);</span><br><span class="line">    <span class="keyword">if</span> (random &lt; minNum || random &gt; maxNum) &#123;</span><br><span class="line">      i--;</span><br><span class="line">      <span class="keyword">continue</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    res.<span class="title function_">push</span>(random);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> test = <span class="title class_">MakeRandomList</span>(<span class="number">2</span>, <span class="number">6</span>, <span class="number">5</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(test);</span><br></pre></td></tr></table></figure>]]></content>
-      
-      
-      <categories>
-          
-          <category> 算法 </category>
+          <category> 编程基础 </category>
           
       </categories>
       
@@ -3088,14 +3194,14 @@
       
       <categories>
           
-          <category> 项目管理 </category>
+          <category> 工程化与运维 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> git </tag>
+            <tag> 开发工具 </tag>
             
         </tags>
       
@@ -3113,14 +3219,16 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> vue </tag>
+            <tag> 前端 </tag>
+            
+            <tag> 框架与库 </tag>
             
         </tags>
       
@@ -3138,7 +3246,7 @@
       
       <categories>
           
-          <category> 算法 </category>
+          <category> 编程基础 </category>
           
       </categories>
       
@@ -3157,7 +3265,7 @@
       
       <categories>
           
-          <category> 算法 </category>
+          <category> 编程基础 </category>
           
       </categories>
       
@@ -3176,14 +3284,16 @@
       
       <categories>
           
-          <category> 服务端 </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> nodeJs </tag>
+            <tag> 服务端 </tag>
+            
+            <tag> Node.js </tag>
             
         </tags>
       
@@ -3201,10 +3311,16 @@
       
       <categories>
           
-          <category> 算法 </category>
+          <category> 编程基础 </category>
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> 计算机科学 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -3220,14 +3336,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 小程序 </tag>
+            <tag> 跨端方案 </tag>
             
         </tags>
       
@@ -3245,14 +3361,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> git </tag>
+            <tag> 开发工具 </tag>
             
         </tags>
       
@@ -3270,7 +3386,7 @@
       
       <categories>
           
-          <category> web </category>
+          <category> 工程化与运维 </category>
           
       </categories>
       
@@ -3295,14 +3411,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> JavaScript </tag>
+            <tag> JavaScript&amp;TypeScript </tag>
             
         </tags>
       
@@ -3320,14 +3436,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> 编程基础 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 科普 </tag>
+            <tag> 计算机科学 </tag>
             
         </tags>
       
@@ -3345,14 +3461,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> css </tag>
+            <tag> CSS与可视化 </tag>
             
         </tags>
       
@@ -3370,14 +3486,14 @@
       
       <categories>
           
-          <category> 阅读笔记 </category>
+          <category> 软技能与思考 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> css </tag>
+            <tag> CSS与可视化 </tag>
             
         </tags>
       
@@ -3395,14 +3511,14 @@
       
       <categories>
           
-          <category> 阅读笔记 </category>
+          <category> 软技能与思考 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> css </tag>
+            <tag> CSS与可视化 </tag>
             
         </tags>
       
@@ -3420,14 +3536,16 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> css </tag>
+            <tag> 前端 </tag>
+            
+            <tag> CSS与可视化 </tag>
             
         </tags>
       
@@ -3445,14 +3563,14 @@
       
       <categories>
           
-          <category> 项目管理 </category>
+          <category> 工程化与运维 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> git </tag>
+            <tag> 开发工具 </tag>
             
         </tags>
       
@@ -3470,14 +3588,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> JavaScript </tag>
+            <tag> JavaScript&amp;TypeScript </tag>
             
         </tags>
       
@@ -3495,14 +3613,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> JavaScript </tag>
+            <tag> JavaScript&amp;TypeScript </tag>
             
         </tags>
       
@@ -3520,14 +3638,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> JavaScript </tag>
+            <tag> JavaScript&amp;TypeScript </tag>
             
         </tags>
       
@@ -3545,14 +3663,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> flutter </tag>
+            <tag> 跨端方案 </tag>
             
         </tags>
       
@@ -3570,14 +3688,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> flutter </tag>
+            <tag> 跨端方案 </tag>
             
         </tags>
       
@@ -3595,14 +3713,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> JavaScript </tag>
+            <tag> JavaScript&amp;TypeScript </tag>
             
         </tags>
       
@@ -3620,10 +3738,16 @@
       
       <categories>
           
-          <category> 算法 </category>
+          <category> 编程基础 </category>
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> 计算机科学 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -3639,14 +3763,14 @@
       
       <categories>
           
-          <category> 项目管理 </category>
+          <category> 工程化与运维 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> git </tag>
+            <tag> 开发工具 </tag>
             
         </tags>
       
@@ -3664,14 +3788,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> 工程化与运维 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 工程化 </tag>
+            <tag> 构建与部署 </tag>
             
         </tags>
       
@@ -3689,14 +3813,14 @@
       
       <categories>
           
-          <category> 项目管理 </category>
+          <category> 工程化与运维 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> git </tag>
+            <tag> 开发工具 </tag>
             
         </tags>
       
@@ -3714,14 +3838,16 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> css </tag>
+            <tag> 前端 </tag>
+            
+            <tag> CSS与可视化 </tag>
             
         </tags>
       
@@ -3739,10 +3865,16 @@
       
       <categories>
           
-          <category> web </category>
+          <category> 编程基础 </category>
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> 计算机科学 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -3758,10 +3890,16 @@
       
       <categories>
           
-          <category> web </category>
+          <category> 编程基础 </category>
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> 计算机科学 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -3777,14 +3915,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> JavaScript </tag>
+            <tag> JavaScript&amp;TypeScript </tag>
             
         </tags>
       
@@ -3802,14 +3940,16 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> webGL </tag>
+            <tag> 前端 </tag>
+            
+            <tag> CSS与可视化 </tag>
             
         </tags>
       
@@ -3827,7 +3967,7 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
@@ -3846,10 +3986,16 @@
       
       <categories>
           
-          <category> web </category>
+          <category> 编程基础 </category>
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> 计算机科学 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -3865,14 +4011,16 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> webGL </tag>
+            <tag> 前端 </tag>
+            
+            <tag> CSS与可视化 </tag>
             
         </tags>
       
@@ -3890,14 +4038,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> 工程化与运维 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 工程化 </tag>
+            <tag> 构建与部署 </tag>
             
         </tags>
       
@@ -3915,14 +4063,16 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> css </tag>
+            <tag> 前端 </tag>
+            
+            <tag> CSS与可视化 </tag>
             
         </tags>
       
@@ -3940,7 +4090,7 @@
       
       <categories>
           
-          <category> web </category>
+          <category> 工程化与运维 </category>
           
       </categories>
       
@@ -3965,14 +4115,16 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 浏览器 </tag>
+            <tag> 前端 </tag>
+            
+            <tag> 跨端方案 </tag>
             
         </tags>
       
@@ -3990,14 +4142,16 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 网络 </tag>
+            <tag> 前端 </tag>
+            
+            <tag> 框架与库 </tag>
             
         </tags>
       
@@ -4015,14 +4169,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> 工程化与运维 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 开发环境 </tag>
+            <tag> 开发工具 </tag>
             
         </tags>
       
@@ -4040,14 +4194,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> JavaScript </tag>
+            <tag> JavaScript&amp;TypeScript </tag>
             
         </tags>
       
@@ -4065,14 +4219,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> JavaScript </tag>
+            <tag> JavaScript&amp;TypeScript </tag>
             
         </tags>
       
@@ -4090,10 +4244,16 @@
       
       <categories>
           
-          <category> 算法 </category>
+          <category> 编程基础 </category>
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> 计算机科学 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -4109,10 +4269,16 @@
       
       <categories>
           
-          <category> 算法 </category>
+          <category> 编程基础 </category>
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> 计算机科学 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -4128,10 +4294,16 @@
       
       <categories>
           
-          <category> 算法 </category>
+          <category> 编程基础 </category>
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> 计算机科学 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -4147,10 +4319,16 @@
       
       <categories>
           
-          <category> 算法 </category>
+          <category> 编程基础 </category>
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> 计算机科学 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -4166,14 +4344,14 @@
       
       <categories>
           
-          <category> 系统 </category>
+          <category> 工程化与运维 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> git </tag>
+            <tag> 开发工具 </tag>
             
         </tags>
       
@@ -4191,10 +4369,16 @@
       
       <categories>
           
-          <category> 算法 </category>
+          <category> 编程基础 </category>
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> 计算机科学 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -4210,14 +4394,14 @@
       
       <categories>
           
-          <category> 算法 </category>
+          <category> 编程基础 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 科普 </tag>
+            <tag> 计算机科学 </tag>
             
         </tags>
       
@@ -4235,14 +4419,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> 工程化与运维 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 科普 </tag>
+            <tag> 构建与部署 </tag>
             
         </tags>
       
@@ -4260,14 +4444,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> 编程基础 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 科普 </tag>
+            <tag> 计算机科学 </tag>
             
         </tags>
       
@@ -4285,7 +4469,7 @@
       
       <categories>
           
-          <category> 系统 </category>
+          <category> 工程化与运维 </category>
           
       </categories>
       
@@ -4304,10 +4488,16 @@
       
       <categories>
           
-          <category> 系统 </category>
+          <category> 编程基础 </category>
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> 系统 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -4323,14 +4513,16 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> nodeJs </tag>
+            <tag> 服务端 </tag>
+            
+            <tag> Node.js </tag>
             
         </tags>
       
@@ -4348,7 +4540,7 @@
       
       <categories>
           
-          <category> 算法 </category>
+          <category> 编程基础 </category>
           
       </categories>
       
@@ -4367,14 +4559,16 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> css </tag>
+            <tag> 前端 </tag>
+            
+            <tag> CSS与可视化 </tag>
             
         </tags>
       
@@ -4392,14 +4586,16 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> vue </tag>
+            <tag> 前端 </tag>
+            
+            <tag> 框架与库 </tag>
             
         </tags>
       
@@ -4417,7 +4613,7 @@
       
       <categories>
           
-          <category> 系统 </category>
+          <category> 工程化与运维 </category>
           
       </categories>
       
@@ -4436,7 +4632,7 @@
       
       <categories>
           
-          <category> 系统 </category>
+          <category> 工程化与运维 </category>
           
       </categories>
       
@@ -4455,7 +4651,7 @@
       
       <categories>
           
-          <category> 项目管理 </category>
+          <category> 软技能与思考 </category>
           
       </categories>
       
@@ -4474,14 +4670,16 @@
       
       <categories>
           
-          <category> 服务端 </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> mysql </tag>
+            <tag> 后端 </tag>
+            
+            <tag> API&amp;服务 </tag>
             
         </tags>
       
@@ -4499,14 +4697,16 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> webGL </tag>
+            <tag> 前端 </tag>
+            
+            <tag> CSS与可视化 </tag>
             
         </tags>
       
@@ -4524,14 +4724,16 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> webGL </tag>
+            <tag> 前端 </tag>
+            
+            <tag> CSS与可视化 </tag>
             
         </tags>
       
@@ -4549,14 +4751,16 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> webGL </tag>
+            <tag> 前端 </tag>
+            
+            <tag> CSS与可视化 </tag>
             
         </tags>
       
@@ -4574,7 +4778,7 @@
       
       <categories>
           
-          <category> 项目管理 </category>
+          <category> 工程化与运维 </category>
           
       </categories>
       
@@ -4593,7 +4797,7 @@
       
       <categories>
           
-          <category> 项目管理 </category>
+          <category> 工程化与运维 </category>
           
       </categories>
       
@@ -4612,14 +4816,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> css </tag>
+            <tag> CSS与可视化 </tag>
             
         </tags>
       
@@ -4637,14 +4841,16 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> react </tag>
+            <tag> 前端 </tag>
+            
+            <tag> 框架与库 </tag>
             
         </tags>
       
@@ -4662,14 +4868,16 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> webGL </tag>
+            <tag> 前端 </tag>
+            
+            <tag> CSS与可视化 </tag>
             
         </tags>
       
@@ -4687,7 +4895,7 @@
       
       <categories>
           
-          <category> web </category>
+          <category> 工程化与运维 </category>
           
       </categories>
       
@@ -4712,10 +4920,16 @@
       
       <categories>
           
-          <category> 算法 </category>
+          <category> 编程基础 </category>
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> 计算机科学 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -4731,10 +4945,16 @@
       
       <categories>
           
-          <category> 算法 </category>
+          <category> 编程基础 </category>
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> 计算机科学 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -4750,14 +4970,16 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> vue </tag>
+            <tag> 前端 </tag>
+            
+            <tag> 框架与库 </tag>
             
         </tags>
       
@@ -4775,14 +4997,16 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> webGL </tag>
+            <tag> 前端 </tag>
+            
+            <tag> CSS与可视化 </tag>
             
         </tags>
       
@@ -4800,14 +5024,14 @@
       
       <categories>
           
-          <category> 项目管理 </category>
+          <category> 工程化与运维 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> npm </tag>
+            <tag> 开发工具 </tag>
             
         </tags>
       
@@ -4825,14 +5049,16 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> nodeJs </tag>
+            <tag> 服务端 </tag>
+            
+            <tag> Node.js </tag>
             
         </tags>
       
@@ -4850,14 +5076,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> 编程基础 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 正则 </tag>
+            <tag> 编程语言 </tag>
             
         </tags>
       
@@ -4875,14 +5101,14 @@
       
       <categories>
           
-          <category> 项目管理 </category>
+          <category> 工程化与运维 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 工程化 </tag>
+            <tag> 构建与部署 </tag>
             
         </tags>
       
@@ -4900,14 +5126,14 @@
       
       <categories>
           
-          <category> 项目管理 </category>
+          <category> 工程化与运维 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> git </tag>
+            <tag> 开发工具 </tag>
             
         </tags>
       
@@ -4925,14 +5151,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> JavaScript </tag>
+            <tag> JavaScript&amp;TypeScript </tag>
             
         </tags>
       
@@ -4950,14 +5176,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> JavaScript </tag>
+            <tag> JavaScript&amp;TypeScript </tag>
             
         </tags>
       
@@ -4975,14 +5201,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> JavaScript </tag>
+            <tag> JavaScript&amp;TypeScript </tag>
             
         </tags>
       
@@ -5000,14 +5226,16 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> vue </tag>
+            <tag> 前端 </tag>
+            
+            <tag> 框架与库 </tag>
             
         </tags>
       
@@ -5025,14 +5253,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> JavaScript </tag>
+            <tag> JavaScript&amp;TypeScript </tag>
             
         </tags>
       
@@ -5050,14 +5278,16 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> css </tag>
+            <tag> 前端 </tag>
+            
+            <tag> CSS与可视化 </tag>
             
         </tags>
       
@@ -5075,14 +5305,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> vue </tag>
+            <tag> 前端 </tag>
             
         </tags>
       
@@ -5100,7 +5330,7 @@
       
       <categories>
           
-          <category> 语言 </category>
+          <category> 软技能与思考 </category>
           
       </categories>
       
@@ -5119,10 +5349,16 @@
       
       <categories>
           
-          <category> 算法 </category>
+          <category> 编程基础 </category>
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> 计算机科学 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -5138,14 +5374,16 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> css </tag>
+            <tag> 前端 </tag>
+            
+            <tag> CSS与可视化 </tag>
             
         </tags>
       
@@ -5163,10 +5401,16 @@
       
       <categories>
           
-          <category> 系统 </category>
+          <category> 工程化与运维 </category>
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> 系统 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -5182,14 +5426,16 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> vue </tag>
+            <tag> 前端 </tag>
+            
+            <tag> 框架与库 </tag>
             
         </tags>
       
@@ -5207,10 +5453,16 @@
       
       <categories>
           
-          <category> 算法 </category>
+          <category> 编程基础 </category>
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> 计算机科学 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -5226,14 +5478,16 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> css </tag>
+            <tag> 前端 </tag>
+            
+            <tag> CSS与可视化 </tag>
             
         </tags>
       
@@ -5251,14 +5505,16 @@
       
       <categories>
           
-          <category> 系统 </category>
+          <category> 工程化与运维 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> mysql </tag>
+            <tag> 后端 </tag>
+            
+            <tag> API&amp;服务 </tag>
             
         </tags>
       
@@ -5276,14 +5532,16 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> css </tag>
+            <tag> 前端 </tag>
+            
+            <tag> CSS与可视化 </tag>
             
         </tags>
       
@@ -5301,14 +5559,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> JavaScript </tag>
+            <tag> JavaScript&amp;TypeScript </tag>
             
         </tags>
       
@@ -5326,14 +5584,16 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> vue </tag>
+            <tag> 前端 </tag>
+            
+            <tag> 框架与库 </tag>
             
         </tags>
       
@@ -5351,16 +5611,10 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
-      
-        <tags>
-            
-            <tag> css </tag>
-            
-        </tags>
       
     </entry>
     
@@ -5376,14 +5630,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> css </tag>
+            <tag> CSS与可视化 </tag>
             
         </tags>
       
@@ -5401,14 +5655,16 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> css </tag>
+            <tag> 前端 </tag>
+            
+            <tag> CSS与可视化 </tag>
             
         </tags>
       
@@ -5426,14 +5682,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> html </tag>
+            <tag> 前端 </tag>
             
         </tags>
       
@@ -5451,14 +5707,16 @@
       
       <categories>
           
-          <category> 服务端 </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> python </tag>
+            <tag> 服务端 </tag>
+            
+            <tag> Python/Go/其他 </tag>
             
         </tags>
       
@@ -5476,14 +5734,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> 工程化与运维 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 开发环境 </tag>
+            <tag> 开发工具 </tag>
             
         </tags>
       
@@ -5499,16 +5757,10 @@
         <content type="html"><![CDATA[<p>花了两周多，终于完成了一个基本无 bug 的项目，但是有个比较大的问题就是：在 webpack 测试环境下，编译时间太久了，app.js 太大了，导致页面初始化极其的慢，虽然说正式环境下不会有这个问题，同事也说测试环境 1000 kb 左右正常，不用优化，但是自己的页面打开慢还是让人感到极其不爽的，花了两个钟左右，我把 app.js 从 1983 kb 缩小到了 1083 kb，压缩之后为 273 kb，首屏运行速度从原来的可能要十多秒，提升到了 166 ms，我是怎么做到这些的呢？主要策略如下：</p><p>首先，从包开始优化，我用的包就一个 elementUI，用过的人应该都知道，这个包有几百 kb，简直就是恶魔啊，所以，必须要打压他一下。这里的主要策略就是按需引入 elementUI，关于 elementUI 的按需引入，官方有介绍，看<a href="http://element-cn.eleme.io/#/zh-CN/component/quickstart">这里</a>，这里我要讲的是，官方可能叫你这么引入这个库的：</p><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">在 main.<span class="property">js</span> 引入改库</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Vue</span> <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Button</span>, <span class="title class_">Select</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;element-ui&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">App</span> <span class="keyword">from</span> <span class="string">&#x27;./App.vue&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">component</span>(<span class="title class_">Button</span>.<span class="property">name</span>, <span class="title class_">Button</span>);</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">component</span>(<span class="title class_">Select</span>.<span class="property">name</span>, <span class="title class_">Select</span>);</span><br><span class="line"><span class="comment">/* 或写为</span></span><br><span class="line"><span class="comment"> * Vue.use(Button)</span></span><br><span class="line"><span class="comment"> * Vue.use(Select)</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> <span class="title class_">Vue</span>(&#123;</span><br><span class="line">  <span class="attr">el</span>: <span class="string">&#x27;#app&#x27;</span>,</span><br><span class="line">  <span class="attr">render</span>: <span class="function"><span class="params">h</span> =&gt;</span> <span class="title function_">h</span>(<span class="title class_">App</span>)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure><p>这种引用方式在实际引用中，会大大增加 app.js 的体积，所以，这里，我是把 elemenui 相关的引用放到相应的组件里面，以组件的形式去引用，这样，app.js 的体积会缩小很多。</p><p>然后，就是写代码的习惯了，比如引用组件，尽量用以下形式，代替 import from 的方式：</p><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">Loading</span> = (<span class="params"></span>) =&gt; <span class="keyword">import</span>(<span class="string">&quot;@/components/Common/loading&quot;</span>);</span><br></pre></td></tr></table></figure><p>这种方式引入组件的好处是，webpack 会对代码进行自动分割，异步加载组件，从而实现路由的懒加载，根据需求引入不同的组件，而不是第一次加载就全部引入。更详细的解释看<a href="https://router.vuejs.org/zh/guide/advanced/lazy-loading.html#%E6%8A%8A%E7%BB%84%E4%BB%B6%E6%8C%89%E7%BB%84%E5%88%86%E5%9D%97">这里</a></p><p>接着就是把代码里的 console 相关的语句去掉啦，别看 console 只是稍微的调用了一下函数，看起来对性能影响不大，但是代码里满是 console 语句，就会有一点影响了，所以还是能去掉就去掉为好。除了去除 console 相关语句，别忘了把多余的代码和组件也去掉，这会一定程度上减少包的体积。</p><p>最后就是网络请求能少则少啦，但是个人不太推荐用缓存的，问题太多了，后期。</p>]]></content>
       
       
-      <categories>
-          
-          <category> web </category>
-          
-      </categories>
-      
       
         <tags>
             
-            <tag> vue </tag>
+            <tag> 性能优化 </tag>
             
         </tags>
       
@@ -5526,7 +5778,7 @@
       
       <categories>
           
-          <category> web </category>
+          <category> 工程化与运维 </category>
           
       </categories>
       
@@ -5551,14 +5803,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> JavaScript </tag>
+            <tag> JavaScript&amp;TypeScript </tag>
             
         </tags>
       
@@ -5576,14 +5828,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> JavaScript </tag>
+            <tag> JavaScript&amp;TypeScript </tag>
             
         </tags>
       
@@ -5601,14 +5853,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> JavaScript </tag>
+            <tag> JavaScript&amp;TypeScript </tag>
             
         </tags>
       
@@ -5626,14 +5878,16 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> vue </tag>
+            <tag> 前端 </tag>
+            
+            <tag> 框架与库 </tag>
             
         </tags>
       
@@ -5651,7 +5905,7 @@
       
       <categories>
           
-          <category> 项目管理 </category>
+          <category> 工程化与运维 </category>
           
       </categories>
       
@@ -5670,14 +5924,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> 工程化与运维 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 工程化 </tag>
+            <tag> 构建与部署 </tag>
             
         </tags>
       
@@ -5695,14 +5949,14 @@
       
       <categories>
           
-          <category> 项目管理 </category>
+          <category> 工程化与运维 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> git </tag>
+            <tag> 开发工具 </tag>
             
         </tags>
       
@@ -5720,14 +5974,16 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 富文本 </tag>
+            <tag> 前端 </tag>
+            
+            <tag> 框架与库 </tag>
             
         </tags>
       
@@ -5745,10 +6001,16 @@
       
       <categories>
           
-          <category> 算法 </category>
+          <category> 编程基础 </category>
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> 计算机科学 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -5764,7 +6026,7 @@
       
       <categories>
           
-          <category> 博客相关 </category>
+          <category> 网站建设 </category>
           
       </categories>
       
@@ -5783,14 +6045,16 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> angular </tag>
+            <tag> 前端 </tag>
+            
+            <tag> 框架与库 </tag>
             
         </tags>
       
@@ -5808,14 +6072,16 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 富文本 </tag>
+            <tag> 前端 </tag>
+            
+            <tag> 框架与库 </tag>
             
         </tags>
       
@@ -5833,14 +6099,16 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> angular </tag>
+            <tag> 前端 </tag>
+            
+            <tag> 框架与库 </tag>
             
         </tags>
       
@@ -5858,14 +6126,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 开发环境 </tag>
+            <tag> 开发工具 </tag>
             
         </tags>
       
@@ -5883,14 +6151,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> css </tag>
+            <tag> CSS与可视化 </tag>
             
         </tags>
       
@@ -5908,14 +6176,14 @@
       
       <categories>
           
-          <category> 服务端 </category>
+          <category> 编程基础 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> python </tag>
+            <tag> 编程语言 </tag>
             
         </tags>
       
@@ -5933,14 +6201,16 @@
       
       <categories>
           
-          <category> 服务端 </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> python </tag>
+            <tag> 服务端 </tag>
+            
+            <tag> Python/Go/其他 </tag>
             
         </tags>
       
@@ -5958,14 +6228,16 @@
       
       <categories>
           
-          <category> 服务端 </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> python </tag>
+            <tag> 服务端 </tag>
+            
+            <tag> Python/Go/其他 </tag>
             
         </tags>
       
@@ -5983,14 +6255,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> 工程化与运维 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 开发环境 </tag>
+            <tag> 开发工具 </tag>
             
         </tags>
       
@@ -6008,7 +6280,7 @@
       
       <categories>
           
-          <category> AI </category>
+          <category> 人工智能 </category>
           
       </categories>
       
@@ -6027,7 +6299,7 @@
       
       <categories>
           
-          <category> 系统 </category>
+          <category> 工程化与运维 </category>
           
       </categories>
       
@@ -6046,7 +6318,7 @@
       
       <categories>
           
-          <category> AI </category>
+          <category> 人工智能 </category>
           
       </categories>
       
@@ -6065,7 +6337,7 @@
       
       <categories>
           
-          <category> 阅读笔记 </category>
+          <category> 软技能与思考 </category>
           
       </categories>
       
@@ -6084,14 +6356,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> 编程基础 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 网络 </tag>
+            <tag> 计算机科学 </tag>
             
         </tags>
       
@@ -6109,7 +6381,7 @@
       
       <categories>
           
-          <category> 随笔 </category>
+          <category> 软技能与思考 </category>
           
       </categories>
       
@@ -6128,7 +6400,7 @@
       
       <categories>
           
-          <category> 随笔 </category>
+          <category> 软技能与思考 </category>
           
       </categories>
       
@@ -6147,7 +6419,7 @@
       
       <categories>
           
-          <category> 博客相关 </category>
+          <category> 网站建设 </category>
           
       </categories>
       
@@ -6166,14 +6438,14 @@
       
       <categories>
           
-          <category> 项目管理 </category>
+          <category> 工程化与运维 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> git </tag>
+            <tag> 开发工具 </tag>
             
         </tags>
       
@@ -6191,14 +6463,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> JavaScript </tag>
+            <tag> JavaScript&amp;TypeScript </tag>
             
         </tags>
       
@@ -6216,14 +6488,16 @@
       
       <categories>
           
-          <category> 服务端 </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> python </tag>
+            <tag> 服务端 </tag>
+            
+            <tag> Python/Go/其他 </tag>
             
         </tags>
       
@@ -6241,7 +6515,7 @@
       
       <categories>
           
-          <category> 博客相关 </category>
+          <category> 网站建设 </category>
           
       </categories>
       
@@ -6260,14 +6534,16 @@
       
       <categories>
           
-          <category> 服务端 </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> python </tag>
+            <tag> 服务端 </tag>
+            
+            <tag> Python/Go/其他 </tag>
             
         </tags>
       
@@ -6285,14 +6561,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> css </tag>
+            <tag> CSS与可视化 </tag>
             
         </tags>
       
@@ -6310,14 +6586,14 @@
       
       <categories>
           
-          <category> web </category>
+          <category> 编程基础 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 网络 </tag>
+            <tag> 计算机科学 </tag>
             
         </tags>
       
@@ -6335,14 +6611,14 @@
       
       <categories>
           
-          <category> 项目管理 </category>
+          <category> 工程化与运维 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> git </tag>
+            <tag> 开发工具 </tag>
             
         </tags>
       
@@ -6360,14 +6636,14 @@
       
       <categories>
           
-          <category> 项目管理 </category>
+          <category> 工程化与运维 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> git </tag>
+            <tag> 开发工具 </tag>
             
         </tags>
       
@@ -6385,14 +6661,16 @@
       
       <categories>
           
-          <category> web </category>
+          <category> Web开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> nodeJs </tag>
+            <tag> 服务端 </tag>
+            
+            <tag> Node.js </tag>
             
         </tags>
       
@@ -6410,7 +6688,7 @@
       
       <categories>
           
-          <category> 阅读笔记 </category>
+          <category> 软技能与思考 </category>
           
       </categories>
       
@@ -6429,10 +6707,16 @@
       
       <categories>
           
-          <category> 阅读笔记 </category>
+          <category> 软技能与思考 </category>
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> 读书笔记 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -6448,7 +6732,7 @@
       
       <categories>
           
-          <category> 随笔 </category>
+          <category> 软技能与思考 </category>
           
       </categories>
       
