@@ -3,7 +3,7 @@ title: python3 安装
 comments: true
 date: 2019-01-06 17:42:32
 categories: Web开发
-tags: python
+tags: [服务端,Python/Go/其他]
 ---
 
 python3 安装指南

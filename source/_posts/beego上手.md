@@ -1,7 +1,7 @@
 ---
 title: 开始用 beego 写 http 服务
 categories: Web开发
-tags: [服务端,Go]
+tags: [服务端,Python/Go/其他]
 comments: true
 toc: true
 date: 2020-11-27 19:23:53

@@ -3,7 +3,7 @@ title: nodeJs 模块
 comments: true
 date: 2019-08-11 10:38:41
 categories: Web开发
-tags: nodeJs
+tags: [服务端,Node.js]
 ---
 
 nodeJS 模块化编程指的是将一些通用的功能转移到不同的文件里，每个文件作为一个模块，暴露给其他文件使用。这样可以使代码更容易维护，更具通用性。

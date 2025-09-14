@@ -3,7 +3,7 @@ title: python2 => python3 踩坑集合
 comments: true
 date: 2018-06-08 09:47:51
 categories: Web开发
-tags: [服务端,python]
+tags: [服务端,Python/Go/其他]
 ---
 
 python2 => python3 踩坑集合
