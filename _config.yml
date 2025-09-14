@@ -59,7 +59,29 @@ index_generator:
 # Category & Tag
 default_category: web
 category_map:
+  Web开发: web
+  人工智能: ai
+  工程化与运维: cli
+  编程基础: coding
+  网站建设: site
+  软技能与思考: soft
 tag_map:
+  随笔: essays
+  前端: frontend
+  框架与库: frameworks-libs
+  CSS与可视化: css-visualization
+  性能优化: performance
+  服务端: server-side
+  后端: backend
+  跨端方案: cross-platform
+  计算机科学: computer-science
+  API&服务: api-services
+  构建与部署: build-deploy
+  开发工具: dev-tools
+  系统: system-design
+  代码质量: code-quality
+  读书笔记: reading-notes
+  编程语言: programming-languages
 
 # Date / Time format
 ## Hexo uses Moment.js to parse and display date
