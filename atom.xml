@@ -6,7 +6,7 @@
   <link href="https://canace.site/atom.xml" rel="self"/>
   
   <link href="https://canace.site/"/>
-  <updated>2025-09-14T09:33:38.503Z</updated>
+  <updated>2025-09-21T02:22:06.357Z</updated>
   <id>https://canace.site/</id>
   
   <author>
@@ -15,6 +15,23 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>常用编程提示词英文单词</title>
+    <link href="https://canace.site/%E5%B8%B8%E7%94%A8%E7%BC%96%E7%A8%8B%E6%8F%90%E7%A4%BA%E8%AF%8D%E8%8B%B1%E6%96%87%E5%8D%95%E8%AF%8D/"/>
+    <id>https://canace.site/%E5%B8%B8%E7%94%A8%E7%BC%96%E7%A8%8B%E6%8F%90%E7%A4%BA%E8%AF%8D%E8%8B%B1%E6%96%87%E5%8D%95%E8%AF%8D/</id>
+    <published>2025-09-21T01:46:30.000Z</published>
+    <updated>2025-09-21T02:22:06.357Z</updated>
+    
+    
+    <summary type="html">整理一些日常开发中用到的编程提示词，给出了翻译和例句用法，方便查阅</summary>
+    
+    
+    
+    <category term="软技能与思考" scheme="https://canace.site/categories/soft/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>博客文章分类</title>
@@ -378,25 +395,6 @@
     <category term="前端" scheme="https://canace.site/tags/frontend/"/>
     
     <category term="框架与库" scheme="https://canace.site/tags/frameworks-libs/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>统计数组对象的元素总数</title>
-    <link href="https://canace.site/%E7%BB%9F%E8%AE%A1%E6%95%B0%E7%BB%84%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%85%83%E7%B4%A0%E6%80%BB%E6%95%B0/"/>
-    <id>https://canace.site/%E7%BB%9F%E8%AE%A1%E6%95%B0%E7%BB%84%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%85%83%E7%B4%A0%E6%80%BB%E6%95%B0/</id>
-    <published>2024-03-05T06:35:51.000Z</published>
-    <updated>2025-09-14T08:17:33.341Z</updated>
-    
-    
-    <summary type="html">统计数组对象的元素总数</summary>
-    
-    
-    
-    <category term="编程基础" scheme="https://canace.site/categories/coding/"/>
-    
-    
-    <category term="计算机科学" scheme="https://canace.site/tags/computer-science/"/>
     
   </entry>
   
