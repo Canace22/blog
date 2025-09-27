@@ -6,7 +6,7 @@
   <link href="https://canace.site/atom.xml" rel="self"/>
   
   <link href="https://canace.site/"/>
-  <updated>2025-09-21T03:29:48.449Z</updated>
+  <updated>2025-09-27T08:25:44.070Z</updated>
   <id>https://canace.site/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>我们是否需要AI知识库</title>
+    <link href="https://canace.site/AI-knowledge-base/"/>
+    <id>https://canace.site/AI-knowledge-base/</id>
+    <published>2025-09-27T08:22:14.000Z</published>
+    <updated>2025-09-27T08:25:44.070Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="人工智能" scheme="https://canace.site/categories/ai/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>常用开发提示词整理</title>
@@ -368,33 +391,6 @@
     
     
     <category term="JavaScript&amp;TypeScript" scheme="https://canace.site/tags/JavaScript-TypeScript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Element-Plus 缩放问题解决</title>
-    <link href="https://canace.site/element-plus-table-component-scaling-issue-solution/"/>
-    <id>https://canace.site/element-plus-table-component-scaling-issue-solution/</id>
-    <published>2024-03-19T08:02:09.000Z</published>
-    <updated>2025-09-14T07:53:28.039Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
-    
-    
-    
-    <category term="Web开发" scheme="https://canace.site/categories/web/"/>
-    
-    
-    <category term="前端" scheme="https://canace.site/tags/frontend/"/>
-    
-    <category term="框架与库" scheme="https://canace.site/tags/frameworks-libs/"/>
     
   </entry>
   
