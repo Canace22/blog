@@ -6,7 +6,7 @@
   <link href="https://canace.site/atom.xml" rel="self"/>
   
   <link href="https://canace.site/"/>
-  <updated>2025-09-27T08:49:23.683Z</updated>
+  <updated>2025-10-28T02:21:55.261Z</updated>
   <id>https://canace.site/</id>
   
   <author>
@@ -17,11 +17,36 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>浏览器渲染原理概述</title>
+    <link href="https://canace.site/how-to-optimize-animation/"/>
+    <id>https://canace.site/how-to-optimize-animation/</id>
+    <published>2025-10-28T01:47:31.000Z</published>
+    <updated>2025-10-28T02:21:55.261Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="Web开发" scheme="https://canace.site/categories/web/"/>
+    
+    
+    <category term="性能优化" scheme="https://canace.site/tags/performance/"/>
+    
+  </entry>
+  
+  <entry>
     <title>我们是否需要AI知识库</title>
     <link href="https://canace.site/AI-knowledge-base/"/>
     <id>https://canace.site/AI-knowledge-base/</id>
     <published>2025-09-27T08:22:14.000Z</published>
-    <updated>2025-09-27T08:49:23.683Z</updated>
+    <updated>2025-09-27T09:12:29.683Z</updated>
     
     
       
@@ -372,25 +397,6 @@
     
     
     <category term="随笔" scheme="https://canace.site/tags/essays/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JavaScript 如何判断用户是否打开了大写键盘</title>
-    <link href="https://canace.site/javascript-detect-caps-lock/"/>
-    <id>https://canace.site/javascript-detect-caps-lock/</id>
-    <published>2024-07-19T01:45:59.000Z</published>
-    <updated>2025-09-14T08:00:34.008Z</updated>
-    
-    
-    <summary type="html">记录 JavaScript 判断用户是否打开了大写键盘的方法</summary>
-    
-    
-    
-    <category term="Web开发" scheme="https://canace.site/categories/web/"/>
-    
-    
-    <category term="JavaScript&amp;TypeScript" scheme="https://canace.site/tags/JavaScript-TypeScript/"/>
     
   </entry>
   

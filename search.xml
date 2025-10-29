@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>浏览器渲染原理概述</title>
+      <link href="/how-to-optimize-animation/"/>
+      <url>/how-to-optimize-animation/</url>
+      
+        <content type="html"><![CDATA[<p>无论使用框架还是原生 JS，浏览器都遵循自己的规则。理解这些规则，我们可以知道卡顿与流畅的交互之间的区别。</p><h2 id="一、为什么要在16-67ms内渲染完一帧"><a href="#一、为什么要在16-67ms内渲染完一帧" class="headerlink" title="一、为什么要在16.67ms内渲染完一帧"></a>一、为什么要在16.67ms内渲染完一帧</h2><p>JavaScript 在单线程上运行，必须将控制权让给浏览器才能绘制内容。</p><p>一帧内发生的事情如下：</p><ol start="0"><li>脚本执行(Scripting) - JavaScript 引擎运行代码。</li><li>样式计算(Style Calculation ) - 浏览器确定适用的 CSS 规则，并计算最终样式，解析层叠、继承和计算值。</li><li>重排（Reflow&#x2F;Layout） - 计算几何属性，如宽度、高度及位置。重排可能波及父子元素，导致高昂成本。</li><li>重绘（Repaint&#x2F;Paint） - 为背景、边框、文本和阴影绘制像素。渐变或阴影等复杂视觉效果会拖慢此步骤。</li><li>合成(Composite) - 将已绘制的图层合成并绘制到屏幕上。此步骤远比重排或重绘廉价。</li></ol><p>帧预算计算：一秒有 1000 毫秒，除以 60 帧&#x2F;秒得 1000&#x2F;60 &#x3D; 16.67 毫秒&#x2F;帧。若上述步骤执行时间超过此值，浏览器将丢帧，导致“卡顿”（jank）。</p><h2 id="二、如何提高渲染性能"><a href="#二、如何提高渲染性能" class="headerlink" title="二、如何提高渲染性能"></a>二、如何提高渲染性能</h2><p>现代浏览器可以轻松处理简单页面，但是一旦添加动画或众多元素，性能限制就会显现。了解哪些属性会触发哪些渲染步骤，可以帮助我们提高渲染性能。</p><ul><li>脚本执行时间（Scripting time ），JavaScript 占用主线程的时间。这个阶段耗时长的话，会延迟重排和重绘。</li><li>更改 top、left、width、height 或 margin 等属性会触发重排。</li><li>更改仅影响绘制的属性，如 background-color、box-shadow、border-radius，会触发重绘但不会触发重排。</li><li>transform 或 opacity 通常由 GPU 处理，可以跳过重排和重绘。</li></ul><h2 id="三、FPS-监控"><a href="#三、FPS-监控" class="headerlink" title="三、FPS 监控"></a>三、FPS 监控</h2><p>可以通过观察动画效果，或者使用 DevTools 中的 FPS meter（Cmd+Shift+P → “FPS meter”），运行<a href="https://github.com/luciodale/koolcodez/blob/main/src/components/articles/SquaresRendering.tsx">Demo</a>，会显示实时帧率。只有当我们将Demo 中的正方形数量最大化时，才会出现明显的差异。</p><h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>流畅的性能并非魔法。它来自于理解浏览器在做什么，并针对它进行性能分析。事实上，对于小型动画，浏览器已经可以渲染得很快了，性能差异可以忽略不计</p><p>参考文献：</p><p><a href="https://koolcodez.com/blog/inside-the-frame/">Inside a 16.67 Millisecond Frame - Understand how rendering works through a practical example.</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Web开发 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 性能优化 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>我们是否需要AI知识库</title>
       <link href="/AI-knowledge-base/"/>
       <url>/AI-knowledge-base/</url>
@@ -6640,11 +6665,11 @@
     
     
     <entry>
-      <title>Git域名配置</title>
-      <link href="/git-domain-config/"/>
-      <url>/git-domain-config/</url>
+      <title>Git环境配置</title>
+      <link href="/git-environment-config/"/>
+      <url>/git-environment-config/</url>
       
-        <content type="html"><![CDATA[<p>git 域名配置</p><span id="more"></span><ol><li><p>在 Godaddy 购买的域名；</p></li><li><p>查找 DNSpod 解析域名，没什么难度，就是添加一条记录，保存而已，记得在添加域名到 DNSpod 之后，复制两个 NS 地址到 godaddy 的域名服务器下；</p></li><li><p>Git 项目根目录下创建 CNAME 文件，把域名填进去，push 就行了。</p></li></ol>]]></content>
+        <content type="html"><![CDATA[<p>结合了一些网上的方法，结合自己配置的实际情况写的文档。</p><span id="more"></span><ol><li><p>下载 git 主程序，下载地址：<a href="https://git-scm.com/downloads%EF%BC%8C">https://git-scm.com/downloads，</a> 双击安装包，一路 next 就行；</p></li><li><p>对于技术小白的我来说，命令行神马的太复杂了，所以就需要一个 git 界面画的软件来帮助我啦，这个软件就是 TortoiseGit，下载地址：<a href="https://tortoisegit.org/download/%EF%BC%8C">https://tortoisegit.org/download/，</a> 分为 32 位版和 64 位版，下载时要选好，安装的时候也是一路 next；</p></li><li><p>接下来就是解决怎么把本地项目关联发布到 git 上的问题了；</p></li></ol><p>(1) 首先打开 git 上的项目，复制 git 的 HTTP 地址；</p><p>(2) 然后创打开硬盘里的一个目录，最好是专门开发用的目录，点右键，选择“Git Clone…”，将地址复制进去，点击 OK；<br>(3) 出现 Success 提示，就代表 clone 成功了，close 掉对话框，然后就出现了名为 git 项目的文件夹了；</p><ol start="4"><li>本地改动保存为一个版本，我们以新建文件为例；</li></ol><p>(1) 首先，打开刚才生成文件夹，新建一个名为 readme.txt 的空文件；</p><p>(2) 然后在这里鼠标右击，选择 Git Commit -&gt; “master”…，会弹出一个对话框（注意：这里可能会提醒设置用户名、密码 和邮箱，点击确定，填写 git 账户的用户名和注册邮箱以及密码即可）；</p>]]></content>
       
       
       <categories>
@@ -6665,11 +6690,11 @@
     
     
     <entry>
-      <title>Git环境配置</title>
-      <link href="/git-environment-config/"/>
-      <url>/git-environment-config/</url>
+      <title>Git域名配置</title>
+      <link href="/git-domain-config/"/>
+      <url>/git-domain-config/</url>
       
-        <content type="html"><![CDATA[<p>结合了一些网上的方法，结合自己配置的实际情况写的文档。</p><span id="more"></span><ol><li><p>下载 git 主程序，下载地址：<a href="https://git-scm.com/downloads%EF%BC%8C">https://git-scm.com/downloads，</a> 双击安装包，一路 next 就行；</p></li><li><p>对于技术小白的我来说，命令行神马的太复杂了，所以就需要一个 git 界面画的软件来帮助我啦，这个软件就是 TortoiseGit，下载地址：<a href="https://tortoisegit.org/download/%EF%BC%8C">https://tortoisegit.org/download/，</a> 分为 32 位版和 64 位版，下载时要选好，安装的时候也是一路 next；</p></li><li><p>接下来就是解决怎么把本地项目关联发布到 git 上的问题了；</p></li></ol><p>(1) 首先打开 git 上的项目，复制 git 的 HTTP 地址；</p><p>(2) 然后创打开硬盘里的一个目录，最好是专门开发用的目录，点右键，选择“Git Clone…”，将地址复制进去，点击 OK；<br>(3) 出现 Success 提示，就代表 clone 成功了，close 掉对话框，然后就出现了名为 git 项目的文件夹了；</p><ol start="4"><li>本地改动保存为一个版本，我们以新建文件为例；</li></ol><p>(1) 首先，打开刚才生成文件夹，新建一个名为 readme.txt 的空文件；</p><p>(2) 然后在这里鼠标右击，选择 Git Commit -&gt; “master”…，会弹出一个对话框（注意：这里可能会提醒设置用户名、密码 和邮箱，点击确定，填写 git 账户的用户名和注册邮箱以及密码即可）；</p>]]></content>
+        <content type="html"><![CDATA[<p>git 域名配置</p><span id="more"></span><ol><li><p>在 Godaddy 购买的域名；</p></li><li><p>查找 DNSpod 解析域名，没什么难度，就是添加一条记录，保存而已，记得在添加域名到 DNSpod 之后，复制两个 NS 地址到 godaddy 的域名服务器下；</p></li><li><p>Git 项目根目录下创建 CNAME 文件，把域名填进去，push 就行了。</p></li></ol>]]></content>
       
       
       <categories>
