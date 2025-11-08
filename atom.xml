@@ -6,7 +6,7 @@
   <link href="https://canace.site/atom.xml" rel="self"/>
   
   <link href="https://canace.site/"/>
-  <updated>2025-10-28T02:21:55.261Z</updated>
+  <updated>2025-11-08T09:54:09.513Z</updated>
   <id>https://canace.site/</id>
   
   <author>
@@ -17,11 +17,34 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>工作与事业</title>
+    <link href="https://canace.site/work-for/"/>
+    <id>https://canace.site/work-for/</id>
+    <published>2025-11-08T09:50:42.000Z</published>
+    <updated>2025-11-08T09:54:09.513Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="软技能与思考" scheme="https://canace.site/categories/soft/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>浏览器渲染原理概述</title>
     <link href="https://canace.site/how-to-optimize-animation/"/>
     <id>https://canace.site/how-to-optimize-animation/</id>
     <published>2025-10-28T01:47:31.000Z</published>
-    <updated>2025-10-28T02:21:55.261Z</updated>
+    <updated>2025-10-29T01:13:47.384Z</updated>
     
     
       
@@ -378,25 +401,6 @@
     
     <category term="软技能与思考" scheme="https://canace.site/categories/soft/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>我们为什么需要阅读</title>
-    <link href="https://canace.site/why-we-need-to-read/"/>
-    <id>https://canace.site/why-we-need-to-read/</id>
-    <published>2024-11-05T07:53:14.000Z</published>
-    <updated>2025-09-14T09:16:16.940Z</updated>
-    
-    
-    <summary type="html">《如何阅读一本书》笔记其一</summary>
-    
-    
-    
-    <category term="软技能与思考" scheme="https://canace.site/categories/soft/"/>
-    
-    
-    <category term="随笔" scheme="https://canace.site/tags/essays/"/>
     
   </entry>
   
