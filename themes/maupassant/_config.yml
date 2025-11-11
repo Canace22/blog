@@ -89,17 +89,17 @@ menu:
 
 widgets: ## Six widgets in sidebar provided: search, category, tag, recent_posts, rencent_comments and links.
   - search
-  - recent_posts
+  - links
   - category
+  - recent_posts
   - tag
   # - recent_comments
-  - links
 
 links:
   - title: Git 文档
-    url: /git常用命令
-  # - title: 算法
-  #   url: https://github.com/Canace22/leetcode
+    url: /git-common-commands
+  - title: 常用开发提示词
+    url: /common-programming-prompt-words
   # - title: demos
   #   url: https://canace22.github.io/Demos/#/
 
