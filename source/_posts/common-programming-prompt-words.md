@@ -49,6 +49,7 @@ date: 2025-09-21 09:46:30
 | Permission | 权限 | “权限”在中文中常用于计算机、软件或系统管理场景，指用户或程序被允许执行某些操作的权利。在英语中，最常用的对应词是 “permission”，尤其在技术文档、权限管理（如 Linux 的 chmod、Windows 的 ACL）中直接使用此词。若在更广泛的语境（如行政或法律），也可译为 “authority” 或 “authorization”，但此处保留技术领域的标准译法。 | 这个用户没有读取文件的权限。<br>→ This user does not have permission to read the file. |
 | Revert | 恢复 | "Revert" means undoing changes to restore a previous version of code or a system, often used in version control or debugging. | **Revert** the recent changes to the code to restore the original functionality. |
 | Reuse | 复用 | “复用”在中文技术语境中特指将已有资源（如代码、组件、连接、频率等）多次或多处使用，以提高效率、降低开销。在英语中，最标准对应词为 “reuse”，尤其在软件工程（如 code reuse）、网络通信（如 connection reuse）或硬件设计中直接使用。若强调“可重复使用”，可译为 “reusable”；在某些场景（如多路复用）则为 “multiplexing”，但此处保留最通用技术含义。 | 这个函数可以被多个模块复用。<br>→ This function can be reused by multiple modules.<br>或者：支持 HTTP 连接复用以提升性能。<br>→ Supports HTTP connection reuse to improve performance. |
+| alignment / align | 对齐 | “对齐”是一个多义词。在日常语境中常译为“align”（使对齐、排列整齐）；在人工智能/机器学习领域（尤其是大语言模型相关讨论中），专有名词译为“alignment”（对齐），指让AI的行为与人类价值观、意图保持一致。在设计、排版或编程中也可译为“alignment”或“justify”。此处给出最常见和通用的翻译“alignment / align”，并标注常见语境差异。 | 我们需要解决人工智能的对齐问题，以确保其安全发展。<br>→ We need to address the AI alignment problem to ensure its safe development. |
 
 ## 4. 核心概念
 
