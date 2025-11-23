@@ -1,6 +1,6 @@
 ---
 title: 首次尝试95%都是垃圾：一位工程师使用Claude Code的6周之旅
-categories: 工程化与运维
+categories:  AI探索
 tags: 开发工具
 author: Canace
 comments: true

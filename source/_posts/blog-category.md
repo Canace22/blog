@@ -32,7 +32,7 @@ date: 2025-09-14 17:32:04
 │   ├── 代码质量 (Code Quality) // 单元测试, 代码规范, Eslint
 │   └── 开发工具 (Dev Tools) // Git, VSCode, Npm, Shell 脚本等
 │
-├── 4. 人工智能 (AI)
+├── 4. AI探索 (AI)
 │
 ├── 5. 软技能与思考 (Soft Skills & Reflections)
 │   ├── 项目管理 (Project Management)

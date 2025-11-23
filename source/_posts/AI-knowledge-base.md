@@ -1,6 +1,6 @@
 ---
 title: 我们是否需要AI知识库
-categories: 人工智能
+categories: AI探索
 author: Canace
 comments: true
 date: 2025-09-27 16:22:14
