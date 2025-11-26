@@ -6,7 +6,7 @@
   <link href="https://canace.site/atom.xml" rel="self"/>
   
   <link href="https://canace.site/"/>
-  <updated>2025-11-23T03:56:35.323Z</updated>
+  <updated>2025-11-26T02:45:39.508Z</updated>
   <id>https://canace.site/</id>
   
   <author>
@@ -17,11 +17,34 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>为什么AI大模型需要“显卡”？TPU、GPU与AMD之间有什么区别？</title>
+    <link href="https://canace.site/why-graphics-card/"/>
+    <id>https://canace.site/why-graphics-card/</id>
+    <published>2025-11-26T01:29:32.000Z</published>
+    <updated>2025-11-26T02:45:39.508Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="软技能与思考" scheme="https://canace.site/categories/soft/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>如何做AI角色分工：我的应用心得</title>
     <link href="https://canace.site/ai-worker/"/>
     <id>https://canace.site/ai-worker/</id>
     <published>2025-11-23T01:22:22.000Z</published>
-    <updated>2025-11-23T03:56:35.323Z</updated>
+    <updated>2025-11-23T04:01:56.813Z</updated>
     
     
       
@@ -385,23 +408,6 @@
     
     
     <summary type="html">恶意可能植根心底，使人惧怕，那么善意呢？通常是一个褒义词，实则不然，有时候善意也挺让人抗拒的。</summary>
-    
-    
-    
-    <category term="软技能与思考" scheme="https://canace.site/categories/soft/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>经验之谈</title>
-    <link href="https://canace.site/words-of-experience/"/>
-    <id>https://canace.site/words-of-experience/</id>
-    <published>2024-12-22T03:53:00.000Z</published>
-    <updated>2025-09-14T03:16:49.221Z</updated>
-    
-    
-    <summary type="html">分享生活中的一些经验总结，供参考</summary>
     
     
     
