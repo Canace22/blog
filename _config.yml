@@ -60,7 +60,7 @@ index_generator:
 default_category: web
 category_map:
   Web开发: web
-  AI探索: ai
+  AI探索: intelligent
   工程化与运维: cli
   编程基础: coding
   网站建设: site

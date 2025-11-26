@@ -91,7 +91,7 @@ widgets: ## Six widgets in sidebar provided: search, category, tag, recent_posts
   - search
   - links
   - category
-  - recent_posts
+  # - recent_posts
   - tag
   # - recent_comments
 
