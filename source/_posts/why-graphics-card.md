@@ -1,6 +1,6 @@
 ---
 title: 为什么AI大模型需要“显卡”/TPU、GPU与AMD之间有什么区别
-categories: '软技能与思考'
+categories: 'AI探索'
 author: Canace
 comments: true
 date: 2025-11-26 09:29:32

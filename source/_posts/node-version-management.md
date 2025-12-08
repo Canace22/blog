@@ -9,7 +9,7 @@ date: 2025-01-02 17:27:33
 ---
 几种常用的 Node.js 版本管理工具及其使用方法：
 
-## 一、 **`nvm`（Node Version Manager）**
+## 一、 `nvm`（Node Version Manager）
 `nvm` 是最流行的 Node.js 版本管理工具，支持安装、切换和卸载多个 Node.js 版本。
 
 1、安装 `nvm`
@@ -34,6 +34,13 @@ nvm --version
 ```
 
 2、常用命令
+
+- **默认安装使用 LTS 版本**
+```bash
+nvm install --lts # 指定安装最新的 LTS
+nvm use node          # 直接用最新安装的
+```
+
 - **安装指定版本**：
   ```bash
   nvm install 18  # 安装 Node.js 18.x 最新版本
