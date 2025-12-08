@@ -6,7 +6,7 @@
   <link href="https://canace.site/atom.xml" rel="self"/>
   
   <link href="https://canace.site/"/>
-  <updated>2025-11-26T03:55:36.114Z</updated>
+  <updated>2025-12-08T03:58:04.062Z</updated>
   <id>https://canace.site/</id>
   
   <author>
@@ -15,6 +15,52 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>AI Coding 如何写好项目规则</title>
+    <link href="https://canace.site/writing-a-good-claude-md/"/>
+    <id>https://canace.site/writing-a-good-claude-md/</id>
+    <published>2025-12-08T01:50:26.000Z</published>
+    <updated>2025-12-08T03:58:04.062Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="AI探索" scheme="https://canace.site/categories/intelligent/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>AI 协作编程在现有中大型项目中的落地实践</title>
+    <link href="https://canace.site/ai-coding/"/>
+    <id>https://canace.site/ai-coding/</id>
+    <published>2025-12-06T08:12:13.000Z</published>
+    <updated>2025-12-08T01:49:15.865Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="AI探索" scheme="https://canace.site/categories/intelligent/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>为什么AI大模型需要“显卡”/TPU、GPU与AMD之间有什么区别</title>
@@ -351,7 +397,7 @@
     <link href="https://canace.site/node-version-management/"/>
     <id>https://canace.site/node-version-management/</id>
     <published>2025-01-02T09:27:33.000Z</published>
-    <updated>2025-09-14T02:42:15.486Z</updated>
+    <updated>2025-11-28T08:56:51.842Z</updated>
     
     
     <summary type="html">nodeJs 版本管理笔记</summary>
@@ -379,40 +425,6 @@
     
     
     <category term="随笔" scheme="https://canace.site/tags/essays/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>浏览器页面跳转至文章指定位置的方法探究</title>
-    <link href="https://canace.site/jump-to-specific-position-in-article/"/>
-    <id>https://canace.site/jump-to-specific-position-in-article/</id>
-    <published>2024-12-24T06:49:55.000Z</published>
-    <updated>2025-09-14T02:42:14.235Z</updated>
-    
-    
-    <summary type="html">探究浏览器页面跳转至文章指定位置的方法，比较锚点跳转和 Text Fragments 跳转的优缺点，总结两种跳转方式的使用场景</summary>
-    
-    
-    
-    <category term="Web开发" scheme="https://canace.site/categories/web/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>善意</title>
-    <link href="https://canace.site/kindness/"/>
-    <id>https://canace.site/kindness/</id>
-    <published>2024-12-22T07:45:10.000Z</published>
-    <updated>2025-09-14T03:16:54.268Z</updated>
-    
-    
-    <summary type="html">恶意可能植根心底，使人惧怕，那么善意呢？通常是一个褒义词，实则不然，有时候善意也挺让人抗拒的。</summary>
-    
-    
-    
-    <category term="软技能与思考" scheme="https://canace.site/categories/soft/"/>
-    
     
   </entry>
   
