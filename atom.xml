@@ -6,7 +6,7 @@
   <link href="https://canace.site/atom.xml" rel="self"/>
   
   <link href="https://canace.site/"/>
-  <updated>2025-12-08T05:52:27.526Z</updated>
+  <updated>2025-12-09T01:56:02.026Z</updated>
   <id>https://canace.site/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>AI Coding 如何写好项目规则</title>
+    <title>AI协作编程——如何写好项目规则</title>
     <link href="https://canace.site/writing-a-good-claude-md/"/>
     <id>https://canace.site/writing-a-good-claude-md/</id>
     <published>2025-12-08T01:50:26.000Z</published>
-    <updated>2025-12-08T05:52:27.526Z</updated>
+    <updated>2025-12-09T01:56:02.026Z</updated>
     
     
       
@@ -40,11 +40,11 @@
   </entry>
   
   <entry>
-    <title>AI 协作编程在现有中大型项目中的落地实践</title>
-    <link href="https://canace.site/ai-coding/"/>
-    <id>https://canace.site/ai-coding/</id>
+    <title>AI协作编程——传统IDE快速切换到AI IDE</title>
+    <link href="https://canace.site/ai-coding-ide/"/>
+    <id>https://canace.site/ai-coding-ide/</id>
     <published>2025-12-06T08:12:13.000Z</published>
-    <updated>2025-12-08T01:49:15.865Z</updated>
+    <updated>2025-12-09T01:59:22.880Z</updated>
     
     
       
