@@ -6,7 +6,7 @@
   <link href="https://canace.site/atom.xml" rel="self"/>
   
   <link href="https://canace.site/"/>
-  <updated>2025-12-10T11:40:58.385Z</updated>
+  <updated>2025-12-13T09:32:58.799Z</updated>
   <id>https://canace.site/</id>
   
   <author>
@@ -17,11 +17,34 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>AI赋能存量项目——从函数助手到业务伙伴</title>
+    <link href="https://canace.site/ai-coding-share/"/>
+    <id>https://canace.site/ai-coding-share/</id>
+    <published>2025-12-12T06:43:49.000Z</published>
+    <updated>2025-12-13T09:32:58.799Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="AI探索" scheme="https://canace.site/categories/intelligent/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>面向大模型编程(LOP)在游戏制作流程中的应用畅想</title>
     <link href="https://canace.site/ai-coding-game/"/>
     <id>https://canace.site/ai-coding-game/</id>
     <published>2025-12-10T10:39:22.000Z</published>
-    <updated>2025-12-10T11:40:58.385Z</updated>
+    <updated>2025-12-13T08:04:09.038Z</updated>
     
     
       
@@ -412,23 +435,6 @@
     
     
     <category term="系统" scheme="https://canace.site/tags/system-design/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Node.js 版本管理工具概览</title>
-    <link href="https://canace.site/node-version-management/"/>
-    <id>https://canace.site/node-version-management/</id>
-    <published>2025-01-02T09:27:33.000Z</published>
-    <updated>2025-11-28T08:56:51.842Z</updated>
-    
-    
-    <summary type="html">nodeJs 版本管理笔记</summary>
-    
-    
-    
-    <category term="Web开发" scheme="https://canace.site/categories/web/"/>
-    
     
   </entry>
   
