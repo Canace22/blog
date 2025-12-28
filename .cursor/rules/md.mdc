@@ -1,8 +1,6 @@
 ---
 alwaysApply: true
 ---
-# 文档格式
+## 文档格式
 
-- 序号：一 -> 1 -> (1) -> 无需列表，比如: - xxx
-
-- 格式规范遵循 https://github.com/ruanyf/document-style-guide/tree/master
+格式规范遵循 https://github.com/ruanyf/document-style-guide/tree/master
