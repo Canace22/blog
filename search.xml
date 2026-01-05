@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>AI使人膨胀</title>
+      <link href="/ai-expansion/"/>
+      <url>/ai-expansion/</url>
+      
+        <content type="html"><![CDATA[<p>最近一两个月，新项目提倡能用 AI 干活就用 AI，尽量不自己写，对我而言算是一种比较新的尝试吧。以前的做法可能都是我自己实现了一些，让AI基于已有的内容去构建新的，或者指挥AI改 bug,写工具等，给我打杂，现在这种模式则截然不同，AI 承担了更多的工作，而我需要为他的工作兜底，这就需要我对它有比较强的驾驭能力才行。不过这不是这篇文章想讲的，这篇文章想分享的是我这段时间遇到的一个困境：AI 虽然帮我干了更多的活，却没有让我更轻松，反而让我觉得身心更加疲惫，效率也没有自己手撸代码高。</p><p>通过反思和与 Gemini 对话，我总结出可能的原因有以下几点：</p><h2 id="一、认知错位"><a href="#一、认知错位" class="headerlink" title="一、认知错位"></a>一、认知错位</h2><p>用 AI 干活之后，我发现自己越发的膨胀，仿佛自己无所不能。我以前一直写前端，后端可能只会简单的 CRUD，做应用开发可能要摸索个一周才能上手，现在有了 AI，当天可能就可以上手干活，每每感慨，我太强了，怎么什么都能搞。很多同事也有这种感觉，还看了些文章和分享，说未来可以一个人干活，有了 AI，每个人都是超级个体。但是，我们真的是超级个体吗？在我看来，AI 与我们就像蝙蝠侠的装备，他可以让我们起飞，增强我们的能力，实现我们的英雄梦，但是他不是我们自身的超能力。有了这个基础认知，我们就会对自己有个清晰的判断，不至于因为膨胀，错估工时，随意承诺自己可以在很短的时间内完成大量任务。</p><h2 id="二、AI捧杀"><a href="#二、AI捧杀" class="headerlink" title="二、AI捧杀"></a>二、AI捧杀</h2><p>另外一个让我膨胀的原因，我觉得应该是“AI 的捧杀”，我有一个想法，通过输入几句提示词，他可以顺着我的思路不断地给出反馈，这会让我越发自信，沉浸在成就感中，不舍得离开电脑屏幕。但是他的反馈结果往往需要等待，会让我觉得有点急躁，想快点看到结果，只能干坐着等待，或者看看别的东西，看一半又回来看看任务完成没有，这种碎片化的工作模式，很耗费精力。</p><h2 id="三、失去了做事的节奏"><a href="#三、失去了做事的节奏" class="headerlink" title="三、失去了做事的节奏"></a>三、失去了做事的节奏</h2><p>之前的工作模式，我一般是早上规划好当天要做的事情，然后自己按节奏去实现，就等着下班了。现在这种 all in AI 的工作模式，我可能因为过于自信，觉得自己半天或者一天就能实现所有功能。但是结果往往是一个功能调试半天才能达到预期的效果，一天下来，临下班还有进行中的任务，因为感觉马上就能看到效果了，等一下吧，到任务完成，审核完代码，又已经过了饭点，加班加点了。</p><h2 id="四、决策疲劳，认知负荷超载"><a href="#四、决策疲劳，认知负荷超载" class="headerlink" title="四、决策疲劳，认知负荷超载"></a>四、决策疲劳，认知负荷超载</h2><p>在使用 AI 干活的时候，可能会同时跑几个 agent，并行执行几个任务，每个任务的角色不一样，频繁切换角色，审核成果，会产生决策疲劳，我想这也是为什么最近每天下班都这么累的原因吧。</p><h2 id="五、对创造力的剥离感会带来深层的精神疲惫，让人怀疑自己的价值"><a href="#五、对创造力的剥离感会带来深层的精神疲惫，让人怀疑自己的价值" class="headerlink" title="五、对创造力的剥离感会带来深层的精神疲惫，让人怀疑自己的价值"></a>五、对创造力的剥离感会带来深层的精神疲惫，让人怀疑自己的价值</h2><p>还有一个问题就是，每天用 AI 可能写了很多的代码，干了很多的活，总感觉好像自己什么也没做一样。我们上班不只是挣钱工具，还有一分价值实现情怀在里面，把自己当工具使当然会很累。用 AI 干活可能会弱化我们的劳动价值，精神上产生空虚感。</p><h2 id="六、结论"><a href="#六、结论" class="headerlink" title="六、结论"></a>六、结论</h2><p>那么怎么破局呢？我想了下以下几点应该可以让我与 AI 协作干活更轻松。</p><ul><li><p><strong>让AI干活前，先自己理清思路</strong>：比如修bug之前，自己先看一下大概可能是什么问题，写需求之前，自己先理一下要做成什么样子，有了这个步骤，我们会对AI 最终的交付结果先有个评判标准，不容易被带偏，也不会浪费太多精力去发散。</p></li><li><p><strong>每天留一段无AI时间，用于深度工作</strong>：可以是策划接下来的任务或者是学习更好使用 AI 的知识。AI 可以是我们的假肢，但是没有他，我们应该也能行走，预想一下哪天断电或者其他特殊情况下，我们用不了 AI 干活了，我们还能正常工作吗？</p></li><li><p><strong>AI交互任务批处理</strong>：集中一个时间段批处理需要AI完成的任务，让碎片化的工作保持连续性，可以减小脑力消耗。</p></li><li><p><strong>只采纳自己看得懂的内容</strong>：AI 每次写的内容可能都不一样，甚至会推倒原来的实现重来，我们是一个系统化的项目，不能这么干，效率太低不说，后期的调试和维护成本也很高，所以，我觉得应该只采纳 AI 生成的自己能看懂的内容，工欲善其事必先利其器，了解系统的实现，我们才能更好的指挥 AI 干活。</p></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> AI探索 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>AI赋能存量项目——从函数助手到业务伙伴</title>
       <link href="/ai-coding-share/"/>
       <url>/ai-coding-share/</url>
@@ -6798,11 +6817,11 @@
     
     
     <entry>
-      <title>Git环境配置</title>
-      <link href="/git-environment-config/"/>
-      <url>/git-environment-config/</url>
+      <title>Git域名配置</title>
+      <link href="/git-domain-config/"/>
+      <url>/git-domain-config/</url>
       
-        <content type="html"><![CDATA[<p>结合了一些网上的方法，结合自己配置的实际情况写的文档。</p><span id="more"></span><ol><li><p>下载 git 主程序，下载地址：<a href="https://git-scm.com/downloads%EF%BC%8C">https://git-scm.com/downloads，</a> 双击安装包，一路 next 就行；</p></li><li><p>对于技术小白的我来说，命令行神马的太复杂了，所以就需要一个 git 界面画的软件来帮助我啦，这个软件就是 TortoiseGit，下载地址：<a href="https://tortoisegit.org/download/%EF%BC%8C">https://tortoisegit.org/download/，</a> 分为 32 位版和 64 位版，下载时要选好，安装的时候也是一路 next；</p></li><li><p>接下来就是解决怎么把本地项目关联发布到 git 上的问题了；</p></li></ol><p>(1) 首先打开 git 上的项目，复制 git 的 HTTP 地址；</p><p>(2) 然后创打开硬盘里的一个目录，最好是专门开发用的目录，点右键，选择“Git Clone…”，将地址复制进去，点击 OK；<br>(3) 出现 Success 提示，就代表 clone 成功了，close 掉对话框，然后就出现了名为 git 项目的文件夹了；</p><ol start="4"><li>本地改动保存为一个版本，我们以新建文件为例；</li></ol><p>(1) 首先，打开刚才生成文件夹，新建一个名为 readme.txt 的空文件；</p><p>(2) 然后在这里鼠标右击，选择 Git Commit -&gt; “master”…，会弹出一个对话框（注意：这里可能会提醒设置用户名、密码 和邮箱，点击确定，填写 git 账户的用户名和注册邮箱以及密码即可）；</p>]]></content>
+        <content type="html"><![CDATA[<p>git 域名配置</p><span id="more"></span><ol><li><p>在 Godaddy 购买的域名；</p></li><li><p>查找 DNSpod 解析域名，没什么难度，就是添加一条记录，保存而已，记得在添加域名到 DNSpod 之后，复制两个 NS 地址到 godaddy 的域名服务器下；</p></li><li><p>Git 项目根目录下创建 CNAME 文件，把域名填进去，push 就行了。</p></li></ol>]]></content>
       
       
       <categories>
@@ -6823,11 +6842,11 @@
     
     
     <entry>
-      <title>Git域名配置</title>
-      <link href="/git-domain-config/"/>
-      <url>/git-domain-config/</url>
+      <title>Git环境配置</title>
+      <link href="/git-environment-config/"/>
+      <url>/git-environment-config/</url>
       
-        <content type="html"><![CDATA[<p>git 域名配置</p><span id="more"></span><ol><li><p>在 Godaddy 购买的域名；</p></li><li><p>查找 DNSpod 解析域名，没什么难度，就是添加一条记录，保存而已，记得在添加域名到 DNSpod 之后，复制两个 NS 地址到 godaddy 的域名服务器下；</p></li><li><p>Git 项目根目录下创建 CNAME 文件，把域名填进去，push 就行了。</p></li></ol>]]></content>
+        <content type="html"><![CDATA[<p>结合了一些网上的方法，结合自己配置的实际情况写的文档。</p><span id="more"></span><ol><li><p>下载 git 主程序，下载地址：<a href="https://git-scm.com/downloads%EF%BC%8C">https://git-scm.com/downloads，</a> 双击安装包，一路 next 就行；</p></li><li><p>对于技术小白的我来说，命令行神马的太复杂了，所以就需要一个 git 界面画的软件来帮助我啦，这个软件就是 TortoiseGit，下载地址：<a href="https://tortoisegit.org/download/%EF%BC%8C">https://tortoisegit.org/download/，</a> 分为 32 位版和 64 位版，下载时要选好，安装的时候也是一路 next；</p></li><li><p>接下来就是解决怎么把本地项目关联发布到 git 上的问题了；</p></li></ol><p>(1) 首先打开 git 上的项目，复制 git 的 HTTP 地址；</p><p>(2) 然后创打开硬盘里的一个目录，最好是专门开发用的目录，点右键，选择“Git Clone…”，将地址复制进去，点击 OK；<br>(3) 出现 Success 提示，就代表 clone 成功了，close 掉对话框，然后就出现了名为 git 项目的文件夹了；</p><ol start="4"><li>本地改动保存为一个版本，我们以新建文件为例；</li></ol><p>(1) 首先，打开刚才生成文件夹，新建一个名为 readme.txt 的空文件；</p><p>(2) 然后在这里鼠标右击，选择 Git Commit -&gt; “master”…，会弹出一个对话框（注意：这里可能会提醒设置用户名、密码 和邮箱，点击确定，填写 git 账户的用户名和注册邮箱以及密码即可）；</p>]]></content>
       
       
       <categories>
