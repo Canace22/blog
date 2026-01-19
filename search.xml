@@ -6836,11 +6836,11 @@
     
     
     <entry>
-      <title>Git环境配置</title>
-      <link href="/git-environment-config/"/>
-      <url>/git-environment-config/</url>
+      <title>Git域名配置</title>
+      <link href="/git-domain-config/"/>
+      <url>/git-domain-config/</url>
       
-        <content type="html"><![CDATA[<p>结合了一些网上的方法，结合自己配置的实际情况写的文档。</p><span id="more"></span><ol><li><p>下载 git 主程序，下载地址：<a href="https://git-scm.com/downloads%EF%BC%8C">https://git-scm.com/downloads，</a> 双击安装包，一路 next 就行；</p></li><li><p>对于技术小白的我来说，命令行神马的太复杂了，所以就需要一个 git 界面画的软件来帮助我啦，这个软件就是 TortoiseGit，下载地址：<a href="https://tortoisegit.org/download/%EF%BC%8C">https://tortoisegit.org/download/，</a> 分为 32 位版和 64 位版，下载时要选好，安装的时候也是一路 next；</p></li><li><p>接下来就是解决怎么把本地项目关联发布到 git 上的问题了；</p></li></ol><p>(1) 首先打开 git 上的项目，复制 git 的 HTTP 地址；</p><p>(2) 然后创打开硬盘里的一个目录，最好是专门开发用的目录，点右键，选择“Git Clone…”，将地址复制进去，点击 OK；<br>(3) 出现 Success 提示，就代表 clone 成功了，close 掉对话框，然后就出现了名为 git 项目的文件夹了；</p><ol start="4"><li>本地改动保存为一个版本，我们以新建文件为例；</li></ol><p>(1) 首先，打开刚才生成文件夹，新建一个名为 readme.txt 的空文件；</p><p>(2) 然后在这里鼠标右击，选择 Git Commit -&gt; “master”…，会弹出一个对话框（注意：这里可能会提醒设置用户名、密码 和邮箱，点击确定，填写 git 账户的用户名和注册邮箱以及密码即可）；</p>]]></content>
+        <content type="html"><![CDATA[<p>git 域名配置</p><span id="more"></span><ol><li><p>在 Godaddy 购买的域名；</p></li><li><p>查找 DNSpod 解析域名，没什么难度，就是添加一条记录，保存而已，记得在添加域名到 DNSpod 之后，复制两个 NS 地址到 godaddy 的域名服务器下；</p></li><li><p>Git 项目根目录下创建 CNAME 文件，把域名填进去，push 就行了。</p></li></ol>]]></content>
       
       
       <categories>
@@ -6861,11 +6861,11 @@
     
     
     <entry>
-      <title>Git域名配置</title>
-      <link href="/git-domain-config/"/>
-      <url>/git-domain-config/</url>
+      <title>Git环境配置</title>
+      <link href="/git-environment-config/"/>
+      <url>/git-environment-config/</url>
       
-        <content type="html"><![CDATA[<p>git 域名配置</p><span id="more"></span><ol><li><p>在 Godaddy 购买的域名；</p></li><li><p>查找 DNSpod 解析域名，没什么难度，就是添加一条记录，保存而已，记得在添加域名到 DNSpod 之后，复制两个 NS 地址到 godaddy 的域名服务器下；</p></li><li><p>Git 项目根目录下创建 CNAME 文件，把域名填进去，push 就行了。</p></li></ol>]]></content>
+        <content type="html"><![CDATA[<p>结合了一些网上的方法，结合自己配置的实际情况写的文档。</p><span id="more"></span><ol><li><p>下载 git 主程序，下载地址：<a href="https://git-scm.com/downloads%EF%BC%8C">https://git-scm.com/downloads，</a> 双击安装包，一路 next 就行；</p></li><li><p>对于技术小白的我来说，命令行神马的太复杂了，所以就需要一个 git 界面画的软件来帮助我啦，这个软件就是 TortoiseGit，下载地址：<a href="https://tortoisegit.org/download/%EF%BC%8C">https://tortoisegit.org/download/，</a> 分为 32 位版和 64 位版，下载时要选好，安装的时候也是一路 next；</p></li><li><p>接下来就是解决怎么把本地项目关联发布到 git 上的问题了；</p></li></ol><p>(1) 首先打开 git 上的项目，复制 git 的 HTTP 地址；</p><p>(2) 然后创打开硬盘里的一个目录，最好是专门开发用的目录，点右键，选择“Git Clone…”，将地址复制进去，点击 OK；<br>(3) 出现 Success 提示，就代表 clone 成功了，close 掉对话框，然后就出现了名为 git 项目的文件夹了；</p><ol start="4"><li>本地改动保存为一个版本，我们以新建文件为例；</li></ol><p>(1) 首先，打开刚才生成文件夹，新建一个名为 readme.txt 的空文件；</p><p>(2) 然后在这里鼠标右击，选择 Git Commit -&gt; “master”…，会弹出一个对话框（注意：这里可能会提醒设置用户名、密码 和邮箱，点击确定，填写 git 账户的用户名和注册邮箱以及密码即可）；</p>]]></content>
       
       
       <categories>
