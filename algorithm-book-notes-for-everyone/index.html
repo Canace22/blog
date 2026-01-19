@@ -1,0 +1,206 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="canace 的博客"><title>写给大家看的算法书笔记 | Canace 的博客</title><link rel="stylesheet" type="text/css" href="../css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/normalize.css/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="../favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="../favicon.ico"><link rel="apple-touch-icon" href="../apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="../apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="../atom.xml"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/clipboard/dist/clipboard.min.js"></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.js"></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.css"><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">写给大家看的算法书笔记</h1><a id="logo" href="../.">Canace 的博客</a><p class="description">Tomorrow is another day</p></div><div id="nav-menu"><a class="current" href="../."><i class="fa fa-home"> 主页</i></a><a href="../archives/"><i class="fa fa-archive"> 文章归档</i></a><a href="../about/"><i class="fa fa-user"> 关于我</i></a><a href="../atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">写给大家看的算法书笔记</h1><div class="post-meta">2017-03-07<span> | </span><span class="category"><a href="../categories/soft/">软技能与思考</a></span><script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> 阅读</span></span><span class="post-time"><span class="post-meta-item-text"> | </span><span class="post-meta-item-icon"><i class="fa fa-keyboard-o"></i><span class="post-count"> 1.6k</span><span class="post-meta-item-text"> 字</span></span></span><span class="post-time"> | <span class="post-meta-item-icon"><i class="fa fa-clock-o"></i><span class="post-count"> 5</span><span class="post-meta-item-text"> 分钟</span></span></span></div><div class="clear"><div class="toc-article" id="toc"><div class="toc-title">文章目录</div><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E7%AE%97%E6%B3%95"><span class="toc-text">一、什么是算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81%E7%AE%97%E6%B3%95%E6%98%AF%E5%AF%B9%E7%89%B9%E5%AE%9A%E9%97%AE%E9%A2%98%E7%9A%84%E8%A7%A3%E5%86%B3%E6%AD%A5%E9%AA%A4%EF%BC%88%E5%AF%B9%E4%BF%A1%E6%81%AF%E8%BF%9B%E8%A1%8C%E6%8E%92%E5%BA%8F%E3%80%81%E6%90%9C%E7%B4%A2%E7%9B%AE%E6%A0%87%E4%BF%A1%E6%81%AF%E7%AD%89%EF%BC%89"><span class="toc-text">1、算法是对特定问题的解决步骤（对信息进行排序、搜索目标信息等）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81%E7%AE%97%E6%B3%95%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%BF%85%E8%A6%81%E6%9D%A1%E4%BB%B6%EF%BC%9A"><span class="toc-text">2、算法的两个必要条件：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%E3%80%81%E5%87%A0%E7%A7%8D%E9%87%8D%E8%A6%81%E7%9A%84%E7%AE%97%E6%B3%95%EF%BC%9A"><span class="toc-text">3、几种重要的算法：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4%E3%80%81%E7%BB%93%E6%9E%84%E5%8C%96%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3"><span class="toc-text">4、结构化编程思想</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81-%E5%8F%98%E9%87%8F%E5%92%8C%E6%95%B0%E7%BB%84"><span class="toc-text">二、 变量和数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E2%80%94%E9%AB%98%E6%95%88%E7%9A%84%E7%AE%A1%E7%90%86%E5%A4%A7%E9%87%8F%E6%95%B0%E6%8D%AE%E7%9A%84%E6%9E%84%E9%80%A0"><span class="toc-text">三、数据结构——高效的管理大量数据的构造</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80"><span class="toc-text">四、算法基础</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81-%E5%BE%AA%E7%8E%AF%E5%A4%84%E7%90%86%E5%92%8C%E6%8E%A7%E5%88%B6%E5%8F%98%E9%87%8F"><span class="toc-text">1、 循环处理和控制变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81-%E4%BD%BF%E7%94%A8%E6%95%B0%E7%BB%84%E5%8F%AF%E4%BB%A5%E9%AB%98%E6%95%88%E7%9A%84%E5%A4%84%E7%90%86%E5%A4%A7%E9%87%8F%E6%95%B0%E6%8D%AE"><span class="toc-text">2、 使用数组可以高效的处理大量数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95"><span class="toc-text">2、排序算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%E3%80%81%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95"><span class="toc-text">3、搜索算法</span></a></li></ol></li></ol></div></div><div class="post-content"><h3 id="一、什么是算法"><a href="#一、什么是算法" class="headerlink" title="一、什么是算法"></a>一、什么是算法</h3><h4 id="1、算法是对特定问题的解决步骤（对信息进行排序、搜索目标信息等）"><a href="#1、算法是对特定问题的解决步骤（对信息进行排序、搜索目标信息等）" class="headerlink" title="1、算法是对特定问题的解决步骤（对信息进行排序、搜索目标信息等）"></a>1、算法是对特定问题的解决步骤（对信息进行排序、搜索目标信息等）</h4><p>算法 → 更优质的算法 → 好的程序；</p>
+<h4 id="2、算法的两个必要条件："><a href="#2、算法的两个必要条件：" class="headerlink" title="2、算法的两个必要条件："></a>2、算法的两个必要条件：</h4><ul>
+<li><p>准确性，证明方法——断言；</p>
+</li>
+<li><p>可停止性（死循环不能看做算法）；</p>
+</li>
+</ul>
+<h4 id="3、几种重要的算法："><a href="#3、几种重要的算法：" class="headerlink" title="3、几种重要的算法："></a>3、几种重要的算法：</h4><p>(1) 数论算法：</p>
+<ul>
+<li><p>求解最大公约数的辗转相除法；</p>
+</li>
+<li><p>求解联立方程的高斯消元法；</p>
+</li>
+<li><p>求解定积分近似值的梯形公式;</p>
+</li>
+<li><p>计算质数的艾拉斯托尼筛法;</p>
+</li>
+</ul>
+<p>(2) 排序算法(按序排列)：</p>
+<ul>
+<li><p>选择排序；</p>
+</li>
+<li><p>冒泡排序；</p>
+</li>
+<li><p>插入排序；</p>
+</li>
+<li><p>希尔排序;</p>
+</li>
+<li><p>归并排序;</p>
+</li>
+<li><p>快速排序；</p>
+</li>
+</ul>
+<p>(3) 搜索算法：（比较求同）</p>
+<ul>
+<li><p>线性搜索；</p>
+</li>
+<li><p>二分搜索；</p>
+</li>
+</ul>
+<p>(4) 字符串匹配算法：</p>
+<ul>
+<li><p>简单字符串搜索；</p>
+</li>
+<li><p>KMP 算法；</p>
+</li>
+<li><p>BM 算法；</p>
+</li>
+</ul>
+<h4 id="4、结构化编程思想"><a href="#4、结构化编程思想" class="headerlink" title="4、结构化编程思想"></a>4、结构化编程思想</h4><p>旨在高效描述程序，最大限度减少设计误差的方法论，其中的处理流程结构组合包括：</p>
+<p>(1) 顺序结构：按顺序处理；</p>
+<p>  <img src="https://upload-images.jianshu.io/upload_images/1476489-9f036b6001ef4e07.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/212/format/webp" alt="图片来源于网络"></p>
+<p>(2) 选择结构：按条件处理；</p>
+<p>  <img src="https://upload-images.jianshu.io/upload_images/1476489-68f37dd7d235e531.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片来源于网络"></p>
+<p>(3) 循环结构：条件成立下，进行定量循环处理；</p>
+<p>  <img src="https://upload-images.jianshu.io/upload_images/1476489-a41112c31c533ab9.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片来源于网络"></p>
+<h3 id="二、-变量和数组"><a href="#二、-变量和数组" class="headerlink" title="二、 变量和数组"></a>二、 变量和数组</h3><p>算法由数据和处理构成；</p>
+<p>(1) 基本数据类型：整数、浮点数、字符、布尔值及字符串；</p>
+<p>(2) 描述数据信息的方法是数据值；</p>
+<p>(3) 变量是存放数据值的容器，变量的作用是使处理过程通用化，每个变量只能存放一个数据，变量名是区分不同变量的标记，变量名要能表示所装载的数据； </p>
+<p>(4) 把数据赋值给变量的过程叫代入；</p>
+<p>(5) 数组是用来保存大量同一数据类型值的，数组索引，即数组元素的位置标号，可以利用数组进行关联数据的处理；</p>
+<p>(6) 二维数组，数组元素沿横纵方向排列；</p>
+<h3 id="三、数据结构——高效的管理大量数据的构造"><a href="#三、数据结构——高效的管理大量数据的构造" class="headerlink" title="三、数据结构——高效的管理大量数据的构造"></a>三、数据结构——高效的管理大量数据的构造</h3><p>常用的数据结构：</p>
+<p>(1) <strong>数组</strong>，快速定位第 N 个数据；</p>
+<p>  <img src="https://upload-images.jianshu.io/upload_images/1476489-5279810825a68703.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片来源于手机拍摄"></p>
+<p>(2) <strong>链表</strong>，离散数据排序，快速插入删除数据（插入、删除数据不改变数据位置）。单向链表只能单向检索，元素由数据和“NEXT 指针”构成，HEAD 指针标记链表的第一个元素。双向链表元素由数据，PREV、NEXT 指针构成，可向前向后检索数据，链表为空的状态，HEAD 指针，TAIL 指针分别存储“没有起始元素”、“没有末尾元素”的信息；</p>
+<p>  <img src="https://upload-images.jianshu.io/upload_images/1476489-6113ee58c4fc1e74.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片来源于网络"></p>
+<p>(3) <strong>堆栈</strong>（先进后出），数据操作：入栈 → 写入数据（push）→ 出栈（POP）→ 读取数据。考虑计算机优先级或者计算机管理子程序调用的顺序时用到；</p>
+<p>  <img src="https://upload-images.jianshu.io/upload_images/1476489-21be1fcb8546bd49.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片来源于网络"></p>
+<p>(4) <strong>队列</strong>（先进先出），应用在电文发放和接收中；</p>
+<p>  <img src="https://upload-images.jianshu.io/upload_images/1476489-0789fc904f456296.gif?imageMogr2/auto-orient/strip" alt="图片来源于网络"></p>
+<p>(5) <strong>树</strong>，管理父节点数据和子节点数据，二叉树一个父节点对用两个子节点，可以用数组来表示二叉树；</p>
+<p>  <img src="https://upload-images.jianshu.io/upload_images/1476489-a812b66052043bd4.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片来源于手机拍摄"></p>
+<p>  <img src="https://upload-images.jianshu.io/upload_images/1476489-061f5d3516622b9b.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片来源于手机拍摄"></p>
+<p>  <img src="https://upload-images.jianshu.io/upload_images/1476489-f43abcb33e47957a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片来源于手机拍摄"></p>
+<p>(6) 图，自由的表示各种关系的数据。图的分类：有向图（边有方向性）、加权图（边有权重）；</p>
+<p>  <img src="https://upload-images.jianshu.io/upload_images/1476489-ea65bbf1f9b3b98b.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片来源于手机拍摄"></p>
+<h3 id="四、算法基础"><a href="#四、算法基础" class="headerlink" title="四、算法基础"></a>四、算法基础</h3><h4 id="1、-循环处理和控制变量"><a href="#1、-循环处理和控制变量" class="headerlink" title="1、 循环处理和控制变量"></a>1、 循环处理和控制变量</h4><p>(1) 循环处理：利用一个控制变量来管理循环次数，从而进行必要次数的处理；</p>
+<p>(2) 循环处理的步骤：</p>
+<ul>
+<li><p>设置控制变量的初始值；</p>
+</li>
+<li><p>判断循环条件，如果为 true，进行以下 3,4,步，否则为 false，终止处理；</p>
+</li>
+<li><p>执行循环体；</p>
+</li>
+<li><p>改变控制变量，回到步骤 2；</p>
+</li>
+</ul>
+<p>(3) 利用循环处理使处理过程通用化；</p>
+<p>  <strong>案例：</strong></p>
+<p>  计算 1~N 的整数的总和。</p>
+<p>  算法：</p>
+<p>  <img src="https://upload-images.jianshu.io/upload_images/1476489-233c00b2f31f8e76.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>  JavaScript 代码：</p>
+<p>  <img src="https://upload-images.jianshu.io/upload_images/1476489-4ea54b8cba9d8db1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h4 id="2、-使用数组可以高效的处理大量数据"><a href="#2、-使用数组可以高效的处理大量数据" class="headerlink" title="2、 使用数组可以高效的处理大量数据"></a>2、 使用数组可以高效的处理大量数据</h4><p>(1) 求斐波那契数列。</p>
+<p>算法：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1476489-b0f7928c9e70b00c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="案例"></p>
+<p>JavaScript 代码：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1476489-aae2fafe110aeb4e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="代码"></p>
+<p>(2) 数组求和</p>
+<p>计算一年的营业额。</p>
+<p>算法：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1476489-ca431aa7a661a3fe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="算法"></p>
+<p>JavaScript 代码：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1476489-2498e2f8f6979555.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="代码"></p>
+<p>(3) 求平均值</p>
+<p>求班级考试的平均分。</p>
+<p>算法：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1476489-a288f74be53c16ba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="算法"></p>
+<p>JavaScript 代码：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1476489-a4ea9bb73708cdf4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="代码"></p>
+<p>(4) 求数组数据中的最大值</p>
+<p>求最高分。</p>
+<p>算法：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1476489-5934e850b29830b9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="算法"></p>
+<p>JavaScript 代码：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1476489-393b1a7d9a9bc418.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="代码"></p>
+<p>(5) 求数据中的最小值</p>
+<p>求最低分。</p>
+<p>算法：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1476489-7d3483e3bd32591a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="算法"></p>
+<p>JavaScript 代码：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1476489-a49e301d22d84669.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="代码"></p>
+<p>(6) 为数组元素排序</p>
+<p>为考试成绩排名。</p>
+<p>算法：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1476489-2d67aeb495cc806e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="算法"></p>
+<p>JavaScript 代码：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1476489-34838194b6e477e3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="代码"></p>
+<p>(7) 二维数组操作</p>
+<p>求全班学生不同科目考试合计总分。</p>
+<p>算法：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1476489-bfadc73a743b91f7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="算法"></p>
+<p>JavaScript 代码：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1476489-b4681f4285738dc5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="代码"></p>
+<p>(8) 求两个数的最大公约数</p>
+<p>辗转相除法</p>
+<p>算法：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1476489-460179a152a07806.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="算法"></p>
+<p>JavaScript 代码：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1476489-3fc4fb3e5c8ebb16.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="代码"></p>
+<h4 id="2、排序算法"><a href="#2、排序算法" class="headerlink" title="2、排序算法"></a>2、排序算法</h4><p>几种常用的排序算法</p>
+<p>(1) 桶排序: 准备与待排序数据取值范围大小个数的木桶，利用这些木桶对数据进行保存、排序。</p>
+<p>排序过程：</p>
+<ul>
+<li><p>准备好木桶数据，把其所有元素初始化为 0；</p>
+</li>
+<li><p>把保存排序数组（n 个数据）的下标的变量 i 初始化为 0；</p>
+</li>
+<li><p>i 小于 n 时，循环执行 4~5；</p>
+</li>
+<li><p>把 data[i]代入变量 value；</p>
+</li>
+<li><p>bucket[value]加 1；</p>
+</li>
+<li><p>i 加 1；</p>
+</li>
+<li><p>从 bucket 的起始元素开始，把每个数值非 0 的元素的下标按照数值（出现次数）取出来，排成一列。</p>
+</li>
+</ul>
+<p>(2) 选择排序: 遍历数据，把数据中的最大值（或最小值）与起始（或者末尾）数据进行交换。</p>
+<p>排序过程：</p>
+<ul>
+<li><p>从“待排序部分”中找到最小值；</p>
+</li>
+<li><p>把最小值和“待排序部分起始位置的元素”交换；</p>
+</li>
+<li><p>“待排序部分”的起始位置向后移动一位；</p>
+</li>
+<li><p>循环操作 1~3，直至“待排序部分”只剩下一个元素。</p>
+</li>
+</ul>
+<p>(3) 冒泡排序: 对比相邻的两个数据，根据大小关系调整两个数据的顺序。</p>
+<p>(4) 插入排序: 把目标数据按照正确的大小排列顺序插入相应的位置中。</p>
+<p>(5) 归并排序: 把目标数据分割成更小的部分进行排序，更小的部分正确排序之后再合并起来。</p>
+<p>(6) 希尔排序: 把目标数据按照一定的个数分成几个区域进行插入排序。</p>
+<p>(7) 快速排序: 从目标数据中任意选取一个数据，以这个数据的值为分割点，把目标数据分割为两部分。这样循环操作下去进行排序。</p>
+<h4 id="3、搜索算法"><a href="#3、搜索算法" class="headerlink" title="3、搜索算法"></a>3、搜索算法</h4><p>常用的搜索算法：</p>
+<ul>
+<li><p>线性搜索（随机排布的数据列中使用，效率比较低）；</p>
+</li>
+<li><p>二分搜索（已经排好序的数据列中使用，效率较高）；</p>
+</li>
+<li><p>利用哈希表进行搜索（高效搜索）；</p>
+</li>
+<li><p>简单字符串搜索（有长度的数据）；</p>
+</li>
+<li><p>利用 KMP 算法 进行字符串搜索；</p>
+</li>
+<li><p>利用 BM 算法进行字符串搜索。</p>
+</li>
+</ul>
+</div><div class="post-copyright"><script type="text/javascript" src="/js/copyright.js" successtext="复制成功!"></script><link rel="stylesheet" type="text/css" href="/css/copyright.css"><p><span>本文标题：</span>写给大家看的算法书笔记</p><p><span>文章作者：</span>Canace</p><p><span>发布时间：</span>2017-03-07</p><p><span>最后更新：</span>2025-12-28</p><p><span>原始链接：</span><a href="/algorithm-book-notes-for-everyone/">https://canace.site/algorithm-book-notes-for-everyone/</a><span class="copy-path"><i class="fa fa-clipboard" data-clipboard-text="https://canace.site/algorithm-book-notes-for-everyone/"></i></span></p><p><span>版权声明：</span>转载请注明出处</p></div><br><script type="text/javascript" src="../js/share.js?v=0.0.0" async></script><a class="article-share-link" data-url="https://canace.site/algorithm-book-notes-for-everyone/" data-id="cmkkhdza0001g1uv89y9c5oyn" data-qrcode="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJElEQVR42u3aW26DQBAEQN//0uQCgXTP4kgsxZdl2XiLSJN5fT7xdVxeySev73n2zs0XBgbGYxnJEZOj5/fPP5M/PgwMjDcwzm6dv75+J8Ek9z99HwMDA+PyuGeBsg2sGBgYGPcy2tCcfBcDAwPjmpEUsfnPt6nh9YO4uRbHwMB4ICPvuv//66/MNzAwMB7FOMprFkbbY9WnwsDA2JrRlpptotYmfLPzYGBg7M2YrUHkh5slnXXBjIGBsTVjfTAwQyb/B+qWHwYGxtaMb7f721WwlQIYAwNjP0ZbQCbhb9aGaxfLMDAw3sNIErjZIdrqsn00GBgYb2OsLH617f6VEjcqrTEwMLZj5E35WbNs5YjXv/7LCBMDA2NTRj6GnK1WzGAtCQMD4w2MWUY5a5blw4bZuAIDA2NXRl5wJkXsSgi+bccNAwNjI8bKTYvhYtmwW9oQwcDA2JSRr2TNDpEvYSTFapQUYmBgbMTI21uzFlgbgleSVAwMjL0ZNzyDUf62MoS4uRbHwMB4CCNZ7WqD7CwpzEcIn/aHMTAwHs5IQlu97jAaErQhGwMDY2/GUV5J2G3TyjZl/OPvgIGBsR1jvQRdSRZXBqtDDAYGxmMZSZCdHW6WUM7KXQwMjDcw2sDXFr1tMK2RGBgYGOXPzJbMlr6FgYGBEX8mb9LlQ4KoCYiBgfECRlLEzgYJSdBswysGBsbbGLNViTzszhYs2qEmBgbGpowfhhnk8zT0ICUAAAAASUVORK5CYII=">分享</a><div class="tags"><a href="../tags/reading-notes/"><i class="fa fa-tag"></i>读书笔记</a></div><div class="post-nav"><a class="pre" href="../systematic-method-for-fragmented-reading-knowledge/">碎片化阅读知识系统化方法</a><a class="next" href="../notes-about-writing-weekly-reports/">关于写周报的思考</a></div></div></div></div><div class="pure-u-1 pure-u-md-1-4"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 常用文档</i></div><ul></ul><a href="/git-common-commands" title="Git 文档" target="_blank">Git 文档</a><ul></ul><a href="/common-programming-prompt-words" title="常用开发提示词" target="_blank">常用开发提示词</a></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="../categories/soft/">软技能与思考</a><span class="category-list-count">43</span></li><li class="category-list-item"><a class="category-list-link" href="../categories/cli/">工程化与运维</a><span class="category-list-count">49</span></li><li class="category-list-item"><a class="category-list-link" href="../categories/intelligent/">AI探索</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="../categories/web/">Web开发</a><span class="category-list-count">140</span></li><li class="category-list-item"><a class="category-list-link" href="../categories/coding/">编程基础</a><span class="category-list-count">42</span></li><li class="category-list-item"><a class="category-list-link" href="../categories/site/">网站建设</a><span class="category-list-count">5</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="../tags/essays/" style="font-size: 15px; color: #bbc3c8">随笔</a> <a href="../tags/performance/" style="font-size: 15px; color: #88a6bb">性能优化</a> <a href="../tags/server-side/" style="font-size: 15px; color: #6694b3">服务端</a> <a href="../tags/Python-Go-%E5%85%B6%E4%BB%96/" style="font-size: 15px; color: #99b0c0">Python/Go/其他</a> <a href="../tags/JavaScript-TypeScript/" style="font-size: 15px; color: #11649e">JavaScript&TypeScript</a> <a href="../tags/backend/" style="font-size: 15px; color: #bbc3c8">后端</a> <a href="../tags/api-services/" style="font-size: 15px; color: #bbc3c8">API&服务</a> <a href="../tags/computer-science/" style="font-size: 15px; color: #3377a7">计算机科学</a> <a href="../tags/reading-notes/" style="font-size: 15px; color: #ccc">读书笔记</a> <a href="../tags/frontend/" style="font-size: 15px; color: #005b9a">前端</a> <a href="../tags/frameworks-libs/" style="font-size: 15px; color: #558aaf">框架与库</a> <a href="../tags/programming-languages/" style="font-size: 15px; color: #aab9c4">编程语言</a> <a href="../tags/css-visualization/" style="font-size: 15px; color: #226ea2">CSS与可视化</a> <a href="../tags/dev-tools/" style="font-size: 15px; color: #4481ab">开发工具</a> <a href="../tags/system-design/" style="font-size: 15px; color: #aab9c4">系统</a> <a href="../tags/build-deploy/" style="font-size: 15px; color: #779db7">构建与部署</a> <a href="../tags/Node-js/" style="font-size: 15px; color: #99b0c0">Node.js</a> <a href="../tags/cross-platform/" style="font-size: 15px; color: #99b0c0">跨端方案</a> <a href="../tags/code-quality/" style="font-size: 15px; color: #ccc">代码质量</a></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2026 <a href="../." rel="nofollow">Canace 的博客</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="../js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.js" async></script><script type="text/javascript" src="../js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.css"><link rel="stylesheet" type="text/css" href="../css/search.css?v=0.0.0"><script type="text/javascript" src="../js/search.js?v=0.0.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+   search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="/js/copycode.js" successtext="复制成功!"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css"><script type="text/javascript" src="../js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="../js/smartresize.js?v=0.0.0"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":200,"height":200},"mobile":{"show":false},"react":{"opacity":0.7},"log":false});</script></body></html>

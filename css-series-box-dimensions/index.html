@@ -1,0 +1,137 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="canace 的博客"><title>CSS 系列文章——盒尺寸 | Canace 的博客</title><link rel="stylesheet" type="text/css" href="../css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/normalize.css/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="../favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="../favicon.ico"><link rel="apple-touch-icon" href="../apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="../apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="../atom.xml"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/clipboard/dist/clipboard.min.js"></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.js"></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.css"><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">CSS 系列文章——盒尺寸</h1><a id="logo" href="../.">Canace 的博客</a><p class="description">Tomorrow is another day</p></div><div id="nav-menu"><a class="current" href="../."><i class="fa fa-home"> 主页</i></a><a href="../archives/"><i class="fa fa-archive"> 文章归档</i></a><a href="../about/"><i class="fa fa-user"> 关于我</i></a><a href="../atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">CSS 系列文章——盒尺寸</h1><div class="post-meta">2020-08-27<span> | </span><span class="category"><a href="../categories/web/">Web开发</a></span><script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> 阅读</span></span><span class="post-time"><span class="post-meta-item-text"> | </span><span class="post-meta-item-icon"><i class="fa fa-keyboard-o"></i><span class="post-count"> 1.2k</span><span class="post-meta-item-text"> 字</span></span></span><span class="post-time"> | <span class="post-meta-item-icon"><i class="fa fa-clock-o"></i><span class="post-count"> 4</span><span class="post-meta-item-text"> 分钟</span></span></span></div><div class="clear"><div class="toc-article" id="toc"><div class="toc-title">文章目录</div><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%9B%BF%E6%8D%A2%E5%85%83%E7%B4%A0"><span class="toc-text">一、替换元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81padding"><span class="toc-text">二、padding</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81border"><span class="toc-text">三、border</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E3%80%81margin"><span class="toc-text">四、margin</span></a></li></ol></div></div><div class="post-content"><p>盒尺寸分为以下四种：content box、padding box、border box 以及 margin box，也就是容器盒子中的内在盒子的尺寸。</p>
+<h3 id="一、替换元素"><a href="#一、替换元素" class="headerlink" title="一、替换元素"></a>一、替换元素</h3><p>1、🎓是<strong>什么</strong></p>
+<p>通过修改某个属性值呈现内容可以被替换掉的元素</p>
+<p>2、🎓<strong>替换元素有哪些</strong></p>
+<p>🌰img, object, video, ifram, texarea, input 等</p>
+<p>3、🎓<strong>特性</strong>：</p>
+<p>(1) 样式表现在 CSS 作用域之外，即内容上的外观不受页面上的 CSS 影响</p>
+<p>(2) 有默认尺寸，🌰video&#x2F;ifram&#x2F;canvas(300px x 150px)，img(0)等</p>
+<p>(3) 在很多 CSS 属性上有自己的一套表现规则，🌰vertical-align 的基线不是 baseline，而是下边缘</p>
+<p>4、🎓替换元素在不同浏览器的 display 值可能会不一样</p>
+<p>5、🎓<strong>尺寸计算规则</strong></p>
+<figure class="highlight md"><table><tr><td class="code"><pre><span class="line">📚<span class="strong">**相关概念**</span></span><br><span class="line">​</span><br><span class="line">(1) 固有尺寸，即元素本身的尺寸，不可改变</span><br><span class="line"></span><br><span class="line">(2) HTML 尺寸，只能通过 HTML 原生属性改变</span><br><span class="line"></span><br><span class="line">(3) CSS 尺寸，可以通过 CSS 的 width 和 height 或者 max-width/min-width 和</span><br><span class="line">max-height/min-height 设置的尺寸，对应盒尺寸中的 content box</span><br></pre></td></tr></table></figure>
+
+<p>(1) 若没有 CSS 尺寸和 HTML 尺寸，则使用固有尺寸作为最终宽高</p>
+<p>(2) 若没有 CSS 尺寸，则使用 HTML 尺寸作为最终宽高</p>
+<p>(3) 若没有 CSS 尺寸，则最终尺寸由 CSS 属性决定</p>
+<p>(4) 若”固有尺寸“含有固有的宽高比例，同时仅设置了宽度或仅设置了高度，则元素依然按照固有的宽高比例显示</p>
+<p>(5) 若上述条件都不符合，则宽高表现为默认宽高值的比</p>
+<p>6、🎓<strong>替换元素不设置 src，表现为普通内联元素</strong></p>
+<p>基于伪元素的图片内容生成技术</p>
+<p>(1) 图片不设置 src</p>
+<p>(2) after 伪元素 content 设置为 attr(alt);</p>
+<p>7、🎓<strong>content 属性</strong></p>
+<p>(1) content 属性生成的对象被称为”匿名替换元素”</p>
+<p>(2) 📚实用技术: </p>
+<ul>
+<li><p>content 辅助元素生成</p>
+</li>
+<li><p>content 字符内容生成</p>
+</li>
+<li><p>content 图片生成(使用 url 显示图片)</p>
+</li>
+<li><p>content 计数器(counter-reset,counter-increment,counter(counter-reset),counters(name, string)，实现计数嵌套)</p>
+</li>
+</ul>
+<h3 id="二、padding"><a href="#二、padding" class="headerlink" title="二、padding"></a>二、padding</h3><p>1、🎓默认模式下，使用 padding 会<strong>增加元素尺寸</strong></p>
+<p>2、🎓内联元素 padding 对视觉层和布局层具有双重影响</p>
+<p>3、🎓<strong>属性值特性</strong></p>
+<p>(1) 百分比值相对于宽度计算</p>
+<p>(2) 不支持负值</p>
+<ul>
+<li><p>ol&#x2F;ul 列表内置 padding-left，单位是 px, 🌰Chrome 浏览器下是 40px</p>
+</li>
+<li><p>很多表单元素都内置 padding</p>
+</li>
+</ul>
+<p>4、<strong>📚运用</strong></p>
+<p>(1) 增加点击区域</p>
+<p>(2) 实现管道符</p>
+<p>(3) 实现一些图标,比如,双层圆环和三道杠</p>
+<h3 id="三、border"><a href="#三、border" class="headerlink" title="三、border"></a>三、border</h3><p>1、🎓<strong>基本常识</strong></p>
+<p>(1) 不支持百分比值</p>
+<p>(2) 关键字: thin(1px)、medium(3px)、thick(4px)</p>
+<p>(3) 默认宽度 medium</p>
+<p>2、<strong>border-style</strong></p>
+<p>(1) 默认值：none</p>
+<p>(2) 常用值：solid、dashed、dotted、double</p>
+<p>(3) 重置边框性能高的方法</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">🌰<span class="selector-tag">div</span>&#123;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid;</span><br><span class="line">  <span class="attribute">border-bottom</span>: <span class="number">0</span> none;</span><br><span class="line">​&#125;</span><br></pre></td></tr></table></figure>
+
+<p>3、<strong>border-color</strong></p>
+<p>默认值：currentColor</p>
+<p>4、📚<strong>运用</strong></p>
+<p>(1) 增加点击区域</p>
+<p>(2) 利用 transparent 等特性生成三角形、梯形等图形</p>
+<p>(3) 实现等高布局</p>
+<h3 id="四、margin"><a href="#四、margin" class="headerlink" title="四、margin"></a>四、margin</h3><p>1、📚<strong>margin 失效的情况</strong></p>
+<p>(1) display 计算值 inline 的非替换元素的垂直 margin</p>
+<p>(2) 表格中的 tr 和 td 元素或设置 display 计算值是table-cell 或 table-row 的元素</p>
+<p>(3) margin 合并时，更改 margin 值时</p>
+<p>(4) 绝对定位元素非定位方位的 margin 值</p>
+<p>(5) 定高容器的子元素 margin-bottom</p>
+<p>(6) 定宽元素的子元素 margin-right</p>
+<p>(7) 内联特性导致的 margin 无效</p>
+<p>2、<strong>margin:auto 填充规则</strong></p>
+<p>(1) 如果一侧定值，一侧 auto，则 auto 为剩余空间大小</p>
+<p>(2) 若两侧均是 auto，则平分剩余空间</p>
+<p>3、<strong>margin 合并</strong></p>
+<p>(1) 🎓<strong>是什么</strong></p>
+<p>块级元素的 margin-top 和 margin-bottom 合并</p>
+<p>(2) 🎓<strong>发生 margin 合并的场景</strong></p>
+<ul>
+<li><p>相邻兄弟元素</p>
+</li>
+<li><p>父级元素和第一个子元素&#x2F;最后一个子元素, 阻止合并方法</p>
+<ul>
+<li><p>父元素设置为块级格式化上下文</p>
+</li>
+<li><p>设置border-top&#x2F;border-bottom</p>
+</li>
+<li><p>设置padding-top&#x2F;padding-bottom</p>
+</li>
+<li><p>父元素和第一个子元素或最后一个子元素间添加内联元素进行分隔</p>
+</li>
+<li><p>父元素设置 height，min-height或max-height（margin-bottom合并）</p>
+</li>
+</ul>
+</li>
+<li><p>空块级元素, 阻止合并方法</p>
+<ul>
+<li><p>设置垂直方向border</p>
+</li>
+<li><p>设置垂直方向 padding</p>
+</li>
+<li><p>内部添加内联元素</p>
+</li>
+<li><p>设置height &#x2F; min-height</p>
+</li>
+</ul>
+</li>
+<li><p>计算规则</p>
+<ul>
+<li><p>正正取大值</p>
+</li>
+<li><p>正负值相加</p>
+</li>
+<li><p>负负取绝对负值最大的值</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>4、🔧<strong>运用</strong></p>
+<p>(1) <strong>margin 设置负值实现两端对齐</strong></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">🌰<span class="selector-class">.parent</span> &#123; </span><br><span class="line">  <span class="attribute">margin-left</span>: -<span class="number">20px</span>; </span><br><span class="line">&#125; </span><br><span class="line"><span class="selector-class">.child</span> &#123; </span><br><span class="line">  <span class="attribute">float</span>: left; </span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100px</span>; </span><br><span class="line">  <span class="attribute">margin-left</span>: <span class="number">20px</span>; </span><br><span class="line">&#125;​​​</span><br></pre></td></tr></table></figure>
+<p>(2) 滚动模式下底部留白使用padding会有兼容问题，使用子元素 margin 比较靠谱</p>
+<p>(3) <strong>实现等高布局</strong></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">🌰<span class="selector-class">.box</span> &#123; </span><br><span class="line">  <span class="attribute">overflow</span>: hidden; </span><br><span class="line">&#125; </span><br><span class="line"><span class="selector-class">.left</span>, <span class="selector-class">.right</span> &#123; </span><br><span class="line">  <span class="attribute">margin-bottom</span>: -<span class="number">9999px</span>; </span><br><span class="line">  <span class="attribute">padding-bottom</span>: <span class="number">9999px</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div><div class="post-copyright"><script type="text/javascript" src="/js/copyright.js" successtext="复制成功!"></script><link rel="stylesheet" type="text/css" href="/css/copyright.css"><p><span>本文标题：</span>CSS 系列文章——盒尺寸</p><p><span>文章作者：</span>Canace</p><p><span>发布时间：</span>2020-08-27</p><p><span>最后更新：</span>2025-12-28</p><p><span>原始链接：</span><a href="/css-series-box-dimensions/">https://canace.site/css-series-box-dimensions/</a><span class="copy-path"><i class="fa fa-clipboard" data-clipboard-text="https://canace.site/css-series-box-dimensions/"></i></span></p><p><span>版权声明：</span>转载请注明出处</p></div><br><script type="text/javascript" src="../js/share.js?v=0.0.0" async></script><a class="article-share-link" data-url="https://canace.site/css-series-box-dimensions/" data-id="cmkkhdza7005m1uv8c1arhiq3" data-qrcode="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACLElEQVR42u3aSW7jQBAEQP3/0xpgTgYM05lV0mDUjD4J1NIMHkpdy+MRr+ff9fX11yvX17+/+30lv/CChYGB8bGM2QbXjJ/evX4o1/te/z4GBsYdGG2Qbb+1YVzvgoGBgdEeDfMr7b4YGBgYLSP5bp7WbsI6BgbGfRj5Ea09/OWA/OCIgYFxN8asMfBvXr+9v4GBgfHfM57lSloC+Y7JleiuMDAwjmbMjndtub9OR8sHgYGBcR9G/oVNyrpPj3+8NwwMjEMZbYsxP9LNPj8L6xgYGHdgzNLXZLRiX8h7QWcDAwPjwxnJT8/CZRuC24cVkTAwMA5izEa78g3axHUYfDEwMI5mJEWx2bRD3qRsQ389xoqBgXEEYxZw26ZCfrv7R4CBgXEGo810Z8X9tiRXD3BgYGDcgNGWt9oxspzR/j9gYGDcgTFLHdvU97VDrsWDw8DAOIKRl/uTm2iz503b8pfOBgYGxqGMfGyiLehvUt8o9GNgYBzNyBuQbdFtMzQ2DM0YGBiHMvJSWn403I9K1ONlGBgYN2PkLYHHaOXBtE5iMTAwDmVshrRmZbjHYtUYDAyMIxjPcrUtgXxco01l6xMuBgbGxzLaYLepxm8GMmbNDAwMjJMYsyA4G1fdD2dgYGDcmbEZemgbDEkIzlNZDAwMjLygPwyU8TH0l09iYGBgrMtkbavy7QEXAwPjAxmbZsA7Et22nYCBgXE2Y9MYyMv6+fZvAWBgYHwq4w/jI8xSOjeVRQAAAABJRU5ErkJggg==">分享</a><div class="tags"><a href="../tags/frontend/"><i class="fa fa-tag"></i>前端</a><a href="../tags/css-visualization/"><i class="fa fa-tag"></i>CSS与可视化</a></div><div class="post-nav"><a class="pre" href="../css-series-flow-destruction-and-protection/">CSS 系列文章 —— 流的破坏与保护</a><a class="next" href="../css-series-flow-and-dimensions/">CSS 系列文章——CSS 中的流与尺寸</a></div></div></div></div><div class="pure-u-1 pure-u-md-1-4"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 常用文档</i></div><ul></ul><a href="/git-common-commands" title="Git 文档" target="_blank">Git 文档</a><ul></ul><a href="/common-programming-prompt-words" title="常用开发提示词" target="_blank">常用开发提示词</a></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="../categories/soft/">软技能与思考</a><span class="category-list-count">43</span></li><li class="category-list-item"><a class="category-list-link" href="../categories/cli/">工程化与运维</a><span class="category-list-count">49</span></li><li class="category-list-item"><a class="category-list-link" href="../categories/intelligent/">AI探索</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="../categories/web/">Web开发</a><span class="category-list-count">140</span></li><li class="category-list-item"><a class="category-list-link" href="../categories/coding/">编程基础</a><span class="category-list-count">42</span></li><li class="category-list-item"><a class="category-list-link" href="../categories/site/">网站建设</a><span class="category-list-count">5</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="../tags/essays/" style="font-size: 15px; color: #bbc3c8">随笔</a> <a href="../tags/performance/" style="font-size: 15px; color: #88a6bb">性能优化</a> <a href="../tags/server-side/" style="font-size: 15px; color: #6694b3">服务端</a> <a href="../tags/Python-Go-%E5%85%B6%E4%BB%96/" style="font-size: 15px; color: #99b0c0">Python/Go/其他</a> <a href="../tags/JavaScript-TypeScript/" style="font-size: 15px; color: #11649e">JavaScript&TypeScript</a> <a href="../tags/backend/" style="font-size: 15px; color: #bbc3c8">后端</a> <a href="../tags/api-services/" style="font-size: 15px; color: #bbc3c8">API&服务</a> <a href="../tags/computer-science/" style="font-size: 15px; color: #3377a7">计算机科学</a> <a href="../tags/reading-notes/" style="font-size: 15px; color: #ccc">读书笔记</a> <a href="../tags/frontend/" style="font-size: 15px; color: #005b9a">前端</a> <a href="../tags/frameworks-libs/" style="font-size: 15px; color: #558aaf">框架与库</a> <a href="../tags/programming-languages/" style="font-size: 15px; color: #aab9c4">编程语言</a> <a href="../tags/css-visualization/" style="font-size: 15px; color: #226ea2">CSS与可视化</a> <a href="../tags/dev-tools/" style="font-size: 15px; color: #4481ab">开发工具</a> <a href="../tags/system-design/" style="font-size: 15px; color: #aab9c4">系统</a> <a href="../tags/build-deploy/" style="font-size: 15px; color: #779db7">构建与部署</a> <a href="../tags/Node-js/" style="font-size: 15px; color: #99b0c0">Node.js</a> <a href="../tags/cross-platform/" style="font-size: 15px; color: #99b0c0">跨端方案</a> <a href="../tags/code-quality/" style="font-size: 15px; color: #ccc">代码质量</a></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2026 <a href="../." rel="nofollow">Canace 的博客</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="../js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.js" async></script><script type="text/javascript" src="../js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.css"><link rel="stylesheet" type="text/css" href="../css/search.css?v=0.0.0"><script type="text/javascript" src="../js/search.js?v=0.0.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+   search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="/js/copycode.js" successtext="复制成功!"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css"><script type="text/javascript" src="../js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="../js/smartresize.js?v=0.0.0"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":200,"height":200},"mobile":{"show":false},"react":{"opacity":0.7},"log":false});</script></body></html>

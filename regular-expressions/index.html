@@ -1,0 +1,131 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="canace 的博客"><title>正则 | Canace 的博客</title><link rel="stylesheet" type="text/css" href="../css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/normalize.css/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="../favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="../favicon.ico"><link rel="apple-touch-icon" href="../apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="../apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="../atom.xml"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/clipboard/dist/clipboard.min.js"></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.js"></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.css"><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">正则</h1><a id="logo" href="../.">Canace 的博客</a><p class="description">Tomorrow is another day</p></div><div id="nav-menu"><a class="current" href="../."><i class="fa fa-home"> 主页</i></a><a href="../archives/"><i class="fa fa-archive"> 文章归档</i></a><a href="../about/"><i class="fa fa-user"> 关于我</i></a><a href="../atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">正则</h1><div class="post-meta">2019-08-04<span> | </span><span class="category"><a href="../categories/coding/">编程基础</a></span><script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> 阅读</span></span><span class="post-time"><span class="post-meta-item-text"> | </span><span class="post-meta-item-icon"><i class="fa fa-keyboard-o"></i><span class="post-count"> 654</span><span class="post-meta-item-text"> 字</span></span></span><span class="post-time"> | <span class="post-meta-item-icon"><i class="fa fa-clock-o"></i><span class="post-count"> 2</span><span class="post-meta-item-text"> 分钟</span></span></span></div><div class="post-content"><h2 id="一、正则表达式是什么"><a href="#一、正则表达式是什么" class="headerlink" title="一、正则表达式是什么"></a>一、正则表达式是什么</h2><p>正则表达式就是记录文本规则的代码。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 匹配中国的电话号码</span></span><br><span class="line"><span class="number">0</span>\d\d-\d\d\d\d\d\d\d\d</span><br><span class="line"><span class="number">0</span>\d&#123;<span class="number">2</span>&#125;-\d&#123;<span class="number">8</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="二、安装正则测试软件"><a href="#二、安装正则测试软件" class="headerlink" title="二、安装正则测试软件"></a>二、安装正则测试软件</h2><p>地址： <a target="_blank" rel="noopener" href="https://deerchao.net/tools/regester/index.htm">https://deerchao.net/tools/regester/index.htm</a></p>
+<h2 id="三、常用元字符"><a href="#三、常用元字符" class="headerlink" title="三、常用元字符"></a>三、常用元字符</h2><table>
+<thead>
+<tr>
+<th>代码</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>.</td>
+<td>匹配除换行符以外的任意字符</td>
+</tr>
+<tr>
+<td>\w</td>
+<td>匹配字母或数字或下划线或汉字</td>
+</tr>
+<tr>
+<td>\s</td>
+<td>匹配任意的空白符</td>
+</tr>
+<tr>
+<td>\d</td>
+<td>匹配数字</td>
+</tr>
+<tr>
+<td>\b</td>
+<td>匹配单词的开始或结束</td>
+</tr>
+<tr>
+<td>^</td>
+<td>匹配字符串的开始</td>
+</tr>
+<tr>
+<td>$</td>
+<td>匹配字符串的结束</td>
+</tr>
+</tbody></table>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 匹配 qq 号，5——12位</span></span><br><span class="line">^\d&#123;<span class="number">5</span>,<span class="number">12</span>&#125;$</span><br></pre></td></tr></table></figure>
+
+<h2 id="四、字符转义"><a href="#四、字符转义" class="headerlink" title="四、字符转义"></a>四、字符转义</h2><p>常用的需要转义的字符：(\), *(*), .(.)</p>
+<h2 id="五、重复"><a href="#五、重复" class="headerlink" title="五、重复"></a>五、重复</h2><p>常用限定符</p>
+<table>
+<thead>
+<tr>
+<th>代码&#x2F;语法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>*</td>
+<td>重复零次或更多次</td>
+</tr>
+<tr>
+<td>+</td>
+<td>重复一次或更多次</td>
+</tr>
+<tr>
+<td>?</td>
+<td>重复零次或一次</td>
+</tr>
+<tr>
+<td>{n}</td>
+<td>重复n次</td>
+</tr>
+<tr>
+<td>{n,}</td>
+<td>重复n次或更多次</td>
+</tr>
+<tr>
+<td>{n,m}</td>
+<td>重复n到m次</td>
+</tr>
+</tbody></table>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="title class_">Windows</span>\d+  <span class="comment">//匹配Windows后面的1个或更多数字</span></span><br><span class="line"></span><br><span class="line">^\w+  <span class="comment">//匹配一行的第一个单词(或整个字符串的第一个单词，具体匹配哪个意思得看选项设置)</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="六、字符类，直接写到中括号-中即可"><a href="#六、字符类，直接写到中括号-中即可" class="headerlink" title="六、字符类，直接写到中括号 [] 中即可"></a>六、字符类，直接写到中括号 [] 中即可</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">[aeiou] <span class="comment">//匹配任何一个英文元音字母</span></span><br><span class="line"></span><br><span class="line">[.?!] <span class="comment">//匹配标点符号</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="七、分枝条件"><a href="#七、分枝条件" class="headerlink" title="七、分枝条件 (|)"></a>七、分枝条件 (|)</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="number">0</span>\d&#123;<span class="number">2</span>&#125;-\d&#123;<span class="number">8</span>&#125;|<span class="number">0</span>\d&#123;<span class="number">3</span>&#125;-\d&#123;<span class="number">7</span>&#125;   <span class="comment">//这个表达式能匹配两种以连字号分隔的电话号码：一种是三位区号，8位本地号(如010-12345678)，一种是4位区号，7位本地号(0376-2233445)</span></span><br><span class="line"></span><br><span class="line">\(<span class="number">0</span>\d&#123;<span class="number">2</span>&#125;\)[- ]?\d&#123;<span class="number">8</span>&#125;|<span class="number">0</span>\d&#123;<span class="number">2</span>&#125;[- ]?\d&#123;<span class="number">8</span>&#125;   <span class="comment">//匹配3位区号的电话号码</span></span><br><span class="line"></span><br><span class="line">\d&#123;<span class="number">5</span>&#125;-\d&#123;<span class="number">4</span>&#125;|\d&#123;<span class="number">5</span>&#125;   <span class="comment">//匹配美国的邮政编码</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="八、分组-小括号"><a href="#八、分组-小括号" class="headerlink" title="八、分组 (小括号)"></a>八、分组 (小括号)</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">((<span class="number">2</span>[<span class="number">0</span>-<span class="number">4</span>]\d|<span class="number">25</span>[<span class="number">0</span>-<span class="number">5</span>]|[<span class="number">01</span>]?\d\d?)\.)&#123;<span class="number">3</span>&#125;(<span class="number">2</span>[<span class="number">0</span>-<span class="number">4</span>]\d|<span class="number">25</span>[<span class="number">0</span>-<span class="number">5</span>]|[<span class="number">01</span>]?\d\d?)   <span class="comment">// 匹配一个ip地址</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="九、反义-（字符串前面加-，元字符变大写）"><a href="#九、反义-（字符串前面加-，元字符变大写）" class="headerlink" title="九、反义 （字符串前面加 ^，元字符变大写）"></a>九、反义 （字符串前面加 ^，元字符变大写）</h2><p>常用的反义代码</p>
+<table>
+<thead>
+<tr>
+<th>代码&#x2F;语法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>\W</td>
+<td>匹配任意不是字母，数字，下划线，汉字的字符</td>
+</tr>
+<tr>
+<td>\S</td>
+<td>匹配任意不是空白符的字符</td>
+</tr>
+<tr>
+<td>\D</td>
+<td>匹配任意非数字的字符</td>
+</tr>
+<tr>
+<td>\B</td>
+<td>匹配不是单词开头或结束的位置</td>
+</tr>
+<tr>
+<td>[^x]</td>
+<td>匹配除了x以外的任意字符</td>
+</tr>
+<tr>
+<td>[^aeiou]</td>
+<td>匹配除了aeiou这几个字母以外的任意字符</td>
+</tr>
+</tbody></table>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">\S+   <span class="comment">//匹配不包含空白符的字符串</span></span><br><span class="line"></span><br><span class="line"><span class="language-xml">&lt;a[^&gt;]+&gt;    //匹配用尖括号括起来的以a开头的字符串</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="十、后向引用"><a href="#十、后向引用" class="headerlink" title="十、后向引用"></a>十、后向引用</h2><p>用于重复搜索前面某个分组匹配的文本</p>
+</div><div class="post-copyright"><script type="text/javascript" src="/js/copyright.js" successtext="复制成功!"></script><link rel="stylesheet" type="text/css" href="/css/copyright.css"><p><span>本文标题：</span>正则</p><p><span>文章作者：</span>Canace</p><p><span>发布时间：</span>2019-08-04</p><p><span>最后更新：</span>2025-12-28</p><p><span>原始链接：</span><a href="/regular-expressions/">https://canace.site/regular-expressions/</a><span class="copy-path"><i class="fa fa-clipboard" data-clipboard-text="https://canace.site/regular-expressions/"></i></span></p><p><span>版权声明：</span>转载请注明出处</p></div><br><script type="text/javascript" src="../js/share.js?v=0.0.0" async></script><a class="article-share-link" data-url="https://canace.site/regular-expressions/" data-id="cmkkhdzap00iq1uv8a6rq69ru" data-qrcode="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAAByElEQVR42u3aQW7DMAwEwPz/0ynQUwEnzlKU6RQYnYy6kSY5ENRKj0c8nr/j7/NxHN8eP/tuzs0DFxe3zX2ejnNu523yE7z4Sri4uIPcavE6n6FayArFDhcX98u4SYtzXs6SQomLi/u/uMkC1f0LLi7uN3PzsCOPQvplDhcX9y7uWmC69/nyfBcXF3fTqURe1JJwZMPquLi4I9zqMp2mZ9vmChcX92Juf/txRbcVlTBcXNzLuNHroDBVS2GhoTnOhouLO8g9X3jtgkU1PC1fzMLFxb2Amx915IjOxumDBBcXd4RbjTI7m5ykFC4erOLi4m7lVhdeC0w78QouLu5d3PMilccl1f8pH9/i4uKOcDvHHmstS34Qi4uLexc3v1iZx6b5pYpypIKLizvC7RyyVrc01bXeroKLi3sxt1qeqvlrdZ4PPwouLu4gN284cm7evhTmwcXFHeRuuEa5dK5bLo64uLgj3LV4tB+GJgerrSKIi4vb5ibFay3+6EexL9bFxcUd5FZz1mqEWm19yq9xcXFv4lY/1f97q5Dh4uIOcpPitdYeRa0VLi7uIDfZ/FQblGrwmjzj4uLOcHcFpoubmeBwBRcXd5D7A6aDD/ahFX36AAAAAElFTkSuQmCC">分享</a><div class="tags"><a href="../tags/programming-languages/"><i class="fa fa-tag"></i>编程语言</a></div><div class="post-nav"><a class="pre" href="../nodeJs/">nodeJs 模块</a><a class="next" href="../webpack/">Webpack</a></div></div></div></div><div class="pure-u-1 pure-u-md-1-4"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 常用文档</i></div><ul></ul><a href="/git-common-commands" title="Git 文档" target="_blank">Git 文档</a><ul></ul><a href="/common-programming-prompt-words" title="常用开发提示词" target="_blank">常用开发提示词</a></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="../categories/soft/">软技能与思考</a><span class="category-list-count">43</span></li><li class="category-list-item"><a class="category-list-link" href="../categories/cli/">工程化与运维</a><span class="category-list-count">49</span></li><li class="category-list-item"><a class="category-list-link" href="../categories/intelligent/">AI探索</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="../categories/web/">Web开发</a><span class="category-list-count">140</span></li><li class="category-list-item"><a class="category-list-link" href="../categories/coding/">编程基础</a><span class="category-list-count">42</span></li><li class="category-list-item"><a class="category-list-link" href="../categories/site/">网站建设</a><span class="category-list-count">5</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="../tags/essays/" style="font-size: 15px; color: #bbc3c8">随笔</a> <a href="../tags/performance/" style="font-size: 15px; color: #88a6bb">性能优化</a> <a href="../tags/server-side/" style="font-size: 15px; color: #6694b3">服务端</a> <a href="../tags/Python-Go-%E5%85%B6%E4%BB%96/" style="font-size: 15px; color: #99b0c0">Python/Go/其他</a> <a href="../tags/JavaScript-TypeScript/" style="font-size: 15px; color: #11649e">JavaScript&TypeScript</a> <a href="../tags/backend/" style="font-size: 15px; color: #bbc3c8">后端</a> <a href="../tags/api-services/" style="font-size: 15px; color: #bbc3c8">API&服务</a> <a href="../tags/computer-science/" style="font-size: 15px; color: #3377a7">计算机科学</a> <a href="../tags/reading-notes/" style="font-size: 15px; color: #ccc">读书笔记</a> <a href="../tags/frontend/" style="font-size: 15px; color: #005b9a">前端</a> <a href="../tags/frameworks-libs/" style="font-size: 15px; color: #558aaf">框架与库</a> <a href="../tags/programming-languages/" style="font-size: 15px; color: #aab9c4">编程语言</a> <a href="../tags/css-visualization/" style="font-size: 15px; color: #226ea2">CSS与可视化</a> <a href="../tags/dev-tools/" style="font-size: 15px; color: #4481ab">开发工具</a> <a href="../tags/system-design/" style="font-size: 15px; color: #aab9c4">系统</a> <a href="../tags/build-deploy/" style="font-size: 15px; color: #779db7">构建与部署</a> <a href="../tags/Node-js/" style="font-size: 15px; color: #99b0c0">Node.js</a> <a href="../tags/cross-platform/" style="font-size: 15px; color: #99b0c0">跨端方案</a> <a href="../tags/code-quality/" style="font-size: 15px; color: #ccc">代码质量</a></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2026 <a href="../." rel="nofollow">Canace 的博客</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="../js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.js" async></script><script type="text/javascript" src="../js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.css"><link rel="stylesheet" type="text/css" href="../css/search.css?v=0.0.0"><script type="text/javascript" src="../js/search.js?v=0.0.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+   search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="/js/copycode.js" successtext="复制成功!"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css"><script type="text/javascript" src="../js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="../js/smartresize.js?v=0.0.0"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":200,"height":200},"mobile":{"show":false},"react":{"opacity":0.7},"log":false});</script></body></html>

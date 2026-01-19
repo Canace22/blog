@@ -1,0 +1,107 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="canace 的博客"><title>Html 笔记 | Canace 的博客</title><link rel="stylesheet" type="text/css" href="../css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/normalize.css/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="../favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="../favicon.ico"><link rel="apple-touch-icon" href="../apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="../apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="../atom.xml"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/clipboard/dist/clipboard.min.js"></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.js"></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.css"><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Html 笔记</h1><a id="logo" href="../.">Canace 的博客</a><p class="description">Tomorrow is another day</p></div><div id="nav-menu"><a class="current" href="../."><i class="fa fa-home"> 主页</i></a><a href="../archives/"><i class="fa fa-archive"> 文章归档</i></a><a href="../about/"><i class="fa fa-user"> 关于我</i></a><a href="../atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">Html 笔记</h1><div class="post-meta">2019-01-22<span> | </span><span class="category"><a href="../categories/web/">Web开发</a></span><script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> 阅读</span></span><span class="post-time"><span class="post-meta-item-text"> | </span><span class="post-meta-item-icon"><i class="fa fa-keyboard-o"></i><span class="post-count"> 670</span><span class="post-meta-item-text"> 字</span></span></span><span class="post-time"> | <span class="post-meta-item-icon"><i class="fa fa-clock-o"></i><span class="post-count"> 2</span><span class="post-meta-item-text"> 分钟</span></span></span></div><div class="post-content"><p>html 笔记</p>
+<span id="more"></span>
+
+<h2 id="一、html-是什么？"><a href="#一、html-是什么？" class="headerlink" title="一、html 是什么？"></a>一、html 是什么？</h2><ol>
+<li><p>html 是使用标记标签来描述网页的一种标记语言。</p>
+</li>
+<li><p>html 文档 &#x3D; 网页。</p>
+</li>
+<li><p>除了空元素，其他元素都要闭合</p>
+</li>
+<li><p>推荐使用小写</p>
+</li>
+<li><p>大多数元素具有以下属性：class、id、style、title</p>
+</li>
+</ol>
+<h2 id="二、常用元素："><a href="#二、常用元素：" class="headerlink" title="二、常用元素："></a>二、常用元素：</h2><ol>
+<li><p>标题：h</p>
+</li>
+<li><p>段落：p</p>
+</li>
+<li><p>图形：img、canvas</p>
+</li>
+<li><p>链接：a</p>
+<p>A. 新的浏览器中打开链接（target&#x3D;“_blank”)</p>
+<p>B. 链接到同一个页面的不同位置：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#C4&quot;</span>&gt;</span>查看 Chapter 4。<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">name</span>=<span class="string">&quot;C4&quot;</span>&gt;</span>Chapter 4<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>C. 创建邮件链接：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;mailto:someone@microsoft.com?subject=Hello%20again&quot;</span>&gt;</span>发送邮件<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>水平线：hr</p>
+</li>
+<li><p>折行：br</p>
+</li>
+<li><p>文本格式化：b（粗体）、em（强调）、i（斜体）、small（小号）、strong（加重语气）、sub（下标字）、sup（上标字）、ins（插入字）、del（删除字）</p>
+</li>
+<li><p>预格式文本：pre</p>
+</li>
+<li><p>地址：address</p>
+</li>
+<li><p>块引用：blockquote</p>
+</li>
+<li><p>著作标题：cite</p>
+</li>
+<li><p>表格：table、caption（标题）、tr（行）、th（表头）、td（单元格）、colspan（跨行属性）、rowspan（跨列属性）、cellpadding（单元格间距）、</p>
+</li>
+<li><p>列表：ul（无序列表，type：disc、circle、square）、ol（有序列表，type：A、a、I、i）、li（列表项）</p>
+</li>
+<li><p>语义元素：header（页眉）、nav（导航链接的容器）、section（章节）、article（独立的文章）、aside（侧栏）、footer（页脚）</p>
+</li>
+<li><p>表单：form(action、method, target)、<a href="'http://www.w3school.com.cn/html/html_form_input_types.asp'">input</a>(name、value、输入限制、输入类型)、select、option（selected）、textarea、button、datalist</p>
+</li>
+<li><p>媒体元素：audio、embed、video</p>
+</li>
+<li><p>其他：div、span</p>
+</li>
+</ol>
+<h2 id="三、元素分类："><a href="#三、元素分类：" class="headerlink" title="三、元素分类："></a>三、元素分类：</h2><ol>
+<li><p>块级元素：在浏览器显示时，通常会以新行来开始和结束</p>
+</li>
+<li><p>内联元素：内联元素在显示时通常不会以新行开始</p>
+</li>
+</ol>
+<h2 id="四、url-组成：scheme-host-domain-port-path-filename"><a href="#四、url-组成：scheme-host-domain-port-path-filename" class="headerlink" title="四、url 组成：scheme:&#x2F;&#x2F;host.domain:port&#x2F;path&#x2F;filename"></a>四、url 组成：scheme:&#x2F;&#x2F;host.domain:port&#x2F;path&#x2F;filename</h2><ol>
+<li><p>scheme - 因特网服务的类型。最常见的类型是 http， 还包括：https、ftp、file</p>
+</li>
+<li><p>host - 域主机（http 的默认主机是 www）</p>
+</li>
+<li><p>domain - 域名，比如 w3school.com.cn</p>
+</li>
+<li><p>:port - 端口号（http 的默认端口号是 80）</p>
+</li>
+<li><p>path - 服务器上的路径（如果省略，则文档必须位于网站的根目录中）。</p>
+</li>
+<li><p>filename - 文档&#x2F;资源的名称</p>
+</li>
+</ol>
+<h2 id="五、HTML-图形"><a href="#五、HTML-图形" class="headerlink" title="五、HTML 图形"></a>五、HTML 图形</h2><ol>
+<li><p>canvas：</p>
+<p>(1) 本质：创建画布，使用 JavaScript 画布上绘制图像，本身不具备绘图功能。</p>
+<p>(2) 绘图步骤：获取元素(getContext(“2d”)) &#x3D;&gt; 设置形状、样式等</p>
+<p>(3) 常用属性：fillStyle、</p>
+<p>(4) 常用事件：getContext、fillRect、moveTo、lineTo、stroke、beginPath、arc、closePath、fill、createLinearGradient、drawImageaddColorStop</p>
+</li>
+<li><p>svg：</p>
+<p>(1) 本质：可伸缩的矢量图形</p>
+<p>(2) 图形创建方式：使用 xml 定义</p>
+<p>(3) 特性：图像在放大或改变尺寸的情况下其图形质量不变</p>
+</li>
+</ol>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ol>
+<li><p>响应式 web 设计（RWD，Responsive Web Design）， 是能够以可变尺寸传递网页的一种网页布局模式。</p>
+</li>
+<li><p>实体符号：<a target="_blank" rel="noopener" href="http://www.w3school.com.cn/html/html_entities.asp">http://www.w3school.com.cn/html/html_entities.asp</a></p>
+</li>
+</ol>
+</div><div class="post-copyright"><script type="text/javascript" src="/js/copyright.js" successtext="复制成功!"></script><link rel="stylesheet" type="text/css" href="/css/copyright.css"><p><span>本文标题：</span>Html 笔记</p><p><span>文章作者：</span>Canace</p><p><span>发布时间：</span>2019-01-22</p><p><span>最后更新：</span>2025-12-28</p><p><span>原始链接：</span><a href="/html-notes/">https://canace.site/html-notes/</a><span class="copy-path"><i class="fa fa-clipboard" data-clipboard-text="https://canace.site/html-notes/"></i></span></p><p><span>版权声明：</span>转载请注明出处</p></div><br><script type="text/javascript" src="../js/share.js?v=0.0.0" async></script><a class="article-share-link" data-url="https://canace.site/html-notes/" data-id="cmkkhdzae00b51uv8ep8yhej9" data-qrcode="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABsUlEQVR42u3ay43DMAwFQPffdNLArvNISooRjE4BYlgjHwjxc13xehVX/s5rx8LFxR1zk40T1qu1cgMuLu557n2gqT5zT+m9HxcX98nceZjDxcX9VW6SwOT/4uLiPpObJCdJSFpbx8DFxf0Wt1rc3PF7S30XFxe3xZ0XN1elSdHuuLi4R7h5QKmWPJKUprovLi7uSW51yzzArRr1KJwDFxd3zJ1cVuYjF/nn+ONGhouLu42bF0F6RdU8RFb/xcXF3c3Nk5BqCOt9gmW5Gi4u7oC7tk9RHexYkKvh4uIu5SbBpdpqzUuf5UCGi4t7hJvXIfMiRbUde7/Xv8kPLi7uNm7yaI+VHLvcvsXFxT3CrZZKe+hV46G4uLgnub1maq/RsuAT4OLiHufOB7Z2BERcXNxvcXvlj1VNl7zRgouLu5vba6zmGVVe8ohSJlxc3CPcaqliPk4xOTAuLu5Jbn5B6R2sGuY+BDhcXNyD3FEHpjhasayVgouL+xju/euqg5jNkU1cXNyHcXup0fzahIuLe55bbYRUw1O1ODJqsuLi4o651VCSBLXJgMWCMVBcXNw+9w1CCkjnq7TkJQAAAABJRU5ErkJggg==">分享</a><div class="tags"><a href="../tags/frontend/"><i class="fa fa-tag"></i>前端</a></div><div class="post-nav"><a class="pre" href="../css-notes/">CSS 基础</a><a class="next" href="../python3-installation/">Python3 安装</a></div></div></div></div><div class="pure-u-1 pure-u-md-1-4"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 常用文档</i></div><ul></ul><a href="/git-common-commands" title="Git 文档" target="_blank">Git 文档</a><ul></ul><a href="/common-programming-prompt-words" title="常用开发提示词" target="_blank">常用开发提示词</a></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="../categories/soft/">软技能与思考</a><span class="category-list-count">43</span></li><li class="category-list-item"><a class="category-list-link" href="../categories/cli/">工程化与运维</a><span class="category-list-count">49</span></li><li class="category-list-item"><a class="category-list-link" href="../categories/intelligent/">AI探索</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="../categories/web/">Web开发</a><span class="category-list-count">140</span></li><li class="category-list-item"><a class="category-list-link" href="../categories/coding/">编程基础</a><span class="category-list-count">42</span></li><li class="category-list-item"><a class="category-list-link" href="../categories/site/">网站建设</a><span class="category-list-count">5</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="../tags/essays/" style="font-size: 15px; color: #bbc3c8">随笔</a> <a href="../tags/performance/" style="font-size: 15px; color: #88a6bb">性能优化</a> <a href="../tags/server-side/" style="font-size: 15px; color: #6694b3">服务端</a> <a href="../tags/Python-Go-%E5%85%B6%E4%BB%96/" style="font-size: 15px; color: #99b0c0">Python/Go/其他</a> <a href="../tags/JavaScript-TypeScript/" style="font-size: 15px; color: #11649e">JavaScript&TypeScript</a> <a href="../tags/backend/" style="font-size: 15px; color: #bbc3c8">后端</a> <a href="../tags/api-services/" style="font-size: 15px; color: #bbc3c8">API&服务</a> <a href="../tags/computer-science/" style="font-size: 15px; color: #3377a7">计算机科学</a> <a href="../tags/reading-notes/" style="font-size: 15px; color: #ccc">读书笔记</a> <a href="../tags/frontend/" style="font-size: 15px; color: #005b9a">前端</a> <a href="../tags/frameworks-libs/" style="font-size: 15px; color: #558aaf">框架与库</a> <a href="../tags/programming-languages/" style="font-size: 15px; color: #aab9c4">编程语言</a> <a href="../tags/css-visualization/" style="font-size: 15px; color: #226ea2">CSS与可视化</a> <a href="../tags/dev-tools/" style="font-size: 15px; color: #4481ab">开发工具</a> <a href="../tags/system-design/" style="font-size: 15px; color: #aab9c4">系统</a> <a href="../tags/build-deploy/" style="font-size: 15px; color: #779db7">构建与部署</a> <a href="../tags/Node-js/" style="font-size: 15px; color: #99b0c0">Node.js</a> <a href="../tags/cross-platform/" style="font-size: 15px; color: #99b0c0">跨端方案</a> <a href="../tags/code-quality/" style="font-size: 15px; color: #ccc">代码质量</a></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2026 <a href="../." rel="nofollow">Canace 的博客</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="../js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.js" async></script><script type="text/javascript" src="../js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.css"><link rel="stylesheet" type="text/css" href="../css/search.css?v=0.0.0"><script type="text/javascript" src="../js/search.js?v=0.0.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+   search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="/js/copycode.js" successtext="复制成功!"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css"><script type="text/javascript" src="../js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="../js/smartresize.js?v=0.0.0"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":200,"height":200},"mobile":{"show":false},"react":{"opacity":0.7},"log":false});</script></body></html>

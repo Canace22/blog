@@ -1,0 +1,91 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="canace 的博客"><title>CSS 系列文章 —— 内联元素与流 | Canace 的博客</title><link rel="stylesheet" type="text/css" href="../css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/normalize.css/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="../favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="../favicon.ico"><link rel="apple-touch-icon" href="../apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="../apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="../atom.xml"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/clipboard/dist/clipboard.min.js"></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.js"></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.css"><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">CSS 系列文章 —— 内联元素与流</h1><a id="logo" href="../.">Canace 的博客</a><p class="description">Tomorrow is another day</p></div><div id="nav-menu"><a class="current" href="../."><i class="fa fa-home"> 主页</i></a><a href="../archives/"><i class="fa fa-archive"> 文章归档</i></a><a href="../about/"><i class="fa fa-user"> 关于我</i></a><a href="../atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">CSS 系列文章 —— 内联元素与流</h1><div class="post-meta">2020-08-27<span> | </span><span class="category"><a href="../categories/web/">Web开发</a></span><script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> 阅读</span></span><span class="post-time"><span class="post-meta-item-text"> | </span><span class="post-meta-item-icon"><i class="fa fa-keyboard-o"></i><span class="post-count"> 1.2k</span><span class="post-meta-item-text"> 字</span></span></span><span class="post-time"> | <span class="post-meta-item-icon"><i class="fa fa-clock-o"></i><span class="post-count"> 4</span><span class="post-meta-item-text"> 分钟</span></span></span></div><div class="clear"><div class="toc-article" id="toc"><div class="toc-title">文章目录</div><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81x-height"><span class="toc-text">一、x-height</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81line-height"><span class="toc-text">二、line-height</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81vertical-align"><span class="toc-text">三、vertical-align</span></a></li></ol></div></div><div class="post-content"><h3 id="一、x-height"><a href="#一、x-height" class="headerlink" title="一、x-height"></a>一、x-height</h3><p>1、<strong>是什么:</strong> 指小写字母 x 的高度，术语描述就是基线和等分线(mean line)(也称作中线，midline)之间的距离</p>
+<p>2、内联元素默认都是基线对齐的, 即 x-height&#x2F;2</p>
+<p>3、<strong>ex</strong>: 实现不受字体和字号影响的内联元素的垂直居中对齐(1ex &#x3D; x-height)</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.icon-arrow</span> &#123; </span><br><span class="line">  <span class="attribute">display</span>: inline-block; </span><br><span class="line">  <span class="attribute">width</span>: <span class="number">20px</span>; </span><br><span class="line">  <span class="attribute">height</span>: <span class="number">1ex</span>; </span><br><span class="line">  <span class="attribute">background</span>: <span class="built_in">url</span>(<span class="string">arrow.png</span>) no-repeat center; &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="二、line-height"><a href="#二、line-height" class="headerlink" title="二、line-height"></a>二、line-height</h3><p>1、<strong>默认值</strong>：normal，支持数值、百分比值以及长度值</p>
+<p>2、无论内联元素 line-height 如何设置，最终父级元素的高度都是由数值大的那个 line-height 决定的，称之为“内联元素 line-height 的大值特性</p>
+<p>3、🔧<strong>运用</strong></p>
+<p>(1) 利用行距的上下等分机制，实现内联元素垂直居中</p>
+<p>(2)  通过调整 line-height 实现多行文本垂直居中</p>
+<h3 id="三、vertical-align"><a href="#三、vertical-align" class="headerlink" title="三、vertical-align"></a>三、vertical-align</h3><p>1、<strong>默认值</strong>是 baseline，即基线对齐(相对字母 x 的下边缘对齐)</p>
+<p>2、<strong>属性值分类</strong></p>
+<p>(1) <strong>线类</strong>，如 baseline(默认值)、top、middle、bottom</p>
+<ul>
+<li><p>一个 inline-block 元素，如果里面没有内联元素，或者 overflow 不是 visible，则该元素的基线就是其 margin 底边缘;否则其基线就是元素里面最后一行内联元素的基线。</p>
+</li>
+<li><p>vertial-align:top&#x2F;bottom ，就是垂直上&#x2F;下边缘对齐，具体定义如下:</p>
+<ul>
+<li><p>内联元素:元素底部和当前行框盒子的顶部&#x2F;底部对齐</p>
+</li>
+<li><p>table-cell 元素:元素底 padding 边缘和表格行的顶部&#x2F;底部对齐</p>
+</li>
+</ul>
+</li>
+<li><p>vertial- align:middle</p>
+<ul>
+<li><p>内联元素:元素的垂直中心点和行框盒子基线往上 1&#x2F;2 x-height 处对齐。(近似居中)</p>
+</li>
+<li><p>table-cell 元素:单元格填充盒子相对于外面的表格行居中对齐。</p>
+</li>
+<li><p>如果想要实现真正意义上的垂直居中对齐，只要想办法让字符 x 的中心位置就是容器的垂直中心位置即可，通常的做法是设置 font-size:0</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>(2) <strong>文本类</strong>，如 text-top、text-bottom</p>
+<ul>
+<li><p>vertical-align:text-top:盒子的顶部和父级内容区域的顶部对齐</p>
+</li>
+<li><p>vertical-align:text-bottom:盒子的底部和父级内容区域的底部对齐。</p>
+</li>
+<li><p>特点</p>
+<ul>
+<li><p>文本类属性值的垂直对齐与左右文字大小和高度都没有关系</p>
+</li>
+<li><p>文本类属性值的垂直对齐可以像素级精确控制</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>(3) <strong>上标下标类</strong>，如 sub、super</p>
+<p>(4) <strong>数值</strong>, 如 20px、2em</p>
+<ul>
+<li>根据计算值的不同，相对于基线往上或往下偏移，到底是往上还是往下取决于 vertical- align 的计算值是正值还是负值，如果是负值，往下偏移，如果是正值，往上偏移</li>
+</ul>
+<p>(5) <strong>百分比类</strong>，如 20%等</p>
+<p>相对于 line-height 的计算值计算的</p>
+<p>3、<strong>有效的前提</strong></p>
+<p>(1) 只能应用于内联元素以及 display 值为 table-cell 的元素</p>
+<p>(2) 对 table-cell 元素而言，vertical-align 起作用的是 table-cell元素自身</p>
+<p>4、<strong>无效的情况</strong></p>
+<p>浮动和绝对定位使元素块状化</p>
+<p>5、任意一个块级元素，里面若有图片，则块级元素高度基本上都要比图片的高度高</p>
+<p>6、<strong>幽灵空白节点</strong></p>
+<p>(1) 产生原因：字母 x 往下的行高产生的多余的间隙</p>
+<p>(2) 解决方法</p>
+<ul>
+<li><p>图片块状化。可以一口气干掉“幽灵空白节点”、line-height 和 vertical-align。</p>
+</li>
+<li><p>容器 line-height 足够小。只要半行间距小到字母 x 的下边缘位置或者再往上，自然就没有了撑开底部间隙高度空间了。比方说，容器设置 line-height:0。</p>
+</li>
+<li><p>容器 font-size 足够小。此方法要想生效，需要容器的 line-height 属性值和当前 font-size 相关，如 line-height:1.5 或者 line-height:150%之类;否则只会让下面的间隙变得更大，因为基线位置因字符 x 变小而往上升了。</p>
+</li>
+<li><p>图片设置其他 vertical-align 属性值。间隙的产生原因之一就是基线对齐，所以我们设置 vertical-align 的值为 top、middle、bottom 中的任意一个都是可以的。</p>
+</li>
+</ul>
+<p>7、<strong>20px 图标对齐的处理技巧</strong></p>
+<p>(1) 图标高度和当前行高都是 20px。很多小图标背景合并工具都是图标宽高多大生成的CSS 宽高就是多大，这其实并不利于形成可以整站通用的 CSS 策略，建议图标原图先扩展成统一规格，比方说这里的 20px×20px，然后再进行合并，可以节约大量 CSS 以及对每个图标对齐进行不同处理的开发成本。</p>
+<p>(2) 图标标签里面永远有字符。这个可以借助:before 或:after 伪元素生成一个空格字符轻松搞定。</p>
+<p>(3) 图标 CSS 不使用 overflow:hidden 保证基线为里面字符的基线，但是要让里面潜在的字符不可见。</p>
+</div><div class="post-copyright"><script type="text/javascript" src="/js/copyright.js" successtext="复制成功!"></script><link rel="stylesheet" type="text/css" href="/css/copyright.css"><p><span>本文标题：</span>CSS 系列文章 —— 内联元素与流</p><p><span>文章作者：</span>Canace</p><p><span>发布时间：</span>2020-08-27</p><p><span>最后更新：</span>2025-12-28</p><p><span>原始链接：</span><a href="/css-series-inline-elements-and-flow/">https://canace.site/css-series-inline-elements-and-flow/</a><span class="copy-path"><i class="fa fa-clipboard" data-clipboard-text="https://canace.site/css-series-inline-elements-and-flow/"></i></span></p><p><span>版权声明：</span>转载请注明出处</p></div><br><script type="text/javascript" src="../js/share.js?v=0.0.0" async></script><a class="article-share-link" data-url="https://canace.site/css-series-inline-elements-and-flow/" data-id="cmkkhdza800641uv80ynceu8l" data-qrcode="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACKklEQVR42u3a0W7CMAwFUP7/p7tXJER2bXeTmpw8TQVKTpE8O/brFa/rbX1eeb/+/ur6yuf1b3e7bWFgYDyWcS3X+j3rLSbg9XuSvWFgYJzDSEJhvun8SvXVr9cxMDAwBslfHrLzUI6BgYGRM9YlaLUoxcDAwFgz8jI12Xq+0fz+t9XiGBgYD2TkofD///6T/gYGBsajGFdxVdO1aoi8WgsDA2NvRh7g8uRsnuRV94OBgbE3ozcksf766ubyO3+9goGBsTVjcqP8KC1pG+Rthug3wcDA2JRRKBeLX5MUscn9Ry1MDAyMLRjVdHBySDcpZb8+DgwMjAMYzeP41rDXZLAMAwPjTEYy7tA7buuNf42O8DAwMLZj5KnbpA2ZF8PVBBEDA+NkRh6Ce0lk+dB/DcbAwDiAkadrk4GwXllbbl5iYGBsx8g/nB/3V0vf6jBH4TfBwMDYglFtNPbGXqsjF3n7AQMD4wRGb6whH8iYbDQvgDEwME5g5G3I3qar5W6vOYqBgbE3o1fE5gH3umlFqSEGBsYBjLs2UY33vVYBBgbGaYxqyzAf4WpmqdUCGAMDY1PGJIxWn1Z1RKzQLsXAwNia0Qt2k3Zj8lB6wxwYGBh7M3pBdnLcNspkMTAwDmbkjcbqp+ajZtH/CgwMDIxe0TgY8KoWwxgYGBh5GK22Hqtp6C/tAQwMjK0Z85GvKqlXEhdmRjAwMDZi9NK7aiOzN5xxV+mLgYHxWMYPdEhBz703jfsAAAAASUVORK5CYII=">分享</a><div class="tags"><a href="../tags/frontend/"><i class="fa fa-tag"></i>前端</a><a href="../tags/css-visualization/"><i class="fa fa-tag"></i>CSS与可视化</a></div><div class="post-nav"><a class="pre" href="../css-series-flow-and-dimensions/">CSS 系列文章——CSS 中的流与尺寸</a><a class="next" href="../css-series-basics/">CSS 系列文章——CSS 基础知多少</a></div></div></div></div><div class="pure-u-1 pure-u-md-1-4"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 常用文档</i></div><ul></ul><a href="/git-common-commands" title="Git 文档" target="_blank">Git 文档</a><ul></ul><a href="/common-programming-prompt-words" title="常用开发提示词" target="_blank">常用开发提示词</a></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="../categories/soft/">软技能与思考</a><span class="category-list-count">43</span></li><li class="category-list-item"><a class="category-list-link" href="../categories/cli/">工程化与运维</a><span class="category-list-count">49</span></li><li class="category-list-item"><a class="category-list-link" href="../categories/intelligent/">AI探索</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="../categories/web/">Web开发</a><span class="category-list-count">140</span></li><li class="category-list-item"><a class="category-list-link" href="../categories/coding/">编程基础</a><span class="category-list-count">42</span></li><li class="category-list-item"><a class="category-list-link" href="../categories/site/">网站建设</a><span class="category-list-count">5</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="../tags/essays/" style="font-size: 15px; color: #bbc3c8">随笔</a> <a href="../tags/performance/" style="font-size: 15px; color: #88a6bb">性能优化</a> <a href="../tags/server-side/" style="font-size: 15px; color: #6694b3">服务端</a> <a href="../tags/Python-Go-%E5%85%B6%E4%BB%96/" style="font-size: 15px; color: #99b0c0">Python/Go/其他</a> <a href="../tags/JavaScript-TypeScript/" style="font-size: 15px; color: #11649e">JavaScript&TypeScript</a> <a href="../tags/backend/" style="font-size: 15px; color: #bbc3c8">后端</a> <a href="../tags/api-services/" style="font-size: 15px; color: #bbc3c8">API&服务</a> <a href="../tags/computer-science/" style="font-size: 15px; color: #3377a7">计算机科学</a> <a href="../tags/reading-notes/" style="font-size: 15px; color: #ccc">读书笔记</a> <a href="../tags/frontend/" style="font-size: 15px; color: #005b9a">前端</a> <a href="../tags/frameworks-libs/" style="font-size: 15px; color: #558aaf">框架与库</a> <a href="../tags/programming-languages/" style="font-size: 15px; color: #aab9c4">编程语言</a> <a href="../tags/css-visualization/" style="font-size: 15px; color: #226ea2">CSS与可视化</a> <a href="../tags/dev-tools/" style="font-size: 15px; color: #4481ab">开发工具</a> <a href="../tags/system-design/" style="font-size: 15px; color: #aab9c4">系统</a> <a href="../tags/build-deploy/" style="font-size: 15px; color: #779db7">构建与部署</a> <a href="../tags/Node-js/" style="font-size: 15px; color: #99b0c0">Node.js</a> <a href="../tags/cross-platform/" style="font-size: 15px; color: #99b0c0">跨端方案</a> <a href="../tags/code-quality/" style="font-size: 15px; color: #ccc">代码质量</a></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2026 <a href="../." rel="nofollow">Canace 的博客</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="../js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.js" async></script><script type="text/javascript" src="../js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.css"><link rel="stylesheet" type="text/css" href="../css/search.css?v=0.0.0"><script type="text/javascript" src="../js/search.js?v=0.0.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+   search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="/js/copycode.js" successtext="复制成功!"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css"><script type="text/javascript" src="../js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="../js/smartresize.js?v=0.0.0"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":200,"height":200},"mobile":{"show":false},"react":{"opacity":0.7},"log":false});</script></body></html>

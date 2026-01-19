@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Canace 的博客</title>
+  
+  <subtitle>Tomorrow is another day</subtitle>
+  <link href="https://canace.site/atom.xml" rel="self"/>
+  
+  <link href="https://canace.site/"/>
+  <updated>2026-01-18T08:17:17.067Z</updated>
+  <id>https://canace.site/</id>
+  
+  <author>
+    <name>Canace</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>使用 AI 优化界面交互</title>
+    <link href="https://canace.site/ai-optimize-ui/"/>
+    <id>https://canace.site/ai-optimize-ui/</id>
+    <published>2026-01-18T02:44:28.000Z</published>
+    <updated>2026-01-18T08:17:17.067Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="AI探索" scheme="https://canace.site/categories/intelligent/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>AI使人膨胀</title>
+    <link href="https://canace.site/ai-expansion/"/>
+    <id>https://canace.site/ai-expansion/</id>
+    <published>2026-01-05T01:10:12.000Z</published>
+    <updated>2026-01-05T12:53:43.740Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="AI探索" scheme="https://canace.site/categories/intelligent/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>AI赋能存量项目——从函数助手到业务伙伴</title>
+    <link href="https://canace.site/ai-coding-share/"/>
+    <id>https://canace.site/ai-coding-share/</id>
+    <published>2025-12-12T06:43:49.000Z</published>
+    <updated>2025-12-28T07:58:15.432Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="AI探索" scheme="https://canace.site/categories/intelligent/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>面向大模型编程(LOP)在游戏制作流程中的应用畅想</title>
+    <link href="https://canace.site/ai-coding-game/"/>
+    <id>https://canace.site/ai-coding-game/</id>
+    <published>2025-12-10T10:39:22.000Z</published>
+    <updated>2025-12-28T07:58:15.432Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="AI探索" scheme="https://canace.site/categories/intelligent/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>AI协作编程——如何写好项目规则</title>
+    <link href="https://canace.site/writing-a-good-claude-md/"/>
+    <id>https://canace.site/writing-a-good-claude-md/</id>
+    <published>2025-12-08T01:50:26.000Z</published>
+    <updated>2025-12-28T07:58:15.450Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="AI探索" scheme="https://canace.site/categories/intelligent/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>AI协作编程——传统IDE快速切换到AI IDE</title>
+    <link href="https://canace.site/ai-coding-ide/"/>
+    <id>https://canace.site/ai-coding-ide/</id>
+    <published>2025-12-06T08:12:13.000Z</published>
+    <updated>2025-12-28T07:58:15.432Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="AI探索" scheme="https://canace.site/categories/intelligent/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>为什么AI大模型需要“显卡”/TPU、GPU与AMD之间有什么区别</title>
+    <link href="https://canace.site/why-graphics-card/"/>
+    <id>https://canace.site/why-graphics-card/</id>
+    <published>2025-11-26T01:29:32.000Z</published>
+    <updated>2025-12-28T07:58:15.450Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="AI探索" scheme="https://canace.site/categories/intelligent/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>如何做AI角色分工：我的应用心得</title>
+    <link href="https://canace.site/ai-worker/"/>
+    <id>https://canace.site/ai-worker/</id>
+    <published>2025-11-23T01:22:22.000Z</published>
+    <updated>2025-12-28T07:58:15.432Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="AI探索" scheme="https://canace.site/categories/intelligent/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>工作与事业</title>
+    <link href="https://canace.site/work-for/"/>
+    <id>https://canace.site/work-for/</id>
+    <published>2025-11-08T09:50:42.000Z</published>
+    <updated>2025-12-28T07:58:15.450Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="软技能与思考" scheme="https://canace.site/categories/soft/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>浏览器渲染原理概述</title>
+    <link href="https://canace.site/how-to-optimize-animation/"/>
+    <id>https://canace.site/how-to-optimize-animation/</id>
+    <published>2025-10-28T01:47:31.000Z</published>
+    <updated>2025-12-28T07:58:15.440Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="Web开发" scheme="https://canace.site/categories/web/"/>
+    
+    
+    <category term="性能优化" scheme="https://canace.site/tags/performance/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>我们是否需要AI知识库</title>
+    <link href="https://canace.site/AI-knowledge-base/"/>
+    <id>https://canace.site/AI-knowledge-base/</id>
+    <published>2025-09-27T08:22:14.000Z</published>
+    <updated>2025-12-28T07:58:15.432Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="AI探索" scheme="https://canace.site/categories/intelligent/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>常用开发提示词</title>
+    <link href="https://canace.site/common-programming-prompt-words/"/>
+    <id>https://canace.site/common-programming-prompt-words/</id>
+    <published>2025-09-21T01:46:30.000Z</published>
+    <updated>2025-12-28T07:58:15.435Z</updated>
+    
+    
+    <summary type="html">整理一些日常开发中用到的编程提示词，给出了翻译和例句用法，方便查阅</summary>
+    
+    
+    
+    <category term="软技能与思考" scheme="https://canace.site/categories/soft/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>博客文章分类</title>
+    <link href="https://canace.site/blog-category/"/>
+    <id>https://canace.site/blog-category/</id>
+    <published>2025-09-14T09:32:04.000Z</published>
+    <updated>2025-12-28T07:58:15.433Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="网站建设" scheme="https://canace.site/categories/site/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>你不是在面试，你是在为职位试镜</title>
+    <link href="https://canace.site/interview-strategy/"/>
+    <id>https://canace.site/interview-strategy/</id>
+    <published>2025-09-13T11:34:51.000Z</published>
+    <updated>2025-12-28T07:58:15.441Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="软技能与思考" scheme="https://canace.site/categories/soft/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>首次尝试95%都是垃圾：一位工程师使用Claude Code的6周之旅</title>
+    <link href="https://canace.site/translate-use-claude-code/"/>
+    <id>https://canace.site/translate-use-claude-code/</id>
+    <published>2025-09-13T07:32:58.000Z</published>
+    <updated>2025-12-28T07:58:15.448Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="AI探索" scheme="https://canace.site/categories/intelligent/"/>
+    
+    
+    <category term="开发工具" scheme="https://canace.site/tags/dev-tools/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Notion+Chrome书签打造个人知识库</title>
+    <link href="https://canace.site/personal-knowledge-base/"/>
+    <id>https://canace.site/personal-knowledge-base/</id>
+    <published>2025-06-07T07:19:24.000Z</published>
+    <updated>2025-12-28T07:58:15.445Z</updated>
+    
+    
+    <summary type="html">Notion+Chrome 书签打造个人知识库实践</summary>
+    
+    
+    
+    <category term="工程化与运维" scheme="https://canace.site/categories/cli/"/>
+    
+    
+    <category term="开发工具" scheme="https://canace.site/tags/dev-tools/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Vol15：初创项目/产品，怎么做用户留存</title>
+    <link href="https://canace.site/issue-15/"/>
+    <id>https://canace.site/issue-15/</id>
+    <published>2025-05-17T09:39:20.000Z</published>
+    <updated>2025-12-28T07:58:15.441Z</updated>
+    
+    
+    <summary type="html">Canace的七日谈第十五期</summary>
+    
+    
+    
+    <category term="Web开发" scheme="https://canace.site/categories/web/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Vol14：如何延长下班时间</title>
+    <link href="https://canace.site/issue-14/"/>
+    <id>https://canace.site/issue-14/</id>
+    <published>2025-05-10T02:40:19.000Z</published>
+    <updated>2025-12-28T07:58:15.441Z</updated>
+    
+    
+    <summary type="html">Canace的七日谈第十四期</summary>
+    
+    
+    
+    <category term="Web开发" scheme="https://canace.site/categories/web/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Vol.13：科幻电影照进现实</title>
+    <link href="https://canace.site/issue-13/"/>
+    <id>https://canace.site/issue-13/</id>
+    <published>2025-04-20T09:00:08.000Z</published>
+    <updated>2025-12-28T07:58:15.441Z</updated>
+    
+    
+    <summary type="html">Canace 的七日谈第十三期</summary>
+    
+    
+    
+    <category term="软技能与思考" scheme="https://canace.site/categories/soft/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>用 Cursor 提高工作效率实战笔记</title>
+    <link href="https://canace.site/improve-work-efficiency-with-cursor-practical-notes/"/>
+    <id>https://canace.site/improve-work-efficiency-with-cursor-practical-notes/</id>
+    <published>2025-03-11T01:11:33.000Z</published>
+    <updated>2025-12-28T07:58:15.441Z</updated>
+    
+    
+    <summary type="html">总结最近一段时间使用 Cursor 的体会，记录一些使用经验</summary>
+    
+    
+    
+    <category term="工程化与运维" scheme="https://canace.site/categories/cli/"/>
+    
+    
+    <category term="开发工具" scheme="https://canace.site/tags/dev-tools/"/>
+    
+  </entry>
+  
+</feed>
