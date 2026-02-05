@@ -6,7 +6,7 @@
   <link href="https://canace.site/atom.xml" rel="self"/>
   
   <link href="https://canace.site/"/>
-  <updated>2026-01-18T08:17:17.067Z</updated>
+  <updated>2026-02-05T02:26:38.889Z</updated>
   <id>https://canace.site/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>解决 Cursor Debugger 模式在 Electron 项目中无法使用问题</title>
+    <link href="https://canace.site/cursor-debugger/"/>
+    <id>https://canace.site/cursor-debugger/</id>
+    <published>2026-02-05T02:14:13.000Z</published>
+    <updated>2026-02-05T02:26:38.889Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="工程化与运维" scheme="https://canace.site/categories/cli/"/>
+    
+    
+    <category term="Cursor" scheme="https://canace.site/tags/Cursor/"/>
+    
+  </entry>
   
   <entry>
     <title>使用 AI 优化界面交互</title>
@@ -426,25 +451,6 @@
     
     <category term="软技能与思考" scheme="https://canace.site/categories/soft/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>用 Cursor 提高工作效率实战笔记</title>
-    <link href="https://canace.site/improve-work-efficiency-with-cursor-practical-notes/"/>
-    <id>https://canace.site/improve-work-efficiency-with-cursor-practical-notes/</id>
-    <published>2025-03-11T01:11:33.000Z</published>
-    <updated>2025-12-28T07:58:15.441Z</updated>
-    
-    
-    <summary type="html">总结最近一段时间使用 Cursor 的体会，记录一些使用经验</summary>
-    
-    
-    
-    <category term="工程化与运维" scheme="https://canace.site/categories/cli/"/>
-    
-    
-    <category term="开发工具" scheme="https://canace.site/tags/dev-tools/"/>
     
   </entry>
   
