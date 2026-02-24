@@ -1,5 +1,6 @@
 ---
 title: JS 模态框————angular
+description: '自己写模态框灵活方便，不用依赖库，但要注意控制显示状态和遮罩层的同步。'
 comments: true
 date: 2018-07-11 20:32:55
 categories: Web开发

@@ -1,5 +1,6 @@
 ---
 title: 为什么AI大模型需要“显卡”/TPU、GPU与AMD之间有什么区别
+description: 'GPU在训练大模型时效率远超CPU，TPU专为AI设计，AMD显卡性价比高但生态较弱。'
 categories: 'AI探索'
 tags: AI原理
 author: Canace

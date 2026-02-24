@@ -1,5 +1,6 @@
 ---
 title: 面向大模型编程(LOP)在游戏制作流程中的应用畅想
+description: '大模型编程能提升游戏开发效率，但需结构化引导避免随机性，适合内容迭代和玩家共创。'
 categories: 'AI探索'
 tags: AI编程
 author: Canace

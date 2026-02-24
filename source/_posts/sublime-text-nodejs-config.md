@@ -1,5 +1,6 @@
 ---
 title: sublime text3 配置 node.js 环境
+description: '配置 nodejs 插件时注意编码格式和路径设置，否则可能出现乱码或运行失败。'
 date: 2018-06-08 09:32:52
 categories: 工程化与运维
 tags: 开发工具

@@ -1,5 +1,6 @@
 ---
 title: table-cell等分
+description: 'table-cell 等分要设 table-layout: fixed 和 display: table 以及统一宽度才能生效'
 comments: true
 date: 2019-03-20 10:43:51
 categories: Web开发

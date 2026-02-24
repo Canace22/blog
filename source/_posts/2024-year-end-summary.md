@@ -2,7 +2,7 @@
 title: 2024年终总结
 categories: 软技能与思考
 tags: 随笔
-description: 2024年终总结
+description: '生娃不影响职业发展，坚持十年写代码仍感不足，尝试新事物如瑜伽带来身心治愈。'
 author: Canace
 comments: true
 date: 2025-01-01 10:44:51

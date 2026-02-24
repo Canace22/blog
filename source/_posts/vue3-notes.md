@@ -2,7 +2,7 @@
 title: Vue3 实战笔记
 categories: Web开发
 tags: [前端, 框架与库]
-description: Vue3 实战笔记
+description: 'Vue3中ref需用.value修改，父组件获取子组件实例要确保暴露属性和方法'
 author: Canace
 comments: true
 toc: true

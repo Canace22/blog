@@ -2,7 +2,7 @@
 title: github 实用小技巧
 categories: 工程化与运维
 tags: 开发工具
-description: 一般人不知道的 github 使用姿势
+description: '按下 t 键可快速模糊搜索文件，安装 Octotree 提升目录浏览效率，复制代码更便捷，markdown 按钮模式提升编辑体验。'
 comments: true
 date: 2020-04-24 08:49:17
 ---

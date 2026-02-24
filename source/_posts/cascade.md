@@ -2,7 +2,7 @@
 title: 级联
 categories: 软技能与思考
 tags: CSS与可视化
-description: 《CSS 重构：样式表性能调优》第二章笔记
+description: '级联规则中特指度和顺序决定样式优先级，相同特指度时后写的生效，想覆盖行内样式需用 important'
 comments: true
 toc: true
 date: 2020-07-12 17:21:07

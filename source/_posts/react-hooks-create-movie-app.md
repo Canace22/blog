@@ -1,5 +1,6 @@
 ---
 title: react hooks 创建电影 app
+description: '使用 react hooks 开发电影 app 时，注意组件拆分和状态管理，代码可直接使用。'
 comments: true
 date: 2019-11-01 08:32:51
 categories: Web开发

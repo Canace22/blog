@@ -2,7 +2,7 @@
 title: Vol.09：原来我也可以
 categories: 软技能与思考
 tags: 随笔
-description: Canace 的七日谈第九期
+description: '尝试是突破困难的起点，动手比空想更容易找到答案。'
 author: Canace
 comments: true
 date: 2022-11-13 12:12:32

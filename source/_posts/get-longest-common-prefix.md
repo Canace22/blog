@@ -1,5 +1,6 @@
 ---
 title: 获取最长公共前缀
+description: '最长公共前缀要逐个字符比对，遇到不一致就截断，否则返回初始字符串'
 categories: 编程基础
 tags: 计算机科学
 comments: true

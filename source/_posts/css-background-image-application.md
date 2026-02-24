@@ -2,7 +2,7 @@
 title: css background-image 的应用
 categories: Web开发
 tags: [前端, CSS与可视化]
-description: background-image 实现一些特殊效果
+description: '多背景叠加需注意顺序和属性设置，避免显示异常。'
 comments: true
 toc: true
 date: 2020-07-08 09:42:10

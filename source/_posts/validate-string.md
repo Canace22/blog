@@ -1,5 +1,6 @@
 ---
 title: 校验字符串是否有意义
+description: '判断字符串是否无意义时需处理特殊形式如 ''NULL''，避免直接转换导致错误。'
 categories: Web开发
 tags: JavaScript&TypeScript
 comments: true

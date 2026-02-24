@@ -2,7 +2,7 @@
 title: 翻转字符串里的单词
 categories: Web开发
 tags: JavaScript&TypeScript
-description: leetcode 题目，翻转字符串里的单词题解
+description: '去掉首尾空格后按空格分隔单词反转再合并，注意处理多个空格情况'
 comments: true
 date: 2020-04-10 09:28:58
 ---

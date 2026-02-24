@@ -1,5 +1,6 @@
 ---
 title: KNN算法
+description: 'k近邻算法通过计算距离确定类别，选择最近的k个样本进行分类或预测，注意k值选择和距离公式影响结果。'
 comments: true
 date: 2019-03-30 13:31:24
 categories: 编程基础

@@ -1,5 +1,6 @@
 ---
 title: CSS 系列文章——盒尺寸
+description: '替换元素尺寸由固有、HTML和CSS属性共同决定，合理设置避免布局异常'
 categories: Web开发
 tags: [前端, CSS与可视化]
 comments: true

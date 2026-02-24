@@ -2,7 +2,7 @@
 title: Vol.10：直面死亡
 categories: 软技能与思考
 tags: 随笔
-description: Canace 的七日谈第十期
+description: '死亡来临时未必有想象中的悲伤，但思考死亡能让人更珍惜活着的意义。'
 author: Canace
 comments: true
 date: 2022-12-04 12:12:32

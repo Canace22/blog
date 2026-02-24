@@ -1,5 +1,6 @@
 ---
 title: 常见算法思想
+description: '穷举要遍历所有可能，递推依赖前面结果，递归自己调用自己，分治拆解问题处理，概率靠随机逼近。'
 categories: 编程基础
 tags: 计算机科学
 comments: true

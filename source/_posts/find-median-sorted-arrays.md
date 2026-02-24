@@ -1,5 +1,6 @@
 ---
 title: 找出两个有序数组的中值
+description: '暴力法合并数组找中值简单但效率低，无法满足 O(log(m+n)) 时间要求'
 categories: 编程基础
 tags: 计算机科学
 comments: true

@@ -1,5 +1,6 @@
 ---
 title: JS 概谈
+description: 'JavaScript 和 Java 没关系，名字是蹭热度来的，ECMAScript 是标准，现在到第八代但大家常用的是第六代。'
 date: 2018-05-20 16:56:12
 categories: Web开发
 tags: JavaScript&TypeScript

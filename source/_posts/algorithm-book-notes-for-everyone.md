@@ -1,5 +1,6 @@
 ---
 title: 写给大家看的算法书笔记
+description: '算法核心是准确且能停止的步骤，结构化编程和数据结构是实现的关键。'
 comments: true
 date: 2017-03-07 20:08:41
 categories: 软技能与思考

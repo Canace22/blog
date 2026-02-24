@@ -1,5 +1,6 @@
 ---
 title: AI协作编程——如何写好项目规则
+description: '项目规则要简洁明确，聚焦核心信息，避免冗余和细节，提升大模型理解与执行效率。'
 categories: 'AI探索'
 tags: AI编程
 author: Canace

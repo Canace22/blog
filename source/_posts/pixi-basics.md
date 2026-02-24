@@ -1,5 +1,6 @@
 ---
 title: PixiJs 极简教程
+description: 'PixiJs 封装简单但文档差，需自行整理教程才能快速上手。'
 categories: Web开发
 tags: [前端, CSS与可视化]
 descroption: 一个极简的 PixiJs 教程

@@ -2,7 +2,7 @@
 title: pixijs Graphics vertexData 采坑
 categories: Web开发
 tags: [前端, CSS与可视化]
-description: 最近项目中遇到了一个 Graphics 对象，打印出来 vertexData 有数据，但是单独打印却没有，因为是引用类型，我猜应该是数据后面加进去才会出现这个问题，然而，调试了半天也没找到问题
+description: 'Graphics.vertexData 未及时更新时需手动初始化再调用更新方法才能获取有效数据'
 comments: true
 date: 2020-04-13 22:55:13
 ---

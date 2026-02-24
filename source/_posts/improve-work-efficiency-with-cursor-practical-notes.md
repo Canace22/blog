@@ -2,7 +2,7 @@
 title: 用 Cursor 提高工作效率实战笔记
 categories: 工程化与运维
 tags: 开发工具
-description: 总结最近一段时间使用 Cursor 的体会，记录一些使用经验
+description: 'Cursor 通过 Agent 模式提升效率，但需具备一定技术基础才能充分发挥作用。'
 author: Canace
 toc: true
 comments: true

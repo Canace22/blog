@@ -1,5 +1,6 @@
 ---
 title: CSS 系列文章 —— 层叠
+description: '层叠上下文影响元素层级，z-index 负值能控制元素在背景和内容之间显示。'
 categories: Web开发
 tags: [前端, CSS与可视化]
 comments: true

@@ -2,7 +2,7 @@
 title: CSS 定位
 categories: Web开发
 tags: [前端, CSS与可视化]
-description: css 定位知识总结及 demo 展示
+description: '定位时注意元素脱离文档流后对布局的影响，以及偏移参照物的不同。'
 comments: true
 toc: true
 date: 2020-04-02 07:00:32

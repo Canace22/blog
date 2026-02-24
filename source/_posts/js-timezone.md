@@ -2,7 +2,7 @@
 title: 时区、时间戳？
 categories: Web开发
 tags: JavaScript&TypeScript
-description: JavaScript时区转换
+description: '时区转换时直接用本地时间戳会出错，必须根据目标时区重新解析时间才能得到正确的时间戳。'
 author: Canace
 comments: true
 date: 2023-06-29 09:15:56

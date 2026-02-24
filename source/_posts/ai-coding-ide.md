@@ -1,5 +1,6 @@
 ---
 title: AI协作编程——传统IDE快速切换到AI IDE
+description: '切换AI IDE要先适应新工作流，别指望它完全复刻传统编辑器功能。'
 categories: 'AI探索'
 tags: AI编程
 author: Canace

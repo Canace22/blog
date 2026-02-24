@@ -1,5 +1,6 @@
 ---
 title: Js 字符串转 base64
+description: '字符串转 base64 注意编码问题，非 ascii 字符需先 encodeURIComponent 处理再加密'
 categories: Web开发
 tags: JavaScript&TypeScript
 comments: true

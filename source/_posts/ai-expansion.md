@@ -1,5 +1,6 @@
 ---
 title: AI使人膨胀
+description: 'AI让人膨胀，效率不升反降，关键在认知错位和节奏失控。'
 categories: 'AI探索'
 tags: AI编程
 author: Canace

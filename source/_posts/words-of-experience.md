@@ -2,7 +2,7 @@
 title: 经验之谈
 categories: 软技能与思考
 tags: 职业发展
-description: 分享生活中的一些经验总结，供参考
+description: '别未经允许就施加善意，尊重他人选择权才是相处之道。'
 author: Canace
 comments: true
 date: 2024-12-22 11:53:00

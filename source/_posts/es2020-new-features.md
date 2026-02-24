@@ -1,5 +1,6 @@
 ---
 title: ES2020 新特性
+description: '类私有变量用#号定义，空值合并和可选链能避免误判，BigInt处理大数更准确，动态导入提升性能。'
 categories: Web开发
 tags: JavaScript&TypeScript
 toc: true

@@ -1,5 +1,6 @@
 ---
 title: Django-channels
+description: 'Django Channels 通过通道队列实现实时通信，需配置 ASGI 和路由，注意消息处理逻辑。'
 date: 2018-05-20 16:43:09
 categories: Web开发
 tags: [后端, Python/Go/其他]

@@ -1,5 +1,6 @@
 ---
 title: NPM Package.json 字段列表(包括非官方字段)
+description: '注意 name 字段命名规范，避免发布时出现冲突或格式错误。'
 categories: Web开发
 tags: 开发工具
 comments: true

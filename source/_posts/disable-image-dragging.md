@@ -1,5 +1,6 @@
 ---
 title: 禁止图片拖动
+description: '禁用图片拖动可选全局设置或自定义指令，按需选择更灵活'
 categories: Web开发
 tags: [前端, 框架与库]
 comments: true

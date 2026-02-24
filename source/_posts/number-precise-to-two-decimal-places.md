@@ -1,5 +1,6 @@
 ---
 title: 数字精确到小数点两位
+description: '数字处理时要先判断是否为有效数字，小数位不足要补零，超过精度的要四舍五入，注意进位逻辑避免出错。'
 categories: 编程基础
 tags: JavaScript&TypeScript
 comments: true

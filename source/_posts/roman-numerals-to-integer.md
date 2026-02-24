@@ -1,5 +1,6 @@
 ---
 title: 罗马数字转整数
+description: '罗马数字转换时要注意特殊组合，如 IV 代表 4，IX 代表 9，需提前定义这些组合的值。'
 categories: 编程基础
 tags: 计算机科学
 comments: true

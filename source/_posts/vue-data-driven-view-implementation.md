@@ -1,5 +1,6 @@
 ---
 title: Vue 数据驱动视图更新实现
+description: '数据变化时触发视图更新，核心是通过监听数据变化而非直接操作 DOM'
 categories: Web开发
 tags: [前端, 框架与库]
 comments: true

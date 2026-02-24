@@ -5,7 +5,9 @@
   "scripts": {
     "serve": "./test.sh s",
     "build": "./test.sh d",
-    "commit": "./commit.sh"
+    "commit": "./commit.sh",
+    "summary": "node scripts/generate-summary.mjs",
+    "summary:regen": "node scripts/generate-summary.mjs --regen"
   },
   "hexo": {
     "version": "7.3.0"
@@ -32,5 +34,9 @@
     "hexo-wordcount": "^6.0.1",
     "live2d-widget-model-hijiki": "^1.0.5",
     "live2d-widget-model-tororo": "^1.0.5"
+  },
+  "devDependencies": {
+    "dotenv": "^17.3.1",
+    "openai": "^6.24.0"
   }
 }

@@ -1,5 +1,6 @@
 ---
 title: "n * n 阶矩阵算法 "
+description: '暴力破解矩阵乘法效率低但实现简单结果直观'
 comments: true
 date: 2018-07-30 21:42:14
 categories: 编程基础

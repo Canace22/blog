@@ -2,7 +2,7 @@
 title: 认识 Cookie
 categories: 编程基础
 tags: 计算机科学
-description: 说说 Cookie 相关知识
+description: 'Cookie 用于保存用户状态和个性化信息，需注意安全设置避免被窃取或滥用。'
 comments: true
 toc: true
 date: 2021-03-25 11:15:26

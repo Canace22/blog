@@ -1,5 +1,6 @@
 ---
 title: typescript 笔记
+description: 'tsconfig.json 配置项影响编译结果，需根据项目需求调整目标版本和模块系统。'
 comments: true
 toc: true
 date: 2020-11-23 10:14:39

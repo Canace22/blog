@@ -5,7 +5,7 @@ toc: true
 date: 2023-01-16 11:07:31
 categories: 工程化与运维
 tags: 构建与部署
-description: 前端 XX docker 化方案
+description: 'nginx 和 node.js 服务 docker 化关键在正确编写 Dockerfile 和配置端口映射，避免运行时出错。'
 ---
 ## 一、nginx docker 化
 

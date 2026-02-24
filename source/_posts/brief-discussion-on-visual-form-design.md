@@ -1,5 +1,6 @@
 ---
 title: 浅谈可视化表单设计
+description: '表单可视化设计需兼顾数据与模板分离，动态组件需在formdata中同时存储data和template。'
 categories: Web开发
 tags: [前端, CSS与可视化]
 comments: true

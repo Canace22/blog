@@ -2,7 +2,7 @@
 title: JavaScript 自带的对象深拷贝方法
 categories: Web开发
 tags: JavaScript&TypeScript
-description: 介绍 JavaScript 自带的对象深拷贝方法
+description: 'JSON.parse 不能处理特殊类型，展开对象只拷贝一层，lodash 需要引入库，structuredClone 是更全面的解决方案。'
 author: Canace
 comments: true
 toc: true

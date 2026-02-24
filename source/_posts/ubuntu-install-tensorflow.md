@@ -1,5 +1,6 @@
 ---
 title: ubuntu 下 tensorflow CPU release 版安装
+description: '安装 tensorflow cpu 版别连代理，conda 安装更稳定，环境配置要仔细。'
 date: 2018-05-27 09:48:31
 categories: AI探索
 tags: AI原理

@@ -2,7 +2,7 @@
 title: JavaScript 基础 —— 类型转换
 categories: Web开发
 tags: JavaScript&TypeScript
-description: javascript 基础系列之类型转换，顾名思义，梳理一下类型转换相关的知识点
+description: '显式转换要小心空字符串、0 和 NaN，隐式转换容易出错别忽视操作符的类型处理规则。'
 comments: true
 toc: true
 date: 2020-10-09 10:42:19

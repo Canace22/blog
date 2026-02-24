@@ -3,7 +3,7 @@ title: 特浓鸡汤
 categories: 软技能与思考
 tags: 随笔
 comments: true
-description: 人脑激励人好好活着，鸡汤给大脑加 buff
+description: '别做不擅长的事，专注自己热爱的领域才能持续成长。'
 date: 2021-01-29 11:10:09
 ---
 - 每个人都有自己擅长的领域，不要去做自己不擅长的事情

@@ -1,5 +1,6 @@
 ---
 title: html 笔记
+description: 'html 基础元素要闭合，标签小写，常用标签如 a、p、img 等需注意属性使用和嵌套规则。'
 comments: true
 date: 2019-01-22 13:58:20
 categories: Web开发

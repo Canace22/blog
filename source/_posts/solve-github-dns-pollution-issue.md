@@ -1,5 +1,6 @@
 ---
 title: 解决 github dns 污染问题
+description: '开启代理 pac 模式会导致 github 无法访问，检查 dns 污染后修改 hosts 文件配置可用 ip 即可解决'
 categories: 编程基础
 tags: 计算机科学
 comments: true

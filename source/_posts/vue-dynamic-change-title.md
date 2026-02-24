@@ -1,5 +1,6 @@
 ---
 title: vue动态改变title
+description: '动态修改 title 需在路由守卫中操作 通过 query 参数控制标题变化'
 comments: true
 date: 2018-10-22 19:40:00
 categories: Web开发

@@ -1,5 +1,6 @@
 ---
 title: 单向列表拼接
+description: '链表拼接关键在比较节点值并依次连接，注意处理剩余节点直接挂到末尾。'
 comments: true
 date: 2019-09-15 18:02:38
 categories: 编程基础

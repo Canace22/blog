@@ -1,5 +1,6 @@
 ---
 title: 函数不声明全局变量也不能传入参数，每次打印数字递增
+description: '函数不声明全局变量也能通过自身属性实现计数递增'
 categories: Web开发
 tags: JavaScript&TypeScript
 comments: true

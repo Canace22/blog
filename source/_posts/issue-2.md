@@ -3,7 +3,7 @@ title: Vol.02：团队对个人的影响
 categories: 软技能与思考
 tags: 随笔
 comments: true
-description: 'Canace 的七日谈第二期'
+description: '团队监督和激励能有效改变个人习惯，缺乏外部约束容易导致拖延和迷失方向。'
 date: 2022-05-15 09:55:24
 toc: true
 ---

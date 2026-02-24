@@ -1,5 +1,6 @@
 ---
 title: linux后台执行脚本
+description: '使用 screen 可以让脚本在后台持续运行，即使退出命令窗口也不会中断。'
 comments: true
 date: 2019-03-20 08:57:29
 categories: 工程化与运维

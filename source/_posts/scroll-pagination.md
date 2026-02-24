@@ -1,5 +1,6 @@
 ---
 title: 滚动翻页
+description: '滚动翻页需分页切割数据，用父容器滚动控制显示，注意隐藏滚动条和按钮状态同步。'
 comments: true
 date: 2019-04-15 20:16:28
 categories: Web开发

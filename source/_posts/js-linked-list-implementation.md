@@ -2,7 +2,7 @@
 title: js链表实现
 categories: 编程基础
 tags: 计算机科学
-description: js 的链表实现详解
+description: '链表实现关键在节点结构和指针操作，查找插入删除需注意前后节点关系。'
 comments: true
 toc: true
 date: 2019-11-29 09:42:41

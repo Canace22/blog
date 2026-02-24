@@ -2,7 +2,7 @@
 title: 浅谈 DNS 污染
 categories: 编程基础
 tags: 计算机科学
-description: 浅谈 DNS 污染
+description: 'DNS 污染导致域名解析错误，可用 nslookup 检测，改 host 或换 HTTPS 可尝试解决。'
 author: Canace
 comments: true
 date: 2023-12-03 22:41:30

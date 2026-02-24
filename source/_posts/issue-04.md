@@ -2,7 +2,7 @@
 title: Vol.04：子非鱼，安知鱼之乐也
 categories: 软技能与思考
 tags: 随笔
-description: Canace 的七日谈第四期
+description: '工作压力大不一定非要硬扛，换个环境或许更适合自己。'
 author: Canace
 comments: true
 date: 2022-07-10 17:03:29

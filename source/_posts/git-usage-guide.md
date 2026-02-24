@@ -5,7 +5,7 @@ toc: true
 date: 2020-06-22 09:03:11
 categories: 工程化与运维
 tags: 开发工具
-description: Git 安装配置及分支管理指南
+description: '安装配置 Git 时注意设置用户信息和 SSH 密钥，分支管理要规范命名并合理合并。'
 ---
 
 ### 一、安装配置 Git

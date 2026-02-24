@@ -1,5 +1,6 @@
 ---
 title: 下拉列表的实现
+description: '点击外部区域关闭下拉列表需监听 blur 事件并给 div 添加 tabindex 属性'
 comments: true
 date: 2019-09-01 17:28:44
 categories: Web开发

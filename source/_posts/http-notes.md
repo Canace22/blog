@@ -1,5 +1,6 @@
 ---
 title: HTTP 笔记
+description: 'HTTP1.1优化了性能和缓存，支持长连接和并行请求，但多路复用在HTTP2.0才实现。'
 categories: 编程基础
 tags: 计算机科学
 comments: true

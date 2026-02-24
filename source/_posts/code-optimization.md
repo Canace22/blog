@@ -1,5 +1,6 @@
 ---
 title: 代码优化
+description: '函数封装和组件抽离能提升代码可维护性，减少冗余，优化加载速度。'
 comments: true
 date: 2019-06-30 14:15:35
 categories: Web开发

@@ -1,5 +1,6 @@
 ---
 title: nodeJs 配置
+description: '安装 node.js 后要检查环境变量和版本号确认是否成功'
 date: 2017-05-09 16:56:44
 categories: Web开发
 tags: [后端, Node.js]

@@ -1,5 +1,6 @@
 ---
 title: 浏览器渲染原理概述
+description: '浏览器渲染每帧需在16.67毫秒内完成，否则会卡顿，关键在于控制脚本执行和避免频繁重排重绘。'
 categories: 'Web开发'
 tags: 性能优化
 author: Canace

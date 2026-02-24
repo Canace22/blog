@@ -1,5 +1,6 @@
 ---
 title: vue 项目搭建步骤
+description: '项目搭建注意别用淘宝 npm 否则容易踩坑 初始化和 git 配置要仔细操作'
 comments: true
 date: 2018-10-22 19:35:38
 categories: 工程化与运维

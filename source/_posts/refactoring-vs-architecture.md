@@ -2,7 +2,7 @@
 title: 重构 vs 架构
 categories: 软技能与思考
 tags: 读书笔记
-description: 《CSS 重构：样式表性能调优》第一章笔记
+description: '重构要关注代码复用和可维护性，避免因架构不合理导致频繁改动。'
 comments: true
 toc: true
 date: 2020-07-12 17:04:49

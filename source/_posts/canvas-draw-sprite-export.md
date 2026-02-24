@@ -1,5 +1,6 @@
 ---
 title: canvas 绘制雪碧图导出
+description: '用 canvas 合成雪碧图能减少请求，但需注意无法自动导出坐标信息，后期需手动处理。'
 comments: true
 date: 2019-10-26 17:19:41
 categories: Web开发

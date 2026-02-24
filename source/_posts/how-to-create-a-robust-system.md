@@ -2,7 +2,7 @@
 title: 如何创建一个健壮的系统
 categories: 软技能与思考
 tags: 职业发展
-description: 创建健壮的系统的方法
+description: '健壮系统需容错、高可用、灾备，确保故障不中断、中断快恢复、毁灭能抢救数据。'
 comments: true
 date: 2019-11-19 09:11:15
 ---

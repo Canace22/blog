@@ -1,5 +1,6 @@
 ---
 title: 工作与事业
+description: '工作是谋生工具，事业是热爱的事，别混为一谈。'
 categories: '软技能与思考'
 tags: 职业发展
 author: Canace

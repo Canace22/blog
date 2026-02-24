@@ -3,7 +3,7 @@ title: Flutter学习笔记————Dart基础
 categories: Web开发
 tags: 跨端方案
 toc: true
-description: Dart 基础
+description: 'Dart 基础数据类型包括 num、String、bool、List、Map，注意类型转换和方法使用。'
 comments: true
 date: 2020-05-25 08:41:55
 ---

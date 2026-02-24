@@ -1,5 +1,6 @@
 ---
 title: 回文数判断
+description: '负数和末尾有0的数直接排除，反转一半数字对比剩余部分是否相等'
 comments: true
 date: 2020-02-27 09:16:41
 categories: 编程基础

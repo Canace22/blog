@@ -1,5 +1,6 @@
 ---
 title: 第一个 Go 程序
+description: '安装 Go 后新建 hello.go 文件运行成功说明环境配置正确'
 categories: Web开发
 tags: [后端, Python/Go/其他]
 comments: true

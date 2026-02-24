@@ -1,5 +1,6 @@
 ---
 title: 时间戳转日期
+description: '时间戳转日期要记得乘以 1000 转成毫秒再处理否则会出错'
 comments: true
 date: 2019-06-30 14:13:59
 categories: Web开发

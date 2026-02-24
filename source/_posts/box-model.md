@@ -1,5 +1,6 @@
 ---
 title: 盒模型
+description: '标准盒模型易被内外边距撑开宽度，设置 border-box 可解决，弹性布局更简洁但兼容性待提升。'
 comments: true
 date: 2018-06-08 09:56:03
 categories: Web开发

@@ -1,5 +1,6 @@
 ---
 title: 开始用 beego 写 http 服务
+description: '安装配置时注意关闭 ssl 验证和设置模块镜像，路由设计要合理避免冲突。'
 categories: Web开发
 tags: [后端, Python/Go/其他]
 comments: true

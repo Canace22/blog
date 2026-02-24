@@ -1,5 +1,6 @@
 ---
 title: 关于广告拦截插件的一些思考
+description: '广告拦截插件可能误删网页内容或禁用 js 脚本影响体验，开发者需注意反拦截方案并排查规则集干扰。'
 categories: 软技能与思考
 tags: 随笔
 comments: true

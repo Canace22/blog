@@ -1,5 +1,6 @@
 ---
 title: tensorflow 模型训练步骤
+description: '定义网络结构和损失函数，选择优化器，迭代训练并测试评估模型效果。'
 date: 2018-05-27 09:56:27
 categories: AI探索
 tags: AI原理

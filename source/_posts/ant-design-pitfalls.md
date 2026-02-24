@@ -1,5 +1,6 @@
 ---
 title: ant-design-vue 那些坑
+description: 'dropdown 默认菜单挂载到 body 会导致焦点偏移，需手动指定容器；select 默认值设为 undefined 才能显示 placeholder'
 categories: Web开发
 tags: [前端, 框架与库]
 comments: true

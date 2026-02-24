@@ -1,5 +1,6 @@
 ---
 title: JavaScript new 关键字的实现原理
+description: 'new 关键字通过设置实例的 __proto__ 指向构造函数原型，并绑定构造函数执行上下文实现属性和方法继承。'
 categories: Web开发
 tags: JavaScript&TypeScript
 comments: true

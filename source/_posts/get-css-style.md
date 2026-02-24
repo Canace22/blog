@@ -2,7 +2,7 @@
 title: 获取 DOM style 的正确姿势
 categories: Web开发
 tags: [前端, CSS与可视化]
-description: 获取 DOM style 的正确姿势
+description: '直接用 dom.style 获取样式会丢失部分属性 改用 getComputedStyle 才能正确读取所有样式值'
 author: Canace
 comments: true
 date: 2022-06-22 10:20:29

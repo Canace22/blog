@@ -1,5 +1,6 @@
 ---
 title: hexo 博客迁移
+description: '迁移 hexo 博客需先更新 node 和 npm，再安装依赖和配置 git，最后生成并上传内容。'
 comments: true
 date: 2018-07-29 16:13:33
 categories: 网站建设

@@ -1,5 +1,6 @@
 ---
 title: 一键生成响应式表格
+description: '响应式表格关键在设置固定布局和边框样式避免错位'
 comments: true
 date: 2019-02-28 15:48:52
 categories: Web开发

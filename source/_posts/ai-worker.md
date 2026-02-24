@@ -1,5 +1,6 @@
 ---
 title: 如何做AI角色分工：我的应用心得
+description: '给AI分配不同角色能提升效率，避免上下文混乱，确保输出更精准专业。'
 categories: AI探索
 tags: AI编程
 author: Canace

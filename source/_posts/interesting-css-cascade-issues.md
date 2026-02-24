@@ -1,5 +1,6 @@
 ---
 title: 有趣的CSS层叠问题
+description: '去掉z-index后，层叠顺序由HTML结构决定，调整元素位置和添加上下文能解决覆盖问题。'
 categories: Web开发
 tags: [前端, CSS与可视化]
 comments: true

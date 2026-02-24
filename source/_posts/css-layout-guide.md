@@ -1,5 +1,6 @@
 ---
 title: CSS 常用布局及解决方案
+description: 'flex 布局能更简单实现居中和多列布局，避免复杂计算和定位问题。'
 comments: true
 date: 2021-06-05 10:45:33
 categories: Web开发

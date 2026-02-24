@@ -1,5 +1,6 @@
 ---
 title: gitlab ci 配置模板
+description: 'gitlab ci 配置模板注意 artifacts 有效期和路径设置避免部署异常'
 comments: true
 date: 2018-10-22 19:29:20
 categories: 工程化与运维

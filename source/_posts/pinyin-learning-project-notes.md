@@ -1,5 +1,6 @@
 ---
 title: 拼音学习项目笔记
+description: 'v-if 关闭组件时会销毁数据，需在打开事件里清空父组件传的数据，避免网络延迟导致问题'
 comments: true
 date: 2019-03-19 09:44:46
 categories: Web开发

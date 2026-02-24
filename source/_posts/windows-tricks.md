@@ -1,5 +1,6 @@
 ---
 title: Windows 奇技淫巧
+description: '查看端口占用用 netstat 和 findstr 快速定位进程别忘了加参数。'
 categories: 工程化与运维
 tags: 系统设计
 comments: true

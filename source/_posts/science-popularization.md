@@ -1,5 +1,6 @@
 ---
 title: 科普
+description: '别用"台风"和"飓风"混着说，搞清楚生成海域才能准确表达。'
 categories: 软技能与思考
 tags: 随笔
 comments: true

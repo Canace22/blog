@@ -1,5 +1,6 @@
 ---
 title: Vue 你这是怎么了
+description: '对象初始化用 null 代替 Object.create(null) 避免类型错误 路由重复跳转需同时拦截 push 和 replace 方法 native 修饰符易导致事件重复触发'
 categories: Web开发
 tags: [前端, 框架与库]
 comments: true

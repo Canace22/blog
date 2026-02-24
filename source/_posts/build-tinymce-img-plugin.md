@@ -1,5 +1,6 @@
 ---
 title: 从零开始撸一个 tinymce 图片上传插件
+description: '点击按钮直接弹出图片选择框避免多余步骤简化上传流程提升用户体验'
 categories: Web开发
 tags: [前端, 框架与库]
 comments: true

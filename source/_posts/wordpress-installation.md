@@ -1,5 +1,6 @@
 ---
 title: wordpress安装
+description: '安装 WordPress 时注意正确设置数据库和用户权限，以及文件夹位置和访问路径。'
 date: 2018-05-20 16:58:59
 categories: 网站建设
 tags: 开发工具

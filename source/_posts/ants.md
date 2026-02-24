@@ -1,5 +1,6 @@
 ---
 title: 森林里的蚂蚁和吵架的大象夫妇
+description: '大象夫妇因装修顺序争吵堵路，小蚂蚁焦急无奈，长颈鹿出面解决。'
 categories: 软技能与思考
 tags: 随笔
 author: Canace

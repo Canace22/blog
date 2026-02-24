@@ -2,7 +2,7 @@
 title: Web端版本更新弹窗实现
 categories: Web开发
 tags: [前端, 框架与库]
-description: 记录轮询简单实现网页更新Web端弹窗方案，主要内容包括:常用消息推送方案介绍、网页更新方法概述以及基于轮询的网页更新弹窗实现demo展示
+description: '轮询检测版本更新时要加随机参数避免缓存，强制刷新页面才能生效。'
 author: Canace
 toc: true
 comments: true

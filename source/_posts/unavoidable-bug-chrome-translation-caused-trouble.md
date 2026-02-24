@@ -2,7 +2,7 @@
 title: 防不胜防的 bug —— chrome 翻译惹的祸
 categories: Web开发
 tags: [前端, 跨端方案]
-description:  bug 天上来，想不到的 bug 之 翻译有什么错
+description: '页面出现乱码是因为 chrome 自动翻译导致，设置 html 语言为 zh-CN 可避免此问题。'
 comments: true
 date: 2020-03-31 17:23:39
 ---

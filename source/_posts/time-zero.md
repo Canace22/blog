@@ -2,7 +2,7 @@
 title: 时间零点
 categories: 编程基础
 tags: 计算机科学
-description: 时间零点为 1970 年的缘由
+description: '时间戳为零时显示1970年1月1日，中国区会显示为早上8点，常见于系统错误或数据异常。'
 comments: true
 date: 2020-01-08 08:41:53
 ---

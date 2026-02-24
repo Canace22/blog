@@ -1,5 +1,6 @@
 ---
 title: three.js 基础实战 —— 创建画布
+description: '创建画布需先设置场景相机和渲染器，物体添加后需通过渲染循环显示，材质和光照影响最终效果。'
 categories: Web开发
 tags: [前端, CSS与可视化]
 comments: true

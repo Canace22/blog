@@ -2,7 +2,7 @@
 title: NP/P/NPC 都是何方神圣
 categories: 编程基础
 tags: 计算机科学
-description: NP/P/NPC 科普
+description: 'P 是能快速解决的问题 NP 是能快速验证的问题 NPC 是最难的 NP 问题。'
 comments: true
 date: 2020-01-16 10:14:17
 ---

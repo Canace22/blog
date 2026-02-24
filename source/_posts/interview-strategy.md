@@ -1,5 +1,6 @@
 ---
 title: 你不是在面试，你是在为职位试镜
+description: '面试追求复杂设计，实际工作却需要简单实用，两者标准大相径庭。'
 categories: 软技能与思考
 tags: 职业发展
 author: Canace

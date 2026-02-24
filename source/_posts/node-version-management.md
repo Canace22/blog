@@ -2,7 +2,7 @@
 title: Node.js 版本管理工具概览
 categories: Web开发
 tags: [后端, Node.js]
-description: nodeJs 版本管理笔记
+description: 'nvm 和 fnm 适合频繁切换版本，n 轻量易用，asdf 支持多语言管理，根据需求选工具。'
 author: Canace
 toc: true
 comments: true

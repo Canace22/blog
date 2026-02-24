@@ -2,7 +2,7 @@
 title: 关于跨域那些事
 categories: Web开发
 tags: 计算机科学
-description: 跨域相关笔记
+description: '跨域问题源于浏览器安全策略，解决方法包括代理、img、jsonp 和 cors，各有优缺点需根据场景选择。'
 comments: true
 toc: true
 date: 2021-03-26 08:47:29

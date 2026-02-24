@@ -1,5 +1,6 @@
 ---
 title: Egg 快速上手
+description: '初始化项目后配置模板引擎插件是关键，否则页面无法正确渲染。'
 comments: true
 date: 2020-11-27 14:31:16
 categories: Web开发

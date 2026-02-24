@@ -2,7 +2,7 @@
 title: Vol.12：我们的上限在哪里
 categories: 软技能与思考
 tags: 随笔
-description: Canace 的七日谈第十二期
+description: '人生没有固定上限，关键在于是否愿意持续努力和突破自我。'
 author: Canace
 comments: true
 date: 2023-11-20 08:00:08

@@ -1,5 +1,6 @@
 ---
 title: 前端绘制图形验证码
+description: '生成图形验证码时要确保每次绘制前清空画布避免残留痕迹。'
 categories: Web开发
 tags: [前端, CSS与可视化]
 comments: true

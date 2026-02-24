@@ -1,5 +1,6 @@
 ---
 title: python3 安装
+description: '安装 python3 时注意依赖环境，编译步骤要完整，避免后续使用出错。'
 comments: true
 date: 2019-01-06 17:42:32
 categories: Web开发

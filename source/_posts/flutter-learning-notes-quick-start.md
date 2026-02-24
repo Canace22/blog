@@ -3,7 +3,7 @@ title: Flutter 学习笔记（一）—— 快速上手
 categories: Web开发
 tags: 跨端方案
 toc: true
-description: flutter 快速上手指南
+description: '选对 Flutter 版本能避免很多环境问题，配置好依赖和工具链是关键'
 comments: true
 date: 2020-05-23 08:04:43
 ---

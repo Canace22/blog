@@ -2,7 +2,7 @@
 title: CSS 定位详解
 categories: Web开发
 tags: [前端, CSS与可视化]
-description: 详细讲解 position 属性几个值的区别，并新加了新属性 sticky 的讲解。
+description: '定位关键看基准点，relative 以自身为基准，absolute 以最近定位的父元素为基准，fixed 以视口为基准。'
 comments: true
 date: 2019-11-28 08:35:29
 ---

@@ -1,5 +1,6 @@
 ---
 title: 正则
+description: '正则表达式是记录文本规则的代码，掌握元字符和限定符能有效匹配不同格式的字符串。'
 comments: true
 date: 2019-08-04 12:32:20
 categories: 编程基础

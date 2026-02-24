@@ -2,7 +2,7 @@
 title: 使用 github action 编译 Vue 发布到 github page
 categories: 工程化与运维
 tags: 开发工具
-description: 之前发布的静态页面都是用 travis ci 集成发布的，github action 也发布一段时间了，今天试试看使用 github action 编译 Vue 发布到 github page
+description: 'GitHub action 配置简单，适合自动化部署 Vue 项目到 GitHub Page。'
 comments: true
 date: 2021-03-22 16:26:56
 ---

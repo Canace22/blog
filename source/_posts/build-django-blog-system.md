@@ -1,5 +1,6 @@
 ---
 title: 搭建 Django 博客系统
+description: '搭建 Django 博客系统需注意配置数据库和 admin 后台，模型定义要准确，模板路径要正确。'
 date: 2018-05-20 14:30:48
 updated: 2018-05-20 15:10:00
 categories: Web开发

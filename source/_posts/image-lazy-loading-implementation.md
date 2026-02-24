@@ -2,7 +2,7 @@
 title: 图片懒加载实现
 categories: 工程化与运维
 tags: 性能优化
-description: 图片懒加载实现方案
+description: '滚动触发懒加载需加节流避免频繁操作影响性能'
 comments: true
 date: 2021-03-05 10:19:43
 ---

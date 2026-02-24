@@ -2,7 +2,7 @@
 title: Homebrew 常用命令
 categories: 编程基础
 tags: 系统设计
-description: Homebrew 常用命令集合
+description: 'Homebrew 安装软件到独立目录，通过软链接使用，卸载和更新需用特定命令管理。'
 comments: true
 date: 2020-01-02 11:00:01
 ---

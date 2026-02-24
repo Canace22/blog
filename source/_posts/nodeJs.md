@@ -1,5 +1,6 @@
 ---
 title: nodeJs 模块
+description: '模块导出用 module.exports 而不是 exports 避免污染全局变量'
 comments: true
 date: 2019-08-11 10:38:41
 categories: Web开发

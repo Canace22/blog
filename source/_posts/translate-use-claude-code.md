@@ -1,5 +1,6 @@
 ---
 title: 首次尝试95%都是垃圾：一位工程师使用Claude Code的6周之旅
+description: '首次尝试生成的代码大多无效，需多次迭代才能得到可用结果。'
 categories:  AI探索
 tags: 开发工具
 author: Canace

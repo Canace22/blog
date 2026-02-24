@@ -1,5 +1,6 @@
 ---
 title: 函数式编程
+description: '函数式编程让代码更简洁，纯函数无副作用，柯里化能分步传参提高复用性。'
 categories: Web开发
 tags: JavaScript&TypeScript
 comments: true

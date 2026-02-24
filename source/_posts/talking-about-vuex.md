@@ -1,5 +1,6 @@
 ---
 title: 说说 Vuex
+description: 'vuex 适合多组件共享状态的场景，避免组件间传值混乱，提升代码可维护性。'
 categories: Web开发
 tags: [前端, 框架与库]
 comments: true

@@ -2,7 +2,7 @@
 title: CSS 画两色饼状图
 categories: Web开发
 tags: [前端, CSS与可视化]
-description: CSS 画两色饼状图详解
+description: '用CSS画扇形关键在边框和旋转，调整角度能实现不同弧度的饼状图。'
 comments: true
 date: 2020-04-23 08:59:17
 ---

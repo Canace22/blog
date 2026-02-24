@@ -1,5 +1,6 @@
 ---
 title: 原地删除数组中的重复值
+description: '双指针遍历数组，遇到不重复项就移动到前面，最后慢指针位置就是不重复长度。'
 categories: 编程基础
 tags: 计算机科学
 comments: true

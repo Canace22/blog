@@ -1,5 +1,6 @@
 ---
 title: 晨跑
+description: '晨跑让人重新认识距离，也更珍惜安静有家感的居住环境。'
 categories: 软技能与思考
 tags: 随笔
 comments: true

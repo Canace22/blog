@@ -2,7 +2,7 @@
 title: 构建 TypeScript 库
 categories: Web开发
 tags: JavaScript&TypeScript
-description: 构建 TypeScript 库简易指南
+description: '初始化配置和打包流程是构建 TypeScript 库的关键，正确设置 tsconfig 和 package.json 能避免很多后续问题。'
 author: Canace
 comments: true
 toc: true

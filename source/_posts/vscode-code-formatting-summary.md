@@ -1,5 +1,6 @@
 ---
 title: vscode代码格式化总结
+description: 'eslint 和 prettier 配合使用能统一代码风格，但 vue 项目需禁用 prettier 格式化避免引号冲突。'
 categories: 工程化与运维
 tags: 开发工具
 comments: true

@@ -1,5 +1,6 @@
 ---
 title: 关于浏览器内核及其 CSS 写法
+description: '不同浏览器内核对CSS前缀要求不同，写法需注意兼容性。'
 categories: Web开发
 tags: CSS与可视化
 comments: true

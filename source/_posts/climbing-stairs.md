@@ -1,5 +1,6 @@
 ---
 title: 爬楼梯
+description: '爬楼梯问题可以用动态规划或记忆化递归解决，但暴力递归会超时。'
 categories: 编程基础
 tags: 计算机科学
 comments: true

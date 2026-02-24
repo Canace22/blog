@@ -1,5 +1,6 @@
 ---
 title: 修改自动填充样式
+description: '修改自动填充样式需用 -webkit-autofill 伪类和 -webkit-box-shadow 属性，否则样式可能不生效。'
 categories: Web开发
 tags: CSS与可视化
 comments: true

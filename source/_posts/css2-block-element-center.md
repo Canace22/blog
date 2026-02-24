@@ -1,5 +1,6 @@
 ---
 title: CSS2 下块级元素垂直水平居中
+description: '绝对定位配合 margin auto 可实现 css2 块级元素垂直水平居中'
 comments: true
 date: 2019-03-16 16:41:28
 categories: Web开发

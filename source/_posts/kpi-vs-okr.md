@@ -1,5 +1,6 @@
 ---
 title: KPI vs OKR
+description: 'KPI 注重具体结果，OKR 强调目标与过程，选择需结合团队发展阶段。'
 categories: 软技能与思考
 tags: 项目管理
 comments: true

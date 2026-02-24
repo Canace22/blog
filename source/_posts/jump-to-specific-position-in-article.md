@@ -2,7 +2,7 @@
 title: 浏览器页面跳转至文章指定位置的方法探究
 categories: Web开发
 tags: JavaScript&TypeScript
-description: 探究浏览器页面跳转至文章指定位置的方法，比较锚点跳转和 Text Fragments 跳转的优缺点，总结两种跳转方式的使用场景
+description: '锚点链接兼容性好但只能定位元素，Text Fragment能精准定位文本但需编码且兼容性差。'
 author: Canace
 comments: true
 toc: true

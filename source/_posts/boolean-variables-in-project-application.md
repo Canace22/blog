@@ -1,5 +1,6 @@
 ---
 title: 布尔变量在项目中的应用
+description: '布尔变量能清晰控制代码逻辑，避免混乱，提升插件可扩展性和稳定性。'
 comments: true
 date: 2018-06-08 09:54:53
 categories: 编程基础

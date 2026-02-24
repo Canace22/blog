@@ -1,5 +1,6 @@
 ---
 title: 计算机图形学 ———— 空间中的物体（1）
+description: '用像素填充模拟阴影层次，能做出立体感效果。'
 comments: true
 date: 2019-11-11 08:54:30
 categories: Web开发

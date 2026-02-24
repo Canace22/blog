@@ -2,7 +2,7 @@
 title: lodash 源码解析 —— slice
 categories: Web开发
 tags: 框架与库
-description: lodash slice 函数学习
+description: 'lodash slice 确保返回密集数组避免稀疏数组遍历问题'
 comments: true
 toc: true
 date: 2021-05-21 11:15:40

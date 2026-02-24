@@ -1,5 +1,6 @@
 ---
 title: Vue 单元测试
+description: 'Vue 单元测试配置需注意覆盖率阈值和文件路径排除，确保测试有效且不遗漏关键代码。'
 categories: 工程化与运维
 tags: 代码质量
 comments: true

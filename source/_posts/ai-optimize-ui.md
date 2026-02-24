@@ -1,5 +1,6 @@
 ---
 title: 使用 AI 优化界面交互
+description: '用AI结合SUS、PUEU和HEART模型优化界面，能提升可用性和用户体验，适合快速迭代改进设计。'
 categories: 'AI探索'
 tags: AI编程
 author: Canace

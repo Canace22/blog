@@ -2,7 +2,7 @@
 title: 说说浏览器缓存机制
 categories: Web开发
 tags: [前端, 跨端方案]
-description: 说说浏览器缓存相关知识
+description: '刷新不生效可能是因为强缓存或协商缓存没过期，用 ctrl+f5 可以强制绕过缓存获取最新资源。'
 comments: true
 toc: true
 date: 2021-03-30 10:10:32

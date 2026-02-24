@@ -5,7 +5,7 @@ date: 2020-11-28 12:02:22
 categories: Web开发
 tags: [前端, CSS与可视化]
 toc: true
-description: 本文收录日常开发中一些 css 小技巧。
+description: '文本溢出显示省略号需设置宽度和正确属性，多行文本用 flex 布局注意最后一行对齐问题'
 ---
 
 ## 文本末尾添加省略号

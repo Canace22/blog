@@ -2,7 +2,7 @@
 title: 网页性能优化-防抖
 categories: 工程化与运维
 tags: 性能优化
-description: 讲讲防抖的使用场景、思想以及实现
+description: '防抖核心是延迟执行，每次输入重置定时器，最后停止输入后才触发，避免频繁操作影响性能。'
 comments: true
 date: 2021-04-20 14:32:45
 ---

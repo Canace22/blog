@@ -4,7 +4,7 @@ date: 2020-06-21 22:30:57
 categories: Web开发
 tags: JavaScript&TypeScript
 toc: true
-description: 深入浅出 NodeJs 笔记
+description: 'Node 适合异步 I/O 任务，但单线程处理计算密集型操作时需用子进程避免阻塞。'
 ---
 ###  一、Node 特点
 

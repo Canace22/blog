@@ -1,5 +1,6 @@
 ---
 title: git环境配置
+description: 'git环境配置关键点是安装主程序和图形工具，通过克隆项目并提交改动来管理代码。'
 date: 2017-05-09 16:58:31
 categories: 工程化与运维
 tags: 开发工具

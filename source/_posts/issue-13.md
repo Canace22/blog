@@ -2,7 +2,7 @@
 title: Vol.13：科幻电影照进现实
 categories: 软技能与思考
 tags: 随笔
-description: Canace 的七日谈第十三期
+description: '科幻元素正逐步成为现实，但伴随而来的新技术风险需提前防范。'
 author: Canace
 toc: true
 comments: true

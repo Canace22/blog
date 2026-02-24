@@ -3,7 +3,7 @@ title: MAC 调试 IOS 真机上 Web 网页的方法
 categories: Web开发
 tags: [前端, 跨端方案]
 comments: true
-description: '最近有个项目 web 项目在 ios 上显示异常，看不到日志也不知道什么问题。网上有很多实现方法，看了看都是抄来抄去的，细节不是很全，我就记录下自己的操作过程吧，免得下次忘了难找。'
+description: 'Chrome 调试无法查看 console 日志需用 vconsole，Safari 调试不稳定，Charles 配置复杂但功能强。'
 toc: true
 date: 2022-03-30 16:53:10
 ---

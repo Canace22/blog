@@ -1,5 +1,6 @@
 ---
 title: angular 导航栏与内容联动
+description: '操作 DOM 时注意滑动距离和速度计算，避免滚动异常。'
 comments: true
 date: 2018-07-29 16:07:54
 categories: Web开发

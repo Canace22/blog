@@ -1,5 +1,6 @@
 ---
 title: AI赋能存量项目——从函数助手到业务伙伴
+description: 'AI 编辑器用不好别急着换，先找适合自己的插件和配置，性能问题也能解决。'
 categories: 'AI探索'
 tags: AI编程
 author: Canace

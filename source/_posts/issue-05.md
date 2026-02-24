@@ -2,7 +2,7 @@
 title: Vol.05：阅读的艺术
 categories: 软技能与思考
 tags: 随笔
-description: Canace 的七日谈第五期
+description: '阅读不同类型的书要有不同方法，技术书重实用，文学书重感受，别一刀切。'
 author: Canace
 comments: true
 date: 2022-07-24 18:44:15

@@ -1,5 +1,6 @@
 ---
 title: 对技术成长的一些思考
+description: '技术成长需补基础提深度，项目经验不等于技术沉淀，3年期要注重技术内核理解。'
 categories: 软技能与思考
 tags: 职业发展
 comments: true

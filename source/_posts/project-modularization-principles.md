@@ -1,5 +1,6 @@
 ---
 title: 项目模块化原则
+description: '模块化要分清业务和UI，业务逻辑放业务组件，UI只负责展示，公共部分统一抽离。'
 comments: true
 date: 2019-11-08 08:58:03
 categories: 工程化与运维

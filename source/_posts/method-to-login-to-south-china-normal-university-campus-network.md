@@ -1,5 +1,6 @@
 ---
 title: ubuntu 登陆华南师范大学校园网的方法
+description: 'Ubuntu 登录华南师范大学校园网需解压客户端并执行指定命令，注意权限和网络接口名称。'
 date: 2018-05-20 17:00:51
 categories: 编程基础
 tags: 计算机科学

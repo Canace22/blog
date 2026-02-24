@@ -1,5 +1,6 @@
 ---
 title: web 优化 ——— 添加骨架屏
+description: '加骨架屏能减少白屏感，但需注意样式分离和组件挂载方式，避免失效。'
 comments: true
 date: 2019-09-26 08:40:14
 categories: 工程化与运维

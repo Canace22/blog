@@ -1,5 +1,6 @@
 ---
 title: 使用 docker 配置前端环境
+description: '别名设置不当容易导致命令执行失败或环境混乱'
 categories: 工程化与运维
 tags: 构建与部署
 comments: true

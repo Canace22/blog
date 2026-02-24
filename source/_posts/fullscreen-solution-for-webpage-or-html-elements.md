@@ -1,5 +1,6 @@
 ---
 title: 网页或html元素在浏览器上全屏解决方案
+description: '全屏需兼容不同浏览器事件，退出和判断状态也要做相应处理。'
 comments: true
 date: 2019-02-20 15:05:52
 categories: Web开发

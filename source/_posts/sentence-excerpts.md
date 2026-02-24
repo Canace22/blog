@@ -1,5 +1,6 @@
 ---
 title: 美句摘抄
+description: '电影里的速度隐喻爱情的无奈，用诗意表达遗憾最动人。'
 categories: 软技能与思考
 tags: 随笔
 comments: true

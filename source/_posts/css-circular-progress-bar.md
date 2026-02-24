@@ -1,5 +1,6 @@
 ---
 title: CSS 实现圆环进度条
+description: '圆环进度条通过设置边框和旋转动画实现，关键在控制显示区域和动画角度。'
 categories: Web开发
 tags: [前端, CSS与可视化]
 comments: true

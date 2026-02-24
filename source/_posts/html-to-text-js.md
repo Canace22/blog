@@ -1,5 +1,6 @@
 ---
 title: html 文档导出为 word 文档和 pdf 文档
+description: 'html 转 docx 需手动添加样式，部分 css 不兼容，图片需转 base64 插入。'
 comments: true
 date: 2018-08-25 10:40:58
 categories: Web开发

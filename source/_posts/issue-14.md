@@ -3,7 +3,7 @@ title: Vol14：如何延长下班时间
 toc: true
 categories: Web开发
 tags: 随笔
-description: Canace的七日谈第十四期
+description: '自然环境能拉长时间感，日常可尝试露营或散步替代完全脱离社交。'
 author: Canace
 comments: true
 date: 2025-05-10 10:40:19

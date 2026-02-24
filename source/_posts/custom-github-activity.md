@@ -2,7 +2,7 @@
 title: 自定义 github 动态
 categories: Web开发
 tags: 开发工具
-description: 自定义 github 动态
+description: '自定义 github 动态需创建同名项目并设置 readme 信息，同步博客文章可后续补充。'
 comments: true
 date: 2020-07-20 10:28:27
 ---

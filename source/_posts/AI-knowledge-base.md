@@ -1,5 +1,6 @@
 ---
 title: 我们是否需要AI知识库
+description: 'AI知识库能提升效率但别依赖，关键还是自己理解与思考。'
 categories: AI探索
 tags: AI原理
 author: Canace

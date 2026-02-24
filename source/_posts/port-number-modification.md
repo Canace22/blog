@@ -2,7 +2,7 @@
 title: SSH 端口号修改
 categories: 工程化与运维
 tags: 构建与部署
-description: 搬瓦工 ssh端口号修改的方法
+description: '修改 SSH 端口需直接编辑配置文件并重启服务，操作简单但需注意端口冲突。'
 comments: true
 date: 2019-11-21 10:18:12
 ---

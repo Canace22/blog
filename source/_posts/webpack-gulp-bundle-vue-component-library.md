@@ -2,7 +2,7 @@
 title: webpack+gulp 打包 vue 组件库
 categories: 工程化与运维
 tags: 构建与部署
-description: 参照 element-ui 实现按需引入的 vue 组件库
+description: '用 webpack 和 gulp 构建 vue 组件库时 按需引入需单独处理样式否则找不到。'
 comments: true
 date: 2020-05-15 08:44:46
 ---

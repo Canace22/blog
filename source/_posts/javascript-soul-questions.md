@@ -2,7 +2,7 @@
 title: JavaScript 灵魂拷问
 categories: Web开发
 tags: JavaScript&TypeScript
-description: 一些有趣的 JavaScript 问题解答
+description: '闭包会保留外部变量，多次调用会创建新副本，导致结果不同，注意变量作用域和引用问题。'
 comments: true
 date: 2021-02-03 11:44:15
 ---

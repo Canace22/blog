@@ -1,5 +1,6 @@
 ---
 title: CSS3 动画 vs js 动画
+description: 'css3 动画不操作 dom 更流畅  js 动画频繁操作 dom 容易卡顿'
 comments: true
 date: 2019-05-19 13:09:35
 categories: Web开发

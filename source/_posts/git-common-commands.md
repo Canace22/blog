@@ -3,7 +3,7 @@ title: git 文档
 comments: true
 date: 2020-10-10 10:48:12
 categories: 工程化与运维
-description: 根据平常经验整理的 git 文档
+description: '配置好全局用户名和邮箱，分支操作要小心，版本回退需强制推送，删除远程分支要同步清理。'
 tags: 开发工具
 toc: true
 ---

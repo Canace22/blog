@@ -1,5 +1,6 @@
 ---
 title: CSS 基础
+description: '学好 css 基础，理解盒模型和布局方式，避免常见流破坏问题。'
 comments: true
 date: 2019-01-26 13:55:01
 categories: Web开发

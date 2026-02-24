@@ -2,7 +2,7 @@
 title: Vol.08：无论男女都应当追求些什么
 categories: 软技能与思考
 tags: 随笔
-description: Canace 的七日谈第八期
+description: '工作不是为了活着而是让人生更有意义 不能只为了钱而工作 要追求自己真正喜欢且有意义的事'
 author: Canace
 comments: true
 date: 2022-11-06 08:57:32

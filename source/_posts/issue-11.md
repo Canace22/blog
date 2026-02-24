@@ -2,7 +2,7 @@
 title: Vol.11：一些关于工作的思考
 categories: 软技能与思考
 tags: 随笔
-description: Canace 的七日谈第十一期
+description: '工作五年后，技术可能变得熟练但容易停滞，保持学习热情和平衡生活才是持续前行的关键。'
 author: Canace
 comments: true
 date: 2023-07-09 15:56:48

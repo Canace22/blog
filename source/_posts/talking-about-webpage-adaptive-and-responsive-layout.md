@@ -1,5 +1,6 @@
 ---
 title: 说说网页自适应和响应式布局
+description: '自适应布局需用百分比和 float，配合媒体查询和 vw 单位，确保多分辨率下显示一致。'
 comments: true
 date: 2019-11-05 22:34:43
 categories: Web开发

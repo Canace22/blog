@@ -1,5 +1,6 @@
 ---
 title: javaScript 面向对象编程
+description: '构造函数实现类继承较复杂，需手动处理原型和属性，而 class 语法更简洁清晰。'
 comments: true
 date: 2018-10-22 19:52:57
 categories: Web开发

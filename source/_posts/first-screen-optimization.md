@@ -1,5 +1,6 @@
 ---
 title: web 性能优化 —— 首屏优化
+description: '按需引入组件和懒加载能显著减少包体积提升首屏速度'
 comments: true
 date: 2018-12-02 16:44:23
 ccategories: 工程化与运维
