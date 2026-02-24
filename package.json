@@ -6,8 +6,8 @@
     "serve": "./test.sh s",
     "build": "./test.sh d",
     "commit": "./commit.sh",
-    "summary": "node scripts/generate-summary.mjs",
-    "summary:regen": "node scripts/generate-summary.mjs --regen"
+    "summary": "node tools/generate-summary.mjs",
+    "summary:regen": "node tools/generate-summary.mjs --regen"
   },
   "hexo": {
     "version": "7.3.0"
