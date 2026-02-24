@@ -1,6 +1,7 @@
 ---
 title: 如何做AI角色分工：我的应用心得
 categories: AI探索
+tags: AI编程
 author: Canace
 comments: true
 date: 2025-11-23 09:22:22

@@ -1,6 +1,7 @@
 ---
 title: AI协作编程——如何写好项目规则
 categories: 'AI探索'
+tags: AI编程
 author: Canace
 toc: true
 comments: true

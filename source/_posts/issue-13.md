@@ -1,6 +1,7 @@
 ---
 title: Vol.13：科幻电影照进现实
 categories: 软技能与思考
+tags: 随笔
 description: Canace 的七日谈第十三期
 author: Canace
 toc: true

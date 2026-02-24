@@ -1,6 +1,7 @@
 ---
 title: 知识焦虑
 categories: 软技能与思考
+tags: 随笔
 comments: true
 date: 2022-02-14 22:19:43
 ---

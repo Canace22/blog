@@ -1,7 +1,7 @@
 ---
 title: 重构 vs 架构
 categories: 软技能与思考
-tags: CSS与可视化
+tags: 读书笔记
 description: 《CSS 重构：样式表性能调优》第一章笔记
 comments: true
 toc: true

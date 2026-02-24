@@ -1,6 +1,7 @@
 ---
 title: 森林里的蚂蚁和吵架的大象夫妇
 categories: 软技能与思考
+tags: 随笔
 author: Canace
 comments: true
 date: 2023-08-04 08:02:56

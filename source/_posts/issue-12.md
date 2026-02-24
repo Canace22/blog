@@ -1,6 +1,7 @@
 ---
 title: Vol.12：我们的上限在哪里
 categories: 软技能与思考
+tags: 随笔
 description: Canace 的七日谈第十二期
 author: Canace
 comments: true

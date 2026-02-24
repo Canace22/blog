@@ -1,6 +1,7 @@
 ---
 title: 善意
 categories: 软技能与思考
+tags: 随笔
 description: 恶意可能植根心底，使人惧怕，那么善意呢？通常是一个褒义词，实则不然，有时候善意也挺让人抗拒的。
 author: Canace
 comments: true

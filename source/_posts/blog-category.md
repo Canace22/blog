@@ -33,6 +33,8 @@ date: 2025-09-14 17:32:04
 │   └── 开发工具 (Dev Tools) // Git, VSCode, Npm, Shell 脚本等
 │
 ├── 4. AI探索 (AI)
+│   ├── AI编程 (AI Coding) // Cursor, Claude Code, AI辅助开发等
+│   └── AI原理 (AI Fundamentals) // 模型训练, GPU/TPU, 知识库等
 │
 ├── 5. 软技能与思考 (Soft Skills & Reflections)
 │   ├── 项目管理 (Project Management)

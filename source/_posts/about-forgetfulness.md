@@ -1,6 +1,7 @@
 ---
 title: 关于健忘那些事
 categories: 软技能与思考
+tags: 随笔
 comments: true
 date: 2021-04-22 08:47:24
 ---

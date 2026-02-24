@@ -1,6 +1,7 @@
 ---
 title: Vol.11：一些关于工作的思考
 categories: 软技能与思考
+tags: 随笔
 description: Canace 的七日谈第十一期
 author: Canace
 comments: true

@@ -1,6 +1,7 @@
 ---
 title: 一些概念
 categories: 软技能与思考
+tags: 随笔
 comments: true
 toc: true
 date: 2020-08-13 08:55:54

@@ -3,7 +3,7 @@ title: CSS 基础
 comments: true
 date: 2019-01-26 13:55:01
 categories: Web开发
-tags: [前端,CSS与可视化 ]
+tags: [前端, CSS与可视化]
 ---
 
 css 基础知识笔记，包括专业术语介绍、css 流概述等，具体内容可以查看全文

@@ -1,7 +1,7 @@
 ---
 title: PixiJs ———— 精灵加载去缓存
 categories: Web开发
-tags: [前端,CSS与可视化]
+tags: [前端, CSS与可视化]
 description: PixiJs v5.2.0 加载精灵的时候会有缓存相关的 warning，每次都九十多条 warning，这谁受得了，花了点时间，各种调试，终于把他们给去掉了，舒服。可能有人会问，直接 google cv 一条龙不就解决了，但是网上关于 PixiJs 的文档是很少的，官方文档看了看，开发论坛看了看，都说用 clearTextureCache 方法，但是，通过打印发现是在 load 阶段给出的 warning，所以这里没用。
 comments: true
 date: 2020-04-06 21:32:30

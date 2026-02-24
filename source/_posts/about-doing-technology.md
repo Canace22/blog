@@ -1,6 +1,7 @@
 ---
 title: 关于做技术这件事
 categories: 软技能与思考
+tags: 职业发展
 comments: true
 date: 2021-04-30 11:11:58
 ---

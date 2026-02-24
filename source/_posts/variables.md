@@ -1,6 +1,7 @@
 ---
 title: 变数
 categories: 软技能与思考
+tags: 随笔
 description: 常闻中年焦虑，众人皆劝 35 岁前考公考编求安稳。近日家人所传一事，经我润色，感慨油生。人生似海，波澜难测，“铁饭碗” 不过虚妄，岁月哪会尽如人意，且行且珍惜，方不负这漫漫征途。
 author: Canace
 comments: true

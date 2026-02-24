@@ -1,7 +1,7 @@
 ---
 title: 浏览器渲染原理概述
 categories: 'Web开发'
-tags: '性能优化'
+tags: 性能优化
 author: Canace
 comments: true
 toc: true

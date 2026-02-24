@@ -1,6 +1,7 @@
 ---
 title: 前端绘制图形验证码
 categories: Web开发
+tags: [前端, CSS与可视化]
 comments: true
 date: 2019-02-13 09:02:40
 ---

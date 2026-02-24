@@ -1,6 +1,7 @@
 ---
 title: Vol.06：羊了个羊为什么会火起来
 categories: 软技能与思考
+tags: 随笔
 description: Canace 的七日谈第六期
 author: Canace
 comments: true

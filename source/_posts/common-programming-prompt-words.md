@@ -1,6 +1,7 @@
 ---
 title: 常用开发提示词
 categories: '软技能与思考'
+tags: 职业发展
 description: 整理一些日常开发中用到的编程提示词，给出了翻译和例句用法，方便查阅
 author: Canace
 comments: true

@@ -1,6 +1,7 @@
 ---
 title: 使用 AI 优化界面交互
 categories: 'AI探索'
+tags: AI编程
 author: Canace
 comments: true
 date: 2026-01-18 10:44:28

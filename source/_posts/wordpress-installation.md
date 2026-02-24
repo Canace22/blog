@@ -2,6 +2,7 @@
 title: wordpress安装
 date: 2018-05-20 16:58:59
 categories: 网站建设
+tags: 开发工具
 ---
 
 [原文链接：](https://codex.wordpress.org/zh-cn:%E5%AE%89%E8%A3%85_WordPress#.E6.AD.A5.E9.AA.A43:.E8.AE.BE.E7.BD.AEwp-config.php)

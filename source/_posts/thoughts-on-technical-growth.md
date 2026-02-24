@@ -1,6 +1,7 @@
 ---
 title: 对技术成长的一些思考
 categories: 软技能与思考
+tags: 职业发展
 comments: true
 date: 2021-06-09 14:14:20
 ---

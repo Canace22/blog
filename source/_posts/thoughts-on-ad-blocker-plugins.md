@@ -1,6 +1,7 @@
 ---
 title: 关于广告拦截插件的一些思考
 categories: 软技能与思考
+tags: 随笔
 comments: true
 date: 2021-07-21 09:36:56
 ---

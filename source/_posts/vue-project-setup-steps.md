@@ -3,6 +3,7 @@ title: vue 项目搭建步骤
 comments: true
 date: 2018-10-22 19:35:38
 categories: 工程化与运维
+tags: [前端, 框架与库]
 ---
 
 ### 一、 初始化项目

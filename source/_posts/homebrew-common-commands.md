@@ -1,7 +1,7 @@
 ---
 title: Homebrew 常用命令
 categories: 编程基础
-tags: 系统
+tags: 系统设计
 description: Homebrew 常用命令集合
 comments: true
 date: 2020-01-02 11:00:01

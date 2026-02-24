@@ -1,6 +1,7 @@
 ---
 title: AI赋能存量项目——从函数助手到业务伙伴
 categories: 'AI探索'
+tags: AI编程
 author: Canace
 comments: true
 toc: true

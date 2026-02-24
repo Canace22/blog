@@ -2,6 +2,7 @@
 title: 关于写周报的思考
 date: 2016-05-20 17:01:14
 categories: 软技能与思考
+tags: 职业发展
 toc: true
 ---
 

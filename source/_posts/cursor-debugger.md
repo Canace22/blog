@@ -1,7 +1,7 @@
 ---
 title: 解决 Cursor debugger 模式在 electron 项目中无法使用问题
 categories: 工程化与运维
-tags: Cursor
+tags: 开发工具
 author: Canace
 comments: true
 date: 2026-02-05 10:14:13

@@ -1,6 +1,7 @@
 ---
 title: 如何创建一个健壮的系统
 categories: 软技能与思考
+tags: 职业发展
 description: 创建健壮的系统的方法
 comments: true
 date: 2019-11-19 09:11:15

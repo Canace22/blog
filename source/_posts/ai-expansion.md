@@ -1,6 +1,7 @@
 ---
 title: AI使人膨胀
 categories: 'AI探索'
+tags: AI编程
 author: Canace
 comments: true
 toc: true

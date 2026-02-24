@@ -1,6 +1,7 @@
 ---
 title: Vol.01：为什么要开始写这个系列的杂文
 categories: 软技能与思考
+tags: 随笔
 comments: true
 description: 'Canace 的七日谈第一期'
 date: 2022-05-02 23:31:23

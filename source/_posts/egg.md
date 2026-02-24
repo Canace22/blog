@@ -3,7 +3,7 @@ title: Egg 快速上手
 comments: true
 date: 2020-11-27 14:31:16
 categories: Web开发
-tags: [服务端,Node.js]
+tags: [后端, Node.js]
 ---
 
 ## 一、入门

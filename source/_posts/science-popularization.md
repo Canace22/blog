@@ -1,6 +1,7 @@
 ---
 title: 科普
 categories: 软技能与思考
+tags: 随笔
 comments: true
 date: 2020-08-13 09:00:30
 ---

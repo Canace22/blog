@@ -1,6 +1,7 @@
 ---
 title: 为什么AI大模型需要“显卡”/TPU、GPU与AMD之间有什么区别
 categories: 'AI探索'
+tags: AI原理
 author: Canace
 comments: true
 date: 2025-11-26 09:29:32

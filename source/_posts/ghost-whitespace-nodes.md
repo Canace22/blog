@@ -1,7 +1,7 @@
 ---
 title: 幽灵空白节点
 categories: Web开发
-tags: CSS与可视化 
+tags: CSS与可视化
 description: 幽灵空白节点并不是一个专业术语，而是由前端大佬张鑫旭提出的一个概念，以下是我个人的一些理解
 comments: true
 date: 2020-07-13 11:30:09

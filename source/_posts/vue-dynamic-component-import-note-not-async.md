@@ -1,7 +1,7 @@
 ---
 title: vue动态引入组件,注意不是异步!
 categories: Web开发
-tags: [前端,框架与库]
+tags: [前端, 框架与库]
 description: vue动态引入组件
 comments: true
 date: 2019-11-22 11:36:28

@@ -1,6 +1,7 @@
 ---
 title: AI协作编程——传统IDE快速切换到AI IDE
 categories: 'AI探索'
+tags: AI编程
 author: Canace
 comments: true
 date: 2025-12-06 16:12:13

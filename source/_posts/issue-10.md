@@ -1,6 +1,7 @@
 ---
 title: Vol.10：直面死亡
 categories: 软技能与思考
+tags: 随笔
 description: Canace 的七日谈第十期
 author: Canace
 comments: true

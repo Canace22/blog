@@ -3,6 +3,7 @@ title: 日语学习笔记
 comments: true
 date: 2019-03-31 13:12:13
 categories: 软技能与思考
+tags: 随笔
 ---
 
 ### 一、日语关于介绍的基本句型

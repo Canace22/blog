@@ -2,6 +2,7 @@
 title: tensorflow 模型训练步骤
 date: 2018-05-27 09:56:27
 categories: AI探索
+tags: AI原理
 comments: true
 ---
 

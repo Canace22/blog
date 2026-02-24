@@ -1,6 +1,7 @@
 ---
 title: 晨跑
 categories: 软技能与思考
+tags: 随笔
 comments: true
 date: 2021-10-03 10:43:32
 ---

@@ -1,7 +1,7 @@
 ---
 title: prisma 入门指南
 categories: Web开发
-tags: [服务端,Node.js]
+tags: [后端, Node.js]
 comments: true
 toc: true
 date: 2021-12-29 14:10:45

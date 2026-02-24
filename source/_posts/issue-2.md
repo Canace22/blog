@@ -1,6 +1,7 @@
 ---
 title: Vol.02：团队对个人的影响
 categories: 软技能与思考
+tags: 随笔
 comments: true
 description: 'Canace 的七日谈第二期'
 date: 2022-05-15 09:55:24

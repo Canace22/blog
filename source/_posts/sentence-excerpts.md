@@ -1,6 +1,7 @@
 ---
 title: 美句摘抄
 categories: 软技能与思考
+tags: 随笔
 comments: true
 date: 2020-08-13 08:53:27
 ---

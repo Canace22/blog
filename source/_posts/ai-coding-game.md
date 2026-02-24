@@ -1,6 +1,7 @@
 ---
 title: 面向大模型编程(LOP)在游戏制作流程中的应用畅想
 categories: 'AI探索'
+tags: AI编程
 author: Canace
 comments: true
 date: 2025-12-10 18:39:22

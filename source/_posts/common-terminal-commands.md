@@ -1,7 +1,7 @@
 ---
 title: 常用的Unix终端命令
 categories: 编程基础
-tags: 系统
+tags: 系统设计
 description: 在开发过程中，掌握一些基本的Unix终端命令，可以极大地提高工作效率，本文介绍一些常用的Unix终端命令。
 author: Canace
 comments: true

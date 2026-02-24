@@ -1,7 +1,7 @@
 ---
 title: element-plus 缩放问题解决
 categories: Web开发
-tags: [前端,框架与库]
+tags: [前端, 框架与库]
 author: Canace
 comments: true
 date: 2024-03-19 16:02:09

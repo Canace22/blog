@@ -1,6 +1,7 @@
 ---
 title: SS 安装
 categories: 工程化与运维
+tags: 系统设计
 description: ss 安装步骤
 comments: true
 date: 2019-11-21 10:46:15
