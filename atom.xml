@@ -6,7 +6,7 @@
   <link href="https://canace.site/atom.xml" rel="self"/>
   
   <link href="https://canace.site/"/>
-  <updated>2026-02-05T02:26:38.889Z</updated>
+  <updated>2026-02-24T02:43:35.445Z</updated>
   <id>https://canace.site/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://canace.site/cursor-debugger/"/>
     <id>https://canace.site/cursor-debugger/</id>
     <published>2026-02-05T02:14:13.000Z</published>
-    <updated>2026-02-05T02:26:38.889Z</updated>
+    <updated>2026-02-24T02:43:35.445Z</updated>
     
     
       
@@ -37,7 +37,7 @@
     <category term="工程化与运维" scheme="https://canace.site/categories/cli/"/>
     
     
-    <category term="Cursor" scheme="https://canace.site/tags/Cursor/"/>
+    <category term="开发工具" scheme="https://canace.site/tags/dev-tools/"/>
     
   </entry>
   
@@ -46,7 +46,7 @@
     <link href="https://canace.site/ai-optimize-ui/"/>
     <id>https://canace.site/ai-optimize-ui/</id>
     <published>2026-01-18T02:44:28.000Z</published>
-    <updated>2026-01-18T08:17:17.067Z</updated>
+    <updated>2026-02-24T02:43:35.432Z</updated>
     
     
       
@@ -61,6 +61,8 @@
     
     <category term="AI探索" scheme="https://canace.site/categories/intelligent/"/>
     
+    
+    <category term="AI编程" scheme="https://canace.site/tags/AI%E7%BC%96%E7%A8%8B/"/>
     
   </entry>
   
@@ -69,7 +71,7 @@
     <link href="https://canace.site/ai-expansion/"/>
     <id>https://canace.site/ai-expansion/</id>
     <published>2026-01-05T01:10:12.000Z</published>
-    <updated>2026-01-05T12:53:43.740Z</updated>
+    <updated>2026-02-24T02:43:35.432Z</updated>
     
     
       
@@ -84,6 +86,8 @@
     
     <category term="AI探索" scheme="https://canace.site/categories/intelligent/"/>
     
+    
+    <category term="AI编程" scheme="https://canace.site/tags/AI%E7%BC%96%E7%A8%8B/"/>
     
   </entry>
   
@@ -92,7 +96,7 @@
     <link href="https://canace.site/ai-coding-share/"/>
     <id>https://canace.site/ai-coding-share/</id>
     <published>2025-12-12T06:43:49.000Z</published>
-    <updated>2025-12-28T07:58:15.432Z</updated>
+    <updated>2026-02-24T02:43:35.432Z</updated>
     
     
       
@@ -107,6 +111,8 @@
     
     <category term="AI探索" scheme="https://canace.site/categories/intelligent/"/>
     
+    
+    <category term="AI编程" scheme="https://canace.site/tags/AI%E7%BC%96%E7%A8%8B/"/>
     
   </entry>
   
@@ -115,7 +121,7 @@
     <link href="https://canace.site/ai-coding-game/"/>
     <id>https://canace.site/ai-coding-game/</id>
     <published>2025-12-10T10:39:22.000Z</published>
-    <updated>2025-12-28T07:58:15.432Z</updated>
+    <updated>2026-02-24T02:43:35.431Z</updated>
     
     
       
@@ -130,6 +136,8 @@
     
     <category term="AI探索" scheme="https://canace.site/categories/intelligent/"/>
     
+    
+    <category term="AI编程" scheme="https://canace.site/tags/AI%E7%BC%96%E7%A8%8B/"/>
     
   </entry>
   
@@ -138,7 +146,7 @@
     <link href="https://canace.site/writing-a-good-claude-md/"/>
     <id>https://canace.site/writing-a-good-claude-md/</id>
     <published>2025-12-08T01:50:26.000Z</published>
-    <updated>2025-12-28T07:58:15.450Z</updated>
+    <updated>2026-02-24T02:43:35.478Z</updated>
     
     
       
@@ -153,6 +161,8 @@
     
     <category term="AI探索" scheme="https://canace.site/categories/intelligent/"/>
     
+    
+    <category term="AI编程" scheme="https://canace.site/tags/AI%E7%BC%96%E7%A8%8B/"/>
     
   </entry>
   
@@ -161,7 +171,7 @@
     <link href="https://canace.site/ai-coding-ide/"/>
     <id>https://canace.site/ai-coding-ide/</id>
     <published>2025-12-06T08:12:13.000Z</published>
-    <updated>2025-12-28T07:58:15.432Z</updated>
+    <updated>2026-02-24T02:43:35.431Z</updated>
     
     
       
@@ -176,6 +186,8 @@
     
     <category term="AI探索" scheme="https://canace.site/categories/intelligent/"/>
     
+    
+    <category term="AI编程" scheme="https://canace.site/tags/AI%E7%BC%96%E7%A8%8B/"/>
     
   </entry>
   
@@ -184,7 +196,7 @@
     <link href="https://canace.site/why-graphics-card/"/>
     <id>https://canace.site/why-graphics-card/</id>
     <published>2025-11-26T01:29:32.000Z</published>
-    <updated>2025-12-28T07:58:15.450Z</updated>
+    <updated>2026-02-24T02:43:35.477Z</updated>
     
     
       
@@ -199,6 +211,8 @@
     
     <category term="AI探索" scheme="https://canace.site/categories/intelligent/"/>
     
+    
+    <category term="AI原理" scheme="https://canace.site/tags/AI%E5%8E%9F%E7%90%86/"/>
     
   </entry>
   
@@ -207,7 +221,7 @@
     <link href="https://canace.site/ai-worker/"/>
     <id>https://canace.site/ai-worker/</id>
     <published>2025-11-23T01:22:22.000Z</published>
-    <updated>2025-12-28T07:58:15.432Z</updated>
+    <updated>2026-02-24T02:43:35.433Z</updated>
     
     
       
@@ -223,6 +237,8 @@
     <category term="AI探索" scheme="https://canace.site/categories/intelligent/"/>
     
     
+    <category term="AI编程" scheme="https://canace.site/tags/AI%E7%BC%96%E7%A8%8B/"/>
+    
   </entry>
   
   <entry>
@@ -230,7 +246,7 @@
     <link href="https://canace.site/work-for/"/>
     <id>https://canace.site/work-for/</id>
     <published>2025-11-08T09:50:42.000Z</published>
-    <updated>2025-12-28T07:58:15.450Z</updated>
+    <updated>2026-02-24T02:43:35.477Z</updated>
     
     
       
@@ -246,6 +262,8 @@
     <category term="软技能与思考" scheme="https://canace.site/categories/soft/"/>
     
     
+    <category term="职业发展" scheme="https://canace.site/tags/%E8%81%8C%E4%B8%9A%E5%8F%91%E5%B1%95/"/>
+    
   </entry>
   
   <entry>
@@ -253,7 +271,7 @@
     <link href="https://canace.site/how-to-optimize-animation/"/>
     <id>https://canace.site/how-to-optimize-animation/</id>
     <published>2025-10-28T01:47:31.000Z</published>
-    <updated>2025-12-28T07:58:15.440Z</updated>
+    <updated>2026-02-24T02:43:35.453Z</updated>
     
     
       
@@ -278,7 +296,7 @@
     <link href="https://canace.site/AI-knowledge-base/"/>
     <id>https://canace.site/AI-knowledge-base/</id>
     <published>2025-09-27T08:22:14.000Z</published>
-    <updated>2025-12-28T07:58:15.432Z</updated>
+    <updated>2026-02-24T02:43:35.429Z</updated>
     
     
       
@@ -294,6 +312,8 @@
     <category term="AI探索" scheme="https://canace.site/categories/intelligent/"/>
     
     
+    <category term="AI原理" scheme="https://canace.site/tags/AI%E5%8E%9F%E7%90%86/"/>
+    
   </entry>
   
   <entry>
@@ -301,7 +321,7 @@
     <link href="https://canace.site/common-programming-prompt-words/"/>
     <id>https://canace.site/common-programming-prompt-words/</id>
     <published>2025-09-21T01:46:30.000Z</published>
-    <updated>2025-12-28T07:58:15.435Z</updated>
+    <updated>2026-02-24T02:43:35.440Z</updated>
     
     
     <summary type="html">整理一些日常开发中用到的编程提示词，给出了翻译和例句用法，方便查阅</summary>
@@ -311,6 +331,8 @@
     <category term="软技能与思考" scheme="https://canace.site/categories/soft/"/>
     
     
+    <category term="职业发展" scheme="https://canace.site/tags/%E8%81%8C%E4%B8%9A%E5%8F%91%E5%B1%95/"/>
+    
   </entry>
   
   <entry>
@@ -318,7 +340,7 @@
     <link href="https://canace.site/blog-category/"/>
     <id>https://canace.site/blog-category/</id>
     <published>2025-09-14T09:32:04.000Z</published>
-    <updated>2025-12-28T07:58:15.433Z</updated>
+    <updated>2026-02-24T02:45:22.297Z</updated>
     
     
       
@@ -341,7 +363,7 @@
     <link href="https://canace.site/interview-strategy/"/>
     <id>https://canace.site/interview-strategy/</id>
     <published>2025-09-13T11:34:51.000Z</published>
-    <updated>2025-12-28T07:58:15.441Z</updated>
+    <updated>2026-02-24T02:43:35.454Z</updated>
     
     
       
@@ -356,6 +378,8 @@
     
     <category term="软技能与思考" scheme="https://canace.site/categories/soft/"/>
     
+    
+    <category term="职业发展" scheme="https://canace.site/tags/%E8%81%8C%E4%B8%9A%E5%8F%91%E5%B1%95/"/>
     
   </entry>
   
@@ -408,7 +432,7 @@
     <link href="https://canace.site/issue-15/"/>
     <id>https://canace.site/issue-15/</id>
     <published>2025-05-17T09:39:20.000Z</published>
-    <updated>2025-12-28T07:58:15.441Z</updated>
+    <updated>2026-02-24T02:43:35.457Z</updated>
     
     
     <summary type="html">Canace的七日谈第十五期</summary>
@@ -418,6 +442,8 @@
     <category term="Web开发" scheme="https://canace.site/categories/web/"/>
     
     
+    <category term="随笔" scheme="https://canace.site/tags/essays/"/>
+    
   </entry>
   
   <entry>
@@ -425,7 +451,7 @@
     <link href="https://canace.site/issue-14/"/>
     <id>https://canace.site/issue-14/</id>
     <published>2025-05-10T02:40:19.000Z</published>
-    <updated>2025-12-28T07:58:15.441Z</updated>
+    <updated>2026-02-24T02:43:35.457Z</updated>
     
     
     <summary type="html">Canace的七日谈第十四期</summary>
@@ -435,6 +461,8 @@
     <category term="Web开发" scheme="https://canace.site/categories/web/"/>
     
     
+    <category term="随笔" scheme="https://canace.site/tags/essays/"/>
+    
   </entry>
   
   <entry>
@@ -442,7 +470,7 @@
     <link href="https://canace.site/issue-13/"/>
     <id>https://canace.site/issue-13/</id>
     <published>2025-04-20T09:00:08.000Z</published>
-    <updated>2025-12-28T07:58:15.441Z</updated>
+    <updated>2026-02-24T02:43:35.457Z</updated>
     
     
     <summary type="html">Canace 的七日谈第十三期</summary>
@@ -451,6 +479,8 @@
     
     <category term="软技能与思考" scheme="https://canace.site/categories/soft/"/>
     
+    
+    <category term="随笔" scheme="https://canace.site/tags/essays/"/>
     
   </entry>
   

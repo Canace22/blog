@@ -20,7 +20,7 @@
       
         <tags>
             
-            <tag> Cursor </tag>
+            <tag> 开发工具 </tag>
             
         </tags>
       
@@ -43,6 +43,12 @@
       </categories>
       
       
+        <tags>
+            
+            <tag> AI编程 </tag>
+            
+        </tags>
+      
     </entry>
     
     
@@ -61,6 +67,12 @@
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> AI编程 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -81,6 +93,12 @@
       </categories>
       
       
+        <tags>
+            
+            <tag> AI编程 </tag>
+            
+        </tags>
+      
     </entry>
     
     
@@ -99,6 +117,12 @@
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> AI编程 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -119,6 +143,12 @@
       </categories>
       
       
+        <tags>
+            
+            <tag> AI编程 </tag>
+            
+        </tags>
+      
     </entry>
     
     
@@ -137,6 +167,12 @@
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> AI编程 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -157,6 +193,12 @@
       </categories>
       
       
+        <tags>
+            
+            <tag> AI原理 </tag>
+            
+        </tags>
+      
     </entry>
     
     
@@ -176,6 +218,12 @@
       </categories>
       
       
+        <tags>
+            
+            <tag> AI编程 </tag>
+            
+        </tags>
+      
     </entry>
     
     
@@ -194,6 +242,12 @@
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> 职业发展 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -239,6 +293,12 @@
       </categories>
       
       
+        <tags>
+            
+            <tag> AI原理 </tag>
+            
+        </tags>
+      
     </entry>
     
     
@@ -258,6 +318,12 @@
       </categories>
       
       
+        <tags>
+            
+            <tag> 职业发展 </tag>
+            
+        </tags>
+      
     </entry>
     
     
@@ -267,7 +333,7 @@
       <link href="/blog-category/"/>
       <url>/blog-category/</url>
       
-        <content type="html"><![CDATA[<p>根据开发工作流整理博客文章分类，开发工作流梳理如下：<strong>基础理论</strong> -&gt; <strong>技术实现</strong> -&gt; <strong>工程实践</strong> -&gt; <strong>软技能</strong>，下面是分类逻辑</p><figure class="highlight 1c"><table><tr><td class="code"><pre><span class="line">.</span><br><span class="line">├── <span class="number">1</span>. 编程基础 <span class="punctuation">(</span>Programming Foundations<span class="punctuation">)</span></span><br><span class="line">│   ├── 计算机科学 <span class="punctuation">(</span>Computer Science<span class="punctuation">)</span>  <span class="comment">// 算法, 计算机网络, 操作系统等</span></span><br><span class="line">│   └── 编程语言 <span class="punctuation">(</span>Programming Languages<span class="punctuation">)</span> <span class="comment">// 语言特性, 语法对比等</span></span><br><span class="line">│   └── 系统设计 <span class="punctuation">(</span>System Design<span class="punctuation">)</span> <span class="comment">// 替换原有的&quot;系统&quot;</span></span><br><span class="line">│ </span><br><span class="line">├── <span class="number">2</span>. Web 开发 <span class="punctuation">(</span>Web Development<span class="punctuation">)</span>  <span class="comment">// 拆分庞大的 &quot;web&quot; 分类</span></span><br><span class="line">│   ├── 前端 <span class="punctuation">(</span>Frontend<span class="punctuation">)</span></span><br><span class="line">│   │   ├── JavaScript <span class="meta">&amp; TypeScript</span></span><br><span class="line">│   │   ├── 框架与库 <span class="punctuation">(</span>Frameworks <span class="meta">&amp; Libs) <span class="comment">// Vue, React, Angular 等</span></span></span><br><span class="line">│   │   ├── CSS 与可视化 <span class="punctuation">(</span>CSS <span class="meta">&amp; Visualization) <span class="comment">// CSS, WebGL, Canvas 等</span></span></span><br><span class="line">│   │   └── 跨端方案 <span class="punctuation">(</span>Cross<span class="punctuation">-</span>Platform<span class="punctuation">)</span> <span class="comment">// 小程序, Flutter 等</span></span><br><span class="line">│   │</span><br><span class="line">│   └── 后端 <span class="punctuation">(</span>Backend<span class="punctuation">)</span></span><br><span class="line">│       ├── Node.js</span><br><span class="line">│       ├── Go / Python / 其他</span><br><span class="line">│       ├── 数据库 <span class="punctuation">(</span>Databases<span class="punctuation">)</span> <span class="comment">// MySQL, Redis 等</span></span><br><span class="line">│       └── API <span class="meta">&amp; 服务 (API &amp; Services)</span></span><br><span class="line">│</span><br><span class="line">├── <span class="number">3</span>. 工程化与运维 <span class="punctuation">(</span>Engineering <span class="meta">&amp; DevOps)</span></span><br><span class="line">│   ├── 构建与部署 <span class="punctuation">(</span>Build <span class="meta">&amp; Deployment) <span class="comment">// Webpack, Vite, CI/CD, Docker</span></span></span><br><span class="line">│   ├── 性能优化 <span class="punctuation">(</span>Performance<span class="punctuation">)</span></span><br><span class="line">│   ├── 代码质量 <span class="punctuation">(</span>Code Quality<span class="punctuation">)</span> <span class="comment">// 单元测试, 代码规范, Eslint</span></span><br><span class="line">│   └── 开发工具 <span class="punctuation">(</span>Dev Tools<span class="punctuation">)</span> <span class="comment">// Git, VSCode, Npm, Shell 脚本等</span></span><br><span class="line">│</span><br><span class="line">├── <span class="number">4</span>. AI探索 <span class="punctuation">(</span>AI<span class="punctuation">)</span></span><br><span class="line">│</span><br><span class="line">├── <span class="number">5</span>. 软技能与思考 <span class="punctuation">(</span>Soft Skills <span class="meta">&amp; Reflections)</span></span><br><span class="line">│   ├── 项目管理 <span class="punctuation">(</span>Project Management<span class="punctuation">)</span></span><br><span class="line">│   ├── 职业发展 <span class="punctuation">(</span>Career Development<span class="punctuation">)</span> <span class="comment">// 替换原有的&quot;职场&quot;</span></span><br><span class="line">│   ├── 读书笔记 <span class="punctuation">(</span>Reading Notes<span class="punctuation">)</span></span><br><span class="line">│   └── 随笔 <span class="punctuation">(</span>Essays <span class="meta">&amp; Musings) <span class="comment">// &quot;随笔&quot;, &quot;七日谈&quot;可以归入这里</span></span></span><br><span class="line">│</span><br><span class="line">└── <span class="number">6</span>. 网站建设 <span class="punctuation">(</span>Site Meta<span class="punctuation">)</span> <span class="comment">// 替换&quot;博客相关&quot;</span></span><br></pre></td></tr></table></figure>]]></content>
+        <content type="html"><![CDATA[<p>根据开发工作流整理博客文章分类，开发工作流梳理如下：<strong>基础理论</strong> -&gt; <strong>技术实现</strong> -&gt; <strong>工程实践</strong> -&gt; <strong>软技能</strong>，下面是分类逻辑</p><figure class="highlight 1c"><table><tr><td class="code"><pre><span class="line">.</span><br><span class="line">├── <span class="number">1</span>. 编程基础 <span class="punctuation">(</span>Programming Foundations<span class="punctuation">)</span></span><br><span class="line">│   ├── 计算机科学 <span class="punctuation">(</span>Computer Science<span class="punctuation">)</span>  <span class="comment">// 算法, 计算机网络, 操作系统等</span></span><br><span class="line">│   └── 编程语言 <span class="punctuation">(</span>Programming Languages<span class="punctuation">)</span> <span class="comment">// 语言特性, 语法对比等</span></span><br><span class="line">│   └── 系统设计 <span class="punctuation">(</span>System Design<span class="punctuation">)</span> <span class="comment">// 替换原有的&quot;系统&quot;</span></span><br><span class="line">│ </span><br><span class="line">├── <span class="number">2</span>. Web 开发 <span class="punctuation">(</span>Web Development<span class="punctuation">)</span>  <span class="comment">// 拆分庞大的 &quot;web&quot; 分类</span></span><br><span class="line">│   ├── 前端 <span class="punctuation">(</span>Frontend<span class="punctuation">)</span></span><br><span class="line">│   │   ├── JavaScript <span class="meta">&amp; TypeScript</span></span><br><span class="line">│   │   ├── 框架与库 <span class="punctuation">(</span>Frameworks <span class="meta">&amp; Libs) <span class="comment">// Vue, React, Angular 等</span></span></span><br><span class="line">│   │   ├── CSS 与可视化 <span class="punctuation">(</span>CSS <span class="meta">&amp; Visualization) <span class="comment">// CSS, WebGL, Canvas 等</span></span></span><br><span class="line">│   │   └── 跨端方案 <span class="punctuation">(</span>Cross<span class="punctuation">-</span>Platform<span class="punctuation">)</span> <span class="comment">// 小程序, Flutter 等</span></span><br><span class="line">│   │</span><br><span class="line">│   └── 后端 <span class="punctuation">(</span>Backend<span class="punctuation">)</span></span><br><span class="line">│       ├── Node.js</span><br><span class="line">│       ├── Go / Python / 其他</span><br><span class="line">│       ├── 数据库 <span class="punctuation">(</span>Databases<span class="punctuation">)</span> <span class="comment">// MySQL, Redis 等</span></span><br><span class="line">│       └── API <span class="meta">&amp; 服务 (API &amp; Services)</span></span><br><span class="line">│</span><br><span class="line">├── <span class="number">3</span>. 工程化与运维 <span class="punctuation">(</span>Engineering <span class="meta">&amp; DevOps)</span></span><br><span class="line">│   ├── 构建与部署 <span class="punctuation">(</span>Build <span class="meta">&amp; Deployment) <span class="comment">// Webpack, Vite, CI/CD, Docker</span></span></span><br><span class="line">│   ├── 性能优化 <span class="punctuation">(</span>Performance<span class="punctuation">)</span></span><br><span class="line">│   ├── 代码质量 <span class="punctuation">(</span>Code Quality<span class="punctuation">)</span> <span class="comment">// 单元测试, 代码规范, Eslint</span></span><br><span class="line">│   └── 开发工具 <span class="punctuation">(</span>Dev Tools<span class="punctuation">)</span> <span class="comment">// Git, VSCode, Npm, Shell 脚本等</span></span><br><span class="line">│</span><br><span class="line">├── <span class="number">4</span>. AI探索 <span class="punctuation">(</span>AI<span class="punctuation">)</span></span><br><span class="line">│   ├── AI编程 <span class="punctuation">(</span>AI Coding<span class="punctuation">)</span> <span class="comment">// Cursor, Claude Code, AI辅助开发等</span></span><br><span class="line">│   └── AI原理 <span class="punctuation">(</span>AI Fundamentals<span class="punctuation">)</span> <span class="comment">// 模型训练, GPU/TPU, 知识库等</span></span><br><span class="line">│</span><br><span class="line">├── <span class="number">5</span>. 软技能与思考 <span class="punctuation">(</span>Soft Skills <span class="meta">&amp; Reflections)</span></span><br><span class="line">│   ├── 项目管理 <span class="punctuation">(</span>Project Management<span class="punctuation">)</span></span><br><span class="line">│   ├── 职业发展 <span class="punctuation">(</span>Career Development<span class="punctuation">)</span> <span class="comment">// 替换原有的&quot;职场&quot;</span></span><br><span class="line">│   ├── 读书笔记 <span class="punctuation">(</span>Reading Notes<span class="punctuation">)</span></span><br><span class="line">│   └── 随笔 <span class="punctuation">(</span>Essays <span class="meta">&amp; Musings) <span class="comment">// &quot;随笔&quot;, &quot;七日谈&quot;可以归入这里</span></span></span><br><span class="line">│</span><br><span class="line">└── <span class="number">6</span>. 网站建设 <span class="punctuation">(</span>Site Meta<span class="punctuation">)</span> <span class="comment">// 替换&quot;博客相关&quot;</span></span><br></pre></td></tr></table></figure>]]></content>
       
       
       <categories>
@@ -295,6 +361,12 @@
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> 职业发展 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -365,6 +437,12 @@
       </categories>
       
       
+        <tags>
+            
+            <tag> 随笔 </tag>
+            
+        </tags>
+      
     </entry>
     
     
@@ -384,6 +462,12 @@
       </categories>
       
       
+        <tags>
+            
+            <tag> 随笔 </tag>
+            
+        </tags>
+      
     </entry>
     
     
@@ -402,6 +486,12 @@
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> 随笔 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -447,6 +537,14 @@
       </categories>
       
       
+        <tags>
+            
+            <tag> 前端 </tag>
+            
+            <tag> 框架与库 </tag>
+            
+        </tags>
+      
     </entry>
     
     
@@ -468,7 +566,7 @@
       
         <tags>
             
-            <tag> 系统 </tag>
+            <tag> 系统设计 </tag>
             
         </tags>
       
@@ -490,6 +588,14 @@
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> 后端 </tag>
+            
+            <tag> Node.js </tag>
+            
+        </tags>
       
     </entry>
     
@@ -535,6 +641,12 @@
       </categories>
       
       
+        <tags>
+            
+            <tag> JavaScript&amp;TypeScript </tag>
+            
+        </tags>
+      
     </entry>
     
     
@@ -553,6 +665,12 @@
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> 随笔 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -573,6 +691,12 @@
       </categories>
       
       
+        <tags>
+            
+            <tag> 职业发展 </tag>
+            
+        </tags>
+      
     </entry>
     
     
@@ -591,6 +715,12 @@
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> 随笔 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -788,6 +918,12 @@
       </categories>
       
       
+        <tags>
+            
+            <tag> 随笔 </tag>
+            
+        </tags>
+      
     </entry>
     
     
@@ -806,6 +942,12 @@
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> 随笔 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -852,6 +994,12 @@
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> 随笔 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -972,6 +1120,12 @@
       </categories>
       
       
+        <tags>
+            
+            <tag> 随笔 </tag>
+            
+        </tags>
+      
     </entry>
     
     
@@ -1016,6 +1170,12 @@
       </categories>
       
       
+        <tags>
+            
+            <tag> 随笔 </tag>
+            
+        </tags>
+      
     </entry>
     
     
@@ -1034,6 +1194,12 @@
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> 随笔 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -1054,6 +1220,12 @@
       </categories>
       
       
+        <tags>
+            
+            <tag> 随笔 </tag>
+            
+        </tags>
+      
     </entry>
     
     
@@ -1072,6 +1244,12 @@
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> 随笔 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -1142,6 +1320,12 @@
       </categories>
       
       
+        <tags>
+            
+            <tag> 随笔 </tag>
+            
+        </tags>
+      
     </entry>
     
     
@@ -1160,6 +1344,12 @@
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> 随笔 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -1206,6 +1396,12 @@
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> 随笔 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -1276,6 +1472,12 @@
       </categories>
       
       
+        <tags>
+            
+            <tag> 随笔 </tag>
+            
+        </tags>
+      
     </entry>
     
     
@@ -1294,6 +1496,12 @@
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> 随笔 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -1340,6 +1548,14 @@
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> 前端 </tag>
+            
+            <tag> CSS与可视化 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -1410,6 +1626,12 @@
       </categories>
       
       
+        <tags>
+            
+            <tag> 随笔 </tag>
+            
+        </tags>
+      
     </entry>
     
     
@@ -1428,6 +1650,12 @@
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> JavaScript&amp;TypeScript </tag>
+            
+        </tags>
       
     </entry>
     
@@ -1473,6 +1701,12 @@
       </categories>
       
       
+        <tags>
+            
+            <tag> 计算机科学 </tag>
+            
+        </tags>
+      
     </entry>
     
     
@@ -1494,7 +1728,7 @@
       
         <tags>
             
-            <tag> 服务端 </tag>
+            <tag> 后端 </tag>
             
             <tag> Node.js </tag>
             
@@ -1543,6 +1777,12 @@
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> 随笔 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -1642,6 +1882,12 @@
       </categories>
       
       
+        <tags>
+            
+            <tag> 项目管理 </tag>
+            
+        </tags>
+      
     </entry>
     
     
@@ -1660,6 +1906,12 @@
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> 随笔 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -1682,7 +1934,7 @@
       
         <tags>
             
-            <tag> 服务端 </tag>
+            <tag> 后端 </tag>
             
             <tag> Node.js </tag>
             
@@ -1860,6 +2112,12 @@
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> 职业发展 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -2084,6 +2342,12 @@
       </categories>
       
       
+        <tags>
+            
+            <tag> 职业发展 </tag>
+            
+        </tags>
+      
     </entry>
     
     
@@ -2204,6 +2468,12 @@
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> 随笔 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -2526,6 +2796,12 @@
       </categories>
       
       
+        <tags>
+            
+            <tag> 随笔 </tag>
+            
+        </tags>
+      
     </entry>
     
     
@@ -2622,6 +2898,12 @@
       </categories>
       
       
+        <tags>
+            
+            <tag> 系统设计 </tag>
+            
+        </tags>
+      
     </entry>
     
     
@@ -2670,7 +2952,7 @@
       
         <tags>
             
-            <tag> 服务端 </tag>
+            <tag> 后端 </tag>
             
             <tag> Python/Go/其他 </tag>
             
@@ -2697,7 +2979,7 @@
       
         <tags>
             
-            <tag> 服务端 </tag>
+            <tag> 后端 </tag>
             
             <tag> Node.js </tag>
             
@@ -2724,7 +3006,7 @@
       
         <tags>
             
-            <tag> 服务端 </tag>
+            <tag> 后端 </tag>
             
             <tag> Python/Go/其他 </tag>
             
@@ -2800,6 +3082,12 @@
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> 构建与部署 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -3124,6 +3412,12 @@
       </categories>
       
       
+        <tags>
+            
+            <tag> 开发工具 </tag>
+            
+        </tags>
+      
     </entry>
     
     
@@ -3357,6 +3651,12 @@
       </categories>
       
       
+        <tags>
+            
+            <tag> 随笔 </tag>
+            
+        </tags>
+      
     </entry>
     
     
@@ -3376,6 +3676,12 @@
       </categories>
       
       
+        <tags>
+            
+            <tag> 随笔 </tag>
+            
+        </tags>
+      
     </entry>
     
     
@@ -3394,6 +3700,12 @@
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> 随笔 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -3438,6 +3750,12 @@
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> 计算机科学 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -3510,6 +3828,12 @@
       </categories>
       
       
+        <tags>
+            
+            <tag> 计算机科学 </tag>
+            
+        </tags>
+      
     </entry>
     
     
@@ -3528,6 +3852,12 @@
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> 计算机科学 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -3550,7 +3880,7 @@
       
         <tags>
             
-            <tag> 服务端 </tag>
+            <tag> 后端 </tag>
             
             <tag> Node.js </tag>
             
@@ -3777,7 +4107,7 @@
       
         <tags>
             
-            <tag> CSS与可视化 </tag>
+            <tag> 读书笔记 </tag>
             
         </tags>
       
@@ -4230,6 +4560,12 @@
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> JavaScript&amp;TypeScript </tag>
+            
+        </tags>
       
     </entry>
     
@@ -4733,6 +5069,12 @@
       </categories>
       
       
+        <tags>
+            
+            <tag> 系统设计 </tag>
+            
+        </tags>
+      
     </entry>
     
     
@@ -4754,7 +5096,7 @@
       
         <tags>
             
-            <tag> 系统 </tag>
+            <tag> 系统设计 </tag>
             
         </tags>
       
@@ -4779,7 +5121,7 @@
       
         <tags>
             
-            <tag> 服务端 </tag>
+            <tag> 后端 </tag>
             
             <tag> Node.js </tag>
             
@@ -4803,6 +5145,12 @@
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> 计算机科学 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -4877,6 +5225,12 @@
       </categories>
       
       
+        <tags>
+            
+            <tag> 系统设计 </tag>
+            
+        </tags>
+      
     </entry>
     
     
@@ -4896,6 +5250,12 @@
       </categories>
       
       
+        <tags>
+            
+            <tag> 构建与部署 </tag>
+            
+        </tags>
+      
     </entry>
     
     
@@ -4914,6 +5274,12 @@
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> 职业发展 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -5042,6 +5408,12 @@
       </categories>
       
       
+        <tags>
+            
+            <tag> 代码质量 </tag>
+            
+        </tags>
+      
     </entry>
     
     
@@ -5060,6 +5432,12 @@
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> 构建与部署 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -5315,7 +5693,7 @@
       
         <tags>
             
-            <tag> 服务端 </tag>
+            <tag> 后端 </tag>
             
             <tag> Node.js </tag>
             
@@ -5594,6 +5972,12 @@
       </categories>
       
       
+        <tags>
+            
+            <tag> 随笔 </tag>
+            
+        </tags>
+      
     </entry>
     
     
@@ -5667,7 +6051,7 @@
       
         <tags>
             
-            <tag> 系统 </tag>
+            <tag> 系统设计 </tag>
             
         </tags>
       
@@ -5875,6 +6259,14 @@
       </categories>
       
       
+        <tags>
+            
+            <tag> 前端 </tag>
+            
+            <tag> CSS与可视化 </tag>
+            
+        </tags>
+      
     </entry>
     
     
@@ -5973,7 +6365,7 @@
       
         <tags>
             
-            <tag> 服务端 </tag>
+            <tag> 后端 </tag>
             
             <tag> Python/Go/其他 </tag>
             
@@ -6169,6 +6561,14 @@
       </categories>
       
       
+        <tags>
+            
+            <tag> 前端 </tag>
+            
+            <tag> 框架与库 </tag>
+            
+        </tags>
+      
     </entry>
     
     
@@ -6289,6 +6689,12 @@
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> 开发工具 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -6467,7 +6873,7 @@
       
         <tags>
             
-            <tag> 服务端 </tag>
+            <tag> 后端 </tag>
             
             <tag> Python/Go/其他 </tag>
             
@@ -6494,7 +6900,7 @@
       
         <tags>
             
-            <tag> 服务端 </tag>
+            <tag> 后端 </tag>
             
             <tag> Python/Go/其他 </tag>
             
@@ -6544,6 +6950,12 @@
       </categories>
       
       
+        <tags>
+            
+            <tag> AI原理 </tag>
+            
+        </tags>
+      
     </entry>
     
     
@@ -6562,6 +6974,12 @@
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> 系统设计 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -6582,6 +7000,12 @@
       </categories>
       
       
+        <tags>
+            
+            <tag> AI原理 </tag>
+            
+        </tags>
+      
     </entry>
     
     
@@ -6600,6 +7024,12 @@
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> 读书笔记 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -6645,6 +7075,12 @@
       </categories>
       
       
+        <tags>
+            
+            <tag> 随笔 </tag>
+            
+        </tags>
+      
     </entry>
     
     
@@ -6664,6 +7100,12 @@
       </categories>
       
       
+        <tags>
+            
+            <tag> 随笔 </tag>
+            
+        </tags>
+      
     </entry>
     
     
@@ -6682,6 +7124,12 @@
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> 开发工具 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -6754,7 +7202,7 @@
       
         <tags>
             
-            <tag> 服务端 </tag>
+            <tag> 后端 </tag>
             
             <tag> Python/Go/其他 </tag>
             
@@ -6779,6 +7227,12 @@
       </categories>
       
       
+        <tags>
+            
+            <tag> 开发工具 </tag>
+            
+        </tags>
+      
     </entry>
     
     
@@ -6800,7 +7254,7 @@
       
         <tags>
             
-            <tag> 服务端 </tag>
+            <tag> 后端 </tag>
             
             <tag> Python/Go/其他 </tag>
             
@@ -6927,7 +7381,7 @@
       
         <tags>
             
-            <tag> 服务端 </tag>
+            <tag> 后端 </tag>
             
             <tag> Node.js </tag>
             
@@ -6951,6 +7405,12 @@
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> 读书笔记 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -6995,6 +7455,12 @@
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> 职业发展 </tag>
+            
+        </tags>
       
     </entry>
     
