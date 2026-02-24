@@ -6,7 +6,7 @@
   <link href="https://canace.site/atom.xml" rel="self"/>
   
   <link href="https://canace.site/"/>
-  <updated>2026-02-24T02:43:35.445Z</updated>
+  <updated>2026-02-24T06:31:22.555Z</updated>
   <id>https://canace.site/</id>
   
   <author>
@@ -21,16 +21,10 @@
     <link href="https://canace.site/cursor-debugger/"/>
     <id>https://canace.site/cursor-debugger/</id>
     <published>2026-02-05T02:14:13.000Z</published>
-    <updated>2026-02-24T02:43:35.445Z</updated>
+    <updated>2026-02-24T06:31:22.555Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
+    <summary type="html">electron 项目使用 cursor 调试模式时需调整 content-security-policy 允许本地端口连接</summary>
     
     
     
@@ -46,16 +40,10 @@
     <link href="https://canace.site/ai-optimize-ui/"/>
     <id>https://canace.site/ai-optimize-ui/</id>
     <published>2026-01-18T02:44:28.000Z</published>
-    <updated>2026-02-24T02:43:35.432Z</updated>
+    <updated>2026-02-24T06:31:08.279Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
+    <summary type="html">用AI结合SUS、PUEU和HEART模型优化界面，能提升可用性和用户体验，适合快速迭代改进设计。</summary>
     
     
     
@@ -71,16 +59,10 @@
     <link href="https://canace.site/ai-expansion/"/>
     <id>https://canace.site/ai-expansion/</id>
     <published>2026-01-05T01:10:12.000Z</published>
-    <updated>2026-02-24T02:43:35.432Z</updated>
+    <updated>2026-02-24T06:31:07.505Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
+    <summary type="html">AI让人膨胀，效率不升反降，关键在认知错位和节奏失控。</summary>
     
     
     
@@ -96,16 +78,10 @@
     <link href="https://canace.site/ai-coding-share/"/>
     <id>https://canace.site/ai-coding-share/</id>
     <published>2025-12-12T06:43:49.000Z</published>
-    <updated>2026-02-24T02:43:35.432Z</updated>
+    <updated>2026-02-24T06:31:07.606Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
+    <summary type="html">AI 编辑器用不好别急着换，先找适合自己的插件和配置，性能问题也能解决。</summary>
     
     
     
@@ -121,16 +97,10 @@
     <link href="https://canace.site/ai-coding-game/"/>
     <id>https://canace.site/ai-coding-game/</id>
     <published>2025-12-10T10:39:22.000Z</published>
-    <updated>2026-02-24T02:43:35.431Z</updated>
+    <updated>2026-02-24T06:31:06.955Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
+    <summary type="html">大模型编程能提升游戏开发效率，但需结构化引导避免随机性，适合内容迭代和玩家共创。</summary>
     
     
     
@@ -146,16 +116,10 @@
     <link href="https://canace.site/writing-a-good-claude-md/"/>
     <id>https://canace.site/writing-a-good-claude-md/</id>
     <published>2025-12-08T01:50:26.000Z</published>
-    <updated>2026-02-24T02:43:35.478Z</updated>
+    <updated>2026-02-24T06:32:13.172Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
+    <summary type="html">项目规则要简洁明确，聚焦核心信息，避免冗余和细节，提升大模型理解与执行效率。</summary>
     
     
     
@@ -171,16 +135,10 @@
     <link href="https://canace.site/ai-coding-ide/"/>
     <id>https://canace.site/ai-coding-ide/</id>
     <published>2025-12-06T08:12:13.000Z</published>
-    <updated>2026-02-24T02:43:35.431Z</updated>
+    <updated>2026-02-24T06:31:07.470Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
+    <summary type="html">切换AI IDE要先适应新工作流，别指望它完全复刻传统编辑器功能。</summary>
     
     
     
@@ -196,16 +154,10 @@
     <link href="https://canace.site/why-graphics-card/"/>
     <id>https://canace.site/why-graphics-card/</id>
     <published>2025-11-26T01:29:32.000Z</published>
-    <updated>2026-02-24T02:43:35.477Z</updated>
+    <updated>2026-02-24T06:32:12.074Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
+    <summary type="html">GPU在训练大模型时效率远超CPU，TPU专为AI设计，AMD显卡性价比高但生态较弱。</summary>
     
     
     
@@ -221,16 +173,10 @@
     <link href="https://canace.site/ai-worker/"/>
     <id>https://canace.site/ai-worker/</id>
     <published>2025-11-23T01:22:22.000Z</published>
-    <updated>2026-02-24T02:43:35.433Z</updated>
+    <updated>2026-02-24T06:31:08.115Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
+    <summary type="html">给AI分配不同角色能提升效率，避免上下文混乱，确保输出更精准专业。</summary>
     
     
     
@@ -246,16 +192,10 @@
     <link href="https://canace.site/work-for/"/>
     <id>https://canace.site/work-for/</id>
     <published>2025-11-08T09:50:42.000Z</published>
-    <updated>2026-02-24T02:43:35.477Z</updated>
+    <updated>2026-02-24T06:32:13.088Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
+    <summary type="html">工作是谋生工具，事业是热爱的事，别混为一谈。</summary>
     
     
     
@@ -271,16 +211,10 @@
     <link href="https://canace.site/how-to-optimize-animation/"/>
     <id>https://canace.site/how-to-optimize-animation/</id>
     <published>2025-10-28T01:47:31.000Z</published>
-    <updated>2026-02-24T02:43:35.453Z</updated>
+    <updated>2026-02-24T06:31:34.158Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
+    <summary type="html">浏览器渲染每帧需在16.67毫秒内完成，否则会卡顿，关键在于控制脚本执行和避免频繁重排重绘。</summary>
     
     
     
@@ -296,16 +230,10 @@
     <link href="https://canace.site/AI-knowledge-base/"/>
     <id>https://canace.site/AI-knowledge-base/</id>
     <published>2025-09-27T08:22:14.000Z</published>
-    <updated>2026-02-24T02:43:35.429Z</updated>
+    <updated>2026-02-24T06:31:04.697Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
+    <summary type="html">AI知识库能提升效率但别依赖，关键还是自己理解与思考。</summary>
     
     
     
@@ -321,10 +249,10 @@
     <link href="https://canace.site/common-programming-prompt-words/"/>
     <id>https://canace.site/common-programming-prompt-words/</id>
     <published>2025-09-21T01:46:30.000Z</published>
-    <updated>2026-02-24T02:43:35.440Z</updated>
+    <updated>2026-02-24T06:31:15.490Z</updated>
     
     
-    <summary type="html">整理一些日常开发中用到的编程提示词，给出了翻译和例句用法，方便查阅</summary>
+    <summary type="html">开发中常用词汇翻译和用法整理，方便日常查阅使用</summary>
     
     
     
@@ -363,16 +291,10 @@
     <link href="https://canace.site/interview-strategy/"/>
     <id>https://canace.site/interview-strategy/</id>
     <published>2025-09-13T11:34:51.000Z</published>
-    <updated>2026-02-24T02:43:35.454Z</updated>
+    <updated>2026-02-24T06:31:35.969Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
+    <summary type="html">面试追求复杂设计，实际工作却需要简单实用，两者标准大相径庭。</summary>
     
     
     
@@ -388,16 +310,10 @@
     <link href="https://canace.site/translate-use-claude-code/"/>
     <id>https://canace.site/translate-use-claude-code/</id>
     <published>2025-09-13T07:32:58.000Z</published>
-    <updated>2025-12-28T07:58:15.448Z</updated>
+    <updated>2026-02-24T06:32:04.515Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
+    <summary type="html">首次尝试生成的代码大多无效，需多次迭代才能得到可用结果。</summary>
     
     
     
@@ -413,10 +329,10 @@
     <link href="https://canace.site/personal-knowledge-base/"/>
     <id>https://canace.site/personal-knowledge-base/</id>
     <published>2025-06-07T07:19:24.000Z</published>
-    <updated>2025-12-28T07:58:15.445Z</updated>
+    <updated>2026-02-24T06:31:53.504Z</updated>
     
     
-    <summary type="html">Notion+Chrome 书签打造个人知识库实践</summary>
+    <summary type="html">Chrome书签同步到Notion能解决管理混乱问题但需注意避免重复和配置正确参数。</summary>
     
     
     
@@ -432,10 +348,10 @@
     <link href="https://canace.site/issue-15/"/>
     <id>https://canace.site/issue-15/</id>
     <published>2025-05-17T09:39:20.000Z</published>
-    <updated>2026-02-24T02:43:35.457Z</updated>
+    <updated>2026-02-24T06:31:39.047Z</updated>
     
     
-    <summary type="html">Canace的七日谈第十五期</summary>
+    <summary type="html">用户留存关键在社交属性，工具变社交平台才能让用户停留更久。</summary>
     
     
     
@@ -451,10 +367,10 @@
     <link href="https://canace.site/issue-14/"/>
     <id>https://canace.site/issue-14/</id>
     <published>2025-05-10T02:40:19.000Z</published>
-    <updated>2026-02-24T02:43:35.457Z</updated>
+    <updated>2026-02-24T06:31:38.973Z</updated>
     
     
-    <summary type="html">Canace的七日谈第十四期</summary>
+    <summary type="html">自然环境能拉长时间感，日常可尝试露营或散步替代完全脱离社交。</summary>
     
     
     
@@ -470,10 +386,10 @@
     <link href="https://canace.site/issue-13/"/>
     <id>https://canace.site/issue-13/</id>
     <published>2025-04-20T09:00:08.000Z</published>
-    <updated>2026-02-24T02:43:35.457Z</updated>
+    <updated>2026-02-24T06:31:38.426Z</updated>
     
     
-    <summary type="html">Canace 的七日谈第十三期</summary>
+    <summary type="html">科幻元素正逐步成为现实，但伴随而来的新技术风险需提前防范。</summary>
     
     
     
