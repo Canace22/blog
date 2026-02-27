@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Web 前端开发为什么要用框架</title>
+      <link href="/why-frontend-needs-framework/"/>
+      <url>/why-frontend-needs-framework/</url>
+      
+        <content type="html"><![CDATA[<p>当状态规模和依赖关系规模都很小的时候，手写是完全没问题，但是在中大型项目中，在缺乏系统化架构约束的情况下，中大型项目极易失控，维护成本也会急剧上升，此时可以有以下选择</p><ul><li><p>使用 MVC 架构</p></li><li><p>使用 MVVM 思想</p></li><li><p>自己写轻量级响应系统</p></li><li><p>使用 Web Components</p></li><li><p>使用 jQuery + 模块化</p></li><li><p>使用状态机架构</p></li><li><p>使用框架</p></li></ul><p>从以上选项中，目前很多大厂基本都选择使用框架（自研框架或者开源框架），总结原因可能有以下几点，当然上面的方案中有些也能解决其中的一些问题，这里暂不做过多的分析。</p><h3 id="一、人脑无法维护依赖关系"><a href="#一、人脑无法维护依赖关系" class="headerlink" title="一、人脑无法维护依赖关系"></a>一、人脑无法维护依赖关系</h3><p>假设一个页面有：</p><ul><li>20 个状态</li><li>50 个 UI 区域</li><li>30 个交互行为</li></ul><p>问题来了：</p><figure class="highlight text"><table><tr><td class="code"><pre><span class="line">某个状态改变时：</span><br><span class="line">哪些 UI 需要更新？</span><br><span class="line">更新顺序是什么？</span><br><span class="line">会不会影响其他状态？</span><br></pre></td></tr></table></figure><p>手写时必须：</p><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="title function_">updateA</span>()</span><br><span class="line"><span class="title function_">updateB</span>()</span><br><span class="line"><span class="title function_">updateC</span>()</span><br></pre></td></tr></table></figure><p>一旦漏了一个，UI 会不一致。</p><p>框架可以通过结构化，维护复杂的依赖关系，我们只需要改数据，不需要关注依赖关系。</p><h3 id="二、副作用失控"><a href="#二、副作用失控" class="headerlink" title="二、副作用失控"></a>二、副作用失控</h3><p>复杂页面会出现：</p><figure class="highlight text"><table><tr><td class="code"><pre><span class="line">A 改变 B</span><br><span class="line">B 改变 C</span><br><span class="line">C 又触发 A</span><br></pre></td></tr></table></figure><p>形成循环更新，更新代码时需要：</p><ul><li>小心顺序</li><li>手动加锁</li><li>加条件判断</li></ul><p>框架可以有效控制副作用。</p><h3 id="三、DOM-操作成本高"><a href="#三、DOM-操作成本高" class="headerlink" title="三、DOM 操作成本高"></a>三、DOM 操作成本高</h3><p>浏览器渲染流程：</p><figure class="highlight text"><table><tr><td class="code"><pre><span class="line">JS → DOM → Reflow → Repaint</span><br></pre></td></tr></table></figure><p>频繁 DOM 操作会导致：</p><ul><li>卡顿</li><li>掉帧</li><li>抖动</li></ul><p>框架通过抽象层和调度机制控制 DOM 更新粒度，可以避免频繁更新 DOM。</p><h3 id="四、状态一致性问题"><a href="#四、状态一致性问题" class="headerlink" title="四、状态一致性问题"></a>四、状态一致性问题</h3><p>例如购物车：</p><figure class="highlight text"><table><tr><td class="code"><pre><span class="line">商品数量</span><br><span class="line">总价</span><br><span class="line">优惠</span><br><span class="line">库存</span><br><span class="line">按钮禁用状态</span><br></pre></td></tr></table></figure><p>代码必须这样写：</p><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="title function_">updateCount</span>()</span><br><span class="line"><span class="title function_">updateTotal</span>()</span><br><span class="line"><span class="title function_">updateButton</span>()</span><br></pre></td></tr></table></figure><p>而使用框架，我们可能只需要一句话，比如这样</p><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> total = <span class="title function_">computed</span>(...)</span><br></pre></td></tr></table></figure><p>总价可以使用计算属性算出来，不用到处写，降低了状态混乱问题的出现频率。</p><h3 id="五、可维护性和团队协作"><a href="#五、可维护性和团队协作" class="headerlink" title="五、可维护性和团队协作"></a>五、可维护性和团队协作</h3><p>当项目达到：</p><figure class="highlight text"><table><tr><td class="code"><pre><span class="line">50+ 页面</span><br><span class="line">10+ 开发者</span><br></pre></td></tr></table></figure><p>如果没有框架：</p><ul><li>每个人写法不同</li><li>状态管理混乱</li><li>DOM 操作方式不同</li><li>代码不可预测</li></ul><p>框架可以提供：</p><figure class="highlight text"><table><tr><td class="code"><pre><span class="line">统一模式</span><br><span class="line">组件规范</span><br><span class="line">生命周期规则</span><br><span class="line">状态流向规则</span><br></pre></td></tr></table></figure><p>解决工程规范问题。</p><h3 id="六、真正核心：抽象能力"><a href="#六、真正核心：抽象能力" class="headerlink" title="六、真正核心：抽象能力"></a>六、真正核心：抽象能力</h3><p>框架本质是：</p><blockquote><p>把”变化的东西”抽象成规则。</p></blockquote><p>比如 Vue 抽象出：</p><ul><li>响应式</li><li>组件</li><li>生命周期</li><li>调度</li><li>模板编译</li></ul><p>这些都是：</p><blockquote><p>对”变化”的抽象</p></blockquote><p>框架让业务代码变成声明式，而把命令式复杂度封装起来，可以有效降低开发门槛。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Web开发 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 前端 </tag>
+            
+            <tag> 框架与库 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>解决 Cursor Debugger 模式在 Electron 项目中无法使用问题</title>
       <link href="/cursor-debugger/"/>
       <url>/cursor-debugger/</url>
