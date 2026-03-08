@@ -6,7 +6,7 @@
   <link href="https://canace.site/atom.xml" rel="self"/>
   
   <link href="https://canace.site/"/>
-  <updated>2026-02-28T07:45:46.171Z</updated>
+  <updated>2026-03-08T05:25:21.079Z</updated>
   <id>https://canace.site/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Cursor 编写 SKILL：通过 Web 搜索并下载电影</title>
+    <link href="https://canace.site/cursor-skill-web-search-download-movie/"/>
+    <id>https://canace.site/cursor-skill-web-search-download-movie/</id>
+    <published>2026-03-08T02:00:00.000Z</published>
+    <updated>2026-03-08T05:25:21.079Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="工程化与运维" scheme="https://canace.site/categories/cli/"/>
+    
+    
+    <category term="Agent,Skill" scheme="https://canace.site/tags/Agent-Skill/"/>
+    
+  </entry>
   
   <entry>
     <title>千问点奶茶时弹出的 UI 是怎么实现的，是生成式 UI 吗</title>
@@ -386,25 +411,6 @@
     
     
     <category term="开发工具" scheme="https://canace.site/tags/dev-tools/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Vol15：初创项目/产品，怎么做用户留存</title>
-    <link href="https://canace.site/issue-15/"/>
-    <id>https://canace.site/issue-15/</id>
-    <published>2025-05-17T09:39:20.000Z</published>
-    <updated>2026-02-24T06:31:39.047Z</updated>
-    
-    
-    <summary type="html">用户留存关键在社交属性，工具变社交平台才能让用户停留更久。</summary>
-    
-    
-    
-    <category term="Web开发" scheme="https://canace.site/categories/web/"/>
-    
-    
-    <category term="随笔" scheme="https://canace.site/tags/essays/"/>
     
   </entry>
   
