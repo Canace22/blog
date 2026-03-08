@@ -1,8 +1,8 @@
-# Blog 分类与标签规范
+# 分类与标签规范
 
 本博客基于 Hexo，文章位于 `source/_posts/`。每篇文章的 front matter 中包含 `categories`（分类）和 `tags`（标签）两个字段。
 
-完整文档见 **docs/** 目录：`docs/categories-tags.md`（分类与标签）、`docs/blog-category-tree.md`（分类树）、`docs/hexo-blog.md`（Hexo 操作）。
+完整分类树见 [blog-category-tree.md](blog-category-tree.md)。
 
 ## 分类（Categories）
 

@@ -1,5 +1,6 @@
 ---
 title: Web 前端开发为什么要用框架
+description: '框架能有效管理复杂依赖和副作用，降低维护成本提升团队协作效率。'
 categories: Web开发
 tags: [前端, 框架与库]
 author: Canace
