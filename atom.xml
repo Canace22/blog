@@ -6,7 +6,7 @@
   <link href="https://canace.site/atom.xml" rel="self"/>
   
   <link href="https://canace.site/"/>
-  <updated>2026-03-08T05:25:21.079Z</updated>
+  <updated>2026-03-08T05:48:00.803Z</updated>
   <id>https://canace.site/</id>
   
   <author>
@@ -21,20 +21,14 @@
     <link href="https://canace.site/cursor-skill-web-search-download-movie/"/>
     <id>https://canace.site/cursor-skill-web-search-download-movie/</id>
     <published>2026-03-08T02:00:00.000Z</published>
-    <updated>2026-03-08T05:25:21.079Z</updated>
+    <updated>2026-03-08T05:48:00.803Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
+    <summary type="html">用 Cursor 创建技能可实现网页搜索并下载电影资源，流程清晰但需注意细节把控。</summary>
     
     
     
-    <category term="工程化与运维" scheme="https://canace.site/categories/cli/"/>
+    <category term="AI探索" scheme="https://canace.site/categories/intelligent/"/>
     
     
     <category term="Agent,Skill" scheme="https://canace.site/tags/Agent-Skill/"/>
@@ -65,16 +59,10 @@
     <link href="https://canace.site/why-frontend-needs-framework/"/>
     <id>https://canace.site/why-frontend-needs-framework/</id>
     <published>2026-02-27T02:00:00.000Z</published>
-    <updated>2026-02-27T08:04:44.583Z</updated>
+    <updated>2026-03-08T05:39:50.680Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
+    <summary type="html">框架能有效管理复杂依赖和副作用，降低维护成本提升团队协作效率。</summary>
     
     
     
