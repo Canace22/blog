@@ -1,9 +1,10 @@
 ---
 title: Canvas 画动态路径
+description: '没有点集无法绘制路径，函数通过逐帧更新实现动态效果'
 comments: true
 date: 2019-08-25 11:04:28
 categories: Web开发
-tags: [前端,CSS与可视化]
+tags: [前端, CSS与可视化]
 ---
 
 这个函数是一个用于画 canvas 路径的，也就是把 canvas 画线的过程演示出来的一个东东。采用的是纯 js 和 canvas 描绘方法。当然前提是得有路径的点集，不然画不了。

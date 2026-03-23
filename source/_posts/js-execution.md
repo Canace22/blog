@@ -2,7 +2,7 @@
 title: JavaScript 在 V8 引擎浏览器上是怎么执行的
 categories: Web开发
 tags: JavaScript&TypeScript
-description: JavaScript 在 V8 引擎浏览器上的执行机制
+description: 'V8 引擎中 JavaScript 执行依赖调用栈和事件循环，递归太深易栈溢出，异步任务分宏微任务，微任务优先执行。'
 author: Canace
 comments: true
 date: 2022-07-25 13:36:03

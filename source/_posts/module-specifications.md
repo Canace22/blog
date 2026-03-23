@@ -2,7 +2,7 @@
 title: CommonJS、AMD、RequireJS、CMD 以及 ES6 规范比较
 categories: Web开发
 tags: JavaScript&TypeScript
-description: CommonJS、AMD、RequireJS、CMD 以及 ES6 规范比较
+description: 'CommonJS 同步加载，ES6 静态编译，AMD 异步依赖前置，CMD 依赖就近，模块化各有适用场景。'
 comments: true
 toc: true
 date: 2020-06-18 10:02:46

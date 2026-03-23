@@ -1,5 +1,6 @@
 ---
 title: ffmpeg 抽取视频音轨
+description: 'ffmpeg 抽取音轨简单但需注意编码和采样率，批量处理建议用脚本提高效率。'
 categories: 工程化与运维
 tags: 开发工具
 comments: true

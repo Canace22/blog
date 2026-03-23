@@ -1,5 +1,6 @@
 ---
 title: vue-config 配置模板
+description: '配置别名和基础路径时注意环境变量区分避免路径错误'
 comments: true
 date: 2018-10-22 19:33:31
 categories: 工程化与运维

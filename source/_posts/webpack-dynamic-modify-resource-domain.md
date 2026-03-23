@@ -2,7 +2,7 @@
 title: webpack 动态修改资源域名
 categories: 工程化与运维
 tags: 构建与部署
-description: webpack 动态修改资源域名方法分享
+description: '动态修改资源域名需在入口文件设置 __webpack_public_path__，但会引发资源重复加载问题。'
 comments: true
 date: 2021-04-09 17:15:37
 ---

@@ -1,5 +1,6 @@
 ---
 title: 我所不知道的 Vue 细节
+description: '组件 data 用函数返回避免多个实例共享数据，理解设计逻辑能更好使用 Vue。'
 categories: Web开发
 tags: [前端, 框架与库]
 comments: true

@@ -1,5 +1,6 @@
 ---
 title: git域名配置
+description: '域名配置关键在 DNSpod 设置和项目根目录添加 CNAME 文件'
 date: 2017-05-09 16:58:31
 categories: 工程化与运维
 tags: 开发工具

@@ -1,7 +1,8 @@
 ---
 title: element-plus 缩放问题解决
+description: '使用 zoom 缩放导致 element-plus 组件失效，改用 transform 并调整坐标计算可解决。'
 categories: Web开发
-tags: [前端,框架与库]
+tags: [前端, 框架与库]
 author: Canace
 comments: true
 date: 2024-03-19 16:02:09

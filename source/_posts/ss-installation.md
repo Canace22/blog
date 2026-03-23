@@ -1,7 +1,8 @@
 ---
 title: SS 安装
 categories: 工程化与运维
-description: ss 安装步骤
+tags: 系统设计
+description: '安装 SS 时直接运行脚本即可，注意路径和权限问题。'
 comments: true
 date: 2019-11-21 10:46:15
 ---

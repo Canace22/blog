@@ -1,5 +1,6 @@
 ---
 title: github  + travis 自动构建 vue 项目到 gitpage
+description: 'vue 项目自动构建到 gitpage 需要正确设置 publicPath 和 deploy.sh 脚本以及 travis 配置'
 comments: true
 date: 2019-08-04 12:27:25
 categories: 工程化与运维

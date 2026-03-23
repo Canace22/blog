@@ -2,7 +2,7 @@
 title: 异步数据引出的 console 问题
 categories: Web开发
 tags: JavaScript&TypeScript
-description: 最近发现实验系统有个 bug,首屏打开的实验，总是会丢失一些物件，一开始还以为是打开太快，没画完，调试了一会发现丢失的物件都是图形精灵，再摸索一会发现 texture 的 load 方法是异步的，每次打印都在调用他的函数之后执行。
+description: '异步加载导致控制台显示空对象但实际有数据，需用回调处理确保数据正确获取。'
 comments: true
 date: 2020-03-28 23:23:21
 ---

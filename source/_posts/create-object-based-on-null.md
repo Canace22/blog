@@ -2,7 +2,7 @@
 title: 创建基于 null 的对象
 categories: Web开发
 tags: JavaScript&TypeScript
-description: 关于对象创建的一点看法
+description: '用 Object.create(null) 可以创建没有原型链的对象，适合需要干净对象的场景'
 comments: true
 date: 2021-03-12 14:49:45
 ---

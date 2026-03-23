@@ -1,9 +1,10 @@
 ---
 title: python2 => python3 踩坑集合
+description: 'Python2 迁移 Python3 时注意模块重命名和废弃方法，如 md5 改为 hashlib，urlparse 改为 urllib.parse，setdefaultencoding 和 Queue 需注释或替换。'
 comments: true
 date: 2018-06-08 09:47:51
 categories: Web开发
-tags: [服务端,Python/Go/其他]
+tags: [后端, Python/Go/其他]
 ---
 
 python2 => python3 踩坑集合

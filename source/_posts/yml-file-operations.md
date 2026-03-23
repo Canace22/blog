@@ -1,9 +1,10 @@
 ---
 title: yml 文件操作方法
+description: '读写 yml 文件要注意编码和样式设置，否则容易出错。'
 comments: true
 date: 2018-06-08 09:52:46
 categories: Web开发
-tags: [服务端,Python/Go/其他]
+tags: [后端, Python/Go/其他]
 ---
 
 1. 文件读取方法示例：

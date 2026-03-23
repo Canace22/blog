@@ -1,5 +1,6 @@
 ---
 title: 实现数组拍平
+description: 'flat 方法用 Infinity 更方便，递归也能实现数组拍平。'
 categories: Web开发
 tags: JavaScript&TypeScript
 comments: true

@@ -1,6 +1,8 @@
 ---
 title: 关于健忘那些事
+description: '健忘不是因为没理解而是没反复回顾没兴趣的知识容易忘记'
 categories: 软技能与思考
+tags: 随笔
 comments: true
 date: 2021-04-22 08:47:24
 ---

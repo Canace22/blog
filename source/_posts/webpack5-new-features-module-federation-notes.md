@@ -2,7 +2,7 @@
 title: Webpack5 新特性 - 模块联邦笔记
 categories: 工程化与运维
 tags: 构建与部署
-description: 传统的模块共享方式有打包到 npm 共享，UMD 方式共享以及微前端方式共享等，但是这些方式都多少有点问题，Webpack5 新特性模块联邦就是为解决这些问题而生。
+description: '模块联邦实现动态共享模块，避免重复打包但需注意依赖冲突问题。'
 comments: true
 toc: true
 date: 2020-04-03 09:07:28

@@ -2,7 +2,7 @@
 title: 函数柯里化
 categories: Web开发
 tags: JavaScript&TypeScript
-description:  浅谈函数柯里化
+description: '柯里化让函数逐步接收参数，提升可读性和减少错误风险。'
 author: Canace
 comments: true
 date: 2022-06-17 11:30:17

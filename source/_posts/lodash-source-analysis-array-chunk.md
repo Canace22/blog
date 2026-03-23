@@ -2,7 +2,7 @@
 title: lodash 源码解析 —— chunk
 categories: Web开发
 tags: 框架与库
-description: lodash chunk 函数学习
+description: 'chunk 核心依赖 slice 和 toInteger，需注意参数类型转换和索引处理。'
 comments: true
 date: 2021-01-26 09:24:31
 ---

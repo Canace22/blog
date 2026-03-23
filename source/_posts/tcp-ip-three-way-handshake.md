@@ -1,5 +1,6 @@
 ---
 title: TCP/IP三次握手
+description: '三次握手核心是确认双方能收发信息，避免无效连接。'
 date: 2017-05-25 16:57:02
 categories: 编程基础
 tags: 计算机科学

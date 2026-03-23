@@ -1,7 +1,8 @@
 ---
 title: Vol15：初创项目/产品，怎么做用户留存
 categories: Web开发
-description: Canace的七日谈第十五期
+tags: 随笔
+description: '用户留存关键在社交属性，工具变社交平台才能让用户停留更久。'
 author: Canace
 comments: true
 toc: true

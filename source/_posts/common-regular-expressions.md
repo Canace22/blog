@@ -1,5 +1,6 @@
 ---
 title: 常用正则表达式
+description: '正则表达式能高效处理文本，但需注意边界和转义，否则容易匹配错误。'
 categories: 编程基础
 tags: 编程语言
 comments: true

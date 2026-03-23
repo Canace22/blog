@@ -1,5 +1,6 @@
 ---
 title: 常见 git 工作流程
+description: '简单分支流程易冲突维护难，功能分支和 Gitflow 更适合团队协作与稳定发布。'
 categories: 工程化与运维
 tags: 开发工具
 comments: true

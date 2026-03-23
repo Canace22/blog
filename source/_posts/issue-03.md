@@ -1,7 +1,8 @@
 ---
 title: Vol.03：关于职业选择
 categories: 软技能与思考
-description: Canace 的七日谈第三期
+tags: 随笔
+description: '职业选择没有标准答案，稳定与多彩之间需根据个人成长节奏权衡取舍。'
 author: Canace
 comments: true
 date: 2022-06-20 09:14:09

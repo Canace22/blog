@@ -1,5 +1,6 @@
 ---
 title: centos7 安装 MySQL
+description: '安装 centos7 mysql 时需先配置正确源再安装，避免版本冲突导致失败。'
 comments: true
 date: 2019-03-09 18:58:56
 categories: 工程化与运维

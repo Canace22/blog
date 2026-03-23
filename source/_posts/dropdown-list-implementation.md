@@ -1,9 +1,10 @@
 ---
 title: 下拉列表的实现
+description: '点击外部区域关闭下拉列表需监听 blur 事件并给 div 添加 tabindex 属性'
 comments: true
 date: 2019-09-01 17:28:44
 categories: Web开发
-tags: [框架与库,前端]
+tags: [前端, 框架与库]
 ---
 
 用别人的组件总有各种不可控的问题，而且不好维护，还是造轮子比较舒畅。

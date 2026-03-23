@@ -1,5 +1,6 @@
 ---
 title: 时间复杂度 VS 空间复杂度
+description: '时间复杂度和空间复杂度是衡量算法效率的两个重要指标，前者关注运行时间随数据量增长的变化，后者关注内存占用情况。'
 categories: 编程基础
 tags: 计算机科学
 comments: true

@@ -2,7 +2,7 @@
 title: 小程序 tabs-sticky
 categories: Web开发
 tags: 跨端方案
-description: 小程序 sticky 的正确使用姿势
+description: '小程序实现 tabs-sticky 需要手动设置 position: sticky 和滚动高度，注意层级和兼容性。'
 comments: true
 date: 2020-07-20 15:05:34
 ---

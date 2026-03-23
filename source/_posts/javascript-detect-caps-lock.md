@@ -2,7 +2,7 @@
 title: JavaScript 如何判断用户是否打开了大写键盘
 categories: Web开发
 tags: JavaScript&TypeScript
-description: 记录 JavaScript 判断用户是否打开了大写键盘的方法
+description: '检测大写键盘可用 getModifierState 方法，但需注意兼容性和实际使用场景的限制。'
 author: Canace
 comments: true
 date: 2024-07-19 09:45:59

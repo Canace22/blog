@@ -2,7 +2,7 @@
 title: 统计数组对象的元素总数
 categories: 编程基础
 tags: 计算机科学
-description: 统计数组对象的元素总数
+description: '遍历数组对象时要记得递归处理子节点才能正确统计总数'
 author: Canace
 comments: true
 date: 2024-03-05 14:35:51

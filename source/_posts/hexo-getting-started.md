@@ -1,7 +1,9 @@
 ---
 title: hexo 使用指南
+description: '首次使用hexo需先创建文章再生成部署 服务器运行命令简单但易忽略步骤'
 date: 2018-05-20 16:41:48
 categories: 网站建设
+tags: 开发工具
 comments: true
 ---
 

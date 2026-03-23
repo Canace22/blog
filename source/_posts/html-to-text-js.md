@@ -1,9 +1,10 @@
 ---
 title: html 文档导出为 word 文档和 pdf 文档
+description: 'html 转 docx 需手动添加样式，部分 css 不兼容，图片需转 base64 插入。'
 comments: true
 date: 2018-08-25 10:40:58
 categories: Web开发
-tags: [前端,框架与库]
+tags: [前端, 框架与库]
 ---
 
 最近在折腾用 js 实现 html 转文本的东东，包括 html 转 docx、doc 以及 pdf 等文档，首选当然是用别人造好的轮子啦。

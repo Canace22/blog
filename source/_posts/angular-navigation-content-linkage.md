@@ -1,9 +1,10 @@
 ---
 title: angular 导航栏与内容联动
+description: '操作 DOM 时注意滑动距离和速度计算，避免滚动异常。'
 comments: true
 date: 2018-07-29 16:07:54
 categories: Web开发
-tags: [前端,框架与库]
+tags: [前端, 框架与库]
 ---
 
 通过 angular 的 render2 渲染器操作 DOM , 通过获取 DOM 的滑动只与定位,计算出滑动距离,并控制速率。

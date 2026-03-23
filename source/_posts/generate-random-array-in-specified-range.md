@@ -2,7 +2,7 @@
 title: 生成指定范围的随机数组
 categories: 编程基础
 tags: 计算机科学
-description: 输入范围，输出随机组成的数组，比如输入 minNum、maxNum、option，返回 minNum 与 maxNum 间的随机数组构成的 option 长度的数组
+description: '生成指定范围随机数组时要注意随机数是否在范围内避免重复计算'
 comments: true
 date: 2020-04-08 09:17:50
 ---

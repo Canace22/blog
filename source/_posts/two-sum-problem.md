@@ -1,5 +1,6 @@
 ---
 title: Two Sum
+description: '暴力解法效率低，哈希表能提升性能，注意避免重复使用同一元素'
 comments: true
 date: 2020-07-29 10:41:30
 categories: 编程基础

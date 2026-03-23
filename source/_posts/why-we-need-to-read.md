@@ -2,7 +2,7 @@
 title: 我们为什么需要阅读
 categories: 软技能与思考
 tags: 随笔
-description: 《如何阅读一本书》笔记其一
+description: '阅读能提升理解力，需主动思考并接触超出自身知识的内容。'
 author: Canace
 comments: true
 date: 2024-11-05 15:53:14

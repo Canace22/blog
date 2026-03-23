@@ -2,7 +2,7 @@
 title: VSCode 使用指南
 categories: 工程化与运维
 tags: 开发工具
-description: 工欲善其事必先利其器，前端开发工具我用的是 VSCode，VSCode 有很多快捷的调试方法和一些插件，这里就总结一下这两方面的东西
+description: 'VSCode 插件能提升效率，但配置需谨慎，避免过度依赖影响性能。'
 comments: true
 toc: true
 date: 2021-03-17 08:44:36

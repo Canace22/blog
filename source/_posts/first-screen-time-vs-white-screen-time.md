@@ -1,5 +1,6 @@
 ---
 title: 首屏时间(FCP) VS 白屏时间(FP)
+description: '白屏时间反映页面开始渲染前的空白期 首屏时间关注内容实际加载完成时刻 两者计算方式不同 优化方向也不同'
 categories: 工程化与运维
 tags: 性能优化
 comments: true

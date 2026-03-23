@@ -1,5 +1,6 @@
 ---
 title: ubuntu 配置前端环境
+description: '配置前端环境注意节点版本更新和包管理器替换避免安装失败'
 comments: true
 date: 2018-07-08 18:56:11
 categories: Web开发

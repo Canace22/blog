@@ -1,7 +1,8 @@
 ---
 title: CSS 系列文章——CSS 基础知多少
+description: 'CSS 由规则集组成，每个规则集包含选择器和声明块，声明块由多个声明构成，声明由属性和值组成。'
 categories: Web开发
-tags: [前端,CSS与可视化 ]
+tags: [前端, CSS与可视化]
 comments: true
 toc: true
 date: 2020-08-27 10:00:17

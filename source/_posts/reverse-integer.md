@@ -1,5 +1,6 @@
 ---
 title: 整数反转
+description: '反转整数时要判断是否溢出，否则返回 0。'
 comments: true
 date: 2020-02-19 09:31:18
 categories: 编程基础

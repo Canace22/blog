@@ -2,7 +2,7 @@
 title: 认识字节序
 categories: Web开发
 tags: 计算机科学
-description: 讲讲什么是字节序，以及大端序和小端序的差异
+description: '小端序是低位字节放低地址高位字节放高地址大端序相反网络协议用大端序'
 author: Canace
 comments: true
 toc: true

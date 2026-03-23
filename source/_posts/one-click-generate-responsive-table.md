@@ -1,9 +1,10 @@
 ---
 title: 一键生成响应式表格
+description: '响应式表格关键在设置固定布局和边框样式避免错位'
 comments: true
 date: 2019-02-28 15:48:52
 categories: Web开发
-tags: [CSS与可视化,前端]
+tags: [前端, CSS与可视化]
 ---
 
 这是一个一键生成响应式表格的方案。

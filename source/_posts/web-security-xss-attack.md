@@ -2,7 +2,7 @@
 title: Web安全 —— XSS攻击
 categories: Web开发
 tags: 计算机科学
-description: XSS 是比较古老的 web 安全攻击，本文将讲述 XSS 攻击是什么，有哪些类型以及如何进行 XSS 攻击
+description: '输入数据未过滤直接显示是XSS攻击的核心风险，需做好转义和验证。'
 comments: true
 toc: true
 date: 2021-03-17 11:15:17

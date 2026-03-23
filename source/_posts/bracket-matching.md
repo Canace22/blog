@@ -1,5 +1,6 @@
 ---
 title: 括号匹配
+description: '使用栈和字典匹配括号是解决括号匹配问题的高效方法。'
 comments: true
 date: 2019-09-08 14:32:40
 categories: 编程基础

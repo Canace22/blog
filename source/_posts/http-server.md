@@ -1,7 +1,8 @@
 ---
 title: HTTP 服务器
+description: '手写 HTTP 服务要注意解析请求和返回响应，处理静态资源和路由逻辑，使用框架能简化流程但需注意异步和中间件限制。'
 categories: Web开发
-tags: [服务端,Node.js]
+tags: [后端, Node.js]
 comments: true
 toc: true
 date: 2020-08-02 15:15:20

@@ -1,5 +1,6 @@
 ---
 title: flow 简易教程
+description: '初始化 flow 时要先安装依赖并配置脚本，类型定义要准确避免错误。'
 categories: Web开发
 tags: JavaScript&TypeScript
 comments: true

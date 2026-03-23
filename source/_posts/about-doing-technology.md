@@ -1,6 +1,8 @@
 ---
 title: 关于做技术这件事
+description: '技术路上的坚持与迷茫，最终还是要回到初心，问问自己是否真心热爱。'
 categories: 软技能与思考
+tags: 职业发展
 comments: true
 date: 2021-04-30 11:11:58
 ---

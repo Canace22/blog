@@ -2,7 +2,7 @@
 title: JavaScript基础 —— 基本数据类型与引用类型的异同
 categories: Web开发
 tags: JavaScript&TypeScript
-description: javascript 基础系列之基本数据类型与引用类型的异同
+description: '基本数据类型操作值，引用类型操作地址，复制时行为不同，传递都是按值进行的。'
 comments: true
 date: 2020-10-10 09:49:26
 ---

@@ -1,5 +1,6 @@
 ---
 title: 离开页面弹窗
+description: '离开页面弹窗只能用 onbeforeunload 事件实现，无法自定义样式且兼容性差。'
 categories: Web开发
 tags: JavaScript&TypeScript
 comments: true

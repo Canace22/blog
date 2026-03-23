@@ -2,7 +2,7 @@
 title: web 安全——CSRF
 categories: 编程基础
 tags: 计算机科学
-description: CSRF 攻击是比较常见的 web 攻击形式之一，本篇文章主要介绍产生 CSRF 攻击的原因，场景以及防范 CSRF 攻击的方法等内容
+description: 'CSRF 攻击利用用户已认证身份发送恶意请求，防范需结合 token 校验和 cookie 设置。'
 comments: true
 toc: true
 date: 2021-04-22 10:03:52

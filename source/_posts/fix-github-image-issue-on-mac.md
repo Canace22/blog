@@ -1,5 +1,6 @@
 ---
 title: 解决github图片破裂问题
+description: '修改 hosts 文件中 GitHub 相关 IP 可解决图片破裂问题'
 categories: 工程化与运维
 tags: 开发工具
 comments: true

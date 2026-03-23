@@ -1,7 +1,8 @@
 ---
 title: 原地删除数组中的指定元素
+description: '双指针遍历数组，非目标元素前移，最后返回有效长度。'
 categories: 编程基础
-
+tags: 计算机科学
 comments: true
 date: 2020-08-04 09:54:56
 ---

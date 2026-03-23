@@ -1,6 +1,8 @@
 ---
 title: 一些概念
+description: '别试图构建完整系统，专注做好局部模块更高效。'
 categories: 软技能与思考
+tags: 随笔
 comments: true
 toc: true
 date: 2020-08-13 08:55:54

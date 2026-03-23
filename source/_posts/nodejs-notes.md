@@ -1,7 +1,8 @@
 ---
 title: nodeJS基础
+description: 'nodeJS基础核心是掌握非阻塞I/O和异步编程，避免回调地狱。'
 categories: Web开发
-tags: [服务端,Node.js]
+tags: [后端, Node.js]
 comments: true
 toc: true
 date: 2019-11-30 07:03:40

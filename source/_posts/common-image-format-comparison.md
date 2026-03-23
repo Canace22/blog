@@ -2,7 +2,7 @@
 title: 常用图片格式比较
 categories: 编程基础
 tags: 计算机科学
-description: 日常开发中会用到各种图片，这些图片到底有何异同，我也只是知道些大概，于是有了这篇文章
+description: '不同图片格式各有优劣，选择时需根据清晰度、体积和使用场景综合考虑。'
 comments: true
 toc: true
 date: 2020-07-14 08:40:53

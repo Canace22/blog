@@ -1,9 +1,10 @@
 ---
 title: key 值在 vue 组件中的作用
+description: '给 vue 组件添加 key 能提升 diff 算法效率，避免逐个遍历节点。'
 comments: true
 date: 2019-02-19 08:38:54
 categories: Web开发
-tags: [前端,框架与库]
+tags: [前端, 框架与库]
 ---
 
 key 值在 vue 组件的作用

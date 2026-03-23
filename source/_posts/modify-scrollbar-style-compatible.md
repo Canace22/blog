@@ -1,5 +1,6 @@
 ---
 title: 修改滚动条样式的兼容写法
+description: '兼容浏览器滚动条样式需分别处理不同内核的写法避免显示不一致'
 categories: Web开发
 tags: CSS与可视化
 comments: true

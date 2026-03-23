@@ -1,7 +1,8 @@
 ---
 title: prisma 入门指南
+description: 'prisma 初始化步骤简单但配置需仔细，尤其数据库连接和schema定义容易出错。'
 categories: Web开发
-tags: [服务端,Node.js]
+tags: [后端, Node.js]
 comments: true
 toc: true
 date: 2021-12-29 14:10:45

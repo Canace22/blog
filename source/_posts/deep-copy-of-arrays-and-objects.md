@@ -1,5 +1,6 @@
 ---
 title: 数组、对象的深拷贝
+description: 'JSON.stringify 再 parse 可以实现数组对象深拷贝但会丢失函数和特殊类型'
 comments: true
 date: 2019-06-30 14:19:26
 categories: Web开发

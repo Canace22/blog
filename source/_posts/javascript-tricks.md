@@ -2,7 +2,7 @@
 title: JavaScript 奇技淫巧
 categories: Web开发
 tags: JavaScript&TypeScript
-description: '如题，这篇文章收集一些平常见过的一些 JS 奇技淫巧。'
+description: '无符号右移0位可将非数字转为0，但负数结果不准确，适合特定场景使用。'
 comments: true
 date: 2022-06-16 10:22:01
 ---

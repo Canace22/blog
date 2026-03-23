@@ -1,7 +1,8 @@
 ---
 title: CSS 系列文章 —— 内联元素与流
+description: '内联元素垂直对齐关键在 x-height 和 line-height，设置合适的值能避免空白间隙和对齐问题。'
 categories: Web开发
-tags: [前端,CSS与可视化 ]
+tags: [前端, CSS与可视化]
 comments: true
 toc: true
 date: 2020-08-27 10:12:17

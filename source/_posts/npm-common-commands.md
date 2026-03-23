@@ -1,5 +1,6 @@
 ---
 title: npm 常用命令
+description: 'npm 常用命令整理，重点在安装、源切换和依赖更新，注意私有源配置细节。'
 comments: true
 date: 2019-08-17 13:53:16
 categories: 工程化与运维

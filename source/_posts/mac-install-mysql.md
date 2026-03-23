@@ -1,9 +1,10 @@
 ---
 title: mac 安装 mysql
+description: '安装 mysql 后记得配置环境变量，否则可能无法直接使用命令行操作数据库'
 comments: true
 date: 2019-11-13 08:42:51
 categories: Web开发
-tags: [后端,API&服务]
+tags: [后端, API&服务]
 ---
 
 mac mysql 安装和使用的基本步骤

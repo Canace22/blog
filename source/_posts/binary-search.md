@@ -2,7 +2,7 @@
 title: 二分查找
 categories: 编程基础
 tags: 计算机科学
-description: 二分查找算法解析
+description: '二分查找能高效定位目标值 但需注意边界条件和中点计算方式避免死循环'
 comments: true
 date: 2021-04-09 14:22:50
 ---

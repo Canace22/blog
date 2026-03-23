@@ -2,7 +2,7 @@
 title: Proxy 实现观察者模式
 categories: Web开发
 tags: JavaScript&TypeScript
-description:  使用 es6 Proxy 实现观察者模式
+description: '使用 Proxy 实现观察者模式能方便监听数据变化并触发相应操作。'
 comments: true
 date: 2020-05-28 10:11:14
 ---

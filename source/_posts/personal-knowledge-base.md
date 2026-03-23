@@ -2,7 +2,7 @@
 title: Notion+Chrome书签打造个人知识库
 categories: 工程化与运维
 tags: 开发工具
-description: Notion+Chrome 书签打造个人知识库实践
+description: 'Chrome书签同步到Notion能解决管理混乱问题但需注意避免重复和配置正确参数。'
 author: Canace
 comments: true
 toc: true

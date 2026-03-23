@@ -2,7 +2,7 @@
 title: JavaScript call、apply 和 bind
 categories: Web开发
 tags: JavaScript&TypeScript
-description: 梳理 JavaScript call、apply 和 bind 知识点，对这部分内容做一个深入理解
+description: 'call 和 apply 立即执行函数，bind 只是绑定 this 且需手动调用'
 comments: true
 toc: true
 date: 2020-04-14 08:52:19

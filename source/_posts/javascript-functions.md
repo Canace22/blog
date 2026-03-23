@@ -1,5 +1,6 @@
 ---
 title: javaScript 函数
+description: '箭头函数简化 this 指向，生成器用 yield 多次返回，解构赋值提升代码简洁性，闭包实现变量私有和延迟执行。'
 comments: true
 date: 2018-10-22 19:51:48
 categories: Web开发

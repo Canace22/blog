@@ -1,7 +1,8 @@
 ---
 title: 计算电饭煲的预约时间
+description: '预约时间计算需明确是开始还是结束时间，否则容易出错。'
 categories: 编程基础
-
+tags: 计算机科学
 comments: true
 date: 2020-08-12 09:20:37
 ---

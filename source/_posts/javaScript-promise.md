@@ -1,5 +1,6 @@
 ---
 title: javaScript-promise
+description: 'Promise 可以串行或并行处理异步任务，但顺序执行时需注意依赖关系和时间控制。'
 comments: true
 date: 2018-10-22 19:50:42
 categories: Web开发

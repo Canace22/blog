@@ -1,5 +1,6 @@
 ---
 title: 从浏览器地址栏输入 URL 到界面被渲染出来看前端知识
+description: '输入 URL 后 DNS 解析和进程线程管理是关键，理解这些能避免很多性能和安全问题。'
 categories: 编程基础
 tags: 计算机科学
 comments: true

@@ -2,7 +2,7 @@
 title:  字符串与代码的严谨性
 categories: Web开发
 tags: JavaScript&TypeScript
-description: 忏悔下工作中遇到的问题
+description: '字符串判断要确保安全性，否则加密或参数变化可能引发请求错误，逻辑不严谨难排查。'
 author: Canace
 comments: true
 date: 2022-08-19 14:12:25

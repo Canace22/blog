@@ -1,5 +1,6 @@
 ---
 title: 火狐删除各种虚线框
+description: '火狐浏览器需用特定伪类去除按钮和滑块的虚线框。'
 comments: true
 date: 2019-02-12 09:04:08
 categories: Web开发

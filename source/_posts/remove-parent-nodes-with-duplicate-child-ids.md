@@ -2,7 +2,7 @@
 title: 去除数组对象中与子节点id重复的父节点
 categories: 编程基础
 tags: JavaScript&TypeScript
-description: 去除数组对象中与子节点id重复的父节点
+description: '父节点id和子节点重复时只保留层级最深的那个节点'
 author: Canace
 comments: true
 date: 2024-03-04 13:56:22

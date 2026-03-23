@@ -3,7 +3,7 @@ title: axios 网络请求封装
 comments: true
 date: 2020-03-31 10:10:02
 categories: Web开发
-description: axios 是网页请求库中的新星，经常会看到他与 vue 携手，该库对 http 请求已经封装得很好了，但是，由于我需要一些更加定制化的操作，比如加密请求参数等，所以这里进行了二次封装。
+description: '封装 axios 时注意请求参数加密和统一处理响应状态，避免重复代码提高可维护性'
 tags: [前端, 框架与库]
 ---
 

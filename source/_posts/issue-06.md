@@ -1,7 +1,8 @@
 ---
 title: Vol.06：羊了个羊为什么会火起来
 categories: 软技能与思考
-description: Canace 的七日谈第六期
+tags: 随笔
+description: '游戏火是因为好胜心和生活单调，随机机制让通关难度高，建议及时止损。'
 author: Canace
 comments: true
 date: 2022-09-13 08:39:19

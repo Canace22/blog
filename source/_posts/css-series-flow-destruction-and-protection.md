@@ -1,7 +1,8 @@
 ---
 title: CSS 系列文章 —— 流的破坏与保护
+description: '浮动破坏文档流导致布局问题，清除浮动需结合BFC或overflow属性处理。'
 categories: Web开发
-tags: [前端,CSS与可视化 ]
+tags: [前端, CSS与可视化]
 comments: true
 toc: true
 date: 2020-08-27 11:08:17

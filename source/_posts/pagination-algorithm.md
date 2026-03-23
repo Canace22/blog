@@ -1,5 +1,6 @@
 ---
 title: 分页算法
+description: '分页公式要根据页码和每页数量计算起始索引，翻页时注意边界条件避免越界。'
 comments: true
 date: 2019-03-18 08:59:03
 categories: 编程基础

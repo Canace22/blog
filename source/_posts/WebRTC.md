@@ -1,6 +1,8 @@
 ---
 title: WebRTC
+description: '浏览器点对点传输失败主要因防火墙阻挡、无公网IP或路由器不支持直连，需用中继服务器解决。'
 categories: Web开发
+tags: JavaScript&TypeScript
 comments: true
 date: 2022-02-10 11:29:24
 ---

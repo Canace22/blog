@@ -1,5 +1,6 @@
 ---
 title: CSS 系列文章——CSS历史及文档流
+description: 'CSS 发展从简单展示到复杂布局，文档流是基础，理解它能避免很多布局问题。'
 categories: Web开发
 tags: [前端, CSS与可视化]
 comments: true

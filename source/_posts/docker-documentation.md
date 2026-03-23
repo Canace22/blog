@@ -5,7 +5,7 @@ tags: 构建与部署
 toc: true
 comments: true
 date: 2023-01-16 09:58:28
-description: docker 打包本地 web 项目发布到服务端方法
+description: '打包 web 项目用 docker 时，先构建镜像再推送到仓库，最后在服务端拉取运行即可。'
 ---
 ## 一、Docker 入门
 

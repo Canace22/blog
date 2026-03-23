@@ -1,5 +1,6 @@
 ---
 title: webpack
+description: 'webpack 配置需明确入口和输出路径，合理使用 loader 处理不同资源类型，避免重复引用。'
 comments: true
 date: 2019-08-04 12:29:56
 categories: 工程化与运维

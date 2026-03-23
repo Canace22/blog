@@ -2,7 +2,7 @@
 title: 软件版本号定义
 categories: 工程化与运维
 tags: 构建与部署
-description: 软件版本相关知识科普
+description: '版本号通常由主版本、功能更新和修复组成，附加词如 alpha、beta 等表示不同阶段。'
 comments: true
 date: 2020-01-14 11:24:02
 ---

@@ -1,5 +1,6 @@
 ---
 title: 理解 instanceof
+description: 'instanceof 通过检查对象的原型链是否包含指定构造函数的原型来判断类型，理解原型链是关键。'
 categories: Web开发
 tags: JavaScript&TypeScript
 comments: true

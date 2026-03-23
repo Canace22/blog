@@ -1,7 +1,8 @@
 ---
 title: nodeJs 模块机制
+description: 'nodeJs 模块机制基于 CommonJs，通过 require 加载，路径分析影响速度，优先加载核心模块。'
 categories: Web开发
-tags: [服务端,Node.js]
+tags: [后端, Node.js]
 comments: true
 date: 2021-06-28 20:35:31
 ---
