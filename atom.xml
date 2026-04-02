@@ -6,7 +6,7 @@
   <link href="https://canace.site/atom.xml" rel="self"/>
   
   <link href="https://canace.site/"/>
-  <updated>2026-03-31T02:55:45.382Z</updated>
+  <updated>2026-04-02T02:47:10.972Z</updated>
   <id>https://canace.site/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>AI 让人变得无趣</title>
+    <link href="https://canace.site/ai-make-you-boring/"/>
+    <id>https://canace.site/ai-make-you-boring/</id>
+    <published>2026-04-02T02:40:43.000Z</published>
+    <updated>2026-04-02T02:47:10.972Z</updated>
+    
+    
+    <summary type="html">由 Hacker News 上关于 Show HN 质量下滑的讨论展开，谈 AI 辅助下的「无趣」项目、思维外包如何削弱原创与沉浸，以及为何提示词替代不了真正的构思过程。</summary>
+    
+    
+    
+    <category term="软技能与思考" scheme="https://canace.site/categories/soft/"/>
+    
+    
+    <category term="翻译" scheme="https://canace.site/tags/%E7%BF%BB%E8%AF%91/"/>
+    
+  </entry>
   
   <entry>
     <title>为什么要写微信公众号</title>
@@ -380,25 +399,6 @@
     
     <category term="网站建设" scheme="https://canace.site/categories/site/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>你不是在面试，你是在为职位试镜</title>
-    <link href="https://canace.site/interview-strategy/"/>
-    <id>https://canace.site/interview-strategy/</id>
-    <published>2025-09-13T11:34:51.000Z</published>
-    <updated>2026-02-24T06:31:35.969Z</updated>
-    
-    
-    <summary type="html">面试追求复杂设计，实际工作却需要简单实用，两者标准大相径庭。</summary>
-    
-    
-    
-    <category term="软技能与思考" scheme="https://canace.site/categories/soft/"/>
-    
-    
-    <category term="职业发展" scheme="https://canace.site/tags/%E8%81%8C%E4%B8%9A%E5%8F%91%E5%B1%95/"/>
     
   </entry>
   
