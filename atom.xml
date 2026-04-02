@@ -6,7 +6,7 @@
   <link href="https://canace.site/atom.xml" rel="self"/>
   
   <link href="https://canace.site/"/>
-  <updated>2026-04-02T02:47:10.972Z</updated>
+  <updated>2026-04-02T03:39:22.506Z</updated>
   <id>https://canace.site/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Gemini 在打开新会话时，是如何有记忆的</title>
+    <link href="https://canace.site/gemini-new-session-memory/"/>
+    <id>https://canace.site/gemini-new-session-memory/</id>
+    <published>2026-04-02T07:00:00.000Z</published>
+    <updated>2026-04-02T03:39:22.506Z</updated>
+    
+    
+    <summary type="html">探讨 Google Gemini 在新对话中仍能呈现「记得你」的体验背后，可能涉及的账户级记忆、Saved info、跨会话摘要等机制与边界。</summary>
+    
+    
+    
+    <category term="AI探索" scheme="https://canace.site/categories/intelligent/"/>
+    
+    
+    <category term="AI原理" scheme="https://canace.site/tags/AI%E5%8E%9F%E7%90%86/"/>
+    
+  </entry>
   
   <entry>
     <title>AI 让人变得无趣</title>
@@ -175,7 +194,7 @@
     <link href="https://canace.site/ai-expansion/"/>
     <id>https://canace.site/ai-expansion/</id>
     <published>2026-01-05T01:10:12.000Z</published>
-    <updated>2026-02-24T06:31:07.505Z</updated>
+    <updated>2026-04-02T02:52:43.965Z</updated>
     
     
     <summary type="html">AI让人膨胀，效率不升反降，关键在认知错位和节奏失控。</summary>
@@ -376,29 +395,6 @@
     
     
     <category term="职业发展" scheme="https://canace.site/tags/%E8%81%8C%E4%B8%9A%E5%8F%91%E5%B1%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>博客文章分类</title>
-    <link href="https://canace.site/blog-category/"/>
-    <id>https://canace.site/blog-category/</id>
-    <published>2025-09-14T09:32:04.000Z</published>
-    <updated>2026-02-24T02:45:22.297Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
-    
-    
-    
-    <category term="网站建设" scheme="https://canace.site/categories/site/"/>
-    
     
   </entry>
   
