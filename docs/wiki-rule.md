@@ -67,3 +67,11 @@ When asked to lint the wiki, check for:
 ## Current Seed Topic
 
 This repo currently explores the idea of an "LLM-maintained wiki" as a compounding alternative to pure query-time RAG.
+
+## Blog 内访问（知识库页面）
+
+- 维护入口不变：只在仓库根目录 `wiki/` 下编辑；**不要**手工改 `source/wiki/`（该目录为构建生成物，且已在 `.gitignore` 中忽略）。
+- 构建或本地预览前会执行 `node tools/sync-wiki-for-hexo.mjs`（已接入 `test.sh`）：把 `wiki/**/*.md` 拷贝到 `source/wiki/`，加上 Hexo 所需 front matter，并把指向 `_posts` 的链接改成本站文章路径、wiki 内 `.md` 链接改成 `.html`。
+- 部署后入口：**导航栏「知识库」** → `/wiki/`，目录页为 `wiki/index.md` 对应页面。
+
+单独同步（不跑完整 Hexo）：`node tools/sync-wiki-for-hexo.mjs`

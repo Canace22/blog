@@ -20,8 +20,9 @@
 | 用途 | 说明 |
 |------|------|
 | 文章目录 | `source/_posts/`，新建文章放此处，文件名建议英文或拼音+日期 |
-| 本地预览 | `npm run serve`（内部执行 `./test.sh s`） |
+| 本地预览 | `npm run serve`（内部执行 `./test.sh s`；会先同步 `wiki/` → `source/wiki/` 再生成站点） |
 | 构建 | `npm run build`（内部执行 `./test.sh d`） |
+| 知识库在线入口 | 主题菜单「知识库」→ `/wiki/`；说明见 [wiki-rule.md](wiki-rule.md) 的「Blog 内访问」 |
 | 生成摘要 | `npm run summary`；强制重新生成 `npm run summary:regen` |
 
 ## Front Matter 必守规则

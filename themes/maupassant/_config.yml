@@ -80,6 +80,9 @@ menu:
   - page: 文章归档
     directory: archives/
     icon: fa-archive
+  - page: 知识库
+    directory: wiki/
+    icon: fa-book
   - page: 关于我
     directory: about/
     icon: fa-user

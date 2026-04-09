@@ -1,4 +1,6 @@
 node_modules
+# Hexo 从仓库 wiki/ 同步生成的页面（勿提交）
+source/wiki
 public
 db.json
 .deploy_git
