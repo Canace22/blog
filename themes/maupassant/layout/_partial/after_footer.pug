@@ -42,5 +42,16 @@ if page.mathjax
 if page.mathjax2
   include mathjax2.pug
 
+if config.mermaid && config.mermaid.enable
+  - var mermaidInit = Object.assign({}, config.mermaid)
+  - delete mermaidInit.enable
+  - delete mermaidInit.version
+  script(type='text/javascript', src='//cdn.jsdelivr.net/npm/mermaid@' + config.mermaid.version + '/dist/mermaid.min.js')
+  script(type='text/javascript').
+    document.addEventListener('DOMContentLoaded', function () {
+      if (!window.mermaid) return;
+      mermaid.initialize(!{JSON.stringify(mermaidInit)});
+    });
+
 script(type='text/javascript', src=url_for(theme.js) + '/codeblock-resizer.js' + '?v=' + theme.version)
 script(type='text/javascript', src=url_for(theme.js) + '/smartresize.js' + '?v=' + theme.version)

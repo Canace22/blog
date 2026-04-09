@@ -9,7 +9,7 @@ description: Performs Hexo blog operations in this repo: create or edit posts in
 
 ## 速查
 
-- 文章目录：`source/_posts/`
+- 目录：`source/_posts/`
 - **创建博客**：只创建空白文章，文件内仅含 front matter 元数据，不写正文；正文由用户后续自填。
 - 本地预览：`npm run serve` | 构建：`npm run build` | 摘要：`npm run summary` / `npm run summary:regen`
 - categories 单选，从 6 个分类中选一；tags 必填，单标签不用数组，双标签用 `[父, 子]`（逗号后一空格）
