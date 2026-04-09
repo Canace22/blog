@@ -49,4 +49,6 @@ date: 2025-01-01 10:00:00
 4. 不允许尾部空格、引号包裹、顺序颠倒
 5. `JavaScript&TypeScript` 虽属于前端子标签，但因其既涵盖浏览器端也涵盖语言本身，作为独立标签使用，不加 `前端` 前缀
 
-@docs/wiki-rule
+## 知识库
+
+[wiki-rule](./docs/wiki-rule.md)
