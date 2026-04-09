@@ -1,0 +1,227 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="canace 的博客"><meta itemprop="name" content="Web 前端开发知识图谱（概念）"><meta itemprop="image" content="https://raw.githubusercontent.com/Canace22/Assets/main/images/snow-other.png"><meta property="og:image" content="https://raw.githubusercontent.com/Canace22/Assets/main/images/snow-other.png"><meta name="description" itemprop="description" content="&lt;p&gt;跨多篇 wiki 条目的&lt;strong&gt;主题聚类&lt;/strong&gt;：把浏览器、语言、样式、框架、可视化、跨端、工程化连成一张可读的路径图，便于从「一点」跳到相关笔记。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;性质说明&lt;/strong&gt;：本页是依据 &lt;a href=&quot;../index.html&quot;&gt;&lt;code&gt;wiki/index.md&lt;/code&gt;&lt;/a&gt; 已收录页面的归纳，不是某一篇 &lt;code&gt;source/_posts&lt;/code&gt; 的转写；具体论断仍以各 &lt;code&gt;sources/*.md&lt;/code&gt; 摘要为准。&lt;/p&gt;
+&lt;h2 id=&quot;总览&quot;&gt;&lt;a href=&quot;#总览&quot; class=&quot;headerlink&quot; title=&quot;总览&quot;&gt;&lt;/a&gt;总览&lt;/h2&gt;&lt;pre class=&quot;mermaid&quot;&gt;%%{init: {'theme':'dark','themeVariables': {'primaryColor':'#1e293b','primaryTextColor':'#e2e8f0','lineColor':'#94a3b8','clusterBkg':'#0f172a','titleColor':'#f1f5f9'}}}%%
+flowchart TB
+  subgraph base[&quot;与编程基础相交的 Web 底座&quot;]
+    A1[URL → 渲染]
+    A2[HTTP · 缓存 · Cookie]
+    A3[安全 · 跨域]
+  end
+
+  subgraph lang[&quot;语言与运行时&quot;]
+    B1[JS 核心与引擎]
+    B2[TS · 模块化 · Node]
+  end
+
+  subgraph docstyle[&quot;文档与表现层&quot;]
+    C1[HTML]
+    C2[CSS 流 · 布局 · 动画]
+  end
+
+  subgraph ui[&quot;框架与交互&quot;]
+    D1[Vue 生态]
+    D2[React · Angular]
+    D3[状态与组件]
+  end
+
+  subgraph gfx[&quot;可视化与媒体&quot;]
+    E1[Canvas · Pixi · Three]
+    E2[WebRTC · 图形学]
+  end
+
+  subgraph cross[&quot;跨端&quot;]
+    F1[微信小程序]
+    F2[Flutter 等]
+    F3[真机调试]
+  end
+
+  subgraph edge[&quot;请求与全栈交界&quot;]
+    G1[axios 等]
+    G2[Egg · Prisma 等]
+  end
+
+  subgraph eng[&quot;工程化与性能&quot;]
+    H1[webpack 等构建]
+    H2[性能与体验指标]
+    H3[测试 · CI · 环境]
+  end
+
+  base --&gt; lang
+  lang --&gt; docstyle
+  docstyle --&gt; ui
+  ui --&gt; gfx
+  ui --&gt; cross
+  ui --&gt; edge
+  ui --&gt; eng
+  edge --&gt; eng&lt;/pre&gt;
+
+&lt;h2 id=&quot;推荐阅读主轴（一条线串起来）&quot;&gt;&lt;a href=&quot;#推荐阅读主轴（一条线串起来）&quot; class=&quot;headerlink&quot; title=&quot;推荐阅读主轴（一条线串起来）&quot;&gt;&lt;/a&gt;推荐阅读主轴（一条线串起来）&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;../sources/what-happens-from-url-to-display.html&quot;&gt;从浏览器地址栏输入 URL 到界面被渲染出来看前端知识&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;../sources/http-notes.html&quot;&gt;HTTP 笔记&lt;/a&gt; · &lt;a href=&quot;../sources/talking-about-browser-cache-mechanism.html&quot;&gt;说说浏览器缓存机制&lt;/a&gt; · &lt;a href=&quot;../sources/understanding-cookies.html&quot;&gt;认识 Cookie&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;../sources/js-overview.html&quot;&gt;JS 概谈&lt;/a&gt; · &lt;a href=&quot;../sources/js-execution.html&quot;&gt;JavaScript 在 V8 引擎浏览器上是怎么执行的&lt;/a&gt; · &lt;a href=&quot;../sources/javaScript-promise.html&quot;&gt;javaScript-promise&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;CSS 可从 &lt;a href=&quot;../sources/css-series-basics.html&quot;&gt;CSS 系列文章——CSS 基础知多少&lt;/a&gt; 起，串 &lt;a href=&quot;../sources/css-layout-guide.html&quot;&gt;CSS 常用布局及解决方案&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;框架：Vue 见 &lt;a href=&quot;../sources/vue-data-driven-view-implementation.html&quot;&gt;Vue 数据驱动视图更新实现&lt;/a&gt;、&lt;a href=&quot;../sources/vue3-notes.html&quot;&gt;Vue3 实战笔记&lt;/a&gt;；&lt;a href=&quot;../sources/why-frontend-needs-framework.html&quot;&gt;Web 前端开发为什么要用框架&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;网络与安全：&lt;a href=&quot;../sources/cross-origin-resource-sharing.html&quot;&gt;关于跨域那些事&lt;/a&gt;、&lt;a href=&quot;../sources/web-security-xss-attack.html&quot;&gt;Web安全 —— XSS攻击&lt;/a&gt;；CSRF 见 &lt;a href=&quot;../sources/web-security-csrf.html&quot;&gt;web 安全——CSRF&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;交付：&lt;a href=&quot;../sources/webpack.html&quot;&gt;webpack&lt;/a&gt;、&lt;a href=&quot;../sources/frontend-performance-optimization.html&quot;&gt;前端性能优化&lt;/a&gt;、&lt;a href=&quot;../sources/first-screen-time-vs-white-screen-time.html&quot;&gt;首屏时间(FCP) VS 白屏时间(FP)&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;区域-↔-代表条目（索引速查）&quot;&gt;&lt;a href=&quot;#区域-↔-代表条目（索引速查）&quot; class=&quot;headerlink&quot; title=&quot;区域 ↔ 代表条目（索引速查）&quot;&gt;&lt;/a&gt;区域 ↔ 代表条目（索引速查）&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;区域&lt;/th&gt;
+&lt;th&gt;代表条目（节选）&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td&gt;URL &amp;#x2F; 渲染 &amp;#x2F; 内核&lt;/td&gt;
+&lt;td&gt;&lt;a href=&quot;../sources/how-to-optimize-animation.html&quot;&gt;浏览器渲染原理概述&lt;/a&gt;、&lt;a href=&quot;../sources/browser-kernel-and-writing.html&quot;&gt;关于浏览器内核及其 CSS 写法&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;样式与适配&lt;/td&gt;
+&lt;td&gt;&lt;a href=&quot;../sources/talking-about-webpage-adaptive-and-responsive-layout.html&quot;&gt;说说网页自适应和响应式布局&lt;/a&gt;、&lt;a href=&quot;../sources/box-model.html&quot;&gt;盒模型&lt;/a&gt;、多篇 &lt;code&gt;css-series-*&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Vue&lt;/td&gt;
+&lt;td&gt;&lt;a href=&quot;../sources/vue-details-i-didnt-know.html&quot;&gt;我所不知道的 Vue 细节&lt;/a&gt;、&lt;a href=&quot;../sources/talking-about-vuex.html&quot;&gt;说说 Vuex&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;图形&lt;/td&gt;
+&lt;td&gt;&lt;a href=&quot;../sources/three-js-basics-practice.html&quot;&gt;three.js 基础实战 —— 创建画布&lt;/a&gt;、&lt;a href=&quot;../sources/pixi-basics.html&quot;&gt;PixiJs 极简教程&lt;/a&gt;、&lt;a href=&quot;../sources/WebRTC.html&quot;&gt;WebRTC&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;小程序 &amp;#x2F; 跨端&lt;/td&gt;
+&lt;td&gt;&lt;a href=&quot;../sources/wechat-mini-program-pitfalls.html&quot;&gt;微信小程序小技巧&lt;/a&gt;、&lt;a href=&quot;../sources/mac-debug-ios-web-page.html&quot;&gt;MAC 调试 IOS 真机上 Web 网页的方法&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;工程化&lt;/td&gt;
+&lt;td&gt;&lt;a href=&quot;../sources/webpack5-new-features-module-federation-notes.html&quot;&gt;Webpack5 新特性 - 模块联邦笔记&lt;/a&gt;、&lt;a href=&quot;../sources/image-lazy-loading-implementation.html&quot;&gt;图片懒加载实现&lt;/a&gt;、&lt;a href=&quot;../sources/add-skeleton-screen.html&quot;&gt;web 优化 ——— 添加骨架屏&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;p&gt;完整列表以 &lt;a href=&quot;../index.html&quot;&gt;Wiki Index&lt;/a&gt; 中 &lt;strong&gt;Web开发&lt;/strong&gt;、&lt;strong&gt;编程基础&lt;/strong&gt;（HTTP&amp;#x2F;Cookie&amp;#x2F;安全&amp;#x2F;URL）、&lt;strong&gt;工程化与运维&lt;/strong&gt; 三节为准。&lt;/p&gt;
+&lt;h2 id=&quot;相关&quot;&gt;&lt;a href=&quot;#相关&quot; class=&quot;headerlink&quot; title=&quot;相关&quot;&gt;&lt;/a&gt;相关&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;llm-maintained-wiki.html&quot;&gt;LLM 维护的知识库（概念）&lt;/a&gt; — 本图谱随 wiki 增量更新时，可一并检视链接是否过期。&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;../index.html&quot;&gt;Wiki Index&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;来源&quot;&gt;&lt;a href=&quot;#来源&quot; class=&quot;headerlink&quot; title=&quot;来源&quot;&gt;&lt;/a&gt;来源&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;综合整理：基于本仓库 &lt;code&gt;wiki/index.md&lt;/code&gt; 目录与 &lt;code&gt;wiki/sources/&lt;/code&gt; 已存在页面的主题归类，非单篇博文 ingest。&lt;/li&gt;
+&lt;/ul&gt;
+"><title>Web 前端开发知识图谱（概念）</title><link rel="stylesheet" type="text/css" href="../../css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/normalize.css/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="../../favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="../../favicon.ico"><link rel="apple-touch-icon" href="../../apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="../../apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="../../atom.xml"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/clipboard/dist/clipboard.min.js"></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.js"></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.css"><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Web 前端开发知识图谱（概念）</h1><a id="logo" href="../../.">Canace 的博客</a><p class="description">Tomorrow is another day</p></div><div id="nav-menu"><a href="../../."><i class="fa fa-home"> 主页</i></a><a href="../../archives/"><i class="fa fa-archive"> 文章归档</i></a><a class="current" href="../"><i class="fa fa-book"> 知识库</i></a><a href="../../about/"><i class="fa fa-user"> 关于我</i></a><a href="../../atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">Web 前端开发知识图谱（概念）</h1><div class="clear"><div class="toc-article" id="toc"><div class="toc-title">目录</div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E8%A7%88"><span class="toc-text">总览</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A8%E8%8D%90%E9%98%85%E8%AF%BB%E4%B8%BB%E8%BD%B4%EF%BC%88%E4%B8%80%E6%9D%A1%E7%BA%BF%E4%B8%B2%E8%B5%B7%E6%9D%A5%EF%BC%89"><span class="toc-text">推荐阅读主轴（一条线串起来）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8C%BA%E5%9F%9F-%E2%86%94-%E4%BB%A3%E8%A1%A8%E6%9D%A1%E7%9B%AE%EF%BC%88%E7%B4%A2%E5%BC%95%E9%80%9F%E6%9F%A5%EF%BC%89"><span class="toc-text">区域 ↔ 代表条目（索引速查）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3"><span class="toc-text">相关</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9D%A5%E6%BA%90"><span class="toc-text">来源</span></a></li></ol></div></div><div class="post-content"><p>跨多篇 wiki 条目的<strong>主题聚类</strong>：把浏览器、语言、样式、框架、可视化、跨端、工程化连成一张可读的路径图，便于从「一点」跳到相关笔记。</p>
+<p><strong>性质说明</strong>：本页是依据 <a href="../index.html"><code>wiki/index.md</code></a> 已收录页面的归纳，不是某一篇 <code>source/_posts</code> 的转写；具体论断仍以各 <code>sources/*.md</code> 摘要为准。</p>
+<h2 id="总览"><a href="#总览" class="headerlink" title="总览"></a>总览</h2><pre class="mermaid">%%{init: {'theme':'dark','themeVariables': {'primaryColor':'#1e293b','primaryTextColor':'#e2e8f0','lineColor':'#94a3b8','clusterBkg':'#0f172a','titleColor':'#f1f5f9'}}}%%
+flowchart TB
+  subgraph base["与编程基础相交的 Web 底座"]
+    A1[URL → 渲染]
+    A2[HTTP · 缓存 · Cookie]
+    A3[安全 · 跨域]
+  end
+
+  subgraph lang["语言与运行时"]
+    B1[JS 核心与引擎]
+    B2[TS · 模块化 · Node]
+  end
+
+  subgraph docstyle["文档与表现层"]
+    C1[HTML]
+    C2[CSS 流 · 布局 · 动画]
+  end
+
+  subgraph ui["框架与交互"]
+    D1[Vue 生态]
+    D2[React · Angular]
+    D3[状态与组件]
+  end
+
+  subgraph gfx["可视化与媒体"]
+    E1[Canvas · Pixi · Three]
+    E2[WebRTC · 图形学]
+  end
+
+  subgraph cross["跨端"]
+    F1[微信小程序]
+    F2[Flutter 等]
+    F3[真机调试]
+  end
+
+  subgraph edge["请求与全栈交界"]
+    G1[axios 等]
+    G2[Egg · Prisma 等]
+  end
+
+  subgraph eng["工程化与性能"]
+    H1[webpack 等构建]
+    H2[性能与体验指标]
+    H3[测试 · CI · 环境]
+  end
+
+  base --> lang
+  lang --> docstyle
+  docstyle --> ui
+  ui --> gfx
+  ui --> cross
+  ui --> edge
+  ui --> eng
+  edge --> eng</pre>
+
+<h2 id="推荐阅读主轴（一条线串起来）"><a href="#推荐阅读主轴（一条线串起来）" class="headerlink" title="推荐阅读主轴（一条线串起来）"></a>推荐阅读主轴（一条线串起来）</h2><ol>
+<li><a href="../sources/what-happens-from-url-to-display.html">从浏览器地址栏输入 URL 到界面被渲染出来看前端知识</a></li>
+<li><a href="../sources/http-notes.html">HTTP 笔记</a> · <a href="../sources/talking-about-browser-cache-mechanism.html">说说浏览器缓存机制</a> · <a href="../sources/understanding-cookies.html">认识 Cookie</a></li>
+<li><a href="../sources/js-overview.html">JS 概谈</a> · <a href="../sources/js-execution.html">JavaScript 在 V8 引擎浏览器上是怎么执行的</a> · <a href="../sources/javaScript-promise.html">javaScript-promise</a></li>
+<li>CSS 可从 <a href="../sources/css-series-basics.html">CSS 系列文章——CSS 基础知多少</a> 起，串 <a href="../sources/css-layout-guide.html">CSS 常用布局及解决方案</a></li>
+<li>框架：Vue 见 <a href="../sources/vue-data-driven-view-implementation.html">Vue 数据驱动视图更新实现</a>、<a href="../sources/vue3-notes.html">Vue3 实战笔记</a>；<a href="../sources/why-frontend-needs-framework.html">Web 前端开发为什么要用框架</a></li>
+<li>网络与安全：<a href="../sources/cross-origin-resource-sharing.html">关于跨域那些事</a>、<a href="../sources/web-security-xss-attack.html">Web安全 —— XSS攻击</a>；CSRF 见 <a href="../sources/web-security-csrf.html">web 安全——CSRF</a></li>
+<li>交付：<a href="../sources/webpack.html">webpack</a>、<a href="../sources/frontend-performance-optimization.html">前端性能优化</a>、<a href="../sources/first-screen-time-vs-white-screen-time.html">首屏时间(FCP) VS 白屏时间(FP)</a></li>
+</ol>
+<h2 id="区域-↔-代表条目（索引速查）"><a href="#区域-↔-代表条目（索引速查）" class="headerlink" title="区域 ↔ 代表条目（索引速查）"></a>区域 ↔ 代表条目（索引速查）</h2><table>
+<thead>
+<tr>
+<th>区域</th>
+<th>代表条目（节选）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>URL &#x2F; 渲染 &#x2F; 内核</td>
+<td><a href="../sources/how-to-optimize-animation.html">浏览器渲染原理概述</a>、<a href="../sources/browser-kernel-and-writing.html">关于浏览器内核及其 CSS 写法</a></td>
+</tr>
+<tr>
+<td>样式与适配</td>
+<td><a href="../sources/talking-about-webpage-adaptive-and-responsive-layout.html">说说网页自适应和响应式布局</a>、<a href="../sources/box-model.html">盒模型</a>、多篇 <code>css-series-*</code></td>
+</tr>
+<tr>
+<td>Vue</td>
+<td><a href="../sources/vue-details-i-didnt-know.html">我所不知道的 Vue 细节</a>、<a href="../sources/talking-about-vuex.html">说说 Vuex</a></td>
+</tr>
+<tr>
+<td>图形</td>
+<td><a href="../sources/three-js-basics-practice.html">three.js 基础实战 —— 创建画布</a>、<a href="../sources/pixi-basics.html">PixiJs 极简教程</a>、<a href="../sources/WebRTC.html">WebRTC</a></td>
+</tr>
+<tr>
+<td>小程序 &#x2F; 跨端</td>
+<td><a href="../sources/wechat-mini-program-pitfalls.html">微信小程序小技巧</a>、<a href="../sources/mac-debug-ios-web-page.html">MAC 调试 IOS 真机上 Web 网页的方法</a></td>
+</tr>
+<tr>
+<td>工程化</td>
+<td><a href="../sources/webpack5-new-features-module-federation-notes.html">Webpack5 新特性 - 模块联邦笔记</a>、<a href="../sources/image-lazy-loading-implementation.html">图片懒加载实现</a>、<a href="../sources/add-skeleton-screen.html">web 优化 ——— 添加骨架屏</a></td>
+</tr>
+</tbody></table>
+<p>完整列表以 <a href="../index.html">Wiki Index</a> 中 <strong>Web开发</strong>、<strong>编程基础</strong>（HTTP&#x2F;Cookie&#x2F;安全&#x2F;URL）、<strong>工程化与运维</strong> 三节为准。</p>
+<h2 id="相关"><a href="#相关" class="headerlink" title="相关"></a>相关</h2><ul>
+<li><a href="llm-maintained-wiki.html">LLM 维护的知识库（概念）</a> — 本图谱随 wiki 增量更新时，可一并检视链接是否过期。</li>
+<li><a href="../index.html">Wiki Index</a></li>
+</ul>
+<h2 id="来源"><a href="#来源" class="headerlink" title="来源"></a>来源</h2><ul>
+<li>综合整理：基于本仓库 <code>wiki/index.md</code> 目录与 <code>wiki/sources/</code> 已存在页面的主题归类，非单篇博文 ingest。</li>
+</ul>
+</div></div></div></div><div class="pure-u-1 pure-u-md-1-4"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 常用文档</i></div><ul></ul><a href="/git-common-commands" title="Git 文档" target="_blank">Git 文档</a><ul></ul><a href="/common-programming-prompt-words" title="常用开发提示词" target="_blank">常用开发提示词</a></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="../../categories/soft/">软技能与思考</a><span class="category-list-count">45</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/cli/">工程化与运维</a><span class="category-list-count">50</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/intelligent/">AI探索</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/web/">Web开发</a><span class="category-list-count">142</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/coding/">编程基础</a><span class="category-list-count">42</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/site/">网站建设</a><span class="category-list-count">5</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="../../tags/essays/" style="font-size: 15px; color: #3679a7">随笔</a> <a href="../../tags/performance/" style="font-size: 15px; color: #7a9fb8">性能优化</a> <a href="../../tags/AI%E5%8E%9F%E7%90%86/" style="font-size: 15px; color: #96aebf">AI原理</a> <a href="../../tags/backend/" style="font-size: 15px; color: #5f90b1">后端</a> <a href="../../tags/Python-Go-%E5%85%B6%E4%BB%96/" style="font-size: 15px; color: #88a6bb">Python/Go/其他</a> <a href="../../tags/JavaScript-TypeScript/" style="font-size: 15px; color: #0e639d">JavaScript&TypeScript</a> <a href="../../tags/api-services/" style="font-size: 15px; color: #bec4c9">API&服务</a> <a href="../../tags/computer-science/" style="font-size: 15px; color: #2972a4">计算机科学</a> <a href="../../tags/%E8%81%8C%E4%B8%9A%E5%8F%91%E5%B1%95/" style="font-size: 15px; color: #7a9fb8">职业发展</a> <a href="../../tags/AI%E7%BC%96%E7%A8%8B/" style="font-size: 15px; color: #7a9fb8">AI编程</a> <a href="../../tags/%E7%BF%BB%E8%AF%91/" style="font-size: 15px; color: #ccc">翻译</a> <a href="../../tags/frontend/" style="font-size: 15px; color: #005b9a">前端</a> <a href="../../tags/frameworks-libs/" style="font-size: 15px; color: #5288ae">框架与库</a> <a href="../../tags/reading-notes/" style="font-size: 15px; color: #a3b5c2">读书笔记</a> <a href="../../tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/" style="font-size: 15px; color: #88a6bb">系统设计</a> <a href="../../tags/programming-languages/" style="font-size: 15px; color: #b1bdc5">编程语言</a> <a href="../../tags/css-visualization/" style="font-size: 15px; color: #1b6aa1">CSS与可视化</a> <a href="../../tags/build-deploy/" style="font-size: 15px; color: #6d97b5">构建与部署</a> <a href="../../tags/dev-tools/" style="font-size: 15px; color: #4481ab">开发工具</a> <a href="../../tags/Agent-Skill/" style="font-size: 15px; color: #ccc">Agent,Skill</a> <a href="../../tags/Node-js/" style="font-size: 15px; color: #7a9fb8">Node.js</a> <a href="../../tags/cross-platform/" style="font-size: 15px; color: #88a6bb">跨端方案</a> <a href="../../tags/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/" style="font-size: 15px; color: #ccc">项目管理</a> <a href="../../tags/%E7%9F%A5%E8%AF%86%E5%BA%93/" style="font-size: 15px; color: #ccc">知识库</a> <a href="../../tags/code-quality/" style="font-size: 15px; color: #bec4c9">代码质量</a></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2026 <a href="../../." rel="nofollow">Canace 的博客</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="../../js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.js" async></script><script type="text/javascript" src="../../js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.css"><link rel="stylesheet" type="text/css" href="../../css/search.css?v=0.0.0"><script type="text/javascript" src="../../js/search.js?v=0.0.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+   search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="/js/copycode.js" successtext="复制成功!"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/mermaid@11.14.0/dist/mermaid.min.js"></script><script type="text/javascript">document.addEventListener('DOMContentLoaded', function () {
+  if (!window.mermaid) return;
+  mermaid.initialize({"theme":"default","logLevel":5,"startOnLoad":true,"arrowMarkerAbsolute":false,"flowchart":{"htmlLabels":true,"useMaxWidth":true,"curve":"linear"},"sequence":{"diagramMarginX":50,"diagramMarginY":10,"actorMargin":50,"width":150,"height":65,"boxMargin":10,"boxTextMargin":5,"noteMargin":10,"messageMargin":35,"mirrorActors":true,"bottomMarginAdj":1,"useMaxWidth":true},"gantt":{"titleTopMargin":25,"barHeight":20,"barGap":4,"topPadding":50,"leftPadding":75,"gridLineStartPadding":35,"fontSize":11,"fontFamily":"\"Open-Sans\", \"sans-serif\"","numberSectionStyles":4,"axisFormat":"%Y-%m-%d"},"class":{},"git":{}});
+});
+</script><script type="text/javascript" src="../../js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="../../js/smartresize.js?v=0.0.0"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":200,"height":200},"mobile":{"show":false},"react":{"opacity":0.7},"log":false});</script></body></html>

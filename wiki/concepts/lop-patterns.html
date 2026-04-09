@@ -1,0 +1,103 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="canace 的博客"><meta itemprop="name" content="LOP（面向大模型编程）模式（概念）"><meta itemprop="image" content="https://raw.githubusercontent.com/Canace22/Assets/main/images/snow-other.png"><meta property="og:image" content="https://raw.githubusercontent.com/Canace22/Assets/main/images/snow-other.png"><meta name="description" itemprop="description" content="&lt;p&gt;&lt;strong&gt;LOP&lt;/strong&gt;：人主要写 Prompt + 少量代码，由大模型动态生成或修补逻辑；与传统「人写全量逻辑、机器严格执行」相对。&lt;/p&gt;
+&lt;h2 id=&quot;六种常见形态（跨来源归纳）&quot;&gt;&lt;a href=&quot;#六种常见形态（跨来源归纳）&quot; class=&quot;headerlink&quot; title=&quot;六种常见形态（跨来源归纳）&quot;&gt;&lt;/a&gt;六种常见形态（跨来源归纳）&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;形态&lt;/th&gt;
+&lt;th&gt;核心机制&lt;/th&gt;
+&lt;th&gt;典型场景&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td&gt;Prompt-to-Code&lt;/td&gt;
+&lt;td&gt;单轮直达可运行产物&lt;/td&gt;
+&lt;td&gt;一键小项目、Artifacts&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Agent 编程&lt;/td&gt;
+&lt;td&gt;多轮编辑&amp;#x2F;终端&amp;#x2F;日志&lt;/td&gt;
+&lt;td&gt;Cursor 自主改代码、跑测&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;验证与结构化推理&lt;/td&gt;
+&lt;td&gt;技术选型→结构→边界→安全&lt;/td&gt;
+&lt;td&gt;thinking 块、long-thinking&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;RAG 式生成&lt;/td&gt;
+&lt;td&gt;检索私有库作 context&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;@codebase&lt;/code&gt;、向量库&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;骨架后填充&lt;/td&gt;
+&lt;td&gt;人定结构与契约，模型补实现&lt;/td&gt;
+&lt;td&gt;文件树 + &lt;code&gt;// LOP:&lt;/code&gt; 占位&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;自愈迭代&lt;/td&gt;
+&lt;td&gt;运行&amp;#x2F;测试失败反馈回路&lt;/td&gt;
+&lt;td&gt;Fix with AI、循环 patch&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;h2 id=&quot;与「持久化-wiki-知识库」的交集&quot;&gt;&lt;a href=&quot;#与「持久化-wiki-知识库」的交集&quot; class=&quot;headerlink&quot; title=&quot;与「持久化 wiki &amp;#x2F; 知识库」的交集&quot;&gt;&lt;/a&gt;与「持久化 wiki &amp;#x2F; 知识库」的交集&lt;/h2&gt;&lt;p&gt;RAG 依赖检索当日 context；&lt;strong&gt;结构化文档沉淀&lt;/strong&gt;（游戏策划、设定、API 说明等）既可作为 RAG 料，也可由 agent 维护成 wiki，与 &lt;a href=&quot;llm-maintained-wiki.html&quot;&gt;LLM 维护的知识库&lt;/a&gt; 同属「跨会话记忆」思路。&lt;/p&gt;
+&lt;h2 id=&quot;来源&quot;&gt;&lt;a href=&quot;#来源&quot; class=&quot;headerlink&quot; title=&quot;来源&quot;&gt;&lt;/a&gt;来源&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;../sources/ai-coding-game.html&quot;&gt;面向大模型编程（LOP）在游戏制作流程中的应用畅想&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+"><title>LOP（面向大模型编程）模式（概念）</title><link rel="stylesheet" type="text/css" href="../../css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/normalize.css/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="../../favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="../../favicon.ico"><link rel="apple-touch-icon" href="../../apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="../../apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="../../atom.xml"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/clipboard/dist/clipboard.min.js"></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.js"></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.css"><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">LOP（面向大模型编程）模式（概念）</h1><a id="logo" href="../../.">Canace 的博客</a><p class="description">Tomorrow is another day</p></div><div id="nav-menu"><a href="../../."><i class="fa fa-home"> 主页</i></a><a href="../../archives/"><i class="fa fa-archive"> 文章归档</i></a><a class="current" href="../"><i class="fa fa-book"> 知识库</i></a><a href="../../about/"><i class="fa fa-user"> 关于我</i></a><a href="../../atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">LOP（面向大模型编程）模式（概念）</h1><div class="clear"><div class="toc-article" id="toc"><div class="toc-title">目录</div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E7%A7%8D%E5%B8%B8%E8%A7%81%E5%BD%A2%E6%80%81%EF%BC%88%E8%B7%A8%E6%9D%A5%E6%BA%90%E5%BD%92%E7%BA%B3%EF%BC%89"><span class="toc-text">六种常见形态（跨来源归纳）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8E%E3%80%8C%E6%8C%81%E4%B9%85%E5%8C%96-wiki-%E7%9F%A5%E8%AF%86%E5%BA%93%E3%80%8D%E7%9A%84%E4%BA%A4%E9%9B%86"><span class="toc-text">与「持久化 wiki &#x2F; 知识库」的交集</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9D%A5%E6%BA%90"><span class="toc-text">来源</span></a></li></ol></div></div><div class="post-content"><p><strong>LOP</strong>：人主要写 Prompt + 少量代码，由大模型动态生成或修补逻辑；与传统「人写全量逻辑、机器严格执行」相对。</p>
+<h2 id="六种常见形态（跨来源归纳）"><a href="#六种常见形态（跨来源归纳）" class="headerlink" title="六种常见形态（跨来源归纳）"></a>六种常见形态（跨来源归纳）</h2><table>
+<thead>
+<tr>
+<th>形态</th>
+<th>核心机制</th>
+<th>典型场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Prompt-to-Code</td>
+<td>单轮直达可运行产物</td>
+<td>一键小项目、Artifacts</td>
+</tr>
+<tr>
+<td>Agent 编程</td>
+<td>多轮编辑&#x2F;终端&#x2F;日志</td>
+<td>Cursor 自主改代码、跑测</td>
+</tr>
+<tr>
+<td>验证与结构化推理</td>
+<td>技术选型→结构→边界→安全</td>
+<td>thinking 块、long-thinking</td>
+</tr>
+<tr>
+<td>RAG 式生成</td>
+<td>检索私有库作 context</td>
+<td><code>@codebase</code>、向量库</td>
+</tr>
+<tr>
+<td>骨架后填充</td>
+<td>人定结构与契约，模型补实现</td>
+<td>文件树 + <code>// LOP:</code> 占位</td>
+</tr>
+<tr>
+<td>自愈迭代</td>
+<td>运行&#x2F;测试失败反馈回路</td>
+<td>Fix with AI、循环 patch</td>
+</tr>
+</tbody></table>
+<h2 id="与「持久化-wiki-知识库」的交集"><a href="#与「持久化-wiki-知识库」的交集" class="headerlink" title="与「持久化 wiki &#x2F; 知识库」的交集"></a>与「持久化 wiki &#x2F; 知识库」的交集</h2><p>RAG 依赖检索当日 context；<strong>结构化文档沉淀</strong>（游戏策划、设定、API 说明等）既可作为 RAG 料，也可由 agent 维护成 wiki，与 <a href="llm-maintained-wiki.html">LLM 维护的知识库</a> 同属「跨会话记忆」思路。</p>
+<h2 id="来源"><a href="#来源" class="headerlink" title="来源"></a>来源</h2><ul>
+<li><a href="../sources/ai-coding-game.html">面向大模型编程（LOP）在游戏制作流程中的应用畅想</a></li>
+</ul>
+</div></div></div></div><div class="pure-u-1 pure-u-md-1-4"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 常用文档</i></div><ul></ul><a href="/git-common-commands" title="Git 文档" target="_blank">Git 文档</a><ul></ul><a href="/common-programming-prompt-words" title="常用开发提示词" target="_blank">常用开发提示词</a></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="../../categories/soft/">软技能与思考</a><span class="category-list-count">45</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/cli/">工程化与运维</a><span class="category-list-count">50</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/intelligent/">AI探索</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/web/">Web开发</a><span class="category-list-count">142</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/coding/">编程基础</a><span class="category-list-count">42</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/site/">网站建设</a><span class="category-list-count">5</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="../../tags/essays/" style="font-size: 15px; color: #3679a7">随笔</a> <a href="../../tags/performance/" style="font-size: 15px; color: #7a9fb8">性能优化</a> <a href="../../tags/AI%E5%8E%9F%E7%90%86/" style="font-size: 15px; color: #96aebf">AI原理</a> <a href="../../tags/backend/" style="font-size: 15px; color: #5f90b1">后端</a> <a href="../../tags/Python-Go-%E5%85%B6%E4%BB%96/" style="font-size: 15px; color: #88a6bb">Python/Go/其他</a> <a href="../../tags/JavaScript-TypeScript/" style="font-size: 15px; color: #0e639d">JavaScript&TypeScript</a> <a href="../../tags/api-services/" style="font-size: 15px; color: #bec4c9">API&服务</a> <a href="../../tags/computer-science/" style="font-size: 15px; color: #2972a4">计算机科学</a> <a href="../../tags/%E8%81%8C%E4%B8%9A%E5%8F%91%E5%B1%95/" style="font-size: 15px; color: #7a9fb8">职业发展</a> <a href="../../tags/AI%E7%BC%96%E7%A8%8B/" style="font-size: 15px; color: #7a9fb8">AI编程</a> <a href="../../tags/%E7%BF%BB%E8%AF%91/" style="font-size: 15px; color: #ccc">翻译</a> <a href="../../tags/frontend/" style="font-size: 15px; color: #005b9a">前端</a> <a href="../../tags/frameworks-libs/" style="font-size: 15px; color: #5288ae">框架与库</a> <a href="../../tags/reading-notes/" style="font-size: 15px; color: #a3b5c2">读书笔记</a> <a href="../../tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/" style="font-size: 15px; color: #88a6bb">系统设计</a> <a href="../../tags/programming-languages/" style="font-size: 15px; color: #b1bdc5">编程语言</a> <a href="../../tags/css-visualization/" style="font-size: 15px; color: #1b6aa1">CSS与可视化</a> <a href="../../tags/build-deploy/" style="font-size: 15px; color: #6d97b5">构建与部署</a> <a href="../../tags/dev-tools/" style="font-size: 15px; color: #4481ab">开发工具</a> <a href="../../tags/Agent-Skill/" style="font-size: 15px; color: #ccc">Agent,Skill</a> <a href="../../tags/Node-js/" style="font-size: 15px; color: #7a9fb8">Node.js</a> <a href="../../tags/cross-platform/" style="font-size: 15px; color: #88a6bb">跨端方案</a> <a href="../../tags/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/" style="font-size: 15px; color: #ccc">项目管理</a> <a href="../../tags/%E7%9F%A5%E8%AF%86%E5%BA%93/" style="font-size: 15px; color: #ccc">知识库</a> <a href="../../tags/code-quality/" style="font-size: 15px; color: #bec4c9">代码质量</a></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2026 <a href="../../." rel="nofollow">Canace 的博客</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="../../js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.js" async></script><script type="text/javascript" src="../../js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.css"><link rel="stylesheet" type="text/css" href="../../css/search.css?v=0.0.0"><script type="text/javascript" src="../../js/search.js?v=0.0.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+   search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="/js/copycode.js" successtext="复制成功!"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/mermaid@11.14.0/dist/mermaid.min.js"></script><script type="text/javascript">document.addEventListener('DOMContentLoaded', function () {
+  if (!window.mermaid) return;
+  mermaid.initialize({"theme":"default","logLevel":5,"startOnLoad":true,"arrowMarkerAbsolute":false,"flowchart":{"htmlLabels":true,"useMaxWidth":true,"curve":"linear"},"sequence":{"diagramMarginX":50,"diagramMarginY":10,"actorMargin":50,"width":150,"height":65,"boxMargin":10,"boxTextMargin":5,"noteMargin":10,"messageMargin":35,"mirrorActors":true,"bottomMarginAdj":1,"useMaxWidth":true},"gantt":{"titleTopMargin":25,"barHeight":20,"barGap":4,"topPadding":50,"leftPadding":75,"gridLineStartPadding":35,"fontSize":11,"fontFamily":"\"Open-Sans\", \"sans-serif\"","numberSectionStyles":4,"axisFormat":"%Y-%m-%d"},"class":{},"git":{}});
+});
+</script><script type="text/javascript" src="../../js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="../../js/smartresize.js?v=0.0.0"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":200,"height":200},"mobile":{"show":false},"react":{"opacity":0.7},"log":false});</script></body></html>

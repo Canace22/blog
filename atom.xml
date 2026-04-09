@@ -6,7 +6,7 @@
   <link href="https://canace.site/atom.xml" rel="self"/>
   
   <link href="https://canace.site/"/>
-  <updated>2026-04-02T03:39:22.506Z</updated>
+  <updated>2026-04-09T03:34:23.243Z</updated>
   <id>https://canace.site/</id>
   
   <author>
@@ -17,11 +17,30 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>使用大模型来维护知识库</title>
+    <link href="https://canace.site/llm-wiki/"/>
+    <id>https://canace.site/llm-wiki/</id>
+    <published>2026-04-08T01:45:45.000Z</published>
+    <updated>2026-04-09T03:34:23.243Z</updated>
+    
+    
+    <summary type="html">介绍「原始资料 + 规则文件 + wiki」分工：人只负责输入，大模型维护持久化知识库（索引、对话总结、报告等），作为跨 agent 的长期上下文；说明三层架构、wiki 目录设计与落地步骤，并关联 Karpathy 的 LLM Wiki 思路。</summary>
+    
+    
+    
+    <category term="AI探索" scheme="https://canace.site/categories/intelligent/"/>
+    
+    
+    <category term="知识库" scheme="https://canace.site/tags/%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Gemini 在打开新会话时，是如何有记忆的</title>
     <link href="https://canace.site/gemini-new-session-memory/"/>
     <id>https://canace.site/gemini-new-session-memory/</id>
     <published>2026-04-02T07:00:00.000Z</published>
-    <updated>2026-04-02T03:39:22.506Z</updated>
+    <updated>2026-04-02T03:53:17.674Z</updated>
     
     
     <summary type="html">探讨 Google Gemini 在新对话中仍能呈现「记得你」的体验背后，可能涉及的账户级记忆、Saved info、跨会话摘要等机制与边界。</summary>
@@ -232,7 +251,7 @@
     <link href="https://canace.site/ai-coding-game/"/>
     <id>https://canace.site/ai-coding-game/</id>
     <published>2025-12-10T10:39:22.000Z</published>
-    <updated>2026-02-24T06:31:06.955Z</updated>
+    <updated>2026-04-08T01:46:50.038Z</updated>
     
     
     <summary type="html">大模型编程能提升游戏开发效率，但需结构化引导避免随机性，适合内容迭代和玩家共创。</summary>
@@ -376,25 +395,6 @@
     
     
     <category term="AI原理" scheme="https://canace.site/tags/AI%E5%8E%9F%E7%90%86/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>常用开发提示词</title>
-    <link href="https://canace.site/common-programming-prompt-words/"/>
-    <id>https://canace.site/common-programming-prompt-words/</id>
-    <published>2025-09-21T01:46:30.000Z</published>
-    <updated>2026-02-24T06:31:15.490Z</updated>
-    
-    
-    <summary type="html">开发中常用词汇翻译和用法整理，方便日常查阅使用</summary>
-    
-    
-    
-    <category term="软技能与思考" scheme="https://canace.site/categories/soft/"/>
-    
-    
-    <category term="职业发展" scheme="https://canace.site/tags/%E8%81%8C%E4%B8%9A%E5%8F%91%E5%B1%95/"/>
     
   </entry>
   
