@@ -328,6 +328,7 @@
 
 - [LLM 维护的知识库（概念）](concepts/llm-maintained-wiki.md)
 - [LOP（面向大模型编程）模式（概念）](concepts/lop-patterns.md)
+- [Web 前端开发知识图谱（概念）](concepts/web-frontend-knowledge-graph.md)
 
 ## Other
 
