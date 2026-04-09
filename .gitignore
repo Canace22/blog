@@ -5,3 +5,6 @@ public
 db.json
 .deploy_git
 .env
+# Obsidian 库配置（工作区/插件等，勿提交）
+wiki/.obsidian/
+wiki/.obsidian
