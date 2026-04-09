@@ -326,10 +326,17 @@
 
 ## Concepts
 
+- [Harness Engineering（概念）](concepts/harness-engineering.md)
 - [LLM 维护的知识库（概念）](concepts/llm-maintained-wiki.md)
 - [LOP（面向大模型编程）模式（概念）](concepts/lop-patterns.md)
 - [Web 前端开发知识图谱（概念）](concepts/web-frontend-knowledge-graph.md)
+- [Vue 中的 `key`（概念）](concepts/vue-key.md)
 
-## Other
+## Queries
 
-- （暂无 `queries/`、`reports/` 条目）
+- [我的文章涵盖 AI Coding 哪几方面](queries/ai-coding-coverage.md)
+
+## Reports
+
+- [博客草稿：我原来写的项目规则、Skill、知识库，其实已经是在做 Harness Engineering](reports/harness-engineering-blog-draft.md)
+- [Harness Engineering 资料整理](reports/harness-engineering-reading-notes.md)
