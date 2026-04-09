@@ -1,54 +1,69 @@
-# Blog 分类与标签规范
+# LLM Wiki Operating Guide
 
-本博客基于 Hexo，文章位于 `source/_posts/`。每篇文章的 front matter 中包含 `categories`（分类）和 `tags`（标签）两个字段。
+This repository is a personal knowledge base maintained by an LLM agent.
 
-完整文档见 **docs/** 目录：`docs/categories-tags.md`（分类与标签）、`docs/blog-category-tree.md`（分类树）、`docs/hexo-blog.md`（Hexo 操作）。
+## Purpose
 
-## 分类（Categories）
+The agent should turn all Markdown files under the `source/_posts/*.md`, into a persistent, interlinked markdown wiki in `wiki/`.
 
-分类为**单选**，只能从以下 6 个值中选一个：
+Treat as **not** ingest sources: anything under `wiki/` (that is the maintained output) and this `AGENTS.md` file (operational guide only).
 
-- `编程基础` — 算法、数据结构、计算机网络、操作系统、编程语言特性
-- `Web开发` — 前端、后端、数据库，所有与 Web 技术栈直接相关的内容
-- `工程化与运维` — 构建工具、CI/CD、Docker、性能优化、测试、Git 等开发工具
-- `AI探索` — AI 编程工具、模型训练、AI 原理
-- `软技能与思考` — 职业发展、项目管理、读书笔记、随笔杂文
-- `网站建设` — 博客搭建、Hexo 配置等站点自身相关
+## Ground Rules
 
-## 标签（Tags）
+- Treat `source/_posts/*.md` as immutable source material. Read from it, but do not modify it.
+- Treat `wiki/` as the maintained knowledge layer. Create and update files there.
+- Prefer incremental updates over rewrites.
+- Preserve useful cross-links between pages.
+- When a new source changes an older claim, update the relevant pages and note the change.
+- Keep edits readable for humans browsing in Obsidian or a text editor.
 
-标签是分类下的**子方向**，每篇文章必须有标签。允许的值如下：
+## Directory Conventions
 
-| 分类 | 可选标签 |
-| ------ | --------- |
-| 编程基础 | `计算机科学`、`编程语言`、`系统设计` |
-| Web开发 | `JavaScript&TypeScript`、`[前端, 框架与库]`、`[前端, CSS与可视化]`、`[前端, 跨端方案]`、`[后端, Node.js]`、`[后端, Python/Go/其他]`、`[后端, API&服务]` |
-| 工程化与运维 | `构建与部署`、`性能优化`、`代码质量`、`开发工具` |
-| AI探索 | `AI编程`、`AI原理` |
-| 软技能与思考 | `项目管理`、`职业发展`、`读书笔记`、`随笔` |
-| 网站建设 | 无子标签，可不填 |
+- `source/_posts/*.md`: notes, transcripts
+- `wiki/sources/`: one page per ingested source
+- `wiki/concepts/`: concept and topic pages synthesized across sources
+- `wiki/queries/`: durable Q&A outputs worth saving
+- `wiki/reports/`: longer analysis outputs
+- `wiki/index.md`: catalog of wiki pages
+- `wiki/log.md`: append-only operational log
 
-## Front Matter 格式
+## Ingest Workflow
 
-```yaml
----
-title: 文章标题
-categories: Web开发
-tags: [前端, 框架与库]
-author: Canace
-comments: true
-date: 2025-01-01 10:00:00
----
-```
+When asked to ingest a source:
 
-规则：
+1. Read the source file from the `source/_posts/*.md`.
+2. Create or update a source summary page in `wiki/sources/`.
+3. Update any relevant concept pages in `wiki/concepts/`.
+4. Update `wiki/index.md` so the new or changed pages are listed.
+5. Append an entry to `wiki/log.md`.
 
-1. `categories` 直接写值，不加引号，不用数组
-2. 单标签直接写值：`tags: 计算机科学`
-3. 双标签用数组，parent 在前，逗号后加一个空格：`tags: [前端, CSS与可视化]`
-4. 不允许尾部空格、引号包裹、顺序颠倒
-5. `JavaScript&TypeScript` 虽属于前端子标签，但因其既涵盖浏览器端也涵盖语言本身，作为独立标签使用，不加 `前端` 前缀
+## Query Workflow
 
-## 知识库
+When asked a question:
 
-[wiki-rule](./docs/wiki-rule.md)
+1. Read `wiki/index.md` first.
+2. Open the most relevant wiki pages.
+3. Synthesize an answer from the wiki.
+4. If the result seems durable, save it to `wiki/queries/` or `wiki/reports/`.
+5. Append a short entry to `wiki/log.md`.
+
+## Lint Workflow
+
+When asked to lint the wiki, check for:
+
+- pages with no inbound or outbound links
+- concepts mentioned repeatedly but lacking their own page
+- contradictions between source pages and concept pages
+- stale summaries that should be revised
+- useful query outputs that should become concept or report pages
+
+## Writing Style
+
+- Prefer short sections and explicit links.
+- Distinguish source-backed claims from synthesis.
+- Keep each page focused on one source or one concept.
+- Use bullet lists when they improve scanability.
+
+## Current Seed Topic
+
+This repo currently explores the idea of an "LLM-maintained wiki" as a compounding alternative to pure query-time RAG.

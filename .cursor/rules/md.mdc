@@ -4,3 +4,5 @@ alwaysApply: true
 ## 文档格式
 
 格式规范遵循 https://github.com/ruanyf/document-style-guide/tree/master
+
+@docs/categories-tags.md
