@@ -1,0 +1,334 @@
+# Wiki Index
+
+## Sources（按分类）
+
+### 编程基础
+
+- [从浏览器地址栏输入 URL 到界面被渲染出来看前端知识](sources/what-happens-from-url-to-display.md) — `source/_posts/what-happens-from-url-to-display.md`
+- [web 安全——CSRF](sources/web-security-csrf.md) — `source/_posts/web-security-csrf.md`
+- [认识 Cookie](sources/understanding-cookies.md) — `source/_posts/understanding-cookies.md`
+- [Two Sum](sources/two-sum-problem.md) — `source/_posts/two-sum-problem.md`
+- [时间零点](sources/time-zero.md) — `source/_posts/time-zero.md`
+- [时间复杂度 VS 空间复杂度](sources/time-complexity-vs-space-complexity.md) — `source/_posts/time-complexity-vs-space-complexity.md`
+- [TCP/IP三次握手](sources/tcp-ip-three-way-handshake.md) — `source/_posts/tcp-ip-three-way-handshake.md`
+- [解决 github dns 污染问题](sources/solve-github-dns-pollution-issue.md) — `source/_posts/solve-github-dns-pollution-issue.md`
+- [单向列表拼接](sources/singly-linked-list-concatenation.md) — `source/_posts/singly-linked-list-concatenation.md`
+- [罗马数字转整数](sources/roman-numerals-to-integer.md) — `source/_posts/roman-numerals-to-integer.md`
+- [原地删除数组中的重复值](sources/removeDuplicates.md) — `source/_posts/removeDuplicates.md`
+- [整数反转](sources/reverse-integer.md) — `source/_posts/reverse-integer.md`
+- [原地删除数组中的指定元素](sources/removeElement.md) — `source/_posts/removeElement.md`
+- [正则](sources/regular-expressions.md) — `source/_posts/regular-expressions.md`
+- [去除数组对象中与子节点id重复的父节点](sources/remove-parent-nodes-with-duplicate-child-ids.md) — `source/_posts/remove-parent-nodes-with-duplicate-child-ids.md`
+- [递归树](sources/recursive-tree.md) — `source/_posts/recursive-tree.md`
+- [回文数判断](sources/palindrome-number-judgment.md) — `source/_posts/palindrome-number-judgment.md`
+- [分页算法](sources/pagination-algorithm.md) — `source/_posts/pagination-algorithm.md`
+- [数字精确到小数点两位](sources/number-precise-to-two-decimal-places.md) — `source/_posts/number-precise-to-two-decimal-places.md`
+- [n * n 阶矩阵算法](sources/n-n-order-matrix-algorithm.md) — `source/_posts/n-n-order-matrix-algorithm.md`
+- [ubuntu 登陆华南师范大学校园网的方法](sources/method-to-login-to-south-china-normal-university-campus-network.md) — `source/_posts/method-to-login-to-south-china-normal-university-campus-network.md`
+- [KNN算法](sources/knn-algorithm.md) — `source/_posts/knn-algorithm.md`
+- [js链表实现](sources/js-linked-list-implementation.md) — `source/_posts/js-linked-list-implementation.md`
+- [HTTP 笔记](sources/http-notes.md) — `source/_posts/http-notes.md`
+- [Homebrew 常用命令](sources/homebrew-common-commands.md) — `source/_posts/homebrew-common-commands.md`
+- [获取最长公共前缀](sources/get-longest-common-prefix.md) — `source/_posts/get-longest-common-prefix.md`
+- [生成指定范围的随机数组](sources/generate-random-array-in-specified-range.md) — `source/_posts/generate-random-array-in-specified-range.md`
+- [找出两个有序数组的中值](sources/find-median-sorted-arrays.md) — `source/_posts/find-median-sorted-arrays.md`
+- [统计数组对象的元素总数](sources/count-total-elements-of-array-objects.md) — `source/_posts/count-total-elements-of-array-objects.md`
+- [计算岛屿的数量](sources/count-number-of-islands.md) — `source/_posts/count-number-of-islands.md`
+- [统计优美子数组](sources/count-beautiful-subarrays.md) — `source/_posts/count-beautiful-subarrays.md`
+- [常用的Unix终端命令](sources/common-terminal-commands.md) — `source/_posts/common-terminal-commands.md`
+- [常用正则表达式](sources/common-regular-expressions.md) — `source/_posts/common-regular-expressions.md`
+- [常用图片格式比较](sources/common-image-format-comparison.md) — `source/_posts/common-image-format-comparison.md`
+- [常见算法思想](sources/common-algorithm-ideas.md) — `source/_posts/common-algorithm-ideas.md`
+- [爬楼梯](sources/climbing-stairs.md) — `source/_posts/climbing-stairs.md`
+- [计算电饭煲的预约时间](sources/calculate-rice-cooker-reservation-time.md) — `source/_posts/calculate-rice-cooker-reservation-time.md`
+- [浅谈 DNS 污染](sources/brief-discussion-on-dns-pollution.md) — `source/_posts/brief-discussion-on-dns-pollution.md`
+- [布尔变量在项目中的应用](sources/boolean-variables-in-project-application.md) — `source/_posts/boolean-variables-in-project-application.md`
+- [括号匹配](sources/bracket-matching.md) — `source/_posts/bracket-matching.md`
+- [二分查找](sources/binary-search.md) — `source/_posts/binary-search.md`
+- [NP/P/NPC 都是何方神圣](sources/NP-P-NPC.md) — `source/_posts/NP-P-NPC.md`
+
+### Web开发
+
+- [Web 前端开发为什么要用框架](sources/why-frontend-needs-framework.md) — `source/_posts/why-frontend-needs-framework.md`
+- [千问点奶茶时弹出的 UI 是怎么实现的，是生成式 UI 吗](sources/qwen-milk-tea-ui.md) — `source/_posts/qwen-milk-tea-ui.md`
+- [yml 文件操作方法](sources/yml-file-operations.md) — `source/_posts/yml-file-operations.md`
+- [微信小程序小技巧](sources/wechat-mini-program-pitfalls.md) — `source/_posts/wechat-mini-program-pitfalls.md`
+- [Vue 你这是怎么了](sources/what-happened-to-vue.md) — `source/_posts/what-happened-to-vue.md`
+- [Web端版本更新弹窗实现](sources/webpage-version-update-popup-implementation.md) — `source/_posts/webpage-version-update-popup-implementation.md`
+- [Web安全 —— XSS攻击](sources/web-security-xss-attack.md) — `source/_posts/web-security-xss-attack.md`
+- [Vue3 实战笔记](sources/vue3-notes.md) — `source/_posts/vue3-notes.md`
+- [vue动态改变title](sources/vue-dynamic-change-title.md) — `source/_posts/vue-dynamic-change-title.md`
+- [vue动态引入组件,注意不是异步!](sources/vue-dynamic-component-import-note-not-async.md) — `source/_posts/vue-dynamic-component-import-note-not-async.md`
+- [我所不知道的 Vue 细节](sources/vue-details-i-didnt-know.md) — `source/_posts/vue-details-i-didnt-know.md`
+- [Vue 数据驱动视图更新实现](sources/vue-data-driven-view-implementation.md) — `source/_posts/vue-data-driven-view-implementation.md`
+- [校验字符串是否有意义](sources/validate-string.md) — `source/_posts/validate-string.md`
+- [认识字节序](sources/understanding-byte-order.md) — `source/_posts/understanding-byte-order.md`
+- [理解 instanceof](sources/understanding-instanceof.md) — `source/_posts/understanding-instanceof.md`
+- [防不胜防的 bug —— chrome 翻译惹的祸](sources/unavoidable-bug-chrome-translation-caused-trouble.md) — `source/_posts/unavoidable-bug-chrome-translation-caused-trouble.md`
+- [typescript 笔记](sources/typescript-environment-config.md) — `source/_posts/typescript-environment-config.md`
+- [ubuntu 配置前端环境](sources/ubuntu-configure-frontend-environment.md) — `source/_posts/ubuntu-configure-frontend-environment.md`
+- [时间戳转日期](sources/timestamp-to-date.md) — `source/_posts/timestamp-to-date.md`
+- [three.js 基础实战 —— 创建画布](sources/three-js-basics-practice.md) — `source/_posts/three-js-basics-practice.md`
+- [说说网页自适应和响应式布局](sources/talking-about-webpage-adaptive-and-responsive-layout.md) — `source/_posts/talking-about-webpage-adaptive-and-responsive-layout.md`
+- [说说浏览器缓存机制](sources/talking-about-browser-cache-mechanism.md) — `source/_posts/talking-about-browser-cache-mechanism.md`
+- [说说 Vuex](sources/talking-about-vuex.md) — `source/_posts/talking-about-vuex.md`
+- [table-cell等分](sources/table-cell-equal-division.md) — `source/_posts/table-cell-equal-division.md`
+- [字符串与代码的严谨性](sources/string-and-code-rigor.md) — `source/_posts/string-and-code-rigor.md`
+- [滚动翻页](sources/scroll-pagination.md) — `source/_posts/scroll-pagination.md`
+- [setTimeout 模拟 setInterval](sources/settimeout-simulate-setinterval.md) — `source/_posts/settimeout-simulate-setinterval.md`
+- [翻转字符串里的单词](sources/reverse-words-in-string.md) — `source/_posts/reverse-words-in-string.md`
+- [react hooks 创建电影 app](sources/react-hooks-create-movie-app.md) — `source/_posts/react-hooks-create-movie-app.md`
+- [python3 安装](sources/python3-installation.md) — `source/_posts/python3-installation.md`
+- [python2 => python3 踩坑集合](sources/python-pitfalls-collection.md) — `source/_posts/python-pitfalls-collection.md`
+- [Proxy 实现观察者模式](sources/proxy-observer-pattern.md) — `source/_posts/proxy-observer-pattern.md`
+- [prisma 入门指南](sources/prisma-getting-started-guide.md) — `source/_posts/prisma-getting-started-guide.md`
+- [PixiJs ———— 精灵加载去缓存](sources/pixi-js-sprite-loading-cache-removal.md) — `source/_posts/pixi-js-sprite-loading-cache-removal.md`
+- [PixiJs 极简教程](sources/pixi-basics.md) — `source/_posts/pixi-basics.md`
+- [pixijs Graphics vertexData 采坑](sources/pixijs-vertexData-null.md) — `source/_posts/pixijs-vertexData-null.md`
+- [拼音学习项目笔记](sources/pinyin-learning-project-notes.md) — `source/_posts/pinyin-learning-project-notes.md`
+- [NPM Package.json 字段列表(包括非官方字段)](sources/package-json-field-list.md) — `source/_posts/package-json-field-list.md`
+- [一键生成响应式表格](sources/one-click-generate-responsive-table.md) — `source/_posts/one-click-generate-responsive-table.md`
+- [对象属性值监听](sources/object-property-value-monitoring.md) — `source/_posts/object-property-value-monitoring.md`
+- [nodeJs 模块机制](sources/nodejs-module-mechanism.md) — `source/_posts/nodejs-module-mechanism.md`
+- [nodeJS基础](sources/nodejs-notes.md) — `source/_posts/nodejs-notes.md`
+- [Node.js 版本管理工具概览](sources/node-version-management.md) — `source/_posts/node-version-management.md`
+- [nodeJs 模块](sources/nodeJs.md) — `source/_posts/nodeJs.md`
+- [nodeJs 配置](sources/nodejs-config.md) — `source/_posts/nodejs-config.md`
+- [CommonJS、AMD、RequireJS、CMD 以及 ES6 规范比较](sources/module-specifications.md) — `source/_posts/module-specifications.md`
+- [深入浅出Node笔记](sources/node-notes-in-depth.md) — `source/_posts/node-notes-in-depth.md`
+- [修改滚动条样式的兼容写法](sources/modify-scrollbar-style-compatible.md) — `source/_posts/modify-scrollbar-style-compatible.md`
+- [修改自动填充样式](sources/modify-autofill-style.md) — `source/_posts/modify-autofill-style.md`
+- [小程序 tabs-sticky](sources/mini-program-tabs-sticky.md) — `source/_posts/mini-program-tabs-sticky.md`
+- [MAC 调试 IOS 真机上 Web 网页的方法](sources/mac-debug-ios-web-page.md) — `source/_posts/mac-debug-ios-web-page.md`
+- [lodash 源码解析 —— slice](sources/lodash-source-analysis-array-slice.md) — `source/_posts/lodash-source-analysis-array-slice.md`
+- [mac 安装 mysql](sources/mac-install-mysql.md) — `source/_posts/mac-install-mysql.md`
+- [lodash 源码解析 —— chunk](sources/lodash-source-analysis-array-chunk.md) — `source/_posts/lodash-source-analysis-array-chunk.md`
+- [离开页面弹窗](sources/leave-page-popup.md) — `source/_posts/leave-page-popup.md`
+- [浏览器页面跳转至文章指定位置的方法探究](sources/jump-to-specific-position-in-article.md) — `source/_posts/jump-to-specific-position-in-article.md`
+- [key 值在 vue 组件中的作用](sources/key-value-role-in-vue-components.md) — `source/_posts/key-value-role-in-vue-components.md`
+- [JS 概谈](sources/js-overview.md) — `source/_posts/js-overview.md`
+- [时区、时间戳？](sources/js-timezone.md) — `source/_posts/js-timezone.md`
+- [Js 字符串转 base64](sources/js-string-to-base64.md) — `source/_posts/js-string-to-base64.md`
+- [JavaScript 在 V8 引擎浏览器上是怎么执行的](sources/js-execution.md) — `source/_posts/js-execution.md`
+- [JS 模态框————angular](sources/js-modal-blog.md) — `source/_posts/js-modal-blog.md`
+- [JavaScript 灵魂拷问](sources/javascript-soul-questions.md) — `source/_posts/javascript-soul-questions.md`
+- [JavaScript 奇技淫巧](sources/javascript-tricks.md) — `source/_posts/javascript-tricks.md`
+- [javaScript 面向对象编程](sources/javascript-object-oriented-programming.md) — `source/_posts/javascript-object-oriented-programming.md`
+- [javaScript 函数](sources/javascript-functions.md) — `source/_posts/javascript-functions.md`
+- [JavaScript new 关键字的实现原理](sources/javascript-new-implementation-principle.md) — `source/_posts/javascript-new-implementation-principle.md`
+- [JavaScript 如何判断用户是否打开了大写键盘](sources/javascript-detect-caps-lock.md) — `source/_posts/javascript-detect-caps-lock.md`
+- [JavaScript 基础 —— 类型转换](sources/javascript-basics-type-conversion.md) — `source/_posts/javascript-basics-type-conversion.md`
+- [JavaScript 自带的对象深拷贝方法](sources/javascript-built-in-deep-copy.md) — `source/_posts/javascript-built-in-deep-copy.md`
+- [JavaScript 常用代码片段](sources/javascript-common-code-snippets.md) — `source/_posts/javascript-common-code-snippets.md`
+- [JavaScript基础 —— 基本数据类型与引用类型的异同](sources/javascript-basics-primitive-vs-reference-types.md) — `source/_posts/javascript-basics-primitive-vs-reference-types.md`
+- [javaScript-promise](sources/javaScript-promise.md) — `source/_posts/javaScript-promise.md`
+- [Vol15：初创项目/产品，怎么做用户留存](sources/issue-15.md) — `source/_posts/issue-15.md`
+- [Vol14：如何延长下班时间](sources/issue-14.md) — `source/_posts/issue-14.md`
+- [有趣的CSS层叠问题](sources/interesting-css-cascade-issues.md) — `source/_posts/interesting-css-cascade-issues.md`
+- [HTTP 服务器](sources/http-server.md) — `source/_posts/http-server.md`
+- [实现数组拍平](sources/implement-array-flatten.md) — `source/_posts/implement-array-flatten.md`
+- [html 文档导出为 word 文档和 pdf 文档](sources/html-to-text-js.md) — `source/_posts/html-to-text-js.md`
+- [html 笔记](sources/html-notes.md) — `source/_posts/html-notes.md`
+- [浏览器渲染原理概述](sources/how-to-optimize-animation.md) — `source/_posts/how-to-optimize-animation.md`
+- [第一个 Go 程序](sources/go-getting-started.md) — `source/_posts/go-getting-started.md`
+- [幽灵空白节点](sources/ghost-whitespace-nodes.md) — `source/_posts/ghost-whitespace-nodes.md`
+- [获取 DOM style 的正确姿势](sources/get-css-style.md) — `source/_posts/get-css-style.md`
+- [函数式编程](sources/functional-programming.md) — `source/_posts/functional-programming.md`
+- [函数柯里化](sources/function-currying.md) — `source/_posts/function-currying.md`
+- [函数不声明全局变量也不能传入参数，每次打印数字递增](sources/function-without-global-variable-counting.md) — `source/_posts/function-without-global-variable-counting.md`
+- [网页或html元素在浏览器上全屏解决方案](sources/fullscreen-solution-for-webpage-or-html-elements.md) — `source/_posts/fullscreen-solution-for-webpage-or-html-elements.md`
+- [好玩的 console](sources/fun-console.md) — `source/_posts/fun-console.md`
+- [四个JS小技巧](sources/four-js-tips.md) — `source/_posts/four-js-tips.md`
+- [前端绘制图形验证码](sources/frontend-draw-graphic-captcha.md) — `source/_posts/frontend-draw-graphic-captcha.md`
+- [Flutter学习笔记————Dart基础](sources/flutter-learning-notes-dart-basics.md) — `source/_posts/flutter-learning-notes-dart-basics.md`
+- [Flutter 学习笔记（一）—— 快速上手](sources/flutter-learning-notes-quick-start.md) — `source/_posts/flutter-learning-notes-quick-start.md`
+- [flow 简易教程](sources/flow-simple-tutorial.md) — `source/_posts/flow-simple-tutorial.md`
+- [火狐删除各种虚线框](sources/firefox-remove-various-dashed-borders.md) — `source/_posts/firefox-remove-various-dashed-borders.md`
+- [ES2020 新特性](sources/es2020-new-features.md) — `source/_posts/es2020-new-features.md`
+- [element-plus 缩放问题解决](sources/element-plus-table-component-scaling-issue-solution.md) — `source/_posts/element-plus-table-component-scaling-issue-solution.md`
+- [Egg 快速上手](sources/egg.md) — `source/_posts/egg.md`
+- [下拉列表的实现](sources/dropdown-list-implementation.md) — `source/_posts/dropdown-list-implementation.md`
+- [禁止图片拖动](sources/disable-image-dragging.md) — `source/_posts/disable-image-dragging.md`
+- [自定义 github 动态](sources/custom-github-activity.md) — `source/_posts/custom-github-activity.md`
+- [数组、对象的深拷贝](sources/deep-copy-of-arrays-and-objects.md) — `source/_posts/deep-copy-of-arrays-and-objects.md`
+- [CSS3 动画 vs js 动画](sources/css3-animation-vs-js-animation.md) — `source/_posts/css3-animation-vs-js-animation.md`
+- [CSS 画两色饼状图](sources/css-two-color-pie-chart.md) — `source/_posts/css-two-color-pie-chart.md`
+- [CSS2 下块级元素垂直水平居中](sources/css2-block-element-center.md) — `source/_posts/css2-block-element-center.md`
+- [CSS 系列文章 —— 文本处理](sources/css-series-text-processing.md) — `source/_posts/css-series-text-processing.md`
+- [CSS 小技巧](sources/css-tips.md) — `source/_posts/css-tips.md`
+- [CSS 系列文章 —— 内联元素与流](sources/css-series-inline-elements-and-flow.md) — `source/_posts/css-series-inline-elements-and-flow.md`
+- [CSS 系列文章——CSS历史及文档流](sources/css-series-history-and-document-flow.md) — `source/_posts/css-series-history-and-document-flow.md`
+- [CSS 系列文章——CSS 中的流与尺寸](sources/css-series-flow-and-dimensions.md) — `source/_posts/css-series-flow-and-dimensions.md`
+- [CSS 系列文章 —— 流的破坏与保护](sources/css-series-flow-destruction-and-protection.md) — `source/_posts/css-series-flow-destruction-and-protection.md`
+- [CSS 系列文章——CSS 基础知多少](sources/css-series-basics.md) — `source/_posts/css-series-basics.md`
+- [CSS 系列文章 —— 层叠](sources/css-series-cascade.md) — `source/_posts/css-series-cascade.md`
+- [CSS 系列文章——盒尺寸](sources/css-series-box-dimensions.md) — `source/_posts/css-series-box-dimensions.md`
+- [CSS 定位详解](sources/css-positioning-detailed.md) — `source/_posts/css-positioning-detailed.md`
+- [CSS 基础](sources/css-notes.md) — `source/_posts/css-notes.md`
+- [CSS 定位](sources/css-positioning.md) — `source/_posts/css-positioning.md`
+- [CSS 常用布局及解决方案](sources/css-layout-guide.md) — `source/_posts/css-layout-guide.md`
+- [CSS 实现圆环进度条](sources/css-circular-progress-bar.md) — `source/_posts/css-circular-progress-bar.md`
+- [css background-image 的应用](sources/css-background-image-application.md) — `source/_posts/css-background-image-application.md`
+- [创建基于 null 的对象](sources/create-object-based-on-null.md) — `source/_posts/create-object-based-on-null.md`
+- [关于跨域那些事](sources/cross-origin-resource-sharing.md) — `source/_posts/cross-origin-resource-sharing.md`
+- [计算机图形学 —————— 空间中的物体（2）](sources/computer-graphics-2.md) — `source/_posts/computer-graphics-2.md`
+- [计算机图形学 ———— 空间中的物体（1）](sources/computer-graphics-1.md) — `source/_posts/computer-graphics-1.md`
+- [代码优化](sources/code-optimization.md) — `source/_posts/code-optimization.md`
+- [CKeditor 在 angular 中的使用文档](sources/ckeditor-usage-in-angular.md) — `source/_posts/ckeditor-usage-in-angular.md`
+- [canvas 绘制雪碧图导出](sources/canvas-draw-sprite-export.md) — `source/_posts/canvas-draw-sprite-export.md`
+- [Canvas 画动态路径](sources/canvas-draw-dynamic-path.md) — `source/_posts/canvas-draw-dynamic-path.md`
+- [从零开始撸一个 tinymce 图片上传插件](sources/build-tinymce-img-plugin.md) — `source/_posts/build-tinymce-img-plugin.md`
+- [搭建 Django 博客系统](sources/build-django-blog-system.md) — `source/_posts/build-django-blog-system.md`
+- [构建 TypeScript 库](sources/build-typescript-library.md) — `source/_posts/build-typescript-library.md`
+- [浅谈可视化表单设计](sources/brief-discussion-on-visual-form-design.md) — `source/_posts/brief-discussion-on-visual-form-design.md`
+- [关于浏览器内核及其 CSS 写法](sources/browser-kernel-and-writing.md) — `source/_posts/browser-kernel-and-writing.md`
+- [盒模型](sources/box-model.md) — `source/_posts/box-model.md`
+- [开始用 beego 写 http 服务](sources/beego-getting-started.md) — `source/_posts/beego-getting-started.md`
+- [异步数据引出的 console 问题](sources/async-data-console-issues.md) — `source/_posts/async-data-console-issues.md`
+- [axios 网络请求封装](sources/axios-network-request-encapsulation.md) — `source/_posts/axios-network-request-encapsulation.md`
+- [ant-design-vue 那些坑](sources/ant-design-pitfalls.md) — `source/_posts/ant-design-pitfalls.md`
+- [angular 导航栏与内容联动](sources/angular-navigation-content-linkage.md) — `source/_posts/angular-navigation-content-linkage.md`
+- [WebRTC](sources/WebRTC.md) — `source/_posts/WebRTC.md`
+- [JavaScript call、apply 和 bind](sources/JavaScript-call-apply-bind.md) — `source/_posts/JavaScript-call-apply-bind.md`
+- [Django-channels](sources/Django-channels.md) — `source/_posts/Django-channels.md`
+
+### 工程化与运维
+
+- [Vscode 配置 wsl 并配置 node 环境](sources/wsl-config.md) — `source/_posts/wsl-config.md`
+- [Windows 奇技淫巧](sources/windows-tricks.md) — `source/_posts/windows-tricks.md`
+- [Webpack5 新特性 - 模块联邦笔记](sources/webpack5-new-features-module-federation-notes.md) — `source/_posts/webpack5-new-features-module-federation-notes.md`
+- [webpack](sources/webpack.md) — `source/_posts/webpack.md`
+- [webpack+gulp 打包 vue 组件库](sources/webpack-gulp-bundle-vue-component-library.md) — `source/_posts/webpack-gulp-bundle-vue-component-library.md`
+- [webpack 动态修改资源域名](sources/webpack-dynamic-modify-resource-domain.md) — `source/_posts/webpack-dynamic-modify-resource-domain.md`
+- [网页性能优化-防抖](sources/web-performance-optimization-debounce.md) — `source/_posts/web-performance-optimization-debounce.md`
+- [Vue 单元测试](sources/vue-test-unit.md) — `source/_posts/vue-test-unit.md`
+- [vue 项目搭建步骤](sources/vue-project-setup-steps.md) — `source/_posts/vue-project-setup-steps.md`
+- [vue-config 配置模板](sources/vue-config-template.md) — `source/_posts/vue-config-template.md`
+- [vscode代码格式化总结](sources/vscode-code-formatting-summary.md) — `source/_posts/vscode-code-formatting-summary.md`
+- [ubuntu 下配置ss](sources/ubuntu-configure-ss.md) — `source/_posts/ubuntu-configure-ss.md`
+- [关于分支管理的一点感想](sources/thoughts-on-branch-management.md) — `source/_posts/thoughts-on-branch-management.md`
+- [sublime text3 配置 node.js 环境](sources/sublime-text-nodejs-config.md) — `source/_posts/sublime-text-nodejs-config.md`
+- [SS 安装](sources/ss-installation.md) — `source/_posts/ss-installation.md`
+- [软件版本号定义](sources/software-version-number-definition.md) — `source/_posts/software-version-number-definition.md`
+- [记突发事件导致的服务降级](sources/record-service-degradation-due-to-emergency.md) — `source/_posts/record-service-degradation-due-to-emergency.md`
+- [项目模块化原则](sources/project-modularization-principles.md) — `source/_posts/project-modularization-principles.md`
+- [SSH 端口号修改](sources/port-number-modification.md) — `source/_posts/port-number-modification.md`
+- [Notion+Chrome书签打造个人知识库](sources/personal-knowledge-base.md) — `source/_posts/personal-knowledge-base.md`
+- [npm 常用命令](sources/npm-common-commands.md) — `source/_posts/npm-common-commands.md`
+- [linux后台执行脚本](sources/linux-background-script-execution.md) — `source/_posts/linux-background-script-execution.md`
+- [用 Cursor 提高工作效率实战笔记](sources/improve-work-efficiency-with-cursor-practical-notes.md) — `source/_posts/improve-work-efficiency-with-cursor-practical-notes.md`
+- [图片懒加载实现](sources/image-lazy-loading-implementation.md) — `source/_posts/image-lazy-loading-implementation.md`
+- [gitpage 搭建 hexo 博客](sources/gitpage-hexo.md) — `source/_posts/gitpage-hexo.md`
+- [gitlab ci 配置模板](sources/gitlab-ci-config-template.md) — `source/_posts/gitlab-ci-config-template.md`
+- [github  + travis 自动构建 vue 项目到 gitpage](sources/github-travis-auto-build-vue-to-gitpage.md) — `source/_posts/github-travis-auto-build-vue-to-gitpage.md`
+- [github 实用小技巧](sources/github-practical-tips.md) — `source/_posts/github-practical-tips.md`
+- [使用 github action 编译 Vue 发布到 github page](sources/github-action-auto-deploy-page.md) — `source/_posts/github-action-auto-deploy-page.md`
+- [git环境配置](sources/git-environment-config.md) — `source/_posts/git-environment-config.md`
+- [gitbook 生成电子书](sources/gitbook-generate-ebook.md) — `source/_posts/gitbook-generate-ebook.md`
+- [Git 安装配置及分支管理](sources/git-usage-guide.md) — `source/_posts/git-usage-guide.md`
+- [git 文档](sources/git-common-commands.md) — `source/_posts/git-common-commands.md`
+- [git域名配置](sources/git-domain-config.md) — `source/_posts/git-domain-config.md`
+- [前端 XX docker 化](sources/frontend-xx-dockerization.md) — `source/_posts/frontend-xx-dockerization.md`
+- [前端性能优化](sources/frontend-performance-optimization.md) — `source/_posts/frontend-performance-optimization.md`
+- [首屏时间(FCP) VS 白屏时间(FP)](sources/first-screen-time-vs-white-screen-time.md) — `source/_posts/first-screen-time-vs-white-screen-time.md`
+- [解决github图片破裂问题](sources/fix-github-image-issue-on-mac.md) — `source/_posts/fix-github-image-issue-on-mac.md`
+- [文件命名为什么提倡用英文小写字母而不用大写字母](sources/file-naming-pitfalls-record.md) — `source/_posts/file-naming-pitfalls-record.md`
+- [ffmpeg 抽取视频音轨](sources/ffmpeg-extract-audio-track.md) — `source/_posts/ffmpeg-extract-audio-track.md`
+- [VSCode 使用指南](sources/doing-things-with-vscode.md) — `source/_posts/doing-things-with-vscode.md`
+- [使用 docker 配置前端环境](sources/docker-frontend-environment-setup.md) — `source/_posts/docker-frontend-environment-setup.md`
+- [docker 打包本地 web 项目发布到服务端](sources/docker-documentation.md) — `source/_posts/docker-documentation.md`
+- [解决 Cursor debugger 模式在 electron 项目中无法使用问题](sources/cursor-debugger.md) — `source/_posts/cursor-debugger.md`
+- [常见 git 工作流程](sources/common-git-workflows.md) — `source/_posts/common-git-workflows.md`
+- [centos 服务器登录配置](sources/centos-server-login-config.md) — `source/_posts/centos-server-login-config.md`
+- [bash 数据处理](sources/bash-data-processing.md) — `source/_posts/bash-data-processing.md`
+- [web 优化 ——— 添加骨架屏](sources/add-skeleton-screen.md) — `source/_posts/add-skeleton-screen.md`
+- [centos7 安装 MySQL](sources/MySQL.md) — `source/_posts/MySQL.md`
+- [6 个常见的网站可用性问题及其修正方法](sources/6-common-website-usability-issues-and-solutions.md) — `source/_posts/6-common-website-usability-issues-and-solutions.md`
+
+### AI探索
+
+- [使用大模型来维护知识库](sources/llm-wiki.md) — `source/_posts/llm-wiki.md`
+- [面向大模型编程(LOP)在游戏制作流程中的应用畅想](sources/ai-coding-game.md) — `source/_posts/ai-coding-game.md`
+- [Gemini 在打开新会话时，是如何有记忆的](sources/gemini-new-session-memory.md) — `source/_posts/gemini-new-session-memory.md`
+- [AI使人膨胀](sources/ai-expansion.md) — `source/_posts/ai-expansion.md`
+- [一个提升 AI Coding 稳定性的思路](sources/agent-coding-stability.md) — `source/_posts/agent-coding-stability.md`
+- [Cursor 编写 SKILL：通过 web 搜索并下载电影](sources/cursor-skill-web-search-download-movie.md) — `source/_posts/cursor-skill-web-search-download-movie.md`
+- [AI协作编程——如何写好项目规则](sources/writing-a-good-claude-md.md) — `source/_posts/writing-a-good-claude-md.md`
+- [为什么AI大模型需要“显卡”/TPU、GPU与AMD之间有什么区别](sources/why-graphics-card.md) — `source/_posts/why-graphics-card.md`
+- [ubuntu 下 tensorflow CPU release 版安装](sources/ubuntu-install-tensorflow.md) — `source/_posts/ubuntu-install-tensorflow.md`
+- [首次尝试95%都是垃圾：一位工程师使用Claude Code的6周之旅](sources/translate-use-claude-code.md) — `source/_posts/translate-use-claude-code.md`
+- [tensorflow 模型训练步骤](sources/model-training-steps.md) — `source/_posts/model-training-steps.md`
+- [使用 AI 优化界面交互](sources/ai-optimize-ui.md) — `source/_posts/ai-optimize-ui.md`
+- [如何做AI角色分工：我的应用心得](sources/ai-worker.md) — `source/_posts/ai-worker.md`
+- [AI赋能存量项目——从函数助手到业务伙伴](sources/ai-coding-share.md) — `source/_posts/ai-coding-share.md`
+- [AI协作编程——传统IDE快速切换到AI IDE](sources/ai-coding-ide.md) — `source/_posts/ai-coding-ide.md`
+- [我们是否需要AI知识库](sources/AI-knowledge-base.md) — `source/_posts/AI-knowledge-base.md`
+
+### 软技能与思考
+
+- [AI 让人变得无趣](sources/ai-make-you-boring.md) — `source/_posts/ai-make-you-boring.md`
+- [为什么要写微信公众号](sources/why-write-wechat-official-account.md) — `source/_posts/why-write-wechat-official-account.md`
+- [工作与事业](sources/work-for.md) — `source/_posts/work-for.md`
+- [经验之谈](sources/words-of-experience.md) — `source/_posts/words-of-experience.md`
+- [我们为什么需要阅读](sources/why-we-need-to-read.md) — `source/_posts/why-we-need-to-read.md`
+- [变数](sources/variables.md) — `source/_posts/variables.md`
+- [对技术成长的一些思考](sources/thoughts-on-technical-growth.md) — `source/_posts/thoughts-on-technical-growth.md`
+- [关于广告拦截插件的一些思考](sources/thoughts-on-ad-blocker-plugins.md) — `source/_posts/thoughts-on-ad-blocker-plugins.md`
+- [碎片化阅读知识系统化方法](sources/systematic-method-for-fragmented-reading-knowledge.md) — `source/_posts/systematic-method-for-fragmented-reading-knowledge.md`
+- [一些概念](sources/some-concepts.md) — `source/_posts/some-concepts.md`
+- [美句摘抄](sources/sentence-excerpts.md) — `source/_posts/sentence-excerpts.md`
+- [科普](sources/science-popularization.md) — `source/_posts/science-popularization.md`
+- [重构 vs 架构](sources/refactoring-vs-architecture.md) — `source/_posts/refactoring-vs-architecture.md`
+- [关于写周报的思考](sources/notes-about-writing-weekly-reports.md) — `source/_posts/notes-about-writing-weekly-reports.md`
+- [海边的曼彻斯特](sources/manchester-by-the-sea.md) — `source/_posts/manchester-by-the-sea.md`
+- [KPI vs OKR](sources/kpi-vs-okr.md) — `source/_posts/kpi-vs-okr.md`
+- [知识焦虑](sources/knowledge-anxiety.md) — `source/_posts/knowledge-anxiety.md`
+- [善意](sources/kindness.md) — `source/_posts/kindness.md`
+- [日语学习笔记](sources/japanese-learning-notes.md) — `source/_posts/japanese-learning-notes.md`
+- [Vol.02：团队对个人的影响](sources/issue-2.md) — `source/_posts/issue-2.md`
+- [Vol.12：我们的上限在哪里](sources/issue-12.md) — `source/_posts/issue-12.md`
+- [Vol.11：一些关于工作的思考](sources/issue-11.md) — `source/_posts/issue-11.md`
+- [Vol.13：科幻电影照进现实](sources/issue-13.md) — `source/_posts/issue-13.md`
+- [Vol.10：直面死亡](sources/issue-10.md) — `source/_posts/issue-10.md`
+- [Vol.01：为什么要开始写这个系列的杂文](sources/issue-1.md) — `source/_posts/issue-1.md`
+- [Vol.09：原来我也可以](sources/issue-09.md) — `source/_posts/issue-09.md`
+- [Vol.08：无论男女都应当追求些什么](sources/issue-08.md) — `source/_posts/issue-08.md`
+- [Vol.06：羊了个羊为什么会火起来](sources/issue-06.md) — `source/_posts/issue-06.md`
+- [Vol.07：假如再给我七天假期我想做什么](sources/issue-07.md) — `source/_posts/issue-07.md`
+- [Vol.03：关于职业选择](sources/issue-03.md) — `source/_posts/issue-03.md`
+- [Vol.05：阅读的艺术](sources/issue-05.md) — `source/_posts/issue-05.md`
+- [Vol.04：子非鱼，安知鱼之乐也](sources/issue-04.md) — `source/_posts/issue-04.md`
+- [你不是在面试，你是在为职位试镜](sources/interview-strategy.md) — `source/_posts/interview-strategy.md`
+- [如何创建一个健壮的系统](sources/how-to-create-a-robust-system.md) — `source/_posts/how-to-create-a-robust-system.md`
+- [晨跑](sources/first-day-morning-run.md) — `source/_posts/first-day-morning-run.md`
+- [特浓鸡汤](sources/extra-thick-chicken-soup.md) — `source/_posts/extra-thick-chicken-soup.md`
+- [深度工作哲学解读](sources/deep-work-philosophy-interpretation.md) — `source/_posts/deep-work-philosophy-interpretation.md`
+- [常用开发提示词](sources/common-programming-prompt-words.md) — `source/_posts/common-programming-prompt-words.md`
+- [级联](sources/cascade.md) — `source/_posts/cascade.md`
+- [森林里的蚂蚁和吵架的大象夫妇](sources/ants.md) — `source/_posts/ants.md`
+- [天使之恋](sources/angel-love.md) — `source/_posts/angel-love.md`
+- [写给大家看的算法书笔记](sources/algorithm-book-notes-for-everyone.md) — `source/_posts/algorithm-book-notes-for-everyone.md`
+- [关于健忘那些事](sources/about-forgetfulness.md) — `source/_posts/about-forgetfulness.md`
+- [关于做技术这件事](sources/about-doing-technology.md) — `source/_posts/about-doing-technology.md`
+- [2024年终总结](sources/2024-year-end-summary.md) — `source/_posts/2024-year-end-summary.md`
+
+### 网站建设
+
+- [wordpress安装](sources/wordpress-installation.md) — `source/_posts/wordpress-installation.md`
+- [hexo 支持数学公式](sources/hexo-math-formula-support.md) — `source/_posts/hexo-math-formula-support.md`
+- [hexo 使用指南](sources/hexo-getting-started.md) — `source/_posts/hexo-getting-started.md`
+- [hexo 博客迁移](sources/hexo-blog-migration.md) — `source/_posts/hexo-blog-migration.md`
+- [博客文章分类](sources/blog-category.md) — `source/_posts/blog-category.md`
+
+### 未分类
+
+- [web 性能优化 —— 首屏优化](sources/first-screen-optimization.md) — `source/_posts/first-screen-optimization.md`
+
+## Concepts
+
+- [LLM 维护的知识库（概念）](concepts/llm-maintained-wiki.md)
+- [LOP（面向大模型编程）模式（概念）](concepts/lop-patterns.md)
+
+## Other
+
+- （暂无 `queries/`、`reports/` 条目）

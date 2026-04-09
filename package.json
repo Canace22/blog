@@ -7,7 +7,8 @@
     "build": "./test.sh d",
     "commit": "./commit.sh",
     "summary": "node tools/generate-summary.mjs",
-    "summary:regen": "node tools/generate-summary.mjs --regen"
+    "summary:regen": "node tools/generate-summary.mjs --regen",
+    "wiki:ingest-all": "node tools/wiki-ingest-all.mjs"
   },
   "hexo": {
     "version": "7.3.0"
