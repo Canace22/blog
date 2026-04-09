@@ -57,11 +57,11 @@ function main() {
   for (const abs of list) {
     const rel = path.relative(WIKI, abs).split(path.sep).join('/')
     const raw = fs.readFileSync(abs, 'utf8')
-    const body = rewriteLinks(raw)
-    const title = extractTitle(body, rel)
+    const title = extractTitle(raw, rel)
+    const body = rewriteLinks(raw.replace(/^#\s+.+\n?/, ''))
     const outAbs = path.join(OUT, rel)
     fs.mkdirSync(path.dirname(outAbs), { recursive: true })
-    const head = `---\ntitle: ${JSON.stringify(title)}\nlayout: page\ncomments: false\n---\n\n`
+    const head = `---\ntitle: ${JSON.stringify(title)}\nlayout: page\ncomments: false\ntoc: true\n---\n\n`
     fs.writeFileSync(outAbs, head + body, 'utf8')
   }
   console.log(`sync-wiki-for-hexo: ${list.length} 页 → source/wiki/`)
