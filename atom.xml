@@ -6,7 +6,7 @@
   <link href="https://canace.site/atom.xml" rel="self"/>
   
   <link href="https://canace.site/"/>
-  <updated>2026-04-09T03:34:23.243Z</updated>
+  <updated>2026-04-09T05:54:54.242Z</updated>
   <id>https://canace.site/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://canace.site/llm-wiki/"/>
     <id>https://canace.site/llm-wiki/</id>
     <published>2026-04-08T01:45:45.000Z</published>
-    <updated>2026-04-09T03:34:23.243Z</updated>
+    <updated>2026-04-09T05:54:54.242Z</updated>
     
     
     <summary type="html">介绍「原始资料 + 规则文件 + wiki」分工：人只负责输入，大模型维护持久化知识库（索引、对话总结、报告等），作为跨 agent 的长期上下文；说明三层架构、wiki 目录设计与落地步骤，并关联 Karpathy 的 LLM Wiki 思路。</summary>

@@ -1,0 +1,315 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="canace 的博客"><meta itemprop="name" content="Harness Engineering 资料整理"><meta itemprop="image" content="https://raw.githubusercontent.com/Canace22/Assets/main/images/snow-other.png"><meta property="og:image" content="https://raw.githubusercontent.com/Canace22/Assets/main/images/snow-other.png"><meta name="description" itemprop="description" content="&lt;h2 id=&quot;目的&quot;&gt;&lt;a href=&quot;#目的&quot; class=&quot;headerlink&quot; title=&quot;目的&quot;&gt;&lt;/a&gt;目的&lt;/h2&gt;&lt;p&gt;整理你近期收集的 Harness Engineering 相关资料，先沉淀为知识库条目，供后续写博客或扩展成个人笔记。&lt;/p&gt;
+&lt;h2 id=&quot;一句话结论&quot;&gt;&lt;a href=&quot;#一句话结论&quot; class=&quot;headerlink&quot; title=&quot;一句话结论&quot;&gt;&lt;/a&gt;一句话结论&lt;/h2&gt;&lt;p&gt;跨资料综合看，&lt;strong&gt;Harness Engineering&lt;/strong&gt; 的重点不是“让模型更会说”，而是“为 agent 设计一个可持续工作的软件环境”。它关注：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;任务如何拆解&lt;/li&gt;
+&lt;li&gt;上下文如何组织&lt;/li&gt;
+&lt;li&gt;工具如何接入&lt;/li&gt;
+&lt;li&gt;结果如何验证&lt;/li&gt;
+&lt;li&gt;失败如何回灌&lt;/li&gt;
+&lt;li&gt;多 agent 如何协作&lt;/li&gt;
+&lt;li&gt;经验如何沉淀为长期记忆&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;资料清单&quot;&gt;&lt;a href=&quot;#资料清单&quot; class=&quot;headerlink&quot; title=&quot;资料清单&quot;&gt;&lt;/a&gt;资料清单&lt;/h2&gt;&lt;h3 id=&quot;社区讨论&quot;&gt;&lt;a href=&quot;#社区讨论&quot; class=&quot;headerlink&quot; title=&quot;社区讨论&quot;&gt;&lt;/a&gt;社区讨论&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.v2ex.com/t/1202475#reply3&quot;&gt;V2EX：Harness 决定 Agent 上限：从代码执行到项目迭代&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.v2ex.com/t/1202411#reply10&quot;&gt;V2EX：探讨 Harness Engineering&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;教学与实践&quot;&gt;&lt;a href=&quot;#教学与实践&quot; class=&quot;headerlink&quot; title=&quot;教学与实践&quot;&gt;&lt;/a&gt;教学与实践&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/shareAI-lab/learn-claude-code&quot;&gt;shareAI-lab &amp;#x2F; learn-claude-code&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://openai.com/zh-Hans-CN/index/harness-engineering/&quot;&gt;OpenAI：Harness engineering &amp;#x2F; 在智能体优先的世界中利用 Codex&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.anthropic.com/engineering/harness-design-long-running-apps&quot;&gt;Anthropic：Harness design for long-running application development&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;核心共识&quot;&gt;&lt;a href=&quot;#核心共识&quot; class=&quot;headerlink&quot; title=&quot;核心共识&quot;&gt;&lt;/a&gt;核心共识&lt;/h2&gt;&lt;p&gt;以下判断为跨资料综合：&lt;/p&gt;
+&lt;h3 id=&quot;1-模型不是全部，环境设计才决定能否长期跑通&quot;&gt;&lt;a href=&quot;#1-模型不是全部，环境设计才决定能否长期跑通&quot; class=&quot;headerlink&quot; title=&quot;1. 模型不是全部，环境设计才决定能否长期跑通&quot;&gt;&lt;/a&gt;1. 模型不是全部，环境设计才决定能否长期跑通&lt;/h3&gt;&lt;p&gt;社区讨论与官方实践都在指向同一个结论：模型能力重要，但在真实开发里，决定 agent 上限的往往是 harness。&lt;/p&gt;
+&lt;p&gt;这里的 harness 不只是“调一调 prompt”，而是把以下东西组合起来：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;输入给什么&lt;/li&gt;
+&lt;li&gt;允许做什么&lt;/li&gt;
+&lt;li&gt;出错后看什么&lt;/li&gt;
+&lt;li&gt;完成后怎么验收&lt;/li&gt;
+&lt;li&gt;多轮任务如何分阶段推进&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;2-Harness-是把“临时对话”升级成“可执行工作流”&quot;&gt;&lt;a href=&quot;#2-Harness-是把“临时对话”升级成“可执行工作流”&quot; class=&quot;headerlink&quot; title=&quot;2. Harness 是把“临时对话”升级成“可执行工作流”&quot;&gt;&lt;/a&gt;2. Harness 是把“临时对话”升级成“可执行工作流”&lt;/h3&gt;&lt;p&gt;如果没有 harness，agent 更像一次性的聊天工具；有了 harness，agent 才更像一个能连续推进任务的执行系统。&lt;/p&gt;
+&lt;h3 id=&quot;3-验证能力是-harness-的硬核部分&quot;&gt;&lt;a href=&quot;#3-验证能力是-harness-的硬核部分&quot; class=&quot;headerlink&quot; title=&quot;3. 验证能力是 harness 的硬核部分&quot;&gt;&lt;/a&gt;3. 验证能力是 harness 的硬核部分&lt;/h3&gt;&lt;p&gt;资料里最值得注意的共同点不是“提示词技巧”，而是&lt;strong&gt;验证机制&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;能不能跑测试&lt;/li&gt;
+&lt;li&gt;能不能看日志&lt;/li&gt;
+&lt;li&gt;能不能看浏览器真实表现&lt;/li&gt;
+&lt;li&gt;能不能对照 spec 与验收标准&lt;/li&gt;
+&lt;li&gt;能不能把失败结果再喂回 agent&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;分资料要点&quot;&gt;&lt;a href=&quot;#分资料要点&quot; class=&quot;headerlink&quot; title=&quot;分资料要点&quot;&gt;&lt;/a&gt;分资料要点&lt;/h2&gt;&lt;h3 id=&quot;1-V2EX-讨论&quot;&gt;&lt;a href=&quot;#1-V2EX-讨论&quot; class=&quot;headerlink&quot; title=&quot;1. V2EX 讨论&quot;&gt;&lt;/a&gt;1. V2EX 讨论&lt;/h3&gt;&lt;p&gt;两条 V2EX 讨论更像中文社区对 harness 话题的入口：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;一条偏概念辨析，强调它不是单纯 prompt engineering&lt;/li&gt;
+&lt;li&gt;一条偏经验总结，强调 agent 真正落地时，执行框架与反馈回路比单一模型更关键&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;从搜索摘要看，社区讨论里比较常见的判断是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;prompt engineering -&amp;gt; context engineering -&amp;gt; harness engineering&lt;/code&gt; 是逐层扩展关系&lt;/li&gt;
+&lt;li&gt;真正稳定的 agent 依赖一整套“执行外壳”&lt;/li&gt;
+&lt;li&gt;很多人会把 harness 误解成“更复杂的提示词模板”&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;此外，你给的第二个 V2EX 链接还把 &lt;a href=&quot;https://github.com/shareAI-lab/learn-claude-code&quot;&gt;Learn Claude Code&lt;/a&gt; 当成入门材料推荐，说明中文社区已经开始把它当作 harness 的实践型教材。&lt;/p&gt;
+&lt;h3 id=&quot;2-Learn-Claude-Code&quot;&gt;&lt;a href=&quot;#2-Learn-Claude-Code&quot; class=&quot;headerlink&quot; title=&quot;2. Learn Claude Code&quot;&gt;&lt;/a&gt;2. Learn Claude Code&lt;/h3&gt;&lt;p&gt;这个仓库最有价值的地方，是它把 harness 拆成了可学习的系统部件，而不是停留在抽象口号。&lt;/p&gt;
+&lt;p&gt;它列出的学习骨架包括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;agent loop&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;tools&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;planning&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;context management&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;permissions&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;memory&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;prompt construction&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;tasks&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;teams&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;MCP&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;hooks&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;worktrees&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这份结构的意义在于：它让 harness 不再是模糊概念，而是一张“agent 系统构成图”。&lt;/p&gt;
+&lt;p&gt;一个很好记的总结是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;模型负责思考&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Harness 负责提供工作环境&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;3-OpenAI&quot;&gt;&lt;a href=&quot;#3-OpenAI&quot; class=&quot;headerlink&quot; title=&quot;3. OpenAI&quot;&gt;&lt;/a&gt;3. OpenAI&lt;/h3&gt;&lt;p&gt;OpenAI 这篇材料虽然标题和页面入口写着 harness engineering，但正文更像是在讲：&lt;strong&gt;在 agent-first 世界里，如何把仓库、文档和观测能力重新组织成 agent 能长期工作的系统。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;其中几个高价值点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;代码仓库应成为 agent 的 &lt;strong&gt;system of record&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;AGENTS.md&lt;/code&gt; 要短，只当地图，不要把所有知识都堆进去&lt;/li&gt;
+&lt;li&gt;真正稳定的信息应放进结构化 &lt;code&gt;docs/&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;agent 需要可读的反馈回路：UI、日志、指标、追踪&lt;/li&gt;
+&lt;li&gt;知识库不是写完就算，要配合 lint &amp;#x2F; CI &amp;#x2F; 结构化整理一起维护&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这条路线很适合已有工程团队，因为它不是重新发明 agent，而是&lt;strong&gt;重构现有工程环境，让 agent 更容易成功。&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&quot;4-Anthropic&quot;&gt;&lt;a href=&quot;#4-Anthropic&quot; class=&quot;headerlink&quot; title=&quot;4. Anthropic&quot;&gt;&lt;/a&gt;4. Anthropic&lt;/h3&gt;&lt;p&gt;Anthropic 这篇文章提供了更“开发流程化”的 harness 设计视角。&lt;/p&gt;
+&lt;p&gt;其核心是一个三 agent 结构：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;planner&lt;/code&gt;：把短需求扩成完整需求文档&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;generator&lt;/code&gt;：围绕 feature &amp;#x2F; sprint 实现&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;evaluator&lt;/code&gt;：做 QA、运行浏览器、比对验收标准&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;里面最值得记的不是多 agent 本身，而是两个细节：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;generator&lt;/code&gt; 与 &lt;code&gt;evaluator&lt;/code&gt; 先协商 sprint contract，再开始实现&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;evaluator&lt;/code&gt; 不是读代码点评，而是去跑真实应用，例如通过 Playwright 做浏览器级验证&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这说明 Anthropic 把 harness 的重点放在：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;计划显式化&lt;/li&gt;
+&lt;li&gt;产出契约化&lt;/li&gt;
+&lt;li&gt;验证自动化&lt;/li&gt;
+&lt;li&gt;反馈闭环化&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;另外，这篇文章还提醒了一个很重要的工程判断：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;harness 中每个组件都默认模型自己还做不到这件事。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;因此，harness 不是越复杂越好，而是应该随着模型能力提升不断删减和重构。&lt;/p&gt;
+&lt;h2 id=&quot;对你现有知识库的启发&quot;&gt;&lt;a href=&quot;#对你现有知识库的启发&quot; class=&quot;headerlink&quot; title=&quot;对你现有知识库的启发&quot;&gt;&lt;/a&gt;对你现有知识库的启发&lt;/h2&gt;&lt;p&gt;Harness Engineering 和你已经写过的几条线高度相邻：&lt;/p&gt;
+&lt;h3 id=&quot;1-项目规则&quot;&gt;&lt;a href=&quot;#1-项目规则&quot; class=&quot;headerlink&quot; title=&quot;1. 项目规则&quot;&gt;&lt;/a&gt;1. 项目规则&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;../sources/writing-a-good-claude-md.html&quot;&gt;AI协作编程——如何写好项目规则&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;你之前强调的 &lt;code&gt;What / Why / How&lt;/code&gt;、规则要短、规则渐进，其实已经非常接近 harness 中的“上下文治理层”。&lt;/p&gt;
+&lt;h3 id=&quot;2-工作流拆解&quot;&gt;&lt;a href=&quot;#2-工作流拆解&quot; class=&quot;headerlink&quot; title=&quot;2. 工作流拆解&quot;&gt;&lt;/a&gt;2. 工作流拆解&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;../sources/ai-coding-share.html&quot;&gt;AI赋能存量项目——从函数助手到业务伙伴&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;你写过“任务拆解”“约束”“Review”“自动化测试”，这些都不是单次 prompt 技巧，而是典型 harness 组件。&lt;/p&gt;
+&lt;h3 id=&quot;3-稳定性与经验库&quot;&gt;&lt;a href=&quot;#3-稳定性与经验库&quot; class=&quot;headerlink&quot; title=&quot;3. 稳定性与经验库&quot;&gt;&lt;/a&gt;3. 稳定性与经验库&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;../sources/agent-coding-stability.html&quot;&gt;一个提升 AI Coding 稳定性的思路&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;你提的“经验上下文”“问题解决模式”“Skill 雏形”，可以视为把个人经验抽象为 harness 的一部分。&lt;/p&gt;
+&lt;h3 id=&quot;4-长期记忆层&quot;&gt;&lt;a href=&quot;#4-长期记忆层&quot; class=&quot;headerlink&quot; title=&quot;4. 长期记忆层&quot;&gt;&lt;/a&gt;4. 长期记忆层&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;../sources/llm-wiki.html&quot;&gt;使用大模型来维护知识库&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;wiki、规则文件、可持续更新的知识层，本质上也是 harness 的外部记忆和系统记录层。&lt;/p&gt;
+&lt;h2 id=&quot;目前可提炼出的写作题目&quot;&gt;&lt;a href=&quot;#目前可提炼出的写作题目&quot; class=&quot;headerlink&quot; title=&quot;目前可提炼出的写作题目&quot;&gt;&lt;/a&gt;目前可提炼出的写作题目&lt;/h2&gt;&lt;p&gt;如果你后面准备写博客，这批资料比较适合发展成下面几种文章：&lt;/p&gt;
+&lt;h3 id=&quot;1-概念辨析型&quot;&gt;&lt;a href=&quot;#1-概念辨析型&quot; class=&quot;headerlink&quot; title=&quot;1. 概念辨析型&quot;&gt;&lt;/a&gt;1. 概念辨析型&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Harness Engineering 是什么，它和 Prompt / Context Engineering 有什么区别？&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;2-方法论迁移型&quot;&gt;&lt;a href=&quot;#2-方法论迁移型&quot; class=&quot;headerlink&quot; title=&quot;2. 方法论迁移型&quot;&gt;&lt;/a&gt;2. 方法论迁移型&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;我原来写的项目规则、Skill、经验库，其实已经是在做 Harness Engineering&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;3-工程实践型&quot;&gt;&lt;a href=&quot;#3-工程实践型&quot; class=&quot;headerlink&quot; title=&quot;3. 工程实践型&quot;&gt;&lt;/a&gt;3. 工程实践型&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;如何给 AI Coding 搭一个最小可用 Harness：规则、文档、日志、测试、浏览器验证&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;4-个人知识库结合型&quot;&gt;&lt;a href=&quot;#4-个人知识库结合型&quot; class=&quot;headerlink&quot; title=&quot;4. 个人知识库结合型&quot;&gt;&lt;/a&gt;4. 个人知识库结合型&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;为什么说 AGENTS.md + wiki + docs，本质上也是一种 Harness&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;暂存问题&quot;&gt;&lt;a href=&quot;#暂存问题&quot; class=&quot;headerlink&quot; title=&quot;暂存问题&quot;&gt;&lt;/a&gt;暂存问题&lt;/h2&gt;&lt;p&gt;后续你写正式笔记时，可以优先回答这些问题：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;你的“最小 Harness”包含哪些组件？&lt;/li&gt;
+&lt;li&gt;哪些东西必须进 &lt;code&gt;AGENTS.md&lt;/code&gt;，哪些应该进入 &lt;code&gt;docs/&lt;/code&gt; 或 wiki？&lt;/li&gt;
+&lt;li&gt;你更认同 OpenAI 的“仓库即系统记录”路线，还是 Anthropic 的“planner &amp;#x2F; generator &amp;#x2F; evaluator”路线？&lt;/li&gt;
+&lt;li&gt;你已有的 Skill、经验库、wiki，哪些已经可以算 harness 组件？&lt;/li&gt;
+&lt;li&gt;对个人开发者而言，harness 的投入产出比边界在哪里？&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;相关页面&quot;&gt;&lt;a href=&quot;#相关页面&quot; class=&quot;headerlink&quot; title=&quot;相关页面&quot;&gt;&lt;/a&gt;相关页面&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;../concepts/harness-engineering.html&quot;&gt;Harness Engineering（概念）&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;../concepts/llm-maintained-wiki.html&quot;&gt;LLM 维护的知识库（概念）&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;../concepts/lop-patterns.html&quot;&gt;LOP（面向大模型编程）模式（概念）&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+"><title>Harness Engineering 资料整理</title><link rel="stylesheet" type="text/css" href="../../css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/normalize.css/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="../../favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="../../favicon.ico"><link rel="apple-touch-icon" href="../../apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="../../apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="../../atom.xml"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/clipboard/dist/clipboard.min.js"></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.js"></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.css"><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Harness Engineering 资料整理</h1><a id="logo" href="../../.">Canace 的博客</a><p class="description">Tomorrow is another day</p></div><div id="nav-menu"><a href="../../."><i class="fa fa-home"> 主页</i></a><a href="../../archives/"><i class="fa fa-archive"> 文章归档</i></a><a class="current" href="../"><i class="fa fa-book"> 知识库</i></a><a href="../../about/"><i class="fa fa-user"> 关于我</i></a><a href="../../atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">Harness Engineering 资料整理</h1><div class="clear"><div class="toc-article" id="toc"><div class="toc-title">目录</div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E7%9A%84"><span class="toc-text">目的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E5%8F%A5%E8%AF%9D%E7%BB%93%E8%AE%BA"><span class="toc-text">一句话结论</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B5%84%E6%96%99%E6%B8%85%E5%8D%95"><span class="toc-text">资料清单</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BE%E5%8C%BA%E8%AE%A8%E8%AE%BA"><span class="toc-text">社区讨论</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%99%E5%AD%A6%E4%B8%8E%E5%AE%9E%E8%B7%B5"><span class="toc-text">教学与实践</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E5%85%B1%E8%AF%86"><span class="toc-text">核心共识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%A8%A1%E5%9E%8B%E4%B8%8D%E6%98%AF%E5%85%A8%E9%83%A8%EF%BC%8C%E7%8E%AF%E5%A2%83%E8%AE%BE%E8%AE%A1%E6%89%8D%E5%86%B3%E5%AE%9A%E8%83%BD%E5%90%A6%E9%95%BF%E6%9C%9F%E8%B7%91%E9%80%9A"><span class="toc-text">1. 模型不是全部，环境设计才决定能否长期跑通</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Harness-%E6%98%AF%E6%8A%8A%E2%80%9C%E4%B8%B4%E6%97%B6%E5%AF%B9%E8%AF%9D%E2%80%9D%E5%8D%87%E7%BA%A7%E6%88%90%E2%80%9C%E5%8F%AF%E6%89%A7%E8%A1%8C%E5%B7%A5%E4%BD%9C%E6%B5%81%E2%80%9D"><span class="toc-text">2. Harness 是把“临时对话”升级成“可执行工作流”</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E9%AA%8C%E8%AF%81%E8%83%BD%E5%8A%9B%E6%98%AF-harness-%E7%9A%84%E7%A1%AC%E6%A0%B8%E9%83%A8%E5%88%86"><span class="toc-text">3. 验证能力是 harness 的硬核部分</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E8%B5%84%E6%96%99%E8%A6%81%E7%82%B9"><span class="toc-text">分资料要点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-V2EX-%E8%AE%A8%E8%AE%BA"><span class="toc-text">1. V2EX 讨论</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Learn-Claude-Code"><span class="toc-text">2. Learn Claude Code</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-OpenAI"><span class="toc-text">3. OpenAI</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Anthropic"><span class="toc-text">4. Anthropic</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E4%BD%A0%E7%8E%B0%E6%9C%89%E7%9F%A5%E8%AF%86%E5%BA%93%E7%9A%84%E5%90%AF%E5%8F%91"><span class="toc-text">对你现有知识库的启发</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E9%A1%B9%E7%9B%AE%E8%A7%84%E5%88%99"><span class="toc-text">1. 项目规则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%B7%A5%E4%BD%9C%E6%B5%81%E6%8B%86%E8%A7%A3"><span class="toc-text">2. 工作流拆解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E7%A8%B3%E5%AE%9A%E6%80%A7%E4%B8%8E%E7%BB%8F%E9%AA%8C%E5%BA%93"><span class="toc-text">3. 稳定性与经验库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E9%95%BF%E6%9C%9F%E8%AE%B0%E5%BF%86%E5%B1%82"><span class="toc-text">4. 长期记忆层</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E5%89%8D%E5%8F%AF%E6%8F%90%E7%82%BC%E5%87%BA%E7%9A%84%E5%86%99%E4%BD%9C%E9%A2%98%E7%9B%AE"><span class="toc-text">目前可提炼出的写作题目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%A6%82%E5%BF%B5%E8%BE%A8%E6%9E%90%E5%9E%8B"><span class="toc-text">1. 概念辨析型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%96%B9%E6%B3%95%E8%AE%BA%E8%BF%81%E7%A7%BB%E5%9E%8B"><span class="toc-text">2. 方法论迁移型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5%E5%9E%8B"><span class="toc-text">3. 工程实践型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E4%B8%AA%E4%BA%BA%E7%9F%A5%E8%AF%86%E5%BA%93%E7%BB%93%E5%90%88%E5%9E%8B"><span class="toc-text">4. 个人知识库结合型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9A%82%E5%AD%98%E9%97%AE%E9%A2%98"><span class="toc-text">暂存问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E9%A1%B5%E9%9D%A2"><span class="toc-text">相关页面</span></a></li></ol></div></div><div class="post-content"><h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><p>整理你近期收集的 Harness Engineering 相关资料，先沉淀为知识库条目，供后续写博客或扩展成个人笔记。</p>
+<h2 id="一句话结论"><a href="#一句话结论" class="headerlink" title="一句话结论"></a>一句话结论</h2><p>跨资料综合看，<strong>Harness Engineering</strong> 的重点不是“让模型更会说”，而是“为 agent 设计一个可持续工作的软件环境”。它关注：</p>
+<ul>
+<li>任务如何拆解</li>
+<li>上下文如何组织</li>
+<li>工具如何接入</li>
+<li>结果如何验证</li>
+<li>失败如何回灌</li>
+<li>多 agent 如何协作</li>
+<li>经验如何沉淀为长期记忆</li>
+</ul>
+<h2 id="资料清单"><a href="#资料清单" class="headerlink" title="资料清单"></a>资料清单</h2><h3 id="社区讨论"><a href="#社区讨论" class="headerlink" title="社区讨论"></a>社区讨论</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://www.v2ex.com/t/1202475#reply3">V2EX：Harness 决定 Agent 上限：从代码执行到项目迭代</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.v2ex.com/t/1202411#reply10">V2EX：探讨 Harness Engineering</a></li>
+</ul>
+<h3 id="教学与实践"><a href="#教学与实践" class="headerlink" title="教学与实践"></a>教学与实践</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/shareAI-lab/learn-claude-code">shareAI-lab &#x2F; learn-claude-code</a></li>
+<li><a target="_blank" rel="noopener" href="https://openai.com/zh-Hans-CN/index/harness-engineering/">OpenAI：Harness engineering &#x2F; 在智能体优先的世界中利用 Codex</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.anthropic.com/engineering/harness-design-long-running-apps">Anthropic：Harness design for long-running application development</a></li>
+</ul>
+<h2 id="核心共识"><a href="#核心共识" class="headerlink" title="核心共识"></a>核心共识</h2><p>以下判断为跨资料综合：</p>
+<h3 id="1-模型不是全部，环境设计才决定能否长期跑通"><a href="#1-模型不是全部，环境设计才决定能否长期跑通" class="headerlink" title="1. 模型不是全部，环境设计才决定能否长期跑通"></a>1. 模型不是全部，环境设计才决定能否长期跑通</h3><p>社区讨论与官方实践都在指向同一个结论：模型能力重要，但在真实开发里，决定 agent 上限的往往是 harness。</p>
+<p>这里的 harness 不只是“调一调 prompt”，而是把以下东西组合起来：</p>
+<ul>
+<li>输入给什么</li>
+<li>允许做什么</li>
+<li>出错后看什么</li>
+<li>完成后怎么验收</li>
+<li>多轮任务如何分阶段推进</li>
+</ul>
+<h3 id="2-Harness-是把“临时对话”升级成“可执行工作流”"><a href="#2-Harness-是把“临时对话”升级成“可执行工作流”" class="headerlink" title="2. Harness 是把“临时对话”升级成“可执行工作流”"></a>2. Harness 是把“临时对话”升级成“可执行工作流”</h3><p>如果没有 harness，agent 更像一次性的聊天工具；有了 harness，agent 才更像一个能连续推进任务的执行系统。</p>
+<h3 id="3-验证能力是-harness-的硬核部分"><a href="#3-验证能力是-harness-的硬核部分" class="headerlink" title="3. 验证能力是 harness 的硬核部分"></a>3. 验证能力是 harness 的硬核部分</h3><p>资料里最值得注意的共同点不是“提示词技巧”，而是<strong>验证机制</strong>：</p>
+<ul>
+<li>能不能跑测试</li>
+<li>能不能看日志</li>
+<li>能不能看浏览器真实表现</li>
+<li>能不能对照 spec 与验收标准</li>
+<li>能不能把失败结果再喂回 agent</li>
+</ul>
+<h2 id="分资料要点"><a href="#分资料要点" class="headerlink" title="分资料要点"></a>分资料要点</h2><h3 id="1-V2EX-讨论"><a href="#1-V2EX-讨论" class="headerlink" title="1. V2EX 讨论"></a>1. V2EX 讨论</h3><p>两条 V2EX 讨论更像中文社区对 harness 话题的入口：</p>
+<ul>
+<li>一条偏概念辨析，强调它不是单纯 prompt engineering</li>
+<li>一条偏经验总结，强调 agent 真正落地时，执行框架与反馈回路比单一模型更关键</li>
+</ul>
+<p>从搜索摘要看，社区讨论里比较常见的判断是：</p>
+<ul>
+<li><code>prompt engineering -&gt; context engineering -&gt; harness engineering</code> 是逐层扩展关系</li>
+<li>真正稳定的 agent 依赖一整套“执行外壳”</li>
+<li>很多人会把 harness 误解成“更复杂的提示词模板”</li>
+</ul>
+<p>此外，你给的第二个 V2EX 链接还把 <a target="_blank" rel="noopener" href="https://github.com/shareAI-lab/learn-claude-code">Learn Claude Code</a> 当成入门材料推荐，说明中文社区已经开始把它当作 harness 的实践型教材。</p>
+<h3 id="2-Learn-Claude-Code"><a href="#2-Learn-Claude-Code" class="headerlink" title="2. Learn Claude Code"></a>2. Learn Claude Code</h3><p>这个仓库最有价值的地方，是它把 harness 拆成了可学习的系统部件，而不是停留在抽象口号。</p>
+<p>它列出的学习骨架包括：</p>
+<ul>
+<li><code>agent loop</code></li>
+<li><code>tools</code></li>
+<li><code>planning</code></li>
+<li><code>context management</code></li>
+<li><code>permissions</code></li>
+<li><code>memory</code></li>
+<li><code>prompt construction</code></li>
+<li><code>tasks</code></li>
+<li><code>teams</code></li>
+<li><code>MCP</code></li>
+<li><code>hooks</code></li>
+<li><code>worktrees</code></li>
+</ul>
+<p>这份结构的意义在于：它让 harness 不再是模糊概念，而是一张“agent 系统构成图”。</p>
+<p>一个很好记的总结是：</p>
+<ul>
+<li><strong>模型负责思考</strong></li>
+<li><strong>Harness 负责提供工作环境</strong></li>
+</ul>
+<h3 id="3-OpenAI"><a href="#3-OpenAI" class="headerlink" title="3. OpenAI"></a>3. OpenAI</h3><p>OpenAI 这篇材料虽然标题和页面入口写着 harness engineering，但正文更像是在讲：<strong>在 agent-first 世界里，如何把仓库、文档和观测能力重新组织成 agent 能长期工作的系统。</strong></p>
+<p>其中几个高价值点：</p>
+<ul>
+<li>代码仓库应成为 agent 的 <strong>system of record</strong></li>
+<li><code>AGENTS.md</code> 要短，只当地图，不要把所有知识都堆进去</li>
+<li>真正稳定的信息应放进结构化 <code>docs/</code></li>
+<li>agent 需要可读的反馈回路：UI、日志、指标、追踪</li>
+<li>知识库不是写完就算，要配合 lint &#x2F; CI &#x2F; 结构化整理一起维护</li>
+</ul>
+<p>这条路线很适合已有工程团队，因为它不是重新发明 agent，而是<strong>重构现有工程环境，让 agent 更容易成功。</strong></p>
+<h3 id="4-Anthropic"><a href="#4-Anthropic" class="headerlink" title="4. Anthropic"></a>4. Anthropic</h3><p>Anthropic 这篇文章提供了更“开发流程化”的 harness 设计视角。</p>
+<p>其核心是一个三 agent 结构：</p>
+<ul>
+<li><code>planner</code>：把短需求扩成完整需求文档</li>
+<li><code>generator</code>：围绕 feature &#x2F; sprint 实现</li>
+<li><code>evaluator</code>：做 QA、运行浏览器、比对验收标准</li>
+</ul>
+<p>里面最值得记的不是多 agent 本身，而是两个细节：</p>
+<ul>
+<li><code>generator</code> 与 <code>evaluator</code> 先协商 sprint contract，再开始实现</li>
+<li><code>evaluator</code> 不是读代码点评，而是去跑真实应用，例如通过 Playwright 做浏览器级验证</li>
+</ul>
+<p>这说明 Anthropic 把 harness 的重点放在：</p>
+<ul>
+<li>计划显式化</li>
+<li>产出契约化</li>
+<li>验证自动化</li>
+<li>反馈闭环化</li>
+</ul>
+<p>另外，这篇文章还提醒了一个很重要的工程判断：</p>
+<blockquote>
+<p>harness 中每个组件都默认模型自己还做不到这件事。</p>
+</blockquote>
+<p>因此，harness 不是越复杂越好，而是应该随着模型能力提升不断删减和重构。</p>
+<h2 id="对你现有知识库的启发"><a href="#对你现有知识库的启发" class="headerlink" title="对你现有知识库的启发"></a>对你现有知识库的启发</h2><p>Harness Engineering 和你已经写过的几条线高度相邻：</p>
+<h3 id="1-项目规则"><a href="#1-项目规则" class="headerlink" title="1. 项目规则"></a>1. 项目规则</h3><ul>
+<li><a href="../sources/writing-a-good-claude-md.html">AI协作编程——如何写好项目规则</a></li>
+</ul>
+<p>你之前强调的 <code>What / Why / How</code>、规则要短、规则渐进，其实已经非常接近 harness 中的“上下文治理层”。</p>
+<h3 id="2-工作流拆解"><a href="#2-工作流拆解" class="headerlink" title="2. 工作流拆解"></a>2. 工作流拆解</h3><ul>
+<li><a href="../sources/ai-coding-share.html">AI赋能存量项目——从函数助手到业务伙伴</a></li>
+</ul>
+<p>你写过“任务拆解”“约束”“Review”“自动化测试”，这些都不是单次 prompt 技巧，而是典型 harness 组件。</p>
+<h3 id="3-稳定性与经验库"><a href="#3-稳定性与经验库" class="headerlink" title="3. 稳定性与经验库"></a>3. 稳定性与经验库</h3><ul>
+<li><a href="../sources/agent-coding-stability.html">一个提升 AI Coding 稳定性的思路</a></li>
+</ul>
+<p>你提的“经验上下文”“问题解决模式”“Skill 雏形”，可以视为把个人经验抽象为 harness 的一部分。</p>
+<h3 id="4-长期记忆层"><a href="#4-长期记忆层" class="headerlink" title="4. 长期记忆层"></a>4. 长期记忆层</h3><ul>
+<li><a href="../sources/llm-wiki.html">使用大模型来维护知识库</a></li>
+</ul>
+<p>wiki、规则文件、可持续更新的知识层，本质上也是 harness 的外部记忆和系统记录层。</p>
+<h2 id="目前可提炼出的写作题目"><a href="#目前可提炼出的写作题目" class="headerlink" title="目前可提炼出的写作题目"></a>目前可提炼出的写作题目</h2><p>如果你后面准备写博客，这批资料比较适合发展成下面几种文章：</p>
+<h3 id="1-概念辨析型"><a href="#1-概念辨析型" class="headerlink" title="1. 概念辨析型"></a>1. 概念辨析型</h3><ul>
+<li><code>Harness Engineering 是什么，它和 Prompt / Context Engineering 有什么区别？</code></li>
+</ul>
+<h3 id="2-方法论迁移型"><a href="#2-方法论迁移型" class="headerlink" title="2. 方法论迁移型"></a>2. 方法论迁移型</h3><ul>
+<li><code>我原来写的项目规则、Skill、经验库，其实已经是在做 Harness Engineering</code></li>
+</ul>
+<h3 id="3-工程实践型"><a href="#3-工程实践型" class="headerlink" title="3. 工程实践型"></a>3. 工程实践型</h3><ul>
+<li><code>如何给 AI Coding 搭一个最小可用 Harness：规则、文档、日志、测试、浏览器验证</code></li>
+</ul>
+<h3 id="4-个人知识库结合型"><a href="#4-个人知识库结合型" class="headerlink" title="4. 个人知识库结合型"></a>4. 个人知识库结合型</h3><ul>
+<li><code>为什么说 AGENTS.md + wiki + docs，本质上也是一种 Harness</code></li>
+</ul>
+<h2 id="暂存问题"><a href="#暂存问题" class="headerlink" title="暂存问题"></a>暂存问题</h2><p>后续你写正式笔记时，可以优先回答这些问题：</p>
+<ol>
+<li>你的“最小 Harness”包含哪些组件？</li>
+<li>哪些东西必须进 <code>AGENTS.md</code>，哪些应该进入 <code>docs/</code> 或 wiki？</li>
+<li>你更认同 OpenAI 的“仓库即系统记录”路线，还是 Anthropic 的“planner &#x2F; generator &#x2F; evaluator”路线？</li>
+<li>你已有的 Skill、经验库、wiki，哪些已经可以算 harness 组件？</li>
+<li>对个人开发者而言，harness 的投入产出比边界在哪里？</li>
+</ol>
+<h2 id="相关页面"><a href="#相关页面" class="headerlink" title="相关页面"></a>相关页面</h2><ul>
+<li><a href="../concepts/harness-engineering.html">Harness Engineering（概念）</a></li>
+<li><a href="../concepts/llm-maintained-wiki.html">LLM 维护的知识库（概念）</a></li>
+<li><a href="../concepts/lop-patterns.html">LOP（面向大模型编程）模式（概念）</a></li>
+</ul>
+</div></div></div></div><div class="pure-u-1 pure-u-md-1-4"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 常用文档</i></div><ul></ul><a href="/git-common-commands" title="Git 文档" target="_blank">Git 文档</a><ul></ul><a href="/common-programming-prompt-words" title="常用开发提示词" target="_blank">常用开发提示词</a></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="../../categories/soft/">软技能与思考</a><span class="category-list-count">45</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/cli/">工程化与运维</a><span class="category-list-count">50</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/web/">Web开发</a><span class="category-list-count">142</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/intelligent/">AI探索</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/coding/">编程基础</a><span class="category-list-count">42</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/site/">网站建设</a><span class="category-list-count">5</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="../../tags/essays/" style="font-size: 15px; color: #3679a7">随笔</a> <a href="../../tags/performance/" style="font-size: 15px; color: #7a9fb8">性能优化</a> <a href="../../tags/JavaScript-TypeScript/" style="font-size: 15px; color: #0e639d">JavaScript&TypeScript</a> <a href="../../tags/AI%E5%8E%9F%E7%90%86/" style="font-size: 15px; color: #96aebf">AI原理</a> <a href="../../tags/backend/" style="font-size: 15px; color: #5f90b1">后端</a> <a href="../../tags/Python-Go-%E5%85%B6%E4%BB%96/" style="font-size: 15px; color: #88a6bb">Python/Go/其他</a> <a href="../../tags/api-services/" style="font-size: 15px; color: #bec4c9">API&服务</a> <a href="../../tags/computer-science/" style="font-size: 15px; color: #2972a4">计算机科学</a> <a href="../../tags/%E8%81%8C%E4%B8%9A%E5%8F%91%E5%B1%95/" style="font-size: 15px; color: #7a9fb8">职业发展</a> <a href="../../tags/AI%E7%BC%96%E7%A8%8B/" style="font-size: 15px; color: #7a9fb8">AI编程</a> <a href="../../tags/%E7%BF%BB%E8%AF%91/" style="font-size: 15px; color: #ccc">翻译</a> <a href="../../tags/reading-notes/" style="font-size: 15px; color: #a3b5c2">读书笔记</a> <a href="../../tags/frontend/" style="font-size: 15px; color: #005b9a">前端</a> <a href="../../tags/frameworks-libs/" style="font-size: 15px; color: #5288ae">框架与库</a> <a href="../../tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/" style="font-size: 15px; color: #88a6bb">系统设计</a> <a href="../../tags/programming-languages/" style="font-size: 15px; color: #b1bdc5">编程语言</a> <a href="../../tags/css-visualization/" style="font-size: 15px; color: #1b6aa1">CSS与可视化</a> <a href="../../tags/build-deploy/" style="font-size: 15px; color: #6d97b5">构建与部署</a> <a href="../../tags/dev-tools/" style="font-size: 15px; color: #4481ab">开发工具</a> <a href="../../tags/Agent-Skill/" style="font-size: 15px; color: #ccc">Agent,Skill</a> <a href="../../tags/Node-js/" style="font-size: 15px; color: #7a9fb8">Node.js</a> <a href="../../tags/cross-platform/" style="font-size: 15px; color: #88a6bb">跨端方案</a> <a href="../../tags/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/" style="font-size: 15px; color: #ccc">项目管理</a> <a href="../../tags/%E7%9F%A5%E8%AF%86%E5%BA%93/" style="font-size: 15px; color: #ccc">知识库</a> <a href="../../tags/code-quality/" style="font-size: 15px; color: #bec4c9">代码质量</a></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2026 <a href="../../." rel="nofollow">Canace 的博客</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="../../js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.js" async></script><script type="text/javascript" src="../../js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.css"><link rel="stylesheet" type="text/css" href="../../css/search.css?v=0.0.0"><script type="text/javascript" src="../../js/search.js?v=0.0.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+   search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="/js/copycode.js" successtext="复制成功!"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/mermaid@11.14.0/dist/mermaid.min.js"></script><script type="text/javascript">document.addEventListener('DOMContentLoaded', function () {
+  if (!window.mermaid) return;
+  mermaid.initialize({"theme":"default","logLevel":5,"startOnLoad":true,"arrowMarkerAbsolute":false,"flowchart":{"htmlLabels":true,"useMaxWidth":true,"curve":"linear"},"sequence":{"diagramMarginX":50,"diagramMarginY":10,"actorMargin":50,"width":150,"height":65,"boxMargin":10,"boxTextMargin":5,"noteMargin":10,"messageMargin":35,"mirrorActors":true,"bottomMarginAdj":1,"useMaxWidth":true},"gantt":{"titleTopMargin":25,"barHeight":20,"barGap":4,"topPadding":50,"leftPadding":75,"gridLineStartPadding":35,"fontSize":11,"fontFamily":"\"Open-Sans\", \"sans-serif\"","numberSectionStyles":4,"axisFormat":"%Y-%m-%d"},"class":{},"git":{}});
+});
+</script><script type="text/javascript" src="../../js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="../../js/smartresize.js?v=0.0.0"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":200,"height":200},"mobile":{"show":false},"react":{"opacity":0.7},"log":false});</script></body></html>

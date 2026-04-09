@@ -1,0 +1,439 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="canace 的博客"><meta itemprop="name" content="博客草稿：我原来写的项目规则、Skill、知识库，其实已经是在做 Harness Engineering"><meta itemprop="image" content="https://raw.githubusercontent.com/Canace22/Assets/main/images/snow-other.png"><meta property="og:image" content="https://raw.githubusercontent.com/Canace22/Assets/main/images/snow-other.png"><meta name="description" itemprop="description" content="&lt;h2 id=&quot;拟定标题&quot;&gt;&lt;a href=&quot;#拟定标题&quot; class=&quot;headerlink&quot; title=&quot;拟定标题&quot;&gt;&lt;/a&gt;拟定标题&lt;/h2&gt;&lt;p&gt;我原来写的项目规则、Skill、知识库，其实已经是在做 Harness Engineering&lt;/p&gt;
+&lt;h2 id=&quot;拟定摘要&quot;&gt;&lt;a href=&quot;#拟定摘要&quot; class=&quot;headerlink&quot; title=&quot;拟定摘要&quot;&gt;&lt;/a&gt;拟定摘要&lt;/h2&gt;&lt;p&gt;很多人把 Harness Engineering 理解成更复杂的 Prompt Engineering，但如果最近看过 OpenAI、Anthropic 和一些社区讨论，会发现这不是一回事。Harness 关注的不是一句话怎么写，而是如何给 agent 搭一个可持续工作的环境：任务怎么拆、上下文怎么管、工具怎么接、结果怎么验、失败怎么回灌、经验怎么沉淀。回头看我之前写过的项目规则、Skill、经验库和 wiki，其实已经在零散地做这件事了。&lt;/p&gt;
+&lt;h2 id=&quot;正文&quot;&gt;&lt;a href=&quot;#正文&quot; class=&quot;headerlink&quot; title=&quot;正文&quot;&gt;&lt;/a&gt;正文&lt;/h2&gt;&lt;p&gt;最近在看 Harness Engineering 相关资料，越看越觉得，这个词有点像之前的 “Context Engineering” 一样，容易被大家拿来当新概念转一圈，但真正落到实践里，它其实没有那么玄。&lt;/p&gt;
+&lt;p&gt;我自己一开始也有点误解，以为所谓 Harness，无非就是 Prompt 写得更长一点，规则写得更细一点，或者给 Agent 多塞一点上下文。后来把几份资料连着看下来，感觉不是这么回事。&lt;/p&gt;
+&lt;p&gt;如果要用一句我现在更能接受的话去概括：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Harness Engineering 不是教模型怎么回答问题，而是给 Agent 搭一个能持续干活的环境。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;这个环境里面，模型当然很重要，但它已经不是全部了。更关键的是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;任务怎么拆&lt;/li&gt;
+&lt;li&gt;上下文怎么组织&lt;/li&gt;
+&lt;li&gt;工具怎么接&lt;/li&gt;
+&lt;li&gt;结果怎么验证&lt;/li&gt;
+&lt;li&gt;失败之后怎么回灌&lt;/li&gt;
+&lt;li&gt;多个 Agent 怎么协作&lt;/li&gt;
+&lt;li&gt;做过一次的经验，怎么沉淀下来，下次别从零开始&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;看到这里我突然意识到，原来我之前写的很多东西，虽然当时没用 Harness Engineering 这个词，但其实已经在做它的局部实现了。&lt;/p&gt;
+&lt;h2 id=&quot;一、为什么现在大家开始谈-Harness-Engineering&quot;&gt;&lt;a href=&quot;#一、为什么现在大家开始谈-Harness-Engineering&quot; class=&quot;headerlink&quot; title=&quot;一、为什么现在大家开始谈 Harness Engineering&quot;&gt;&lt;/a&gt;一、为什么现在大家开始谈 Harness Engineering&lt;/h2&gt;&lt;p&gt;过去一段时间，很多人讨论 AI Coding，主要还是围绕 Prompt 展开。比如：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;这句提示词怎么写更好&lt;/li&gt;
+&lt;li&gt;角色怎么设定&lt;/li&gt;
+&lt;li&gt;要不要加约束&lt;/li&gt;
+&lt;li&gt;要不要给更多上下文&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这些东西当然有用，我自己也写过类似内容，比如项目规则怎么写、任务怎么拆、怎么给 Agent 设边界。&lt;/p&gt;
+&lt;p&gt;但是只要真正把 Agent 用到项目里，就会很快发现一个问题：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Prompt 再漂亮，也顶不住真实工程环境的复杂度。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;原因很简单，真实开发不是一道问答题，而是一整段工作流。&lt;/p&gt;
+&lt;p&gt;你让 Agent 改一个功能，它不是只需要“输出一段代码”就完事了。它还要面对这些问题：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;它知道要改哪些文件吗&lt;/li&gt;
+&lt;li&gt;它知道这个项目的业务背景吗&lt;/li&gt;
+&lt;li&gt;它知道哪些地方不能碰吗&lt;/li&gt;
+&lt;li&gt;它改完之后怎么验证自己没改坏&lt;/li&gt;
+&lt;li&gt;它跑错了之后，能不能读日志继续修&lt;/li&gt;
+&lt;li&gt;它遇到长任务时，是一次做完，还是拆成多个阶段&lt;/li&gt;
+&lt;li&gt;它这次踩过的坑，下次还能不能记住&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;也就是说，真正决定 Agent 上限的，慢慢就不是模型本身，而是你给它搭了一个什么样的“工作现场”。&lt;/p&gt;
+&lt;p&gt;这就是我目前理解的 Harness。&lt;/p&gt;
+&lt;h2 id=&quot;二、Harness-不是-Prompt-的升级版，而是系统设计&quot;&gt;&lt;a href=&quot;#二、Harness-不是-Prompt-的升级版，而是系统设计&quot; class=&quot;headerlink&quot; title=&quot;二、Harness 不是 Prompt 的升级版，而是系统设计&quot;&gt;&lt;/a&gt;二、Harness 不是 Prompt 的升级版，而是系统设计&lt;/h2&gt;&lt;p&gt;如果按层次去理解，我现在更倾向于把它分成三层：&lt;/p&gt;
+&lt;h3 id=&quot;1-Prompt-Engineering&quot;&gt;&lt;a href=&quot;#1-Prompt-Engineering&quot; class=&quot;headerlink&quot; title=&quot;1. Prompt Engineering&quot;&gt;&lt;/a&gt;1. Prompt Engineering&lt;/h3&gt;&lt;p&gt;关注的是一句话怎么写。&lt;/p&gt;
+&lt;p&gt;比如你是让它“优化一个组件”，还是告诉它“你现在是一个资深前端工程师，请基于现有组件结构优化这个组件，并补充测试和错误处理”。&lt;/p&gt;
+&lt;p&gt;这是输入层面的优化。&lt;/p&gt;
+&lt;h3 id=&quot;2-Context-Engineering&quot;&gt;&lt;a href=&quot;#2-Context-Engineering&quot; class=&quot;headerlink&quot; title=&quot;2. Context Engineering&quot;&gt;&lt;/a&gt;2. Context Engineering&lt;/h3&gt;&lt;p&gt;关注的是给模型什么信息。&lt;/p&gt;
+&lt;p&gt;比如项目规则、技术栈说明、目录结构、业务背景、历史文档、相关代码、过往经验等，本质上是在解决：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;模型现在知道什么。&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&quot;3-Harness-Engineering&quot;&gt;&lt;a href=&quot;#3-Harness-Engineering&quot; class=&quot;headerlink&quot; title=&quot;3. Harness Engineering&quot;&gt;&lt;/a&gt;3. Harness Engineering&lt;/h3&gt;&lt;p&gt;关注的是整个运行环境怎么设计。&lt;/p&gt;
+&lt;p&gt;本质上是在解决：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;模型现在可以怎么工作。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;这个差别很关键。&lt;/p&gt;
+&lt;p&gt;因为当我们说 Prompt 或 Context 的时候，本质上还是在“喂输入”；而说 Harness 的时候，已经开始进入“搭系统”了。&lt;/p&gt;
+&lt;p&gt;也正因如此，Harness 的关注点通常会变成这些更工程化的问题：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;有没有 agent loop&lt;/li&gt;
+&lt;li&gt;有没有 tools&lt;/li&gt;
+&lt;li&gt;有没有 plan&lt;/li&gt;
+&lt;li&gt;有没有 verification&lt;/li&gt;
+&lt;li&gt;有没有 memory&lt;/li&gt;
+&lt;li&gt;有没有 permission gate&lt;/li&gt;
+&lt;li&gt;有没有日志、UI、测试这些反馈回路&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;我觉得这就是为什么最近这个概念会火起来。不是大家突然发明了什么新东西，而是 AI Coding 发展到这一步，很多人都碰到了同一堵墙：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;只调提示词，已经不够了。&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&quot;三、我最认同的-Harness-视角：让-Agent-不只是“会写”，还要“会推进”&quot;&gt;&lt;a href=&quot;#三、我最认同的-Harness-视角：让-Agent-不只是“会写”，还要“会推进”&quot; class=&quot;headerlink&quot; title=&quot;三、我最认同的 Harness 视角：让 Agent 不只是“会写”，还要“会推进”&quot;&gt;&lt;/a&gt;三、我最认同的 Harness 视角：让 Agent 不只是“会写”，还要“会推进”&lt;/h2&gt;&lt;p&gt;看完几份资料后，我印象比较深的是两种路线。&lt;/p&gt;
+&lt;h3 id=&quot;1-OpenAI-这条路线，更像“把工程环境整理成-Agent-能工作的样子”&quot;&gt;&lt;a href=&quot;#1-OpenAI-这条路线，更像“把工程环境整理成-Agent-能工作的样子”&quot; class=&quot;headerlink&quot; title=&quot;1. OpenAI 这条路线，更像“把工程环境整理成 Agent 能工作的样子”&quot;&gt;&lt;/a&gt;1. OpenAI 这条路线，更像“把工程环境整理成 Agent 能工作的样子”&lt;/h3&gt;&lt;p&gt;我自己的理解是，OpenAI 更强调一件事：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;不要把仓库只当成人看的代码容器，而要把它整理成 Agent 也能读、也能用、也能持续维护的 system of record。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;这个思路特别打动我，因为它不是在说“再发明一个超强 agent”，而是在说：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;让 &lt;code&gt;AGENTS.md&lt;/code&gt; 保持简洁，像一张地图&lt;/li&gt;
+&lt;li&gt;把真正稳定的知识放进结构化文档&lt;/li&gt;
+&lt;li&gt;让 UI、日志、指标、追踪都能成为反馈回路&lt;/li&gt;
+&lt;li&gt;用 lint、CI、文档机制保证知识不会很快腐烂&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这套思路有个很大的优点，就是它很现实。&lt;/p&gt;
+&lt;p&gt;因为大部分团队已经有仓库、文档、测试、日志、CI，只是以前这些东西主要是为人服务。现在要做的，是把它们重新组织一下，让 Agent 也能在里面生存。&lt;/p&gt;
+&lt;h3 id=&quot;2-Anthropic-这条路线，更像“把开发流程本身显式建模出来”&quot;&gt;&lt;a href=&quot;#2-Anthropic-这条路线，更像“把开发流程本身显式建模出来”&quot; class=&quot;headerlink&quot; title=&quot;2. Anthropic 这条路线，更像“把开发流程本身显式建模出来”&quot;&gt;&lt;/a&gt;2. Anthropic 这条路线，更像“把开发流程本身显式建模出来”&lt;/h3&gt;&lt;p&gt;Anthropic 那篇文章给我的感受是，harness 在他们那里更像一个完整的软件开发流水线。&lt;/p&gt;
+&lt;p&gt;它不是简单地让一个 Agent 从头干到尾，而是通过不同角色配合：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;planner 负责扩展需求&lt;/li&gt;
+&lt;li&gt;generator 负责实现&lt;/li&gt;
+&lt;li&gt;evaluator 负责 QA 和验收&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;最关键的地方不是“多 Agent”这件事本身，而是它把两个平时在团队里很重要、但在单 agent 场景里经常缺失的能力补上了：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;契约&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;验证&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;也就是 generator 不是接到一句模糊需求就闷头写，而是要先和 evaluator 对齐 sprint contract；evaluator 也不是只看代码，而是去跑真实应用，看浏览器行为、看是否符合验收标准。&lt;/p&gt;
+&lt;p&gt;这就很像一个真正的软件团队了。&lt;/p&gt;
+&lt;h2 id=&quot;四、回过头看，我以前其实已经在零散地做-Harness&quot;&gt;&lt;a href=&quot;#四、回过头看，我以前其实已经在零散地做-Harness&quot; class=&quot;headerlink&quot; title=&quot;四、回过头看，我以前其实已经在零散地做 Harness&quot;&gt;&lt;/a&gt;四、回过头看，我以前其实已经在零散地做 Harness&lt;/h2&gt;&lt;p&gt;这个是我最近最有意思的一个感受。&lt;/p&gt;
+&lt;p&gt;我原来写博客的时候，并没有用 Harness Engineering 这个词。但把之前写过的内容重新串起来看，会发现很多东西其实都已经在做了。&lt;/p&gt;
+&lt;h3 id=&quot;1-项目规则，本质上是在做上下文治理&quot;&gt;&lt;a href=&quot;#1-项目规则，本质上是在做上下文治理&quot; class=&quot;headerlink&quot; title=&quot;1. 项目规则，本质上是在做上下文治理&quot;&gt;&lt;/a&gt;1. 项目规则，本质上是在做上下文治理&lt;/h3&gt;&lt;p&gt;我之前写过项目规则怎么写，比如 &lt;code&gt;What / Why / How&lt;/code&gt;，规则要短，不要塞太多无关内容，规则要渐进，不要把会快速过时的细节写进去。&lt;/p&gt;
+&lt;p&gt;当时我只是觉得，这样可以让 Agent 更稳一点。&lt;/p&gt;
+&lt;p&gt;现在回头看，这其实已经不是单纯 prompt 了，而是在做 harness 里的一个核心层：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;上下文治理层。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;也就是告诉 Agent：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;这是什么项目&lt;/li&gt;
+&lt;li&gt;这个项目为什么这么设计&lt;/li&gt;
+&lt;li&gt;你在这里应该怎么做事&lt;/li&gt;
+&lt;li&gt;哪些地方不要碰&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这已经非常接近 Harness 里的运行边界设计了。&lt;/p&gt;
+&lt;h3 id=&quot;2-Skill，本质上是在做流程封装&quot;&gt;&lt;a href=&quot;#2-Skill，本质上是在做流程封装&quot; class=&quot;headerlink&quot; title=&quot;2. Skill，本质上是在做流程封装&quot;&gt;&lt;/a&gt;2. Skill，本质上是在做流程封装&lt;/h3&gt;&lt;p&gt;我之前还写过 Skill 相关内容。那时候更多是从“把重复操作固化下来”的角度去想，比如一个任务经常做，每次都要重新解释，很浪费时间，那不如把步骤、工具调用、注意事项整理成 Skill。&lt;/p&gt;
+&lt;p&gt;现在再看，Skill 其实就是 Harness 的一个典型部件。&lt;/p&gt;
+&lt;p&gt;它做的事情很像：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;把模糊经验变成显式流程&lt;/li&gt;
+&lt;li&gt;把零散步骤变成可复用工作流&lt;/li&gt;
+&lt;li&gt;把“每次重新对齐”变成“按约定执行”&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;从这个角度说，Skill 根本不只是一个方便复用的 Prompt 模板，它更像一个轻量级的执行壳层。&lt;/p&gt;
+&lt;h3 id=&quot;3-经验库，本质上是在做外部记忆&quot;&gt;&lt;a href=&quot;#3-经验库，本质上是在做外部记忆&quot; class=&quot;headerlink&quot; title=&quot;3. 经验库，本质上是在做外部记忆&quot;&gt;&lt;/a&gt;3. 经验库，本质上是在做外部记忆&lt;/h3&gt;&lt;p&gt;我之前还写过一个观点：Agent 不稳定，很多时候不是因为模型不够聪明，而是因为你只给了目标，没给解法。于是我会倾向于把自己过去解决问题的模式沉淀下来，比如：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;调试问题先复现&lt;/li&gt;
+&lt;li&gt;再看日志&lt;/li&gt;
+&lt;li&gt;再缩小范围&lt;/li&gt;
+&lt;li&gt;再验证假设&lt;/li&gt;
+&lt;li&gt;最后再修&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;当时我说，这是一种经验上下文。&lt;/p&gt;
+&lt;p&gt;现在再看，这其实已经是 harness 的 memory 层了。&lt;/p&gt;
+&lt;p&gt;也就是：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;把“我以前是怎么解决这类问题的”沉淀成外部结构，让 Agent 在未来任务里复用。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;这已经不是“这次聊天给多一点背景”这么简单，而是在给系统补长期记忆。&lt;/p&gt;
+&lt;h3 id=&quot;4-wiki，本质上是在做-system-of-record&quot;&gt;&lt;a href=&quot;#4-wiki，本质上是在做-system-of-record&quot; class=&quot;headerlink&quot; title=&quot;4. wiki，本质上是在做 system of record&quot;&gt;&lt;/a&gt;4. wiki，本质上是在做 system of record&lt;/h3&gt;&lt;p&gt;我最近在折腾用大模型维护 wiki，本来想的是知识沉淀、跨会话记忆、把过往博客和资料组织成一个长期上下文。&lt;/p&gt;
+&lt;p&gt;后来回头看 OpenAI 那篇东西，突然觉得这个方向跟 Harness 其实是强相关的。&lt;/p&gt;
+&lt;p&gt;因为 wiki 做的事情，本质上也是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;把原始资料、概念页、问答页、报告页区分开&lt;/li&gt;
+&lt;li&gt;让知识有稳定的结构和索引&lt;/li&gt;
+&lt;li&gt;让 Agent 不用每次从零理解整个世界&lt;/li&gt;
+&lt;li&gt;让过去聊过的东西变成未来可读的系统记录&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;如果说 &lt;code&gt;AGENTS.md&lt;/code&gt; 更像地图，那么 wiki 和 docs 就更像地形、道路和历史档案。&lt;/p&gt;
+&lt;p&gt;它们组合在一起，才构成一个可持续工作的环境。&lt;/p&gt;
+&lt;h2 id=&quot;五、对个人开发者来说，最小可用-Harness-到底长什么样&quot;&gt;&lt;a href=&quot;#五、对个人开发者来说，最小可用-Harness-到底长什么样&quot; class=&quot;headerlink&quot; title=&quot;五、对个人开发者来说，最小可用 Harness 到底长什么样&quot;&gt;&lt;/a&gt;五、对个人开发者来说，最小可用 Harness 到底长什么样&lt;/h2&gt;&lt;p&gt;不是每个人都需要一上来就搭 Anthropic 那种 planner &amp;#x2F; generator &amp;#x2F; evaluator 三 agent 系统。&lt;/p&gt;
+&lt;p&gt;对个人开发者来说，我现在更认同的是先从一个最小版本开始。&lt;/p&gt;
+&lt;p&gt;在我看来，一个足够实用的最小 Harness，大概包含这几层：&lt;/p&gt;
+&lt;h3 id=&quot;1-一份短小但有效的规则文件&quot;&gt;&lt;a href=&quot;#1-一份短小但有效的规则文件&quot; class=&quot;headerlink&quot; title=&quot;1. 一份短小但有效的规则文件&quot;&gt;&lt;/a&gt;1. 一份短小但有效的规则文件&lt;/h3&gt;&lt;p&gt;它不是百科全书，而是一张地图。&lt;/p&gt;
+&lt;p&gt;至少要说清楚：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;项目是什么&lt;/li&gt;
+&lt;li&gt;技术栈是什么&lt;/li&gt;
+&lt;li&gt;目录结构大概怎么分&lt;/li&gt;
+&lt;li&gt;哪些文件通常不要改&lt;/li&gt;
+&lt;li&gt;做需求时优先遵循什么工作方式&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;2-一层稳定的知识文档&quot;&gt;&lt;a href=&quot;#2-一层稳定的知识文档&quot; class=&quot;headerlink&quot; title=&quot;2. 一层稳定的知识文档&quot;&gt;&lt;/a&gt;2. 一层稳定的知识文档&lt;/h3&gt;&lt;p&gt;这层可以是 &lt;code&gt;docs/&lt;/code&gt;，也可以是 wiki。&lt;/p&gt;
+&lt;p&gt;目标不是把所有事情都记下来，而是把那些&lt;strong&gt;跨任务稳定成立&lt;/strong&gt;的信息沉淀下来，比如：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;业务背景&lt;/li&gt;
+&lt;li&gt;核心模块说明&lt;/li&gt;
+&lt;li&gt;常见坑&lt;/li&gt;
+&lt;li&gt;测试方式&lt;/li&gt;
+&lt;li&gt;UI &amp;#x2F; API 约定&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;3-一条可工作的验证回路&quot;&gt;&lt;a href=&quot;#3-一条可工作的验证回路&quot; class=&quot;headerlink&quot; title=&quot;3. 一条可工作的验证回路&quot;&gt;&lt;/a&gt;3. 一条可工作的验证回路&lt;/h3&gt;&lt;p&gt;这是我觉得很多人最容易忽视，但其实最重要的地方。&lt;/p&gt;
+&lt;p&gt;Agent 改完代码后，至少应该能做下面几件事中的一部分：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;跑测试&lt;/li&gt;
+&lt;li&gt;看命令行错误&lt;/li&gt;
+&lt;li&gt;看日志&lt;/li&gt;
+&lt;li&gt;看页面真实效果&lt;/li&gt;
+&lt;li&gt;对照验收标准检查&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;如果没有这层，Agent 很容易停留在“我觉得我已经写好了”。&lt;/p&gt;
+&lt;h3 id=&quot;4-一套经验沉淀机制&quot;&gt;&lt;a href=&quot;#4-一套经验沉淀机制&quot; class=&quot;headerlink&quot; title=&quot;4. 一套经验沉淀机制&quot;&gt;&lt;/a&gt;4. 一套经验沉淀机制&lt;/h3&gt;&lt;p&gt;比如：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;好用的规则记录下来&lt;/li&gt;
+&lt;li&gt;某类问题的解决模式整理成 Skill&lt;/li&gt;
+&lt;li&gt;有价值的对话总结进 wiki&lt;/li&gt;
+&lt;li&gt;可复用的流程抽成模板&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这层的意义在于，不让每次成功都只停留在一次性的聊天记录里。&lt;/p&gt;
+&lt;h2 id=&quot;六、我现在对-Harness-Engineering-的一个偏见&quot;&gt;&lt;a href=&quot;#六、我现在对-Harness-Engineering-的一个偏见&quot; class=&quot;headerlink&quot; title=&quot;六、我现在对 Harness Engineering 的一个偏见&quot;&gt;&lt;/a&gt;六、我现在对 Harness Engineering 的一个偏见&lt;/h2&gt;&lt;p&gt;我现在对这个概念有一个比较强的个人偏见：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Harness Engineering 真正重要的，不是给 Agent 加多少能力，而是减少多少“重新开始”。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;因为 AI Coding 最大的成本，很多时候不是 token，也不是模型订阅费，而是反复重新对齐。&lt;/p&gt;
+&lt;p&gt;一次又一次解释项目。&lt;br&gt;一次又一次补充背景。&lt;br&gt;一次又一次纠正同样的偏差。&lt;br&gt;一次又一次告诉它应该怎么验证。&lt;/p&gt;
+&lt;p&gt;这些重复消耗，才是最烦的。&lt;/p&gt;
+&lt;p&gt;如果一个 harness 能把这些重复对齐降下来，它就已经很值钱了。&lt;/p&gt;
+&lt;p&gt;所以我现在更愿意把 Harness 理解成一种“降重复、提闭环”的工程思想，而不是一个新潮术语。&lt;/p&gt;
+&lt;h2 id=&quot;七、结语&quot;&gt;&lt;a href=&quot;#七、结语&quot; class=&quot;headerlink&quot; title=&quot;七、结语&quot;&gt;&lt;/a&gt;七、结语&lt;/h2&gt;&lt;p&gt;以前我写项目规则、写 Skill、写经验库、写 wiki，更多是出于一种朴素的直觉：让 AI 更懂项目一点，让自己少重复一点，让成功经验别白白浪费。&lt;/p&gt;
+&lt;p&gt;最近看了 Harness Engineering 相关资料之后，我的感受反而不是“我学到了一个全新的东西”，而是：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;原来我零零散散做的这些事，放在一起看，本来就是 Harness。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;只是以前我们把它叫：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;项目规则&lt;/li&gt;
+&lt;li&gt;工作流&lt;/li&gt;
+&lt;li&gt;Skill&lt;/li&gt;
+&lt;li&gt;知识库&lt;/li&gt;
+&lt;li&gt;经验沉淀&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;现在大家给这整套东西起了一个更系统化的名字，叫 Harness Engineering。&lt;/p&gt;
+&lt;p&gt;如果要说它对我最大的启发是什么，我觉得不是“去搭一个更复杂的 Agent 系统”，而是提醒我重新审视一件事：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;真正值得优化的，往往不是某条 Prompt，而是 Agent 干活的整个环境。&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&quot;可附参考资料&quot;&gt;&lt;a href=&quot;#可附参考资料&quot; class=&quot;headerlink&quot; title=&quot;可附参考资料&quot;&gt;&lt;/a&gt;可附参考资料&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.v2ex.com/t/1202475#reply3&quot;&gt;V2EX：Harness 决定 Agent 上限：从代码执行到项目迭代&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.v2ex.com/t/1202411#reply10&quot;&gt;V2EX：探讨 Harness Engineering&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/shareAI-lab/learn-claude-code&quot;&gt;shareAI-lab &amp;#x2F; learn-claude-code&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://openai.com/zh-Hans-CN/index/harness-engineering/&quot;&gt;OpenAI：Harness engineering &amp;#x2F; 在智能体优先的世界中利用 Codex&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.anthropic.com/engineering/harness-design-long-running-apps&quot;&gt;Anthropic：Harness design for long-running application development&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;相关知识库页面&quot;&gt;&lt;a href=&quot;#相关知识库页面&quot; class=&quot;headerlink&quot; title=&quot;相关知识库页面&quot;&gt;&lt;/a&gt;相关知识库页面&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;../concepts/harness-engineering.html&quot;&gt;Harness Engineering（概念）&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;harness-engineering-reading-notes.html&quot;&gt;Harness Engineering 资料整理&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;../sources/ai-coding-share.html&quot;&gt;AI赋能存量项目——从函数助手到业务伙伴&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;../sources/writing-a-good-claude-md.html&quot;&gt;AI协作编程——如何写好项目规则&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;../sources/agent-coding-stability.html&quot;&gt;一个提升 AI Coding 稳定性的思路&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;../sources/llm-wiki.html&quot;&gt;使用大模型来维护知识库&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+"><title>博客草稿：我原来写的项目规则、Skill、知识库，其实已经是在做 Harness Engineering</title><link rel="stylesheet" type="text/css" href="../../css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/normalize.css/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="../../favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="../../favicon.ico"><link rel="apple-touch-icon" href="../../apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="../../apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="../../atom.xml"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/clipboard/dist/clipboard.min.js"></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.js"></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.css"><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">博客草稿：我原来写的项目规则、Skill、知识库，其实已经是在做 Harness Engineering</h1><a id="logo" href="../../.">Canace 的博客</a><p class="description">Tomorrow is another day</p></div><div id="nav-menu"><a href="../../."><i class="fa fa-home"> 主页</i></a><a href="../../archives/"><i class="fa fa-archive"> 文章归档</i></a><a class="current" href="../"><i class="fa fa-book"> 知识库</i></a><a href="../../about/"><i class="fa fa-user"> 关于我</i></a><a href="../../atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">博客草稿：我原来写的项目规则、Skill、知识库，其实已经是在做 Harness Engineering</h1><div class="clear"><div class="toc-article" id="toc"><div class="toc-title">目录</div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8B%9F%E5%AE%9A%E6%A0%87%E9%A2%98"><span class="toc-text">拟定标题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8B%9F%E5%AE%9A%E6%91%98%E8%A6%81"><span class="toc-text">拟定摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E6%96%87"><span class="toc-text">正文</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E4%B8%BA%E4%BB%80%E4%B9%88%E7%8E%B0%E5%9C%A8%E5%A4%A7%E5%AE%B6%E5%BC%80%E5%A7%8B%E8%B0%88-Harness-Engineering"><span class="toc-text">一、为什么现在大家开始谈 Harness Engineering</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81Harness-%E4%B8%8D%E6%98%AF-Prompt-%E7%9A%84%E5%8D%87%E7%BA%A7%E7%89%88%EF%BC%8C%E8%80%8C%E6%98%AF%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1"><span class="toc-text">二、Harness 不是 Prompt 的升级版，而是系统设计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Prompt-Engineering"><span class="toc-text">1. Prompt Engineering</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Context-Engineering"><span class="toc-text">2. Context Engineering</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Harness-Engineering"><span class="toc-text">3. Harness Engineering</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%88%91%E6%9C%80%E8%AE%A4%E5%90%8C%E7%9A%84-Harness-%E8%A7%86%E8%A7%92%EF%BC%9A%E8%AE%A9-Agent-%E4%B8%8D%E5%8F%AA%E6%98%AF%E2%80%9C%E4%BC%9A%E5%86%99%E2%80%9D%EF%BC%8C%E8%BF%98%E8%A6%81%E2%80%9C%E4%BC%9A%E6%8E%A8%E8%BF%9B%E2%80%9D"><span class="toc-text">三、我最认同的 Harness 视角：让 Agent 不只是“会写”，还要“会推进”</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-OpenAI-%E8%BF%99%E6%9D%A1%E8%B7%AF%E7%BA%BF%EF%BC%8C%E6%9B%B4%E5%83%8F%E2%80%9C%E6%8A%8A%E5%B7%A5%E7%A8%8B%E7%8E%AF%E5%A2%83%E6%95%B4%E7%90%86%E6%88%90-Agent-%E8%83%BD%E5%B7%A5%E4%BD%9C%E7%9A%84%E6%A0%B7%E5%AD%90%E2%80%9D"><span class="toc-text">1. OpenAI 这条路线，更像“把工程环境整理成 Agent 能工作的样子”</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Anthropic-%E8%BF%99%E6%9D%A1%E8%B7%AF%E7%BA%BF%EF%BC%8C%E6%9B%B4%E5%83%8F%E2%80%9C%E6%8A%8A%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B%E6%9C%AC%E8%BA%AB%E6%98%BE%E5%BC%8F%E5%BB%BA%E6%A8%A1%E5%87%BA%E6%9D%A5%E2%80%9D"><span class="toc-text">2. Anthropic 这条路线，更像“把开发流程本身显式建模出来”</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%9B%9E%E8%BF%87%E5%A4%B4%E7%9C%8B%EF%BC%8C%E6%88%91%E4%BB%A5%E5%89%8D%E5%85%B6%E5%AE%9E%E5%B7%B2%E7%BB%8F%E5%9C%A8%E9%9B%B6%E6%95%A3%E5%9C%B0%E5%81%9A-Harness"><span class="toc-text">四、回过头看，我以前其实已经在零散地做 Harness</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E9%A1%B9%E7%9B%AE%E8%A7%84%E5%88%99%EF%BC%8C%E6%9C%AC%E8%B4%A8%E4%B8%8A%E6%98%AF%E5%9C%A8%E5%81%9A%E4%B8%8A%E4%B8%8B%E6%96%87%E6%B2%BB%E7%90%86"><span class="toc-text">1. 项目规则，本质上是在做上下文治理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Skill%EF%BC%8C%E6%9C%AC%E8%B4%A8%E4%B8%8A%E6%98%AF%E5%9C%A8%E5%81%9A%E6%B5%81%E7%A8%8B%E5%B0%81%E8%A3%85"><span class="toc-text">2. Skill，本质上是在做流程封装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E7%BB%8F%E9%AA%8C%E5%BA%93%EF%BC%8C%E6%9C%AC%E8%B4%A8%E4%B8%8A%E6%98%AF%E5%9C%A8%E5%81%9A%E5%A4%96%E9%83%A8%E8%AE%B0%E5%BF%86"><span class="toc-text">3. 经验库，本质上是在做外部记忆</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-wiki%EF%BC%8C%E6%9C%AC%E8%B4%A8%E4%B8%8A%E6%98%AF%E5%9C%A8%E5%81%9A-system-of-record"><span class="toc-text">4. wiki，本质上是在做 system of record</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E5%AF%B9%E4%B8%AA%E4%BA%BA%E5%BC%80%E5%8F%91%E8%80%85%E6%9D%A5%E8%AF%B4%EF%BC%8C%E6%9C%80%E5%B0%8F%E5%8F%AF%E7%94%A8-Harness-%E5%88%B0%E5%BA%95%E9%95%BF%E4%BB%80%E4%B9%88%E6%A0%B7"><span class="toc-text">五、对个人开发者来说，最小可用 Harness 到底长什么样</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%B8%80%E4%BB%BD%E7%9F%AD%E5%B0%8F%E4%BD%86%E6%9C%89%E6%95%88%E7%9A%84%E8%A7%84%E5%88%99%E6%96%87%E4%BB%B6"><span class="toc-text">1. 一份短小但有效的规则文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%B8%80%E5%B1%82%E7%A8%B3%E5%AE%9A%E7%9A%84%E7%9F%A5%E8%AF%86%E6%96%87%E6%A1%A3"><span class="toc-text">2. 一层稳定的知识文档</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E4%B8%80%E6%9D%A1%E5%8F%AF%E5%B7%A5%E4%BD%9C%E7%9A%84%E9%AA%8C%E8%AF%81%E5%9B%9E%E8%B7%AF"><span class="toc-text">3. 一条可工作的验证回路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E4%B8%80%E5%A5%97%E7%BB%8F%E9%AA%8C%E6%B2%89%E6%B7%80%E6%9C%BA%E5%88%B6"><span class="toc-text">4. 一套经验沉淀机制</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E6%88%91%E7%8E%B0%E5%9C%A8%E5%AF%B9-Harness-Engineering-%E7%9A%84%E4%B8%80%E4%B8%AA%E5%81%8F%E8%A7%81"><span class="toc-text">六、我现在对 Harness Engineering 的一个偏见</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E7%BB%93%E8%AF%AD"><span class="toc-text">七、结语</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%AF%E9%99%84%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-text">可附参考资料</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E5%BA%93%E9%A1%B5%E9%9D%A2"><span class="toc-text">相关知识库页面</span></a></li></ol></div></div><div class="post-content"><h2 id="拟定标题"><a href="#拟定标题" class="headerlink" title="拟定标题"></a>拟定标题</h2><p>我原来写的项目规则、Skill、知识库，其实已经是在做 Harness Engineering</p>
+<h2 id="拟定摘要"><a href="#拟定摘要" class="headerlink" title="拟定摘要"></a>拟定摘要</h2><p>很多人把 Harness Engineering 理解成更复杂的 Prompt Engineering，但如果最近看过 OpenAI、Anthropic 和一些社区讨论，会发现这不是一回事。Harness 关注的不是一句话怎么写，而是如何给 agent 搭一个可持续工作的环境：任务怎么拆、上下文怎么管、工具怎么接、结果怎么验、失败怎么回灌、经验怎么沉淀。回头看我之前写过的项目规则、Skill、经验库和 wiki，其实已经在零散地做这件事了。</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>最近在看 Harness Engineering 相关资料，越看越觉得，这个词有点像之前的 “Context Engineering” 一样，容易被大家拿来当新概念转一圈，但真正落到实践里，它其实没有那么玄。</p>
+<p>我自己一开始也有点误解，以为所谓 Harness，无非就是 Prompt 写得更长一点，规则写得更细一点，或者给 Agent 多塞一点上下文。后来把几份资料连着看下来，感觉不是这么回事。</p>
+<p>如果要用一句我现在更能接受的话去概括：</p>
+<p><strong>Harness Engineering 不是教模型怎么回答问题，而是给 Agent 搭一个能持续干活的环境。</strong></p>
+<p>这个环境里面，模型当然很重要，但它已经不是全部了。更关键的是：</p>
+<ul>
+<li>任务怎么拆</li>
+<li>上下文怎么组织</li>
+<li>工具怎么接</li>
+<li>结果怎么验证</li>
+<li>失败之后怎么回灌</li>
+<li>多个 Agent 怎么协作</li>
+<li>做过一次的经验，怎么沉淀下来，下次别从零开始</li>
+</ul>
+<p>看到这里我突然意识到，原来我之前写的很多东西，虽然当时没用 Harness Engineering 这个词，但其实已经在做它的局部实现了。</p>
+<h2 id="一、为什么现在大家开始谈-Harness-Engineering"><a href="#一、为什么现在大家开始谈-Harness-Engineering" class="headerlink" title="一、为什么现在大家开始谈 Harness Engineering"></a>一、为什么现在大家开始谈 Harness Engineering</h2><p>过去一段时间，很多人讨论 AI Coding，主要还是围绕 Prompt 展开。比如：</p>
+<ul>
+<li>这句提示词怎么写更好</li>
+<li>角色怎么设定</li>
+<li>要不要加约束</li>
+<li>要不要给更多上下文</li>
+</ul>
+<p>这些东西当然有用，我自己也写过类似内容，比如项目规则怎么写、任务怎么拆、怎么给 Agent 设边界。</p>
+<p>但是只要真正把 Agent 用到项目里，就会很快发现一个问题：</p>
+<p><strong>Prompt 再漂亮，也顶不住真实工程环境的复杂度。</strong></p>
+<p>原因很简单，真实开发不是一道问答题，而是一整段工作流。</p>
+<p>你让 Agent 改一个功能，它不是只需要“输出一段代码”就完事了。它还要面对这些问题：</p>
+<ul>
+<li>它知道要改哪些文件吗</li>
+<li>它知道这个项目的业务背景吗</li>
+<li>它知道哪些地方不能碰吗</li>
+<li>它改完之后怎么验证自己没改坏</li>
+<li>它跑错了之后，能不能读日志继续修</li>
+<li>它遇到长任务时，是一次做完，还是拆成多个阶段</li>
+<li>它这次踩过的坑，下次还能不能记住</li>
+</ul>
+<p>也就是说，真正决定 Agent 上限的，慢慢就不是模型本身，而是你给它搭了一个什么样的“工作现场”。</p>
+<p>这就是我目前理解的 Harness。</p>
+<h2 id="二、Harness-不是-Prompt-的升级版，而是系统设计"><a href="#二、Harness-不是-Prompt-的升级版，而是系统设计" class="headerlink" title="二、Harness 不是 Prompt 的升级版，而是系统设计"></a>二、Harness 不是 Prompt 的升级版，而是系统设计</h2><p>如果按层次去理解，我现在更倾向于把它分成三层：</p>
+<h3 id="1-Prompt-Engineering"><a href="#1-Prompt-Engineering" class="headerlink" title="1. Prompt Engineering"></a>1. Prompt Engineering</h3><p>关注的是一句话怎么写。</p>
+<p>比如你是让它“优化一个组件”，还是告诉它“你现在是一个资深前端工程师，请基于现有组件结构优化这个组件，并补充测试和错误处理”。</p>
+<p>这是输入层面的优化。</p>
+<h3 id="2-Context-Engineering"><a href="#2-Context-Engineering" class="headerlink" title="2. Context Engineering"></a>2. Context Engineering</h3><p>关注的是给模型什么信息。</p>
+<p>比如项目规则、技术栈说明、目录结构、业务背景、历史文档、相关代码、过往经验等，本质上是在解决：</p>
+<p><strong>模型现在知道什么。</strong></p>
+<h3 id="3-Harness-Engineering"><a href="#3-Harness-Engineering" class="headerlink" title="3. Harness Engineering"></a>3. Harness Engineering</h3><p>关注的是整个运行环境怎么设计。</p>
+<p>本质上是在解决：</p>
+<p><strong>模型现在可以怎么工作。</strong></p>
+<p>这个差别很关键。</p>
+<p>因为当我们说 Prompt 或 Context 的时候，本质上还是在“喂输入”；而说 Harness 的时候，已经开始进入“搭系统”了。</p>
+<p>也正因如此，Harness 的关注点通常会变成这些更工程化的问题：</p>
+<ul>
+<li>有没有 agent loop</li>
+<li>有没有 tools</li>
+<li>有没有 plan</li>
+<li>有没有 verification</li>
+<li>有没有 memory</li>
+<li>有没有 permission gate</li>
+<li>有没有日志、UI、测试这些反馈回路</li>
+</ul>
+<p>我觉得这就是为什么最近这个概念会火起来。不是大家突然发明了什么新东西，而是 AI Coding 发展到这一步，很多人都碰到了同一堵墙：</p>
+<p><strong>只调提示词，已经不够了。</strong></p>
+<h2 id="三、我最认同的-Harness-视角：让-Agent-不只是“会写”，还要“会推进”"><a href="#三、我最认同的-Harness-视角：让-Agent-不只是“会写”，还要“会推进”" class="headerlink" title="三、我最认同的 Harness 视角：让 Agent 不只是“会写”，还要“会推进”"></a>三、我最认同的 Harness 视角：让 Agent 不只是“会写”，还要“会推进”</h2><p>看完几份资料后，我印象比较深的是两种路线。</p>
+<h3 id="1-OpenAI-这条路线，更像“把工程环境整理成-Agent-能工作的样子”"><a href="#1-OpenAI-这条路线，更像“把工程环境整理成-Agent-能工作的样子”" class="headerlink" title="1. OpenAI 这条路线，更像“把工程环境整理成 Agent 能工作的样子”"></a>1. OpenAI 这条路线，更像“把工程环境整理成 Agent 能工作的样子”</h3><p>我自己的理解是，OpenAI 更强调一件事：</p>
+<p><strong>不要把仓库只当成人看的代码容器，而要把它整理成 Agent 也能读、也能用、也能持续维护的 system of record。</strong></p>
+<p>这个思路特别打动我，因为它不是在说“再发明一个超强 agent”，而是在说：</p>
+<ul>
+<li>让 <code>AGENTS.md</code> 保持简洁，像一张地图</li>
+<li>把真正稳定的知识放进结构化文档</li>
+<li>让 UI、日志、指标、追踪都能成为反馈回路</li>
+<li>用 lint、CI、文档机制保证知识不会很快腐烂</li>
+</ul>
+<p>这套思路有个很大的优点，就是它很现实。</p>
+<p>因为大部分团队已经有仓库、文档、测试、日志、CI，只是以前这些东西主要是为人服务。现在要做的，是把它们重新组织一下，让 Agent 也能在里面生存。</p>
+<h3 id="2-Anthropic-这条路线，更像“把开发流程本身显式建模出来”"><a href="#2-Anthropic-这条路线，更像“把开发流程本身显式建模出来”" class="headerlink" title="2. Anthropic 这条路线，更像“把开发流程本身显式建模出来”"></a>2. Anthropic 这条路线，更像“把开发流程本身显式建模出来”</h3><p>Anthropic 那篇文章给我的感受是，harness 在他们那里更像一个完整的软件开发流水线。</p>
+<p>它不是简单地让一个 Agent 从头干到尾，而是通过不同角色配合：</p>
+<ul>
+<li>planner 负责扩展需求</li>
+<li>generator 负责实现</li>
+<li>evaluator 负责 QA 和验收</li>
+</ul>
+<p>最关键的地方不是“多 Agent”这件事本身，而是它把两个平时在团队里很重要、但在单 agent 场景里经常缺失的能力补上了：</p>
+<ul>
+<li><strong>契约</strong></li>
+<li><strong>验证</strong></li>
+</ul>
+<p>也就是 generator 不是接到一句模糊需求就闷头写，而是要先和 evaluator 对齐 sprint contract；evaluator 也不是只看代码，而是去跑真实应用，看浏览器行为、看是否符合验收标准。</p>
+<p>这就很像一个真正的软件团队了。</p>
+<h2 id="四、回过头看，我以前其实已经在零散地做-Harness"><a href="#四、回过头看，我以前其实已经在零散地做-Harness" class="headerlink" title="四、回过头看，我以前其实已经在零散地做 Harness"></a>四、回过头看，我以前其实已经在零散地做 Harness</h2><p>这个是我最近最有意思的一个感受。</p>
+<p>我原来写博客的时候，并没有用 Harness Engineering 这个词。但把之前写过的内容重新串起来看，会发现很多东西其实都已经在做了。</p>
+<h3 id="1-项目规则，本质上是在做上下文治理"><a href="#1-项目规则，本质上是在做上下文治理" class="headerlink" title="1. 项目规则，本质上是在做上下文治理"></a>1. 项目规则，本质上是在做上下文治理</h3><p>我之前写过项目规则怎么写，比如 <code>What / Why / How</code>，规则要短，不要塞太多无关内容，规则要渐进，不要把会快速过时的细节写进去。</p>
+<p>当时我只是觉得，这样可以让 Agent 更稳一点。</p>
+<p>现在回头看，这其实已经不是单纯 prompt 了，而是在做 harness 里的一个核心层：</p>
+<p><strong>上下文治理层。</strong></p>
+<p>也就是告诉 Agent：</p>
+<ul>
+<li>这是什么项目</li>
+<li>这个项目为什么这么设计</li>
+<li>你在这里应该怎么做事</li>
+<li>哪些地方不要碰</li>
+</ul>
+<p>这已经非常接近 Harness 里的运行边界设计了。</p>
+<h3 id="2-Skill，本质上是在做流程封装"><a href="#2-Skill，本质上是在做流程封装" class="headerlink" title="2. Skill，本质上是在做流程封装"></a>2. Skill，本质上是在做流程封装</h3><p>我之前还写过 Skill 相关内容。那时候更多是从“把重复操作固化下来”的角度去想，比如一个任务经常做，每次都要重新解释，很浪费时间，那不如把步骤、工具调用、注意事项整理成 Skill。</p>
+<p>现在再看，Skill 其实就是 Harness 的一个典型部件。</p>
+<p>它做的事情很像：</p>
+<ul>
+<li>把模糊经验变成显式流程</li>
+<li>把零散步骤变成可复用工作流</li>
+<li>把“每次重新对齐”变成“按约定执行”</li>
+</ul>
+<p>从这个角度说，Skill 根本不只是一个方便复用的 Prompt 模板，它更像一个轻量级的执行壳层。</p>
+<h3 id="3-经验库，本质上是在做外部记忆"><a href="#3-经验库，本质上是在做外部记忆" class="headerlink" title="3. 经验库，本质上是在做外部记忆"></a>3. 经验库，本质上是在做外部记忆</h3><p>我之前还写过一个观点：Agent 不稳定，很多时候不是因为模型不够聪明，而是因为你只给了目标，没给解法。于是我会倾向于把自己过去解决问题的模式沉淀下来，比如：</p>
+<ul>
+<li>调试问题先复现</li>
+<li>再看日志</li>
+<li>再缩小范围</li>
+<li>再验证假设</li>
+<li>最后再修</li>
+</ul>
+<p>当时我说，这是一种经验上下文。</p>
+<p>现在再看，这其实已经是 harness 的 memory 层了。</p>
+<p>也就是：</p>
+<p><strong>把“我以前是怎么解决这类问题的”沉淀成外部结构，让 Agent 在未来任务里复用。</strong></p>
+<p>这已经不是“这次聊天给多一点背景”这么简单，而是在给系统补长期记忆。</p>
+<h3 id="4-wiki，本质上是在做-system-of-record"><a href="#4-wiki，本质上是在做-system-of-record" class="headerlink" title="4. wiki，本质上是在做 system of record"></a>4. wiki，本质上是在做 system of record</h3><p>我最近在折腾用大模型维护 wiki，本来想的是知识沉淀、跨会话记忆、把过往博客和资料组织成一个长期上下文。</p>
+<p>后来回头看 OpenAI 那篇东西，突然觉得这个方向跟 Harness 其实是强相关的。</p>
+<p>因为 wiki 做的事情，本质上也是：</p>
+<ul>
+<li>把原始资料、概念页、问答页、报告页区分开</li>
+<li>让知识有稳定的结构和索引</li>
+<li>让 Agent 不用每次从零理解整个世界</li>
+<li>让过去聊过的东西变成未来可读的系统记录</li>
+</ul>
+<p>如果说 <code>AGENTS.md</code> 更像地图，那么 wiki 和 docs 就更像地形、道路和历史档案。</p>
+<p>它们组合在一起，才构成一个可持续工作的环境。</p>
+<h2 id="五、对个人开发者来说，最小可用-Harness-到底长什么样"><a href="#五、对个人开发者来说，最小可用-Harness-到底长什么样" class="headerlink" title="五、对个人开发者来说，最小可用 Harness 到底长什么样"></a>五、对个人开发者来说，最小可用 Harness 到底长什么样</h2><p>不是每个人都需要一上来就搭 Anthropic 那种 planner &#x2F; generator &#x2F; evaluator 三 agent 系统。</p>
+<p>对个人开发者来说，我现在更认同的是先从一个最小版本开始。</p>
+<p>在我看来，一个足够实用的最小 Harness，大概包含这几层：</p>
+<h3 id="1-一份短小但有效的规则文件"><a href="#1-一份短小但有效的规则文件" class="headerlink" title="1. 一份短小但有效的规则文件"></a>1. 一份短小但有效的规则文件</h3><p>它不是百科全书，而是一张地图。</p>
+<p>至少要说清楚：</p>
+<ul>
+<li>项目是什么</li>
+<li>技术栈是什么</li>
+<li>目录结构大概怎么分</li>
+<li>哪些文件通常不要改</li>
+<li>做需求时优先遵循什么工作方式</li>
+</ul>
+<h3 id="2-一层稳定的知识文档"><a href="#2-一层稳定的知识文档" class="headerlink" title="2. 一层稳定的知识文档"></a>2. 一层稳定的知识文档</h3><p>这层可以是 <code>docs/</code>，也可以是 wiki。</p>
+<p>目标不是把所有事情都记下来，而是把那些<strong>跨任务稳定成立</strong>的信息沉淀下来，比如：</p>
+<ul>
+<li>业务背景</li>
+<li>核心模块说明</li>
+<li>常见坑</li>
+<li>测试方式</li>
+<li>UI &#x2F; API 约定</li>
+</ul>
+<h3 id="3-一条可工作的验证回路"><a href="#3-一条可工作的验证回路" class="headerlink" title="3. 一条可工作的验证回路"></a>3. 一条可工作的验证回路</h3><p>这是我觉得很多人最容易忽视，但其实最重要的地方。</p>
+<p>Agent 改完代码后，至少应该能做下面几件事中的一部分：</p>
+<ul>
+<li>跑测试</li>
+<li>看命令行错误</li>
+<li>看日志</li>
+<li>看页面真实效果</li>
+<li>对照验收标准检查</li>
+</ul>
+<p>如果没有这层，Agent 很容易停留在“我觉得我已经写好了”。</p>
+<h3 id="4-一套经验沉淀机制"><a href="#4-一套经验沉淀机制" class="headerlink" title="4. 一套经验沉淀机制"></a>4. 一套经验沉淀机制</h3><p>比如：</p>
+<ul>
+<li>好用的规则记录下来</li>
+<li>某类问题的解决模式整理成 Skill</li>
+<li>有价值的对话总结进 wiki</li>
+<li>可复用的流程抽成模板</li>
+</ul>
+<p>这层的意义在于，不让每次成功都只停留在一次性的聊天记录里。</p>
+<h2 id="六、我现在对-Harness-Engineering-的一个偏见"><a href="#六、我现在对-Harness-Engineering-的一个偏见" class="headerlink" title="六、我现在对 Harness Engineering 的一个偏见"></a>六、我现在对 Harness Engineering 的一个偏见</h2><p>我现在对这个概念有一个比较强的个人偏见：</p>
+<p><strong>Harness Engineering 真正重要的，不是给 Agent 加多少能力，而是减少多少“重新开始”。</strong></p>
+<p>因为 AI Coding 最大的成本，很多时候不是 token，也不是模型订阅费，而是反复重新对齐。</p>
+<p>一次又一次解释项目。<br>一次又一次补充背景。<br>一次又一次纠正同样的偏差。<br>一次又一次告诉它应该怎么验证。</p>
+<p>这些重复消耗，才是最烦的。</p>
+<p>如果一个 harness 能把这些重复对齐降下来，它就已经很值钱了。</p>
+<p>所以我现在更愿意把 Harness 理解成一种“降重复、提闭环”的工程思想，而不是一个新潮术语。</p>
+<h2 id="七、结语"><a href="#七、结语" class="headerlink" title="七、结语"></a>七、结语</h2><p>以前我写项目规则、写 Skill、写经验库、写 wiki，更多是出于一种朴素的直觉：让 AI 更懂项目一点，让自己少重复一点，让成功经验别白白浪费。</p>
+<p>最近看了 Harness Engineering 相关资料之后，我的感受反而不是“我学到了一个全新的东西”，而是：</p>
+<p><strong>原来我零零散散做的这些事，放在一起看，本来就是 Harness。</strong></p>
+<p>只是以前我们把它叫：</p>
+<ul>
+<li>项目规则</li>
+<li>工作流</li>
+<li>Skill</li>
+<li>知识库</li>
+<li>经验沉淀</li>
+</ul>
+<p>现在大家给这整套东西起了一个更系统化的名字，叫 Harness Engineering。</p>
+<p>如果要说它对我最大的启发是什么，我觉得不是“去搭一个更复杂的 Agent 系统”，而是提醒我重新审视一件事：</p>
+<p><strong>真正值得优化的，往往不是某条 Prompt，而是 Agent 干活的整个环境。</strong></p>
+<h2 id="可附参考资料"><a href="#可附参考资料" class="headerlink" title="可附参考资料"></a>可附参考资料</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.v2ex.com/t/1202475#reply3">V2EX：Harness 决定 Agent 上限：从代码执行到项目迭代</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.v2ex.com/t/1202411#reply10">V2EX：探讨 Harness Engineering</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/shareAI-lab/learn-claude-code">shareAI-lab &#x2F; learn-claude-code</a></li>
+<li><a target="_blank" rel="noopener" href="https://openai.com/zh-Hans-CN/index/harness-engineering/">OpenAI：Harness engineering &#x2F; 在智能体优先的世界中利用 Codex</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.anthropic.com/engineering/harness-design-long-running-apps">Anthropic：Harness design for long-running application development</a></li>
+</ul>
+<h2 id="相关知识库页面"><a href="#相关知识库页面" class="headerlink" title="相关知识库页面"></a>相关知识库页面</h2><ul>
+<li><a href="../concepts/harness-engineering.html">Harness Engineering（概念）</a></li>
+<li><a href="harness-engineering-reading-notes.html">Harness Engineering 资料整理</a></li>
+<li><a href="../sources/ai-coding-share.html">AI赋能存量项目——从函数助手到业务伙伴</a></li>
+<li><a href="../sources/writing-a-good-claude-md.html">AI协作编程——如何写好项目规则</a></li>
+<li><a href="../sources/agent-coding-stability.html">一个提升 AI Coding 稳定性的思路</a></li>
+<li><a href="../sources/llm-wiki.html">使用大模型来维护知识库</a></li>
+</ul>
+</div></div></div></div><div class="pure-u-1 pure-u-md-1-4"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 常用文档</i></div><ul></ul><a href="/git-common-commands" title="Git 文档" target="_blank">Git 文档</a><ul></ul><a href="/common-programming-prompt-words" title="常用开发提示词" target="_blank">常用开发提示词</a></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="../../categories/soft/">软技能与思考</a><span class="category-list-count">45</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/cli/">工程化与运维</a><span class="category-list-count">50</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/web/">Web开发</a><span class="category-list-count">142</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/intelligent/">AI探索</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/coding/">编程基础</a><span class="category-list-count">42</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/site/">网站建设</a><span class="category-list-count">5</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="../../tags/essays/" style="font-size: 15px; color: #3679a7">随笔</a> <a href="../../tags/performance/" style="font-size: 15px; color: #7a9fb8">性能优化</a> <a href="../../tags/JavaScript-TypeScript/" style="font-size: 15px; color: #0e639d">JavaScript&TypeScript</a> <a href="../../tags/AI%E5%8E%9F%E7%90%86/" style="font-size: 15px; color: #96aebf">AI原理</a> <a href="../../tags/backend/" style="font-size: 15px; color: #5f90b1">后端</a> <a href="../../tags/Python-Go-%E5%85%B6%E4%BB%96/" style="font-size: 15px; color: #88a6bb">Python/Go/其他</a> <a href="../../tags/api-services/" style="font-size: 15px; color: #bec4c9">API&服务</a> <a href="../../tags/computer-science/" style="font-size: 15px; color: #2972a4">计算机科学</a> <a href="../../tags/%E8%81%8C%E4%B8%9A%E5%8F%91%E5%B1%95/" style="font-size: 15px; color: #7a9fb8">职业发展</a> <a href="../../tags/AI%E7%BC%96%E7%A8%8B/" style="font-size: 15px; color: #7a9fb8">AI编程</a> <a href="../../tags/%E7%BF%BB%E8%AF%91/" style="font-size: 15px; color: #ccc">翻译</a> <a href="../../tags/reading-notes/" style="font-size: 15px; color: #a3b5c2">读书笔记</a> <a href="../../tags/frontend/" style="font-size: 15px; color: #005b9a">前端</a> <a href="../../tags/frameworks-libs/" style="font-size: 15px; color: #5288ae">框架与库</a> <a href="../../tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/" style="font-size: 15px; color: #88a6bb">系统设计</a> <a href="../../tags/programming-languages/" style="font-size: 15px; color: #b1bdc5">编程语言</a> <a href="../../tags/css-visualization/" style="font-size: 15px; color: #1b6aa1">CSS与可视化</a> <a href="../../tags/build-deploy/" style="font-size: 15px; color: #6d97b5">构建与部署</a> <a href="../../tags/dev-tools/" style="font-size: 15px; color: #4481ab">开发工具</a> <a href="../../tags/Agent-Skill/" style="font-size: 15px; color: #ccc">Agent,Skill</a> <a href="../../tags/Node-js/" style="font-size: 15px; color: #7a9fb8">Node.js</a> <a href="../../tags/cross-platform/" style="font-size: 15px; color: #88a6bb">跨端方案</a> <a href="../../tags/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/" style="font-size: 15px; color: #ccc">项目管理</a> <a href="../../tags/%E7%9F%A5%E8%AF%86%E5%BA%93/" style="font-size: 15px; color: #ccc">知识库</a> <a href="../../tags/code-quality/" style="font-size: 15px; color: #bec4c9">代码质量</a></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2026 <a href="../../." rel="nofollow">Canace 的博客</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="../../js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.js" async></script><script type="text/javascript" src="../../js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.css"><link rel="stylesheet" type="text/css" href="../../css/search.css?v=0.0.0"><script type="text/javascript" src="../../js/search.js?v=0.0.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+   search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="/js/copycode.js" successtext="复制成功!"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/mermaid@11.14.0/dist/mermaid.min.js"></script><script type="text/javascript">document.addEventListener('DOMContentLoaded', function () {
+  if (!window.mermaid) return;
+  mermaid.initialize({"theme":"default","logLevel":5,"startOnLoad":true,"arrowMarkerAbsolute":false,"flowchart":{"htmlLabels":true,"useMaxWidth":true,"curve":"linear"},"sequence":{"diagramMarginX":50,"diagramMarginY":10,"actorMargin":50,"width":150,"height":65,"boxMargin":10,"boxTextMargin":5,"noteMargin":10,"messageMargin":35,"mirrorActors":true,"bottomMarginAdj":1,"useMaxWidth":true},"gantt":{"titleTopMargin":25,"barHeight":20,"barGap":4,"topPadding":50,"leftPadding":75,"gridLineStartPadding":35,"fontSize":11,"fontFamily":"\"Open-Sans\", \"sans-serif\"","numberSectionStyles":4,"axisFormat":"%Y-%m-%d"},"class":{},"git":{}});
+});
+</script><script type="text/javascript" src="../../js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="../../js/smartresize.js?v=0.0.0"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":200,"height":200},"mobile":{"show":false},"react":{"opacity":0.7},"log":false});</script></body></html>
