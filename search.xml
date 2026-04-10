@@ -8,7 +8,7 @@
       <link href="/why-not-let-ai-write-for-us/"/>
       <url>/why-not-let-ai-write-for-us/</url>
       
-        <content type="html"><![CDATA[<p>当我们在写文档或文章时，实际上是在提出问题并回答它。例如，一份产品需求文档（PRD）回答的是“我们要干嘛？”；一份技术规范（Tech Spec）回答的是“我们要怎么做？”。有时，问题本身更难回答——“我们究竟想要达到什么目标？”而每一次尝试回答，其实都是在反思自己是否问对了问题。</p><p>但现在，我们有了大语言模型（LLM），由 LLM 生成的文档、文章越来越多，我们需要注意这其中可能有一定的风险：每一份由 LLM 生成的文档，可能都会让我们错失一次思考或者是建立合作信任的机会。</p><h3 id="一、让-LLM-替我们写作，就像付费健身"><a href="#一、让-LLM-替我们写作，就像付费健身" class="headerlink" title="一、让 LLM 替我们写作，就像付费健身"></a>一、让 LLM 替我们写作，就像付费健身</h3><p>写作的目标不是“写完”，而是“增进理解”——首先是对自己的理解，其次是对周围环境的理解。当我们被委派去写东西时，我们的任务是深入迷雾，去征服未知，带着清晰的结构和洞察走出来。</p><p>写作的另一个目标可能是让自己变得更强。这就像健身：每一次对自我极限的挑战，都会促进力量的增长，过程是痛苦且费力的，但是我们能得到正反馈。相反，让 LLM 替我们写作，就像付费健身，虽然很舒适，却无法提升自己的能力（认知或者是写作）。</p><h3 id="二、LLM-生成的文字不仅破坏了表达的真实性，也破坏了背后思考的真实性"><a href="#二、LLM-生成的文字不仅破坏了表达的真实性，也破坏了背后思考的真实性" class="headerlink" title="二、LLM 生成的文字不仅破坏了表达的真实性，也破坏了背后思考的真实性"></a>二、LLM 生成的文字不仅破坏了表达的真实性，也破坏了背后思考的真实性</h3><p>LLM 生成的文档，还会对我们的公信力产生一定的影响。当我发给别人一份带着明显“AI 味”的文档时，只是在证明 LLM 产出了一些接近他人想听的内容，而不能证明我深入思考过这些东西，这明显不是我的思考产物。</p><p>当与别人就这份文档内容进行交流时，我们可能不知所云，这在一定程度上会降低别人对我们的信任，更有甚者，可能因为这份信任的丧失，我们会失去一次机会。</p><p>LLM 生成的文字不仅破坏了表达的真实性，也破坏了背后思考的真实性。如果文字是自动生成的，那么观点是否也是自动生成的呢？</p><h3 id="三、LLM-在写作过程中的正确用途"><a href="#三、LLM-在写作过程中的正确用途" class="headerlink" title="三、LLM 在写作过程中的正确用途"></a>三、LLM 在写作过程中的正确用途</h3><p>LLM 在调研和检查工作时非常有用，它们很擅长快速记录信息或转录文本。</p><p>它们尤其擅长<code>生成创意</code>，在这个场景下，它们表现卓越，因为即使生成了 10 个点子而只有一个有用，也无伤大雅。我们可以取其精华，去其糟粕。</p><p>因此，可以说，大模型能提高软件交付的效率，但为了最大限度地利用它们，我们必须同时提升我们的思想深度。</p><p>参考文献：</p><p><a href="https://alexhwoods.com/dont-let-ai-write-for-you/">https://alexhwoods.com/dont-let-ai-write-for-you/</a></p>]]></content>
+        <content type="html"><![CDATA[<p>这篇文章是今天看到的，觉得还不错，翻译一下。</p><p>当我们在写文档或文章时，实际上是在提出问题并回答它。例如，一份产品需求文档（PRD）回答的是“我们要干嘛？”；一份技术规范（Tech Spec）回答的是“我们要怎么做？”。有时，问题本身更难回答——“我们究竟想要达到什么目标？”而每一次尝试回答，其实都是在反思自己是否问对了问题。</p><p>但现在，我们有了大语言模型（LLM），由 LLM 生成的文档、文章越来越多，我们需要注意这其中可能有一定的风险：每一份由 LLM 生成的文档，可能都会让我们错失一次思考或者是建立合作信任的机会。</p><h3 id="一、让-LLM-替我们写作，就像付费健身"><a href="#一、让-LLM-替我们写作，就像付费健身" class="headerlink" title="一、让 LLM 替我们写作，就像付费健身"></a>一、让 LLM 替我们写作，就像付费健身</h3><p>写作的目标不是“写完”，而是“增进理解”——首先是对自己的理解，其次是对周围环境的理解。当我们被委派去写东西时，我们的任务是深入迷雾，去征服未知，带着清晰的结构和洞察走出来。</p><p>写作的另一个目标可能是让自己变得更强。这就像健身：每一次对自我极限的挑战，都会促进力量的增长，过程是痛苦且费力的，但是我们能得到正反馈。相反，让 LLM 替我们写作，就像付费健身，虽然很舒适，却无法提升自己的能力（认知或者是写作）。</p><h3 id="二、LLM-生成的文字不仅破坏了表达的真实性，也破坏了背后思考的真实性"><a href="#二、LLM-生成的文字不仅破坏了表达的真实性，也破坏了背后思考的真实性" class="headerlink" title="二、LLM 生成的文字不仅破坏了表达的真实性，也破坏了背后思考的真实性"></a>二、LLM 生成的文字不仅破坏了表达的真实性，也破坏了背后思考的真实性</h3><p>LLM 生成的文档，还会对我们的公信力产生一定的影响。当我发给别人一份带着明显“AI 味”的文档时，只是在证明 LLM 产出了一些接近他人想听的内容，而不能证明我深入思考过这些东西，这明显不是我的思考产物。</p><p>当与别人就这份文档内容进行交流时，我们可能不知所云，这在一定程度上会降低别人对我们的信任，更有甚者，可能因为这份信任的丧失，我们会失去一次机会。</p><p>LLM 生成的文字不仅破坏了表达的真实性，也破坏了背后思考的真实性。如果文字是自动生成的，那么观点是否也是自动生成的呢？</p><h3 id="三、LLM-在写作过程中的正确用途"><a href="#三、LLM-在写作过程中的正确用途" class="headerlink" title="三、LLM 在写作过程中的正确用途"></a>三、LLM 在写作过程中的正确用途</h3><p>LLM 在调研和检查工作时非常有用，它们很擅长快速记录信息或转录文本。</p><p>它们尤其擅长<code>生成创意</code>，在这个场景下，它们表现卓越，因为即使生成了 10 个点子而只有一个有用，也无伤大雅。我们可以取其精华，去其糟粕。</p><p>因此，可以说，大模型能提高软件交付的效率，但为了最大限度地利用它们，我们必须同时提升我们的思想深度。</p><p>参考文献：</p><p><a href="https://alexhwoods.com/dont-let-ai-write-for-you/">https://alexhwoods.com/dont-let-ai-write-for-you/</a></p>]]></content>
       
       
       <categories>
@@ -7542,11 +7542,11 @@
     
     
     <entry>
-      <title>Git域名配置</title>
-      <link href="/git-domain-config/"/>
-      <url>/git-domain-config/</url>
+      <title>Git环境配置</title>
+      <link href="/git-environment-config/"/>
+      <url>/git-environment-config/</url>
       
-        <content type="html"><![CDATA[<p>git 域名配置</p><span id="more"></span><ol><li><p>在 Godaddy 购买的域名；</p></li><li><p>查找 DNSpod 解析域名，没什么难度，就是添加一条记录，保存而已，记得在添加域名到 DNSpod 之后，复制两个 NS 地址到 godaddy 的域名服务器下；</p></li><li><p>Git 项目根目录下创建 CNAME 文件，把域名填进去，push 就行了。</p></li></ol>]]></content>
+        <content type="html"><![CDATA[<p>结合了一些网上的方法，结合自己配置的实际情况写的文档。</p><span id="more"></span><ol><li><p>下载 git 主程序，下载地址：<a href="https://git-scm.com/downloads%EF%BC%8C">https://git-scm.com/downloads，</a> 双击安装包，一路 next 就行；</p></li><li><p>对于技术小白的我来说，命令行神马的太复杂了，所以就需要一个 git 界面画的软件来帮助我啦，这个软件就是 TortoiseGit，下载地址：<a href="https://tortoisegit.org/download/%EF%BC%8C">https://tortoisegit.org/download/，</a> 分为 32 位版和 64 位版，下载时要选好，安装的时候也是一路 next；</p></li><li><p>接下来就是解决怎么把本地项目关联发布到 git 上的问题了；</p></li></ol><p>(1) 首先打开 git 上的项目，复制 git 的 HTTP 地址；</p><p>(2) 然后创打开硬盘里的一个目录，最好是专门开发用的目录，点右键，选择“Git Clone…”，将地址复制进去，点击 OK；<br>(3) 出现 Success 提示，就代表 clone 成功了，close 掉对话框，然后就出现了名为 git 项目的文件夹了；</p><ol start="4"><li>本地改动保存为一个版本，我们以新建文件为例；</li></ol><p>(1) 首先，打开刚才生成文件夹，新建一个名为 readme.txt 的空文件；</p><p>(2) 然后在这里鼠标右击，选择 Git Commit -&gt; “master”…，会弹出一个对话框（注意：这里可能会提醒设置用户名、密码 和邮箱，点击确定，填写 git 账户的用户名和注册邮箱以及密码即可）；</p>]]></content>
       
       
       <categories>
@@ -7567,11 +7567,11 @@
     
     
     <entry>
-      <title>Git环境配置</title>
-      <link href="/git-environment-config/"/>
-      <url>/git-environment-config/</url>
+      <title>Git域名配置</title>
+      <link href="/git-domain-config/"/>
+      <url>/git-domain-config/</url>
       
-        <content type="html"><![CDATA[<p>结合了一些网上的方法，结合自己配置的实际情况写的文档。</p><span id="more"></span><ol><li><p>下载 git 主程序，下载地址：<a href="https://git-scm.com/downloads%EF%BC%8C">https://git-scm.com/downloads，</a> 双击安装包，一路 next 就行；</p></li><li><p>对于技术小白的我来说，命令行神马的太复杂了，所以就需要一个 git 界面画的软件来帮助我啦，这个软件就是 TortoiseGit，下载地址：<a href="https://tortoisegit.org/download/%EF%BC%8C">https://tortoisegit.org/download/，</a> 分为 32 位版和 64 位版，下载时要选好，安装的时候也是一路 next；</p></li><li><p>接下来就是解决怎么把本地项目关联发布到 git 上的问题了；</p></li></ol><p>(1) 首先打开 git 上的项目，复制 git 的 HTTP 地址；</p><p>(2) 然后创打开硬盘里的一个目录，最好是专门开发用的目录，点右键，选择“Git Clone…”，将地址复制进去，点击 OK；<br>(3) 出现 Success 提示，就代表 clone 成功了，close 掉对话框，然后就出现了名为 git 项目的文件夹了；</p><ol start="4"><li>本地改动保存为一个版本，我们以新建文件为例；</li></ol><p>(1) 首先，打开刚才生成文件夹，新建一个名为 readme.txt 的空文件；</p><p>(2) 然后在这里鼠标右击，选择 Git Commit -&gt; “master”…，会弹出一个对话框（注意：这里可能会提醒设置用户名、密码 和邮箱，点击确定，填写 git 账户的用户名和注册邮箱以及密码即可）；</p>]]></content>
+        <content type="html"><![CDATA[<p>git 域名配置</p><span id="more"></span><ol><li><p>在 Godaddy 购买的域名；</p></li><li><p>查找 DNSpod 解析域名，没什么难度，就是添加一条记录，保存而已，记得在添加域名到 DNSpod 之后，复制两个 NS 地址到 godaddy 的域名服务器下；</p></li><li><p>Git 项目根目录下创建 CNAME 文件，把域名填进去，push 就行了。</p></li></ol>]]></content>
       
       
       <categories>
