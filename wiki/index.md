@@ -263,6 +263,7 @@
 - [AI赋能存量项目——从函数助手到业务伙伴](sources/ai-coding-share.md) — `source/_posts/ai-coding-share.md`
 - [AI协作编程——传统IDE快速切换到AI IDE](sources/ai-coding-ide.md) — `source/_posts/ai-coding-ide.md`
 - [我们是否需要AI知识库](sources/AI-knowledge-base.md) — `source/_posts/AI-knowledge-base.md`
+- [Gemini 对话：AI、贫富差距与劳动形态](sources/gemini-ai-wealth-gap-dialogue.md) — Gemini 会话整理（摘要见该页，可追溯外部链接）
 
 ### 软技能与思考
 
@@ -331,6 +332,7 @@
 
 ## Concepts
 
+- [AI 时代的贫富分化与劳动迁移（概念）](concepts/ai-wealth-labor-shift.md)
 - [编译式知识库（概念）](concepts/compiled-knowledge-vault.md)
 - [Harness Engineering（概念）](concepts/harness-engineering.md)
 - [LLM 维护的知识库（概念）](concepts/llm-maintained-wiki.md)
