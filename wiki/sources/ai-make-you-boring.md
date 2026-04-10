@@ -9,3 +9,6 @@
 
 由 Hacker News 上关于 Show HN 质量下滑的讨论展开，谈 AI 辅助下的「无趣」项目、思维外包如何削弱原创与沉浸，以及为何提示词替代不了真正的构思过程。
 
+## 相关概念
+
+- [AI 外包写作与思维：对照阅读（概念）](../concepts/ai-outsourcing-writing-thinking.md)：与 Alex Woods [Don't Let AI Write For You](https://alexhwoods.com/dont-let-ai-write-for-you/)、本博 [为什么不要让LLM帮我们写文档](why-not-let-ai-write-for-us.md) 的并列对照与合成。

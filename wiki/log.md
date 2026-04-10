@@ -1,5 +1,7 @@
 # Wiki Log
 
+- 2026-04-10：Ingest `source/_posts/why-not-let-ai-write-for-us.md` → 新增 `wiki/sources/why-not-let-ai-write-for-us.md`，扩展 `wiki/concepts/ai-outsourcing-writing-thinking.md` 为三篇对照并调整合成结论，更新 `wiki/sources/ai-make-you-boring.md` 概念回链，更新 `wiki/index.md` 软技能与思考条目。
+- 2026-04-10：新增概念页 `wiki/concepts/ai-outsourcing-writing-thinking.md`（Alex Woods「Don't Let AI Write For You」与博文《AI 让人变得无趣》对照），补充 `wiki/sources/ai-make-you-boring.md` 相关概念回链，更新 `wiki/index.md` Concepts。
 - 2026-04-10：新增概念页 `wiki/concepts/whisper-gemini-video-subtitles.md`（Whisper 打轴 + Gemini 翻译字幕工作流），并更新 `wiki/index.md` Concepts。
 - 2026-04-10：`gemini-ai-wealth-gap-dialogue` 来源页改为仅依赖外部 Gemini 链接与本页摘要，去掉对 `wiki/Clippings/` 剪藏文件的依赖，便于用户删除本地剪藏后不产生死链；同步更新 `wiki/index.md` 条目说明、`ai-wealth-labor-shift` 来源行措辞。
 - 2026-04-10：整理 Gemini 剪藏「AI 与贫富差距 / 劳动形态」对话 → 新增 `wiki/sources/gemini-ai-wealth-gap-dialogue.md`、`wiki/concepts/ai-wealth-labor-shift.md`，更新 `wiki/index.md`；剪藏文件曾补充回链至 sources/concepts（剪藏可删，知识库已自洽）。

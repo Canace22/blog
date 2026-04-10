@@ -268,6 +268,7 @@
 ### 软技能与思考
 
 - [AI 让人变得无趣](sources/ai-make-you-boring.md) — `source/_posts/ai-make-you-boring.md`
+- [为什么不要让LLM帮我们写文档](sources/why-not-let-ai-write-for-us.md) — `source/_posts/why-not-let-ai-write-for-us.md`
 - [为什么要写微信公众号](sources/why-write-wechat-official-account.md) — `source/_posts/why-write-wechat-official-account.md`
 - [工作与事业](sources/work-for.md) — `source/_posts/work-for.md`
 - [经验之谈](sources/words-of-experience.md) — `source/_posts/words-of-experience.md`
@@ -332,8 +333,9 @@
 
 ## Concepts
 
-- [外语视频翻译字幕：Whisper 打轴 + Gemini 翻译](concepts/whisper-gemini-video-subtitles.md)
+- [AI 外包写作与思维：对照阅读（概念）](concepts/ai-outsourcing-writing-thinking.md)
 - [AI 时代的贫富分化与劳动迁移（概念）](concepts/ai-wealth-labor-shift.md)
+- [外语视频翻译字幕：Whisper 打轴 + Gemini 翻译](concepts/whisper-gemini-video-subtitles.md)
 - [编译式知识库（概念）](concepts/compiled-knowledge-vault.md)
 - [Harness Engineering（概念）](concepts/harness-engineering.md)
 - [LLM 维护的知识库（概念）](concepts/llm-maintained-wiki.md)
