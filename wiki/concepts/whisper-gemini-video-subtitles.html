@@ -1,0 +1,143 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="canace 的博客"><meta itemprop="name" content="外语视频翻译字幕：Whisper 打轴 + Gemini 翻译"><meta itemprop="image" content="https://raw.githubusercontent.com/Canace22/Assets/main/images/snow-other.png"><meta property="og:image" content="https://raw.githubusercontent.com/Canace22/Assets/main/images/snow-other.png"><meta name="description" itemprop="description" content="&lt;p&gt;面向「先对齐时间轴、再翻成目标语言」的个人工作流说明；工具可替换，核心是&lt;strong&gt;时间信息与文本解耦&lt;/strong&gt;。&lt;/p&gt;
+&lt;h2 id=&quot;思路&quot;&gt;&lt;a href=&quot;#思路&quot; class=&quot;headerlink&quot; title=&quot;思路&quot;&gt;&lt;/a&gt;思路&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;打轴（时间轴）&lt;/strong&gt;：用 Whisper 从音轨得到「每句&amp;#x2F;每段的起止时间 + 原文转写」，输出带时间戳的字幕格式（常见为 SRT、VTT）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;翻译&lt;/strong&gt;：把&lt;strong&gt;已分段的文本&lt;/strong&gt;交给 Gemini 译成目标语言，&lt;strong&gt;保留原时间码&lt;/strong&gt;，只替换字幕正文；必要时人工微调断句与长度。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;这样 Whisper 负责「听清 + 对齐」，Gemini 负责「语义与用语」，比「整段音频直出双语」更易校对和压制。&lt;/p&gt;
+&lt;h2 id=&quot;推荐流程（概要）&quot;&gt;&lt;a href=&quot;#推荐流程（概要）&quot; class=&quot;headerlink&quot; title=&quot;推荐流程（概要）&quot;&gt;&lt;/a&gt;推荐流程（概要）&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;步骤&lt;/th&gt;
+&lt;th&gt;做什么&lt;/th&gt;
+&lt;th&gt;产出&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;从视频提取音轨（如 &lt;code&gt;ffmpeg&lt;/code&gt; → WAV&amp;#x2F;MP3）&lt;/td&gt;
+&lt;td&gt;单一音频文件&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;Whisper 转写并导出字幕&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;*.srt&lt;/code&gt; &amp;#x2F; &lt;code&gt;*.vtt&lt;/code&gt;（含时间轴）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;解析字幕为「序号 + 起止时间 + 原文」&lt;/td&gt;
+&lt;td&gt;结构化列表或中间 JSON&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;4&lt;/td&gt;
+&lt;td&gt;按段调用 Gemini 翻译（可批量、附上下文）&lt;/td&gt;
+&lt;td&gt;各段译文&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;5&lt;/td&gt;
+&lt;td&gt;写回同一时间码，生成新字幕文件&lt;/td&gt;
+&lt;td&gt;目标语言 &lt;code&gt;*.srt&lt;/code&gt; &amp;#x2F; &lt;code&gt;*.vtt&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;6&lt;/td&gt;
+&lt;td&gt;播放器或剪辑软件里叠字幕、或烧录&lt;/td&gt;
+&lt;td&gt;成品&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;h2 id=&quot;Whisper-侧要点&quot;&gt;&lt;a href=&quot;#Whisper-侧要点&quot; class=&quot;headerlink&quot; title=&quot;Whisper 侧要点&quot;&gt;&lt;/a&gt;Whisper 侧要点&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;模型&lt;/strong&gt;：&lt;code&gt;small&lt;/code&gt; &amp;#x2F; &lt;code&gt;medium&lt;/code&gt; &amp;#x2F; &lt;code&gt;large-v3&lt;/code&gt; 等，越大越准、越慢；口语、噪声大时优先大一点或先降噪。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;语言&lt;/strong&gt;：指定 &lt;code&gt;--language&lt;/code&gt; 可减少误识别（尤其多语混说时）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;时间粒度&lt;/strong&gt;：一般用&lt;strong&gt;句级&amp;#x2F;段级&lt;/strong&gt;即可；需要卡拉 OK 式逐字再开 word-level。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;实现形态&lt;/strong&gt;：&lt;code&gt;openai-whisper&lt;/code&gt; CLI、&lt;code&gt;faster-whisper&lt;/code&gt;（省显存）、&lt;code&gt;whisper.cpp&lt;/code&gt;（本地 CPU&amp;#x2F;GPU）等，任选其一能稳定导出 SRT&amp;#x2F;VTT 即可。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;Gemini-侧要点&quot;&gt;&lt;a href=&quot;#Gemini-侧要点&quot; class=&quot;headerlink&quot; title=&quot;Gemini 侧要点&quot;&gt;&lt;/a&gt;Gemini 侧要点&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;输入&lt;/strong&gt;：每段只给「原文 + 可选上一段译文」作连贯参考，避免一次塞整部电影导致截断。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;输出约束&lt;/strong&gt;：在提示词中要求「只输出译文、保持段数与顺序与原文一一对应」，减少模型合并或拆段导致与时间轴错位。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;后处理&lt;/strong&gt;：检查过长译文（单行超出安全字符数可自动拆行或改短句），专有名词可维护小表做统一替换。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;常见问题&quot;&gt;&lt;a href=&quot;#常见问题&quot; class=&quot;headerlink&quot; title=&quot;常见问题&quot;&gt;&lt;/a&gt;常见问题&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;时间轴漂移&lt;/strong&gt;：多半是原视频变速或 Whisper 分段过粗；可缩短 &lt;code&gt;segment&lt;/code&gt; 相关参数或后期在字幕编辑器里微调。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;人名与术语&lt;/strong&gt;：在 Gemini 提示里附「术语表」或「不要翻译的专名列表」。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;成本与隐私&lt;/strong&gt;：长视频可分批翻译；敏感内容优先本地模型或离线策略。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;相关链接&quot;&gt;&lt;a href=&quot;#相关链接&quot; class=&quot;headerlink&quot; title=&quot;相关链接&quot;&gt;&lt;/a&gt;相关链接&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;../index.html&quot;&gt;Wiki 索引&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+"><title>外语视频翻译字幕：Whisper 打轴 + Gemini 翻译</title><link rel="stylesheet" type="text/css" href="../../css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/normalize.css/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="../../favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="../../favicon.ico"><link rel="apple-touch-icon" href="../../apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="../../apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="../../atom.xml"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/clipboard/dist/clipboard.min.js"></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.js"></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.css"><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">外语视频翻译字幕：Whisper 打轴 + Gemini 翻译</h1><a id="logo" href="../../.">Canace 的博客</a><p class="description">Tomorrow is another day</p></div><div id="nav-menu"><a href="../../."><i class="fa fa-home"> 主页</i></a><a href="../../archives/"><i class="fa fa-archive"> 文章归档</i></a><a class="current" href="../"><i class="fa fa-book"> 知识库</i></a><a href="../../about/"><i class="fa fa-user"> 关于我</i></a><a href="../../atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">外语视频翻译字幕：Whisper 打轴 + Gemini 翻译</h1><div class="clear"><div class="toc-article" id="toc"><div class="toc-title">目录</div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF"><span class="toc-text">思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A8%E8%8D%90%E6%B5%81%E7%A8%8B%EF%BC%88%E6%A6%82%E8%A6%81%EF%BC%89"><span class="toc-text">推荐流程（概要）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Whisper-%E4%BE%A7%E8%A6%81%E7%82%B9"><span class="toc-text">Whisper 侧要点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Gemini-%E4%BE%A7%E8%A6%81%E7%82%B9"><span class="toc-text">Gemini 侧要点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="toc-text">常见问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E9%93%BE%E6%8E%A5"><span class="toc-text">相关链接</span></a></li></ol></div></div><div class="post-content"><p>面向「先对齐时间轴、再翻成目标语言」的个人工作流说明；工具可替换，核心是<strong>时间信息与文本解耦</strong>。</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol>
+<li><strong>打轴（时间轴）</strong>：用 Whisper 从音轨得到「每句&#x2F;每段的起止时间 + 原文转写」，输出带时间戳的字幕格式（常见为 SRT、VTT）。</li>
+<li><strong>翻译</strong>：把<strong>已分段的文本</strong>交给 Gemini 译成目标语言，<strong>保留原时间码</strong>，只替换字幕正文；必要时人工微调断句与长度。</li>
+</ol>
+<p>这样 Whisper 负责「听清 + 对齐」，Gemini 负责「语义与用语」，比「整段音频直出双语」更易校对和压制。</p>
+<h2 id="推荐流程（概要）"><a href="#推荐流程（概要）" class="headerlink" title="推荐流程（概要）"></a>推荐流程（概要）</h2><table>
+<thead>
+<tr>
+<th>步骤</th>
+<th>做什么</th>
+<th>产出</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>从视频提取音轨（如 <code>ffmpeg</code> → WAV&#x2F;MP3）</td>
+<td>单一音频文件</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Whisper 转写并导出字幕</td>
+<td><code>*.srt</code> &#x2F; <code>*.vtt</code>（含时间轴）</td>
+</tr>
+<tr>
+<td>3</td>
+<td>解析字幕为「序号 + 起止时间 + 原文」</td>
+<td>结构化列表或中间 JSON</td>
+</tr>
+<tr>
+<td>4</td>
+<td>按段调用 Gemini 翻译（可批量、附上下文）</td>
+<td>各段译文</td>
+</tr>
+<tr>
+<td>5</td>
+<td>写回同一时间码，生成新字幕文件</td>
+<td>目标语言 <code>*.srt</code> &#x2F; <code>*.vtt</code></td>
+</tr>
+<tr>
+<td>6</td>
+<td>播放器或剪辑软件里叠字幕、或烧录</td>
+<td>成品</td>
+</tr>
+</tbody></table>
+<h2 id="Whisper-侧要点"><a href="#Whisper-侧要点" class="headerlink" title="Whisper 侧要点"></a>Whisper 侧要点</h2><ul>
+<li><strong>模型</strong>：<code>small</code> &#x2F; <code>medium</code> &#x2F; <code>large-v3</code> 等，越大越准、越慢；口语、噪声大时优先大一点或先降噪。</li>
+<li><strong>语言</strong>：指定 <code>--language</code> 可减少误识别（尤其多语混说时）。</li>
+<li><strong>时间粒度</strong>：一般用<strong>句级&#x2F;段级</strong>即可；需要卡拉 OK 式逐字再开 word-level。</li>
+<li><strong>实现形态</strong>：<code>openai-whisper</code> CLI、<code>faster-whisper</code>（省显存）、<code>whisper.cpp</code>（本地 CPU&#x2F;GPU）等，任选其一能稳定导出 SRT&#x2F;VTT 即可。</li>
+</ul>
+<h2 id="Gemini-侧要点"><a href="#Gemini-侧要点" class="headerlink" title="Gemini 侧要点"></a>Gemini 侧要点</h2><ul>
+<li><strong>输入</strong>：每段只给「原文 + 可选上一段译文」作连贯参考，避免一次塞整部电影导致截断。</li>
+<li><strong>输出约束</strong>：在提示词中要求「只输出译文、保持段数与顺序与原文一一对应」，减少模型合并或拆段导致与时间轴错位。</li>
+<li><strong>后处理</strong>：检查过长译文（单行超出安全字符数可自动拆行或改短句），专有名词可维护小表做统一替换。</li>
+</ul>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><ul>
+<li><strong>时间轴漂移</strong>：多半是原视频变速或 Whisper 分段过粗；可缩短 <code>segment</code> 相关参数或后期在字幕编辑器里微调。</li>
+<li><strong>人名与术语</strong>：在 Gemini 提示里附「术语表」或「不要翻译的专名列表」。</li>
+<li><strong>成本与隐私</strong>：长视频可分批翻译；敏感内容优先本地模型或离线策略。</li>
+</ul>
+<h2 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h2><ul>
+<li><a href="../index.html">Wiki 索引</a></li>
+</ul>
+</div></div></div></div><div class="pure-u-1 pure-u-md-1-4"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 常用文档</i></div><ul></ul><a href="/git-common-commands" title="Git 文档" target="_blank">Git 文档</a><ul></ul><a href="/common-programming-prompt-words" title="常用开发提示词" target="_blank">常用开发提示词</a></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="../../categories/soft/">软技能与思考</a><span class="category-list-count">46</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/intelligent/">AI探索</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/cli/">工程化与运维</a><span class="category-list-count">50</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/web/">Web开发</a><span class="category-list-count">142</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/coding/">编程基础</a><span class="category-list-count">42</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/site/">网站建设</a><span class="category-list-count">5</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="../../tags/essays/" style="font-size: 15px; color: #3679a7">随笔</a> <a href="../../tags/AI%E5%8E%9F%E7%90%86/" style="font-size: 15px; color: #96aebf">AI原理</a> <a href="../../tags/performance/" style="font-size: 15px; color: #7a9fb8">性能优化</a> <a href="../../tags/backend/" style="font-size: 15px; color: #5f90b1">后端</a> <a href="../../tags/Python-Go-%E5%85%B6%E4%BB%96/" style="font-size: 15px; color: #88a6bb">Python/Go/其他</a> <a href="../../tags/JavaScript-TypeScript/" style="font-size: 15px; color: #0e639d">JavaScript&TypeScript</a> <a href="../../tags/api-services/" style="font-size: 15px; color: #bec4c9">API&服务</a> <a href="../../tags/computer-science/" style="font-size: 15px; color: #2972a4">计算机科学</a> <a href="../../tags/%E8%81%8C%E4%B8%9A%E5%8F%91%E5%B1%95/" style="font-size: 15px; color: #7a9fb8">职业发展</a> <a href="../../tags/AI%E7%BC%96%E7%A8%8B/" style="font-size: 15px; color: #7a9fb8">AI编程</a> <a href="../../tags/%E7%BF%BB%E8%AF%91/" style="font-size: 15px; color: #ccc">翻译</a> <a href="../../tags/reading-notes/" style="font-size: 15px; color: #a3b5c2">读书笔记</a> <a href="../../tags/frontend/" style="font-size: 15px; color: #005b9a">前端</a> <a href="../../tags/frameworks-libs/" style="font-size: 15px; color: #5288ae">框架与库</a> <a href="../../tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/" style="font-size: 15px; color: #88a6bb">系统设计</a> <a href="../../tags/programming-languages/" style="font-size: 15px; color: #b1bdc5">编程语言</a> <a href="../../tags/css-visualization/" style="font-size: 15px; color: #1b6aa1">CSS与可视化</a> <a href="../../tags/build-deploy/" style="font-size: 15px; color: #6d97b5">构建与部署</a> <a href="../../tags/dev-tools/" style="font-size: 15px; color: #4481ab">开发工具</a> <a href="../../tags/Agent-Skill/" style="font-size: 15px; color: #ccc">Agent,Skill</a> <a href="../../tags/Node-js/" style="font-size: 15px; color: #7a9fb8">Node.js</a> <a href="../../tags/cross-platform/" style="font-size: 15px; color: #88a6bb">跨端方案</a> <a href="../../tags/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/" style="font-size: 15px; color: #ccc">项目管理</a> <a href="../../tags/%E7%9F%A5%E8%AF%86%E5%BA%93/" style="font-size: 15px; color: #ccc">知识库</a> <a href="../../tags/code-quality/" style="font-size: 15px; color: #bec4c9">代码质量</a></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2026 <a href="../../." rel="nofollow">Canace 的博客</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="../../js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.js" async></script><script type="text/javascript" src="../../js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.css"><link rel="stylesheet" type="text/css" href="../../css/search.css?v=0.0.0"><script type="text/javascript" src="../../js/search.js?v=0.0.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+   search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="/js/copycode.js" successtext="复制成功!"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/mermaid@11.14.0/dist/mermaid.min.js"></script><script type="text/javascript">document.addEventListener('DOMContentLoaded', function () {
+  if (!window.mermaid) return;
+  mermaid.initialize({"theme":"default","logLevel":5,"startOnLoad":true,"arrowMarkerAbsolute":false,"flowchart":{"htmlLabels":true,"useMaxWidth":true,"curve":"linear"},"sequence":{"diagramMarginX":50,"diagramMarginY":10,"actorMargin":50,"width":150,"height":65,"boxMargin":10,"boxTextMargin":5,"noteMargin":10,"messageMargin":35,"mirrorActors":true,"bottomMarginAdj":1,"useMaxWidth":true},"gantt":{"titleTopMargin":25,"barHeight":20,"barGap":4,"topPadding":50,"leftPadding":75,"gridLineStartPadding":35,"fontSize":11,"fontFamily":"\"Open-Sans\", \"sans-serif\"","numberSectionStyles":4,"axisFormat":"%Y-%m-%d"},"class":{},"git":{}});
+});
+</script><script type="text/javascript" src="../../js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="../../js/smartresize.js?v=0.0.0"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":200,"height":200},"mobile":{"show":false},"react":{"opacity":0.7},"log":false});</script></body></html>

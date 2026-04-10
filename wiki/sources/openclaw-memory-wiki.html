@@ -1,0 +1,135 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="canace 的博客"><meta itemprop="name" content="来源：OpenClaw Memory Wiki"><meta itemprop="image" content="https://raw.githubusercontent.com/Canace22/Assets/main/images/snow-other.png"><meta property="og:image" content="https://raw.githubusercontent.com/Canace22/Assets/main/images/snow-other.png"><meta name="description" itemprop="description" content="&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;来源类型&lt;/strong&gt;：外部资料（产品文档）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;链接&lt;/strong&gt;：&lt;a href=&quot;https://docs.openclaw.ai/plugins/memory-wiki&quot;&gt;https://docs.openclaw.ai/plugins/memory-wiki&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;访问日期&lt;/strong&gt;：2026-04-09&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;摘要&quot;&gt;&lt;a href=&quot;#摘要&quot; class=&quot;headerlink&quot; title=&quot;摘要&quot;&gt;&lt;/a&gt;摘要&lt;/h2&gt;&lt;p&gt;&lt;code&gt;memory-wiki&lt;/code&gt; 是 OpenClaw 的一个 bundled plugin，它不替代当前激活的 memory plugin，而是把持久记忆进一步&lt;strong&gt;编译成一层可维护的知识库&lt;/strong&gt;。文档把它描述成 &lt;code&gt;compiled knowledge vault&lt;/code&gt;：不只保留 prose，还生成确定性页面、结构化 claims &amp;#x2F; evidence、页面级 provenance、confidence、contradictions、open questions、dashboard 和 machine-readable digests。&lt;/p&gt;
+&lt;h2 id=&quot;核心设计&quot;&gt;&lt;a href=&quot;#核心设计&quot; class=&quot;headerlink&quot; title=&quot;核心设计&quot;&gt;&lt;/a&gt;核心设计&lt;/h2&gt;&lt;h3 id=&quot;1-记忆层和-wiki-层分离&quot;&gt;&lt;a href=&quot;#1-记忆层和-wiki-层分离&quot; class=&quot;headerlink&quot; title=&quot;1. 记忆层和 wiki 层分离&quot;&gt;&lt;/a&gt;1. 记忆层和 wiki 层分离&lt;/h3&gt;&lt;p&gt;文档明确区分两层：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;memory plugin：负责 recall、semantic search、promotion、dreaming、runtime memory&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;memory-wiki&lt;/code&gt;：负责 compiled wiki pages、provenance-rich syntheses、dashboards、wiki-specific search&amp;#x2F;get&amp;#x2F;apply&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这个分层很值得借鉴，因为它把“记得什么”和“如何把记忆整理成可维护知识”拆开了。&lt;/p&gt;
+&lt;h3 id=&quot;2-Wiki-不是自由笔记，而是编译产物&quot;&gt;&lt;a href=&quot;#2-Wiki-不是自由笔记，而是编译产物&quot; class=&quot;headerlink&quot; title=&quot;2. Wiki 不是自由笔记，而是编译产物&quot;&gt;&lt;/a&gt;2. Wiki 不是自由笔记，而是编译产物&lt;/h3&gt;&lt;p&gt;&lt;code&gt;memory-wiki&lt;/code&gt; 强调的不是随手写页面，而是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;deterministic page layout&lt;/li&gt;
+&lt;li&gt;structured claims and evidence metadata&lt;/li&gt;
+&lt;li&gt;page-level provenance &amp;#x2F; confidence &amp;#x2F; contradictions &amp;#x2F; open questions&lt;/li&gt;
+&lt;li&gt;compiled digests for agent&amp;#x2F;runtime consumers&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;也就是说，wiki 在这里更像&lt;strong&gt;可验证的中间层&lt;/strong&gt;，而不是纯人工笔记。&lt;/p&gt;
+&lt;h3 id=&quot;3-有-bridge-mode，能吃现有-memory-产物&quot;&gt;&lt;a href=&quot;#3-有-bridge-mode，能吃现有-memory-产物&quot; class=&quot;headerlink&quot; title=&quot;3. 有 bridge mode，能吃现有 memory 产物&quot;&gt;&lt;/a&gt;3. 有 bridge mode，能吃现有 memory 产物&lt;/h3&gt;&lt;p&gt;它提供可选的 &lt;code&gt;bridge&lt;/code&gt; 模式，从当前 memory plugin 的&lt;strong&gt;公开 artifacts 和 memory events&lt;/strong&gt;导入内容，而不直接依赖私有内部实现。这个设计很适合做“渐进接入”：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;不用先推翻已有记忆系统&lt;/li&gt;
+&lt;li&gt;先把现有记忆编译成更稳定的知识层&lt;/li&gt;
+&lt;li&gt;后续再逐步把更多维护规则加上去&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;4-把健康检查前置成系统能力&quot;&gt;&lt;a href=&quot;#4-把健康检查前置成系统能力&quot; class=&quot;headerlink&quot; title=&quot;4. 把健康检查前置成系统能力&quot;&gt;&lt;/a&gt;4. 把健康检查前置成系统能力&lt;/h3&gt;&lt;p&gt;文档里提到 dashboard &amp;#x2F; health report 会关注：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;contradiction note clusters&lt;/li&gt;
+&lt;li&gt;competing claim clusters&lt;/li&gt;
+&lt;li&gt;claims missing structured evidence&lt;/li&gt;
+&lt;li&gt;low-confidence pages and claims&lt;/li&gt;
+&lt;li&gt;stale or unknown freshness&lt;/li&gt;
+&lt;li&gt;pages with unresolved questions&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这意味着知识维护不再只是“有没有页面”，而是“页面质量是否持续可见”。&lt;/p&gt;
+&lt;h3 id=&quot;5-提供-wiki-native-tools，而不只靠通用检索&quot;&gt;&lt;a href=&quot;#5-提供-wiki-native-tools，而不只靠通用检索&quot; class=&quot;headerlink&quot; title=&quot;5. 提供 wiki-native tools，而不只靠通用检索&quot;&gt;&lt;/a&gt;5. 提供 wiki-native tools，而不只靠通用检索&lt;/h3&gt;&lt;p&gt;文档建议：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;当只想走共享 recall 时，可以走 &lt;code&gt;memory_search corpus=all&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;当你需要 wiki-specific ranking、provenance 或 page-level belief structure 时，使用 &lt;code&gt;wiki_search&lt;/code&gt; &amp;#x2F; &lt;code&gt;wiki_get&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;当你要做窄范围 synthesis 或 metadata 变更时，使用 &lt;code&gt;wiki_apply&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;变更后用 &lt;code&gt;wiki_lint&lt;/code&gt; 做 structural checks、provenance gaps、contradictions、open questions 检查&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这说明一层成熟的知识库，往往需要自己的专用操作面。&lt;/p&gt;
+&lt;h2 id=&quot;对本知识库的启发&quot;&gt;&lt;a href=&quot;#对本知识库的启发&quot; class=&quot;headerlink&quot; title=&quot;对本知识库的启发&quot;&gt;&lt;/a&gt;对本知识库的启发&lt;/h2&gt;&lt;p&gt;这份文档最值得借鉴的，不是“做一个 OpenClaw 插件”，而是它的数据维护思路：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;把 wiki 从自由文本升级成“带结构、带证据、带出处”的编译层&lt;/li&gt;
+&lt;li&gt;为页面维护 &lt;code&gt;confidence&lt;/code&gt;、&lt;code&gt;open questions&lt;/code&gt;、&lt;code&gt;contradictions&lt;/code&gt; 这类机器和人都能读的状态&lt;/li&gt;
+&lt;li&gt;为知识层补 &lt;code&gt;lint&lt;/code&gt; 和 dashboard，而不是只靠人工浏览&lt;/li&gt;
+&lt;li&gt;让 agent 优先读 digest &amp;#x2F; dashboard，再按需回到完整页面&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;关联概念&quot;&gt;&lt;a href=&quot;#关联概念&quot; class=&quot;headerlink&quot; title=&quot;关联概念&quot;&gt;&lt;/a&gt;关联概念&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;../concepts/llm-maintained-wiki.html&quot;&gt;LLM 维护的知识库（概念）&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;../concepts/compiled-knowledge-vault.html&quot;&gt;编译式知识库（概念）&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;../concepts/harness-engineering.html&quot;&gt;Harness Engineering（概念）&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;参考链接&quot;&gt;&lt;a href=&quot;#参考链接&quot; class=&quot;headerlink&quot; title=&quot;参考链接&quot;&gt;&lt;/a&gt;参考链接&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://docs.openclaw.ai/plugins/memory-wiki&quot;&gt;Memory Wiki&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://docs.openclaw.ai/apps/cli/wiki&quot;&gt;Wiki CLI &amp;#x2F; Tooling&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+"><title>来源：OpenClaw Memory Wiki</title><link rel="stylesheet" type="text/css" href="../../css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/normalize.css/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="../../favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="../../favicon.ico"><link rel="apple-touch-icon" href="../../apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="../../apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="../../atom.xml"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/clipboard/dist/clipboard.min.js"></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.js"></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.css"><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">来源：OpenClaw Memory Wiki</h1><a id="logo" href="../../.">Canace 的博客</a><p class="description">Tomorrow is another day</p></div><div id="nav-menu"><a href="../../."><i class="fa fa-home"> 主页</i></a><a href="../../archives/"><i class="fa fa-archive"> 文章归档</i></a><a class="current" href="../"><i class="fa fa-book"> 知识库</i></a><a href="../../about/"><i class="fa fa-user"> 关于我</i></a><a href="../../atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">来源：OpenClaw Memory Wiki</h1><div class="clear"><div class="toc-article" id="toc"><div class="toc-title">目录</div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%91%98%E8%A6%81"><span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E8%AE%BE%E8%AE%A1"><span class="toc-text">核心设计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E8%AE%B0%E5%BF%86%E5%B1%82%E5%92%8C-wiki-%E5%B1%82%E5%88%86%E7%A6%BB"><span class="toc-text">1. 记忆层和 wiki 层分离</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Wiki-%E4%B8%8D%E6%98%AF%E8%87%AA%E7%94%B1%E7%AC%94%E8%AE%B0%EF%BC%8C%E8%80%8C%E6%98%AF%E7%BC%96%E8%AF%91%E4%BA%A7%E7%89%A9"><span class="toc-text">2. Wiki 不是自由笔记，而是编译产物</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%9C%89-bridge-mode%EF%BC%8C%E8%83%BD%E5%90%83%E7%8E%B0%E6%9C%89-memory-%E4%BA%A7%E7%89%A9"><span class="toc-text">3. 有 bridge mode，能吃现有 memory 产物</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%8A%8A%E5%81%A5%E5%BA%B7%E6%A3%80%E6%9F%A5%E5%89%8D%E7%BD%AE%E6%88%90%E7%B3%BB%E7%BB%9F%E8%83%BD%E5%8A%9B"><span class="toc-text">4. 把健康检查前置成系统能力</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E6%8F%90%E4%BE%9B-wiki-native-tools%EF%BC%8C%E8%80%8C%E4%B8%8D%E5%8F%AA%E9%9D%A0%E9%80%9A%E7%94%A8%E6%A3%80%E7%B4%A2"><span class="toc-text">5. 提供 wiki-native tools，而不只靠通用检索</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E6%9C%AC%E7%9F%A5%E8%AF%86%E5%BA%93%E7%9A%84%E5%90%AF%E5%8F%91"><span class="toc-text">对本知识库的启发</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E8%81%94%E6%A6%82%E5%BF%B5"><span class="toc-text">关联概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="toc-text">参考链接</span></a></li></ol></div></div><div class="post-content"><ul>
+<li><strong>来源类型</strong>：外部资料（产品文档）</li>
+<li><strong>链接</strong>：<a target="_blank" rel="noopener" href="https://docs.openclaw.ai/plugins/memory-wiki">https://docs.openclaw.ai/plugins/memory-wiki</a></li>
+<li><strong>访问日期</strong>：2026-04-09</li>
+</ul>
+<h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p><code>memory-wiki</code> 是 OpenClaw 的一个 bundled plugin，它不替代当前激活的 memory plugin，而是把持久记忆进一步<strong>编译成一层可维护的知识库</strong>。文档把它描述成 <code>compiled knowledge vault</code>：不只保留 prose，还生成确定性页面、结构化 claims &#x2F; evidence、页面级 provenance、confidence、contradictions、open questions、dashboard 和 machine-readable digests。</p>
+<h2 id="核心设计"><a href="#核心设计" class="headerlink" title="核心设计"></a>核心设计</h2><h3 id="1-记忆层和-wiki-层分离"><a href="#1-记忆层和-wiki-层分离" class="headerlink" title="1. 记忆层和 wiki 层分离"></a>1. 记忆层和 wiki 层分离</h3><p>文档明确区分两层：</p>
+<ul>
+<li>memory plugin：负责 recall、semantic search、promotion、dreaming、runtime memory</li>
+<li><code>memory-wiki</code>：负责 compiled wiki pages、provenance-rich syntheses、dashboards、wiki-specific search&#x2F;get&#x2F;apply</li>
+</ul>
+<p>这个分层很值得借鉴，因为它把“记得什么”和“如何把记忆整理成可维护知识”拆开了。</p>
+<h3 id="2-Wiki-不是自由笔记，而是编译产物"><a href="#2-Wiki-不是自由笔记，而是编译产物" class="headerlink" title="2. Wiki 不是自由笔记，而是编译产物"></a>2. Wiki 不是自由笔记，而是编译产物</h3><p><code>memory-wiki</code> 强调的不是随手写页面，而是：</p>
+<ul>
+<li>deterministic page layout</li>
+<li>structured claims and evidence metadata</li>
+<li>page-level provenance &#x2F; confidence &#x2F; contradictions &#x2F; open questions</li>
+<li>compiled digests for agent&#x2F;runtime consumers</li>
+</ul>
+<p>也就是说，wiki 在这里更像<strong>可验证的中间层</strong>，而不是纯人工笔记。</p>
+<h3 id="3-有-bridge-mode，能吃现有-memory-产物"><a href="#3-有-bridge-mode，能吃现有-memory-产物" class="headerlink" title="3. 有 bridge mode，能吃现有 memory 产物"></a>3. 有 bridge mode，能吃现有 memory 产物</h3><p>它提供可选的 <code>bridge</code> 模式，从当前 memory plugin 的<strong>公开 artifacts 和 memory events</strong>导入内容，而不直接依赖私有内部实现。这个设计很适合做“渐进接入”：</p>
+<ul>
+<li>不用先推翻已有记忆系统</li>
+<li>先把现有记忆编译成更稳定的知识层</li>
+<li>后续再逐步把更多维护规则加上去</li>
+</ul>
+<h3 id="4-把健康检查前置成系统能力"><a href="#4-把健康检查前置成系统能力" class="headerlink" title="4. 把健康检查前置成系统能力"></a>4. 把健康检查前置成系统能力</h3><p>文档里提到 dashboard &#x2F; health report 会关注：</p>
+<ul>
+<li>contradiction note clusters</li>
+<li>competing claim clusters</li>
+<li>claims missing structured evidence</li>
+<li>low-confidence pages and claims</li>
+<li>stale or unknown freshness</li>
+<li>pages with unresolved questions</li>
+</ul>
+<p>这意味着知识维护不再只是“有没有页面”，而是“页面质量是否持续可见”。</p>
+<h3 id="5-提供-wiki-native-tools，而不只靠通用检索"><a href="#5-提供-wiki-native-tools，而不只靠通用检索" class="headerlink" title="5. 提供 wiki-native tools，而不只靠通用检索"></a>5. 提供 wiki-native tools，而不只靠通用检索</h3><p>文档建议：</p>
+<ul>
+<li>当只想走共享 recall 时，可以走 <code>memory_search corpus=all</code></li>
+<li>当你需要 wiki-specific ranking、provenance 或 page-level belief structure 时，使用 <code>wiki_search</code> &#x2F; <code>wiki_get</code></li>
+<li>当你要做窄范围 synthesis 或 metadata 变更时，使用 <code>wiki_apply</code></li>
+<li>变更后用 <code>wiki_lint</code> 做 structural checks、provenance gaps、contradictions、open questions 检查</li>
+</ul>
+<p>这说明一层成熟的知识库，往往需要自己的专用操作面。</p>
+<h2 id="对本知识库的启发"><a href="#对本知识库的启发" class="headerlink" title="对本知识库的启发"></a>对本知识库的启发</h2><p>这份文档最值得借鉴的，不是“做一个 OpenClaw 插件”，而是它的数据维护思路：</p>
+<ol>
+<li>把 wiki 从自由文本升级成“带结构、带证据、带出处”的编译层</li>
+<li>为页面维护 <code>confidence</code>、<code>open questions</code>、<code>contradictions</code> 这类机器和人都能读的状态</li>
+<li>为知识层补 <code>lint</code> 和 dashboard，而不是只靠人工浏览</li>
+<li>让 agent 优先读 digest &#x2F; dashboard，再按需回到完整页面</li>
+</ol>
+<h2 id="关联概念"><a href="#关联概念" class="headerlink" title="关联概念"></a>关联概念</h2><ul>
+<li><a href="../concepts/llm-maintained-wiki.html">LLM 维护的知识库（概念）</a></li>
+<li><a href="../concepts/compiled-knowledge-vault.html">编译式知识库（概念）</a></li>
+<li><a href="../concepts/harness-engineering.html">Harness Engineering（概念）</a></li>
+</ul>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://docs.openclaw.ai/plugins/memory-wiki">Memory Wiki</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.openclaw.ai/apps/cli/wiki">Wiki CLI &#x2F; Tooling</a></li>
+</ul>
+</div></div></div></div><div class="pure-u-1 pure-u-md-1-4"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 常用文档</i></div><ul></ul><a href="/git-common-commands" title="Git 文档" target="_blank">Git 文档</a><ul></ul><a href="/common-programming-prompt-words" title="常用开发提示词" target="_blank">常用开发提示词</a></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="../../categories/soft/">软技能与思考</a><span class="category-list-count">46</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/intelligent/">AI探索</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/cli/">工程化与运维</a><span class="category-list-count">50</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/web/">Web开发</a><span class="category-list-count">142</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/coding/">编程基础</a><span class="category-list-count">42</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/site/">网站建设</a><span class="category-list-count">5</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="../../tags/essays/" style="font-size: 15px; color: #3679a7">随笔</a> <a href="../../tags/AI%E5%8E%9F%E7%90%86/" style="font-size: 15px; color: #96aebf">AI原理</a> <a href="../../tags/performance/" style="font-size: 15px; color: #7a9fb8">性能优化</a> <a href="../../tags/backend/" style="font-size: 15px; color: #5f90b1">后端</a> <a href="../../tags/Python-Go-%E5%85%B6%E4%BB%96/" style="font-size: 15px; color: #88a6bb">Python/Go/其他</a> <a href="../../tags/JavaScript-TypeScript/" style="font-size: 15px; color: #0e639d">JavaScript&TypeScript</a> <a href="../../tags/api-services/" style="font-size: 15px; color: #bec4c9">API&服务</a> <a href="../../tags/computer-science/" style="font-size: 15px; color: #2972a4">计算机科学</a> <a href="../../tags/%E8%81%8C%E4%B8%9A%E5%8F%91%E5%B1%95/" style="font-size: 15px; color: #7a9fb8">职业发展</a> <a href="../../tags/AI%E7%BC%96%E7%A8%8B/" style="font-size: 15px; color: #7a9fb8">AI编程</a> <a href="../../tags/%E7%BF%BB%E8%AF%91/" style="font-size: 15px; color: #ccc">翻译</a> <a href="../../tags/reading-notes/" style="font-size: 15px; color: #a3b5c2">读书笔记</a> <a href="../../tags/frontend/" style="font-size: 15px; color: #005b9a">前端</a> <a href="../../tags/frameworks-libs/" style="font-size: 15px; color: #5288ae">框架与库</a> <a href="../../tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/" style="font-size: 15px; color: #88a6bb">系统设计</a> <a href="../../tags/programming-languages/" style="font-size: 15px; color: #b1bdc5">编程语言</a> <a href="../../tags/css-visualization/" style="font-size: 15px; color: #1b6aa1">CSS与可视化</a> <a href="../../tags/build-deploy/" style="font-size: 15px; color: #6d97b5">构建与部署</a> <a href="../../tags/dev-tools/" style="font-size: 15px; color: #4481ab">开发工具</a> <a href="../../tags/Agent-Skill/" style="font-size: 15px; color: #ccc">Agent,Skill</a> <a href="../../tags/Node-js/" style="font-size: 15px; color: #7a9fb8">Node.js</a> <a href="../../tags/cross-platform/" style="font-size: 15px; color: #88a6bb">跨端方案</a> <a href="../../tags/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/" style="font-size: 15px; color: #ccc">项目管理</a> <a href="../../tags/%E7%9F%A5%E8%AF%86%E5%BA%93/" style="font-size: 15px; color: #ccc">知识库</a> <a href="../../tags/code-quality/" style="font-size: 15px; color: #bec4c9">代码质量</a></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2026 <a href="../../." rel="nofollow">Canace 的博客</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="../../js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.js" async></script><script type="text/javascript" src="../../js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.css"><link rel="stylesheet" type="text/css" href="../../css/search.css?v=0.0.0"><script type="text/javascript" src="../../js/search.js?v=0.0.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+   search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="/js/copycode.js" successtext="复制成功!"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/mermaid@11.14.0/dist/mermaid.min.js"></script><script type="text/javascript">document.addEventListener('DOMContentLoaded', function () {
+  if (!window.mermaid) return;
+  mermaid.initialize({"theme":"default","logLevel":5,"startOnLoad":true,"arrowMarkerAbsolute":false,"flowchart":{"htmlLabels":true,"useMaxWidth":true,"curve":"linear"},"sequence":{"diagramMarginX":50,"diagramMarginY":10,"actorMargin":50,"width":150,"height":65,"boxMargin":10,"boxTextMargin":5,"noteMargin":10,"messageMargin":35,"mirrorActors":true,"bottomMarginAdj":1,"useMaxWidth":true},"gantt":{"titleTopMargin":25,"barHeight":20,"barGap":4,"topPadding":50,"leftPadding":75,"gridLineStartPadding":35,"fontSize":11,"fontFamily":"\"Open-Sans\", \"sans-serif\"","numberSectionStyles":4,"axisFormat":"%Y-%m-%d"},"class":{},"git":{}});
+});
+</script><script type="text/javascript" src="../../js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="../../js/smartresize.js?v=0.0.0"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":200,"height":200},"mobile":{"show":false},"react":{"opacity":0.7},"log":false});</script></body></html>

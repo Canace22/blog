@@ -1,64 +1,166 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="canace 的博客"><meta itemprop="name" content="LLM 维护的知识库（概念）"><meta itemprop="image" content="https://raw.githubusercontent.com/Canace22/Assets/main/images/snow-other.png"><meta property="og:image" content="https://raw.githubusercontent.com/Canace22/Assets/main/images/snow-other.png"><meta name="description" itemprop="description" content="&lt;p&gt;跨来源整理：&lt;strong&gt;人输入资料 → 持久化 wiki → 规则驱动 agent 维护&lt;/strong&gt;，wiki 作为多工具共用的长期记忆层。&lt;/p&gt;
-&lt;h2 id=&quot;三层结构&quot;&gt;&lt;a href=&quot;#三层结构&quot; class=&quot;headerlink&quot; title=&quot;三层结构&quot;&gt;&lt;/a&gt;三层结构&lt;/h2&gt;&lt;table&gt;
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="canace 的博客"><meta itemprop="name" content="LLM 维护的知识库（概念）"><meta itemprop="image" content="https://raw.githubusercontent.com/Canace22/Assets/main/images/snow-other.png"><meta property="og:image" content="https://raw.githubusercontent.com/Canace22/Assets/main/images/snow-other.png"><meta name="description" itemprop="description" content="&lt;p&gt;跨来源整理：&lt;strong&gt;人输入资料 -&amp;gt; 持久化 wiki -&amp;gt; 规则驱动 agent 维护&lt;/strong&gt;，wiki 作为多工具共用的长期记忆层。&lt;/p&gt;
+&lt;h2 id=&quot;定义&quot;&gt;&lt;a href=&quot;#定义&quot; class=&quot;headerlink&quot; title=&quot;定义&quot;&gt;&lt;/a&gt;定义&lt;/h2&gt;&lt;p&gt;这里的 “LLM 维护知识库” 不是指一次性让模型写文档，而是让 agent 按规则持续 ingest、更新、互链、纠错，并让知识在多会话里可追踪复用。&lt;/p&gt;
+&lt;h2 id=&quot;Claims（综合判断）&quot;&gt;&lt;a href=&quot;#Claims（综合判断）&quot; class=&quot;headerlink&quot; title=&quot;Claims（综合判断）&quot;&gt;&lt;/a&gt;Claims（综合判断）&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;ID&lt;/th&gt;
+&lt;th&gt;Claim&lt;/th&gt;
+&lt;th&gt;Confidence&lt;/th&gt;
+&lt;th&gt;Evidence&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td&gt;C1&lt;/td&gt;
+&lt;td&gt;LLM-maintained wiki 的基础形态是三层：原始资料层、wiki 维护层、规则层。&lt;/td&gt;
+&lt;td&gt;High&lt;/td&gt;
+&lt;td&gt;E1, E2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;C2&lt;/td&gt;
+&lt;td&gt;仅有持久化页面还不够；要提升为可维护知识层，需要引入更明确的证据与健康信号。&lt;/td&gt;
+&lt;td&gt;Medium&lt;/td&gt;
+&lt;td&gt;E1, E3&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;C3&lt;/td&gt;
+&lt;td&gt;在 agent 工作流中，wiki 应承担 system of record 的角色，而不是临时聊天缓存。&lt;/td&gt;
+&lt;td&gt;Medium&lt;/td&gt;
+&lt;td&gt;E1, E2, E3&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;h2 id=&quot;Evidence（来源与依据）&quot;&gt;&lt;a href=&quot;#Evidence（来源与依据）&quot; class=&quot;headerlink&quot; title=&quot;Evidence（来源与依据）&quot;&gt;&lt;/a&gt;Evidence（来源与依据）&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;E1&lt;/code&gt; &lt;a href=&quot;../sources/llm-wiki.html&quot;&gt;使用大模型来维护知识库&lt;/a&gt;&lt;br&gt;该来源明确提出 “原始资料 + wiki + 规则” 的基本架构，并强调 wiki 作为跨工具复用的持久中间层。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;E2&lt;/code&gt; 仓库当前结构（可直接观察）&lt;br&gt;&lt;code&gt;source/_posts/*.md&lt;/code&gt; 作为只读输入，&lt;code&gt;wiki/&lt;/code&gt; 作为维护层，&lt;code&gt;AGENTS.md&lt;/code&gt; 提供工作流约束。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;E3&lt;/code&gt; &lt;a href=&quot;../sources/openclaw-memory-wiki.html&quot;&gt;OpenClaw Memory Wiki&lt;/a&gt;&lt;br&gt;该来源强调 structured claims&amp;#x2F;evidence、provenance、contradictions、dashboard、lint，说明知识维护可从 “持久化” 继续升级到 “可验证维护”。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;三层结构（当前可执行模型）&quot;&gt;&lt;a href=&quot;#三层结构（当前可执行模型）&quot; class=&quot;headerlink&quot; title=&quot;三层结构（当前可执行模型）&quot;&gt;&lt;/a&gt;三层结构（当前可执行模型）&lt;/h2&gt;&lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
 &lt;th&gt;层&lt;/th&gt;
 &lt;th&gt;作用&lt;/th&gt;
+&lt;th&gt;在本仓库的对应&lt;/th&gt;
 &lt;/tr&gt;
 &lt;/thead&gt;
 &lt;tbody&gt;&lt;tr&gt;
-&lt;td&gt;原始资料&lt;/td&gt;
-&lt;td&gt;笔记、剪藏、博客文章等，只读输入&lt;/td&gt;
+&lt;td&gt;原始资料层&lt;/td&gt;
+&lt;td&gt;只读输入，不直接改写&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;source/_posts/*.md&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;Wiki&lt;/td&gt;
-&lt;td&gt;索引、摘要、对话与报告产物，可增量更新&lt;/td&gt;
+&lt;td&gt;Wiki 维护层&lt;/td&gt;
+&lt;td&gt;索引、摘要、概念、问答、报告&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;wiki/sources/&lt;/code&gt; &lt;code&gt;wiki/concepts/&lt;/code&gt; &lt;code&gt;wiki/queries/&lt;/code&gt; &lt;code&gt;wiki/reports/&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;规则&lt;/td&gt;
-&lt;td&gt;定义目录约定、工作流（ingest &amp;#x2F; query &amp;#x2F; lint 等）&lt;/td&gt;
+&lt;td&gt;规则层&lt;/td&gt;
+&lt;td&gt;约束 agent 的 ingest&amp;#x2F;query&amp;#x2F;lint 行为&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;AGENTS.md&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;&lt;/table&gt;
-&lt;h2 id=&quot;与本仓库的对应&quot;&gt;&lt;a href=&quot;#与本仓库的对应&quot; class=&quot;headerlink&quot; title=&quot;与本仓库的对应&quot;&gt;&lt;/a&gt;与本仓库的对应&lt;/h2&gt;&lt;p&gt;本仓库的 &lt;code&gt;docs/wiki-rule.md&lt;/code&gt; 描述 agent 如何把 &lt;code&gt;source/_posts/*.md&lt;/code&gt; 等整理进 &lt;code&gt;wiki/&lt;/code&gt;，与文中「规则 + wiki」一致。&lt;/p&gt;
+&lt;h2 id=&quot;Open-Questions（待验证问题）&quot;&gt;&lt;a href=&quot;#Open-Questions（待验证问题）&quot; class=&quot;headerlink&quot; title=&quot;Open Questions（待验证问题）&quot;&gt;&lt;/a&gt;Open Questions（待验证问题）&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;哪些概念页应强制包含 &lt;code&gt;claim/evidence/open-questions&lt;/code&gt; 三段结构，哪些可以保持轻量摘要？&lt;/li&gt;
+&lt;li&gt;是否需要给概念页加最小健康字段（例如 freshness、last-reviewed、confidence）？&lt;/li&gt;
+&lt;li&gt;当来源间冲突时，是否需要统一的 contradiction 记录格式？&lt;/li&gt;
+&lt;li&gt;是否要做一个轻量 &lt;code&gt;wiki lint&lt;/code&gt;，自动检查缺 evidence 的 claim？&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;维护建议&quot;&gt;&lt;a href=&quot;#维护建议&quot; class=&quot;headerlink&quot; title=&quot;维护建议&quot;&gt;&lt;/a&gt;维护建议&lt;/h2&gt;&lt;p&gt;后续可从一页试点扩展到一组高频概念页：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;先保留简洁正文，但新增 claim&amp;#x2F;evidence 显式映射。&lt;/li&gt;
+&lt;li&gt;每次有新来源加入时，优先更新 Evidence，再判断是否需要调整 Claim。&lt;/li&gt;
+&lt;li&gt;每月做一次 open questions 回看，决定关闭、拆分或升级为 report。&lt;/li&gt;
+&lt;/ol&gt;
 &lt;h2 id=&quot;相关&quot;&gt;&lt;a href=&quot;#相关&quot; class=&quot;headerlink&quot; title=&quot;相关&quot;&gt;&lt;/a&gt;相关&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;compiled-knowledge-vault.html&quot;&gt;编译式知识库（概念）&lt;/a&gt; — 更强调 claim &amp;#x2F; evidence &amp;#x2F; provenance &amp;#x2F; lint &amp;#x2F; dashboard。&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;lop-patterns.html&quot;&gt;LOP 模式与产物&lt;/a&gt; — 游戏中的「结构化文档沉淀再迭代」与 wiki&amp;#x2F;RAG 长期记忆可对照。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&quot;来源&quot;&gt;&lt;a href=&quot;#来源&quot; class=&quot;headerlink&quot; title=&quot;来源&quot;&gt;&lt;/a&gt;来源&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;../sources/llm-wiki.html&quot;&gt;使用大模型来维护知识库&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;../sources/openclaw-memory-wiki.html&quot;&gt;OpenClaw Memory Wiki&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 "><title>LLM 维护的知识库（概念）</title><link rel="stylesheet" type="text/css" href="../../css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/normalize.css/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="../../favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="../../favicon.ico"><link rel="apple-touch-icon" href="../../apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="../../apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="../../atom.xml"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/clipboard/dist/clipboard.min.js"></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.js"></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.css"><!-- hexo injector head_end start -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
-<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">LLM 维护的知识库（概念）</h1><a id="logo" href="../../.">Canace 的博客</a><p class="description">Tomorrow is another day</p></div><div id="nav-menu"><a href="../../."><i class="fa fa-home"> 主页</i></a><a href="../../archives/"><i class="fa fa-archive"> 文章归档</i></a><a class="current" href="../"><i class="fa fa-book"> 知识库</i></a><a href="../../about/"><i class="fa fa-user"> 关于我</i></a><a href="../../atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">LLM 维护的知识库（概念）</h1><div class="clear"><div class="toc-article" id="toc"><div class="toc-title">目录</div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E5%B1%82%E7%BB%93%E6%9E%84"><span class="toc-text">三层结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8E%E6%9C%AC%E4%BB%93%E5%BA%93%E7%9A%84%E5%AF%B9%E5%BA%94"><span class="toc-text">与本仓库的对应</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3"><span class="toc-text">相关</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9D%A5%E6%BA%90"><span class="toc-text">来源</span></a></li></ol></div></div><div class="post-content"><p>跨来源整理：<strong>人输入资料 → 持久化 wiki → 规则驱动 agent 维护</strong>，wiki 作为多工具共用的长期记忆层。</p>
-<h2 id="三层结构"><a href="#三层结构" class="headerlink" title="三层结构"></a>三层结构</h2><table>
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">LLM 维护的知识库（概念）</h1><a id="logo" href="../../.">Canace 的博客</a><p class="description">Tomorrow is another day</p></div><div id="nav-menu"><a href="../../."><i class="fa fa-home"> 主页</i></a><a href="../../archives/"><i class="fa fa-archive"> 文章归档</i></a><a class="current" href="../"><i class="fa fa-book"> 知识库</i></a><a href="../../about/"><i class="fa fa-user"> 关于我</i></a><a href="../../atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">LLM 维护的知识库（概念）</h1><div class="clear"><div class="toc-article" id="toc"><div class="toc-title">目录</div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89"><span class="toc-text">定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Claims%EF%BC%88%E7%BB%BC%E5%90%88%E5%88%A4%E6%96%AD%EF%BC%89"><span class="toc-text">Claims（综合判断）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Evidence%EF%BC%88%E6%9D%A5%E6%BA%90%E4%B8%8E%E4%BE%9D%E6%8D%AE%EF%BC%89"><span class="toc-text">Evidence（来源与依据）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E5%B1%82%E7%BB%93%E6%9E%84%EF%BC%88%E5%BD%93%E5%89%8D%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%A8%A1%E5%9E%8B%EF%BC%89"><span class="toc-text">三层结构（当前可执行模型）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Open-Questions%EF%BC%88%E5%BE%85%E9%AA%8C%E8%AF%81%E9%97%AE%E9%A2%98%EF%BC%89"><span class="toc-text">Open Questions（待验证问题）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%B4%E6%8A%A4%E5%BB%BA%E8%AE%AE"><span class="toc-text">维护建议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3"><span class="toc-text">相关</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9D%A5%E6%BA%90"><span class="toc-text">来源</span></a></li></ol></div></div><div class="post-content"><p>跨来源整理：<strong>人输入资料 -&gt; 持久化 wiki -&gt; 规则驱动 agent 维护</strong>，wiki 作为多工具共用的长期记忆层。</p>
+<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>这里的 “LLM 维护知识库” 不是指一次性让模型写文档，而是让 agent 按规则持续 ingest、更新、互链、纠错，并让知识在多会话里可追踪复用。</p>
+<h2 id="Claims（综合判断）"><a href="#Claims（综合判断）" class="headerlink" title="Claims（综合判断）"></a>Claims（综合判断）</h2><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Claim</th>
+<th>Confidence</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>C1</td>
+<td>LLM-maintained wiki 的基础形态是三层：原始资料层、wiki 维护层、规则层。</td>
+<td>High</td>
+<td>E1, E2</td>
+</tr>
+<tr>
+<td>C2</td>
+<td>仅有持久化页面还不够；要提升为可维护知识层，需要引入更明确的证据与健康信号。</td>
+<td>Medium</td>
+<td>E1, E3</td>
+</tr>
+<tr>
+<td>C3</td>
+<td>在 agent 工作流中，wiki 应承担 system of record 的角色，而不是临时聊天缓存。</td>
+<td>Medium</td>
+<td>E1, E2, E3</td>
+</tr>
+</tbody></table>
+<h2 id="Evidence（来源与依据）"><a href="#Evidence（来源与依据）" class="headerlink" title="Evidence（来源与依据）"></a>Evidence（来源与依据）</h2><ul>
+<li><code>E1</code> <a href="../sources/llm-wiki.html">使用大模型来维护知识库</a><br>该来源明确提出 “原始资料 + wiki + 规则” 的基本架构，并强调 wiki 作为跨工具复用的持久中间层。</li>
+<li><code>E2</code> 仓库当前结构（可直接观察）<br><code>source/_posts/*.md</code> 作为只读输入，<code>wiki/</code> 作为维护层，<code>AGENTS.md</code> 提供工作流约束。</li>
+<li><code>E3</code> <a href="../sources/openclaw-memory-wiki.html">OpenClaw Memory Wiki</a><br>该来源强调 structured claims&#x2F;evidence、provenance、contradictions、dashboard、lint，说明知识维护可从 “持久化” 继续升级到 “可验证维护”。</li>
+</ul>
+<h2 id="三层结构（当前可执行模型）"><a href="#三层结构（当前可执行模型）" class="headerlink" title="三层结构（当前可执行模型）"></a>三层结构（当前可执行模型）</h2><table>
 <thead>
 <tr>
 <th>层</th>
 <th>作用</th>
+<th>在本仓库的对应</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>原始资料</td>
-<td>笔记、剪藏、博客文章等，只读输入</td>
+<td>原始资料层</td>
+<td>只读输入，不直接改写</td>
+<td><code>source/_posts/*.md</code></td>
 </tr>
 <tr>
-<td>Wiki</td>
-<td>索引、摘要、对话与报告产物，可增量更新</td>
+<td>Wiki 维护层</td>
+<td>索引、摘要、概念、问答、报告</td>
+<td><code>wiki/sources/</code> <code>wiki/concepts/</code> <code>wiki/queries/</code> <code>wiki/reports/</code></td>
 </tr>
 <tr>
-<td>规则</td>
-<td>定义目录约定、工作流（ingest &#x2F; query &#x2F; lint 等）</td>
+<td>规则层</td>
+<td>约束 agent 的 ingest&#x2F;query&#x2F;lint 行为</td>
+<td><code>AGENTS.md</code></td>
 </tr>
 </tbody></table>
-<h2 id="与本仓库的对应"><a href="#与本仓库的对应" class="headerlink" title="与本仓库的对应"></a>与本仓库的对应</h2><p>本仓库的 <code>docs/wiki-rule.md</code> 描述 agent 如何把 <code>source/_posts/*.md</code> 等整理进 <code>wiki/</code>，与文中「规则 + wiki」一致。</p>
+<h2 id="Open-Questions（待验证问题）"><a href="#Open-Questions（待验证问题）" class="headerlink" title="Open Questions（待验证问题）"></a>Open Questions（待验证问题）</h2><ol>
+<li>哪些概念页应强制包含 <code>claim/evidence/open-questions</code> 三段结构，哪些可以保持轻量摘要？</li>
+<li>是否需要给概念页加最小健康字段（例如 freshness、last-reviewed、confidence）？</li>
+<li>当来源间冲突时，是否需要统一的 contradiction 记录格式？</li>
+<li>是否要做一个轻量 <code>wiki lint</code>，自动检查缺 evidence 的 claim？</li>
+</ol>
+<h2 id="维护建议"><a href="#维护建议" class="headerlink" title="维护建议"></a>维护建议</h2><p>后续可从一页试点扩展到一组高频概念页：</p>
+<ol>
+<li>先保留简洁正文，但新增 claim&#x2F;evidence 显式映射。</li>
+<li>每次有新来源加入时，优先更新 Evidence，再判断是否需要调整 Claim。</li>
+<li>每月做一次 open questions 回看，决定关闭、拆分或升级为 report。</li>
+</ol>
 <h2 id="相关"><a href="#相关" class="headerlink" title="相关"></a>相关</h2><ul>
+<li><a href="compiled-knowledge-vault.html">编译式知识库（概念）</a> — 更强调 claim &#x2F; evidence &#x2F; provenance &#x2F; lint &#x2F; dashboard。</li>
 <li><a href="lop-patterns.html">LOP 模式与产物</a> — 游戏中的「结构化文档沉淀再迭代」与 wiki&#x2F;RAG 长期记忆可对照。</li>
 </ul>
 <h2 id="来源"><a href="#来源" class="headerlink" title="来源"></a>来源</h2><ul>
 <li><a href="../sources/llm-wiki.html">使用大模型来维护知识库</a></li>
+<li><a href="../sources/openclaw-memory-wiki.html">OpenClaw Memory Wiki</a></li>
 </ul>
-</div></div></div></div><div class="pure-u-1 pure-u-md-1-4"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 常用文档</i></div><ul></ul><a href="/git-common-commands" title="Git 文档" target="_blank">Git 文档</a><ul></ul><a href="/common-programming-prompt-words" title="常用开发提示词" target="_blank">常用开发提示词</a></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="../../categories/soft/">软技能与思考</a><span class="category-list-count">45</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/cli/">工程化与运维</a><span class="category-list-count">50</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/web/">Web开发</a><span class="category-list-count">142</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/intelligent/">AI探索</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/coding/">编程基础</a><span class="category-list-count">42</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/site/">网站建设</a><span class="category-list-count">5</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="../../tags/essays/" style="font-size: 15px; color: #3679a7">随笔</a> <a href="../../tags/performance/" style="font-size: 15px; color: #7a9fb8">性能优化</a> <a href="../../tags/JavaScript-TypeScript/" style="font-size: 15px; color: #0e639d">JavaScript&TypeScript</a> <a href="../../tags/AI%E5%8E%9F%E7%90%86/" style="font-size: 15px; color: #96aebf">AI原理</a> <a href="../../tags/backend/" style="font-size: 15px; color: #5f90b1">后端</a> <a href="../../tags/Python-Go-%E5%85%B6%E4%BB%96/" style="font-size: 15px; color: #88a6bb">Python/Go/其他</a> <a href="../../tags/api-services/" style="font-size: 15px; color: #bec4c9">API&服务</a> <a href="../../tags/computer-science/" style="font-size: 15px; color: #2972a4">计算机科学</a> <a href="../../tags/%E8%81%8C%E4%B8%9A%E5%8F%91%E5%B1%95/" style="font-size: 15px; color: #7a9fb8">职业发展</a> <a href="../../tags/AI%E7%BC%96%E7%A8%8B/" style="font-size: 15px; color: #7a9fb8">AI编程</a> <a href="../../tags/%E7%BF%BB%E8%AF%91/" style="font-size: 15px; color: #ccc">翻译</a> <a href="../../tags/reading-notes/" style="font-size: 15px; color: #a3b5c2">读书笔记</a> <a href="../../tags/frontend/" style="font-size: 15px; color: #005b9a">前端</a> <a href="../../tags/frameworks-libs/" style="font-size: 15px; color: #5288ae">框架与库</a> <a href="../../tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/" style="font-size: 15px; color: #88a6bb">系统设计</a> <a href="../../tags/programming-languages/" style="font-size: 15px; color: #b1bdc5">编程语言</a> <a href="../../tags/css-visualization/" style="font-size: 15px; color: #1b6aa1">CSS与可视化</a> <a href="../../tags/build-deploy/" style="font-size: 15px; color: #6d97b5">构建与部署</a> <a href="../../tags/dev-tools/" style="font-size: 15px; color: #4481ab">开发工具</a> <a href="../../tags/Agent-Skill/" style="font-size: 15px; color: #ccc">Agent,Skill</a> <a href="../../tags/Node-js/" style="font-size: 15px; color: #7a9fb8">Node.js</a> <a href="../../tags/cross-platform/" style="font-size: 15px; color: #88a6bb">跨端方案</a> <a href="../../tags/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/" style="font-size: 15px; color: #ccc">项目管理</a> <a href="../../tags/%E7%9F%A5%E8%AF%86%E5%BA%93/" style="font-size: 15px; color: #ccc">知识库</a> <a href="../../tags/code-quality/" style="font-size: 15px; color: #bec4c9">代码质量</a></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2026 <a href="../../." rel="nofollow">Canace 的博客</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="../../js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.js" async></script><script type="text/javascript" src="../../js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.css"><link rel="stylesheet" type="text/css" href="../../css/search.css?v=0.0.0"><script type="text/javascript" src="../../js/search.js?v=0.0.0"></script><script>var search_path = 'search.xml';
+</div></div></div></div><div class="pure-u-1 pure-u-md-1-4"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 常用文档</i></div><ul></ul><a href="/git-common-commands" title="Git 文档" target="_blank">Git 文档</a><ul></ul><a href="/common-programming-prompt-words" title="常用开发提示词" target="_blank">常用开发提示词</a></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="../../categories/soft/">软技能与思考</a><span class="category-list-count">46</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/intelligent/">AI探索</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/cli/">工程化与运维</a><span class="category-list-count">50</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/web/">Web开发</a><span class="category-list-count">142</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/coding/">编程基础</a><span class="category-list-count">42</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/site/">网站建设</a><span class="category-list-count">5</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="../../tags/essays/" style="font-size: 15px; color: #3679a7">随笔</a> <a href="../../tags/AI%E5%8E%9F%E7%90%86/" style="font-size: 15px; color: #96aebf">AI原理</a> <a href="../../tags/performance/" style="font-size: 15px; color: #7a9fb8">性能优化</a> <a href="../../tags/backend/" style="font-size: 15px; color: #5f90b1">后端</a> <a href="../../tags/Python-Go-%E5%85%B6%E4%BB%96/" style="font-size: 15px; color: #88a6bb">Python/Go/其他</a> <a href="../../tags/JavaScript-TypeScript/" style="font-size: 15px; color: #0e639d">JavaScript&TypeScript</a> <a href="../../tags/api-services/" style="font-size: 15px; color: #bec4c9">API&服务</a> <a href="../../tags/computer-science/" style="font-size: 15px; color: #2972a4">计算机科学</a> <a href="../../tags/%E8%81%8C%E4%B8%9A%E5%8F%91%E5%B1%95/" style="font-size: 15px; color: #7a9fb8">职业发展</a> <a href="../../tags/AI%E7%BC%96%E7%A8%8B/" style="font-size: 15px; color: #7a9fb8">AI编程</a> <a href="../../tags/%E7%BF%BB%E8%AF%91/" style="font-size: 15px; color: #ccc">翻译</a> <a href="../../tags/reading-notes/" style="font-size: 15px; color: #a3b5c2">读书笔记</a> <a href="../../tags/frontend/" style="font-size: 15px; color: #005b9a">前端</a> <a href="../../tags/frameworks-libs/" style="font-size: 15px; color: #5288ae">框架与库</a> <a href="../../tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/" style="font-size: 15px; color: #88a6bb">系统设计</a> <a href="../../tags/programming-languages/" style="font-size: 15px; color: #b1bdc5">编程语言</a> <a href="../../tags/css-visualization/" style="font-size: 15px; color: #1b6aa1">CSS与可视化</a> <a href="../../tags/build-deploy/" style="font-size: 15px; color: #6d97b5">构建与部署</a> <a href="../../tags/dev-tools/" style="font-size: 15px; color: #4481ab">开发工具</a> <a href="../../tags/Agent-Skill/" style="font-size: 15px; color: #ccc">Agent,Skill</a> <a href="../../tags/Node-js/" style="font-size: 15px; color: #7a9fb8">Node.js</a> <a href="../../tags/cross-platform/" style="font-size: 15px; color: #88a6bb">跨端方案</a> <a href="../../tags/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/" style="font-size: 15px; color: #ccc">项目管理</a> <a href="../../tags/%E7%9F%A5%E8%AF%86%E5%BA%93/" style="font-size: 15px; color: #ccc">知识库</a> <a href="../../tags/code-quality/" style="font-size: 15px; color: #bec4c9">代码质量</a></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2026 <a href="../../." rel="nofollow">Canace 的博客</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="../../js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.js" async></script><script type="text/javascript" src="../../js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.css"><link rel="stylesheet" type="text/css" href="../../css/search.css?v=0.0.0"><script type="text/javascript" src="../../js/search.js?v=0.0.0"></script><script>var search_path = 'search.xml';
 if (search_path.length == 0) {
    search_path = 'search.xml';
 }

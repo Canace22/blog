@@ -1,0 +1,207 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="canace 的博客"><meta itemprop="name" content="从 Harness 到 Compiled Wiki：个人研究路线图"><meta itemprop="image" content="https://raw.githubusercontent.com/Canace22/Assets/main/images/snow-other.png"><meta property="og:image" content="https://raw.githubusercontent.com/Canace22/Assets/main/images/snow-other.png"><meta name="description" itemprop="description" content="&lt;h2 id=&quot;目的&quot;&gt;&lt;a href=&quot;#目的&quot; class=&quot;headerlink&quot; title=&quot;目的&quot;&gt;&lt;/a&gt;目的&lt;/h2&gt;&lt;p&gt;把你当前两条主线统一成一条可执行研究路径：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Harness Engineering&lt;/code&gt;：让 agent 持续完成任务&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;LLM 维护 wiki&lt;/code&gt;：让知识持续沉淀并可复用&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;目标不是再造概念，而是形成后续可直接写博客、做分享、做实践复盘的结构骨架。&lt;/p&gt;
+&lt;h2 id=&quot;一句话结论&quot;&gt;&lt;a href=&quot;#一句话结论&quot; class=&quot;headerlink&quot; title=&quot;一句话结论&quot;&gt;&lt;/a&gt;一句话结论&lt;/h2&gt;&lt;p&gt;&lt;code&gt;Harness&lt;/code&gt; 解决“agent 怎么干活”，&lt;code&gt;Memory/Wiki&lt;/code&gt; 解决“agent 记住什么”，&lt;code&gt;Compiled Wiki&lt;/code&gt; 解决“这些记忆如何可验证、可维护、可追踪”。&lt;/p&gt;
+&lt;h2 id=&quot;当前知识库中的三层映射&quot;&gt;&lt;a href=&quot;#当前知识库中的三层映射&quot; class=&quot;headerlink&quot; title=&quot;当前知识库中的三层映射&quot;&gt;&lt;/a&gt;当前知识库中的三层映射&lt;/h2&gt;&lt;h3 id=&quot;1-执行层（Harness）&quot;&gt;&lt;a href=&quot;#1-执行层（Harness）&quot; class=&quot;headerlink&quot; title=&quot;1. 执行层（Harness）&quot;&gt;&lt;/a&gt;1. 执行层（Harness）&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;../concepts/harness-engineering.html&quot;&gt;Harness Engineering（概念）&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;../sources/pi-coding-agent.html&quot;&gt;Pi Coding Agent &amp;#x2F; pi-mono&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;关注点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;agent loop&lt;/li&gt;
+&lt;li&gt;tool use&lt;/li&gt;
+&lt;li&gt;planning &amp;#x2F; verification&lt;/li&gt;
+&lt;li&gt;扩展边界（哪些放核心，哪些外置）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;2-记忆层（LLM-maintained-wiki）&quot;&gt;&lt;a href=&quot;#2-记忆层（LLM-maintained-wiki）&quot; class=&quot;headerlink&quot; title=&quot;2. 记忆层（LLM-maintained wiki）&quot;&gt;&lt;/a&gt;2. 记忆层（LLM-maintained wiki）&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;../concepts/llm-maintained-wiki.html&quot;&gt;LLM 维护的知识库（概念）&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;../sources/llm-wiki.html&quot;&gt;使用大模型来维护知识库&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;关注点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;source -&amp;gt; wiki 的增量沉淀&lt;/li&gt;
+&lt;li&gt;rules 驱动维护工作流&lt;/li&gt;
+&lt;li&gt;queries &amp;#x2F; reports 可复用化&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;3-维护层（Compiled-knowledge）&quot;&gt;&lt;a href=&quot;#3-维护层（Compiled-knowledge）&quot; class=&quot;headerlink&quot; title=&quot;3. 维护层（Compiled knowledge）&quot;&gt;&lt;/a&gt;3. 维护层（Compiled knowledge）&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;../concepts/compiled-knowledge-vault.html&quot;&gt;编译式知识库（概念）&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;../sources/openclaw-memory-wiki.html&quot;&gt;OpenClaw Memory Wiki&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;关注点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;claim &amp;#x2F; evidence 结构化&lt;/li&gt;
+&lt;li&gt;provenance &amp;#x2F; confidence &amp;#x2F; contradiction &amp;#x2F; open questions&lt;/li&gt;
+&lt;li&gt;lint &amp;#x2F; dashboard &amp;#x2F; digest&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;关键关联关系&quot;&gt;&lt;a href=&quot;#关键关联关系&quot; class=&quot;headerlink&quot; title=&quot;关键关联关系&quot;&gt;&lt;/a&gt;关键关联关系&lt;/h2&gt;&lt;h3 id=&quot;关系-1：Harness-不等于-Prompt-优化&quot;&gt;&lt;a href=&quot;#关系-1：Harness-不等于-Prompt-优化&quot; class=&quot;headerlink&quot; title=&quot;关系 1：Harness 不等于 Prompt 优化&quot;&gt;&lt;/a&gt;关系 1：Harness 不等于 Prompt 优化&lt;/h3&gt;&lt;p&gt;你的历史内容里，&lt;code&gt;项目规则&lt;/code&gt;、&lt;code&gt;Skill&lt;/code&gt;、&lt;code&gt;经验模式&lt;/code&gt; 已经接近 harness 组件。真正差异在于：是否形成了稳定的执行与验证回路，而不只是一次对话效果更好。&lt;/p&gt;
+&lt;h3 id=&quot;关系-2：Wiki-不等于“存文档”&quot;&gt;&lt;a href=&quot;#关系-2：Wiki-不等于“存文档”&quot; class=&quot;headerlink&quot; title=&quot;关系 2：Wiki 不等于“存文档”&quot;&gt;&lt;/a&gt;关系 2：Wiki 不等于“存文档”&lt;/h3&gt;&lt;p&gt;普通 wiki 解决“能找到”，compiled wiki 进一步解决“能不能信、哪里冲突、哪些过时、后续谁来维护”。&lt;/p&gt;
+&lt;h3 id=&quot;关系-3：两条线最终会合&quot;&gt;&lt;a href=&quot;#关系-3：两条线最终会合&quot; class=&quot;headerlink&quot; title=&quot;关系 3：两条线最终会合&quot;&gt;&lt;/a&gt;关系 3：两条线最终会合&lt;/h3&gt;&lt;p&gt;当 agent 做研究&amp;#x2F;开发任务时：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Harness 提供执行框架&lt;/li&gt;
+&lt;li&gt;Wiki 提供长期上下文&lt;/li&gt;
+&lt;li&gt;Compiled 机制提供质量闸门&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;这三者合在一起，才接近一个可持续运行的个人 agent system。&lt;/p&gt;
+&lt;h2 id=&quot;研究优先级建议（30-天）&quot;&gt;&lt;a href=&quot;#研究优先级建议（30-天）&quot; class=&quot;headerlink&quot; title=&quot;研究优先级建议（30 天）&quot;&gt;&lt;/a&gt;研究优先级建议（30 天）&lt;/h2&gt;&lt;h3 id=&quot;Phase-1（第-1-周）：建立统一叙事&quot;&gt;&lt;a href=&quot;#Phase-1（第-1-周）：建立统一叙事&quot; class=&quot;headerlink&quot; title=&quot;Phase 1（第 1 周）：建立统一叙事&quot;&gt;&lt;/a&gt;Phase 1（第 1 周）：建立统一叙事&lt;/h3&gt;&lt;p&gt;输出物：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;一篇概念型博客草稿（可由本报告直接扩写）&lt;/li&gt;
+&lt;li&gt;一张三层关系图（Harness &amp;#x2F; Wiki &amp;#x2F; Compiled）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;验收标准：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;可以用 5 分钟讲清楚三层差异与关系&lt;/li&gt;
+&lt;li&gt;每层都有你现有文章或 wiki 页面可回链&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;Phase-2（第-2-3-周）：补维护信号&quot;&gt;&lt;a href=&quot;#Phase-2（第-2-3-周）：补维护信号&quot; class=&quot;headerlink&quot; title=&quot;Phase 2（第 2-3 周）：补维护信号&quot;&gt;&lt;/a&gt;Phase 2（第 2-3 周）：补维护信号&lt;/h3&gt;&lt;p&gt;输出物：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在高频概念页加入 &lt;code&gt;open questions&lt;/code&gt; 小节&lt;/li&gt;
+&lt;li&gt;对重点页面试行 &lt;code&gt;claim vs evidence&lt;/code&gt; 写法&lt;/li&gt;
+&lt;li&gt;建一个轻量 wiki lint 清单（人工或脚本都可）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;验收标准：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;至少 3 个概念页具备“可验证字段”&lt;/li&gt;
+&lt;li&gt;能快速识别“缺来源、待验证、冲突点”&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;Phase-3（第-4-周）：形成可复用模板&quot;&gt;&lt;a href=&quot;#Phase-3（第-4-周）：形成可复用模板&quot; class=&quot;headerlink&quot; title=&quot;Phase 3（第 4 周）：形成可复用模板&quot;&gt;&lt;/a&gt;Phase 3（第 4 周）：形成可复用模板&lt;/h3&gt;&lt;p&gt;输出物：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;一份 &lt;code&gt;research-report template&lt;/code&gt;（研究问题、证据、结论、风险、后续）&lt;/li&gt;
+&lt;li&gt;一份 &lt;code&gt;source ingest template&lt;/code&gt;（摘要、关键点、关联概念、待验证）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;验收标准：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;新资料进入 wiki 的平均耗时下降&lt;/li&gt;
+&lt;li&gt;新资料与旧概念页的互链更完整&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;博客选题池（可直接开写）&quot;&gt;&lt;a href=&quot;#博客选题池（可直接开写）&quot; class=&quot;headerlink&quot; title=&quot;博客选题池（可直接开写）&quot;&gt;&lt;/a&gt;博客选题池（可直接开写）&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;从 Prompt 到 Harness：为什么 AI Coding 的瓶颈在执行环境&lt;/li&gt;
+&lt;li&gt;从 Memory 到 Wiki：为什么跨会话记忆需要结构化沉淀&lt;/li&gt;
+&lt;li&gt;从 Wiki 到 Compiled Wiki：知识库如何从“可读”走向“可维护”&lt;/li&gt;
+&lt;li&gt;AGENTS.md + Wiki + Lint：个人开发者的最小 Agent 基础设施&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;下一步可立即执行的动作&quot;&gt;&lt;a href=&quot;#下一步可立即执行的动作&quot; class=&quot;headerlink&quot; title=&quot;下一步可立即执行的动作&quot;&gt;&lt;/a&gt;下一步可立即执行的动作&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;挑 1 个高频概念页试行 &lt;code&gt;claim/evidence/open-questions&lt;/code&gt; 结构&lt;/li&gt;
+&lt;li&gt;选 1 篇历史报告补 &lt;code&gt;provenance&lt;/code&gt; 标注，验证可维护性收益&lt;/li&gt;
+&lt;li&gt;把本报告扩成对外博客初稿（可复用现有 &lt;code&gt;harness-engineering-blog-draft&lt;/code&gt; 片段）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;相关页面&quot;&gt;&lt;a href=&quot;#相关页面&quot; class=&quot;headerlink&quot; title=&quot;相关页面&quot;&gt;&lt;/a&gt;相关页面&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;harness-engineering-reading-notes.html&quot;&gt;Harness Engineering 资料整理&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;harness-engineering-blog-draft.html&quot;&gt;博客草稿：我原来写的项目规则、Skill、知识库，其实已经是在做 Harness Engineering&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;../concepts/harness-engineering.html&quot;&gt;Harness Engineering（概念）&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;../concepts/llm-maintained-wiki.html&quot;&gt;LLM 维护的知识库（概念）&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;../concepts/compiled-knowledge-vault.html&quot;&gt;编译式知识库（概念）&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+"><title>从 Harness 到 Compiled Wiki：个人研究路线图</title><link rel="stylesheet" type="text/css" href="../../css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/normalize.css/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="../../favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="../../favicon.ico"><link rel="apple-touch-icon" href="../../apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="../../apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="../../atom.xml"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/clipboard/dist/clipboard.min.js"></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.js"></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.css"><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">从 Harness 到 Compiled Wiki：个人研究路线图</h1><a id="logo" href="../../.">Canace 的博客</a><p class="description">Tomorrow is another day</p></div><div id="nav-menu"><a href="../../."><i class="fa fa-home"> 主页</i></a><a href="../../archives/"><i class="fa fa-archive"> 文章归档</i></a><a class="current" href="../"><i class="fa fa-book"> 知识库</i></a><a href="../../about/"><i class="fa fa-user"> 关于我</i></a><a href="../../atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">从 Harness 到 Compiled Wiki：个人研究路线图</h1><div class="clear"><div class="toc-article" id="toc"><div class="toc-title">目录</div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E7%9A%84"><span class="toc-text">目的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E5%8F%A5%E8%AF%9D%E7%BB%93%E8%AE%BA"><span class="toc-text">一句话结论</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BD%93%E5%89%8D%E7%9F%A5%E8%AF%86%E5%BA%93%E4%B8%AD%E7%9A%84%E4%B8%89%E5%B1%82%E6%98%A0%E5%B0%84"><span class="toc-text">当前知识库中的三层映射</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%89%A7%E8%A1%8C%E5%B1%82%EF%BC%88Harness%EF%BC%89"><span class="toc-text">1. 执行层（Harness）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%AE%B0%E5%BF%86%E5%B1%82%EF%BC%88LLM-maintained-wiki%EF%BC%89"><span class="toc-text">2. 记忆层（LLM-maintained wiki）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E7%BB%B4%E6%8A%A4%E5%B1%82%EF%BC%88Compiled-knowledge%EF%BC%89"><span class="toc-text">3. 维护层（Compiled knowledge）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E5%85%B3%E8%81%94%E5%85%B3%E7%B3%BB"><span class="toc-text">关键关联关系</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E7%B3%BB-1%EF%BC%9AHarness-%E4%B8%8D%E7%AD%89%E4%BA%8E-Prompt-%E4%BC%98%E5%8C%96"><span class="toc-text">关系 1：Harness 不等于 Prompt 优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E7%B3%BB-2%EF%BC%9AWiki-%E4%B8%8D%E7%AD%89%E4%BA%8E%E2%80%9C%E5%AD%98%E6%96%87%E6%A1%A3%E2%80%9D"><span class="toc-text">关系 2：Wiki 不等于“存文档”</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E7%B3%BB-3%EF%BC%9A%E4%B8%A4%E6%9D%A1%E7%BA%BF%E6%9C%80%E7%BB%88%E4%BC%9A%E5%90%88"><span class="toc-text">关系 3：两条线最终会合</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A0%94%E7%A9%B6%E4%BC%98%E5%85%88%E7%BA%A7%E5%BB%BA%E8%AE%AE%EF%BC%8830-%E5%A4%A9%EF%BC%89"><span class="toc-text">研究优先级建议（30 天）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Phase-1%EF%BC%88%E7%AC%AC-1-%E5%91%A8%EF%BC%89%EF%BC%9A%E5%BB%BA%E7%AB%8B%E7%BB%9F%E4%B8%80%E5%8F%99%E4%BA%8B"><span class="toc-text">Phase 1（第 1 周）：建立统一叙事</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Phase-2%EF%BC%88%E7%AC%AC-2-3-%E5%91%A8%EF%BC%89%EF%BC%9A%E8%A1%A5%E7%BB%B4%E6%8A%A4%E4%BF%A1%E5%8F%B7"><span class="toc-text">Phase 2（第 2-3 周）：补维护信号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Phase-3%EF%BC%88%E7%AC%AC-4-%E5%91%A8%EF%BC%89%EF%BC%9A%E5%BD%A2%E6%88%90%E5%8F%AF%E5%A4%8D%E7%94%A8%E6%A8%A1%E6%9D%BF"><span class="toc-text">Phase 3（第 4 周）：形成可复用模板</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%9A%E5%AE%A2%E9%80%89%E9%A2%98%E6%B1%A0%EF%BC%88%E5%8F%AF%E7%9B%B4%E6%8E%A5%E5%BC%80%E5%86%99%EF%BC%89"><span class="toc-text">博客选题池（可直接开写）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E4%B8%80%E6%AD%A5%E5%8F%AF%E7%AB%8B%E5%8D%B3%E6%89%A7%E8%A1%8C%E7%9A%84%E5%8A%A8%E4%BD%9C"><span class="toc-text">下一步可立即执行的动作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E9%A1%B5%E9%9D%A2"><span class="toc-text">相关页面</span></a></li></ol></div></div><div class="post-content"><h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><p>把你当前两条主线统一成一条可执行研究路径：</p>
+<ul>
+<li><code>Harness Engineering</code>：让 agent 持续完成任务</li>
+<li><code>LLM 维护 wiki</code>：让知识持续沉淀并可复用</li>
+</ul>
+<p>目标不是再造概念，而是形成后续可直接写博客、做分享、做实践复盘的结构骨架。</p>
+<h2 id="一句话结论"><a href="#一句话结论" class="headerlink" title="一句话结论"></a>一句话结论</h2><p><code>Harness</code> 解决“agent 怎么干活”，<code>Memory/Wiki</code> 解决“agent 记住什么”，<code>Compiled Wiki</code> 解决“这些记忆如何可验证、可维护、可追踪”。</p>
+<h2 id="当前知识库中的三层映射"><a href="#当前知识库中的三层映射" class="headerlink" title="当前知识库中的三层映射"></a>当前知识库中的三层映射</h2><h3 id="1-执行层（Harness）"><a href="#1-执行层（Harness）" class="headerlink" title="1. 执行层（Harness）"></a>1. 执行层（Harness）</h3><ul>
+<li><a href="../concepts/harness-engineering.html">Harness Engineering（概念）</a></li>
+<li><a href="../sources/pi-coding-agent.html">Pi Coding Agent &#x2F; pi-mono</a></li>
+</ul>
+<p>关注点：</p>
+<ul>
+<li>agent loop</li>
+<li>tool use</li>
+<li>planning &#x2F; verification</li>
+<li>扩展边界（哪些放核心，哪些外置）</li>
+</ul>
+<h3 id="2-记忆层（LLM-maintained-wiki）"><a href="#2-记忆层（LLM-maintained-wiki）" class="headerlink" title="2. 记忆层（LLM-maintained wiki）"></a>2. 记忆层（LLM-maintained wiki）</h3><ul>
+<li><a href="../concepts/llm-maintained-wiki.html">LLM 维护的知识库（概念）</a></li>
+<li><a href="../sources/llm-wiki.html">使用大模型来维护知识库</a></li>
+</ul>
+<p>关注点：</p>
+<ul>
+<li>source -&gt; wiki 的增量沉淀</li>
+<li>rules 驱动维护工作流</li>
+<li>queries &#x2F; reports 可复用化</li>
+</ul>
+<h3 id="3-维护层（Compiled-knowledge）"><a href="#3-维护层（Compiled-knowledge）" class="headerlink" title="3. 维护层（Compiled knowledge）"></a>3. 维护层（Compiled knowledge）</h3><ul>
+<li><a href="../concepts/compiled-knowledge-vault.html">编译式知识库（概念）</a></li>
+<li><a href="../sources/openclaw-memory-wiki.html">OpenClaw Memory Wiki</a></li>
+</ul>
+<p>关注点：</p>
+<ul>
+<li>claim &#x2F; evidence 结构化</li>
+<li>provenance &#x2F; confidence &#x2F; contradiction &#x2F; open questions</li>
+<li>lint &#x2F; dashboard &#x2F; digest</li>
+</ul>
+<h2 id="关键关联关系"><a href="#关键关联关系" class="headerlink" title="关键关联关系"></a>关键关联关系</h2><h3 id="关系-1：Harness-不等于-Prompt-优化"><a href="#关系-1：Harness-不等于-Prompt-优化" class="headerlink" title="关系 1：Harness 不等于 Prompt 优化"></a>关系 1：Harness 不等于 Prompt 优化</h3><p>你的历史内容里，<code>项目规则</code>、<code>Skill</code>、<code>经验模式</code> 已经接近 harness 组件。真正差异在于：是否形成了稳定的执行与验证回路，而不只是一次对话效果更好。</p>
+<h3 id="关系-2：Wiki-不等于“存文档”"><a href="#关系-2：Wiki-不等于“存文档”" class="headerlink" title="关系 2：Wiki 不等于“存文档”"></a>关系 2：Wiki 不等于“存文档”</h3><p>普通 wiki 解决“能找到”，compiled wiki 进一步解决“能不能信、哪里冲突、哪些过时、后续谁来维护”。</p>
+<h3 id="关系-3：两条线最终会合"><a href="#关系-3：两条线最终会合" class="headerlink" title="关系 3：两条线最终会合"></a>关系 3：两条线最终会合</h3><p>当 agent 做研究&#x2F;开发任务时：</p>
+<ol>
+<li>Harness 提供执行框架</li>
+<li>Wiki 提供长期上下文</li>
+<li>Compiled 机制提供质量闸门</li>
+</ol>
+<p>这三者合在一起，才接近一个可持续运行的个人 agent system。</p>
+<h2 id="研究优先级建议（30-天）"><a href="#研究优先级建议（30-天）" class="headerlink" title="研究优先级建议（30 天）"></a>研究优先级建议（30 天）</h2><h3 id="Phase-1（第-1-周）：建立统一叙事"><a href="#Phase-1（第-1-周）：建立统一叙事" class="headerlink" title="Phase 1（第 1 周）：建立统一叙事"></a>Phase 1（第 1 周）：建立统一叙事</h3><p>输出物：</p>
+<ul>
+<li>一篇概念型博客草稿（可由本报告直接扩写）</li>
+<li>一张三层关系图（Harness &#x2F; Wiki &#x2F; Compiled）</li>
+</ul>
+<p>验收标准：</p>
+<ul>
+<li>可以用 5 分钟讲清楚三层差异与关系</li>
+<li>每层都有你现有文章或 wiki 页面可回链</li>
+</ul>
+<h3 id="Phase-2（第-2-3-周）：补维护信号"><a href="#Phase-2（第-2-3-周）：补维护信号" class="headerlink" title="Phase 2（第 2-3 周）：补维护信号"></a>Phase 2（第 2-3 周）：补维护信号</h3><p>输出物：</p>
+<ul>
+<li>在高频概念页加入 <code>open questions</code> 小节</li>
+<li>对重点页面试行 <code>claim vs evidence</code> 写法</li>
+<li>建一个轻量 wiki lint 清单（人工或脚本都可）</li>
+</ul>
+<p>验收标准：</p>
+<ul>
+<li>至少 3 个概念页具备“可验证字段”</li>
+<li>能快速识别“缺来源、待验证、冲突点”</li>
+</ul>
+<h3 id="Phase-3（第-4-周）：形成可复用模板"><a href="#Phase-3（第-4-周）：形成可复用模板" class="headerlink" title="Phase 3（第 4 周）：形成可复用模板"></a>Phase 3（第 4 周）：形成可复用模板</h3><p>输出物：</p>
+<ul>
+<li>一份 <code>research-report template</code>（研究问题、证据、结论、风险、后续）</li>
+<li>一份 <code>source ingest template</code>（摘要、关键点、关联概念、待验证）</li>
+</ul>
+<p>验收标准：</p>
+<ul>
+<li>新资料进入 wiki 的平均耗时下降</li>
+<li>新资料与旧概念页的互链更完整</li>
+</ul>
+<h2 id="博客选题池（可直接开写）"><a href="#博客选题池（可直接开写）" class="headerlink" title="博客选题池（可直接开写）"></a>博客选题池（可直接开写）</h2><ul>
+<li>从 Prompt 到 Harness：为什么 AI Coding 的瓶颈在执行环境</li>
+<li>从 Memory 到 Wiki：为什么跨会话记忆需要结构化沉淀</li>
+<li>从 Wiki 到 Compiled Wiki：知识库如何从“可读”走向“可维护”</li>
+<li>AGENTS.md + Wiki + Lint：个人开发者的最小 Agent 基础设施</li>
+</ul>
+<h2 id="下一步可立即执行的动作"><a href="#下一步可立即执行的动作" class="headerlink" title="下一步可立即执行的动作"></a>下一步可立即执行的动作</h2><ol>
+<li>挑 1 个高频概念页试行 <code>claim/evidence/open-questions</code> 结构</li>
+<li>选 1 篇历史报告补 <code>provenance</code> 标注，验证可维护性收益</li>
+<li>把本报告扩成对外博客初稿（可复用现有 <code>harness-engineering-blog-draft</code> 片段）</li>
+</ol>
+<h2 id="相关页面"><a href="#相关页面" class="headerlink" title="相关页面"></a>相关页面</h2><ul>
+<li><a href="harness-engineering-reading-notes.html">Harness Engineering 资料整理</a></li>
+<li><a href="harness-engineering-blog-draft.html">博客草稿：我原来写的项目规则、Skill、知识库，其实已经是在做 Harness Engineering</a></li>
+<li><a href="../concepts/harness-engineering.html">Harness Engineering（概念）</a></li>
+<li><a href="../concepts/llm-maintained-wiki.html">LLM 维护的知识库（概念）</a></li>
+<li><a href="../concepts/compiled-knowledge-vault.html">编译式知识库（概念）</a></li>
+</ul>
+</div></div></div></div><div class="pure-u-1 pure-u-md-1-4"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 常用文档</i></div><ul></ul><a href="/git-common-commands" title="Git 文档" target="_blank">Git 文档</a><ul></ul><a href="/common-programming-prompt-words" title="常用开发提示词" target="_blank">常用开发提示词</a></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="../../categories/soft/">软技能与思考</a><span class="category-list-count">46</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/intelligent/">AI探索</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/cli/">工程化与运维</a><span class="category-list-count">50</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/web/">Web开发</a><span class="category-list-count">142</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/coding/">编程基础</a><span class="category-list-count">42</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/site/">网站建设</a><span class="category-list-count">5</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="../../tags/essays/" style="font-size: 15px; color: #3679a7">随笔</a> <a href="../../tags/AI%E5%8E%9F%E7%90%86/" style="font-size: 15px; color: #96aebf">AI原理</a> <a href="../../tags/performance/" style="font-size: 15px; color: #7a9fb8">性能优化</a> <a href="../../tags/backend/" style="font-size: 15px; color: #5f90b1">后端</a> <a href="../../tags/Python-Go-%E5%85%B6%E4%BB%96/" style="font-size: 15px; color: #88a6bb">Python/Go/其他</a> <a href="../../tags/JavaScript-TypeScript/" style="font-size: 15px; color: #0e639d">JavaScript&TypeScript</a> <a href="../../tags/api-services/" style="font-size: 15px; color: #bec4c9">API&服务</a> <a href="../../tags/computer-science/" style="font-size: 15px; color: #2972a4">计算机科学</a> <a href="../../tags/%E8%81%8C%E4%B8%9A%E5%8F%91%E5%B1%95/" style="font-size: 15px; color: #7a9fb8">职业发展</a> <a href="../../tags/AI%E7%BC%96%E7%A8%8B/" style="font-size: 15px; color: #7a9fb8">AI编程</a> <a href="../../tags/%E7%BF%BB%E8%AF%91/" style="font-size: 15px; color: #ccc">翻译</a> <a href="../../tags/reading-notes/" style="font-size: 15px; color: #a3b5c2">读书笔记</a> <a href="../../tags/frontend/" style="font-size: 15px; color: #005b9a">前端</a> <a href="../../tags/frameworks-libs/" style="font-size: 15px; color: #5288ae">框架与库</a> <a href="../../tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/" style="font-size: 15px; color: #88a6bb">系统设计</a> <a href="../../tags/programming-languages/" style="font-size: 15px; color: #b1bdc5">编程语言</a> <a href="../../tags/css-visualization/" style="font-size: 15px; color: #1b6aa1">CSS与可视化</a> <a href="../../tags/build-deploy/" style="font-size: 15px; color: #6d97b5">构建与部署</a> <a href="../../tags/dev-tools/" style="font-size: 15px; color: #4481ab">开发工具</a> <a href="../../tags/Agent-Skill/" style="font-size: 15px; color: #ccc">Agent,Skill</a> <a href="../../tags/Node-js/" style="font-size: 15px; color: #7a9fb8">Node.js</a> <a href="../../tags/cross-platform/" style="font-size: 15px; color: #88a6bb">跨端方案</a> <a href="../../tags/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/" style="font-size: 15px; color: #ccc">项目管理</a> <a href="../../tags/%E7%9F%A5%E8%AF%86%E5%BA%93/" style="font-size: 15px; color: #ccc">知识库</a> <a href="../../tags/code-quality/" style="font-size: 15px; color: #bec4c9">代码质量</a></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2026 <a href="../../." rel="nofollow">Canace 的博客</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="../../js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.js" async></script><script type="text/javascript" src="../../js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.css"><link rel="stylesheet" type="text/css" href="../../css/search.css?v=0.0.0"><script type="text/javascript" src="../../js/search.js?v=0.0.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+   search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="/js/copycode.js" successtext="复制成功!"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/mermaid@11.14.0/dist/mermaid.min.js"></script><script type="text/javascript">document.addEventListener('DOMContentLoaded', function () {
+  if (!window.mermaid) return;
+  mermaid.initialize({"theme":"default","logLevel":5,"startOnLoad":true,"arrowMarkerAbsolute":false,"flowchart":{"htmlLabels":true,"useMaxWidth":true,"curve":"linear"},"sequence":{"diagramMarginX":50,"diagramMarginY":10,"actorMargin":50,"width":150,"height":65,"boxMargin":10,"boxTextMargin":5,"noteMargin":10,"messageMargin":35,"mirrorActors":true,"bottomMarginAdj":1,"useMaxWidth":true},"gantt":{"titleTopMargin":25,"barHeight":20,"barGap":4,"topPadding":50,"leftPadding":75,"gridLineStartPadding":35,"fontSize":11,"fontFamily":"\"Open-Sans\", \"sans-serif\"","numberSectionStyles":4,"axisFormat":"%Y-%m-%d"},"class":{},"git":{}});
+});
+</script><script type="text/javascript" src="../../js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="../../js/smartresize.js?v=0.0.0"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":200,"height":200},"mobile":{"show":false},"react":{"opacity":0.7},"log":false});</script></body></html>

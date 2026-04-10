@@ -6,7 +6,7 @@
   <link href="https://canace.site/atom.xml" rel="self"/>
   
   <link href="https://canace.site/"/>
-  <updated>2026-04-09T05:54:54.242Z</updated>
+  <updated>2026-04-10T08:12:19.315Z</updated>
   <id>https://canace.site/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>为什么不要让LLM帮我们写文档</title>
+    <link href="https://canace.site/why-not-let-ai-write-for-us/"/>
+    <id>https://canace.site/why-not-let-ai-write-for-us/</id>
+    <published>2026-04-10T02:00:00.000Z</published>
+    <updated>2026-04-10T08:12:19.315Z</updated>
+    
+    
+    <summary type="html">写作是自问自答与建立信任的过程；代写像付费健身，舒适却练不到自己。讨论 LLM 代写对公信力与思考真实性的影响，以及调研、转录与创意场景下如何善用模型。</summary>
+    
+    
+    
+    <category term="软技能与思考" scheme="https://canace.site/categories/soft/"/>
+    
+    
+    <category term="随笔" scheme="https://canace.site/tags/essays/"/>
+    
+  </entry>
   
   <entry>
     <title>使用大模型来维护知识库</title>
@@ -376,25 +395,6 @@
     
     
     <category term="性能优化" scheme="https://canace.site/tags/performance/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>我们是否需要AI知识库</title>
-    <link href="https://canace.site/AI-knowledge-base/"/>
-    <id>https://canace.site/AI-knowledge-base/</id>
-    <published>2025-09-27T08:22:14.000Z</published>
-    <updated>2026-02-24T06:31:04.697Z</updated>
-    
-    
-    <summary type="html">AI知识库能提升效率但别依赖，关键还是自己理解与思考。</summary>
-    
-    
-    
-    <category term="AI探索" scheme="https://canace.site/categories/intelligent/"/>
-    
-    
-    <category term="AI原理" scheme="https://canace.site/tags/AI%E5%8E%9F%E7%90%86/"/>
     
   </entry>
   
