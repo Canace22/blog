@@ -324,12 +324,19 @@
 
 - [web 性能优化 —— 首屏优化](sources/first-screen-optimization.md) — `source/_posts/first-screen-optimization.md`
 
+### 外部研究资料
+
+- [Pi Coding Agent / pi-mono](sources/pi-coding-agent.md) — `https://github.com/badlogic/pi-mono/tree/main`
+- [OpenClaw Memory Wiki](sources/openclaw-memory-wiki.md) — `https://docs.openclaw.ai/plugins/memory-wiki`
+
 ## Concepts
 
+- [编译式知识库（概念）](concepts/compiled-knowledge-vault.md)
 - [Harness Engineering（概念）](concepts/harness-engineering.md)
 - [LLM 维护的知识库（概念）](concepts/llm-maintained-wiki.md)
 - [LOP（面向大模型编程）模式（概念）](concepts/lop-patterns.md)
 - [Web 前端开发知识图谱（概念）](concepts/web-frontend-knowledge-graph.md)
+- [微信公众号阅读优化（概念）](concepts/wechat-official-account-read-optimization.md)
 - [Vue 中的 `key`（概念）](concepts/vue-key.md)
 
 ## Queries
@@ -340,3 +347,4 @@
 
 - [博客草稿：我原来写的项目规则、Skill、知识库，其实已经是在做 Harness Engineering](reports/harness-engineering-blog-draft.md)
 - [Harness Engineering 资料整理](reports/harness-engineering-reading-notes.md)
+- [从 Harness 到 Compiled Wiki：个人研究路线图](reports/harness-to-compiled-wiki-roadmap.md)
