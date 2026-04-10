@@ -1,5 +1,6 @@
 # Wiki Log
 
+- 2026-04-10：新增概念页 `wiki/concepts/whisper-gemini-video-subtitles.md`（Whisper 打轴 + Gemini 翻译字幕工作流），并更新 `wiki/index.md` Concepts。
 - 2026-04-10：`gemini-ai-wealth-gap-dialogue` 来源页改为仅依赖外部 Gemini 链接与本页摘要，去掉对 `wiki/Clippings/` 剪藏文件的依赖，便于用户删除本地剪藏后不产生死链；同步更新 `wiki/index.md` 条目说明、`ai-wealth-labor-shift` 来源行措辞。
 - 2026-04-10：整理 Gemini 剪藏「AI 与贫富差距 / 劳动形态」对话 → 新增 `wiki/sources/gemini-ai-wealth-gap-dialogue.md`、`wiki/concepts/ai-wealth-labor-shift.md`，更新 `wiki/index.md`；剪藏文件曾补充回链至 sources/concepts（剪藏可删，知识库已自洽）。
 - 2026-04-10：沉淀公众号运营复盘，新增 `wiki/concepts/wechat-official-account-read-optimization.md`（封面、标题前置、文末互动钩子三项优化动作），并更新 `wiki/index.md` Concepts。

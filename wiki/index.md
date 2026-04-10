@@ -332,6 +332,7 @@
 
 ## Concepts
 
+- [外语视频翻译字幕：Whisper 打轴 + Gemini 翻译](concepts/whisper-gemini-video-subtitles.md)
 - [AI 时代的贫富分化与劳动迁移（概念）](concepts/ai-wealth-labor-shift.md)
 - [编译式知识库（概念）](concepts/compiled-knowledge-vault.md)
 - [Harness Engineering（概念）](concepts/harness-engineering.md)
