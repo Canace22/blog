@@ -26,6 +26,7 @@ Treat as **not** ingest sources: anything under `wiki/` (that is the maintained 
 - `wiki/reports/`: longer analysis outputs
 - `wiki/index.md`: catalog of wiki pages
 - `wiki/log.md`: append-only operational log
+- `wiki/Clippings/`: **ephemeral** scratch or export files the human may delete anytime. **Do not add markdown links from maintained wiki pages** (`wiki/sources/`, `wiki/concepts/`, `wiki/queries/`, `wiki/reports/`, `wiki/index.md`) to paths under `wiki/Clippings/`. Ingest by copying the substance into `wiki/sources/` (and concepts as needed); rely on external URLs (e.g. Gemini app link) or prose attribution instead.
 
 ## Ingest Workflow
 
@@ -36,6 +37,8 @@ When asked to ingest a source:
 3. Update any relevant concept pages in `wiki/concepts/`.
 4. Update `wiki/index.md` so the new or changed pages are listed.
 5. Append an entry to `wiki/log.md`.
+
+When ingesting from `wiki/Clippings/*.md` (user-provided exports): follow the same steps, but **never** link to the clipping file from any maintained wiki page. If older pages still link to `wiki/Clippings/`, remove those links when touched.
 
 ## Query Workflow
 
