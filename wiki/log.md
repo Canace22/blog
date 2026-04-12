@@ -1,5 +1,8 @@
 # Wiki Log
 
+- 2026-04-12：Ingest `source/_posts/rss-telegram-selfhost.md` → 新增 `wiki/sources/rss-telegram-selfhost.md`，扩展 `wiki/concepts/rss-telegram-selfhost.md`（Claims 7–8、Evidence 双来源），`gemini-rss-flowerss-telegram-selfhost` 另见链回博文来源；更新 `wiki/index.md`（软技能与思考）。
+- 2026-04-12：约定 `wiki/Clippings/` 为可随时删除的临时材料：**已维护页面不得链接至该目录**；写入 `AGENTS.md` 目录约定与 ingest 说明。移除 `gemini-rss-flowerss-telegram-selfhost`、`gemini-mac-ubuntu-vm-openclaw` 中对剪藏文件的链接；`thread-by-karpathy` 改为不依赖具体剪藏路径。
+- 2026-04-12：Ingest 剪藏 `wiki/Clippings/你说 算了，我还是自己部署一个到服务器吧.md` → 新增 `wiki/sources/gemini-rss-flowerss-telegram-selfhost.md`、`wiki/concepts/rss-telegram-selfhost.md`，更新 `wiki/index.md`（工程化与运维 / Concepts）；剪藏文件增加回链至来源摘要并提示敏感信息。
 - 2026-04-10：预备删除 Hexo 博文 `source/_posts/why-not-let-ai-write-for-us.md`：将 `wiki/sources/why-not-let-ai-write-for-us.md` 改为仅 wiki 内摘要归档（去掉对 `source/_posts` 的链接），更新 `wiki/index.md` 条目说明与 `wiki/concepts/ai-outsourcing-writing-thinking.md` 中关于来源的表述。
 - 2026-04-10：Ingest 剪藏 `wiki/Clippings/你说 mac 装 ubuntu 虚拟机，给多少合适.md` → 新增 `wiki/sources/gemini-mac-ubuntu-vm-openclaw.md`、`wiki/concepts/mac-linux-vm-openclaw-dev.md`，更新 `wiki/index.md`（工程化与运维 / Concepts）；剪藏文件顶部增加回链至来源摘要。
 - 2026-04-10：Ingest `source/_posts/why-not-let-ai-write-for-us.md` → 新增 `wiki/sources/why-not-let-ai-write-for-us.md`，扩展 `wiki/concepts/ai-outsourcing-writing-thinking.md` 为三篇对照并调整合成结论，更新 `wiki/sources/ai-make-you-boring.md` 概念回链，更新 `wiki/index.md` 软技能与思考条目。

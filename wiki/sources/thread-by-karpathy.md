@@ -1,8 +1,8 @@
 # Source: Thread by @karpathy
 
-## Source File
+## Source
 
-- `Clippings/Thread by @karpathy.md`
+- 最初来自 `wiki/Clippings/` 下的线程剪藏；**维护页不链接该目录**（文件可删）。要点已收在本页。
 
 ## Summary
 

@@ -207,6 +207,7 @@
 - [vscode代码格式化总结](sources/vscode-code-formatting-summary.md) — `source/_posts/vscode-code-formatting-summary.md`
 - [ubuntu 下配置ss](sources/ubuntu-configure-ss.md) — `source/_posts/ubuntu-configure-ss.md`
 - [Gemini 对话：Mac Ubuntu 虚拟机与 OpenClaw 环境](sources/gemini-mac-ubuntu-vm-openclaw.md) — Gemini 会话摘要（可追溯页面内链接）
+- [Gemini 对话：自建 RSS 推 Telegram（flowerss-bot）](sources/gemini-rss-flowerss-telegram-selfhost.md) — Gemini 会话摘要（可追溯页面内链接）
 - [关于分支管理的一点感想](sources/thoughts-on-branch-management.md) — `source/_posts/thoughts-on-branch-management.md`
 - [sublime text3 配置 node.js 环境](sources/sublime-text-nodejs-config.md) — `source/_posts/sublime-text-nodejs-config.md`
 - [SS 安装](sources/ss-installation.md) — `source/_posts/ss-installation.md`
@@ -314,6 +315,7 @@
 - [关于健忘那些事](sources/about-forgetfulness.md) — `source/_posts/about-forgetfulness.md`
 - [关于做技术这件事](sources/about-doing-technology.md) — `source/_posts/about-doing-technology.md`
 - [2024年终总结](sources/2024-year-end-summary.md) — `source/_posts/2024-year-end-summary.md`
+- [RSS 推送到 TG 的可行性探索](sources/rss-telegram-selfhost.md) — `source/_posts/rss-telegram-selfhost.md`
 
 ### 网站建设
 
@@ -345,6 +347,7 @@
 - [微信公众号阅读优化（概念）](concepts/wechat-official-account-read-optimization.md)
 - [Vue 中的 `key`（概念）](concepts/vue-key.md)
 - [Mac / Linux 虚拟机资源与 OpenClaw 开发（概念）](concepts/mac-linux-vm-openclaw-dev.md)
+- [RSS / Telegram 自建推送（概念）](concepts/rss-telegram-selfhost.md)
 
 ## Queries
 
