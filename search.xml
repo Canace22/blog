@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>RSS 推送到 TG 的可行性探索</title>
+      <link href="/rss-telegram-selfhost/"/>
+      <url>/rss-telegram-selfhost/</url>
+      
+        <content type="html"><![CDATA[<p>前阵子 openclaw 挺火的，玩过的都知道连 tg 是最稳的，我也自己尝试本地部署了 openclaw 连 tg，为此还专门登了 tg。但是，除了搜电影，跟外国人用英语聊天，没想到能用 tg 来干嘛。今天闲来无事，突发奇想，我是不是可以用来接收 RSS 订阅消息，方便在不同的设备查看。我之前一直是用的 kindle 接收的，有个稳定的推送订阅服务，kindle 退出中国后就一直只能网页查看了，感觉对我来说有这个东西还挺好的。</p><p>我在 tg 上搜了一些机器人，可以正常用，但是有些问题，要么是批量导入不好用，要么是有广告还有源的限制，感觉挺鸡肋的，最后决定自己搞一个机器人。</p><p>要实现我的这个订阅源推荐，大致的流程是这样的：bot father创建一个新的 bot，拿到 token -&gt; flowerss-bot配置机器人 -&gt; 机器人加到 channel，每天自动把订阅源的更新推送给我，看起来简单是吧，但是这里遇到了点问题。</p><h3 id="机器人配置"><a href="#机器人配置" class="headerlink" title="机器人配置"></a>机器人配置</h3><p>创建的机器人只能绑一个调用方，比如我之前为了龙虾创建的那个机器人，想要这里再用就会一直报错，解决方法是重置一下 token。</p><h3 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h3><p>既然是用推给 tg 机器人，脚本环境也是要能调用 tg 的，我踩这个坑是因为我在本地用 docker 部署的脚本，一直显示无法调通 api，给 docker 配置了代理才解决，这让我意识到我的服务器部署环境也得是用反带或者直接在对应环境机器部署才行。</p><p>另一个环境问题是，我本来想直接本地部署算了，懒得折腾，但是这有一个问题，我的 mac 睡眠或者断网了，我就不能随时看到推送了，虽然这样没关系，我可能也是工作期间的早上或者周末打开电脑才会去看，或者偶尔早上手机看一下，电脑打开接收一下，好像也影响不大。</p><p>结果是这样的，这些消息都是自动推送的，我得空就看看</p><p><img src="https://canace22.github.io/picx-images-hosting/20260412/image.2yyxyzg014.webp" alt="image"></p><p>最后再分享一下我的 docker 配置吧</p><figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># docker-compose.yml</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">flowerss:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">indes/flowerss-bot:latest</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">flowerss-bot</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">always</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="comment"># 1. 尝试直接通过环境变量传 Token（作为备份）</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">TOKEN=your_token</span></span><br><span class="line">      <span class="comment"># 2. 强制全局代理，确保 getMe 请求能出去</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">HTTPS_PROXY=http://host.docker.internal:7890</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">HTTP_PROXY=http://host.docker.internal:7890</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./data:/root/.flowerss/data</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./config.yml:/root/.flowerss/config.yml</span></span><br><span class="line">    <span class="comment"># 3. 必须加这个，否则容器不知道 host.docker.internal 是谁</span></span><br><span class="line">    <span class="attr">extra_hosts:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;host.docker.internal:host-gateway&quot;</span></span><br></pre></td></tr></table></figure><figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># config.yml</span></span><br><span class="line"><span class="attr">bot_token:</span> <span class="string">your_token</span></span><br><span class="line"><span class="attr">sqlite_path:</span> <span class="string">&quot;data/data.db&quot;</span></span><br><span class="line"><span class="attr">proxy:</span> <span class="string">&quot;http://host.docker.internal:7890&quot;</span> <span class="comment"># 确保这一行是生效的</span></span><br></pre></td></tr></table></figure><p>参考文献：<br><a href="https://github.com/indes/flowerss-bot">flowerss-bot</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 软技能与思考 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 随笔 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>为什么不要让LLM帮我们写文档</title>
       <link href="/why-not-let-ai-write-for-us/"/>
       <url>/why-not-let-ai-write-for-us/</url>
@@ -7542,11 +7567,11 @@
     
     
     <entry>
-      <title>Git环境配置</title>
-      <link href="/git-environment-config/"/>
-      <url>/git-environment-config/</url>
+      <title>Git域名配置</title>
+      <link href="/git-domain-config/"/>
+      <url>/git-domain-config/</url>
       
-        <content type="html"><![CDATA[<p>结合了一些网上的方法，结合自己配置的实际情况写的文档。</p><span id="more"></span><ol><li><p>下载 git 主程序，下载地址：<a href="https://git-scm.com/downloads%EF%BC%8C">https://git-scm.com/downloads，</a> 双击安装包，一路 next 就行；</p></li><li><p>对于技术小白的我来说，命令行神马的太复杂了，所以就需要一个 git 界面画的软件来帮助我啦，这个软件就是 TortoiseGit，下载地址：<a href="https://tortoisegit.org/download/%EF%BC%8C">https://tortoisegit.org/download/，</a> 分为 32 位版和 64 位版，下载时要选好，安装的时候也是一路 next；</p></li><li><p>接下来就是解决怎么把本地项目关联发布到 git 上的问题了；</p></li></ol><p>(1) 首先打开 git 上的项目，复制 git 的 HTTP 地址；</p><p>(2) 然后创打开硬盘里的一个目录，最好是专门开发用的目录，点右键，选择“Git Clone…”，将地址复制进去，点击 OK；<br>(3) 出现 Success 提示，就代表 clone 成功了，close 掉对话框，然后就出现了名为 git 项目的文件夹了；</p><ol start="4"><li>本地改动保存为一个版本，我们以新建文件为例；</li></ol><p>(1) 首先，打开刚才生成文件夹，新建一个名为 readme.txt 的空文件；</p><p>(2) 然后在这里鼠标右击，选择 Git Commit -&gt; “master”…，会弹出一个对话框（注意：这里可能会提醒设置用户名、密码 和邮箱，点击确定，填写 git 账户的用户名和注册邮箱以及密码即可）；</p>]]></content>
+        <content type="html"><![CDATA[<p>git 域名配置</p><span id="more"></span><ol><li><p>在 Godaddy 购买的域名；</p></li><li><p>查找 DNSpod 解析域名，没什么难度，就是添加一条记录，保存而已，记得在添加域名到 DNSpod 之后，复制两个 NS 地址到 godaddy 的域名服务器下；</p></li><li><p>Git 项目根目录下创建 CNAME 文件，把域名填进去，push 就行了。</p></li></ol>]]></content>
       
       
       <categories>
@@ -7567,11 +7592,11 @@
     
     
     <entry>
-      <title>Git域名配置</title>
-      <link href="/git-domain-config/"/>
-      <url>/git-domain-config/</url>
+      <title>Git环境配置</title>
+      <link href="/git-environment-config/"/>
+      <url>/git-environment-config/</url>
       
-        <content type="html"><![CDATA[<p>git 域名配置</p><span id="more"></span><ol><li><p>在 Godaddy 购买的域名；</p></li><li><p>查找 DNSpod 解析域名，没什么难度，就是添加一条记录，保存而已，记得在添加域名到 DNSpod 之后，复制两个 NS 地址到 godaddy 的域名服务器下；</p></li><li><p>Git 项目根目录下创建 CNAME 文件，把域名填进去，push 就行了。</p></li></ol>]]></content>
+        <content type="html"><![CDATA[<p>结合了一些网上的方法，结合自己配置的实际情况写的文档。</p><span id="more"></span><ol><li><p>下载 git 主程序，下载地址：<a href="https://git-scm.com/downloads%EF%BC%8C">https://git-scm.com/downloads，</a> 双击安装包，一路 next 就行；</p></li><li><p>对于技术小白的我来说，命令行神马的太复杂了，所以就需要一个 git 界面画的软件来帮助我啦，这个软件就是 TortoiseGit，下载地址：<a href="https://tortoisegit.org/download/%EF%BC%8C">https://tortoisegit.org/download/，</a> 分为 32 位版和 64 位版，下载时要选好，安装的时候也是一路 next；</p></li><li><p>接下来就是解决怎么把本地项目关联发布到 git 上的问题了；</p></li></ol><p>(1) 首先打开 git 上的项目，复制 git 的 HTTP 地址；</p><p>(2) 然后创打开硬盘里的一个目录，最好是专门开发用的目录，点右键，选择“Git Clone…”，将地址复制进去，点击 OK；<br>(3) 出现 Success 提示，就代表 clone 成功了，close 掉对话框，然后就出现了名为 git 项目的文件夹了；</p><ol start="4"><li>本地改动保存为一个版本，我们以新建文件为例；</li></ol><p>(1) 首先，打开刚才生成文件夹，新建一个名为 readme.txt 的空文件；</p><p>(2) 然后在这里鼠标右击，选择 Git Commit -&gt; “master”…，会弹出一个对话框（注意：这里可能会提醒设置用户名、密码 和邮箱，点击确定，填写 git 账户的用户名和注册邮箱以及密码即可）；</p>]]></content>
       
       
       <categories>

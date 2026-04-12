@@ -1,0 +1,163 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="canace 的博客"><meta itemprop="name" content="来源：Gemini 对话——自建 RSS 推 Telegram（flowerss-Bot 等）"><meta itemprop="image" content="https://raw.githubusercontent.com/Canace22/Assets/main/images/snow-other.png"><meta property="og:image" content="https://raw.githubusercontent.com/Canace22/Assets/main/images/snow-other.png"><meta name="description" itemprop="description" content="&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;类型&lt;/strong&gt;：Gemini 对话整理（非博客 &lt;code&gt;source/_posts&lt;/code&gt;）；镜像名、配置文件路径与 Bot 行为以&lt;strong&gt;项目官方仓库与镜像说明&lt;/strong&gt;为准，对话中的示例可能随版本变化。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;外部链接（会话入口）&lt;/strong&gt;：&lt;a href=&quot;https://gemini.google.com/app/c3716af77c84dac7?utm_source=chrome_omnibox&amp;utm_medium=owned&amp;utm_campaign=gemini_shortcut&quot;&gt;https://gemini.google.com/app/c3716af77c84dac7?utm_source=chrome_omnibox&amp;amp;utm_medium=owned&amp;amp;utm_campaign=gemini_shortcut&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;分类&lt;/strong&gt;：工程化与运维（构建与部署 &amp;#x2F; 开发工具）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;标签&lt;/strong&gt;：构建与部署&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;日期&lt;/strong&gt;：2026-04-12&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;安全提示（必读）&quot;&gt;&lt;a href=&quot;#安全提示（必读）&quot; class=&quot;headerlink&quot; title=&quot;安全提示（必读）&quot;&gt;&lt;/a&gt;安全提示（必读）&lt;/h2&gt;&lt;p&gt;该 Gemini 对话的整理过程中曾出现&lt;strong&gt;可被滥用的 Telegram Bot Token 明文&lt;/strong&gt;。本摘要&lt;strong&gt;不摘录&lt;/strong&gt;任何令牌；若你曾在聊天或截图中泄露 Token，请到 &lt;strong&gt;@BotFather&lt;/strong&gt; 对相应 Bot &lt;strong&gt;Revoke&lt;/strong&gt; 并换新 Token。&lt;/p&gt;
+&lt;h2 id=&quot;摘要&quot;&gt;&lt;a href=&quot;#摘要&quot; class=&quot;headerlink&quot; title=&quot;摘要&quot;&gt;&lt;/a&gt;摘要&lt;/h2&gt;&lt;p&gt;用户因第三方 RSS→Telegram 机器人存在&lt;strong&gt;订阅数量限制、广告、体验差&lt;/strong&gt;等问题，决定&lt;strong&gt;自建&lt;/strong&gt;。对话围绕 &lt;strong&gt;flowerss-bot&lt;/strong&gt; 生态（亦提及轻量 Node 脚本、&lt;code&gt;rss-to-telegram&lt;/code&gt;、Huginn、Manybot 等），以 &lt;strong&gt;Docker&lt;/strong&gt; 部署为主，并记录从容器启动、配置、&lt;strong&gt;Webhook 与轮询冲突&lt;/strong&gt;、&lt;strong&gt;中国大陆网络&lt;/strong&gt;到&lt;strong&gt;频道绑定与 OPML 导入&lt;/strong&gt;的排错过程。&lt;/p&gt;
+&lt;h2 id=&quot;方案与动机（对话内）&quot;&gt;&lt;a href=&quot;#方案与动机（对话内）&quot; class=&quot;headerlink&quot; title=&quot;方案与动机（对话内）&quot;&gt;&lt;/a&gt;方案与动机（对话内）&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;自建收益（叙述）&lt;/strong&gt;：无广告、订阅量不受第三方限制、可自定义推送模板&amp;#x2F;频率、数据与隐私自控。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;轻量替代&lt;/strong&gt;：单进程 Node 读 RSS、调 Telegram Bot API（对话提及类 &lt;code&gt;rss-to-telegram&lt;/code&gt; 思路）；多源复杂场景可考察 &lt;strong&gt;Huginn&lt;/strong&gt;、&lt;strong&gt;flowerss-bot&lt;/strong&gt; 等。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;前置条件&lt;/strong&gt;：通过 &lt;strong&gt;@BotFather&lt;/strong&gt; 获取 Bot Token；目标频道需知 &lt;strong&gt;Chat ID&lt;/strong&gt;（如私有频道常为 &lt;code&gt;-100…&lt;/code&gt;，可用转发消息给信息类 Bot 等方式获取）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;Docker-与镜像（对话内，需自行核对当前维护者）&quot;&gt;&lt;a href=&quot;#Docker-与镜像（对话内，需自行核对当前维护者）&quot; class=&quot;headerlink&quot; title=&quot;Docker 与镜像（对话内，需自行核对当前维护者）&quot;&gt;&lt;/a&gt;Docker 与镜像（对话内，需自行核对当前维护者）&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;对话中先后讨论 &lt;strong&gt;&lt;code&gt;indes/flowerss-bot&lt;/code&gt;&lt;/strong&gt; 与 &lt;strong&gt;&lt;code&gt;fengkx/flowerss-bot&lt;/code&gt;&lt;/strong&gt; 等镜像；助手称不同镜像对&lt;strong&gt;环境变量 vs 配置文件&lt;/strong&gt;的支持不一致，例如某路径需 &lt;strong&gt;&lt;code&gt;config.yml&lt;/code&gt;&lt;/strong&gt; 且启动时找不到会 &lt;strong&gt;panic&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;实践结论倾向&lt;/strong&gt;：在不愿使用某一镜像时，改用&lt;strong&gt;挂载 &lt;code&gt;config.yml&lt;/code&gt;&lt;/strong&gt;、&lt;code&gt;sqlite_path&lt;/code&gt;、可选 &lt;strong&gt;&lt;code&gt;proxy&lt;/code&gt;&lt;/strong&gt; 字段等方式满足 &lt;code&gt;indes&lt;/code&gt; 镜像的读取习惯。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;校验&lt;/strong&gt;：&lt;code&gt;docker logs -f &amp;lt;容器名&amp;gt;&lt;/code&gt; 查看是否完成 Telegram 初始化、RSS 定时任务是否启动。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;配置与典型故障（对话内）&quot;&gt;&lt;a href=&quot;#配置与典型故障（对话内）&quot; class=&quot;headerlink&quot; title=&quot;配置与典型故障（对话内）&quot;&gt;&lt;/a&gt;配置与典型故障（对话内）&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;现象&lt;/th&gt;
+&lt;th&gt;对话中的解释&amp;#x2F;处理方向&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;chatbot_token&lt;/code&gt; &amp;#x2F; 变量未生效&lt;/td&gt;
+&lt;td&gt;检查 &lt;code&gt;docker-compose&lt;/code&gt; 与 &lt;code&gt;.env&lt;/code&gt; 是否同级、变量名是否与文档一致，或改为在 &lt;code&gt;config.yml&lt;/code&gt; 写 &lt;code&gt;bot_token&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Pull access denied&lt;/code&gt; &amp;#x2F; 镜像拉取失败&lt;/td&gt;
+&lt;td&gt;换镜像源或检查网络&amp;#x2F;registry&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;open config.yml: no such file or directory&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;为镜像准备配置文件或换“零配置文件”镜像（依版本而定）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;can&amp;#39;t use getUpdates method while webhook is active&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Webhook 与 long polling 冲突；需 &lt;strong&gt;&lt;code&gt;deleteWebhook&lt;/code&gt;&lt;/strong&gt;（注意 URL 形如 &lt;code&gt;https://api.telegram.org/bot&amp;lt;TOKEN&amp;gt;/deleteWebhook&lt;/code&gt;），或在 BotFather &lt;strong&gt;重置 Token&lt;/strong&gt; 使旧 Webhook 失效&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;deleteWebhook&lt;/code&gt; 在浏览器失败&lt;/td&gt;
+&lt;td&gt;可能需 &lt;strong&gt;代理&lt;/strong&gt;；或用 &lt;code&gt;curl&lt;/code&gt; 指定代理访问 API&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Unauthorized (401)&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Token 错误、或与 BotFather 重置后未同步配置&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;getMe: EOF&lt;/code&gt; &amp;#x2F; 网络断开感&lt;/td&gt;
+&lt;td&gt;容器出网失败；对话建议在 Docker 中配置 &lt;strong&gt;&lt;code&gt;HTTP(S)_PROXY&lt;/code&gt;&lt;/strong&gt; 指向宿主机代理，并配合 &lt;strong&gt;&lt;code&gt;host.docker.internal&lt;/code&gt;&lt;/strong&gt; 与 &lt;strong&gt;&lt;code&gt;extra_hosts&lt;/code&gt;&lt;/strong&gt;；宿主代理需允许局域网访问&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;导入不认 &lt;code&gt;.xml&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;先 &lt;strong&gt;&lt;code&gt;/import&lt;/code&gt;&lt;/strong&gt; 再发文件；或把扩展名改为 &lt;strong&gt;&lt;code&gt;.opml&lt;/code&gt;&lt;/strong&gt;；macOS 需注意“隐藏扩展名”导致实际仍为 &lt;code&gt;.xml&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;说明&lt;/strong&gt;：具体键名（如 &lt;code&gt;endpoint&lt;/code&gt;、&lt;code&gt;proxy&lt;/code&gt;）以你所用 fork&amp;#x2F;镜像文档为准。&lt;/p&gt;
+&lt;h2 id=&quot;运行位置与网络（对话内）&quot;&gt;&lt;a href=&quot;#运行位置与网络（对话内）&quot; class=&quot;headerlink&quot; title=&quot;运行位置与网络（对话内）&quot;&gt;&lt;/a&gt;运行位置与网络（对话内）&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;仅本机 Mac 跑 Docker&lt;/strong&gt;：机器睡眠或断网时任务会停；要近似 24×7 需 &lt;strong&gt;VPS&lt;/strong&gt;、家中常开设备，或退而求其次 &lt;strong&gt;GitHub Actions&lt;/strong&gt; 定时拉取（实时性较差）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;中国内地服务器&lt;/strong&gt;：可能无法直连 Telegram API；对话列举 &lt;strong&gt;服务器侧代理&lt;/strong&gt;、&lt;strong&gt;Cloudflare Worker 反代 API&lt;/strong&gt;、或改用 &lt;strong&gt;香港&amp;#x2F;海外机房&lt;/strong&gt; 以简化出站。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;频道推送（对话内）&quot;&gt;&lt;a href=&quot;#频道推送（对话内）&quot; class=&quot;headerlink&quot; title=&quot;频道推送（对话内）&quot;&gt;&lt;/a&gt;频道推送（对话内）&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;将 Bot 加为频道&lt;strong&gt;管理员&lt;/strong&gt;并授予发帖权限。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;导入默认可能是私聊订阅&lt;/strong&gt;；需在私聊用 &lt;strong&gt;&lt;code&gt;/set&lt;/code&gt;&lt;/strong&gt; 等把订阅指向频道，或使用 &lt;strong&gt;&lt;code&gt;/import @频道&lt;/code&gt;&lt;/strong&gt; 再发 OPML（助手描述，以 Bot 实际指令为准）。&lt;/li&gt;
+&lt;li&gt;测试可用更新频繁的 RSS（对话举例 &lt;strong&gt;V2EX&lt;/strong&gt; 等）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;另见&quot;&gt;&lt;a href=&quot;#另见&quot; class=&quot;headerlink&quot; title=&quot;另见&quot;&gt;&lt;/a&gt;另见&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;../concepts/rss-telegram-selfhost.html&quot;&gt;RSS &amp;#x2F; Telegram 自建推送（概念）&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;rss-telegram-selfhost.html&quot;&gt;来源：RSS 推送到 TG 的可行性探索&lt;/a&gt;（Hexo 博文：&lt;code&gt;flowerss-bot&lt;/code&gt;、Docker 代理与 Token 重置的一手记录）&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;docker-documentation.html&quot;&gt;docker 打包本地 web 项目发布到服务端&lt;/a&gt;（通用 Docker 发布思路）&lt;/li&gt;
+&lt;/ul&gt;
+"><title>来源：Gemini 对话——自建 RSS 推 Telegram（flowerss-Bot 等）</title><link rel="stylesheet" type="text/css" href="../../css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/normalize.css/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="../../favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="../../favicon.ico"><link rel="apple-touch-icon" href="../../apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="../../apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="../../atom.xml"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/clipboard/dist/clipboard.min.js"></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.js"></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.css"><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">来源：Gemini 对话——自建 RSS 推 Telegram（flowerss-Bot 等）</h1><a id="logo" href="../../.">Canace 的博客</a><p class="description">Tomorrow is another day</p></div><div id="nav-menu"><a href="../../."><i class="fa fa-home"> 主页</i></a><a href="../../archives/"><i class="fa fa-archive"> 文章归档</i></a><a class="current" href="../"><i class="fa fa-book"> 知识库</i></a><a href="../../about/"><i class="fa fa-user"> 关于我</i></a><a href="../../atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">来源：Gemini 对话——自建 RSS 推 Telegram（flowerss-Bot 等）</h1><div class="clear"><div class="toc-article" id="toc"><div class="toc-title">目录</div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E6%8F%90%E7%A4%BA%EF%BC%88%E5%BF%85%E8%AF%BB%EF%BC%89"><span class="toc-text">安全提示（必读）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%91%98%E8%A6%81"><span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%A1%88%E4%B8%8E%E5%8A%A8%E6%9C%BA%EF%BC%88%E5%AF%B9%E8%AF%9D%E5%86%85%EF%BC%89"><span class="toc-text">方案与动机（对话内）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker-%E4%B8%8E%E9%95%9C%E5%83%8F%EF%BC%88%E5%AF%B9%E8%AF%9D%E5%86%85%EF%BC%8C%E9%9C%80%E8%87%AA%E8%A1%8C%E6%A0%B8%E5%AF%B9%E5%BD%93%E5%89%8D%E7%BB%B4%E6%8A%A4%E8%80%85%EF%BC%89"><span class="toc-text">Docker 与镜像（对话内，需自行核对当前维护者）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E4%B8%8E%E5%85%B8%E5%9E%8B%E6%95%85%E9%9A%9C%EF%BC%88%E5%AF%B9%E8%AF%9D%E5%86%85%EF%BC%89"><span class="toc-text">配置与典型故障（对话内）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E4%BD%8D%E7%BD%AE%E4%B8%8E%E7%BD%91%E7%BB%9C%EF%BC%88%E5%AF%B9%E8%AF%9D%E5%86%85%EF%BC%89"><span class="toc-text">运行位置与网络（对话内）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%91%E9%81%93%E6%8E%A8%E9%80%81%EF%BC%88%E5%AF%B9%E8%AF%9D%E5%86%85%EF%BC%89"><span class="toc-text">频道推送（对话内）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%A6%E8%A7%81"><span class="toc-text">另见</span></a></li></ol></div></div><div class="post-content"><ul>
+<li><strong>类型</strong>：Gemini 对话整理（非博客 <code>source/_posts</code>）；镜像名、配置文件路径与 Bot 行为以<strong>项目官方仓库与镜像说明</strong>为准，对话中的示例可能随版本变化。</li>
+<li><strong>外部链接（会话入口）</strong>：<a target="_blank" rel="noopener" href="https://gemini.google.com/app/c3716af77c84dac7?utm_source=chrome_omnibox&utm_medium=owned&utm_campaign=gemini_shortcut">https://gemini.google.com/app/c3716af77c84dac7?utm_source=chrome_omnibox&amp;utm_medium=owned&amp;utm_campaign=gemini_shortcut</a></li>
+<li><strong>分类</strong>：工程化与运维（构建与部署 &#x2F; 开发工具）</li>
+<li><strong>标签</strong>：构建与部署</li>
+<li><strong>日期</strong>：2026-04-12</li>
+</ul>
+<h2 id="安全提示（必读）"><a href="#安全提示（必读）" class="headerlink" title="安全提示（必读）"></a>安全提示（必读）</h2><p>该 Gemini 对话的整理过程中曾出现<strong>可被滥用的 Telegram Bot Token 明文</strong>。本摘要<strong>不摘录</strong>任何令牌；若你曾在聊天或截图中泄露 Token，请到 <strong>@BotFather</strong> 对相应 Bot <strong>Revoke</strong> 并换新 Token。</p>
+<h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>用户因第三方 RSS→Telegram 机器人存在<strong>订阅数量限制、广告、体验差</strong>等问题，决定<strong>自建</strong>。对话围绕 <strong>flowerss-bot</strong> 生态（亦提及轻量 Node 脚本、<code>rss-to-telegram</code>、Huginn、Manybot 等），以 <strong>Docker</strong> 部署为主，并记录从容器启动、配置、<strong>Webhook 与轮询冲突</strong>、<strong>中国大陆网络</strong>到<strong>频道绑定与 OPML 导入</strong>的排错过程。</p>
+<h2 id="方案与动机（对话内）"><a href="#方案与动机（对话内）" class="headerlink" title="方案与动机（对话内）"></a>方案与动机（对话内）</h2><ul>
+<li><strong>自建收益（叙述）</strong>：无广告、订阅量不受第三方限制、可自定义推送模板&#x2F;频率、数据与隐私自控。</li>
+<li><strong>轻量替代</strong>：单进程 Node 读 RSS、调 Telegram Bot API（对话提及类 <code>rss-to-telegram</code> 思路）；多源复杂场景可考察 <strong>Huginn</strong>、<strong>flowerss-bot</strong> 等。</li>
+<li><strong>前置条件</strong>：通过 <strong>@BotFather</strong> 获取 Bot Token；目标频道需知 <strong>Chat ID</strong>（如私有频道常为 <code>-100…</code>，可用转发消息给信息类 Bot 等方式获取）。</li>
+</ul>
+<h2 id="Docker-与镜像（对话内，需自行核对当前维护者）"><a href="#Docker-与镜像（对话内，需自行核对当前维护者）" class="headerlink" title="Docker 与镜像（对话内，需自行核对当前维护者）"></a>Docker 与镜像（对话内，需自行核对当前维护者）</h2><ul>
+<li>对话中先后讨论 <strong><code>indes/flowerss-bot</code></strong> 与 <strong><code>fengkx/flowerss-bot</code></strong> 等镜像；助手称不同镜像对<strong>环境变量 vs 配置文件</strong>的支持不一致，例如某路径需 <strong><code>config.yml</code></strong> 且启动时找不到会 <strong>panic</strong>。</li>
+<li><strong>实践结论倾向</strong>：在不愿使用某一镜像时，改用<strong>挂载 <code>config.yml</code></strong>、<code>sqlite_path</code>、可选 <strong><code>proxy</code></strong> 字段等方式满足 <code>indes</code> 镜像的读取习惯。</li>
+<li><strong>校验</strong>：<code>docker logs -f &lt;容器名&gt;</code> 查看是否完成 Telegram 初始化、RSS 定时任务是否启动。</li>
+</ul>
+<h2 id="配置与典型故障（对话内）"><a href="#配置与典型故障（对话内）" class="headerlink" title="配置与典型故障（对话内）"></a>配置与典型故障（对话内）</h2><table>
+<thead>
+<tr>
+<th>现象</th>
+<th>对话中的解释&#x2F;处理方向</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>chatbot_token</code> &#x2F; 变量未生效</td>
+<td>检查 <code>docker-compose</code> 与 <code>.env</code> 是否同级、变量名是否与文档一致，或改为在 <code>config.yml</code> 写 <code>bot_token</code></td>
+</tr>
+<tr>
+<td><code>Pull access denied</code> &#x2F; 镜像拉取失败</td>
+<td>换镜像源或检查网络&#x2F;registry</td>
+</tr>
+<tr>
+<td><code>open config.yml: no such file or directory</code></td>
+<td>为镜像准备配置文件或换“零配置文件”镜像（依版本而定）</td>
+</tr>
+<tr>
+<td><code>can&#39;t use getUpdates method while webhook is active</code></td>
+<td>Webhook 与 long polling 冲突；需 <strong><code>deleteWebhook</code></strong>（注意 URL 形如 <code>https://api.telegram.org/bot&lt;TOKEN&gt;/deleteWebhook</code>），或在 BotFather <strong>重置 Token</strong> 使旧 Webhook 失效</td>
+</tr>
+<tr>
+<td><code>deleteWebhook</code> 在浏览器失败</td>
+<td>可能需 <strong>代理</strong>；或用 <code>curl</code> 指定代理访问 API</td>
+</tr>
+<tr>
+<td><code>Unauthorized (401)</code></td>
+<td>Token 错误、或与 BotFather 重置后未同步配置</td>
+</tr>
+<tr>
+<td><code>getMe: EOF</code> &#x2F; 网络断开感</td>
+<td>容器出网失败；对话建议在 Docker 中配置 <strong><code>HTTP(S)_PROXY</code></strong> 指向宿主机代理，并配合 <strong><code>host.docker.internal</code></strong> 与 <strong><code>extra_hosts</code></strong>；宿主代理需允许局域网访问</td>
+</tr>
+<tr>
+<td>导入不认 <code>.xml</code></td>
+<td>先 <strong><code>/import</code></strong> 再发文件；或把扩展名改为 <strong><code>.opml</code></strong>；macOS 需注意“隐藏扩展名”导致实际仍为 <code>.xml</code></td>
+</tr>
+</tbody></table>
+<p><strong>说明</strong>：具体键名（如 <code>endpoint</code>、<code>proxy</code>）以你所用 fork&#x2F;镜像文档为准。</p>
+<h2 id="运行位置与网络（对话内）"><a href="#运行位置与网络（对话内）" class="headerlink" title="运行位置与网络（对话内）"></a>运行位置与网络（对话内）</h2><ul>
+<li><strong>仅本机 Mac 跑 Docker</strong>：机器睡眠或断网时任务会停；要近似 24×7 需 <strong>VPS</strong>、家中常开设备，或退而求其次 <strong>GitHub Actions</strong> 定时拉取（实时性较差）。</li>
+<li><strong>中国内地服务器</strong>：可能无法直连 Telegram API；对话列举 <strong>服务器侧代理</strong>、<strong>Cloudflare Worker 反代 API</strong>、或改用 <strong>香港&#x2F;海外机房</strong> 以简化出站。</li>
+</ul>
+<h2 id="频道推送（对话内）"><a href="#频道推送（对话内）" class="headerlink" title="频道推送（对话内）"></a>频道推送（对话内）</h2><ul>
+<li>将 Bot 加为频道<strong>管理员</strong>并授予发帖权限。</li>
+<li><strong>导入默认可能是私聊订阅</strong>；需在私聊用 <strong><code>/set</code></strong> 等把订阅指向频道，或使用 <strong><code>/import @频道</code></strong> 再发 OPML（助手描述，以 Bot 实际指令为准）。</li>
+<li>测试可用更新频繁的 RSS（对话举例 <strong>V2EX</strong> 等）。</li>
+</ul>
+<h2 id="另见"><a href="#另见" class="headerlink" title="另见"></a>另见</h2><ul>
+<li><a href="../concepts/rss-telegram-selfhost.html">RSS &#x2F; Telegram 自建推送（概念）</a></li>
+<li><a href="rss-telegram-selfhost.html">来源：RSS 推送到 TG 的可行性探索</a>（Hexo 博文：<code>flowerss-bot</code>、Docker 代理与 Token 重置的一手记录）</li>
+<li><a href="docker-documentation.html">docker 打包本地 web 项目发布到服务端</a>（通用 Docker 发布思路）</li>
+</ul>
+</div></div></div></div><div class="pure-u-1 pure-u-md-1-4"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 常用文档</i></div><ul></ul><a href="/git-common-commands" title="Git 文档" target="_blank">Git 文档</a><ul></ul><a href="/common-programming-prompt-words" title="常用开发提示词" target="_blank">常用开发提示词</a></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="../../categories/soft/">软技能与思考</a><span class="category-list-count">47</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/intelligent/">AI探索</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/web/">Web开发</a><span class="category-list-count">142</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/cli/">工程化与运维</a><span class="category-list-count">50</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/coding/">编程基础</a><span class="category-list-count">42</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/site/">网站建设</a><span class="category-list-count">5</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="../../tags/essays/" style="font-size: 15px; color: #3679a7">随笔</a> <a href="../../tags/AI%E5%8E%9F%E7%90%86/" style="font-size: 15px; color: #96aebf">AI原理</a> <a href="../../tags/JavaScript-TypeScript/" style="font-size: 15px; color: #0e639d">JavaScript&TypeScript</a> <a href="../../tags/performance/" style="font-size: 15px; color: #7a9fb8">性能优化</a> <a href="../../tags/backend/" style="font-size: 15px; color: #5f90b1">后端</a> <a href="../../tags/Python-Go-%E5%85%B6%E4%BB%96/" style="font-size: 15px; color: #88a6bb">Python/Go/其他</a> <a href="../../tags/computer-science/" style="font-size: 15px; color: #2972a4">计算机科学</a> <a href="../../tags/api-services/" style="font-size: 15px; color: #bec4c9">API&服务</a> <a href="../../tags/%E8%81%8C%E4%B8%9A%E5%8F%91%E5%B1%95/" style="font-size: 15px; color: #7a9fb8">职业发展</a> <a href="../../tags/AI%E7%BC%96%E7%A8%8B/" style="font-size: 15px; color: #7a9fb8">AI编程</a> <a href="../../tags/%E7%BF%BB%E8%AF%91/" style="font-size: 15px; color: #ccc">翻译</a> <a href="../../tags/reading-notes/" style="font-size: 15px; color: #a3b5c2">读书笔记</a> <a href="../../tags/frontend/" style="font-size: 15px; color: #005b9a">前端</a> <a href="../../tags/frameworks-libs/" style="font-size: 15px; color: #5288ae">框架与库</a> <a href="../../tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/" style="font-size: 15px; color: #88a6bb">系统设计</a> <a href="../../tags/programming-languages/" style="font-size: 15px; color: #b1bdc5">编程语言</a> <a href="../../tags/css-visualization/" style="font-size: 15px; color: #1b6aa1">CSS与可视化</a> <a href="../../tags/build-deploy/" style="font-size: 15px; color: #6d97b5">构建与部署</a> <a href="../../tags/dev-tools/" style="font-size: 15px; color: #4481ab">开发工具</a> <a href="../../tags/Agent-Skill/" style="font-size: 15px; color: #ccc">Agent,Skill</a> <a href="../../tags/Node-js/" style="font-size: 15px; color: #7a9fb8">Node.js</a> <a href="../../tags/cross-platform/" style="font-size: 15px; color: #88a6bb">跨端方案</a> <a href="../../tags/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/" style="font-size: 15px; color: #ccc">项目管理</a> <a href="../../tags/%E7%9F%A5%E8%AF%86%E5%BA%93/" style="font-size: 15px; color: #ccc">知识库</a> <a href="../../tags/code-quality/" style="font-size: 15px; color: #bec4c9">代码质量</a></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2026 <a href="../../." rel="nofollow">Canace 的博客</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="../../js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.js" async></script><script type="text/javascript" src="../../js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.css"><link rel="stylesheet" type="text/css" href="../../css/search.css?v=0.0.0"><script type="text/javascript" src="../../js/search.js?v=0.0.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+   search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="/js/copycode.js" successtext="复制成功!"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/mermaid@11.14.0/dist/mermaid.min.js"></script><script type="text/javascript">document.addEventListener('DOMContentLoaded', function () {
+  if (!window.mermaid) return;
+  mermaid.initialize({"theme":"default","logLevel":5,"startOnLoad":true,"arrowMarkerAbsolute":false,"flowchart":{"htmlLabels":true,"useMaxWidth":true,"curve":"linear"},"sequence":{"diagramMarginX":50,"diagramMarginY":10,"actorMargin":50,"width":150,"height":65,"boxMargin":10,"boxTextMargin":5,"noteMargin":10,"messageMargin":35,"mirrorActors":true,"bottomMarginAdj":1,"useMaxWidth":true},"gantt":{"titleTopMargin":25,"barHeight":20,"barGap":4,"topPadding":50,"leftPadding":75,"gridLineStartPadding":35,"fontSize":11,"fontFamily":"\"Open-Sans\", \"sans-serif\"","numberSectionStyles":4,"axisFormat":"%Y-%m-%d"},"class":{},"git":{}});
+});
+</script><script type="text/javascript" src="../../js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="../../js/smartresize.js?v=0.0.0"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":200,"height":200},"mobile":{"show":false},"react":{"opacity":0.7},"log":false});</script></body></html>
