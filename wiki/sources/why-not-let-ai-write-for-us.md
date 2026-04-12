@@ -1,6 +1,6 @@
 # 来源：为什么不要让LLM帮我们写文档
 
-- **源文件**：[`source/_posts/why-not-let-ai-write-for-us.md`](../../source/_posts/why-not-let-ai-write-for-us.md)
+- **源文件**：原载 `source/_posts/why-not-let-ai-write-for-us.md`（**已从 Hexo 移除**）；本页为知识库内保留的摘要归档，勿再依赖仓库内同名路径。
 - **分类**：软技能与思考
 - **标签**：随笔
 - **日期**：2026-04-10 10:00:00

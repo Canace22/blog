@@ -1,5 +1,7 @@
 # Wiki Log
 
+- 2026-04-10：预备删除 Hexo 博文 `source/_posts/why-not-let-ai-write-for-us.md`：将 `wiki/sources/why-not-let-ai-write-for-us.md` 改为仅 wiki 内摘要归档（去掉对 `source/_posts` 的链接），更新 `wiki/index.md` 条目说明与 `wiki/concepts/ai-outsourcing-writing-thinking.md` 中关于来源的表述。
+- 2026-04-10：Ingest 剪藏 `wiki/Clippings/你说 mac 装 ubuntu 虚拟机，给多少合适.md` → 新增 `wiki/sources/gemini-mac-ubuntu-vm-openclaw.md`、`wiki/concepts/mac-linux-vm-openclaw-dev.md`，更新 `wiki/index.md`（工程化与运维 / Concepts）；剪藏文件顶部增加回链至来源摘要。
 - 2026-04-10：Ingest `source/_posts/why-not-let-ai-write-for-us.md` → 新增 `wiki/sources/why-not-let-ai-write-for-us.md`，扩展 `wiki/concepts/ai-outsourcing-writing-thinking.md` 为三篇对照并调整合成结论，更新 `wiki/sources/ai-make-you-boring.md` 概念回链，更新 `wiki/index.md` 软技能与思考条目。
 - 2026-04-10：新增概念页 `wiki/concepts/ai-outsourcing-writing-thinking.md`（Alex Woods「Don't Let AI Write For You」与博文《AI 让人变得无趣》对照），补充 `wiki/sources/ai-make-you-boring.md` 相关概念回链，更新 `wiki/index.md` Concepts。
 - 2026-04-10：新增概念页 `wiki/concepts/whisper-gemini-video-subtitles.md`（Whisper 打轴 + Gemini 翻译字幕工作流），并更新 `wiki/index.md` Concepts。

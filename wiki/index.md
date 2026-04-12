@@ -206,6 +206,7 @@
 - [vue-config 配置模板](sources/vue-config-template.md) — `source/_posts/vue-config-template.md`
 - [vscode代码格式化总结](sources/vscode-code-formatting-summary.md) — `source/_posts/vscode-code-formatting-summary.md`
 - [ubuntu 下配置ss](sources/ubuntu-configure-ss.md) — `source/_posts/ubuntu-configure-ss.md`
+- [Gemini 对话：Mac Ubuntu 虚拟机与 OpenClaw 环境](sources/gemini-mac-ubuntu-vm-openclaw.md) — Gemini 会话摘要（可追溯页面内链接）
 - [关于分支管理的一点感想](sources/thoughts-on-branch-management.md) — `source/_posts/thoughts-on-branch-management.md`
 - [sublime text3 配置 node.js 环境](sources/sublime-text-nodejs-config.md) — `source/_posts/sublime-text-nodejs-config.md`
 - [SS 安装](sources/ss-installation.md) — `source/_posts/ss-installation.md`
@@ -268,7 +269,7 @@
 ### 软技能与思考
 
 - [AI 让人变得无趣](sources/ai-make-you-boring.md) — `source/_posts/ai-make-you-boring.md`
-- [为什么不要让LLM帮我们写文档](sources/why-not-let-ai-write-for-us.md) — `source/_posts/why-not-let-ai-write-for-us.md`
+- [为什么不要让LLM帮我们写文档](sources/why-not-let-ai-write-for-us.md) — 摘要归档（原博文已从 `source/_posts` 删除）
 - [为什么要写微信公众号](sources/why-write-wechat-official-account.md) — `source/_posts/why-write-wechat-official-account.md`
 - [工作与事业](sources/work-for.md) — `source/_posts/work-for.md`
 - [经验之谈](sources/words-of-experience.md) — `source/_posts/words-of-experience.md`
@@ -343,6 +344,7 @@
 - [Web 前端开发知识图谱（概念）](concepts/web-frontend-knowledge-graph.md)
 - [微信公众号阅读优化（概念）](concepts/wechat-official-account-read-optimization.md)
 - [Vue 中的 `key`（概念）](concepts/vue-key.md)
+- [Mac / Linux 虚拟机资源与 OpenClaw 开发（概念）](concepts/mac-linux-vm-openclaw-dev.md)
 
 ## Queries
 
