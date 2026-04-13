@@ -1,5 +1,31 @@
 # Wiki Index
 
+## Concepts
+
+- [假设驱动 AI 调试（概念）](concepts/hypothesis-driven-ai-debugging.md)
+- [AI 外包写作与思维：对照阅读（概念）](concepts/ai-outsourcing-writing-thinking.md)
+- [AI 时代的贫富分化与劳动迁移（概念）](concepts/ai-wealth-labor-shift.md)
+- [外语视频翻译字幕：Whisper 打轴 + Gemini 翻译](concepts/whisper-gemini-video-subtitles.md)
+- [编译式知识库（概念）](concepts/compiled-knowledge-vault.md)
+- [Harness Engineering（概念）](concepts/harness-engineering.md)
+- [LLM 维护的知识库（概念）](concepts/llm-maintained-wiki.md)
+- [LOP（面向大模型编程）模式（概念）](concepts/lop-patterns.md)
+- [Web 前端开发知识图谱（概念）](concepts/web-frontend-knowledge-graph.md)
+- [微信公众号阅读优化（概念）](concepts/wechat-official-account-read-optimization.md)
+- [Vue 中的 `key`（概念）](concepts/vue-key.md)
+- [Mac / Linux 虚拟机资源与 OpenClaw 开发（概念）](concepts/mac-linux-vm-openclaw-dev.md)
+- [RSS / Telegram 自建推送（概念）](concepts/rss-telegram-selfhost.md)
+
+## Queries
+
+- [我的文章涵盖 AI Coding 哪几方面](queries/ai-coding-coverage.md)
+
+## Reports
+
+- [博客草稿：我原来写的项目规则、Skill、知识库，其实已经是在做 Harness Engineering](reports/harness-engineering-blog-draft.md)
+- [Harness Engineering 资料整理](reports/harness-engineering-reading-notes.md)
+- [从 Harness 到 Compiled Wiki：个人研究路线图](reports/harness-to-compiled-wiki-roadmap.md)
+
 ## Category
 
 ### 编程基础
@@ -336,29 +362,3 @@
 - [Pi Coding Agent / pi-mono](sources/pi-coding-agent.md) — `https://github.com/badlogic/pi-mono/tree/main`
 - [karpathy / autoresearch](sources/karpathy-autoresearch.md) — `https://github.com/karpathy/autoresearch`
 - [OpenClaw Memory Wiki](sources/openclaw-memory-wiki.md) — `https://docs.openclaw.ai/plugins/memory-wiki`
-
-## Concepts
-
-- [假设驱动 AI 调试（概念）](concepts/hypothesis-driven-ai-debugging.md)
-- [AI 外包写作与思维：对照阅读（概念）](concepts/ai-outsourcing-writing-thinking.md)
-- [AI 时代的贫富分化与劳动迁移（概念）](concepts/ai-wealth-labor-shift.md)
-- [外语视频翻译字幕：Whisper 打轴 + Gemini 翻译](concepts/whisper-gemini-video-subtitles.md)
-- [编译式知识库（概念）](concepts/compiled-knowledge-vault.md)
-- [Harness Engineering（概念）](concepts/harness-engineering.md)
-- [LLM 维护的知识库（概念）](concepts/llm-maintained-wiki.md)
-- [LOP（面向大模型编程）模式（概念）](concepts/lop-patterns.md)
-- [Web 前端开发知识图谱（概念）](concepts/web-frontend-knowledge-graph.md)
-- [微信公众号阅读优化（概念）](concepts/wechat-official-account-read-optimization.md)
-- [Vue 中的 `key`（概念）](concepts/vue-key.md)
-- [Mac / Linux 虚拟机资源与 OpenClaw 开发（概念）](concepts/mac-linux-vm-openclaw-dev.md)
-- [RSS / Telegram 自建推送（概念）](concepts/rss-telegram-selfhost.md)
-
-## Queries
-
-- [我的文章涵盖 AI Coding 哪几方面](queries/ai-coding-coverage.md)
-
-## Reports
-
-- [博客草稿：我原来写的项目规则、Skill、知识库，其实已经是在做 Harness Engineering](reports/harness-engineering-blog-draft.md)
-- [Harness Engineering 资料整理](reports/harness-engineering-reading-notes.md)
-- [从 Harness 到 Compiled Wiki：个人研究路线图](reports/harness-to-compiled-wiki-roadmap.md)

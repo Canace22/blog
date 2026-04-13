@@ -1,5 +1,6 @@
 # Wiki Log
 
+- 2026-04-13：`wiki/index.md` 区块顺序调整：`## Category` 移至 `Concepts` / `Queries` / `Reports` 之后（目录与正文一致）。
 - 2026-04-13：`grok-vocabulary-repeat-redundant` 与既有词汇类来源 `wiki/sources/common-programming-prompt-words.md`、`wiki/sources/prompt-vocabulary-for-coding.md` 互链。
 - 2026-04-13：Ingest 剪藏 `wiki/Clippings/translate.md`（Grok 词汇对话）→ 新增 `wiki/sources/grok-vocabulary-repeat-redundant.md`，更新 `wiki/index.md`（软技能与思考）；剪藏顶部提示可删。不向 `wiki/Clippings/` 维护回链。
 - 2026-04-13：确认最新 Hexo 博文 `source/_posts/rss-telegram-selfhost.md` 已在此前完成 ingest（`wiki/sources/rss-telegram-selfhost.md`、`wiki/concepts/rss-telegram-selfhost.md`、`wiki/index.md`）；本日仅将来源页元数据与仓库内其它 `sources` 条目格式对齐（可点击 `源文件` 链接）。
