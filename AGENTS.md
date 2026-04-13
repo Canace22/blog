@@ -21,7 +21,7 @@ Treat as **not** ingest sources: anything under `wiki/` (that is the maintained 
 
 - `source/_posts/*.md`: notes, transcripts
 - `wiki/sources/`: one page per ingested source
-- `wiki/concepts/`: concept and topic pages synthesized across sources
+- `wiki/concepts/`: concept and topic pages synthesized across sources. **Titles:** use the plain topic string for the page `#` heading and for link text in `wiki/index.md` and elsewhere—**do not** append `（概念）`; the `concepts/` path already marks the page type.
 - `wiki/queries/`: durable Q&A outputs worth saving
 - `wiki/reports/`: longer analysis outputs
 - `wiki/index.md`: catalog of wiki pages
