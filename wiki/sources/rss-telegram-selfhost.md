@@ -25,5 +25,5 @@
 
 ## 另见
 
-- [RSS / Telegram 自建推送（概念）](../concepts/rss-telegram-selfhost.md)
+- [RSS / Telegram 自建推送](../concepts/rss-telegram-selfhost.md)
 - [来源：Gemini 对话——自建 RSS 推 Telegram（flowerss-bot 等）](gemini-rss-flowerss-telegram-selfhost.md)（故障表与 OPML/Webhook 等更细排错）

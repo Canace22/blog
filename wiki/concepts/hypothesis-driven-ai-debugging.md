@@ -1,4 +1,4 @@
-# 假设驱动 AI 调试（概念）
+# 假设驱动 AI 调试
 
 ## 定义
 
@@ -26,7 +26,7 @@
 
 ## 相关
 
-- [Harness Engineering（概念）](harness-engineering.md)
-- [LLM 维护的知识库（概念）](llm-maintained-wiki.md)
+- [Harness Engineering](harness-engineering.md)
+- [LLM 维护的知识库](llm-maintained-wiki.md)
 - [来源：Shen Huang —— 假设驱动调试与 DEBUG.md](../sources/shenhuang-hypothesis-debug-x-thread.md)
 - [来源：karpathy / autoresearch](../sources/karpathy-autoresearch.md)

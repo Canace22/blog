@@ -1,4 +1,4 @@
-# LLM 维护的知识库（概念）
+# LLM 维护的知识库
 
 跨来源整理：**人输入资料 -> 持久化 wiki -> 规则驱动 agent 维护**，wiki 作为多工具共用的长期记忆层。
 
@@ -48,7 +48,7 @@
 
 ## 相关
 
-- [编译式知识库（概念）](compiled-knowledge-vault.md) — 更强调 claim / evidence / provenance / lint / dashboard。
+- [编译式知识库](compiled-knowledge-vault.md) — 更强调 claim / evidence / provenance / lint / dashboard。
 - [LOP 模式与产物](lop-patterns.md) — 游戏中的「结构化文档沉淀再迭代」与 wiki/RAG 长期记忆可对照。
 
 ## 来源

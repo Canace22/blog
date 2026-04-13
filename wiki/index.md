@@ -2,19 +2,19 @@
 
 ## Concepts
 
-- [假设驱动 AI 调试（概念）](concepts/hypothesis-driven-ai-debugging.md)
-- [AI 外包写作与思维：对照阅读（概念）](concepts/ai-outsourcing-writing-thinking.md)
-- [AI 时代的贫富分化与劳动迁移（概念）](concepts/ai-wealth-labor-shift.md)
+- [假设驱动 AI 调试](concepts/hypothesis-driven-ai-debugging.md)
+- [AI 外包写作与思维：对照阅读](concepts/ai-outsourcing-writing-thinking.md)
+- [AI 时代的贫富分化与劳动迁移](concepts/ai-wealth-labor-shift.md)
 - [外语视频翻译字幕：Whisper 打轴 + Gemini 翻译](concepts/whisper-gemini-video-subtitles.md)
-- [编译式知识库（概念）](concepts/compiled-knowledge-vault.md)
-- [Harness Engineering（概念）](concepts/harness-engineering.md)
-- [LLM 维护的知识库（概念）](concepts/llm-maintained-wiki.md)
-- [LOP（面向大模型编程）模式（概念）](concepts/lop-patterns.md)
-- [Web 前端开发知识图谱（概念）](concepts/web-frontend-knowledge-graph.md)
-- [微信公众号阅读优化（概念）](concepts/wechat-official-account-read-optimization.md)
-- [Vue 中的 `key`（概念）](concepts/vue-key.md)
-- [Mac / Linux 虚拟机资源与 OpenClaw 开发（概念）](concepts/mac-linux-vm-openclaw-dev.md)
-- [RSS / Telegram 自建推送（概念）](concepts/rss-telegram-selfhost.md)
+- [编译式知识库](concepts/compiled-knowledge-vault.md)
+- [Harness Engineering](concepts/harness-engineering.md)
+- [LLM 维护的知识库](concepts/llm-maintained-wiki.md)
+- [LOP（面向大模型编程）模式](concepts/lop-patterns.md)
+- [Web 前端开发知识图谱](concepts/web-frontend-knowledge-graph.md)
+- [微信公众号阅读优化](concepts/wechat-official-account-read-optimization.md)
+- [Vue 中的 `key`](concepts/vue-key.md)
+- [Mac / Linux 虚拟机资源与 OpenClaw 开发](concepts/mac-linux-vm-openclaw-dev.md)
+- [RSS / Telegram 自建推送](concepts/rss-telegram-selfhost.md)
 
 ## Queries
 

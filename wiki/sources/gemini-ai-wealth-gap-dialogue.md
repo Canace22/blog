@@ -32,4 +32,4 @@
 
 ## 另见
 
-- [AI 时代的贫富分化与劳动迁移（概念）](../concepts/ai-wealth-labor-shift.md)
+- [AI 时代的贫富分化与劳动迁移](../concepts/ai-wealth-labor-shift.md)

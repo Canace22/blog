@@ -1,5 +1,6 @@
 # Wiki Log
 
+- 2026-04-13：约定 `wiki/concepts/` 页标题与互链展示名不再加后缀 `（概念）`（目录已表明类型）；已写入 `AGENTS.md`，并批量更新 `wiki/` 内既有标题与链接文案。
 - 2026-04-13：`wiki/index.md` 区块顺序调整：`## Category` 移至 `Concepts` / `Queries` / `Reports` 之后（目录与正文一致）。
 - 2026-04-13：`grok-vocabulary-repeat-redundant` 与既有词汇类来源 `wiki/sources/common-programming-prompt-words.md`、`wiki/sources/prompt-vocabulary-for-coding.md` 互链。
 - 2026-04-13：Ingest 剪藏 `wiki/Clippings/translate.md`（Grok 词汇对话）→ 新增 `wiki/sources/grok-vocabulary-repeat-redundant.md`，更新 `wiki/index.md`（软技能与思考）；剪藏顶部提示可删。不向 `wiki/Clippings/` 维护回链。

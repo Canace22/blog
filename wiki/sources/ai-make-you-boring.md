@@ -11,4 +11,4 @@
 
 ## 相关概念
 
-- [AI 外包写作与思维：对照阅读（概念）](../concepts/ai-outsourcing-writing-thinking.md)：与 Alex Woods [Don't Let AI Write For You](https://alexhwoods.com/dont-let-ai-write-for-you/)、本博 [为什么不要让LLM帮我们写文档](why-not-let-ai-write-for-us.md)（wiki 摘要归档，原 Hexo 文已删）的并列对照与合成。
+- [AI 外包写作与思维：对照阅读](../concepts/ai-outsourcing-writing-thinking.md)：与 Alex Woods [Don't Let AI Write For You](https://alexhwoods.com/dont-let-ai-write-for-you/)、本博 [为什么不要让LLM帮我们写文档](why-not-let-ai-write-for-us.md)（wiki 摘要归档，原 Hexo 文已删）的并列对照与合成。

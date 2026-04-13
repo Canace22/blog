@@ -71,9 +71,9 @@ README 里提到 OpenClaw 是一个真实世界的 SDK 集成，说明 Pi 不只
 
 ## 关联概念
 
-- [Harness Engineering（概念）](../concepts/harness-engineering.md)
-- [LLM 维护的知识库（概念）](../concepts/llm-maintained-wiki.md)
-- [编译式知识库（概念）](../concepts/compiled-knowledge-vault.md)
+- [Harness Engineering](../concepts/harness-engineering.md)
+- [LLM 维护的知识库](../concepts/llm-maintained-wiki.md)
+- [编译式知识库](../concepts/compiled-knowledge-vault.md)
 
 ## 参考链接
 

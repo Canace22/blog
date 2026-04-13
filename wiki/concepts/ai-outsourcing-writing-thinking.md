@@ -1,4 +1,4 @@
-# AI 外包写作与思维：对照阅读（概念）
+# AI 外包写作与思维：对照阅读
 
 将 **Alex Woods** 的短文 [Don't Let AI Write For You](https://alexhwoods.com/dont-let-ai-write-for-you/)（2026-03-08）、本仓库博文 [AI 让人变得无趣](../sources/ai-make-you-boring.md) 与 [为什么不要让LLM帮我们写文档](../sources/why-not-let-ai-write-for-us.md) 对照阅读时，三者指向同一底层担忧：**把思考与表达外包给 LLM，会同时损失能力、可信度与（在公共或协作语境中的）可交流深度**。
 
@@ -29,4 +29,4 @@
 ## 另见
 
 - [AI使人膨胀](../sources/ai-expansion.md)（相邻主题：工具与自我膨胀）
-- [LLM 维护的知识库（概念）](llm-maintained-wiki.md)（本仓库元主题：如何用 LLM **维护**知识而非替代思考）
+- [LLM 维护的知识库](llm-maintained-wiki.md)（本仓库元主题：如何用 LLM **维护**知识而非替代思考）

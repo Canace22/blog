@@ -42,6 +42,6 @@
 
 ## 另见
 
-- [Mac / Linux 虚拟机资源与 OpenClaw 开发（概念）](../concepts/mac-linux-vm-openclaw-dev.md)
+- [Mac / Linux 虚拟机资源与 OpenClaw 开发](../concepts/mac-linux-vm-openclaw-dev.md)
 - [OpenClaw Memory Wiki](openclaw-memory-wiki.md)
 - [Pi Coding Agent / OpenClaw 集成线索](pi-coding-agent.md)

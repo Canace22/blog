@@ -1,4 +1,4 @@
-# RSS / Telegram 自建推送（概念）
+# RSS / Telegram 自建推送
 
 把「用 Bot 把 RSS 更新推到 Telegram 频道/私聊」时的**部署与连通性**抽成可检索要点：一条线来自 Gemini 对话里的排错表，另一条线来自博文里的**第一人称实践**（Token 复用、Docker 代理、`host.docker.internal`）；**具体镜像名、环境变量与指令**以你所选项目文档为准。
 
@@ -27,4 +27,4 @@
 
 ## 相关
 
-- [Mac / Linux 虚拟机资源与 OpenClaw 开发（概念）](mac-linux-vm-openclaw-dev.md)（同属「开发环境出网/代理」语境时可对照）
+- [Mac / Linux 虚拟机资源与 OpenClaw 开发](mac-linux-vm-openclaw-dev.md)（同属「开发环境出网/代理」语境时可对照）

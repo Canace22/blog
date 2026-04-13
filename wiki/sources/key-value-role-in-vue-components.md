@@ -16,4 +16,4 @@
 
 ## 综合延展（非原文）
 
-更完整的用法与注意点（`v-for` 身份、`key` 变化时组件重挂载、与下标/随机 key 的区别）见概念页：[Vue 中的 `key`（概念）](../concepts/vue-key.md)。
+更完整的用法与注意点（`v-for` 身份、`key` 变化时组件重挂载、与下标/随机 key 的区别）见概念页：[Vue 中的 `key`](../concepts/vue-key.md)。

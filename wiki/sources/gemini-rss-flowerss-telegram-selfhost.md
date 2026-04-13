@@ -54,6 +54,6 @@
 
 ## 另见
 
-- [RSS / Telegram 自建推送（概念）](../concepts/rss-telegram-selfhost.md)
+- [RSS / Telegram 自建推送](../concepts/rss-telegram-selfhost.md)
 - [来源：RSS 推送到 TG 的可行性探索](rss-telegram-selfhost.md)（Hexo 博文：`flowerss-bot`、Docker 代理与 Token 重置的一手记录）
 - [docker 打包本地 web 项目发布到服务端](docker-documentation.md)（通用 Docker 发布思路）

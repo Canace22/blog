@@ -1,4 +1,4 @@
-# Mac / Linux 虚拟机资源与 OpenClaw 开发（概念）
+# Mac / Linux 虚拟机资源与 OpenClaw 开发
 
 本页把「在 Mac 上开 Ubuntu 虚拟机跑类 OpenClaw 的 Node/Agent 工作负载」时的**资源规划**从单次对话里抽成可检索的要点，并与本库其他 OpenClaw 资料对齐。
 
@@ -22,5 +22,5 @@
 
 ## 相关
 
-- [Harness Engineering（概念）](harness-engineering.md)（Agent 工作流与工具链上下文）
-- [Compiled knowledge vault（概念）](compiled-knowledge-vault.md)
+- [Harness Engineering](harness-engineering.md)（Agent 工作流与工具链上下文）
+- [Compiled knowledge vault](compiled-knowledge-vault.md)

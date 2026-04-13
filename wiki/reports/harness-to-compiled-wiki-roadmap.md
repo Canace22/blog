@@ -17,7 +17,7 @@
 
 ### 1. 执行层（Harness）
 
-- [Harness Engineering（概念）](../concepts/harness-engineering.md)
+- [Harness Engineering](../concepts/harness-engineering.md)
 - [Pi Coding Agent / pi-mono](../sources/pi-coding-agent.md)
 
 关注点：
@@ -29,7 +29,7 @@
 
 ### 2. 记忆层（LLM-maintained wiki）
 
-- [LLM 维护的知识库（概念）](../concepts/llm-maintained-wiki.md)
+- [LLM 维护的知识库](../concepts/llm-maintained-wiki.md)
 - [使用大模型来维护知识库](../sources/llm-wiki.md)
 
 关注点：
@@ -40,7 +40,7 @@
 
 ### 3. 维护层（Compiled knowledge）
 
-- [编译式知识库（概念）](../concepts/compiled-knowledge-vault.md)
+- [编译式知识库](../concepts/compiled-knowledge-vault.md)
 - [OpenClaw Memory Wiki](../sources/openclaw-memory-wiki.md)
 
 关注点：
@@ -125,6 +125,6 @@
 
 - [Harness Engineering 资料整理](harness-engineering-reading-notes.md)
 - [博客草稿：我原来写的项目规则、Skill、知识库，其实已经是在做 Harness Engineering](harness-engineering-blog-draft.md)
-- [Harness Engineering（概念）](../concepts/harness-engineering.md)
-- [LLM 维护的知识库（概念）](../concepts/llm-maintained-wiki.md)
-- [编译式知识库（概念）](../concepts/compiled-knowledge-vault.md)
+- [Harness Engineering](../concepts/harness-engineering.md)
+- [LLM 维护的知识库](../concepts/llm-maintained-wiki.md)
+- [编译式知识库](../concepts/compiled-knowledge-vault.md)

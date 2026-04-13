@@ -331,7 +331,7 @@ Agent 改完代码后，至少应该能做下面几件事中的一部分：
 
 ## 相关知识库页面
 
-- [Harness Engineering（概念）](../concepts/harness-engineering.md)
+- [Harness Engineering](../concepts/harness-engineering.md)
 - [Harness Engineering 资料整理](harness-engineering-reading-notes.md)
 - [AI赋能存量项目——从函数助手到业务伙伴](../sources/ai-coding-share.md)
 - [AI协作编程——如何写好项目规则](../sources/writing-a-good-claude-md.md)

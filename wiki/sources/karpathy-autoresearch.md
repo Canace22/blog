@@ -27,8 +27,8 @@
 
 ## 关联概念
 
-- [假设驱动 AI 调试（概念）](../concepts/hypothesis-driven-ai-debugging.md)
-- [Harness Engineering（概念）](../concepts/harness-engineering.md)
+- [假设驱动 AI 调试](../concepts/hypothesis-driven-ai-debugging.md)
+- [Harness Engineering](../concepts/harness-engineering.md)
 
 ## 参考链接
 

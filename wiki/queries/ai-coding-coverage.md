@@ -87,5 +87,5 @@
 
 ## 相关概念
 
-- [LOP（面向大模型编程）模式（概念）](../concepts/lop-patterns.md)
-- [LLM 维护的知识库（概念）](../concepts/llm-maintained-wiki.md)
+- [LOP（面向大模型编程）模式](../concepts/lop-patterns.md)
+- [LLM 维护的知识库](../concepts/llm-maintained-wiki.md)
