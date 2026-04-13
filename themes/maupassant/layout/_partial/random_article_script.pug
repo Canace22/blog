@@ -1,0 +1,21 @@
+-
+  //- Use path, not post.permalink — permalink embeds config.url (production domain), so hexo s would jump off localhost.
+  //- Ensure a leading slash so clicks work from any path (e.g. /page/2/).
+  var __hexoPostUrls = [];
+  site.posts.each(function (post) {
+    var p = url_for(post.path);
+    if (p && !/^https?:\/\//.test(p) && p.indexOf('/') !== 0) p = '/' + p.replace(/^\//, '');
+    __hexoPostUrls.push(p);
+  });
+script(type='text/javascript').
+  (function () {
+    var urls = !{JSON.stringify(__hexoPostUrls)};
+    var el = document.getElementById('nav-random-article');
+    if (!el) return;
+    el.addEventListener('click', function (e) {
+      e.preventDefault();
+      if (!urls.length) return;
+      var next = urls[Math.floor(Math.random() * urls.length)];
+      if (next) window.location.href = next;
+    });
+  })();
