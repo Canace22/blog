@@ -32,7 +32,7 @@ Treat as **not** ingest sources: anything under `wiki/` (that is the maintained 
 
 When asked to ingest a source:
 
-1. Read the source file from the `source/_posts/*.md`.
+1. Read the source file from the `source/_posts/*.md` or `wiki/Clippings/*.md`.
 2. Create or update a source summary page in `wiki/sources/`.
 3. Update any relevant concept pages in `wiki/concepts/`.
 4. Update `wiki/index.md` so the new or changed pages are listed.
