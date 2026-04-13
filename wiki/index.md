@@ -234,6 +234,7 @@
 - [ubuntu 下配置ss](sources/ubuntu-configure-ss.md) — `source/_posts/ubuntu-configure-ss.md`
 - [Gemini 对话：Mac Ubuntu 虚拟机与 OpenClaw 环境](sources/gemini-mac-ubuntu-vm-openclaw.md) — Gemini 会话摘要（可追溯页面内链接）
 - [Gemini 对话：自建 RSS 推 Telegram（flowerss-bot）](sources/gemini-rss-flowerss-telegram-selfhost.md) — Gemini 会话摘要（可追溯页面内链接）
+- [Gemini 对话：indes/flowerss-bot 项目原理](sources/gemini-flowerss-bot-principle.md) — Gemini 会话摘要（架构与依赖，可追溯页面内链接）
 - [关于分支管理的一点感想](sources/thoughts-on-branch-management.md) — `source/_posts/thoughts-on-branch-management.md`
 - [sublime text3 配置 node.js 环境](sources/sublime-text-nodejs-config.md) — `source/_posts/sublime-text-nodejs-config.md`
 - [SS 安装](sources/ss-installation.md) — `source/_posts/ss-installation.md`
