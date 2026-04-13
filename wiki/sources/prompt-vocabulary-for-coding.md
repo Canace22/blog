@@ -21,3 +21,8 @@ Vocabulary cheat sheet: English verbs common in coding prompts (develop, edit, c
 ## Notes
 
 Title uses the author’s spelling “Promt”; content is reference material, not a narrative argument.
+
+## 另见（本库相近资料）
+
+- [常用开发提示词](common-programming-prompt-words.md)：面向日常开发的英汉提示词表（博文摘要）。
+- [Grok 会话摘录：repeat / redundant 词义](grok-vocabulary-repeat-redundant.md)：两条通用词义对照，格式与「单词 + 释义 + 例句」类笔记一致。

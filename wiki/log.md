@@ -1,5 +1,9 @@
 # Wiki Log
 
+- 2026-04-13：`grok-vocabulary-repeat-redundant` 与既有词汇类来源 `wiki/sources/common-programming-prompt-words.md`、`wiki/sources/prompt-vocabulary-for-coding.md` 互链。
+- 2026-04-13：Ingest 剪藏 `wiki/Clippings/translate.md`（Grok 词汇对话）→ 新增 `wiki/sources/grok-vocabulary-repeat-redundant.md`，更新 `wiki/index.md`（软技能与思考）；剪藏顶部提示可删。不向 `wiki/Clippings/` 维护回链。
+- 2026-04-13：确认最新 Hexo 博文 `source/_posts/rss-telegram-selfhost.md` 已在此前完成 ingest（`wiki/sources/rss-telegram-selfhost.md`、`wiki/concepts/rss-telegram-selfhost.md`、`wiki/index.md`）；本日仅将来源页元数据与仓库内其它 `sources` 条目格式对齐（可点击 `源文件` 链接）。
+- 2026-04-13：Ingest 剪藏（X：`Thread by @ShenHuang_`；GitHub：`karpathy/autoresearch`）→ 新增 `wiki/sources/shenhuang-hypothesis-debug-x-thread.md`、`wiki/sources/karpathy-autoresearch.md`，新增概念 `wiki/concepts/hypothesis-driven-ai-debugging.md`，更新 `wiki/concepts/harness-engineering.md` 关联；更新 `wiki/index.md`（AI探索 / 外部研究资料 / Concepts）。不向 `wiki/Clippings/` 维护回链。
 - 2026-04-12：Ingest `source/_posts/rss-telegram-selfhost.md` → 新增 `wiki/sources/rss-telegram-selfhost.md`，扩展 `wiki/concepts/rss-telegram-selfhost.md`（Claims 7–8、Evidence 双来源），`gemini-rss-flowerss-telegram-selfhost` 另见链回博文来源；更新 `wiki/index.md`（软技能与思考）。
 - 2026-04-12：约定 `wiki/Clippings/` 为可随时删除的临时材料：**已维护页面不得链接至该目录**；写入 `AGENTS.md` 目录约定与 ingest 说明。移除 `gemini-rss-flowerss-telegram-selfhost`、`gemini-mac-ubuntu-vm-openclaw` 中对剪藏文件的链接；`thread-by-karpathy` 改为不依赖具体剪藏路径。
 - 2026-04-12：Ingest 剪藏 `wiki/Clippings/你说 算了，我还是自己部署一个到服务器吧.md` → 新增 `wiki/sources/gemini-rss-flowerss-telegram-selfhost.md`、`wiki/concepts/rss-telegram-selfhost.md`，更新 `wiki/index.md`（工程化与运维 / Concepts）；剪藏文件增加回链至来源摘要并提示敏感信息。

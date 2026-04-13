@@ -1,8 +1,9 @@
 # 来源：RSS 推送到 TG 的可行性探索
 
-- **类型**：Hexo 博文（`source/_posts/rss-telegram-selfhost.md`）
-- **日期**：2026-04-12
-- **分类 / 标签**（博文 front matter）：软技能与思考 · 随笔
+- **源文件**：[`source/_posts/rss-telegram-selfhost.md`](../../source/_posts/rss-telegram-selfhost.md)
+- **分类**：软技能与思考
+- **标签**：随笔
+- **日期**：2026-04-12 10:00:00
 
 ## 摘要
 

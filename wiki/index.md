@@ -249,6 +249,7 @@
 
 ### AI探索
 
+- [来源：Shen Huang —— 假设驱动调试与 DEBUG.md（X）](sources/shenhuang-hypothesis-debug-x-thread.md) — 剪藏整理（可追溯 X 与 GitHub skill）
 - [使用大模型来维护知识库](sources/llm-wiki.md) — `source/_posts/llm-wiki.md`
 - [面向大模型编程(LOP)在游戏制作流程中的应用畅想](sources/ai-coding-game.md) — `source/_posts/ai-coding-game.md`
 - [Gemini 在打开新会话时，是如何有记忆的](sources/gemini-new-session-memory.md) — `source/_posts/gemini-new-session-memory.md`
@@ -316,6 +317,7 @@
 - [关于做技术这件事](sources/about-doing-technology.md) — `source/_posts/about-doing-technology.md`
 - [2024年终总结](sources/2024-year-end-summary.md) — `source/_posts/2024-year-end-summary.md`
 - [RSS 推送到 TG 的可行性探索](sources/rss-telegram-selfhost.md) — `source/_posts/rss-telegram-selfhost.md`
+- [Grok 会话摘录：repeat / redundant 词义](sources/grok-vocabulary-repeat-redundant.md) — Grok 项目链接（可追溯会话）
 
 ### 网站建设
 
@@ -332,10 +334,12 @@
 ### 外部研究资料
 
 - [Pi Coding Agent / pi-mono](sources/pi-coding-agent.md) — `https://github.com/badlogic/pi-mono/tree/main`
+- [karpathy / autoresearch](sources/karpathy-autoresearch.md) — `https://github.com/karpathy/autoresearch`
 - [OpenClaw Memory Wiki](sources/openclaw-memory-wiki.md) — `https://docs.openclaw.ai/plugins/memory-wiki`
 
 ## Concepts
 
+- [假设驱动 AI 调试（概念）](concepts/hypothesis-driven-ai-debugging.md)
 - [AI 外包写作与思维：对照阅读（概念）](concepts/ai-outsourcing-writing-thinking.md)
 - [AI 时代的贫富分化与劳动迁移（概念）](concepts/ai-wealth-labor-shift.md)
 - [外语视频翻译字幕：Whisper 打轴 + Gemini 翻译](concepts/whisper-gemini-video-subtitles.md)

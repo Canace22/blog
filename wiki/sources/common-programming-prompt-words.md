@@ -9,3 +9,6 @@
 
 开发中常用词汇翻译和用法整理，方便日常查阅使用
 
+## 另见
+
+- [Grok 会话摘录：repeat / redundant 词义](grok-vocabulary-repeat-redundant.md)：会话中两条日常词义（「重复」/ Repeat、redundant / 「多余的」），结构与本文「Original / Translation / …」一致，可作补充查阅。
