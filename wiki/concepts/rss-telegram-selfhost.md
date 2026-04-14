@@ -29,4 +29,4 @@
 
 ## 相关
 
-- [Mac / Linux 虚拟机资源与 OpenClaw 开发](mac-linux-vm-openclaw-dev.md)（同属「开发环境出网/代理」语境时可对照）
+- [Mac / Linux 虚拟机资源与 OpenClaw 开发](../queries/mac-linux-vm-openclaw-dev.md)（同属「开发环境出网/代理」语境时可对照）

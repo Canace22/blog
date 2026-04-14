@@ -1,30 +1,37 @@
 # Wiki Index
 
+## Reports
+
+- [消息推送：RSS、应用更新、网页版本更新与 diff 思维对照报告](reports/message-delivery-comparison-report.md)
+- [Harness Engineering 资料整理](reports/harness-engineering-reading-notes.md)
+- [从 Harness 到 Compiled Wiki：个人研究路线图](reports/harness-to-compiled-wiki-roadmap.md)
+- [AI 外包写作与思维：对照阅读](reports/ai-outsourcing-writing-thinking.md)
+- [Web 前端开发知识图谱](reports/web-frontend-knowledge-graph.md)
+- [博客草稿：我原来写的项目规则、Skill、知识库，其实已经是在做 Harness Engineering](reports/harness-engineering-blog-draft.md)
+
 ## Concepts
 
 - [假设驱动 AI 调试](concepts/hypothesis-driven-ai-debugging.md)
-- [AI 外包写作与思维：对照阅读](concepts/ai-outsourcing-writing-thinking.md)
 - [AI 时代的贫富分化与劳动迁移](concepts/ai-wealth-labor-shift.md)
-- [外语视频翻译字幕：Whisper 打轴 + Gemini 翻译](concepts/whisper-gemini-video-subtitles.md)
 - [编译式知识库](concepts/compiled-knowledge-vault.md)
 - [Harness Engineering](concepts/harness-engineering.md)
 - [LLM 维护的知识库](concepts/llm-maintained-wiki.md)
 - [LOP（面向大模型编程）模式](concepts/lop-patterns.md)
-- [Web 前端开发知识图谱](concepts/web-frontend-knowledge-graph.md)
-- [微信公众号阅读优化](concepts/wechat-official-account-read-optimization.md)
-- [Vue 中的 `key`](concepts/vue-key.md)
-- [Mac / Linux 虚拟机资源与 OpenClaw 开发](concepts/mac-linux-vm-openclaw-dev.md)
 - [RSS / Telegram 自建推送](concepts/rss-telegram-selfhost.md)
 
 ## Queries
 
+- [`git diff` 这种差异对比，和 Web 端版本更新弹窗的思路是不是有异曲同工之处](queries/git-diff-and-web-version-check.md)
+- [如果是应用内的文件更新，像 `git diff` 这种，跟前面说的应用更新有什么区别](queries/in-app-file-update-vs-app-updater-vs-git-diff.md)
 - [我的文章涵盖 AI Coding 哪几方面](queries/ai-coding-coverage.md)
-
-## Reports
-
-- [博客草稿：我原来写的项目规则、Skill、知识库，其实已经是在做 Harness Engineering](reports/harness-engineering-blog-draft.md)
-- [Harness Engineering 资料整理](reports/harness-engineering-reading-notes.md)
-- [从 Harness 到 Compiled Wiki：个人研究路线图](reports/harness-to-compiled-wiki-roadmap.md)
+- [Mac / Linux 虚拟机资源与 OpenClaw 开发](queries/mac-linux-vm-openclaw-dev.md)
+- [外语视频翻译字幕：Whisper 打轴 + Gemini 翻译](queries/whisper-gemini-video-subtitles.md)
+- [微信公众号阅读优化](queries/wechat-official-account-read-optimization.md)
+- [刚刚讨论的差异对比，如果用在 app 文件 diff 场景里该怎么理解](queries/app-file-diff-with-update-delivery.md)
+- [Web端版本更新弹窗的数据推送跟 RSS 方案有什么异同](queries/web-version-popup-vs-rss.md)
+- [`version.json + 轮询弹窗` 方案，对照 `electron-updater` 该怎么理解](queries/web-version-json-vs-electron-updater.md)
+- [Web端版本更新弹窗里的几种推送方式，对 RSS 推送机制有什么可借鉴之处](queries/web-update-patterns-for-rss.md)
+- [Web端版本更新弹窗这篇文章里的方案有什么问题，有更好的方案吗](queries/review-web-version-update-popup-scheme.md)
 
 ## Category
 
@@ -49,7 +56,7 @@
 - [回文数判断](sources/palindrome-number-judgment.md) — `source/_posts/palindrome-number-judgment.md`
 - [分页算法](sources/pagination-algorithm.md) — `source/_posts/pagination-algorithm.md`
 - [数字精确到小数点两位](sources/number-precise-to-two-decimal-places.md) — `source/_posts/number-precise-to-two-decimal-places.md`
-- [n * n 阶矩阵算法](sources/n-n-order-matrix-algorithm.md) — `source/_posts/n-n-order-matrix-algorithm.md`
+- [n \* n 阶矩阵算法](sources/n-n-order-matrix-algorithm.md) — `source/_posts/n-n-order-matrix-algorithm.md`
 - [ubuntu 登陆华南师范大学校园网的方法](sources/method-to-login-to-south-china-normal-university-campus-network.md) — `source/_posts/method-to-login-to-south-china-normal-university-campus-network.md`
 - [KNN算法](sources/knn-algorithm.md) — `source/_posts/knn-algorithm.md`
 - [js链表实现](sources/js-linked-list-implementation.md) — `source/_posts/js-linked-list-implementation.md`
@@ -249,7 +256,7 @@
 - [图片懒加载实现](sources/image-lazy-loading-implementation.md) — `source/_posts/image-lazy-loading-implementation.md`
 - [gitpage 搭建 hexo 博客](sources/gitpage-hexo.md) — `source/_posts/gitpage-hexo.md`
 - [gitlab ci 配置模板](sources/gitlab-ci-config-template.md) — `source/_posts/gitlab-ci-config-template.md`
-- [github  + travis 自动构建 vue 项目到 gitpage](sources/github-travis-auto-build-vue-to-gitpage.md) — `source/_posts/github-travis-auto-build-vue-to-gitpage.md`
+- [github + travis 自动构建 vue 项目到 gitpage](sources/github-travis-auto-build-vue-to-gitpage.md) — `source/_posts/github-travis-auto-build-vue-to-gitpage.md`
 - [github 实用小技巧](sources/github-practical-tips.md) — `source/_posts/github-practical-tips.md`
 - [使用 github action 编译 Vue 发布到 github page](sources/github-action-auto-deploy-page.md) — `source/_posts/github-action-auto-deploy-page.md`
 - [git环境配置](sources/git-environment-config.md) — `source/_posts/git-environment-config.md`

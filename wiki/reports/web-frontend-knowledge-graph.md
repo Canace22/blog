@@ -79,7 +79,7 @@ flowchart TB
 | --- | --- |
 | URL / 渲染 / 内核 | [浏览器渲染原理概述](../sources/how-to-optimize-animation.md)、[关于浏览器内核及其 CSS 写法](../sources/browser-kernel-and-writing.md) |
 | 样式与适配 | [说说网页自适应和响应式布局](../sources/talking-about-webpage-adaptive-and-responsive-layout.md)、[盒模型](../sources/box-model.md)、多篇 `css-series-*` |
-| Vue | [Vue 中的 `key`](vue-key.md)、[我所不知道的 Vue 细节](../sources/vue-details-i-didnt-know.md)、[说说 Vuex](../sources/talking-about-vuex.md) |
+| Vue | [key 值在 vue 组件中的作用](../sources/key-value-role-in-vue-components.md)、[我所不知道的 Vue 细节](../sources/vue-details-i-didnt-know.md)、[说说 Vuex](../sources/talking-about-vuex.md) |
 | 图形 | [three.js 基础实战 —— 创建画布](../sources/three-js-basics-practice.md)、[PixiJs 极简教程](../sources/pixi-basics.md)、[WebRTC](../sources/WebRTC.md) |
 | 小程序 / 跨端 | [微信小程序小技巧](../sources/wechat-mini-program-pitfalls.md)、[MAC 调试 IOS 真机上 Web 网页的方法](../sources/mac-debug-ios-web-page.md) |
 | 工程化 | [Webpack5 新特性 - 模块联邦笔记](../sources/webpack5-new-features-module-federation-notes.md)、[图片懒加载实现](../sources/image-lazy-loading-implementation.md)、[web 优化 ——— 添加骨架屏](../sources/add-skeleton-screen.md) |
@@ -88,7 +88,7 @@ flowchart TB
 
 ## 相关
 
-- [LLM 维护的知识库](llm-maintained-wiki.md) — 本图谱随 wiki 增量更新时，可一并检视链接是否过期。
+- [LLM 维护的知识库](../concepts/llm-maintained-wiki.md) — 本图谱随 wiki 增量更新时，可一并检视链接是否过期。
 - [Wiki Index](../index.md)
 
 ## 来源

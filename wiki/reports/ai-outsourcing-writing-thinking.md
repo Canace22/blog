@@ -29,4 +29,4 @@
 ## 另见
 
 - [AI使人膨胀](../sources/ai-expansion.md)（相邻主题：工具与自我膨胀）
-- [LLM 维护的知识库](llm-maintained-wiki.md)（本仓库元主题：如何用 LLM **维护**知识而非替代思考）
+- [LLM 维护的知识库](../concepts/llm-maintained-wiki.md)（本仓库元主题：如何用 LLM **维护**知识而非替代思考）

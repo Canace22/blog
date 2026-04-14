@@ -18,9 +18,9 @@
 
 ## Open Questions
 
-- 官方推荐的最低/推荐 Node 版本、CLI 与仓库入口应以 `docs.openclaw.ai` 与官方 GitHub 为准，本概念页不固化具体命令。
+- 官方推荐的最低/推荐 Node 版本、CLI 与仓库入口应以 `docs.openclaw.ai` 与官方 GitHub 为准，本页不固化具体命令。
 
 ## 相关
 
-- [Harness Engineering](harness-engineering.md)（Agent 工作流与工具链上下文）
-- [Compiled knowledge vault](compiled-knowledge-vault.md)
+- [Harness Engineering](../concepts/harness-engineering.md)（Agent 工作流与工具链上下文）
+- [Compiled knowledge vault](../concepts/compiled-knowledge-vault.md)

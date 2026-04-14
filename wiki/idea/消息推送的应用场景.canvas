@@ -1,0 +1,13 @@
+{
+	"nodes":[
+		{"id":"89dde487fdb0c427","x":-380,"y":-40,"width":250,"height":60,"type":"text","text":"消息推送"},
+		{"id":"b1409e814af5c546","x":-125,"y":-280,"width":250,"height":60,"type":"text","text":"RSS 推送"},
+		{"id":"9934135934a7c677","x":70,"y":-100,"width":250,"height":60,"type":"text","text":"应用更新推送"},
+		{"id":"aaf8bc4c930d5fb9","x":-130,"y":220,"width":250,"height":60,"type":"text","text":"网页版本更新推送"}
+	],
+	"edges":[
+		{"id":"b23cb815e482122a","fromNode":"89dde487fdb0c427","fromSide":"right","toNode":"aaf8bc4c930d5fb9","toSide":"top"},
+		{"id":"d4220cf51c59d772","fromNode":"89dde487fdb0c427","fromSide":"right","toNode":"9934135934a7c677","toSide":"left"},
+		{"id":"07b45dc2de04b5a8","fromNode":"89dde487fdb0c427","fromSide":"right","toNode":"b1409e814af5c546","toSide":"bottom"}
+	]
+}

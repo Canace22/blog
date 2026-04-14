@@ -1,5 +1,13 @@
 # Wiki Log
 
+- 2026-04-14：将本轮围绕 `webpage-version-update-popup-implementation`、RSS 推送、`electron-updater`、应用内文件更新与 `git diff` 的连续讨论收束为报告 `wiki/reports/message-delivery-comparison-report.md`，按“消息推送 → RSS / 应用更新 / 网页版本更新”主轴组织，并补入 diff 思维对照与横向表格；更新 `wiki/index.md` Reports。
+- 2026-04-14：Query「`git diff` 这种差异对比，和 Web 端版本更新弹窗的思路是不是有异曲同工之处」→ 新增 `wiki/queries/git-diff-and-web-version-check.md`，说明两者在“状态比对驱动后续动作”这一抽象层面相通，但 `git diff` 属于内容级差异表达，而版本更新弹窗更接近版本级差异检测，并更新 `wiki/index.md` Queries。
+- 2026-04-14：Query「如果是应用内的文件更新，像 `git diff` 这种，跟前面说的应用更新有什么区别」→ 新增 `wiki/queries/in-app-file-update-vs-app-updater-vs-git-diff.md`，区分应用更新、应用内文件同步与 `git diff` 三种“diff”语境，强调 manifest/hash/chunk 与文本行级 diff 的差别，并更新 `wiki/index.md` Queries。
+- 2026-04-14：Query「`version.json + 轮询弹窗` 方案，对照 `electron-updater` 该怎么理解」→ 新增 `wiki/queries/web-version-json-vs-electron-updater.md`，仅对照 `electron-updater` 官方文档，按更新发现、元数据清单、差分下载、安装执行、灰度发布五层比较网页版本提醒方案与 Electron 应用更新方案，并更新 `wiki/index.md` Queries。
+- 2026-04-14：Query「刚刚讨论的差异对比，如果用在 app 文件 diff 场景里该怎么理解」→ 新增 `wiki/queries/app-file-diff-with-update-delivery.md`，将“上游发现更新 / 下游送达用户”的框架迁移到客户端增量更新语境，明确区分通知层、manifest 清单层、差分层与执行层，并更新 `wiki/index.md` Queries。
+- 2026-04-14：Query「Web端版本更新弹窗这篇文章里的方案有什么问题，有更好的方案吗」→ 新增 `wiki/queries/review-web-version-update-popup-scheme.md`，审阅 `webpage-version-update-popup-implementation` 中的版本检测 demo，记录首次访问误判、`reload(true)` 非标准、缓存策略与提醒节流等问题，并更新 `wiki/index.md` Queries。
+- 2026-04-14：Query「Web端版本更新弹窗里的几种推送方式，对 RSS 推送机制有什么可借鉴之处」→ 新增 `wiki/queries/web-update-patterns-for-rss.md`，将轮询、长轮询、WebSocket、SSE、Service Worker + Push API 分别映射到 RSS 的“上游更新发现 / 下游送达层”语境，并更新 `wiki/index.md` Queries。
+- 2026-04-14：Query「Web端版本更新弹窗实现的数据推送跟 RSS 方案有什么异同」→ 新增 `wiki/queries/web-version-popup-vs-rss.md`，基于 `webpage-version-update-popup-implementation` 与 `rss-telegram-selfhost` 做对比，并更新 `wiki/index.md` Queries。
 - 2026-04-13：Ingest 剪藏 `wiki/Clippings/你说 httpsgithub.comindesflowerss-bot 这个项目的原理.md`（Gemini：`indes/flowerss-bot` 原理）→ 新增 `wiki/sources/gemini-flowerss-bot-principle.md`，更新 `wiki/concepts/rss-telegram-selfhost.md`（Claim 9、Evidence）、`wiki/sources/gemini-rss-flowerss-telegram-selfhost.md`（另见），更新 `wiki/index.md`（工程化与运维）。不向 `wiki/Clippings/` 维护回链。
 - 2026-04-13：约定 `wiki/concepts/` 页标题与互链展示名不再加后缀 `（概念）`（目录已表明类型）；已写入 `AGENTS.md`，并批量更新 `wiki/` 内既有标题与链接文案。
 - 2026-04-13：`wiki/index.md` 区块顺序调整：`## Category` 移至 `Concepts` / `Queries` / `Reports` 之后（目录与正文一致）。
@@ -30,3 +38,4 @@
 - 2026-04-09：Ingest `source/_posts/llm-wiki.md` → 新增 `wiki/sources/llm-wiki.md`、`wiki/concepts/llm-maintained-wiki.md`，更新 `wiki/index.md`。
 - 2026-04-09：Ingest `source/_posts/ai-coding-game.md` → 新增 `wiki/sources/ai-coding-game.md`、`wiki/concepts/lop-patterns.md`，更新 `wiki/concepts/llm-maintained-wiki.md`、`wiki/index.md`。
 - 2026-04-09：批量 ingest source/_posts（301 篇），生成/更新 wiki/sources（跳过手写保留 2 篇），重写 wiki/index.md Sources 区块。
+- 2026-04-14：检查 `wiki/concepts/` 分层后，重新归类明显非“稳定概念”的页面：`ai-outsourcing-writing-thinking`、`web-frontend-knowledge-graph` 移至 `wiki/reports/`；`mac-linux-vm-openclaw-dev`、`wechat-official-account-read-optimization`、`whisper-gemini-video-subtitles` 移至 `wiki/queries/`。同步修正 `wiki/index.md` 与相关回链；移除失效的 `concepts/vue-key.md` 目录入口，并把残留坏链改回现有来源页或纯文本说明。
