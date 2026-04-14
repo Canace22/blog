@@ -1,0 +1,391 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="canace 的博客"><meta itemprop="name" content="查询：刚刚讨论的差异对比，如果用在 App 文件 Diff 场景里该怎么理解"><meta itemprop="image" content="https://raw.githubusercontent.com/Canace22/Assets/main/images/snow-other.png"><meta property="og:image" content="https://raw.githubusercontent.com/Canace22/Assets/main/images/snow-other.png"><meta name="description" itemprop="description" content="&lt;h2 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h2&gt;&lt;p&gt;刚刚讨论的“上游发现更新 &amp;#x2F; 下游送达用户”的差异对比，如果用在 &lt;code&gt;app 文件 diff&lt;/code&gt; 场景里，该怎么理解？&lt;/p&gt;
+&lt;h2 id=&quot;假设&quot;&gt;&lt;a href=&quot;#假设&quot; class=&quot;headerlink&quot; title=&quot;假设&quot;&gt;&lt;/a&gt;假设&lt;/h2&gt;&lt;p&gt;这里把 &lt;code&gt;app 文件 diff&lt;/code&gt; 理解为：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;客户端已有本地版本&lt;/li&gt;
+&lt;li&gt;服务端有新版本&lt;/li&gt;
+&lt;li&gt;通过 &lt;strong&gt;manifest &amp;#x2F; 文件哈希 &amp;#x2F; patch 包&lt;/strong&gt; 判断差异&lt;/li&gt;
+&lt;li&gt;优先下发增量更新，而不是整包重装&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;也就是典型的 &lt;strong&gt;客户端增量更新 &amp;#x2F; 差分包更新&lt;/strong&gt; 语境。&lt;/p&gt;
+&lt;h2 id=&quot;结论&quot;&gt;&lt;a href=&quot;#结论&quot; class=&quot;headerlink&quot; title=&quot;结论&quot;&gt;&lt;/a&gt;结论&lt;/h2&gt;&lt;p&gt;如果迁移刚刚那套分析框架，&lt;code&gt;app 文件 diff&lt;/code&gt; 不能只看“怎么通知有新版本”，而要拆成三层：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;发现更新&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;计算差异&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;下载并应用差异&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;在 Web 版本更新弹窗里，重点是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;发现更新：轮询 &lt;code&gt;version.json&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;送达用户：弹窗提醒刷新&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;而在 app 文件 diff 里，中间会多出一层最关键的东西：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;差异本身怎么定义、怎么生成、怎么校验&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;所以它比网页版本提示更接近“&lt;strong&gt;更新分发系统&lt;/strong&gt;”，而不只是“更新提醒系统”。&lt;/p&gt;
+&lt;h2 id=&quot;套到-app-diff-后，结构会变成什么&quot;&gt;&lt;a href=&quot;#套到-app-diff-后，结构会变成什么&quot; class=&quot;headerlink&quot; title=&quot;套到 app diff 后，结构会变成什么&quot;&gt;&lt;/a&gt;套到 app diff 后，结构会变成什么&lt;/h2&gt;&lt;h3 id=&quot;1-上游发现更新&quot;&gt;&lt;a href=&quot;#1-上游发现更新&quot; class=&quot;headerlink&quot; title=&quot;1. 上游发现更新&quot;&gt;&lt;/a&gt;1. 上游发现更新&lt;/h3&gt;&lt;p&gt;这一层和前面讨论的 Web &amp;#x2F; RSS 很像，仍然是在回答：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;客户端怎么知道服务端有新版本？&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;可选方式仍然可以是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;轮询&lt;/li&gt;
+&lt;li&gt;长轮询&lt;/li&gt;
+&lt;li&gt;WebSocket&lt;/li&gt;
+&lt;li&gt;SSE&lt;/li&gt;
+&lt;li&gt;Push 通知&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;但它们在 app diff 语境里的角色变成了：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;只负责告诉客户端“有更新可看”&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;不负责决定具体下载哪些文件块&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;也就是说，这些机制主要作用于“&lt;strong&gt;更新通知层&lt;/strong&gt;”，而不是“&lt;strong&gt;diff 算法层&lt;/strong&gt;”。&lt;/p&gt;
+&lt;h3 id=&quot;2-差异计算层&quot;&gt;&lt;a href=&quot;#2-差异计算层&quot; class=&quot;headerlink&quot; title=&quot;2. 差异计算层&quot;&gt;&lt;/a&gt;2. 差异计算层&lt;/h3&gt;&lt;p&gt;这是 app diff 相比网页更新弹窗新增的核心层。&lt;/p&gt;
+&lt;p&gt;通常会有一份服务端 manifest，描述：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;当前最新版本号&lt;/li&gt;
+&lt;li&gt;各文件路径&lt;/li&gt;
+&lt;li&gt;各文件 hash &amp;#x2F; size&lt;/li&gt;
+&lt;li&gt;补丁包地址&lt;/li&gt;
+&lt;li&gt;从哪些旧版本可以直接升级&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;客户端拿到 manifest 后，才开始做真正的 diff 判断：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;本地版本是不是太旧，必须整包升级&lt;/li&gt;
+&lt;li&gt;本地有哪些文件 hash 已一致，可以跳过&lt;/li&gt;
+&lt;li&gt;哪些文件要下载 patch&lt;/li&gt;
+&lt;li&gt;patch 失败时是否回退整包&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;所以在 app diff 里，更关键的对比不是“旧版号 vs 新版号”，而是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;本地文件清单 vs 远端 manifest&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;3-下游送达与应用层&quot;&gt;&lt;a href=&quot;#3-下游送达与应用层&quot; class=&quot;headerlink&quot; title=&quot;3. 下游送达与应用层&quot;&gt;&lt;/a&gt;3. 下游送达与应用层&lt;/h2&gt;&lt;p&gt;这一层相当于前面讨论里的“送达用户”，但在 app diff 里更复杂：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Web 页面：提示刷新&lt;/li&gt;
+&lt;li&gt;RSS Bot：发一条消息&lt;/li&gt;
+&lt;li&gt;App diff：下载 patch、校验、解压、替换、回滚，最后再提示安装或重启&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;也就是说，app diff 的“送达”不是 UI 提示而已，而是一个完整的执行流程。&lt;/p&gt;
+&lt;h2 id=&quot;前面那套分析，对-app-diff-最有借鉴价值的地方&quot;&gt;&lt;a href=&quot;#前面那套分析，对-app-diff-最有借鉴价值的地方&quot; class=&quot;headerlink&quot; title=&quot;前面那套分析，对 app diff 最有借鉴价值的地方&quot;&gt;&lt;/a&gt;前面那套分析，对 app diff 最有借鉴价值的地方&lt;/h2&gt;&lt;h3 id=&quot;1-把“发现更新”和“应用更新”分开&quot;&gt;&lt;a href=&quot;#1-把“发现更新”和“应用更新”分开&quot; class=&quot;headerlink&quot; title=&quot;1. 把“发现更新”和“应用更新”分开&quot;&gt;&lt;/a&gt;1. 把“发现更新”和“应用更新”分开&lt;/h3&gt;&lt;p&gt;这是最重要的迁移点。&lt;/p&gt;
+&lt;p&gt;不要把：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;有没有新版本&lt;/li&gt;
+&lt;li&gt;是否有可用差分包&lt;/li&gt;
+&lt;li&gt;是否要静默下载&lt;/li&gt;
+&lt;li&gt;是否现在安装&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;混成一个动作。&lt;/p&gt;
+&lt;p&gt;更稳的设计应该是：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;先发现新版本&lt;/li&gt;
+&lt;li&gt;再拉 manifest&lt;/li&gt;
+&lt;li&gt;再决定走差分还是整包&lt;/li&gt;
+&lt;li&gt;再决定何时安装、如何提示用户&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;2-轮询-推送方式只决定“通知时机”，不决定“diff-策略”&quot;&gt;&lt;a href=&quot;#2-轮询-推送方式只决定“通知时机”，不决定“diff-策略”&quot; class=&quot;headerlink&quot; title=&quot;2. 轮询 &amp;#x2F; 推送方式只决定“通知时机”，不决定“diff 策略”&quot;&gt;&lt;/a&gt;2. 轮询 &amp;#x2F; 推送方式只决定“通知时机”，不决定“diff 策略”&lt;/h3&gt;&lt;p&gt;这和前面 Web vs RSS 的讨论是一致的。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;轮询、WebSocket、SSE、Push&lt;ul&gt;
+&lt;li&gt;决定的是“客户端何时知道有更新”&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;manifest、hash、patch、chunk&lt;ul&gt;
+&lt;li&gt;决定的是“客户端怎么做差分更新”&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;所以这两件事最好不要混在一起。&lt;/p&gt;
+&lt;h3 id=&quot;3-缓存、幂等、回滚在-app-diff-里比-Web-更重要&quot;&gt;&lt;a href=&quot;#3-缓存、幂等、回滚在-app-diff-里比-Web-更重要&quot; class=&quot;headerlink&quot; title=&quot;3. 缓存、幂等、回滚在 app diff 里比 Web 更重要&quot;&gt;&lt;/a&gt;3. 缓存、幂等、回滚在 app diff 里比 Web 更重要&lt;/h3&gt;&lt;p&gt;网页版本弹窗里，刷新失败大多还能再来一次；但 app diff 场景里，更新失败的代价大得多。&lt;br&gt;因此同样的思路迁移过来后，要把以下能力做得更严格：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;manifest 校验&lt;/li&gt;
+&lt;li&gt;patch 完整性校验&lt;/li&gt;
+&lt;li&gt;断点续传&lt;/li&gt;
+&lt;li&gt;失败回滚&lt;/li&gt;
+&lt;li&gt;增量包不匹配时回退整包&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;几种推送方式放到-app-diff-里怎么选&quot;&gt;&lt;a href=&quot;#几种推送方式放到-app-diff-里怎么选&quot; class=&quot;headerlink&quot; title=&quot;几种推送方式放到 app diff 里怎么选&quot;&gt;&lt;/a&gt;几种推送方式放到 app diff 里怎么选&lt;/h2&gt;&lt;h3 id=&quot;轮询&quot;&gt;&lt;a href=&quot;#轮询&quot; class=&quot;headerlink&quot; title=&quot;轮询&quot;&gt;&lt;/a&gt;轮询&lt;/h3&gt;&lt;p&gt;最稳、最常见。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;适合：&lt;ul&gt;
+&lt;li&gt;启动时检查更新&lt;/li&gt;
+&lt;li&gt;每日 &amp;#x2F; 每次冷启动检查&lt;/li&gt;
+&lt;li&gt;后台定时检查&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;优点：&lt;ul&gt;
+&lt;li&gt;实现简单&lt;/li&gt;
+&lt;li&gt;服务端压力可控&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;缺点：&lt;ul&gt;
+&lt;li&gt;更新发现不够实时&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;长轮询&quot;&gt;&lt;a href=&quot;#长轮询&quot; class=&quot;headerlink&quot; title=&quot;长轮询&quot;&gt;&lt;/a&gt;长轮询&lt;/h3&gt;&lt;p&gt;不常见，但如果你有自己的更新中心服务，可以作为“客户端在线等待更新信号”的方案。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;适合：&lt;ul&gt;
+&lt;li&gt;企业内网应用&lt;/li&gt;
+&lt;li&gt;有自建升级中心&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;不适合：&lt;ul&gt;
+&lt;li&gt;海量公网移动端&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;WebSocket-SSE&quot;&gt;&lt;a href=&quot;#WebSocket-SSE&quot; class=&quot;headerlink&quot; title=&quot;WebSocket &amp;#x2F; SSE&quot;&gt;&lt;/a&gt;WebSocket &amp;#x2F; SSE&lt;/h3&gt;&lt;p&gt;适合“客户端在线时的实时更新通知”，但通常不直接承担 patch 下载逻辑。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;更适合：&lt;ul&gt;
+&lt;li&gt;桌面端 app&lt;/li&gt;
+&lt;li&gt;持久在线客户端&lt;/li&gt;
+&lt;li&gt;内部工具 &amp;#x2F; 企业客户端&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;Push-通知&quot;&gt;&lt;a href=&quot;#Push-通知&quot; class=&quot;headerlink&quot; title=&quot;Push 通知&quot;&gt;&lt;/a&gt;Push 通知&lt;/h3&gt;&lt;p&gt;最像“产品化通知层”。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;可用于：&lt;ul&gt;
+&lt;li&gt;告诉用户有新版本&lt;/li&gt;
+&lt;li&gt;引导用户打开 app 后再走 diff 更新&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;一般不建议：&lt;ul&gt;
+&lt;li&gt;直接把 Push 当成 patch 分发机制&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;我的判断&quot;&gt;&lt;a href=&quot;#我的判断&quot; class=&quot;headerlink&quot; title=&quot;我的判断&quot;&gt;&lt;/a&gt;我的判断&lt;/h2&gt;&lt;p&gt;如果把刚才那套差异对比迁到 &lt;code&gt;app 文件 diff&lt;/code&gt;，最关键的变化是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Web &amp;#x2F; RSS 主要在讨论“&lt;strong&gt;更新消息怎么到达&lt;/strong&gt;”&lt;/li&gt;
+&lt;li&gt;App diff 更需要讨论“&lt;strong&gt;更新内容怎么被安全、准确地计算和应用&lt;/strong&gt;”&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;所以在 app diff 场景里，最好的抽象不是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;轮询 vs WebSocket&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;而是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;通知层&lt;/strong&gt;：怎么知道有新版本&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;清单层&lt;/strong&gt;：怎么描述版本与文件状态&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;差分层&lt;/strong&gt;：怎么计算 patch &amp;#x2F; chunk&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;执行层&lt;/strong&gt;：怎么下载、校验、回滚、安装&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;一句话概括&quot;&gt;&lt;a href=&quot;#一句话概括&quot; class=&quot;headerlink&quot; title=&quot;一句话概括&quot;&gt;&lt;/a&gt;一句话概括&lt;/h2&gt;&lt;p&gt;把前面那套分析迁到 app diff 后，可以这样记：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;轮询 &amp;#x2F; 推送机制解决“何时知道有更新”&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;manifest &amp;#x2F; hash &amp;#x2F; patch 机制解决“具体更新什么、怎么更”&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;相关页面&quot;&gt;&lt;a href=&quot;#相关页面&quot; class=&quot;headerlink&quot; title=&quot;相关页面&quot;&gt;&lt;/a&gt;相关页面&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;../sources/webpage-version-update-popup-implementation.html&quot;&gt;来源：Web端版本更新弹窗实现&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;review-web-version-update-popup-scheme.html&quot;&gt;查询：Web端版本更新弹窗这篇文章里的方案有什么问题，有更好的方案吗&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;web-update-patterns-for-rss.html&quot;&gt;查询：Web端版本更新弹窗里的几种推送方式，对 RSS 推送机制有什么可借鉴之处&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+"><title>查询：刚刚讨论的差异对比，如果用在 App 文件 Diff 场景里该怎么理解</title><link rel="stylesheet" type="text/css" href="../../css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/normalize.css/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="../../favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="../../favicon.ico"><link rel="apple-touch-icon" href="../../apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="../../apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="../../atom.xml"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/clipboard/dist/clipboard.min.js"></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.js"></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.css"><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">查询：刚刚讨论的差异对比，如果用在 App 文件 Diff 场景里该怎么理解</h1><a id="logo" href="../../.">Canace 的博客</a><p class="description">Tomorrow is another day</p></div><div id="nav-menu"><a href="../../."><i class="fa fa-home"> 主页</i></a><a href="../../archives/"><i class="fa fa-archive"> 文章归档</i></a><a class="current" href="../"><i class="fa fa-book"> 知识库</i></a><a href="../../about/"><i class="fa fa-user"> 关于我</i></a><a href="../../atom.xml"><i class="fa fa-rss"> 订阅</i></a><a id="nav-random-article" href="#" title="随机文章" aria-label="随机文章"><i class="fa fa-random"> 随机文章</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">查询：刚刚讨论的差异对比，如果用在 App 文件 Diff 场景里该怎么理解</h1><div class="clear"><div class="toc-article" id="toc"><div class="toc-title">目录</div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-text">问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%81%87%E8%AE%BE"><span class="toc-text">假设</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E8%AE%BA"><span class="toc-text">结论</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A5%97%E5%88%B0-app-diff-%E5%90%8E%EF%BC%8C%E7%BB%93%E6%9E%84%E4%BC%9A%E5%8F%98%E6%88%90%E4%BB%80%E4%B9%88"><span class="toc-text">套到 app diff 后，结构会变成什么</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%B8%8A%E6%B8%B8%E5%8F%91%E7%8E%B0%E6%9B%B4%E6%96%B0"><span class="toc-text">1. 上游发现更新</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%B7%AE%E5%BC%82%E8%AE%A1%E7%AE%97%E5%B1%82"><span class="toc-text">2. 差异计算层</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E4%B8%8B%E6%B8%B8%E9%80%81%E8%BE%BE%E4%B8%8E%E5%BA%94%E7%94%A8%E5%B1%82"><span class="toc-text">3. 下游送达与应用层</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E9%9D%A2%E9%82%A3%E5%A5%97%E5%88%86%E6%9E%90%EF%BC%8C%E5%AF%B9-app-diff-%E6%9C%80%E6%9C%89%E5%80%9F%E9%89%B4%E4%BB%B7%E5%80%BC%E7%9A%84%E5%9C%B0%E6%96%B9"><span class="toc-text">前面那套分析，对 app diff 最有借鉴价值的地方</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%8A%8A%E2%80%9C%E5%8F%91%E7%8E%B0%E6%9B%B4%E6%96%B0%E2%80%9D%E5%92%8C%E2%80%9C%E5%BA%94%E7%94%A8%E6%9B%B4%E6%96%B0%E2%80%9D%E5%88%86%E5%BC%80"><span class="toc-text">1. 把“发现更新”和“应用更新”分开</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%BD%AE%E8%AF%A2-%E6%8E%A8%E9%80%81%E6%96%B9%E5%BC%8F%E5%8F%AA%E5%86%B3%E5%AE%9A%E2%80%9C%E9%80%9A%E7%9F%A5%E6%97%B6%E6%9C%BA%E2%80%9D%EF%BC%8C%E4%B8%8D%E5%86%B3%E5%AE%9A%E2%80%9Cdiff-%E7%AD%96%E7%95%A5%E2%80%9D"><span class="toc-text">2. 轮询 &#x2F; 推送方式只决定“通知时机”，不决定“diff 策略”</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E7%BC%93%E5%AD%98%E3%80%81%E5%B9%82%E7%AD%89%E3%80%81%E5%9B%9E%E6%BB%9A%E5%9C%A8-app-diff-%E9%87%8C%E6%AF%94-Web-%E6%9B%B4%E9%87%8D%E8%A6%81"><span class="toc-text">3. 缓存、幂等、回滚在 app diff 里比 Web 更重要</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%A0%E7%A7%8D%E6%8E%A8%E9%80%81%E6%96%B9%E5%BC%8F%E6%94%BE%E5%88%B0-app-diff-%E9%87%8C%E6%80%8E%E4%B9%88%E9%80%89"><span class="toc-text">几种推送方式放到 app diff 里怎么选</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AE%E8%AF%A2"><span class="toc-text">轮询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%95%BF%E8%BD%AE%E8%AF%A2"><span class="toc-text">长轮询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WebSocket-SSE"><span class="toc-text">WebSocket &#x2F; SSE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Push-%E9%80%9A%E7%9F%A5"><span class="toc-text">Push 通知</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E7%9A%84%E5%88%A4%E6%96%AD"><span class="toc-text">我的判断</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%A6%82%E6%8B%AC"><span class="toc-text">一句话概括</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E9%A1%B5%E9%9D%A2"><span class="toc-text">相关页面</span></a></li></ol></div></div><div class="post-content"><h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>刚刚讨论的“上游发现更新 &#x2F; 下游送达用户”的差异对比，如果用在 <code>app 文件 diff</code> 场景里，该怎么理解？</p>
+<h2 id="假设"><a href="#假设" class="headerlink" title="假设"></a>假设</h2><p>这里把 <code>app 文件 diff</code> 理解为：</p>
+<ul>
+<li>客户端已有本地版本</li>
+<li>服务端有新版本</li>
+<li>通过 <strong>manifest &#x2F; 文件哈希 &#x2F; patch 包</strong> 判断差异</li>
+<li>优先下发增量更新，而不是整包重装</li>
+</ul>
+<p>也就是典型的 <strong>客户端增量更新 &#x2F; 差分包更新</strong> 语境。</p>
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>如果迁移刚刚那套分析框架，<code>app 文件 diff</code> 不能只看“怎么通知有新版本”，而要拆成三层：</p>
+<ol>
+<li><strong>发现更新</strong></li>
+<li><strong>计算差异</strong></li>
+<li><strong>下载并应用差异</strong></li>
+</ol>
+<p>在 Web 版本更新弹窗里，重点是：</p>
+<ul>
+<li>发现更新：轮询 <code>version.json</code></li>
+<li>送达用户：弹窗提醒刷新</li>
+</ul>
+<p>而在 app 文件 diff 里，中间会多出一层最关键的东西：</p>
+<ul>
+<li><strong>差异本身怎么定义、怎么生成、怎么校验</strong></li>
+</ul>
+<p>所以它比网页版本提示更接近“<strong>更新分发系统</strong>”，而不只是“更新提醒系统”。</p>
+<h2 id="套到-app-diff-后，结构会变成什么"><a href="#套到-app-diff-后，结构会变成什么" class="headerlink" title="套到 app diff 后，结构会变成什么"></a>套到 app diff 后，结构会变成什么</h2><h3 id="1-上游发现更新"><a href="#1-上游发现更新" class="headerlink" title="1. 上游发现更新"></a>1. 上游发现更新</h3><p>这一层和前面讨论的 Web &#x2F; RSS 很像，仍然是在回答：</p>
+<ul>
+<li>客户端怎么知道服务端有新版本？</li>
+</ul>
+<p>可选方式仍然可以是：</p>
+<ul>
+<li>轮询</li>
+<li>长轮询</li>
+<li>WebSocket</li>
+<li>SSE</li>
+<li>Push 通知</li>
+</ul>
+<p>但它们在 app diff 语境里的角色变成了：</p>
+<ul>
+<li><strong>只负责告诉客户端“有更新可看”</strong></li>
+<li><strong>不负责决定具体下载哪些文件块</strong></li>
+</ul>
+<p>也就是说，这些机制主要作用于“<strong>更新通知层</strong>”，而不是“<strong>diff 算法层</strong>”。</p>
+<h3 id="2-差异计算层"><a href="#2-差异计算层" class="headerlink" title="2. 差异计算层"></a>2. 差异计算层</h3><p>这是 app diff 相比网页更新弹窗新增的核心层。</p>
+<p>通常会有一份服务端 manifest，描述：</p>
+<ul>
+<li>当前最新版本号</li>
+<li>各文件路径</li>
+<li>各文件 hash &#x2F; size</li>
+<li>补丁包地址</li>
+<li>从哪些旧版本可以直接升级</li>
+</ul>
+<p>客户端拿到 manifest 后，才开始做真正的 diff 判断：</p>
+<ul>
+<li>本地版本是不是太旧，必须整包升级</li>
+<li>本地有哪些文件 hash 已一致，可以跳过</li>
+<li>哪些文件要下载 patch</li>
+<li>patch 失败时是否回退整包</li>
+</ul>
+<p>所以在 app diff 里，更关键的对比不是“旧版号 vs 新版号”，而是：</p>
+<ul>
+<li><strong>本地文件清单 vs 远端 manifest</strong></li>
+</ul>
+<h2 id="3-下游送达与应用层"><a href="#3-下游送达与应用层" class="headerlink" title="3. 下游送达与应用层"></a>3. 下游送达与应用层</h2><p>这一层相当于前面讨论里的“送达用户”，但在 app diff 里更复杂：</p>
+<ul>
+<li>Web 页面：提示刷新</li>
+<li>RSS Bot：发一条消息</li>
+<li>App diff：下载 patch、校验、解压、替换、回滚，最后再提示安装或重启</li>
+</ul>
+<p>也就是说，app diff 的“送达”不是 UI 提示而已，而是一个完整的执行流程。</p>
+<h2 id="前面那套分析，对-app-diff-最有借鉴价值的地方"><a href="#前面那套分析，对-app-diff-最有借鉴价值的地方" class="headerlink" title="前面那套分析，对 app diff 最有借鉴价值的地方"></a>前面那套分析，对 app diff 最有借鉴价值的地方</h2><h3 id="1-把“发现更新”和“应用更新”分开"><a href="#1-把“发现更新”和“应用更新”分开" class="headerlink" title="1. 把“发现更新”和“应用更新”分开"></a>1. 把“发现更新”和“应用更新”分开</h3><p>这是最重要的迁移点。</p>
+<p>不要把：</p>
+<ul>
+<li>有没有新版本</li>
+<li>是否有可用差分包</li>
+<li>是否要静默下载</li>
+<li>是否现在安装</li>
+</ul>
+<p>混成一个动作。</p>
+<p>更稳的设计应该是：</p>
+<ol>
+<li>先发现新版本</li>
+<li>再拉 manifest</li>
+<li>再决定走差分还是整包</li>
+<li>再决定何时安装、如何提示用户</li>
+</ol>
+<h3 id="2-轮询-推送方式只决定“通知时机”，不决定“diff-策略”"><a href="#2-轮询-推送方式只决定“通知时机”，不决定“diff-策略”" class="headerlink" title="2. 轮询 &#x2F; 推送方式只决定“通知时机”，不决定“diff 策略”"></a>2. 轮询 &#x2F; 推送方式只决定“通知时机”，不决定“diff 策略”</h3><p>这和前面 Web vs RSS 的讨论是一致的。</p>
+<ul>
+<li>轮询、WebSocket、SSE、Push<ul>
+<li>决定的是“客户端何时知道有更新”</li>
+</ul>
+</li>
+<li>manifest、hash、patch、chunk<ul>
+<li>决定的是“客户端怎么做差分更新”</li>
+</ul>
+</li>
+</ul>
+<p>所以这两件事最好不要混在一起。</p>
+<h3 id="3-缓存、幂等、回滚在-app-diff-里比-Web-更重要"><a href="#3-缓存、幂等、回滚在-app-diff-里比-Web-更重要" class="headerlink" title="3. 缓存、幂等、回滚在 app diff 里比 Web 更重要"></a>3. 缓存、幂等、回滚在 app diff 里比 Web 更重要</h3><p>网页版本弹窗里，刷新失败大多还能再来一次；但 app diff 场景里，更新失败的代价大得多。<br>因此同样的思路迁移过来后，要把以下能力做得更严格：</p>
+<ul>
+<li>manifest 校验</li>
+<li>patch 完整性校验</li>
+<li>断点续传</li>
+<li>失败回滚</li>
+<li>增量包不匹配时回退整包</li>
+</ul>
+<h2 id="几种推送方式放到-app-diff-里怎么选"><a href="#几种推送方式放到-app-diff-里怎么选" class="headerlink" title="几种推送方式放到 app diff 里怎么选"></a>几种推送方式放到 app diff 里怎么选</h2><h3 id="轮询"><a href="#轮询" class="headerlink" title="轮询"></a>轮询</h3><p>最稳、最常见。</p>
+<ul>
+<li>适合：<ul>
+<li>启动时检查更新</li>
+<li>每日 &#x2F; 每次冷启动检查</li>
+<li>后台定时检查</li>
+</ul>
+</li>
+<li>优点：<ul>
+<li>实现简单</li>
+<li>服务端压力可控</li>
+</ul>
+</li>
+<li>缺点：<ul>
+<li>更新发现不够实时</li>
+</ul>
+</li>
+</ul>
+<h3 id="长轮询"><a href="#长轮询" class="headerlink" title="长轮询"></a>长轮询</h3><p>不常见，但如果你有自己的更新中心服务，可以作为“客户端在线等待更新信号”的方案。</p>
+<ul>
+<li>适合：<ul>
+<li>企业内网应用</li>
+<li>有自建升级中心</li>
+</ul>
+</li>
+<li>不适合：<ul>
+<li>海量公网移动端</li>
+</ul>
+</li>
+</ul>
+<h3 id="WebSocket-SSE"><a href="#WebSocket-SSE" class="headerlink" title="WebSocket &#x2F; SSE"></a>WebSocket &#x2F; SSE</h3><p>适合“客户端在线时的实时更新通知”，但通常不直接承担 patch 下载逻辑。</p>
+<ul>
+<li>更适合：<ul>
+<li>桌面端 app</li>
+<li>持久在线客户端</li>
+<li>内部工具 &#x2F; 企业客户端</li>
+</ul>
+</li>
+</ul>
+<h3 id="Push-通知"><a href="#Push-通知" class="headerlink" title="Push 通知"></a>Push 通知</h3><p>最像“产品化通知层”。</p>
+<ul>
+<li>可用于：<ul>
+<li>告诉用户有新版本</li>
+<li>引导用户打开 app 后再走 diff 更新</li>
+</ul>
+</li>
+<li>一般不建议：<ul>
+<li>直接把 Push 当成 patch 分发机制</li>
+</ul>
+</li>
+</ul>
+<h2 id="我的判断"><a href="#我的判断" class="headerlink" title="我的判断"></a>我的判断</h2><p>如果把刚才那套差异对比迁到 <code>app 文件 diff</code>，最关键的变化是：</p>
+<ul>
+<li>Web &#x2F; RSS 主要在讨论“<strong>更新消息怎么到达</strong>”</li>
+<li>App diff 更需要讨论“<strong>更新内容怎么被安全、准确地计算和应用</strong>”</li>
+</ul>
+<p>所以在 app diff 场景里，最好的抽象不是：</p>
+<ul>
+<li>轮询 vs WebSocket</li>
+</ul>
+<p>而是：</p>
+<ul>
+<li><strong>通知层</strong>：怎么知道有新版本</li>
+<li><strong>清单层</strong>：怎么描述版本与文件状态</li>
+<li><strong>差分层</strong>：怎么计算 patch &#x2F; chunk</li>
+<li><strong>执行层</strong>：怎么下载、校验、回滚、安装</li>
+</ul>
+<h2 id="一句话概括"><a href="#一句话概括" class="headerlink" title="一句话概括"></a>一句话概括</h2><p>把前面那套分析迁到 app diff 后，可以这样记：</p>
+<ul>
+<li><strong>轮询 &#x2F; 推送机制解决“何时知道有更新”</strong></li>
+<li><strong>manifest &#x2F; hash &#x2F; patch 机制解决“具体更新什么、怎么更”</strong></li>
+</ul>
+<h2 id="相关页面"><a href="#相关页面" class="headerlink" title="相关页面"></a>相关页面</h2><ul>
+<li><a href="../sources/webpage-version-update-popup-implementation.html">来源：Web端版本更新弹窗实现</a></li>
+<li><a href="review-web-version-update-popup-scheme.html">查询：Web端版本更新弹窗这篇文章里的方案有什么问题，有更好的方案吗</a></li>
+<li><a href="web-update-patterns-for-rss.html">查询：Web端版本更新弹窗里的几种推送方式，对 RSS 推送机制有什么可借鉴之处</a></li>
+</ul>
+</div></div></div></div><div class="pure-u-1 pure-u-md-1-4"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 常用文档</i></div><ul></ul><a href="/git-common-commands" title="Git 文档" target="_blank">Git 文档</a><ul></ul><a href="/common-programming-prompt-words" title="常用开发提示词" target="_blank">常用开发提示词</a></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="../../categories/cli/">工程化与运维</a><span class="category-list-count">50</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/soft/">软技能与思考</a><span class="category-list-count">48</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/intelligent/">AI探索</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/web/">Web开发</a><span class="category-list-count">142</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/coding/">编程基础</a><span class="category-list-count">42</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/site/">网站建设</a><span class="category-list-count">5</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="../../tags/performance/" style="font-size: 15px; color: #7a9fb8">性能优化</a> <a href="../../tags/essays/" style="font-size: 15px; color: #3679a7">随笔</a> <a href="../../tags/AI%E5%8E%9F%E7%90%86/" style="font-size: 15px; color: #96aebf">AI原理</a> <a href="../../tags/backend/" style="font-size: 15px; color: #5f90b1">后端</a> <a href="../../tags/Python-Go-%E5%85%B6%E4%BB%96/" style="font-size: 15px; color: #88a6bb">Python/Go/其他</a> <a href="../../tags/api-services/" style="font-size: 15px; color: #bec4c9">API&服务</a> <a href="../../tags/computer-science/" style="font-size: 15px; color: #2972a4">计算机科学</a> <a href="../../tags/JavaScript-TypeScript/" style="font-size: 15px; color: #0e639d">JavaScript&TypeScript</a> <a href="../../tags/%E8%81%8C%E4%B8%9A%E5%8F%91%E5%B1%95/" style="font-size: 15px; color: #7a9fb8">职业发展</a> <a href="../../tags/AI%E7%BC%96%E7%A8%8B/" style="font-size: 15px; color: #7a9fb8">AI编程</a> <a href="../../tags/%E7%BF%BB%E8%AF%91/" style="font-size: 15px; color: #ccc">翻译</a> <a href="../../tags/reading-notes/" style="font-size: 15px; color: #a3b5c2">读书笔记</a> <a href="../../tags/frontend/" style="font-size: 15px; color: #005b9a">前端</a> <a href="../../tags/frameworks-libs/" style="font-size: 15px; color: #5288ae">框架与库</a> <a href="../../tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/" style="font-size: 15px; color: #88a6bb">系统设计</a> <a href="../../tags/programming-languages/" style="font-size: 15px; color: #b1bdc5">编程语言</a> <a href="../../tags/css-visualization/" style="font-size: 15px; color: #1b6aa1">CSS与可视化</a> <a href="../../tags/build-deploy/" style="font-size: 15px; color: #6d97b5">构建与部署</a> <a href="../../tags/dev-tools/" style="font-size: 15px; color: #4481ab">开发工具</a> <a href="../../tags/Agent-Skill/" style="font-size: 15px; color: #ccc">Agent,Skill</a> <a href="../../tags/Node-js/" style="font-size: 15px; color: #7a9fb8">Node.js</a> <a href="../../tags/cross-platform/" style="font-size: 15px; color: #88a6bb">跨端方案</a> <a href="../../tags/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/" style="font-size: 15px; color: #ccc">项目管理</a> <a href="../../tags/%E7%9F%A5%E8%AF%86%E5%BA%93/" style="font-size: 15px; color: #ccc">知识库</a> <a href="../../tags/code-quality/" style="font-size: 15px; color: #bec4c9">代码质量</a></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2026 <a href="../../." rel="nofollow">Canace 的博客</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="../../js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.js" async></script><script type="text/javascript" src="../../js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.css"><link rel="stylesheet" type="text/css" href="../../css/search.css?v=0.0.0"><script type="text/javascript" src="../../js/search.js?v=0.0.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+   search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="/js/copycode.js" successtext="复制成功!"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/mermaid@11.14.0/dist/mermaid.min.js"></script><script type="text/javascript">document.addEventListener('DOMContentLoaded', function () {
+  if (!window.mermaid) return;
+  mermaid.initialize({"theme":"default","logLevel":5,"startOnLoad":true,"arrowMarkerAbsolute":false,"flowchart":{"htmlLabels":true,"useMaxWidth":true,"curve":"linear"},"sequence":{"diagramMarginX":50,"diagramMarginY":10,"actorMargin":50,"width":150,"height":65,"boxMargin":10,"boxTextMargin":5,"noteMargin":10,"messageMargin":35,"mirrorActors":true,"bottomMarginAdj":1,"useMaxWidth":true},"gantt":{"titleTopMargin":25,"barHeight":20,"barGap":4,"topPadding":50,"leftPadding":75,"gridLineStartPadding":35,"fontSize":11,"fontFamily":"\"Open-Sans\", \"sans-serif\"","numberSectionStyles":4,"axisFormat":"%Y-%m-%d"},"class":{},"git":{}});
+});
+</script><script type="text/javascript" src="../../js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="../../js/smartresize.js?v=0.0.0"></script><script type="text/javascript">(function () {
+  var urls = ["/../../6-common-website-usability-issues-and-solutions/","/../../2024-year-end-summary/","/../../AI-knowledge-base/","/../../Django-channels/","/../../MySQL/","/../../NP-P-NPC/","/../../JavaScript-call-apply-bind/","/../../about-doing-technology/","/../../WebRTC/","/../../about-forgetfulness/","/../../agent-coding-stability/","/../../ai-coding-game/","/../../add-skeleton-screen/","/../../ai-coding-share/","/../../ai-make-you-boring/","/../../ai-coding-ide/","/../../ai-expansion/","/../../ai-optimize-ui/","/../../ai-worker/","/../../algorithm-book-notes-for-everyone/","/../../angular-navigation-content-linkage/","/../../ant-design-pitfalls/","/../../angel-love/","/../../ants/","/../../async-data-console-issues/","/../../axios-network-request-encapsulation/","/../../binary-search/","/../../bash-data-processing/","/../../beego-getting-started/","/../../blog-category/","/../../boolean-variables-in-project-application/","/../../box-model/","/../../brief-discussion-on-dns-pollution/","/../../bracket-matching/","/../../brief-discussion-on-visual-form-design/","/../../browser-kernel-and-writing/","/../../build-django-blog-system/","/../../build-typescript-library/","/../../calculate-rice-cooker-reservation-time/","/../../canvas-draw-dynamic-path/","/../../cascade/","/../../build-tinymce-img-plugin/","/../../canvas-draw-sprite-export/","/../../centos-server-login-config/","/../../ckeditor-usage-in-angular/","/../../code-optimization/","/../../common-algorithm-ideas/","/../../common-git-workflows/","/../../common-image-format-comparison/","/../../climbing-stairs/","/../../common-programming-prompt-words/","/../../common-regular-expressions/","/../../common-terminal-commands/","/../../computer-graphics-1/","/../../count-beautiful-subarrays/","/../../count-number-of-islands/","/../../count-total-elements-of-array-objects/","/../../computer-graphics-2/","/../../create-object-based-on-null/","/../../cross-origin-resource-sharing/","/../../css-background-image-application/","/../../css-circular-progress-bar/","/../../css-notes/","/../../css-positioning-detailed/","/../../css-positioning/","/../../css-series-basics/","/../../css-layout-guide/","/../../css-series-cascade/","/../../css-series-box-dimensions/","/../../css-series-flow-and-dimensions/","/../../css-series-history-and-document-flow/","/../../css-series-inline-elements-and-flow/","/../../css-series-text-processing/","/../../css-tips/","/../../css-series-flow-destruction-and-protection/","/../../css3-animation-vs-js-animation/","/../../css-two-color-pie-chart/","/../../cursor-debugger/","/../../custom-github-activity/","/../../css2-block-element-center/","/../../deep-work-philosophy-interpretation/","/../../deep-copy-of-arrays-and-objects/","/../../disable-image-dragging/","/../../cursor-skill-web-search-download-movie/","/../../docker-documentation/","/../../docker-frontend-environment-setup/","/../../doing-things-with-vscode/","/../../egg/","/../../dropdown-list-implementation/","/../../element-plus-table-component-scaling-issue-solution/","/../../es2020-new-features/","/../../extra-thick-chicken-soup/","/../../file-naming-pitfalls-record/","/../../ffmpeg-extract-audio-track/","/../../find-median-sorted-arrays/","/../../firefox-remove-various-dashed-borders/","/../../first-day-morning-run/","/../../first-screen-optimization/","/../../first-screen-time-vs-white-screen-time/","/../../flow-simple-tutorial/","/../../fix-github-image-issue-on-mac/","/../../flutter-learning-notes-dart-basics/","/../../frontend-draw-graphic-captcha/","/../../flutter-learning-notes-quick-start/","/../../frontend-performance-optimization/","/../../four-js-tips/","/../../frontend-xx-dockerization/","/../../fullscreen-solution-for-webpage-or-html-elements/","/../../fun-console/","/../../function-currying/","/../../function-without-global-variable-counting/","/../../functional-programming/","/../../generate-random-array-in-specified-range/","/../../get-css-style/","/../../gemini-new-session-memory/","/../../ghost-whitespace-nodes/","/../../git-common-commands/","/../../get-longest-common-prefix/","/../../git-domain-config/","/../../git-environment-config/","/../../git-usage-guide/","/../../gitbook-generate-ebook/","/../../github-action-auto-deploy-page/","/../../github-practical-tips/","/../../github-travis-auto-build-vue-to-gitpage/","/../../gitlab-ci-config-template/","/../../gitpage-hexo/","/../../go-getting-started/","/../../hexo-blog-migration/","/../../hexo-getting-started/","/../../hexo-math-formula-support/","/../../how-to-create-a-robust-system/","/../../html-notes/","/../../homebrew-common-commands/","/../../how-to-optimize-animation/","/../../html-to-text-js/","/../../http-notes/","/../../http-server/","/../../image-lazy-loading-implementation/","/../../implement-array-flatten/","/../../interview-strategy/","/../../improve-work-efficiency-with-cursor-practical-notes/","/../../interesting-css-cascade-issues/","/../../issue-03/","/../../issue-05/","/../../issue-04/","/../../issue-07/","/../../issue-06/","/../../issue-08/","/../../issue-09/","/../../issue-10/","/../../issue-11/","/../../issue-12/","/../../issue-1/","/../../issue-15/","/../../issue-14/","/../../issue-13/","/../../issue-2/","/../../japanese-learning-notes/","/../../javaScript-promise/","/../../javascript-basics-primitive-vs-reference-types/","/../../javascript-basics-type-conversion/","/../../javascript-common-code-snippets/","/../../javascript-built-in-deep-copy/","/../../javascript-detect-caps-lock/","/../../javascript-functions/","/../../javascript-new-implementation-principle/","/../../javascript-object-oriented-programming/","/../../javascript-soul-questions/","/../../javascript-tricks/","/../../js-execution/","/../../js-linked-list-implementation/","/../../js-overview/","/../../js-modal-blog/","/../../js-string-to-base64/","/../../js-timezone/","/../../key-value-role-in-vue-components/","/../../jump-to-specific-position-in-article/","/../../knowledge-anxiety/","/../../kindness/","/../../kpi-vs-okr/","/../../knn-algorithm/","/../../leave-page-popup/","/../../linux-background-script-execution/","/../../lodash-source-analysis-array-chunk/","/../../lodash-source-analysis-array-slice/","/../../mac-debug-ios-web-page/","/../../mac-install-mysql/","/../../llm-wiki/","/../../manchester-by-the-sea/","/../../mini-program-tabs-sticky/","/../../model-training-steps/","/../../modify-autofill-style/","/../../modify-scrollbar-style-compatible/","/../../method-to-login-to-south-china-normal-university-campus-network/","/../../module-specifications/","/../../n-n-order-matrix-algorithm/","/../../node-version-management/","/../../nodeJs/","/../../nodejs-config/","/../../node-notes-in-depth/","/../../nodejs-module-mechanism/","/../../nodejs-notes/","/../../notes-about-writing-weekly-reports/","/../../number-precise-to-two-decimal-places/","/../../object-property-value-monitoring/","/../../one-click-generate-responsive-table/","/../../package-json-field-list/","/../../pagination-algorithm/","/../../npm-common-commands/","/../../palindrome-number-judgment/","/../../personal-knowledge-base/","/../../pixi-basics/","/../../pixi-js-sprite-loading-cache-removal/","/../../pixijs-vertexData-null/","/../../pinyin-learning-project-notes/","/../../port-number-modification/","/../../prisma-getting-started-guide/","/../../product-updates-rss-file-diff-mental-model/","/../../project-modularization-principles/","/../../proxy-observer-pattern/","/../../python3-installation/","/../../python-pitfalls-collection/","/../../record-service-degradation-due-to-emergency/","/../../react-hooks-create-movie-app/","/../../qwen-milk-tea-ui/","/../../recursive-tree/","/../../refactoring-vs-architecture/","/../../remove-parent-nodes-with-duplicate-child-ids/","/../../removeDuplicates/","/../../removeElement/","/../../regular-expressions/","/../../reverse-integer/","/../../reverse-words-in-string/","/../../roman-numerals-to-integer/","/../../rss-telegram-selfhost/","/../../scroll-pagination/","/../../sentence-excerpts/","/../../settimeout-simulate-setinterval/","/../../singly-linked-list-concatenation/","/../../science-popularization/","/../../solve-github-dns-pollution-issue/","/../../software-version-number-definition/","/../../ss-installation/","/../../sublime-text-nodejs-config/","/../../some-concepts/","/../../string-and-code-rigor/","/../../systematic-method-for-fragmented-reading-knowledge/","/../../talking-about-browser-cache-mechanism/","/../../talking-about-vuex/","/../../talking-about-webpage-adaptive-and-responsive-layout/","/../../tcp-ip-three-way-handshake/","/../../thoughts-on-ad-blocker-plugins/","/../../thoughts-on-branch-management/","/../../table-cell-equal-division/","/../../thoughts-on-technical-growth/","/../../time-complexity-vs-space-complexity/","/../../three-js-basics-practice/","/../../timestamp-to-date/","/../../translate-use-claude-code/","/../../two-sum-problem/","/../../time-zero/","/../../typescript-environment-config/","/../../ubuntu-configure-frontend-environment/","/../../ubuntu-configure-ss/","/../../understanding-byte-order/","/../../unavoidable-bug-chrome-translation-caused-trouble/","/../../understanding-cookies/","/../../ubuntu-install-tensorflow/","/../../understanding-instanceof/","/../../validate-string/","/../../variables/","/../../vue-config-template/","/../../vue-data-driven-view-implementation/","/../../vue-details-i-didnt-know/","/../../vscode-code-formatting-summary/","/../../vue-dynamic-change-title/","/../../vue-dynamic-component-import-note-not-async/","/../../vue-test-unit/","/../../vue3-notes/","/../../web-performance-optimization-debounce/","/../../web-security-csrf/","/../../web-security-xss-attack/","/../../vue-project-setup-steps/","/../../webpack-dynamic-modify-resource-domain/","/../../webpack-gulp-bundle-vue-component-library/","/../../webpack5-new-features-module-federation-notes/","/../../wechat-mini-program-pitfalls/","/../../webpage-version-update-popup-implementation/","/../../webpack/","/../../what-happened-to-vue/","/../../what-happens-from-url-to-display/","/../../why-frontend-needs-framework/","/../../why-not-let-ai-write-for-us/","/../../why-we-need-to-read/","/../../why-graphics-card/","/../../windows-tricks/","/../../why-write-wechat-official-account/","/../../words-of-experience/","/../../wordpress-installation/","/../../work-for/","/../../writing-a-good-claude-md/","/../../yml-file-operations/","/../../wsl-config/"];
+  var el = document.getElementById('nav-random-article');
+  if (!el) return;
+  el.addEventListener('click', function (e) {
+    e.preventDefault();
+    if (!urls.length) return;
+    var next = urls[Math.floor(Math.random() * urls.length)];
+    if (next) window.location.href = next;
+  });
+})();</script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":200,"height":200},"mobile":{"show":false},"react":{"opacity":0.7},"log":false});</script></body></html>

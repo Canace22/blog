@@ -1,0 +1,273 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="canace 的博客"><meta itemprop="name" content="查询：Web端版本更新弹窗里的几种推送方式，对 RSS 推送机制有什么可借鉴之处"><meta itemprop="image" content="https://raw.githubusercontent.com/Canace22/Assets/main/images/snow-other.png"><meta property="og:image" content="https://raw.githubusercontent.com/Canace22/Assets/main/images/snow-other.png"><meta name="description" itemprop="description" content="&lt;h2 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h2&gt;&lt;p&gt;&lt;code&gt;Web端版本更新弹窗实现&lt;/code&gt; 这篇文章里的几种推送方式，对 RSS 推送机制有什么可借鉴的地方？&lt;/p&gt;
+&lt;h2 id=&quot;结论&quot;&gt;&lt;a href=&quot;#结论&quot; class=&quot;headerlink&quot; title=&quot;结论&quot;&gt;&lt;/a&gt;结论&lt;/h2&gt;&lt;p&gt;最值得借鉴的，不是把 RSS 机械地改写成某一种“更高级的推送协议”，而是把整条链路拆成两层来看：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;上游如何发现更新&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;下游如何把更新送达到用户&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;对照 &lt;a href=&quot;../sources/webpage-version-update-popup-implementation.html&quot;&gt;Web端版本更新弹窗实现&lt;/a&gt; 和 &lt;a href=&quot;../sources/gemini-flowerss-bot-principle.html&quot;&gt;Gemini 对话——indes&amp;#x2F;flowerss-bot 项目原理&lt;/a&gt;，当前 RSS &amp;#x2F; Telegram Bot 的典型实现，本质是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;上游：&lt;strong&gt;轮询 RSS&amp;#x2F;Atom&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;下游：&lt;strong&gt;调用 Telegram Bot API 分发&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;因此，Web 端那几种方案对 RSS 的借鉴，更多是&lt;strong&gt;架构启发&lt;/strong&gt;，而不是“一一替换”。&lt;/p&gt;
+&lt;h2 id=&quot;分方案看，可借鉴点如下&quot;&gt;&lt;a href=&quot;#分方案看，可借鉴点如下&quot; class=&quot;headerlink&quot; title=&quot;分方案看，可借鉴点如下&quot;&gt;&lt;/a&gt;分方案看，可借鉴点如下&lt;/h2&gt;&lt;h3 id=&quot;1-轮询（Polling）&quot;&gt;&lt;a href=&quot;#1-轮询（Polling）&quot; class=&quot;headerlink&quot; title=&quot;1. 轮询（Polling）&quot;&gt;&lt;/a&gt;1. 轮询（Polling）&lt;/h3&gt;&lt;p&gt;这是对 RSS 机制最直接的借鉴，因为典型 RSS Bot 本来就是轮询。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;借鉴点 1：接受 RSS 天生偏低频&lt;/strong&gt;&lt;ul&gt;
+&lt;li&gt;像版本更新弹窗一样，RSS 也适合“低频、最终一致”场景，不必默认追求强实时。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;借鉴点 2：把轮询做得更工程化&lt;/strong&gt;&lt;ul&gt;
+&lt;li&gt;控制合理轮询间隔，避免过于频繁地抓取 feed。&lt;/li&gt;
+&lt;li&gt;做失败重试、退避和超时控制，避免单个源卡住整个任务。&lt;/li&gt;
+&lt;li&gt;做状态记忆与去重，避免重复推送旧条目。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;借鉴点 3：关注缓存而不是盲拉&lt;/strong&gt;&lt;ul&gt;
+&lt;li&gt;版本弹窗靠查询参数绕过缓存；RSS 场景更适合进一步利用 &lt;code&gt;ETag&lt;/code&gt; &amp;#x2F; &lt;code&gt;Last-Modified&lt;/code&gt; 这类 HTTP 能力，减少无效抓取。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;2-长轮询（Long-Polling）&quot;&gt;&lt;a href=&quot;#2-长轮询（Long-Polling）&quot; class=&quot;headerlink&quot; title=&quot;2. 长轮询（Long Polling）&quot;&gt;&lt;/a&gt;2. 长轮询（Long Polling）&lt;/h3&gt;&lt;p&gt;对 RSS 的直接可借鉴性较弱，因为大多数 RSS 源并不会为你提供“挂起直到有新内容”的接口。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;能借鉴的地方&lt;/strong&gt;：&lt;ul&gt;
+&lt;li&gt;如果你自己有一层聚合服务，可以让“Bot&amp;#x2F;前端”不直接轮询所有 feed，而是向聚合服务做长轮询，等聚合服务检测到新内容再返回。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;不适合直接套用的地方&lt;/strong&gt;：&lt;ul&gt;
+&lt;li&gt;公开 RSS 源通常只暴露普通 HTTP feed，不支持这种服务端挂起连接模型。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;所以，长轮询更适合作为&lt;strong&gt;你自己系统内部的二段式优化&lt;/strong&gt;，不适合作为对外部 RSS 源的通用假设。&lt;/p&gt;
+&lt;h3 id=&quot;3-WebSocket&quot;&gt;&lt;a href=&quot;#3-WebSocket&quot; class=&quot;headerlink&quot; title=&quot;3. WebSocket&quot;&gt;&lt;/a&gt;3. WebSocket&lt;/h3&gt;&lt;p&gt;WebSocket 对 RSS 的主要启发，不在“抓 feed”这一段，而在“把已发现的新内容实时广播给多个在线客户端”这一段。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;适合借鉴的场景&lt;/strong&gt;：&lt;ul&gt;
+&lt;li&gt;你先用轮询抓 RSS。&lt;/li&gt;
+&lt;li&gt;一旦发现新条目，由中心服务通过 WebSocket 立刻推给在线网页、控制台或内部面板。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;价值&lt;/strong&gt;：&lt;ul&gt;
+&lt;li&gt;把“更新发现”和“在线分发”解耦。&lt;/li&gt;
+&lt;li&gt;上游继续兼容 RSS 的低频抓取；下游则获得接近实时的用户体验。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;限制&lt;/strong&gt;：&lt;ul&gt;
+&lt;li&gt;对只推 Telegram 的简单 Bot 来说，通常有点重。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;4-SSE&quot;&gt;&lt;a href=&quot;#4-SSE&quot; class=&quot;headerlink&quot; title=&quot;4. SSE&quot;&gt;&lt;/a&gt;4. SSE&lt;/h2&gt;&lt;p&gt;SSE 比 WebSocket 更适合 RSS 这类“单向通知”场景。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;借鉴点&lt;/strong&gt;：&lt;ul&gt;
+&lt;li&gt;如果你要做一个网页阅读器、后台管理页或订阅面板，完全可以继续用 RSS 轮询做上游抓取，再用 SSE 把“新条目到达”实时通知给浏览器。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;为什么比 WebSocket 更贴近 RSS&lt;/strong&gt;：&lt;ul&gt;
+&lt;li&gt;RSS 更新通知通常是&lt;strong&gt;服务端到客户端的单向流&lt;/strong&gt;，并不强调双向交互。&lt;/li&gt;
+&lt;li&gt;SSE 更轻，更贴近“新内容到了就告诉前端”这种模型。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;所以，SSE 很适合做 RSS 系统里的&lt;strong&gt;网页通知层&lt;/strong&gt;。&lt;/p&gt;
+&lt;h3 id=&quot;5-Service-Worker-Push-API&quot;&gt;&lt;a href=&quot;#5-Service-Worker-Push-API&quot; class=&quot;headerlink&quot; title=&quot;5. Service Worker + Push API&quot;&gt;&lt;/a&gt;5. Service Worker + Push API&lt;/h3&gt;&lt;p&gt;这是对 RSS 最有“产品形态”启发的一种。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;借鉴点&lt;/strong&gt;：&lt;ul&gt;
+&lt;li&gt;如果你不想把 RSS 更新推到 Telegram，而是想推到自家 Web App，本质上可以复刻 Telegram Bot 的角色：&lt;br&gt;服务端抓 RSS → 发现新条目 → 调 Web Push → 浏览器的 Service Worker 弹通知。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;它解决的问题&lt;/strong&gt;：&lt;ul&gt;
+&lt;li&gt;用户不用一直开着网页。&lt;/li&gt;
+&lt;li&gt;RSS 可以从“网页里刷新查看”变成“像 App 一样被动接收提醒”。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;代价&lt;/strong&gt;：&lt;ul&gt;
+&lt;li&gt;HTTPS、订阅管理、浏览器权限、推送基础设施都会明显变复杂。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;从产品体验上看，它相当于“把 Telegram 这个外部送达通道，换成浏览器原生通知通道”。&lt;/p&gt;
+&lt;h2 id=&quot;最值得借鉴的总原则&quot;&gt;&lt;a href=&quot;#最值得借鉴的总原则&quot; class=&quot;headerlink&quot; title=&quot;最值得借鉴的总原则&quot;&gt;&lt;/a&gt;最值得借鉴的总原则&lt;/h2&gt;&lt;h3 id=&quot;1-把“发现更新”和“送达用户”分开设计&quot;&gt;&lt;a href=&quot;#1-把“发现更新”和“送达用户”分开设计&quot; class=&quot;headerlink&quot; title=&quot;1. 把“发现更新”和“送达用户”分开设计&quot;&gt;&lt;/a&gt;1. 把“发现更新”和“送达用户”分开设计&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;版本更新弹窗把“检测版本变化”和“提示用户刷新”分开了。&lt;/li&gt;
+&lt;li&gt;RSS 系统也应该把“抓取与去重”和“发送到 TG &amp;#x2F; Web &amp;#x2F; 邮件”分开。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这样以后你可以保留同一套 RSS 抓取内核，同时挂多个下游：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Telegram Bot&lt;/li&gt;
+&lt;li&gt;WebSocket &amp;#x2F; SSE 网页面板&lt;/li&gt;
+&lt;li&gt;Web Push 浏览器通知&lt;/li&gt;
+&lt;li&gt;邮件摘要&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;2-不要一上来追求强实时&quot;&gt;&lt;a href=&quot;#2-不要一上来追求强实时&quot; class=&quot;headerlink&quot; title=&quot;2. 不要一上来追求强实时&quot;&gt;&lt;/a&gt;2. 不要一上来追求强实时&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;版本更新文章已经给了一个很实用的判断：低频场景优先用简单方案。&lt;/li&gt;
+&lt;li&gt;RSS 大多数也是低频内容流，先把轮询、去重、稳定性做好，收益通常比盲目上 WebSocket 更大。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;3-缓存、去重、幂等比“推送协议名词”更关键&quot;&gt;&lt;a href=&quot;#3-缓存、去重、幂等比“推送协议名词”更关键&quot; class=&quot;headerlink&quot; title=&quot;3. 缓存、去重、幂等比“推送协议名词”更关键&quot;&gt;&lt;/a&gt;3. 缓存、去重、幂等比“推送协议名词”更关键&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;版本更新文章强调了缓存问题。&lt;/li&gt;
+&lt;li&gt;RSS 场景里同样重要的是：&lt;ul&gt;
+&lt;li&gt;避免重复抓到同样内容时重复推送&lt;/li&gt;
+&lt;li&gt;网络抖动或任务重启后仍能维持一致状态&lt;/li&gt;
+&lt;li&gt;对 feed 变更、条目顺序变化、发布时间修订保持容错&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;我的判断&quot;&gt;&lt;a href=&quot;#我的判断&quot; class=&quot;headerlink&quot; title=&quot;我的判断&quot;&gt;&lt;/a&gt;我的判断&lt;/h2&gt;&lt;p&gt;如果只从“RSS 推送机制本身”出发，&lt;strong&gt;最直接可借鉴的是轮询思路&lt;/strong&gt;；如果从“RSS 产品怎么做得更像现代消息系统”出发，&lt;strong&gt;最有延展性的借鉴是 SSE &amp;#x2F; WebSocket &amp;#x2F; Push API 这套“下游送达层”思路&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;一句话概括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;轮询解决的是 RSS 上游怎么发现更新&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SSE &amp;#x2F; WebSocket &amp;#x2F; Push API 启发的是 RSS 下游怎么把更新送得更好&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;相关页面&quot;&gt;&lt;a href=&quot;#相关页面&quot; class=&quot;headerlink&quot; title=&quot;相关页面&quot;&gt;&lt;/a&gt;相关页面&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;../sources/webpage-version-update-popup-implementation.html&quot;&gt;来源：Web端版本更新弹窗实现&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;../sources/gemini-flowerss-bot-principle.html&quot;&gt;来源：Gemini 对话——indes&amp;#x2F;flowerss-bot 项目原理&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;../concepts/rss-telegram-selfhost.html&quot;&gt;RSS &amp;#x2F; Telegram 自建推送&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;web-version-popup-vs-rss.html&quot;&gt;查询：Web端版本更新弹窗的数据推送跟 RSS 方案有什么异同&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+"><title>查询：Web端版本更新弹窗里的几种推送方式，对 RSS 推送机制有什么可借鉴之处</title><link rel="stylesheet" type="text/css" href="../../css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/normalize.css/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="../../favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="../../favicon.ico"><link rel="apple-touch-icon" href="../../apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="../../apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="../../atom.xml"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/clipboard/dist/clipboard.min.js"></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.js"></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.css"><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">查询：Web端版本更新弹窗里的几种推送方式，对 RSS 推送机制有什么可借鉴之处</h1><a id="logo" href="../../.">Canace 的博客</a><p class="description">Tomorrow is another day</p></div><div id="nav-menu"><a href="../../."><i class="fa fa-home"> 主页</i></a><a href="../../archives/"><i class="fa fa-archive"> 文章归档</i></a><a class="current" href="../"><i class="fa fa-book"> 知识库</i></a><a href="../../about/"><i class="fa fa-user"> 关于我</i></a><a href="../../atom.xml"><i class="fa fa-rss"> 订阅</i></a><a id="nav-random-article" href="#" title="随机文章" aria-label="随机文章"><i class="fa fa-random"> 随机文章</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">查询：Web端版本更新弹窗里的几种推送方式，对 RSS 推送机制有什么可借鉴之处</h1><div class="clear"><div class="toc-article" id="toc"><div class="toc-title">目录</div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-text">问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E8%AE%BA"><span class="toc-text">结论</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E6%96%B9%E6%A1%88%E7%9C%8B%EF%BC%8C%E5%8F%AF%E5%80%9F%E9%89%B4%E7%82%B9%E5%A6%82%E4%B8%8B"><span class="toc-text">分方案看，可借鉴点如下</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E8%BD%AE%E8%AF%A2%EF%BC%88Polling%EF%BC%89"><span class="toc-text">1. 轮询（Polling）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%95%BF%E8%BD%AE%E8%AF%A2%EF%BC%88Long-Polling%EF%BC%89"><span class="toc-text">2. 长轮询（Long Polling）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-WebSocket"><span class="toc-text">3. WebSocket</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-SSE"><span class="toc-text">4. SSE</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-Service-Worker-Push-API"><span class="toc-text">5. Service Worker + Push API</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E5%80%BC%E5%BE%97%E5%80%9F%E9%89%B4%E7%9A%84%E6%80%BB%E5%8E%9F%E5%88%99"><span class="toc-text">最值得借鉴的总原则</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%8A%8A%E2%80%9C%E5%8F%91%E7%8E%B0%E6%9B%B4%E6%96%B0%E2%80%9D%E5%92%8C%E2%80%9C%E9%80%81%E8%BE%BE%E7%94%A8%E6%88%B7%E2%80%9D%E5%88%86%E5%BC%80%E8%AE%BE%E8%AE%A1"><span class="toc-text">1. 把“发现更新”和“送达用户”分开设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%B8%8D%E8%A6%81%E4%B8%80%E4%B8%8A%E6%9D%A5%E8%BF%BD%E6%B1%82%E5%BC%BA%E5%AE%9E%E6%97%B6"><span class="toc-text">2. 不要一上来追求强实时</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E7%BC%93%E5%AD%98%E3%80%81%E5%8E%BB%E9%87%8D%E3%80%81%E5%B9%82%E7%AD%89%E6%AF%94%E2%80%9C%E6%8E%A8%E9%80%81%E5%8D%8F%E8%AE%AE%E5%90%8D%E8%AF%8D%E2%80%9D%E6%9B%B4%E5%85%B3%E9%94%AE"><span class="toc-text">3. 缓存、去重、幂等比“推送协议名词”更关键</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E7%9A%84%E5%88%A4%E6%96%AD"><span class="toc-text">我的判断</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E9%A1%B5%E9%9D%A2"><span class="toc-text">相关页面</span></a></li></ol></div></div><div class="post-content"><h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p><code>Web端版本更新弹窗实现</code> 这篇文章里的几种推送方式，对 RSS 推送机制有什么可借鉴的地方？</p>
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>最值得借鉴的，不是把 RSS 机械地改写成某一种“更高级的推送协议”，而是把整条链路拆成两层来看：</p>
+<ol>
+<li><strong>上游如何发现更新</strong></li>
+<li><strong>下游如何把更新送达到用户</strong></li>
+</ol>
+<p>对照 <a href="../sources/webpage-version-update-popup-implementation.html">Web端版本更新弹窗实现</a> 和 <a href="../sources/gemini-flowerss-bot-principle.html">Gemini 对话——indes&#x2F;flowerss-bot 项目原理</a>，当前 RSS &#x2F; Telegram Bot 的典型实现，本质是：</p>
+<ul>
+<li>上游：<strong>轮询 RSS&#x2F;Atom</strong></li>
+<li>下游：<strong>调用 Telegram Bot API 分发</strong></li>
+</ul>
+<p>因此，Web 端那几种方案对 RSS 的借鉴，更多是<strong>架构启发</strong>，而不是“一一替换”。</p>
+<h2 id="分方案看，可借鉴点如下"><a href="#分方案看，可借鉴点如下" class="headerlink" title="分方案看，可借鉴点如下"></a>分方案看，可借鉴点如下</h2><h3 id="1-轮询（Polling）"><a href="#1-轮询（Polling）" class="headerlink" title="1. 轮询（Polling）"></a>1. 轮询（Polling）</h3><p>这是对 RSS 机制最直接的借鉴，因为典型 RSS Bot 本来就是轮询。</p>
+<ul>
+<li><strong>借鉴点 1：接受 RSS 天生偏低频</strong><ul>
+<li>像版本更新弹窗一样，RSS 也适合“低频、最终一致”场景，不必默认追求强实时。</li>
+</ul>
+</li>
+<li><strong>借鉴点 2：把轮询做得更工程化</strong><ul>
+<li>控制合理轮询间隔，避免过于频繁地抓取 feed。</li>
+<li>做失败重试、退避和超时控制，避免单个源卡住整个任务。</li>
+<li>做状态记忆与去重，避免重复推送旧条目。</li>
+</ul>
+</li>
+<li><strong>借鉴点 3：关注缓存而不是盲拉</strong><ul>
+<li>版本弹窗靠查询参数绕过缓存；RSS 场景更适合进一步利用 <code>ETag</code> &#x2F; <code>Last-Modified</code> 这类 HTTP 能力，减少无效抓取。</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-长轮询（Long-Polling）"><a href="#2-长轮询（Long-Polling）" class="headerlink" title="2. 长轮询（Long Polling）"></a>2. 长轮询（Long Polling）</h3><p>对 RSS 的直接可借鉴性较弱，因为大多数 RSS 源并不会为你提供“挂起直到有新内容”的接口。</p>
+<ul>
+<li><strong>能借鉴的地方</strong>：<ul>
+<li>如果你自己有一层聚合服务，可以让“Bot&#x2F;前端”不直接轮询所有 feed，而是向聚合服务做长轮询，等聚合服务检测到新内容再返回。</li>
+</ul>
+</li>
+<li><strong>不适合直接套用的地方</strong>：<ul>
+<li>公开 RSS 源通常只暴露普通 HTTP feed，不支持这种服务端挂起连接模型。</li>
+</ul>
+</li>
+</ul>
+<p>所以，长轮询更适合作为<strong>你自己系统内部的二段式优化</strong>，不适合作为对外部 RSS 源的通用假设。</p>
+<h3 id="3-WebSocket"><a href="#3-WebSocket" class="headerlink" title="3. WebSocket"></a>3. WebSocket</h3><p>WebSocket 对 RSS 的主要启发，不在“抓 feed”这一段，而在“把已发现的新内容实时广播给多个在线客户端”这一段。</p>
+<ul>
+<li><strong>适合借鉴的场景</strong>：<ul>
+<li>你先用轮询抓 RSS。</li>
+<li>一旦发现新条目，由中心服务通过 WebSocket 立刻推给在线网页、控制台或内部面板。</li>
+</ul>
+</li>
+<li><strong>价值</strong>：<ul>
+<li>把“更新发现”和“在线分发”解耦。</li>
+<li>上游继续兼容 RSS 的低频抓取；下游则获得接近实时的用户体验。</li>
+</ul>
+</li>
+<li><strong>限制</strong>：<ul>
+<li>对只推 Telegram 的简单 Bot 来说，通常有点重。</li>
+</ul>
+</li>
+</ul>
+<h2 id="4-SSE"><a href="#4-SSE" class="headerlink" title="4. SSE"></a>4. SSE</h2><p>SSE 比 WebSocket 更适合 RSS 这类“单向通知”场景。</p>
+<ul>
+<li><strong>借鉴点</strong>：<ul>
+<li>如果你要做一个网页阅读器、后台管理页或订阅面板，完全可以继续用 RSS 轮询做上游抓取，再用 SSE 把“新条目到达”实时通知给浏览器。</li>
+</ul>
+</li>
+<li><strong>为什么比 WebSocket 更贴近 RSS</strong>：<ul>
+<li>RSS 更新通知通常是<strong>服务端到客户端的单向流</strong>，并不强调双向交互。</li>
+<li>SSE 更轻，更贴近“新内容到了就告诉前端”这种模型。</li>
+</ul>
+</li>
+</ul>
+<p>所以，SSE 很适合做 RSS 系统里的<strong>网页通知层</strong>。</p>
+<h3 id="5-Service-Worker-Push-API"><a href="#5-Service-Worker-Push-API" class="headerlink" title="5. Service Worker + Push API"></a>5. Service Worker + Push API</h3><p>这是对 RSS 最有“产品形态”启发的一种。</p>
+<ul>
+<li><strong>借鉴点</strong>：<ul>
+<li>如果你不想把 RSS 更新推到 Telegram，而是想推到自家 Web App，本质上可以复刻 Telegram Bot 的角色：<br>服务端抓 RSS → 发现新条目 → 调 Web Push → 浏览器的 Service Worker 弹通知。</li>
+</ul>
+</li>
+<li><strong>它解决的问题</strong>：<ul>
+<li>用户不用一直开着网页。</li>
+<li>RSS 可以从“网页里刷新查看”变成“像 App 一样被动接收提醒”。</li>
+</ul>
+</li>
+<li><strong>代价</strong>：<ul>
+<li>HTTPS、订阅管理、浏览器权限、推送基础设施都会明显变复杂。</li>
+</ul>
+</li>
+</ul>
+<p>从产品体验上看，它相当于“把 Telegram 这个外部送达通道，换成浏览器原生通知通道”。</p>
+<h2 id="最值得借鉴的总原则"><a href="#最值得借鉴的总原则" class="headerlink" title="最值得借鉴的总原则"></a>最值得借鉴的总原则</h2><h3 id="1-把“发现更新”和“送达用户”分开设计"><a href="#1-把“发现更新”和“送达用户”分开设计" class="headerlink" title="1. 把“发现更新”和“送达用户”分开设计"></a>1. 把“发现更新”和“送达用户”分开设计</h3><ul>
+<li>版本更新弹窗把“检测版本变化”和“提示用户刷新”分开了。</li>
+<li>RSS 系统也应该把“抓取与去重”和“发送到 TG &#x2F; Web &#x2F; 邮件”分开。</li>
+</ul>
+<p>这样以后你可以保留同一套 RSS 抓取内核，同时挂多个下游：</p>
+<ul>
+<li>Telegram Bot</li>
+<li>WebSocket &#x2F; SSE 网页面板</li>
+<li>Web Push 浏览器通知</li>
+<li>邮件摘要</li>
+</ul>
+<h3 id="2-不要一上来追求强实时"><a href="#2-不要一上来追求强实时" class="headerlink" title="2. 不要一上来追求强实时"></a>2. 不要一上来追求强实时</h3><ul>
+<li>版本更新文章已经给了一个很实用的判断：低频场景优先用简单方案。</li>
+<li>RSS 大多数也是低频内容流，先把轮询、去重、稳定性做好，收益通常比盲目上 WebSocket 更大。</li>
+</ul>
+<h3 id="3-缓存、去重、幂等比“推送协议名词”更关键"><a href="#3-缓存、去重、幂等比“推送协议名词”更关键" class="headerlink" title="3. 缓存、去重、幂等比“推送协议名词”更关键"></a>3. 缓存、去重、幂等比“推送协议名词”更关键</h3><ul>
+<li>版本更新文章强调了缓存问题。</li>
+<li>RSS 场景里同样重要的是：<ul>
+<li>避免重复抓到同样内容时重复推送</li>
+<li>网络抖动或任务重启后仍能维持一致状态</li>
+<li>对 feed 变更、条目顺序变化、发布时间修订保持容错</li>
+</ul>
+</li>
+</ul>
+<h2 id="我的判断"><a href="#我的判断" class="headerlink" title="我的判断"></a>我的判断</h2><p>如果只从“RSS 推送机制本身”出发，<strong>最直接可借鉴的是轮询思路</strong>；如果从“RSS 产品怎么做得更像现代消息系统”出发，<strong>最有延展性的借鉴是 SSE &#x2F; WebSocket &#x2F; Push API 这套“下游送达层”思路</strong>。</p>
+<p>一句话概括：</p>
+<ul>
+<li><strong>轮询解决的是 RSS 上游怎么发现更新</strong></li>
+<li><strong>SSE &#x2F; WebSocket &#x2F; Push API 启发的是 RSS 下游怎么把更新送得更好</strong></li>
+</ul>
+<h2 id="相关页面"><a href="#相关页面" class="headerlink" title="相关页面"></a>相关页面</h2><ul>
+<li><a href="../sources/webpage-version-update-popup-implementation.html">来源：Web端版本更新弹窗实现</a></li>
+<li><a href="../sources/gemini-flowerss-bot-principle.html">来源：Gemini 对话——indes&#x2F;flowerss-bot 项目原理</a></li>
+<li><a href="../concepts/rss-telegram-selfhost.html">RSS &#x2F; Telegram 自建推送</a></li>
+<li><a href="web-version-popup-vs-rss.html">查询：Web端版本更新弹窗的数据推送跟 RSS 方案有什么异同</a></li>
+</ul>
+</div></div></div></div><div class="pure-u-1 pure-u-md-1-4"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 常用文档</i></div><ul></ul><a href="/git-common-commands" title="Git 文档" target="_blank">Git 文档</a><ul></ul><a href="/common-programming-prompt-words" title="常用开发提示词" target="_blank">常用开发提示词</a></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="../../categories/cli/">工程化与运维</a><span class="category-list-count">50</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/soft/">软技能与思考</a><span class="category-list-count">48</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/intelligent/">AI探索</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/web/">Web开发</a><span class="category-list-count">142</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/coding/">编程基础</a><span class="category-list-count">42</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/site/">网站建设</a><span class="category-list-count">5</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="../../tags/performance/" style="font-size: 15px; color: #7a9fb8">性能优化</a> <a href="../../tags/essays/" style="font-size: 15px; color: #3679a7">随笔</a> <a href="../../tags/AI%E5%8E%9F%E7%90%86/" style="font-size: 15px; color: #96aebf">AI原理</a> <a href="../../tags/backend/" style="font-size: 15px; color: #5f90b1">后端</a> <a href="../../tags/Python-Go-%E5%85%B6%E4%BB%96/" style="font-size: 15px; color: #88a6bb">Python/Go/其他</a> <a href="../../tags/api-services/" style="font-size: 15px; color: #bec4c9">API&服务</a> <a href="../../tags/computer-science/" style="font-size: 15px; color: #2972a4">计算机科学</a> <a href="../../tags/JavaScript-TypeScript/" style="font-size: 15px; color: #0e639d">JavaScript&TypeScript</a> <a href="../../tags/%E8%81%8C%E4%B8%9A%E5%8F%91%E5%B1%95/" style="font-size: 15px; color: #7a9fb8">职业发展</a> <a href="../../tags/AI%E7%BC%96%E7%A8%8B/" style="font-size: 15px; color: #7a9fb8">AI编程</a> <a href="../../tags/%E7%BF%BB%E8%AF%91/" style="font-size: 15px; color: #ccc">翻译</a> <a href="../../tags/reading-notes/" style="font-size: 15px; color: #a3b5c2">读书笔记</a> <a href="../../tags/frontend/" style="font-size: 15px; color: #005b9a">前端</a> <a href="../../tags/frameworks-libs/" style="font-size: 15px; color: #5288ae">框架与库</a> <a href="../../tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/" style="font-size: 15px; color: #88a6bb">系统设计</a> <a href="../../tags/programming-languages/" style="font-size: 15px; color: #b1bdc5">编程语言</a> <a href="../../tags/css-visualization/" style="font-size: 15px; color: #1b6aa1">CSS与可视化</a> <a href="../../tags/build-deploy/" style="font-size: 15px; color: #6d97b5">构建与部署</a> <a href="../../tags/dev-tools/" style="font-size: 15px; color: #4481ab">开发工具</a> <a href="../../tags/Agent-Skill/" style="font-size: 15px; color: #ccc">Agent,Skill</a> <a href="../../tags/Node-js/" style="font-size: 15px; color: #7a9fb8">Node.js</a> <a href="../../tags/cross-platform/" style="font-size: 15px; color: #88a6bb">跨端方案</a> <a href="../../tags/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/" style="font-size: 15px; color: #ccc">项目管理</a> <a href="../../tags/%E7%9F%A5%E8%AF%86%E5%BA%93/" style="font-size: 15px; color: #ccc">知识库</a> <a href="../../tags/code-quality/" style="font-size: 15px; color: #bec4c9">代码质量</a></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2026 <a href="../../." rel="nofollow">Canace 的博客</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="../../js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.js" async></script><script type="text/javascript" src="../../js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.css"><link rel="stylesheet" type="text/css" href="../../css/search.css?v=0.0.0"><script type="text/javascript" src="../../js/search.js?v=0.0.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+   search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="/js/copycode.js" successtext="复制成功!"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/mermaid@11.14.0/dist/mermaid.min.js"></script><script type="text/javascript">document.addEventListener('DOMContentLoaded', function () {
+  if (!window.mermaid) return;
+  mermaid.initialize({"theme":"default","logLevel":5,"startOnLoad":true,"arrowMarkerAbsolute":false,"flowchart":{"htmlLabels":true,"useMaxWidth":true,"curve":"linear"},"sequence":{"diagramMarginX":50,"diagramMarginY":10,"actorMargin":50,"width":150,"height":65,"boxMargin":10,"boxTextMargin":5,"noteMargin":10,"messageMargin":35,"mirrorActors":true,"bottomMarginAdj":1,"useMaxWidth":true},"gantt":{"titleTopMargin":25,"barHeight":20,"barGap":4,"topPadding":50,"leftPadding":75,"gridLineStartPadding":35,"fontSize":11,"fontFamily":"\"Open-Sans\", \"sans-serif\"","numberSectionStyles":4,"axisFormat":"%Y-%m-%d"},"class":{},"git":{}});
+});
+</script><script type="text/javascript" src="../../js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="../../js/smartresize.js?v=0.0.0"></script><script type="text/javascript">(function () {
+  var urls = ["/../../6-common-website-usability-issues-and-solutions/","/../../2024-year-end-summary/","/../../AI-knowledge-base/","/../../Django-channels/","/../../MySQL/","/../../NP-P-NPC/","/../../JavaScript-call-apply-bind/","/../../about-doing-technology/","/../../WebRTC/","/../../about-forgetfulness/","/../../agent-coding-stability/","/../../ai-coding-game/","/../../add-skeleton-screen/","/../../ai-coding-share/","/../../ai-make-you-boring/","/../../ai-coding-ide/","/../../ai-expansion/","/../../ai-optimize-ui/","/../../ai-worker/","/../../algorithm-book-notes-for-everyone/","/../../angular-navigation-content-linkage/","/../../ant-design-pitfalls/","/../../angel-love/","/../../ants/","/../../async-data-console-issues/","/../../axios-network-request-encapsulation/","/../../binary-search/","/../../bash-data-processing/","/../../beego-getting-started/","/../../blog-category/","/../../boolean-variables-in-project-application/","/../../box-model/","/../../brief-discussion-on-dns-pollution/","/../../bracket-matching/","/../../brief-discussion-on-visual-form-design/","/../../browser-kernel-and-writing/","/../../build-django-blog-system/","/../../build-typescript-library/","/../../calculate-rice-cooker-reservation-time/","/../../canvas-draw-dynamic-path/","/../../cascade/","/../../build-tinymce-img-plugin/","/../../canvas-draw-sprite-export/","/../../centos-server-login-config/","/../../ckeditor-usage-in-angular/","/../../code-optimization/","/../../common-algorithm-ideas/","/../../common-git-workflows/","/../../common-image-format-comparison/","/../../climbing-stairs/","/../../common-programming-prompt-words/","/../../common-regular-expressions/","/../../common-terminal-commands/","/../../computer-graphics-1/","/../../count-beautiful-subarrays/","/../../count-number-of-islands/","/../../count-total-elements-of-array-objects/","/../../computer-graphics-2/","/../../create-object-based-on-null/","/../../cross-origin-resource-sharing/","/../../css-background-image-application/","/../../css-circular-progress-bar/","/../../css-notes/","/../../css-positioning-detailed/","/../../css-positioning/","/../../css-series-basics/","/../../css-layout-guide/","/../../css-series-cascade/","/../../css-series-box-dimensions/","/../../css-series-flow-and-dimensions/","/../../css-series-history-and-document-flow/","/../../css-series-inline-elements-and-flow/","/../../css-series-text-processing/","/../../css-tips/","/../../css-series-flow-destruction-and-protection/","/../../css3-animation-vs-js-animation/","/../../css-two-color-pie-chart/","/../../cursor-debugger/","/../../custom-github-activity/","/../../css2-block-element-center/","/../../deep-work-philosophy-interpretation/","/../../deep-copy-of-arrays-and-objects/","/../../disable-image-dragging/","/../../cursor-skill-web-search-download-movie/","/../../docker-documentation/","/../../docker-frontend-environment-setup/","/../../doing-things-with-vscode/","/../../egg/","/../../dropdown-list-implementation/","/../../element-plus-table-component-scaling-issue-solution/","/../../es2020-new-features/","/../../extra-thick-chicken-soup/","/../../file-naming-pitfalls-record/","/../../ffmpeg-extract-audio-track/","/../../find-median-sorted-arrays/","/../../firefox-remove-various-dashed-borders/","/../../first-day-morning-run/","/../../first-screen-optimization/","/../../first-screen-time-vs-white-screen-time/","/../../flow-simple-tutorial/","/../../fix-github-image-issue-on-mac/","/../../flutter-learning-notes-dart-basics/","/../../frontend-draw-graphic-captcha/","/../../flutter-learning-notes-quick-start/","/../../frontend-performance-optimization/","/../../four-js-tips/","/../../frontend-xx-dockerization/","/../../fullscreen-solution-for-webpage-or-html-elements/","/../../fun-console/","/../../function-currying/","/../../function-without-global-variable-counting/","/../../functional-programming/","/../../generate-random-array-in-specified-range/","/../../get-css-style/","/../../gemini-new-session-memory/","/../../ghost-whitespace-nodes/","/../../git-common-commands/","/../../get-longest-common-prefix/","/../../git-domain-config/","/../../git-environment-config/","/../../git-usage-guide/","/../../gitbook-generate-ebook/","/../../github-action-auto-deploy-page/","/../../github-practical-tips/","/../../github-travis-auto-build-vue-to-gitpage/","/../../gitlab-ci-config-template/","/../../gitpage-hexo/","/../../go-getting-started/","/../../hexo-blog-migration/","/../../hexo-getting-started/","/../../hexo-math-formula-support/","/../../how-to-create-a-robust-system/","/../../html-notes/","/../../homebrew-common-commands/","/../../how-to-optimize-animation/","/../../html-to-text-js/","/../../http-notes/","/../../http-server/","/../../image-lazy-loading-implementation/","/../../implement-array-flatten/","/../../interview-strategy/","/../../improve-work-efficiency-with-cursor-practical-notes/","/../../interesting-css-cascade-issues/","/../../issue-03/","/../../issue-05/","/../../issue-04/","/../../issue-07/","/../../issue-06/","/../../issue-08/","/../../issue-09/","/../../issue-10/","/../../issue-11/","/../../issue-12/","/../../issue-1/","/../../issue-15/","/../../issue-14/","/../../issue-13/","/../../issue-2/","/../../japanese-learning-notes/","/../../javaScript-promise/","/../../javascript-basics-primitive-vs-reference-types/","/../../javascript-basics-type-conversion/","/../../javascript-common-code-snippets/","/../../javascript-built-in-deep-copy/","/../../javascript-detect-caps-lock/","/../../javascript-functions/","/../../javascript-new-implementation-principle/","/../../javascript-object-oriented-programming/","/../../javascript-soul-questions/","/../../javascript-tricks/","/../../js-execution/","/../../js-linked-list-implementation/","/../../js-overview/","/../../js-modal-blog/","/../../js-string-to-base64/","/../../js-timezone/","/../../key-value-role-in-vue-components/","/../../jump-to-specific-position-in-article/","/../../knowledge-anxiety/","/../../kindness/","/../../kpi-vs-okr/","/../../knn-algorithm/","/../../leave-page-popup/","/../../linux-background-script-execution/","/../../lodash-source-analysis-array-chunk/","/../../lodash-source-analysis-array-slice/","/../../mac-debug-ios-web-page/","/../../mac-install-mysql/","/../../llm-wiki/","/../../manchester-by-the-sea/","/../../mini-program-tabs-sticky/","/../../model-training-steps/","/../../modify-autofill-style/","/../../modify-scrollbar-style-compatible/","/../../method-to-login-to-south-china-normal-university-campus-network/","/../../module-specifications/","/../../n-n-order-matrix-algorithm/","/../../node-version-management/","/../../nodeJs/","/../../nodejs-config/","/../../node-notes-in-depth/","/../../nodejs-module-mechanism/","/../../nodejs-notes/","/../../notes-about-writing-weekly-reports/","/../../number-precise-to-two-decimal-places/","/../../object-property-value-monitoring/","/../../one-click-generate-responsive-table/","/../../package-json-field-list/","/../../pagination-algorithm/","/../../npm-common-commands/","/../../palindrome-number-judgment/","/../../personal-knowledge-base/","/../../pixi-basics/","/../../pixi-js-sprite-loading-cache-removal/","/../../pixijs-vertexData-null/","/../../pinyin-learning-project-notes/","/../../port-number-modification/","/../../prisma-getting-started-guide/","/../../product-updates-rss-file-diff-mental-model/","/../../project-modularization-principles/","/../../proxy-observer-pattern/","/../../python3-installation/","/../../python-pitfalls-collection/","/../../record-service-degradation-due-to-emergency/","/../../react-hooks-create-movie-app/","/../../qwen-milk-tea-ui/","/../../recursive-tree/","/../../refactoring-vs-architecture/","/../../remove-parent-nodes-with-duplicate-child-ids/","/../../removeDuplicates/","/../../removeElement/","/../../regular-expressions/","/../../reverse-integer/","/../../reverse-words-in-string/","/../../roman-numerals-to-integer/","/../../rss-telegram-selfhost/","/../../scroll-pagination/","/../../sentence-excerpts/","/../../settimeout-simulate-setinterval/","/../../singly-linked-list-concatenation/","/../../science-popularization/","/../../solve-github-dns-pollution-issue/","/../../software-version-number-definition/","/../../ss-installation/","/../../sublime-text-nodejs-config/","/../../some-concepts/","/../../string-and-code-rigor/","/../../systematic-method-for-fragmented-reading-knowledge/","/../../talking-about-browser-cache-mechanism/","/../../talking-about-vuex/","/../../talking-about-webpage-adaptive-and-responsive-layout/","/../../tcp-ip-three-way-handshake/","/../../thoughts-on-ad-blocker-plugins/","/../../thoughts-on-branch-management/","/../../table-cell-equal-division/","/../../thoughts-on-technical-growth/","/../../time-complexity-vs-space-complexity/","/../../three-js-basics-practice/","/../../timestamp-to-date/","/../../translate-use-claude-code/","/../../two-sum-problem/","/../../time-zero/","/../../typescript-environment-config/","/../../ubuntu-configure-frontend-environment/","/../../ubuntu-configure-ss/","/../../understanding-byte-order/","/../../unavoidable-bug-chrome-translation-caused-trouble/","/../../understanding-cookies/","/../../ubuntu-install-tensorflow/","/../../understanding-instanceof/","/../../validate-string/","/../../variables/","/../../vue-config-template/","/../../vue-data-driven-view-implementation/","/../../vue-details-i-didnt-know/","/../../vscode-code-formatting-summary/","/../../vue-dynamic-change-title/","/../../vue-dynamic-component-import-note-not-async/","/../../vue-test-unit/","/../../vue3-notes/","/../../web-performance-optimization-debounce/","/../../web-security-csrf/","/../../web-security-xss-attack/","/../../vue-project-setup-steps/","/../../webpack-dynamic-modify-resource-domain/","/../../webpack-gulp-bundle-vue-component-library/","/../../webpack5-new-features-module-federation-notes/","/../../wechat-mini-program-pitfalls/","/../../webpage-version-update-popup-implementation/","/../../webpack/","/../../what-happened-to-vue/","/../../what-happens-from-url-to-display/","/../../why-frontend-needs-framework/","/../../why-not-let-ai-write-for-us/","/../../why-we-need-to-read/","/../../why-graphics-card/","/../../windows-tricks/","/../../why-write-wechat-official-account/","/../../words-of-experience/","/../../wordpress-installation/","/../../work-for/","/../../writing-a-good-claude-md/","/../../yml-file-operations/","/../../wsl-config/"];
+  var el = document.getElementById('nav-random-article');
+  if (!el) return;
+  el.addEventListener('click', function (e) {
+    e.preventDefault();
+    if (!urls.length) return;
+    var next = urls[Math.floor(Math.random() * urls.length)];
+    if (next) window.location.href = next;
+  });
+})();</script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":200,"height":200},"mobile":{"show":false},"react":{"opacity":0.7},"log":false});</script></body></html>

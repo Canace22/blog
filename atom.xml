@@ -6,7 +6,7 @@
   <link href="https://canace.site/atom.xml" rel="self"/>
   
   <link href="https://canace.site/"/>
-  <updated>2026-04-12T08:47:30.375Z</updated>
+  <updated>2026-04-14T04:00:32.473Z</updated>
   <id>https://canace.site/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>产品更新、RSS 订阅以及文件 Diff 类需求实现模型</title>
+    <link href="https://canace.site/product-updates-rss-file-diff-mental-model/"/>
+    <id>https://canace.site/product-updates-rss-file-diff-mental-model/</id>
+    <published>2026-04-14T02:00:00.000Z</published>
+    <updated>2026-04-14T04:00:32.473Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="软技能与思考" scheme="https://canace.site/categories/soft/"/>
+    
+    
+    <category term="随笔" scheme="https://canace.site/tags/essays/"/>
+    
+  </entry>
   
   <entry>
     <title>RSS 推送到 TG 的可行性探索</title>
@@ -376,25 +401,6 @@
     
     
     <category term="AI编程" scheme="https://canace.site/tags/AI%E7%BC%96%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>工作与事业</title>
-    <link href="https://canace.site/work-for/"/>
-    <id>https://canace.site/work-for/</id>
-    <published>2025-11-08T09:50:42.000Z</published>
-    <updated>2026-02-24T06:32:13.088Z</updated>
-    
-    
-    <summary type="html">工作是谋生工具，事业是热爱的事，别混为一谈。</summary>
-    
-    
-    
-    <category term="软技能与思考" scheme="https://canace.site/categories/soft/"/>
-    
-    
-    <category term="职业发展" scheme="https://canace.site/tags/%E8%81%8C%E4%B8%9A%E5%8F%91%E5%B1%95/"/>
     
   </entry>
   

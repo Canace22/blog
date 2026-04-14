@@ -1,0 +1,645 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="canace 的博客"><meta itemprop="name" content="消息推送：RSS、应用更新、网页版本更新与 Diff 思维对照报告"><meta itemprop="image" content="https://raw.githubusercontent.com/Canace22/Assets/main/images/snow-other.png"><meta property="og:image" content="https://raw.githubusercontent.com/Canace22/Assets/main/images/snow-other.png"><meta name="description" itemprop="description" content="&lt;h2 id=&quot;目的&quot;&gt;&lt;a href=&quot;#目的&quot; class=&quot;headerlink&quot; title=&quot;目的&quot;&gt;&lt;/a&gt;目的&lt;/h2&gt;&lt;p&gt;汇总本轮围绕 &lt;a href=&quot;../sources/webpage-version-update-popup-implementation.html&quot;&gt;Web端版本更新弹窗实现&lt;/a&gt; 展开的连续讨论，把它与：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;../concepts/rss-telegram-selfhost.html&quot;&gt;RSS &amp;#x2F; Telegram 自建推送&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;../queries/web-version-json-vs-electron-updater.html&quot;&gt;&lt;code&gt;electron-updater&lt;/code&gt; 所代表的应用更新推送&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;../queries/git-diff-and-web-version-check.html&quot;&gt;&lt;code&gt;git diff&lt;/code&gt; &amp;#x2F; 文件差异比对&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;放到同一套分析框架下，形成一份可复用的总报告。&lt;/p&gt;
+&lt;h2 id=&quot;一句话结论&quot;&gt;&lt;a href=&quot;#一句话结论&quot; class=&quot;headerlink&quot; title=&quot;一句话结论&quot;&gt;&lt;/a&gt;一句话结论&lt;/h2&gt;&lt;p&gt;这几条线表面都在讨论“推送”或“diff”，但它们分别落在不同层级：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;网页版本更新推送&lt;/strong&gt;：更偏“发现变化并提醒刷新”&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;RSS 推送&lt;/strong&gt;：更偏“发现新内容并向外部分发”&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;应用更新推送&lt;/strong&gt;：更偏“发现新版本并完成下载安装”&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;git diff&lt;/code&gt;&lt;/strong&gt;：更偏“表达两个状态之间的内容差异”&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;如果抽象到统一模型，它们都可以被看成：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;先拿到两个状态&lt;/li&gt;
+&lt;li&gt;判断是否存在差异&lt;/li&gt;
+&lt;li&gt;根据差异触发后续动作&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;差异主要在于：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;比较的对象是什么&lt;/li&gt;
+&lt;li&gt;差异粒度有多细&lt;/li&gt;
+&lt;li&gt;差异后续动作有多重&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;总图&quot;&gt;&lt;a href=&quot;#总图&quot; class=&quot;headerlink&quot; title=&quot;总图&quot;&gt;&lt;/a&gt;总图&lt;/h2&gt;&lt;pre class=&quot;mermaid&quot;&gt;flowchart LR
+  A[&quot;消息推送&quot;] --&gt; B[&quot;RSS 推送&quot;]
+  A --&gt; C[&quot;应用更新推送&quot;]
+  A --&gt; D[&quot;网页版本更新推送&quot;]
+  E[&quot;diff 思维&quot;] -.抽象映射.-&gt; A&lt;/pre&gt;
+
+&lt;h2 id=&quot;统一分析框架&quot;&gt;&lt;a href=&quot;#统一分析框架&quot; class=&quot;headerlink&quot; title=&quot;统一分析框架&quot;&gt;&lt;/a&gt;统一分析框架&lt;/h2&gt;&lt;p&gt;这轮讨论里，最后稳定下来的一个很有用的框架是：把系统拆成“状态比对驱动动作”的结构。&lt;/p&gt;
+&lt;h3 id=&quot;共同骨架&quot;&gt;&lt;a href=&quot;#共同骨架&quot; class=&quot;headerlink&quot; title=&quot;共同骨架&quot;&gt;&lt;/a&gt;共同骨架&lt;/h3&gt;&lt;p&gt;任何一条线，本质都在回答三件事：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;如何发现更新&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;如何判断差异&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;差异出现后如何处理&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;进一步展开，还可以变成五层：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;更新发现层&lt;/strong&gt;：轮询、长轮询、WebSocket、SSE、Push&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;状态描述层&lt;/strong&gt;：版本号、feed、manifest、文件 hash&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;差异判断层&lt;/strong&gt;：版本级 diff、条目级 diff、文件级 diff、内容级 diff&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;动作执行层&lt;/strong&gt;：弹窗、发消息、下载、安装、回滚&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;用户交互层&lt;/strong&gt;：是否提示、何时提示、能否稍后、是否自动执行&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;这套框架是整份报告的主轴。&lt;/p&gt;
+&lt;h2 id=&quot;一、网页版本更新推送&quot;&gt;&lt;a href=&quot;#一、网页版本更新推送&quot; class=&quot;headerlink&quot; title=&quot;一、网页版本更新推送&quot;&gt;&lt;/a&gt;一、网页版本更新推送&lt;/h2&gt;&lt;p&gt;对应来源：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;../sources/webpage-version-update-popup-implementation.html&quot;&gt;来源：Web端版本更新弹窗实现&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;../queries/review-web-version-update-popup-scheme.html&quot;&gt;查询：Web端版本更新弹窗这篇文章里的方案有什么问题，有更好的方案吗&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;1-它解决什么问题&quot;&gt;&lt;a href=&quot;#1-它解决什么问题&quot; class=&quot;headerlink&quot; title=&quot;1. 它解决什么问题&quot;&gt;&lt;/a&gt;1. 它解决什么问题&lt;/h3&gt;&lt;p&gt;目标是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;页面已经打开&lt;/li&gt;
+&lt;li&gt;服务器部署了新版本&lt;/li&gt;
+&lt;li&gt;浏览器当前还停留在旧版本&lt;/li&gt;
+&lt;li&gt;需要提醒用户刷新&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;2-它的抽象结构&quot;&gt;&lt;a href=&quot;#2-它的抽象结构&quot; class=&quot;headerlink&quot; title=&quot;2. 它的抽象结构&quot;&gt;&lt;/a&gt;2. 它的抽象结构&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;更新发现层&lt;/strong&gt;：浏览器轮询 &lt;code&gt;version.json&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;状态描述层&lt;/strong&gt;：本地版本号 vs 远端版本号&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;差异判断层&lt;/strong&gt;：只判断“版本是否不同”&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;动作执行层&lt;/strong&gt;：弹窗、刷新页面&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;用户交互层&lt;/strong&gt;：立即更新 &amp;#x2F; 稍后提醒&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;3-它的特点&quot;&gt;&lt;a href=&quot;#3-它的特点&quot; class=&quot;headerlink&quot; title=&quot;3. 它的特点&quot;&gt;&lt;/a&gt;3. 它的特点&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;成本低&lt;/li&gt;
+&lt;li&gt;不依赖复杂服务端&lt;/li&gt;
+&lt;li&gt;适合低频更新&lt;/li&gt;
+&lt;li&gt;差异粒度很粗，只到“版本号级”&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;4-我们讨论中识别出的局限&quot;&gt;&lt;a href=&quot;#4-我们讨论中识别出的局限&quot; class=&quot;headerlink&quot; title=&quot;4. 我们讨论中识别出的局限&quot;&gt;&lt;/a&gt;4. 我们讨论中识别出的局限&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;demo 首次访问会误判成新版本&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;reload(true)&lt;/code&gt; 不能跨浏览器依赖&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;version.json?t=Date.now()&lt;/code&gt; 粗暴但有效&lt;/li&gt;
+&lt;li&gt;“稍后提醒”缺少节流&lt;/li&gt;
+&lt;li&gt;整体属于“更新提醒系统”，不是“更新分发系统”&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;二、RSS-推送&quot;&gt;&lt;a href=&quot;#二、RSS-推送&quot; class=&quot;headerlink&quot; title=&quot;二、RSS 推送&quot;&gt;&lt;/a&gt;二、RSS 推送&lt;/h2&gt;&lt;p&gt;对应来源：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;../concepts/rss-telegram-selfhost.html&quot;&gt;RSS &amp;#x2F; Telegram 自建推送&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;../sources/gemini-flowerss-bot-principle.html&quot;&gt;来源：Gemini 对话——indes&amp;#x2F;flowerss-bot 项目原理&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;../queries/web-version-popup-vs-rss.html&quot;&gt;查询：Web端版本更新弹窗的数据推送跟 RSS 方案有什么异同&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;1-它解决什么问题-1&quot;&gt;&lt;a href=&quot;#1-它解决什么问题-1&quot; class=&quot;headerlink&quot; title=&quot;1. 它解决什么问题&quot;&gt;&lt;/a&gt;1. 它解决什么问题&lt;/h3&gt;&lt;p&gt;目标是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;有多个 RSS &amp;#x2F; Atom 内容源&lt;/li&gt;
+&lt;li&gt;需要聚合这些源&lt;/li&gt;
+&lt;li&gt;一旦有新条目，就推到 Telegram&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;2-它的抽象结构-1&quot;&gt;&lt;a href=&quot;#2-它的抽象结构-1&quot; class=&quot;headerlink&quot; title=&quot;2. 它的抽象结构&quot;&gt;&lt;/a&gt;2. 它的抽象结构&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;更新发现层&lt;/strong&gt;：Bot 定时轮询 RSS&amp;#x2F;Atom feed&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;状态描述层&lt;/strong&gt;：feed 条目列表、GUID、链接、更新时间&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;差异判断层&lt;/strong&gt;：条目级去重，判断哪些是新内容&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;动作执行层&lt;/strong&gt;：调用 Telegram Bot API 推送消息&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;用户交互层&lt;/strong&gt;：用户在 TG 里查看，不必停留在源网页&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;3-它的特点-1&quot;&gt;&lt;a href=&quot;#3-它的特点-1&quot; class=&quot;headerlink&quot; title=&quot;3. 它的特点&quot;&gt;&lt;/a&gt;3. 它的特点&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;体感像“推送”，本质上仍是“定时拉取 + 二次分发”&lt;/li&gt;
+&lt;li&gt;比网页版本更新更偏“内容分发系统”&lt;/li&gt;
+&lt;li&gt;差异粒度比版本号更细，到“条目级”&lt;/li&gt;
+&lt;li&gt;送达通道脱离源站，用户体验更像订阅产品&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;4-和网页版本更新的关系&quot;&gt;&lt;a href=&quot;#4-和网页版本更新的关系&quot; class=&quot;headerlink&quot; title=&quot;4. 和网页版本更新的关系&quot;&gt;&lt;/a&gt;4. 和网页版本更新的关系&lt;/h3&gt;&lt;p&gt;相同点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;都是先比较两个状态&lt;/li&gt;
+&lt;li&gt;都不是严格源站实时主动推送&lt;/li&gt;
+&lt;li&gt;都依赖某种轮询或定时拉取&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;不同点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;网页更新只关心“站点是否整体变了”&lt;/li&gt;
+&lt;li&gt;RSS 关心“有没有新内容条目”&lt;/li&gt;
+&lt;li&gt;网页更新的动作是刷新&lt;/li&gt;
+&lt;li&gt;RSS 的动作是外部分发消息&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;三、应用更新推送&quot;&gt;&lt;a href=&quot;#三、应用更新推送&quot; class=&quot;headerlink&quot; title=&quot;三、应用更新推送&quot;&gt;&lt;/a&gt;三、应用更新推送&lt;/h2&gt;&lt;p&gt;对应来源：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;../queries/web-version-json-vs-electron-updater.html&quot;&gt;查询：&lt;code&gt;version.json + 轮询弹窗&lt;/code&gt; 方案，对照 &lt;code&gt;electron-updater&lt;/code&gt; 该怎么理解&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;../queries/app-file-diff-with-update-delivery.html&quot;&gt;查询：刚刚讨论的差异对比，如果用在 app 文件 diff 场景里该怎么理解&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;1-它解决什么问题-2&quot;&gt;&lt;a href=&quot;#1-它解决什么问题-2&quot; class=&quot;headerlink&quot; title=&quot;1. 它解决什么问题&quot;&gt;&lt;/a&gt;1. 它解决什么问题&lt;/h3&gt;&lt;p&gt;目标是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;客户端已有旧版本 app&lt;/li&gt;
+&lt;li&gt;服务端有新版本 app&lt;/li&gt;
+&lt;li&gt;希望自动或半自动升级&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;2-它的抽象结构-2&quot;&gt;&lt;a href=&quot;#2-它的抽象结构-2&quot; class=&quot;headerlink&quot; title=&quot;2. 它的抽象结构&quot;&gt;&lt;/a&gt;2. 它的抽象结构&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;更新发现层&lt;/strong&gt;：客户端检查更新&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;状态描述层&lt;/strong&gt;：&lt;code&gt;latest.yml&lt;/code&gt; &amp;#x2F; manifest &amp;#x2F; 文件清单 &amp;#x2F; 校验信息&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;差异判断层&lt;/strong&gt;：版本差异、文件差异、块级差异&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;动作执行层&lt;/strong&gt;：下载、校验、安装、重启&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;用户交互层&lt;/strong&gt;：立即安装、退出安装、后台下载、灰度发布&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;3-它的特点-2&quot;&gt;&lt;a href=&quot;#3-它的特点-2&quot; class=&quot;headerlink&quot; title=&quot;3. 它的特点&quot;&gt;&lt;/a&gt;3. 它的特点&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;不只是提醒“变了”，还要负责“怎么更新”&lt;/li&gt;
+&lt;li&gt;差异粒度可到文件级、chunk 级、patch 级&lt;/li&gt;
+&lt;li&gt;关注完整性校验、失败回滚、增量下载&lt;/li&gt;
+&lt;li&gt;本质是“应用分发系统”&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;4-它和网页版本更新的关系&quot;&gt;&lt;a href=&quot;#4-它和网页版本更新的关系&quot; class=&quot;headerlink&quot; title=&quot;4. 它和网页版本更新的关系&quot;&gt;&lt;/a&gt;4. 它和网页版本更新的关系&lt;/h3&gt;&lt;p&gt;可以把网页版本更新方案看成一个极简前身：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;网页版本更新只覆盖：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;发现变化&lt;/li&gt;
+&lt;li&gt;提示用户&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;electron-updater&lt;/code&gt; 还覆盖：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;更新元数据清单&lt;/li&gt;
+&lt;li&gt;差分下载&lt;/li&gt;
+&lt;li&gt;下载校验&lt;/li&gt;
+&lt;li&gt;安装执行&lt;/li&gt;
+&lt;li&gt;灰度发布&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;所以两者不是矛盾关系，而是成熟度和覆盖范围不同。&lt;/p&gt;
+&lt;h2 id=&quot;四、git-diff-与-diff-思维&quot;&gt;&lt;a href=&quot;#四、git-diff-与-diff-思维&quot; class=&quot;headerlink&quot; title=&quot;四、git diff 与 diff 思维&quot;&gt;&lt;/a&gt;四、&lt;code&gt;git diff&lt;/code&gt; 与 diff 思维&lt;/h2&gt;&lt;p&gt;对应来源：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;../queries/git-diff-and-web-version-check.html&quot;&gt;查询：&lt;code&gt;git diff&lt;/code&gt; 这种差异对比，和 Web 端版本更新弹窗的思路是不是有异曲同工之处&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;../queries/in-app-file-update-vs-app-updater-vs-git-diff.html&quot;&gt;查询：如果是应用内的文件更新，像 &lt;code&gt;git diff&lt;/code&gt; 这种，跟前面说的应用更新有什么区别&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;1-为什么会聊到-git-diff&quot;&gt;&lt;a href=&quot;#1-为什么会聊到-git-diff&quot; class=&quot;headerlink&quot; title=&quot;1. 为什么会聊到 git diff&quot;&gt;&lt;/a&gt;1. 为什么会聊到 &lt;code&gt;git diff&lt;/code&gt;&lt;/h3&gt;&lt;p&gt;因为在讨论版本更新、应用更新、文件同步时，我们不断用到“diff”这个词。&lt;br&gt;但最后澄清下来，&lt;code&gt;git diff&lt;/code&gt; 更适合作为一个&lt;strong&gt;抽象参照系&lt;/strong&gt;，而不是直接等同于更新系统。&lt;/p&gt;
+&lt;h3 id=&quot;2-它解决什么问题&quot;&gt;&lt;a href=&quot;#2-它解决什么问题&quot; class=&quot;headerlink&quot; title=&quot;2. 它解决什么问题&quot;&gt;&lt;/a&gt;2. 它解决什么问题&lt;/h3&gt;&lt;p&gt;目标是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;比较两个文本状态&lt;/li&gt;
+&lt;li&gt;输出具体内容差异&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;3-它和前面三类系统的共同点&quot;&gt;&lt;a href=&quot;#3-它和前面三类系统的共同点&quot; class=&quot;headerlink&quot; title=&quot;3. 它和前面三类系统的共同点&quot;&gt;&lt;/a&gt;3. 它和前面三类系统的共同点&lt;/h3&gt;&lt;p&gt;共同点在于：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;都需要有两个基线&lt;/li&gt;
+&lt;li&gt;都要判断差异是否存在&lt;/li&gt;
+&lt;li&gt;都是“差异驱动后续动作”&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;4-它的关键不同&quot;&gt;&lt;a href=&quot;#4-它的关键不同&quot; class=&quot;headerlink&quot; title=&quot;4. 它的关键不同&quot;&gt;&lt;/a&gt;4. 它的关键不同&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;git diff&lt;/code&gt; 更关心“&lt;strong&gt;具体改了什么&lt;/strong&gt;”&lt;/li&gt;
+&lt;li&gt;网页版本更新更关心“&lt;strong&gt;只要知道变了就够了&lt;/strong&gt;”&lt;/li&gt;
+&lt;li&gt;RSS 更关心“&lt;strong&gt;哪些条目是新的&lt;/strong&gt;”&lt;/li&gt;
+&lt;li&gt;应用更新更关心“&lt;strong&gt;哪些文件 &amp;#x2F; 块需要更新，以及如何安全应用&lt;/strong&gt;”&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;如果硬要类比：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;网页版本更新更像 &lt;code&gt;git diff --quiet&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;应用更新更像“程序可执行的 manifest &amp;#x2F; patch diff”&lt;/li&gt;
+&lt;li&gt;RSS 更像“新条目集合 diff”&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;五、应用内文件更新：介于应用更新与-git-diff-之间&quot;&gt;&lt;a href=&quot;#五、应用内文件更新：介于应用更新与-git-diff-之间&quot; class=&quot;headerlink&quot; title=&quot;五、应用内文件更新：介于应用更新与 git diff 之间&quot;&gt;&lt;/a&gt;五、应用内文件更新：介于应用更新与 &lt;code&gt;git diff&lt;/code&gt; 之间&lt;/h2&gt;&lt;p&gt;这是我们讨论中间出现的一个重要过渡层。&lt;/p&gt;
+&lt;h3 id=&quot;1-它解决什么问题-3&quot;&gt;&lt;a href=&quot;#1-它解决什么问题-3&quot; class=&quot;headerlink&quot; title=&quot;1. 它解决什么问题&quot;&gt;&lt;/a&gt;1. 它解决什么问题&lt;/h3&gt;&lt;p&gt;目标是更新 app 运行时依赖的文件，而不是更新 app 本体，例如：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;配置&lt;/li&gt;
+&lt;li&gt;模板&lt;/li&gt;
+&lt;li&gt;规则&lt;/li&gt;
+&lt;li&gt;模型&lt;/li&gt;
+&lt;li&gt;游戏资源&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;2-它的结构&quot;&gt;&lt;a href=&quot;#2-它的结构&quot; class=&quot;headerlink&quot; title=&quot;2. 它的结构&quot;&gt;&lt;/a&gt;2. 它的结构&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;更新发现层&lt;/strong&gt;：轮询 &amp;#x2F; Push &amp;#x2F; 内部通知&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;状态描述层&lt;/strong&gt;：manifest、文件路径、hash、size、版本&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;差异判断层&lt;/strong&gt;：文件级 diff、hash diff、chunk diff&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;动作执行层&lt;/strong&gt;：下载、校验、替换、热加载&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;3-它和-git-diff-的关系&quot;&gt;&lt;a href=&quot;#3-它和-git-diff-的关系&quot; class=&quot;headerlink&quot; title=&quot;3. 它和 git diff 的关系&quot;&gt;&lt;/a&gt;3. 它和 &lt;code&gt;git diff&lt;/code&gt; 的关系&lt;/h3&gt;&lt;p&gt;相通之处：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;都是在回答“旧状态和新状态有何不同”&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;不同之处：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;git diff&lt;/code&gt; 面向文本内容表达&lt;/li&gt;
+&lt;li&gt;应用内文件更新面向程序执行与资源同步&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;真实工程里，应用内文件更新更常见的是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;manifest + hash 对比&lt;/li&gt;
+&lt;li&gt;必要时 binary patch&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;而不是直接发一个 &lt;code&gt;git diff&lt;/code&gt; 给客户端去打补丁。&lt;/p&gt;
+&lt;h2 id=&quot;横向对照表&quot;&gt;&lt;a href=&quot;#横向对照表&quot; class=&quot;headerlink&quot; title=&quot;横向对照表&quot;&gt;&lt;/a&gt;横向对照表&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;维度&lt;/th&gt;
+&lt;th&gt;网页版本更新推送&lt;/th&gt;
+&lt;th&gt;RSS 推送&lt;/th&gt;
+&lt;th&gt;应用更新推送&lt;/th&gt;
+&lt;th&gt;&lt;code&gt;git diff&lt;/code&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td&gt;核心目标&lt;/td&gt;
+&lt;td&gt;提醒页面刷新&lt;/td&gt;
+&lt;td&gt;分发新内容&lt;/td&gt;
+&lt;td&gt;升级应用版本&lt;/td&gt;
+&lt;td&gt;表达文本差异&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;比较对象&lt;/td&gt;
+&lt;td&gt;当前页版本 vs 远端版本&lt;/td&gt;
+&lt;td&gt;已推送条目 vs feed 条目&lt;/td&gt;
+&lt;td&gt;本地版本&amp;#x2F;文件 vs 远端 manifest&lt;/td&gt;
+&lt;td&gt;两份文本内容&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;差异粒度&lt;/td&gt;
+&lt;td&gt;版本号级&lt;/td&gt;
+&lt;td&gt;条目级&lt;/td&gt;
+&lt;td&gt;文件级 &amp;#x2F; chunk 级 &amp;#x2F; patch 级&lt;/td&gt;
+&lt;td&gt;行级 &amp;#x2F; hunk 级&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;发现更新方式&lt;/td&gt;
+&lt;td&gt;轮询为主&lt;/td&gt;
+&lt;td&gt;轮询 feed 为主&lt;/td&gt;
+&lt;td&gt;检查更新 &amp;#x2F; manifest&lt;/td&gt;
+&lt;td&gt;手动或版本控制触发&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;后续动作&lt;/td&gt;
+&lt;td&gt;弹窗、刷新&lt;/td&gt;
+&lt;td&gt;发消息&lt;/td&gt;
+&lt;td&gt;下载、校验、安装、重启&lt;/td&gt;
+&lt;td&gt;审查、合并、打 patch&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;关注重点&lt;/td&gt;
+&lt;td&gt;缓存、提示时机&lt;/td&gt;
+&lt;td&gt;去重、外部分发&lt;/td&gt;
+&lt;td&gt;清单、校验、回滚&lt;/td&gt;
+&lt;td&gt;差异可读性与可合并性&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;h2 id=&quot;核心收获&quot;&gt;&lt;a href=&quot;#核心收获&quot; class=&quot;headerlink&quot; title=&quot;核心收获&quot;&gt;&lt;/a&gt;核心收获&lt;/h2&gt;&lt;h3 id=&quot;1-“推送”不等于“源头主动发出”&quot;&gt;&lt;a href=&quot;#1-“推送”不等于“源头主动发出”&quot; class=&quot;headerlink&quot; title=&quot;1. “推送”不等于“源头主动发出”&quot;&gt;&lt;/a&gt;1. “推送”不等于“源头主动发出”&lt;/h3&gt;&lt;p&gt;这是整轮讨论中反复澄清的点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;RSS 体感像推送，但底层是定时拉取&lt;/li&gt;
+&lt;li&gt;网页更新弹窗也是轮询检测&lt;/li&gt;
+&lt;li&gt;真正的“推送协议”只是更新发现层的一个实现&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;2-不同系统最大的区别，不在“有没有-diff”，而在“diff-粒度”和“后续动作”&quot;&gt;&lt;a href=&quot;#2-不同系统最大的区别，不在“有没有-diff”，而在“diff-粒度”和“后续动作”&quot; class=&quot;headerlink&quot; title=&quot;2. 不同系统最大的区别，不在“有没有 diff”，而在“diff 粒度”和“后续动作”&quot;&gt;&lt;/a&gt;2. 不同系统最大的区别，不在“有没有 diff”，而在“diff 粒度”和“后续动作”&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;网页版本更新：知道变了就够了&lt;/li&gt;
+&lt;li&gt;RSS：知道哪条内容新了&lt;/li&gt;
+&lt;li&gt;应用更新：知道哪些文件 &amp;#x2F; 块变了，还要安全更新&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git diff&lt;/code&gt;：知道文本具体怎么变了&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;3-一个很稳的通用抽象是“状态比对驱动动作”&quot;&gt;&lt;a href=&quot;#3-一个很稳的通用抽象是“状态比对驱动动作”&quot; class=&quot;headerlink&quot; title=&quot;3. 一个很稳的通用抽象是“状态比对驱动动作”&quot;&gt;&lt;/a&gt;3. 一个很稳的通用抽象是“状态比对驱动动作”&lt;/h3&gt;&lt;p&gt;这可以作为后续继续分析其它系统的总框架：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;旧状态是什么&lt;/li&gt;
+&lt;li&gt;新状态是什么&lt;/li&gt;
+&lt;li&gt;差异如何表示&lt;/li&gt;
+&lt;li&gt;差异后做什么&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;后续可继续展开的题目&quot;&gt;&lt;a href=&quot;#后续可继续展开的题目&quot; class=&quot;headerlink&quot; title=&quot;后续可继续展开的题目&quot;&gt;&lt;/a&gt;后续可继续展开的题目&lt;/h2&gt;&lt;p&gt;基于这轮讨论，后面很适合继续写成独立主题的有：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;version diff&lt;/code&gt;、&lt;code&gt;manifest diff&lt;/code&gt;、&lt;code&gt;git diff&lt;/code&gt; 三种 diff 的系统化对照&lt;/li&gt;
+&lt;li&gt;从网页版本弹窗到 &lt;code&gt;electron-updater&lt;/code&gt;：为什么说前者是后者的极简前身&lt;/li&gt;
+&lt;li&gt;RSS 为什么“看起来是推送，本质却是轮询 + 分发”&lt;/li&gt;
+&lt;li&gt;应用内文件更新的最小设计：manifest、hash、替换、热加载&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;相关页面&quot;&gt;&lt;a href=&quot;#相关页面&quot; class=&quot;headerlink&quot; title=&quot;相关页面&quot;&gt;&lt;/a&gt;相关页面&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;../sources/webpage-version-update-popup-implementation.html&quot;&gt;来源：Web端版本更新弹窗实现&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;../concepts/rss-telegram-selfhost.html&quot;&gt;RSS &amp;#x2F; Telegram 自建推送&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;../queries/web-version-popup-vs-rss.html&quot;&gt;查询：Web端版本更新弹窗的数据推送跟 RSS 方案有什么异同&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;../queries/web-update-patterns-for-rss.html&quot;&gt;查询：Web端版本更新弹窗里的几种推送方式，对 RSS 推送机制有什么可借鉴之处&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;../queries/review-web-version-update-popup-scheme.html&quot;&gt;查询：Web端版本更新弹窗这篇文章里的方案有什么问题，有更好的方案吗&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;../queries/app-file-diff-with-update-delivery.html&quot;&gt;查询：刚刚讨论的差异对比，如果用在 app 文件 diff 场景里该怎么理解&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;../queries/web-version-json-vs-electron-updater.html&quot;&gt;查询：&lt;code&gt;version.json + 轮询弹窗&lt;/code&gt; 方案，对照 &lt;code&gt;electron-updater&lt;/code&gt; 该怎么理解&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;../queries/in-app-file-update-vs-app-updater-vs-git-diff.html&quot;&gt;查询：如果是应用内的文件更新，像 &lt;code&gt;git diff&lt;/code&gt; 这种，跟前面说的应用更新有什么区别&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;../queries/git-diff-and-web-version-check.html&quot;&gt;查询：&lt;code&gt;git diff&lt;/code&gt; 这种差异对比，和 Web 端版本更新弹窗的思路是不是有异曲同工之处&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+"><title>消息推送：RSS、应用更新、网页版本更新与 Diff 思维对照报告</title><link rel="stylesheet" type="text/css" href="../../css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/normalize.css/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="../../favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="../../favicon.ico"><link rel="apple-touch-icon" href="../../apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="../../apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="../../atom.xml"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/clipboard/dist/clipboard.min.js"></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.js"></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.css"><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">消息推送：RSS、应用更新、网页版本更新与 Diff 思维对照报告</h1><a id="logo" href="../../.">Canace 的博客</a><p class="description">Tomorrow is another day</p></div><div id="nav-menu"><a href="../../."><i class="fa fa-home"> 主页</i></a><a href="../../archives/"><i class="fa fa-archive"> 文章归档</i></a><a class="current" href="../"><i class="fa fa-book"> 知识库</i></a><a href="../../about/"><i class="fa fa-user"> 关于我</i></a><a href="../../atom.xml"><i class="fa fa-rss"> 订阅</i></a><a id="nav-random-article" href="#" title="随机文章" aria-label="随机文章"><i class="fa fa-random"> 随机文章</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">消息推送：RSS、应用更新、网页版本更新与 Diff 思维对照报告</h1><div class="clear"><div class="toc-article" id="toc"><div class="toc-title">目录</div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E7%9A%84"><span class="toc-text">目的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E5%8F%A5%E8%AF%9D%E7%BB%93%E8%AE%BA"><span class="toc-text">一句话结论</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E5%9B%BE"><span class="toc-text">总图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%9F%E4%B8%80%E5%88%86%E6%9E%90%E6%A1%86%E6%9E%B6"><span class="toc-text">统一分析框架</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B1%E5%90%8C%E9%AA%A8%E6%9E%B6"><span class="toc-text">共同骨架</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E7%BD%91%E9%A1%B5%E7%89%88%E6%9C%AC%E6%9B%B4%E6%96%B0%E6%8E%A8%E9%80%81"><span class="toc-text">一、网页版本更新推送</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%AE%83%E8%A7%A3%E5%86%B3%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98"><span class="toc-text">1. 它解决什么问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%AE%83%E7%9A%84%E6%8A%BD%E8%B1%A1%E7%BB%93%E6%9E%84"><span class="toc-text">2. 它的抽象结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%AE%83%E7%9A%84%E7%89%B9%E7%82%B9"><span class="toc-text">3. 它的特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%88%91%E4%BB%AC%E8%AE%A8%E8%AE%BA%E4%B8%AD%E8%AF%86%E5%88%AB%E5%87%BA%E7%9A%84%E5%B1%80%E9%99%90"><span class="toc-text">4. 我们讨论中识别出的局限</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81RSS-%E6%8E%A8%E9%80%81"><span class="toc-text">二、RSS 推送</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%AE%83%E8%A7%A3%E5%86%B3%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98-1"><span class="toc-text">1. 它解决什么问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%AE%83%E7%9A%84%E6%8A%BD%E8%B1%A1%E7%BB%93%E6%9E%84-1"><span class="toc-text">2. 它的抽象结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%AE%83%E7%9A%84%E7%89%B9%E7%82%B9-1"><span class="toc-text">3. 它的特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E5%92%8C%E7%BD%91%E9%A1%B5%E7%89%88%E6%9C%AC%E6%9B%B4%E6%96%B0%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-text">4. 和网页版本更新的关系</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%BA%94%E7%94%A8%E6%9B%B4%E6%96%B0%E6%8E%A8%E9%80%81"><span class="toc-text">三、应用更新推送</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%AE%83%E8%A7%A3%E5%86%B3%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98-2"><span class="toc-text">1. 它解决什么问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%AE%83%E7%9A%84%E6%8A%BD%E8%B1%A1%E7%BB%93%E6%9E%84-2"><span class="toc-text">2. 它的抽象结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%AE%83%E7%9A%84%E7%89%B9%E7%82%B9-2"><span class="toc-text">3. 它的特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E5%AE%83%E5%92%8C%E7%BD%91%E9%A1%B5%E7%89%88%E6%9C%AC%E6%9B%B4%E6%96%B0%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-text">4. 它和网页版本更新的关系</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81git-diff-%E4%B8%8E-diff-%E6%80%9D%E7%BB%B4"><span class="toc-text">四、git diff 与 diff 思维</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BC%9A%E8%81%8A%E5%88%B0-git-diff"><span class="toc-text">1. 为什么会聊到 git diff</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%AE%83%E8%A7%A3%E5%86%B3%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98"><span class="toc-text">2. 它解决什么问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%AE%83%E5%92%8C%E5%89%8D%E9%9D%A2%E4%B8%89%E7%B1%BB%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%85%B1%E5%90%8C%E7%82%B9"><span class="toc-text">3. 它和前面三类系统的共同点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E5%AE%83%E7%9A%84%E5%85%B3%E9%94%AE%E4%B8%8D%E5%90%8C"><span class="toc-text">4. 它的关键不同</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E5%BA%94%E7%94%A8%E5%86%85%E6%96%87%E4%BB%B6%E6%9B%B4%E6%96%B0%EF%BC%9A%E4%BB%8B%E4%BA%8E%E5%BA%94%E7%94%A8%E6%9B%B4%E6%96%B0%E4%B8%8E-git-diff-%E4%B9%8B%E9%97%B4"><span class="toc-text">五、应用内文件更新：介于应用更新与 git diff 之间</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%AE%83%E8%A7%A3%E5%86%B3%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98-3"><span class="toc-text">1. 它解决什么问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%AE%83%E7%9A%84%E7%BB%93%E6%9E%84"><span class="toc-text">2. 它的结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%AE%83%E5%92%8C-git-diff-%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-text">3. 它和 git diff 的关系</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%AA%E5%90%91%E5%AF%B9%E7%85%A7%E8%A1%A8"><span class="toc-text">横向对照表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E6%94%B6%E8%8E%B7"><span class="toc-text">核心收获</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E2%80%9C%E6%8E%A8%E9%80%81%E2%80%9D%E4%B8%8D%E7%AD%89%E4%BA%8E%E2%80%9C%E6%BA%90%E5%A4%B4%E4%B8%BB%E5%8A%A8%E5%8F%91%E5%87%BA%E2%80%9D"><span class="toc-text">1. “推送”不等于“源头主动发出”</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%B8%8D%E5%90%8C%E7%B3%BB%E7%BB%9F%E6%9C%80%E5%A4%A7%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%8C%E4%B8%8D%E5%9C%A8%E2%80%9C%E6%9C%89%E6%B2%A1%E6%9C%89-diff%E2%80%9D%EF%BC%8C%E8%80%8C%E5%9C%A8%E2%80%9Cdiff-%E7%B2%92%E5%BA%A6%E2%80%9D%E5%92%8C%E2%80%9C%E5%90%8E%E7%BB%AD%E5%8A%A8%E4%BD%9C%E2%80%9D"><span class="toc-text">2. 不同系统最大的区别，不在“有没有 diff”，而在“diff 粒度”和“后续动作”</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E4%B8%80%E4%B8%AA%E5%BE%88%E7%A8%B3%E7%9A%84%E9%80%9A%E7%94%A8%E6%8A%BD%E8%B1%A1%E6%98%AF%E2%80%9C%E7%8A%B6%E6%80%81%E6%AF%94%E5%AF%B9%E9%A9%B1%E5%8A%A8%E5%8A%A8%E4%BD%9C%E2%80%9D"><span class="toc-text">3. 一个很稳的通用抽象是“状态比对驱动动作”</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8E%E7%BB%AD%E5%8F%AF%E7%BB%A7%E7%BB%AD%E5%B1%95%E5%BC%80%E7%9A%84%E9%A2%98%E7%9B%AE"><span class="toc-text">后续可继续展开的题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E9%A1%B5%E9%9D%A2"><span class="toc-text">相关页面</span></a></li></ol></div></div><div class="post-content"><h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><p>汇总本轮围绕 <a href="../sources/webpage-version-update-popup-implementation.html">Web端版本更新弹窗实现</a> 展开的连续讨论，把它与：</p>
+<ul>
+<li><a href="../concepts/rss-telegram-selfhost.html">RSS &#x2F; Telegram 自建推送</a></li>
+<li><a href="../queries/web-version-json-vs-electron-updater.html"><code>electron-updater</code> 所代表的应用更新推送</a></li>
+<li><a href="../queries/git-diff-and-web-version-check.html"><code>git diff</code> &#x2F; 文件差异比对</a></li>
+</ul>
+<p>放到同一套分析框架下，形成一份可复用的总报告。</p>
+<h2 id="一句话结论"><a href="#一句话结论" class="headerlink" title="一句话结论"></a>一句话结论</h2><p>这几条线表面都在讨论“推送”或“diff”，但它们分别落在不同层级：</p>
+<ul>
+<li><strong>网页版本更新推送</strong>：更偏“发现变化并提醒刷新”</li>
+<li><strong>RSS 推送</strong>：更偏“发现新内容并向外部分发”</li>
+<li><strong>应用更新推送</strong>：更偏“发现新版本并完成下载安装”</li>
+<li><strong><code>git diff</code></strong>：更偏“表达两个状态之间的内容差异”</li>
+</ul>
+<p>如果抽象到统一模型，它们都可以被看成：</p>
+<ol>
+<li>先拿到两个状态</li>
+<li>判断是否存在差异</li>
+<li>根据差异触发后续动作</li>
+</ol>
+<p>差异主要在于：</p>
+<ul>
+<li>比较的对象是什么</li>
+<li>差异粒度有多细</li>
+<li>差异后续动作有多重</li>
+</ul>
+<h2 id="总图"><a href="#总图" class="headerlink" title="总图"></a>总图</h2><pre class="mermaid">flowchart LR
+  A["消息推送"] --> B["RSS 推送"]
+  A --> C["应用更新推送"]
+  A --> D["网页版本更新推送"]
+  E["diff 思维"] -.抽象映射.-> A</pre>
+
+<h2 id="统一分析框架"><a href="#统一分析框架" class="headerlink" title="统一分析框架"></a>统一分析框架</h2><p>这轮讨论里，最后稳定下来的一个很有用的框架是：把系统拆成“状态比对驱动动作”的结构。</p>
+<h3 id="共同骨架"><a href="#共同骨架" class="headerlink" title="共同骨架"></a>共同骨架</h3><p>任何一条线，本质都在回答三件事：</p>
+<ol>
+<li><strong>如何发现更新</strong></li>
+<li><strong>如何判断差异</strong></li>
+<li><strong>差异出现后如何处理</strong></li>
+</ol>
+<p>进一步展开，还可以变成五层：</p>
+<ol>
+<li><strong>更新发现层</strong>：轮询、长轮询、WebSocket、SSE、Push</li>
+<li><strong>状态描述层</strong>：版本号、feed、manifest、文件 hash</li>
+<li><strong>差异判断层</strong>：版本级 diff、条目级 diff、文件级 diff、内容级 diff</li>
+<li><strong>动作执行层</strong>：弹窗、发消息、下载、安装、回滚</li>
+<li><strong>用户交互层</strong>：是否提示、何时提示、能否稍后、是否自动执行</li>
+</ol>
+<p>这套框架是整份报告的主轴。</p>
+<h2 id="一、网页版本更新推送"><a href="#一、网页版本更新推送" class="headerlink" title="一、网页版本更新推送"></a>一、网页版本更新推送</h2><p>对应来源：</p>
+<ul>
+<li><a href="../sources/webpage-version-update-popup-implementation.html">来源：Web端版本更新弹窗实现</a></li>
+<li><a href="../queries/review-web-version-update-popup-scheme.html">查询：Web端版本更新弹窗这篇文章里的方案有什么问题，有更好的方案吗</a></li>
+</ul>
+<h3 id="1-它解决什么问题"><a href="#1-它解决什么问题" class="headerlink" title="1. 它解决什么问题"></a>1. 它解决什么问题</h3><p>目标是：</p>
+<ul>
+<li>页面已经打开</li>
+<li>服务器部署了新版本</li>
+<li>浏览器当前还停留在旧版本</li>
+<li>需要提醒用户刷新</li>
+</ul>
+<h3 id="2-它的抽象结构"><a href="#2-它的抽象结构" class="headerlink" title="2. 它的抽象结构"></a>2. 它的抽象结构</h3><ul>
+<li><strong>更新发现层</strong>：浏览器轮询 <code>version.json</code></li>
+<li><strong>状态描述层</strong>：本地版本号 vs 远端版本号</li>
+<li><strong>差异判断层</strong>：只判断“版本是否不同”</li>
+<li><strong>动作执行层</strong>：弹窗、刷新页面</li>
+<li><strong>用户交互层</strong>：立即更新 &#x2F; 稍后提醒</li>
+</ul>
+<h3 id="3-它的特点"><a href="#3-它的特点" class="headerlink" title="3. 它的特点"></a>3. 它的特点</h3><ul>
+<li>成本低</li>
+<li>不依赖复杂服务端</li>
+<li>适合低频更新</li>
+<li>差异粒度很粗，只到“版本号级”</li>
+</ul>
+<h3 id="4-我们讨论中识别出的局限"><a href="#4-我们讨论中识别出的局限" class="headerlink" title="4. 我们讨论中识别出的局限"></a>4. 我们讨论中识别出的局限</h3><ul>
+<li>demo 首次访问会误判成新版本</li>
+<li><code>reload(true)</code> 不能跨浏览器依赖</li>
+<li><code>version.json?t=Date.now()</code> 粗暴但有效</li>
+<li>“稍后提醒”缺少节流</li>
+<li>整体属于“更新提醒系统”，不是“更新分发系统”</li>
+</ul>
+<h2 id="二、RSS-推送"><a href="#二、RSS-推送" class="headerlink" title="二、RSS 推送"></a>二、RSS 推送</h2><p>对应来源：</p>
+<ul>
+<li><a href="../concepts/rss-telegram-selfhost.html">RSS &#x2F; Telegram 自建推送</a></li>
+<li><a href="../sources/gemini-flowerss-bot-principle.html">来源：Gemini 对话——indes&#x2F;flowerss-bot 项目原理</a></li>
+<li><a href="../queries/web-version-popup-vs-rss.html">查询：Web端版本更新弹窗的数据推送跟 RSS 方案有什么异同</a></li>
+</ul>
+<h3 id="1-它解决什么问题-1"><a href="#1-它解决什么问题-1" class="headerlink" title="1. 它解决什么问题"></a>1. 它解决什么问题</h3><p>目标是：</p>
+<ul>
+<li>有多个 RSS &#x2F; Atom 内容源</li>
+<li>需要聚合这些源</li>
+<li>一旦有新条目，就推到 Telegram</li>
+</ul>
+<h3 id="2-它的抽象结构-1"><a href="#2-它的抽象结构-1" class="headerlink" title="2. 它的抽象结构"></a>2. 它的抽象结构</h3><ul>
+<li><strong>更新发现层</strong>：Bot 定时轮询 RSS&#x2F;Atom feed</li>
+<li><strong>状态描述层</strong>：feed 条目列表、GUID、链接、更新时间</li>
+<li><strong>差异判断层</strong>：条目级去重，判断哪些是新内容</li>
+<li><strong>动作执行层</strong>：调用 Telegram Bot API 推送消息</li>
+<li><strong>用户交互层</strong>：用户在 TG 里查看，不必停留在源网页</li>
+</ul>
+<h3 id="3-它的特点-1"><a href="#3-它的特点-1" class="headerlink" title="3. 它的特点"></a>3. 它的特点</h3><ul>
+<li>体感像“推送”，本质上仍是“定时拉取 + 二次分发”</li>
+<li>比网页版本更新更偏“内容分发系统”</li>
+<li>差异粒度比版本号更细，到“条目级”</li>
+<li>送达通道脱离源站，用户体验更像订阅产品</li>
+</ul>
+<h3 id="4-和网页版本更新的关系"><a href="#4-和网页版本更新的关系" class="headerlink" title="4. 和网页版本更新的关系"></a>4. 和网页版本更新的关系</h3><p>相同点：</p>
+<ul>
+<li>都是先比较两个状态</li>
+<li>都不是严格源站实时主动推送</li>
+<li>都依赖某种轮询或定时拉取</li>
+</ul>
+<p>不同点：</p>
+<ul>
+<li>网页更新只关心“站点是否整体变了”</li>
+<li>RSS 关心“有没有新内容条目”</li>
+<li>网页更新的动作是刷新</li>
+<li>RSS 的动作是外部分发消息</li>
+</ul>
+<h2 id="三、应用更新推送"><a href="#三、应用更新推送" class="headerlink" title="三、应用更新推送"></a>三、应用更新推送</h2><p>对应来源：</p>
+<ul>
+<li><a href="../queries/web-version-json-vs-electron-updater.html">查询：<code>version.json + 轮询弹窗</code> 方案，对照 <code>electron-updater</code> 该怎么理解</a></li>
+<li><a href="../queries/app-file-diff-with-update-delivery.html">查询：刚刚讨论的差异对比，如果用在 app 文件 diff 场景里该怎么理解</a></li>
+</ul>
+<h3 id="1-它解决什么问题-2"><a href="#1-它解决什么问题-2" class="headerlink" title="1. 它解决什么问题"></a>1. 它解决什么问题</h3><p>目标是：</p>
+<ul>
+<li>客户端已有旧版本 app</li>
+<li>服务端有新版本 app</li>
+<li>希望自动或半自动升级</li>
+</ul>
+<h3 id="2-它的抽象结构-2"><a href="#2-它的抽象结构-2" class="headerlink" title="2. 它的抽象结构"></a>2. 它的抽象结构</h3><ul>
+<li><strong>更新发现层</strong>：客户端检查更新</li>
+<li><strong>状态描述层</strong>：<code>latest.yml</code> &#x2F; manifest &#x2F; 文件清单 &#x2F; 校验信息</li>
+<li><strong>差异判断层</strong>：版本差异、文件差异、块级差异</li>
+<li><strong>动作执行层</strong>：下载、校验、安装、重启</li>
+<li><strong>用户交互层</strong>：立即安装、退出安装、后台下载、灰度发布</li>
+</ul>
+<h3 id="3-它的特点-2"><a href="#3-它的特点-2" class="headerlink" title="3. 它的特点"></a>3. 它的特点</h3><ul>
+<li>不只是提醒“变了”，还要负责“怎么更新”</li>
+<li>差异粒度可到文件级、chunk 级、patch 级</li>
+<li>关注完整性校验、失败回滚、增量下载</li>
+<li>本质是“应用分发系统”</li>
+</ul>
+<h3 id="4-它和网页版本更新的关系"><a href="#4-它和网页版本更新的关系" class="headerlink" title="4. 它和网页版本更新的关系"></a>4. 它和网页版本更新的关系</h3><p>可以把网页版本更新方案看成一个极简前身：</p>
+<ul>
+<li><p>网页版本更新只覆盖：</p>
+<ul>
+<li>发现变化</li>
+<li>提示用户</li>
+</ul>
+</li>
+<li><p><code>electron-updater</code> 还覆盖：</p>
+<ul>
+<li>更新元数据清单</li>
+<li>差分下载</li>
+<li>下载校验</li>
+<li>安装执行</li>
+<li>灰度发布</li>
+</ul>
+</li>
+</ul>
+<p>所以两者不是矛盾关系，而是成熟度和覆盖范围不同。</p>
+<h2 id="四、git-diff-与-diff-思维"><a href="#四、git-diff-与-diff-思维" class="headerlink" title="四、git diff 与 diff 思维"></a>四、<code>git diff</code> 与 diff 思维</h2><p>对应来源：</p>
+<ul>
+<li><a href="../queries/git-diff-and-web-version-check.html">查询：<code>git diff</code> 这种差异对比，和 Web 端版本更新弹窗的思路是不是有异曲同工之处</a></li>
+<li><a href="../queries/in-app-file-update-vs-app-updater-vs-git-diff.html">查询：如果是应用内的文件更新，像 <code>git diff</code> 这种，跟前面说的应用更新有什么区别</a></li>
+</ul>
+<h3 id="1-为什么会聊到-git-diff"><a href="#1-为什么会聊到-git-diff" class="headerlink" title="1. 为什么会聊到 git diff"></a>1. 为什么会聊到 <code>git diff</code></h3><p>因为在讨论版本更新、应用更新、文件同步时，我们不断用到“diff”这个词。<br>但最后澄清下来，<code>git diff</code> 更适合作为一个<strong>抽象参照系</strong>，而不是直接等同于更新系统。</p>
+<h3 id="2-它解决什么问题"><a href="#2-它解决什么问题" class="headerlink" title="2. 它解决什么问题"></a>2. 它解决什么问题</h3><p>目标是：</p>
+<ul>
+<li>比较两个文本状态</li>
+<li>输出具体内容差异</li>
+</ul>
+<h3 id="3-它和前面三类系统的共同点"><a href="#3-它和前面三类系统的共同点" class="headerlink" title="3. 它和前面三类系统的共同点"></a>3. 它和前面三类系统的共同点</h3><p>共同点在于：</p>
+<ul>
+<li>都需要有两个基线</li>
+<li>都要判断差异是否存在</li>
+<li>都是“差异驱动后续动作”</li>
+</ul>
+<h3 id="4-它的关键不同"><a href="#4-它的关键不同" class="headerlink" title="4. 它的关键不同"></a>4. 它的关键不同</h3><ul>
+<li><code>git diff</code> 更关心“<strong>具体改了什么</strong>”</li>
+<li>网页版本更新更关心“<strong>只要知道变了就够了</strong>”</li>
+<li>RSS 更关心“<strong>哪些条目是新的</strong>”</li>
+<li>应用更新更关心“<strong>哪些文件 &#x2F; 块需要更新，以及如何安全应用</strong>”</li>
+</ul>
+<p>如果硬要类比：</p>
+<ul>
+<li>网页版本更新更像 <code>git diff --quiet</code></li>
+<li>应用更新更像“程序可执行的 manifest &#x2F; patch diff”</li>
+<li>RSS 更像“新条目集合 diff”</li>
+</ul>
+<h2 id="五、应用内文件更新：介于应用更新与-git-diff-之间"><a href="#五、应用内文件更新：介于应用更新与-git-diff-之间" class="headerlink" title="五、应用内文件更新：介于应用更新与 git diff 之间"></a>五、应用内文件更新：介于应用更新与 <code>git diff</code> 之间</h2><p>这是我们讨论中间出现的一个重要过渡层。</p>
+<h3 id="1-它解决什么问题-3"><a href="#1-它解决什么问题-3" class="headerlink" title="1. 它解决什么问题"></a>1. 它解决什么问题</h3><p>目标是更新 app 运行时依赖的文件，而不是更新 app 本体，例如：</p>
+<ul>
+<li>配置</li>
+<li>模板</li>
+<li>规则</li>
+<li>模型</li>
+<li>游戏资源</li>
+</ul>
+<h3 id="2-它的结构"><a href="#2-它的结构" class="headerlink" title="2. 它的结构"></a>2. 它的结构</h3><ul>
+<li><strong>更新发现层</strong>：轮询 &#x2F; Push &#x2F; 内部通知</li>
+<li><strong>状态描述层</strong>：manifest、文件路径、hash、size、版本</li>
+<li><strong>差异判断层</strong>：文件级 diff、hash diff、chunk diff</li>
+<li><strong>动作执行层</strong>：下载、校验、替换、热加载</li>
+</ul>
+<h3 id="3-它和-git-diff-的关系"><a href="#3-它和-git-diff-的关系" class="headerlink" title="3. 它和 git diff 的关系"></a>3. 它和 <code>git diff</code> 的关系</h3><p>相通之处：</p>
+<ul>
+<li>都是在回答“旧状态和新状态有何不同”</li>
+</ul>
+<p>不同之处：</p>
+<ul>
+<li><code>git diff</code> 面向文本内容表达</li>
+<li>应用内文件更新面向程序执行与资源同步</li>
+</ul>
+<p>真实工程里，应用内文件更新更常见的是：</p>
+<ul>
+<li>manifest + hash 对比</li>
+<li>必要时 binary patch</li>
+</ul>
+<p>而不是直接发一个 <code>git diff</code> 给客户端去打补丁。</p>
+<h2 id="横向对照表"><a href="#横向对照表" class="headerlink" title="横向对照表"></a>横向对照表</h2><table>
+<thead>
+<tr>
+<th>维度</th>
+<th>网页版本更新推送</th>
+<th>RSS 推送</th>
+<th>应用更新推送</th>
+<th><code>git diff</code></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>核心目标</td>
+<td>提醒页面刷新</td>
+<td>分发新内容</td>
+<td>升级应用版本</td>
+<td>表达文本差异</td>
+</tr>
+<tr>
+<td>比较对象</td>
+<td>当前页版本 vs 远端版本</td>
+<td>已推送条目 vs feed 条目</td>
+<td>本地版本&#x2F;文件 vs 远端 manifest</td>
+<td>两份文本内容</td>
+</tr>
+<tr>
+<td>差异粒度</td>
+<td>版本号级</td>
+<td>条目级</td>
+<td>文件级 &#x2F; chunk 级 &#x2F; patch 级</td>
+<td>行级 &#x2F; hunk 级</td>
+</tr>
+<tr>
+<td>发现更新方式</td>
+<td>轮询为主</td>
+<td>轮询 feed 为主</td>
+<td>检查更新 &#x2F; manifest</td>
+<td>手动或版本控制触发</td>
+</tr>
+<tr>
+<td>后续动作</td>
+<td>弹窗、刷新</td>
+<td>发消息</td>
+<td>下载、校验、安装、重启</td>
+<td>审查、合并、打 patch</td>
+</tr>
+<tr>
+<td>关注重点</td>
+<td>缓存、提示时机</td>
+<td>去重、外部分发</td>
+<td>清单、校验、回滚</td>
+<td>差异可读性与可合并性</td>
+</tr>
+</tbody></table>
+<h2 id="核心收获"><a href="#核心收获" class="headerlink" title="核心收获"></a>核心收获</h2><h3 id="1-“推送”不等于“源头主动发出”"><a href="#1-“推送”不等于“源头主动发出”" class="headerlink" title="1. “推送”不等于“源头主动发出”"></a>1. “推送”不等于“源头主动发出”</h3><p>这是整轮讨论中反复澄清的点：</p>
+<ul>
+<li>RSS 体感像推送，但底层是定时拉取</li>
+<li>网页更新弹窗也是轮询检测</li>
+<li>真正的“推送协议”只是更新发现层的一个实现</li>
+</ul>
+<h3 id="2-不同系统最大的区别，不在“有没有-diff”，而在“diff-粒度”和“后续动作”"><a href="#2-不同系统最大的区别，不在“有没有-diff”，而在“diff-粒度”和“后续动作”" class="headerlink" title="2. 不同系统最大的区别，不在“有没有 diff”，而在“diff 粒度”和“后续动作”"></a>2. 不同系统最大的区别，不在“有没有 diff”，而在“diff 粒度”和“后续动作”</h3><ul>
+<li>网页版本更新：知道变了就够了</li>
+<li>RSS：知道哪条内容新了</li>
+<li>应用更新：知道哪些文件 &#x2F; 块变了，还要安全更新</li>
+<li><code>git diff</code>：知道文本具体怎么变了</li>
+</ul>
+<h3 id="3-一个很稳的通用抽象是“状态比对驱动动作”"><a href="#3-一个很稳的通用抽象是“状态比对驱动动作”" class="headerlink" title="3. 一个很稳的通用抽象是“状态比对驱动动作”"></a>3. 一个很稳的通用抽象是“状态比对驱动动作”</h3><p>这可以作为后续继续分析其它系统的总框架：</p>
+<ol>
+<li>旧状态是什么</li>
+<li>新状态是什么</li>
+<li>差异如何表示</li>
+<li>差异后做什么</li>
+</ol>
+<h2 id="后续可继续展开的题目"><a href="#后续可继续展开的题目" class="headerlink" title="后续可继续展开的题目"></a>后续可继续展开的题目</h2><p>基于这轮讨论，后面很适合继续写成独立主题的有：</p>
+<ol>
+<li><code>version diff</code>、<code>manifest diff</code>、<code>git diff</code> 三种 diff 的系统化对照</li>
+<li>从网页版本弹窗到 <code>electron-updater</code>：为什么说前者是后者的极简前身</li>
+<li>RSS 为什么“看起来是推送，本质却是轮询 + 分发”</li>
+<li>应用内文件更新的最小设计：manifest、hash、替换、热加载</li>
+</ol>
+<h2 id="相关页面"><a href="#相关页面" class="headerlink" title="相关页面"></a>相关页面</h2><ul>
+<li><a href="../sources/webpage-version-update-popup-implementation.html">来源：Web端版本更新弹窗实现</a></li>
+<li><a href="../concepts/rss-telegram-selfhost.html">RSS &#x2F; Telegram 自建推送</a></li>
+<li><a href="../queries/web-version-popup-vs-rss.html">查询：Web端版本更新弹窗的数据推送跟 RSS 方案有什么异同</a></li>
+<li><a href="../queries/web-update-patterns-for-rss.html">查询：Web端版本更新弹窗里的几种推送方式，对 RSS 推送机制有什么可借鉴之处</a></li>
+<li><a href="../queries/review-web-version-update-popup-scheme.html">查询：Web端版本更新弹窗这篇文章里的方案有什么问题，有更好的方案吗</a></li>
+<li><a href="../queries/app-file-diff-with-update-delivery.html">查询：刚刚讨论的差异对比，如果用在 app 文件 diff 场景里该怎么理解</a></li>
+<li><a href="../queries/web-version-json-vs-electron-updater.html">查询：<code>version.json + 轮询弹窗</code> 方案，对照 <code>electron-updater</code> 该怎么理解</a></li>
+<li><a href="../queries/in-app-file-update-vs-app-updater-vs-git-diff.html">查询：如果是应用内的文件更新，像 <code>git diff</code> 这种，跟前面说的应用更新有什么区别</a></li>
+<li><a href="../queries/git-diff-and-web-version-check.html">查询：<code>git diff</code> 这种差异对比，和 Web 端版本更新弹窗的思路是不是有异曲同工之处</a></li>
+</ul>
+</div></div></div></div><div class="pure-u-1 pure-u-md-1-4"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 常用文档</i></div><ul></ul><a href="/git-common-commands" title="Git 文档" target="_blank">Git 文档</a><ul></ul><a href="/common-programming-prompt-words" title="常用开发提示词" target="_blank">常用开发提示词</a></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="../../categories/cli/">工程化与运维</a><span class="category-list-count">50</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/soft/">软技能与思考</a><span class="category-list-count">48</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/intelligent/">AI探索</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/web/">Web开发</a><span class="category-list-count">142</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/coding/">编程基础</a><span class="category-list-count">42</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/site/">网站建设</a><span class="category-list-count">5</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="../../tags/performance/" style="font-size: 15px; color: #7a9fb8">性能优化</a> <a href="../../tags/essays/" style="font-size: 15px; color: #3679a7">随笔</a> <a href="../../tags/AI%E5%8E%9F%E7%90%86/" style="font-size: 15px; color: #96aebf">AI原理</a> <a href="../../tags/backend/" style="font-size: 15px; color: #5f90b1">后端</a> <a href="../../tags/Python-Go-%E5%85%B6%E4%BB%96/" style="font-size: 15px; color: #88a6bb">Python/Go/其他</a> <a href="../../tags/api-services/" style="font-size: 15px; color: #bec4c9">API&服务</a> <a href="../../tags/computer-science/" style="font-size: 15px; color: #2972a4">计算机科学</a> <a href="../../tags/JavaScript-TypeScript/" style="font-size: 15px; color: #0e639d">JavaScript&TypeScript</a> <a href="../../tags/%E8%81%8C%E4%B8%9A%E5%8F%91%E5%B1%95/" style="font-size: 15px; color: #7a9fb8">职业发展</a> <a href="../../tags/AI%E7%BC%96%E7%A8%8B/" style="font-size: 15px; color: #7a9fb8">AI编程</a> <a href="../../tags/%E7%BF%BB%E8%AF%91/" style="font-size: 15px; color: #ccc">翻译</a> <a href="../../tags/reading-notes/" style="font-size: 15px; color: #a3b5c2">读书笔记</a> <a href="../../tags/frontend/" style="font-size: 15px; color: #005b9a">前端</a> <a href="../../tags/frameworks-libs/" style="font-size: 15px; color: #5288ae">框架与库</a> <a href="../../tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/" style="font-size: 15px; color: #88a6bb">系统设计</a> <a href="../../tags/programming-languages/" style="font-size: 15px; color: #b1bdc5">编程语言</a> <a href="../../tags/css-visualization/" style="font-size: 15px; color: #1b6aa1">CSS与可视化</a> <a href="../../tags/build-deploy/" style="font-size: 15px; color: #6d97b5">构建与部署</a> <a href="../../tags/dev-tools/" style="font-size: 15px; color: #4481ab">开发工具</a> <a href="../../tags/Agent-Skill/" style="font-size: 15px; color: #ccc">Agent,Skill</a> <a href="../../tags/Node-js/" style="font-size: 15px; color: #7a9fb8">Node.js</a> <a href="../../tags/cross-platform/" style="font-size: 15px; color: #88a6bb">跨端方案</a> <a href="../../tags/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/" style="font-size: 15px; color: #ccc">项目管理</a> <a href="../../tags/%E7%9F%A5%E8%AF%86%E5%BA%93/" style="font-size: 15px; color: #ccc">知识库</a> <a href="../../tags/code-quality/" style="font-size: 15px; color: #bec4c9">代码质量</a></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2026 <a href="../../." rel="nofollow">Canace 的博客</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="../../js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.js" async></script><script type="text/javascript" src="../../js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.css"><link rel="stylesheet" type="text/css" href="../../css/search.css?v=0.0.0"><script type="text/javascript" src="../../js/search.js?v=0.0.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+   search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="/js/copycode.js" successtext="复制成功!"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/mermaid@11.14.0/dist/mermaid.min.js"></script><script type="text/javascript">document.addEventListener('DOMContentLoaded', function () {
+  if (!window.mermaid) return;
+  mermaid.initialize({"theme":"default","logLevel":5,"startOnLoad":true,"arrowMarkerAbsolute":false,"flowchart":{"htmlLabels":true,"useMaxWidth":true,"curve":"linear"},"sequence":{"diagramMarginX":50,"diagramMarginY":10,"actorMargin":50,"width":150,"height":65,"boxMargin":10,"boxTextMargin":5,"noteMargin":10,"messageMargin":35,"mirrorActors":true,"bottomMarginAdj":1,"useMaxWidth":true},"gantt":{"titleTopMargin":25,"barHeight":20,"barGap":4,"topPadding":50,"leftPadding":75,"gridLineStartPadding":35,"fontSize":11,"fontFamily":"\"Open-Sans\", \"sans-serif\"","numberSectionStyles":4,"axisFormat":"%Y-%m-%d"},"class":{},"git":{}});
+});
+</script><script type="text/javascript" src="../../js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="../../js/smartresize.js?v=0.0.0"></script><script type="text/javascript">(function () {
+  var urls = ["/../../6-common-website-usability-issues-and-solutions/","/../../2024-year-end-summary/","/../../AI-knowledge-base/","/../../Django-channels/","/../../MySQL/","/../../NP-P-NPC/","/../../JavaScript-call-apply-bind/","/../../about-doing-technology/","/../../WebRTC/","/../../about-forgetfulness/","/../../agent-coding-stability/","/../../ai-coding-game/","/../../add-skeleton-screen/","/../../ai-coding-share/","/../../ai-make-you-boring/","/../../ai-coding-ide/","/../../ai-expansion/","/../../ai-optimize-ui/","/../../ai-worker/","/../../algorithm-book-notes-for-everyone/","/../../angular-navigation-content-linkage/","/../../ant-design-pitfalls/","/../../angel-love/","/../../ants/","/../../async-data-console-issues/","/../../axios-network-request-encapsulation/","/../../binary-search/","/../../bash-data-processing/","/../../beego-getting-started/","/../../blog-category/","/../../boolean-variables-in-project-application/","/../../box-model/","/../../brief-discussion-on-dns-pollution/","/../../bracket-matching/","/../../brief-discussion-on-visual-form-design/","/../../browser-kernel-and-writing/","/../../build-django-blog-system/","/../../build-typescript-library/","/../../calculate-rice-cooker-reservation-time/","/../../canvas-draw-dynamic-path/","/../../cascade/","/../../build-tinymce-img-plugin/","/../../canvas-draw-sprite-export/","/../../centos-server-login-config/","/../../ckeditor-usage-in-angular/","/../../code-optimization/","/../../common-algorithm-ideas/","/../../common-git-workflows/","/../../common-image-format-comparison/","/../../climbing-stairs/","/../../common-programming-prompt-words/","/../../common-regular-expressions/","/../../common-terminal-commands/","/../../computer-graphics-1/","/../../count-beautiful-subarrays/","/../../count-number-of-islands/","/../../count-total-elements-of-array-objects/","/../../computer-graphics-2/","/../../create-object-based-on-null/","/../../cross-origin-resource-sharing/","/../../css-background-image-application/","/../../css-circular-progress-bar/","/../../css-notes/","/../../css-positioning-detailed/","/../../css-positioning/","/../../css-series-basics/","/../../css-layout-guide/","/../../css-series-cascade/","/../../css-series-box-dimensions/","/../../css-series-flow-and-dimensions/","/../../css-series-history-and-document-flow/","/../../css-series-inline-elements-and-flow/","/../../css-series-text-processing/","/../../css-tips/","/../../css-series-flow-destruction-and-protection/","/../../css3-animation-vs-js-animation/","/../../css-two-color-pie-chart/","/../../cursor-debugger/","/../../custom-github-activity/","/../../css2-block-element-center/","/../../deep-work-philosophy-interpretation/","/../../deep-copy-of-arrays-and-objects/","/../../disable-image-dragging/","/../../cursor-skill-web-search-download-movie/","/../../docker-documentation/","/../../docker-frontend-environment-setup/","/../../doing-things-with-vscode/","/../../egg/","/../../dropdown-list-implementation/","/../../element-plus-table-component-scaling-issue-solution/","/../../es2020-new-features/","/../../extra-thick-chicken-soup/","/../../file-naming-pitfalls-record/","/../../ffmpeg-extract-audio-track/","/../../find-median-sorted-arrays/","/../../firefox-remove-various-dashed-borders/","/../../first-day-morning-run/","/../../first-screen-optimization/","/../../first-screen-time-vs-white-screen-time/","/../../flow-simple-tutorial/","/../../fix-github-image-issue-on-mac/","/../../flutter-learning-notes-dart-basics/","/../../frontend-draw-graphic-captcha/","/../../flutter-learning-notes-quick-start/","/../../frontend-performance-optimization/","/../../four-js-tips/","/../../frontend-xx-dockerization/","/../../fullscreen-solution-for-webpage-or-html-elements/","/../../fun-console/","/../../function-currying/","/../../function-without-global-variable-counting/","/../../functional-programming/","/../../generate-random-array-in-specified-range/","/../../get-css-style/","/../../gemini-new-session-memory/","/../../ghost-whitespace-nodes/","/../../git-common-commands/","/../../get-longest-common-prefix/","/../../git-domain-config/","/../../git-environment-config/","/../../git-usage-guide/","/../../gitbook-generate-ebook/","/../../github-action-auto-deploy-page/","/../../github-practical-tips/","/../../github-travis-auto-build-vue-to-gitpage/","/../../gitlab-ci-config-template/","/../../gitpage-hexo/","/../../go-getting-started/","/../../hexo-blog-migration/","/../../hexo-getting-started/","/../../hexo-math-formula-support/","/../../how-to-create-a-robust-system/","/../../html-notes/","/../../homebrew-common-commands/","/../../how-to-optimize-animation/","/../../html-to-text-js/","/../../http-notes/","/../../http-server/","/../../image-lazy-loading-implementation/","/../../implement-array-flatten/","/../../interview-strategy/","/../../improve-work-efficiency-with-cursor-practical-notes/","/../../interesting-css-cascade-issues/","/../../issue-03/","/../../issue-05/","/../../issue-04/","/../../issue-07/","/../../issue-06/","/../../issue-08/","/../../issue-09/","/../../issue-10/","/../../issue-11/","/../../issue-12/","/../../issue-1/","/../../issue-15/","/../../issue-14/","/../../issue-13/","/../../issue-2/","/../../japanese-learning-notes/","/../../javaScript-promise/","/../../javascript-basics-primitive-vs-reference-types/","/../../javascript-basics-type-conversion/","/../../javascript-common-code-snippets/","/../../javascript-built-in-deep-copy/","/../../javascript-detect-caps-lock/","/../../javascript-functions/","/../../javascript-new-implementation-principle/","/../../javascript-object-oriented-programming/","/../../javascript-soul-questions/","/../../javascript-tricks/","/../../js-execution/","/../../js-linked-list-implementation/","/../../js-overview/","/../../js-modal-blog/","/../../js-string-to-base64/","/../../js-timezone/","/../../key-value-role-in-vue-components/","/../../jump-to-specific-position-in-article/","/../../knowledge-anxiety/","/../../kindness/","/../../kpi-vs-okr/","/../../knn-algorithm/","/../../leave-page-popup/","/../../linux-background-script-execution/","/../../lodash-source-analysis-array-chunk/","/../../lodash-source-analysis-array-slice/","/../../mac-debug-ios-web-page/","/../../mac-install-mysql/","/../../llm-wiki/","/../../manchester-by-the-sea/","/../../mini-program-tabs-sticky/","/../../model-training-steps/","/../../modify-autofill-style/","/../../modify-scrollbar-style-compatible/","/../../method-to-login-to-south-china-normal-university-campus-network/","/../../module-specifications/","/../../n-n-order-matrix-algorithm/","/../../node-version-management/","/../../nodeJs/","/../../nodejs-config/","/../../node-notes-in-depth/","/../../nodejs-module-mechanism/","/../../nodejs-notes/","/../../notes-about-writing-weekly-reports/","/../../number-precise-to-two-decimal-places/","/../../object-property-value-monitoring/","/../../one-click-generate-responsive-table/","/../../package-json-field-list/","/../../pagination-algorithm/","/../../npm-common-commands/","/../../palindrome-number-judgment/","/../../personal-knowledge-base/","/../../pixi-basics/","/../../pixi-js-sprite-loading-cache-removal/","/../../pixijs-vertexData-null/","/../../pinyin-learning-project-notes/","/../../port-number-modification/","/../../prisma-getting-started-guide/","/../../product-updates-rss-file-diff-mental-model/","/../../project-modularization-principles/","/../../proxy-observer-pattern/","/../../python3-installation/","/../../python-pitfalls-collection/","/../../record-service-degradation-due-to-emergency/","/../../react-hooks-create-movie-app/","/../../qwen-milk-tea-ui/","/../../recursive-tree/","/../../refactoring-vs-architecture/","/../../remove-parent-nodes-with-duplicate-child-ids/","/../../removeDuplicates/","/../../removeElement/","/../../regular-expressions/","/../../reverse-integer/","/../../reverse-words-in-string/","/../../roman-numerals-to-integer/","/../../rss-telegram-selfhost/","/../../scroll-pagination/","/../../sentence-excerpts/","/../../settimeout-simulate-setinterval/","/../../singly-linked-list-concatenation/","/../../science-popularization/","/../../solve-github-dns-pollution-issue/","/../../software-version-number-definition/","/../../ss-installation/","/../../sublime-text-nodejs-config/","/../../some-concepts/","/../../string-and-code-rigor/","/../../systematic-method-for-fragmented-reading-knowledge/","/../../talking-about-browser-cache-mechanism/","/../../talking-about-vuex/","/../../talking-about-webpage-adaptive-and-responsive-layout/","/../../tcp-ip-three-way-handshake/","/../../thoughts-on-ad-blocker-plugins/","/../../thoughts-on-branch-management/","/../../table-cell-equal-division/","/../../thoughts-on-technical-growth/","/../../time-complexity-vs-space-complexity/","/../../three-js-basics-practice/","/../../timestamp-to-date/","/../../translate-use-claude-code/","/../../two-sum-problem/","/../../time-zero/","/../../typescript-environment-config/","/../../ubuntu-configure-frontend-environment/","/../../ubuntu-configure-ss/","/../../understanding-byte-order/","/../../unavoidable-bug-chrome-translation-caused-trouble/","/../../understanding-cookies/","/../../ubuntu-install-tensorflow/","/../../understanding-instanceof/","/../../validate-string/","/../../variables/","/../../vue-config-template/","/../../vue-data-driven-view-implementation/","/../../vue-details-i-didnt-know/","/../../vscode-code-formatting-summary/","/../../vue-dynamic-change-title/","/../../vue-dynamic-component-import-note-not-async/","/../../vue-test-unit/","/../../vue3-notes/","/../../web-performance-optimization-debounce/","/../../web-security-csrf/","/../../web-security-xss-attack/","/../../vue-project-setup-steps/","/../../webpack-dynamic-modify-resource-domain/","/../../webpack-gulp-bundle-vue-component-library/","/../../webpack5-new-features-module-federation-notes/","/../../wechat-mini-program-pitfalls/","/../../webpage-version-update-popup-implementation/","/../../webpack/","/../../what-happened-to-vue/","/../../what-happens-from-url-to-display/","/../../why-frontend-needs-framework/","/../../why-not-let-ai-write-for-us/","/../../why-we-need-to-read/","/../../why-graphics-card/","/../../windows-tricks/","/../../why-write-wechat-official-account/","/../../words-of-experience/","/../../wordpress-installation/","/../../work-for/","/../../writing-a-good-claude-md/","/../../yml-file-operations/","/../../wsl-config/"];
+  var el = document.getElementById('nav-random-article');
+  if (!el) return;
+  el.addEventListener('click', function (e) {
+    e.preventDefault();
+    if (!urls.length) return;
+    var next = urls[Math.floor(Math.random() * urls.length)];
+    if (next) window.location.href = next;
+  });
+})();</script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":200,"height":200},"mobile":{"show":false},"react":{"opacity":0.7},"log":false});</script></body></html>

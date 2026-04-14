@@ -1,0 +1,309 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="canace 的博客"><meta itemprop="name" content="查询：`version.json + 轮询弹窗` 方案，对照 `Electron-Updater` 该怎么理解"><meta itemprop="image" content="https://raw.githubusercontent.com/Canace22/Assets/main/images/snow-other.png"><meta property="og:image" content="https://raw.githubusercontent.com/Canace22/Assets/main/images/snow-other.png"><meta name="description" itemprop="description" content="&lt;h2 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h2&gt;&lt;p&gt;如果只对照 &lt;code&gt;electron-updater&lt;/code&gt;，前面讨论的 &lt;code&gt;version.json + 轮询弹窗&lt;/code&gt; 方案该怎么理解？&lt;/p&gt;
+&lt;h2 id=&quot;结论&quot;&gt;&lt;a href=&quot;#结论&quot; class=&quot;headerlink&quot; title=&quot;结论&quot;&gt;&lt;/a&gt;结论&lt;/h2&gt;&lt;p&gt;两者解决的是&lt;strong&gt;同一类问题&lt;/strong&gt;：&lt;br&gt;都在回答“客户端如何知道有新版本，以及用户如何完成更新”。&lt;/p&gt;
+&lt;p&gt;但它们解决问题的&lt;strong&gt;层级不同&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;version.json + 轮询弹窗&lt;/code&gt;：偏&lt;strong&gt;轻量更新提醒&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;electron-updater&lt;/code&gt;：偏&lt;strong&gt;完整应用更新系统&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;换句话说，前者更像“告诉你该刷新了”，后者更像“告诉你有新版、帮你算该下什么、把包下载好、校验完、最后安装掉”。&lt;/p&gt;
+&lt;h2 id=&quot;分层对照&quot;&gt;&lt;a href=&quot;#分层对照&quot; class=&quot;headerlink&quot; title=&quot;分层对照&quot;&gt;&lt;/a&gt;分层对照&lt;/h2&gt;&lt;h3 id=&quot;1-更新发现&quot;&gt;&lt;a href=&quot;#1-更新发现&quot; class=&quot;headerlink&quot; title=&quot;1. 更新发现&quot;&gt;&lt;/a&gt;1. 更新发现&lt;/h3&gt;&lt;p&gt;&lt;code&gt;version.json&lt;/code&gt; 方案：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;前端定时请求一个轻量 JSON&lt;/li&gt;
+&lt;li&gt;只比较当前版本号和远端版本号&lt;/li&gt;
+&lt;li&gt;发现不一致后弹窗&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;electron-updater&lt;/code&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;应用调用 &lt;code&gt;checkForUpdates()&lt;/code&gt; 或 &lt;code&gt;checkForUpdatesAndNotify()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;去更新源查询版本元数据&lt;/li&gt;
+&lt;li&gt;文档说明会生成并查询 &lt;code&gt;latest.yml&lt;/code&gt; 一类更新元数据文件&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;来源：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.electron.build/auto-update.html&quot;&gt;electron-builder Auto Update&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.electron.build/electron-updater.class.appupdater&quot;&gt;AppUpdater.checkForUpdates()&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;2-更新描述方式&quot;&gt;&lt;a href=&quot;#2-更新描述方式&quot; class=&quot;headerlink&quot; title=&quot;2. 更新描述方式&quot;&gt;&lt;/a&gt;2. 更新描述方式&lt;/h3&gt;&lt;p&gt;&lt;code&gt;version.json&lt;/code&gt; 方案：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;通常只有一个版本号&lt;/li&gt;
+&lt;li&gt;最多再加发布时间、描述字段&lt;/li&gt;
+&lt;li&gt;它只回答“有没有更新”&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;electron-updater&lt;/code&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;更新元数据不只包含版本号，还包含文件列表、校验信息、发布时间、分阶段发布比例等&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;UpdateInfo&lt;/code&gt; 文档里有 &lt;code&gt;version&lt;/code&gt;、&lt;code&gt;files&lt;/code&gt;、&lt;code&gt;releaseDate&lt;/code&gt;、&lt;code&gt;stagingPercentage&lt;/code&gt; 等字段&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;来源：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.electron.build/electron-updater.Interface.UpdateInfo.html&quot;&gt;UpdateInfo&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;所以这一层的本质差异是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;version.json&lt;/code&gt; 更像&lt;strong&gt;提醒信号&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;latest.yml&lt;/code&gt; 更像&lt;strong&gt;更新清单（manifest）&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;3-差分下载能力&quot;&gt;&lt;a href=&quot;#3-差分下载能力&quot; class=&quot;headerlink&quot; title=&quot;3. 差分下载能力&quot;&gt;&lt;/a&gt;3. 差分下载能力&lt;/h3&gt;&lt;p&gt;&lt;code&gt;version.json&lt;/code&gt; 方案：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;本身没有 diff &amp;#x2F; patch 能力&lt;/li&gt;
+&lt;li&gt;检测到新版本后，通常只能让用户整页刷新，重新拿一套最新资源&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;electron-updater&lt;/code&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;文档中明确有差分下载相关能力&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;AppUpdater&lt;/code&gt; 有 &lt;code&gt;disableDifferentialDownload&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;UpdateFileInfo&lt;/code&gt; &amp;#x2F; &lt;code&gt;BlockMapDataHolder&lt;/code&gt; 有 &lt;code&gt;blockMapSize&lt;/code&gt;、&lt;code&gt;sha512&lt;/code&gt;、&lt;code&gt;size&lt;/code&gt; 等字段&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;来源：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.electron.build/electron-updater.class.appupdater&quot;&gt;AppUpdater.disableDifferentialDownload&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.electron.build/electron-updater.Interface.UpdateFileInfo.html&quot;&gt;UpdateFileInfo&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.electron.build/builder-util-runtime.Interface.BlockMapDataHolder.html&quot;&gt;BlockMapDataHolder&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这意味着 &lt;code&gt;electron-updater&lt;/code&gt; 已经进入了“&lt;strong&gt;增量更新&lt;/strong&gt;”语境，而 &lt;code&gt;version.json&lt;/code&gt; 方案还停留在“&lt;strong&gt;发现更新并提示&lt;/strong&gt;”语境。&lt;/p&gt;
+&lt;h3 id=&quot;4-下载、校验、安装&quot;&gt;&lt;a href=&quot;#4-下载、校验、安装&quot; class=&quot;headerlink&quot; title=&quot;4. 下载、校验、安装&quot;&gt;&lt;/a&gt;4. 下载、校验、安装&lt;/h3&gt;&lt;p&gt;&lt;code&gt;version.json&lt;/code&gt; 方案：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;没有独立下载器&lt;/li&gt;
+&lt;li&gt;没有安装器&lt;/li&gt;
+&lt;li&gt;没有包级校验&lt;/li&gt;
+&lt;li&gt;用户点击后通常只是 &lt;code&gt;reload()&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;electron-updater&lt;/code&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;可以自动下载更新（&lt;code&gt;autoDownload&lt;/code&gt; 默认 &lt;code&gt;true&lt;/code&gt;）&lt;/li&gt;
+&lt;li&gt;下载完成后可在退出时自动安装（&lt;code&gt;autoInstallOnAppQuit&lt;/code&gt; 默认 &lt;code&gt;true&lt;/code&gt;）&lt;/li&gt;
+&lt;li&gt;也可以在 &lt;code&gt;update-downloaded&lt;/code&gt; 后调用 &lt;code&gt;quitAndInstall()&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;来源：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.electron.build/electron-updater.class.appupdater&quot;&gt;AppUpdater.autoDownload &amp;#x2F; autoInstallOnAppQuit &amp;#x2F; quitAndInstall()&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;所以在执行层上，两者完全不是一个重量级。&lt;/p&gt;
+&lt;h3 id=&quot;5-发布与灰度能力&quot;&gt;&lt;a href=&quot;#5-发布与灰度能力&quot; class=&quot;headerlink&quot; title=&quot;5. 发布与灰度能力&quot;&gt;&lt;/a&gt;5. 发布与灰度能力&lt;/h3&gt;&lt;p&gt;&lt;code&gt;version.json&lt;/code&gt; 方案：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;一般是谁访问到最新版静态资源，谁就看到最新版&lt;/li&gt;
+&lt;li&gt;没有内建灰度、渠道、分批发布能力&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;electron-updater&lt;/code&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;文档明确支持 staged rollouts&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;UpdateInfo&lt;/code&gt; 里也有 &lt;code&gt;stagingPercentage&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;来源：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.electron.build/auto-update.html&quot;&gt;Auto Update: Staged Rollouts&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.electron.build/electron-updater.Interface.UpdateInfo.html&quot;&gt;UpdateInfo.stagingPercentage&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;对照后的理解&quot;&gt;&lt;a href=&quot;#对照后的理解&quot; class=&quot;headerlink&quot; title=&quot;对照后的理解&quot;&gt;&lt;/a&gt;对照后的理解&lt;/h2&gt;&lt;p&gt;如果把两者放到同一张图里看：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;version.json + 轮询弹窗&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;像是 &lt;code&gt;electron-updater&lt;/code&gt; 的&lt;strong&gt;最前面那一小段&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;主要只覆盖“发现更新”和“提醒用户”&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;electron-updater&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;覆盖“发现更新”&lt;/li&gt;
+&lt;li&gt;覆盖“更新元数据清单”&lt;/li&gt;
+&lt;li&gt;覆盖“差分下载”&lt;/li&gt;
+&lt;li&gt;覆盖“下载校验”&lt;/li&gt;
+&lt;li&gt;覆盖“安装切换”&lt;/li&gt;
+&lt;li&gt;还覆盖“灰度发布”&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;所以可以把 &lt;code&gt;version.json&lt;/code&gt; 方案看成是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;一个适合网页静态资源场景的&lt;strong&gt;极简版 updater&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;而 &lt;code&gt;electron-updater&lt;/code&gt; 则是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;一个面向桌面应用分发的&lt;strong&gt;完整 updater&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;什么时候用哪种思路&quot;&gt;&lt;a href=&quot;#什么时候用哪种思路&quot; class=&quot;headerlink&quot; title=&quot;什么时候用哪种思路&quot;&gt;&lt;/a&gt;什么时候用哪种思路&lt;/h2&gt;&lt;p&gt;更适合 &lt;code&gt;version.json&lt;/code&gt; 思路：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Web 项目&lt;/li&gt;
+&lt;li&gt;只需要提示“页面该刷新了”&lt;/li&gt;
+&lt;li&gt;不需要增量包、安装器、回滚&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;更接近 &lt;code&gt;electron-updater&lt;/code&gt; 思路：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Electron 桌面应用&lt;/li&gt;
+&lt;li&gt;需要真正下载新版本并替换旧版本&lt;/li&gt;
+&lt;li&gt;需要校验、安装、重启、灰度、差分下载&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;一句话概括&quot;&gt;&lt;a href=&quot;#一句话概括&quot; class=&quot;headerlink&quot; title=&quot;一句话概括&quot;&gt;&lt;/a&gt;一句话概括&lt;/h2&gt;&lt;p&gt;&lt;code&gt;version.json + 轮询弹窗&lt;/code&gt; 解决的是“&lt;strong&gt;页面更新提醒&lt;/strong&gt;”，&lt;br&gt;&lt;code&gt;electron-updater&lt;/code&gt; 解决的是“&lt;strong&gt;应用版本分发与安装&lt;/strong&gt;”。&lt;/p&gt;
+&lt;p&gt;前者只摸到 updater 的入口，后者已经是一整套 updater 系统。&lt;/p&gt;
+&lt;h2 id=&quot;相关页面&quot;&gt;&lt;a href=&quot;#相关页面&quot; class=&quot;headerlink&quot; title=&quot;相关页面&quot;&gt;&lt;/a&gt;相关页面&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;../sources/webpage-version-update-popup-implementation.html&quot;&gt;来源：Web端版本更新弹窗实现&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;app-file-diff-with-update-delivery.html&quot;&gt;查询：刚刚讨论的差异对比，如果用在 app 文件 diff 场景里该怎么理解&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;review-web-version-update-popup-scheme.html&quot;&gt;查询：Web端版本更新弹窗这篇文章里的方案有什么问题，有更好的方案吗&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+"><title>查询：`version.json + 轮询弹窗` 方案，对照 `Electron-Updater` 该怎么理解</title><link rel="stylesheet" type="text/css" href="../../css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/normalize.css/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="../../favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="../../favicon.ico"><link rel="apple-touch-icon" href="../../apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="../../apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="../../atom.xml"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/clipboard/dist/clipboard.min.js"></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.js"></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.css"><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">查询：`version.json + 轮询弹窗` 方案，对照 `Electron-Updater` 该怎么理解</h1><a id="logo" href="../../.">Canace 的博客</a><p class="description">Tomorrow is another day</p></div><div id="nav-menu"><a href="../../."><i class="fa fa-home"> 主页</i></a><a href="../../archives/"><i class="fa fa-archive"> 文章归档</i></a><a class="current" href="../"><i class="fa fa-book"> 知识库</i></a><a href="../../about/"><i class="fa fa-user"> 关于我</i></a><a href="../../atom.xml"><i class="fa fa-rss"> 订阅</i></a><a id="nav-random-article" href="#" title="随机文章" aria-label="随机文章"><i class="fa fa-random"> 随机文章</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">查询：`version.json + 轮询弹窗` 方案，对照 `Electron-Updater` 该怎么理解</h1><div class="clear"><div class="toc-article" id="toc"><div class="toc-title">目录</div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-text">问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E8%AE%BA"><span class="toc-text">结论</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E5%B1%82%E5%AF%B9%E7%85%A7"><span class="toc-text">分层对照</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%9B%B4%E6%96%B0%E5%8F%91%E7%8E%B0"><span class="toc-text">1. 更新发现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%9B%B4%E6%96%B0%E6%8F%8F%E8%BF%B0%E6%96%B9%E5%BC%8F"><span class="toc-text">2. 更新描述方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%B7%AE%E5%88%86%E4%B8%8B%E8%BD%BD%E8%83%BD%E5%8A%9B"><span class="toc-text">3. 差分下载能力</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E4%B8%8B%E8%BD%BD%E3%80%81%E6%A0%A1%E9%AA%8C%E3%80%81%E5%AE%89%E8%A3%85"><span class="toc-text">4. 下载、校验、安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%8F%91%E5%B8%83%E4%B8%8E%E7%81%B0%E5%BA%A6%E8%83%BD%E5%8A%9B"><span class="toc-text">5. 发布与灰度能力</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E7%85%A7%E5%90%8E%E7%9A%84%E7%90%86%E8%A7%A3"><span class="toc-text">对照后的理解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E7%94%A8%E5%93%AA%E7%A7%8D%E6%80%9D%E8%B7%AF"><span class="toc-text">什么时候用哪种思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%A6%82%E6%8B%AC"><span class="toc-text">一句话概括</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E9%A1%B5%E9%9D%A2"><span class="toc-text">相关页面</span></a></li></ol></div></div><div class="post-content"><h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>如果只对照 <code>electron-updater</code>，前面讨论的 <code>version.json + 轮询弹窗</code> 方案该怎么理解？</p>
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>两者解决的是<strong>同一类问题</strong>：<br>都在回答“客户端如何知道有新版本，以及用户如何完成更新”。</p>
+<p>但它们解决问题的<strong>层级不同</strong>：</p>
+<ul>
+<li><code>version.json + 轮询弹窗</code>：偏<strong>轻量更新提醒</strong></li>
+<li><code>electron-updater</code>：偏<strong>完整应用更新系统</strong></li>
+</ul>
+<p>换句话说，前者更像“告诉你该刷新了”，后者更像“告诉你有新版、帮你算该下什么、把包下载好、校验完、最后安装掉”。</p>
+<h2 id="分层对照"><a href="#分层对照" class="headerlink" title="分层对照"></a>分层对照</h2><h3 id="1-更新发现"><a href="#1-更新发现" class="headerlink" title="1. 更新发现"></a>1. 更新发现</h3><p><code>version.json</code> 方案：</p>
+<ul>
+<li>前端定时请求一个轻量 JSON</li>
+<li>只比较当前版本号和远端版本号</li>
+<li>发现不一致后弹窗</li>
+</ul>
+<p><code>electron-updater</code>：</p>
+<ul>
+<li>应用调用 <code>checkForUpdates()</code> 或 <code>checkForUpdatesAndNotify()</code></li>
+<li>去更新源查询版本元数据</li>
+<li>文档说明会生成并查询 <code>latest.yml</code> 一类更新元数据文件</li>
+</ul>
+<p>来源：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.electron.build/auto-update.html">electron-builder Auto Update</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.electron.build/electron-updater.class.appupdater">AppUpdater.checkForUpdates()</a></li>
+</ul>
+<h3 id="2-更新描述方式"><a href="#2-更新描述方式" class="headerlink" title="2. 更新描述方式"></a>2. 更新描述方式</h3><p><code>version.json</code> 方案：</p>
+<ul>
+<li>通常只有一个版本号</li>
+<li>最多再加发布时间、描述字段</li>
+<li>它只回答“有没有更新”</li>
+</ul>
+<p><code>electron-updater</code>：</p>
+<ul>
+<li>更新元数据不只包含版本号，还包含文件列表、校验信息、发布时间、分阶段发布比例等</li>
+<li><code>UpdateInfo</code> 文档里有 <code>version</code>、<code>files</code>、<code>releaseDate</code>、<code>stagingPercentage</code> 等字段</li>
+</ul>
+<p>来源：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.electron.build/electron-updater.Interface.UpdateInfo.html">UpdateInfo</a></li>
+</ul>
+<p>所以这一层的本质差异是：</p>
+<ul>
+<li><code>version.json</code> 更像<strong>提醒信号</strong></li>
+<li><code>latest.yml</code> 更像<strong>更新清单（manifest）</strong></li>
+</ul>
+<h3 id="3-差分下载能力"><a href="#3-差分下载能力" class="headerlink" title="3. 差分下载能力"></a>3. 差分下载能力</h3><p><code>version.json</code> 方案：</p>
+<ul>
+<li>本身没有 diff &#x2F; patch 能力</li>
+<li>检测到新版本后，通常只能让用户整页刷新，重新拿一套最新资源</li>
+</ul>
+<p><code>electron-updater</code>：</p>
+<ul>
+<li>文档中明确有差分下载相关能力</li>
+<li><code>AppUpdater</code> 有 <code>disableDifferentialDownload</code></li>
+<li><code>UpdateFileInfo</code> &#x2F; <code>BlockMapDataHolder</code> 有 <code>blockMapSize</code>、<code>sha512</code>、<code>size</code> 等字段</li>
+</ul>
+<p>来源：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.electron.build/electron-updater.class.appupdater">AppUpdater.disableDifferentialDownload</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.electron.build/electron-updater.Interface.UpdateFileInfo.html">UpdateFileInfo</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.electron.build/builder-util-runtime.Interface.BlockMapDataHolder.html">BlockMapDataHolder</a></li>
+</ul>
+<p>这意味着 <code>electron-updater</code> 已经进入了“<strong>增量更新</strong>”语境，而 <code>version.json</code> 方案还停留在“<strong>发现更新并提示</strong>”语境。</p>
+<h3 id="4-下载、校验、安装"><a href="#4-下载、校验、安装" class="headerlink" title="4. 下载、校验、安装"></a>4. 下载、校验、安装</h3><p><code>version.json</code> 方案：</p>
+<ul>
+<li>没有独立下载器</li>
+<li>没有安装器</li>
+<li>没有包级校验</li>
+<li>用户点击后通常只是 <code>reload()</code></li>
+</ul>
+<p><code>electron-updater</code>：</p>
+<ul>
+<li>可以自动下载更新（<code>autoDownload</code> 默认 <code>true</code>）</li>
+<li>下载完成后可在退出时自动安装（<code>autoInstallOnAppQuit</code> 默认 <code>true</code>）</li>
+<li>也可以在 <code>update-downloaded</code> 后调用 <code>quitAndInstall()</code></li>
+</ul>
+<p>来源：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.electron.build/electron-updater.class.appupdater">AppUpdater.autoDownload &#x2F; autoInstallOnAppQuit &#x2F; quitAndInstall()</a></li>
+</ul>
+<p>所以在执行层上，两者完全不是一个重量级。</p>
+<h3 id="5-发布与灰度能力"><a href="#5-发布与灰度能力" class="headerlink" title="5. 发布与灰度能力"></a>5. 发布与灰度能力</h3><p><code>version.json</code> 方案：</p>
+<ul>
+<li>一般是谁访问到最新版静态资源，谁就看到最新版</li>
+<li>没有内建灰度、渠道、分批发布能力</li>
+</ul>
+<p><code>electron-updater</code>：</p>
+<ul>
+<li>文档明确支持 staged rollouts</li>
+<li><code>UpdateInfo</code> 里也有 <code>stagingPercentage</code></li>
+</ul>
+<p>来源：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.electron.build/auto-update.html">Auto Update: Staged Rollouts</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.electron.build/electron-updater.Interface.UpdateInfo.html">UpdateInfo.stagingPercentage</a></li>
+</ul>
+<h2 id="对照后的理解"><a href="#对照后的理解" class="headerlink" title="对照后的理解"></a>对照后的理解</h2><p>如果把两者放到同一张图里看：</p>
+<ul>
+<li><p><code>version.json + 轮询弹窗</code></p>
+<ul>
+<li>像是 <code>electron-updater</code> 的<strong>最前面那一小段</strong></li>
+<li>主要只覆盖“发现更新”和“提醒用户”</li>
+</ul>
+</li>
+<li><p><code>electron-updater</code></p>
+<ul>
+<li>覆盖“发现更新”</li>
+<li>覆盖“更新元数据清单”</li>
+<li>覆盖“差分下载”</li>
+<li>覆盖“下载校验”</li>
+<li>覆盖“安装切换”</li>
+<li>还覆盖“灰度发布”</li>
+</ul>
+</li>
+</ul>
+<p>所以可以把 <code>version.json</code> 方案看成是：</p>
+<ul>
+<li>一个适合网页静态资源场景的<strong>极简版 updater</strong></li>
+</ul>
+<p>而 <code>electron-updater</code> 则是：</p>
+<ul>
+<li>一个面向桌面应用分发的<strong>完整 updater</strong></li>
+</ul>
+<h2 id="什么时候用哪种思路"><a href="#什么时候用哪种思路" class="headerlink" title="什么时候用哪种思路"></a>什么时候用哪种思路</h2><p>更适合 <code>version.json</code> 思路：</p>
+<ul>
+<li>Web 项目</li>
+<li>只需要提示“页面该刷新了”</li>
+<li>不需要增量包、安装器、回滚</li>
+</ul>
+<p>更接近 <code>electron-updater</code> 思路：</p>
+<ul>
+<li>Electron 桌面应用</li>
+<li>需要真正下载新版本并替换旧版本</li>
+<li>需要校验、安装、重启、灰度、差分下载</li>
+</ul>
+<h2 id="一句话概括"><a href="#一句话概括" class="headerlink" title="一句话概括"></a>一句话概括</h2><p><code>version.json + 轮询弹窗</code> 解决的是“<strong>页面更新提醒</strong>”，<br><code>electron-updater</code> 解决的是“<strong>应用版本分发与安装</strong>”。</p>
+<p>前者只摸到 updater 的入口，后者已经是一整套 updater 系统。</p>
+<h2 id="相关页面"><a href="#相关页面" class="headerlink" title="相关页面"></a>相关页面</h2><ul>
+<li><a href="../sources/webpage-version-update-popup-implementation.html">来源：Web端版本更新弹窗实现</a></li>
+<li><a href="app-file-diff-with-update-delivery.html">查询：刚刚讨论的差异对比，如果用在 app 文件 diff 场景里该怎么理解</a></li>
+<li><a href="review-web-version-update-popup-scheme.html">查询：Web端版本更新弹窗这篇文章里的方案有什么问题，有更好的方案吗</a></li>
+</ul>
+</div></div></div></div><div class="pure-u-1 pure-u-md-1-4"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 常用文档</i></div><ul></ul><a href="/git-common-commands" title="Git 文档" target="_blank">Git 文档</a><ul></ul><a href="/common-programming-prompt-words" title="常用开发提示词" target="_blank">常用开发提示词</a></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="../../categories/cli/">工程化与运维</a><span class="category-list-count">50</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/soft/">软技能与思考</a><span class="category-list-count">48</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/intelligent/">AI探索</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/web/">Web开发</a><span class="category-list-count">142</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/coding/">编程基础</a><span class="category-list-count">42</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/site/">网站建设</a><span class="category-list-count">5</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="../../tags/performance/" style="font-size: 15px; color: #7a9fb8">性能优化</a> <a href="../../tags/essays/" style="font-size: 15px; color: #3679a7">随笔</a> <a href="../../tags/AI%E5%8E%9F%E7%90%86/" style="font-size: 15px; color: #96aebf">AI原理</a> <a href="../../tags/backend/" style="font-size: 15px; color: #5f90b1">后端</a> <a href="../../tags/Python-Go-%E5%85%B6%E4%BB%96/" style="font-size: 15px; color: #88a6bb">Python/Go/其他</a> <a href="../../tags/api-services/" style="font-size: 15px; color: #bec4c9">API&服务</a> <a href="../../tags/computer-science/" style="font-size: 15px; color: #2972a4">计算机科学</a> <a href="../../tags/JavaScript-TypeScript/" style="font-size: 15px; color: #0e639d">JavaScript&TypeScript</a> <a href="../../tags/%E8%81%8C%E4%B8%9A%E5%8F%91%E5%B1%95/" style="font-size: 15px; color: #7a9fb8">职业发展</a> <a href="../../tags/AI%E7%BC%96%E7%A8%8B/" style="font-size: 15px; color: #7a9fb8">AI编程</a> <a href="../../tags/%E7%BF%BB%E8%AF%91/" style="font-size: 15px; color: #ccc">翻译</a> <a href="../../tags/reading-notes/" style="font-size: 15px; color: #a3b5c2">读书笔记</a> <a href="../../tags/frontend/" style="font-size: 15px; color: #005b9a">前端</a> <a href="../../tags/frameworks-libs/" style="font-size: 15px; color: #5288ae">框架与库</a> <a href="../../tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/" style="font-size: 15px; color: #88a6bb">系统设计</a> <a href="../../tags/programming-languages/" style="font-size: 15px; color: #b1bdc5">编程语言</a> <a href="../../tags/css-visualization/" style="font-size: 15px; color: #1b6aa1">CSS与可视化</a> <a href="../../tags/build-deploy/" style="font-size: 15px; color: #6d97b5">构建与部署</a> <a href="../../tags/dev-tools/" style="font-size: 15px; color: #4481ab">开发工具</a> <a href="../../tags/Agent-Skill/" style="font-size: 15px; color: #ccc">Agent,Skill</a> <a href="../../tags/Node-js/" style="font-size: 15px; color: #7a9fb8">Node.js</a> <a href="../../tags/cross-platform/" style="font-size: 15px; color: #88a6bb">跨端方案</a> <a href="../../tags/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/" style="font-size: 15px; color: #ccc">项目管理</a> <a href="../../tags/%E7%9F%A5%E8%AF%86%E5%BA%93/" style="font-size: 15px; color: #ccc">知识库</a> <a href="../../tags/code-quality/" style="font-size: 15px; color: #bec4c9">代码质量</a></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2026 <a href="../../." rel="nofollow">Canace 的博客</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="../../js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.js" async></script><script type="text/javascript" src="../../js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.css"><link rel="stylesheet" type="text/css" href="../../css/search.css?v=0.0.0"><script type="text/javascript" src="../../js/search.js?v=0.0.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+   search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="/js/copycode.js" successtext="复制成功!"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/mermaid@11.14.0/dist/mermaid.min.js"></script><script type="text/javascript">document.addEventListener('DOMContentLoaded', function () {
+  if (!window.mermaid) return;
+  mermaid.initialize({"theme":"default","logLevel":5,"startOnLoad":true,"arrowMarkerAbsolute":false,"flowchart":{"htmlLabels":true,"useMaxWidth":true,"curve":"linear"},"sequence":{"diagramMarginX":50,"diagramMarginY":10,"actorMargin":50,"width":150,"height":65,"boxMargin":10,"boxTextMargin":5,"noteMargin":10,"messageMargin":35,"mirrorActors":true,"bottomMarginAdj":1,"useMaxWidth":true},"gantt":{"titleTopMargin":25,"barHeight":20,"barGap":4,"topPadding":50,"leftPadding":75,"gridLineStartPadding":35,"fontSize":11,"fontFamily":"\"Open-Sans\", \"sans-serif\"","numberSectionStyles":4,"axisFormat":"%Y-%m-%d"},"class":{},"git":{}});
+});
+</script><script type="text/javascript" src="../../js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="../../js/smartresize.js?v=0.0.0"></script><script type="text/javascript">(function () {
+  var urls = ["/../../6-common-website-usability-issues-and-solutions/","/../../2024-year-end-summary/","/../../AI-knowledge-base/","/../../Django-channels/","/../../MySQL/","/../../NP-P-NPC/","/../../JavaScript-call-apply-bind/","/../../about-doing-technology/","/../../WebRTC/","/../../about-forgetfulness/","/../../agent-coding-stability/","/../../ai-coding-game/","/../../add-skeleton-screen/","/../../ai-coding-share/","/../../ai-make-you-boring/","/../../ai-coding-ide/","/../../ai-expansion/","/../../ai-optimize-ui/","/../../ai-worker/","/../../algorithm-book-notes-for-everyone/","/../../angular-navigation-content-linkage/","/../../ant-design-pitfalls/","/../../angel-love/","/../../ants/","/../../async-data-console-issues/","/../../axios-network-request-encapsulation/","/../../binary-search/","/../../bash-data-processing/","/../../beego-getting-started/","/../../blog-category/","/../../boolean-variables-in-project-application/","/../../box-model/","/../../brief-discussion-on-dns-pollution/","/../../bracket-matching/","/../../brief-discussion-on-visual-form-design/","/../../browser-kernel-and-writing/","/../../build-django-blog-system/","/../../build-typescript-library/","/../../calculate-rice-cooker-reservation-time/","/../../canvas-draw-dynamic-path/","/../../cascade/","/../../build-tinymce-img-plugin/","/../../canvas-draw-sprite-export/","/../../centos-server-login-config/","/../../ckeditor-usage-in-angular/","/../../code-optimization/","/../../common-algorithm-ideas/","/../../common-git-workflows/","/../../common-image-format-comparison/","/../../climbing-stairs/","/../../common-programming-prompt-words/","/../../common-regular-expressions/","/../../common-terminal-commands/","/../../computer-graphics-1/","/../../count-beautiful-subarrays/","/../../count-number-of-islands/","/../../count-total-elements-of-array-objects/","/../../computer-graphics-2/","/../../create-object-based-on-null/","/../../cross-origin-resource-sharing/","/../../css-background-image-application/","/../../css-circular-progress-bar/","/../../css-notes/","/../../css-positioning-detailed/","/../../css-positioning/","/../../css-series-basics/","/../../css-layout-guide/","/../../css-series-cascade/","/../../css-series-box-dimensions/","/../../css-series-flow-and-dimensions/","/../../css-series-history-and-document-flow/","/../../css-series-inline-elements-and-flow/","/../../css-series-text-processing/","/../../css-tips/","/../../css-series-flow-destruction-and-protection/","/../../css3-animation-vs-js-animation/","/../../css-two-color-pie-chart/","/../../cursor-debugger/","/../../custom-github-activity/","/../../css2-block-element-center/","/../../deep-work-philosophy-interpretation/","/../../deep-copy-of-arrays-and-objects/","/../../disable-image-dragging/","/../../cursor-skill-web-search-download-movie/","/../../docker-documentation/","/../../docker-frontend-environment-setup/","/../../doing-things-with-vscode/","/../../egg/","/../../dropdown-list-implementation/","/../../element-plus-table-component-scaling-issue-solution/","/../../es2020-new-features/","/../../extra-thick-chicken-soup/","/../../file-naming-pitfalls-record/","/../../ffmpeg-extract-audio-track/","/../../find-median-sorted-arrays/","/../../firefox-remove-various-dashed-borders/","/../../first-day-morning-run/","/../../first-screen-optimization/","/../../first-screen-time-vs-white-screen-time/","/../../flow-simple-tutorial/","/../../fix-github-image-issue-on-mac/","/../../flutter-learning-notes-dart-basics/","/../../frontend-draw-graphic-captcha/","/../../flutter-learning-notes-quick-start/","/../../frontend-performance-optimization/","/../../four-js-tips/","/../../frontend-xx-dockerization/","/../../fullscreen-solution-for-webpage-or-html-elements/","/../../fun-console/","/../../function-currying/","/../../function-without-global-variable-counting/","/../../functional-programming/","/../../generate-random-array-in-specified-range/","/../../get-css-style/","/../../gemini-new-session-memory/","/../../ghost-whitespace-nodes/","/../../git-common-commands/","/../../get-longest-common-prefix/","/../../git-domain-config/","/../../git-environment-config/","/../../git-usage-guide/","/../../gitbook-generate-ebook/","/../../github-action-auto-deploy-page/","/../../github-practical-tips/","/../../github-travis-auto-build-vue-to-gitpage/","/../../gitlab-ci-config-template/","/../../gitpage-hexo/","/../../go-getting-started/","/../../hexo-blog-migration/","/../../hexo-getting-started/","/../../hexo-math-formula-support/","/../../how-to-create-a-robust-system/","/../../html-notes/","/../../homebrew-common-commands/","/../../how-to-optimize-animation/","/../../html-to-text-js/","/../../http-notes/","/../../http-server/","/../../image-lazy-loading-implementation/","/../../implement-array-flatten/","/../../interview-strategy/","/../../improve-work-efficiency-with-cursor-practical-notes/","/../../interesting-css-cascade-issues/","/../../issue-03/","/../../issue-05/","/../../issue-04/","/../../issue-07/","/../../issue-06/","/../../issue-08/","/../../issue-09/","/../../issue-10/","/../../issue-11/","/../../issue-12/","/../../issue-1/","/../../issue-15/","/../../issue-14/","/../../issue-13/","/../../issue-2/","/../../japanese-learning-notes/","/../../javaScript-promise/","/../../javascript-basics-primitive-vs-reference-types/","/../../javascript-basics-type-conversion/","/../../javascript-common-code-snippets/","/../../javascript-built-in-deep-copy/","/../../javascript-detect-caps-lock/","/../../javascript-functions/","/../../javascript-new-implementation-principle/","/../../javascript-object-oriented-programming/","/../../javascript-soul-questions/","/../../javascript-tricks/","/../../js-execution/","/../../js-linked-list-implementation/","/../../js-overview/","/../../js-modal-blog/","/../../js-string-to-base64/","/../../js-timezone/","/../../key-value-role-in-vue-components/","/../../jump-to-specific-position-in-article/","/../../knowledge-anxiety/","/../../kindness/","/../../kpi-vs-okr/","/../../knn-algorithm/","/../../leave-page-popup/","/../../linux-background-script-execution/","/../../lodash-source-analysis-array-chunk/","/../../lodash-source-analysis-array-slice/","/../../mac-debug-ios-web-page/","/../../mac-install-mysql/","/../../llm-wiki/","/../../manchester-by-the-sea/","/../../mini-program-tabs-sticky/","/../../model-training-steps/","/../../modify-autofill-style/","/../../modify-scrollbar-style-compatible/","/../../method-to-login-to-south-china-normal-university-campus-network/","/../../module-specifications/","/../../n-n-order-matrix-algorithm/","/../../node-version-management/","/../../nodeJs/","/../../nodejs-config/","/../../node-notes-in-depth/","/../../nodejs-module-mechanism/","/../../nodejs-notes/","/../../notes-about-writing-weekly-reports/","/../../number-precise-to-two-decimal-places/","/../../object-property-value-monitoring/","/../../one-click-generate-responsive-table/","/../../package-json-field-list/","/../../pagination-algorithm/","/../../npm-common-commands/","/../../palindrome-number-judgment/","/../../personal-knowledge-base/","/../../pixi-basics/","/../../pixi-js-sprite-loading-cache-removal/","/../../pixijs-vertexData-null/","/../../pinyin-learning-project-notes/","/../../port-number-modification/","/../../prisma-getting-started-guide/","/../../product-updates-rss-file-diff-mental-model/","/../../project-modularization-principles/","/../../proxy-observer-pattern/","/../../python3-installation/","/../../python-pitfalls-collection/","/../../record-service-degradation-due-to-emergency/","/../../react-hooks-create-movie-app/","/../../qwen-milk-tea-ui/","/../../recursive-tree/","/../../refactoring-vs-architecture/","/../../remove-parent-nodes-with-duplicate-child-ids/","/../../removeDuplicates/","/../../removeElement/","/../../regular-expressions/","/../../reverse-integer/","/../../reverse-words-in-string/","/../../roman-numerals-to-integer/","/../../rss-telegram-selfhost/","/../../scroll-pagination/","/../../sentence-excerpts/","/../../settimeout-simulate-setinterval/","/../../singly-linked-list-concatenation/","/../../science-popularization/","/../../solve-github-dns-pollution-issue/","/../../software-version-number-definition/","/../../ss-installation/","/../../sublime-text-nodejs-config/","/../../some-concepts/","/../../string-and-code-rigor/","/../../systematic-method-for-fragmented-reading-knowledge/","/../../talking-about-browser-cache-mechanism/","/../../talking-about-vuex/","/../../talking-about-webpage-adaptive-and-responsive-layout/","/../../tcp-ip-three-way-handshake/","/../../thoughts-on-ad-blocker-plugins/","/../../thoughts-on-branch-management/","/../../table-cell-equal-division/","/../../thoughts-on-technical-growth/","/../../time-complexity-vs-space-complexity/","/../../three-js-basics-practice/","/../../timestamp-to-date/","/../../translate-use-claude-code/","/../../two-sum-problem/","/../../time-zero/","/../../typescript-environment-config/","/../../ubuntu-configure-frontend-environment/","/../../ubuntu-configure-ss/","/../../understanding-byte-order/","/../../unavoidable-bug-chrome-translation-caused-trouble/","/../../understanding-cookies/","/../../ubuntu-install-tensorflow/","/../../understanding-instanceof/","/../../validate-string/","/../../variables/","/../../vue-config-template/","/../../vue-data-driven-view-implementation/","/../../vue-details-i-didnt-know/","/../../vscode-code-formatting-summary/","/../../vue-dynamic-change-title/","/../../vue-dynamic-component-import-note-not-async/","/../../vue-test-unit/","/../../vue3-notes/","/../../web-performance-optimization-debounce/","/../../web-security-csrf/","/../../web-security-xss-attack/","/../../vue-project-setup-steps/","/../../webpack-dynamic-modify-resource-domain/","/../../webpack-gulp-bundle-vue-component-library/","/../../webpack5-new-features-module-federation-notes/","/../../wechat-mini-program-pitfalls/","/../../webpage-version-update-popup-implementation/","/../../webpack/","/../../what-happened-to-vue/","/../../what-happens-from-url-to-display/","/../../why-frontend-needs-framework/","/../../why-not-let-ai-write-for-us/","/../../why-we-need-to-read/","/../../why-graphics-card/","/../../windows-tricks/","/../../why-write-wechat-official-account/","/../../words-of-experience/","/../../wordpress-installation/","/../../work-for/","/../../writing-a-good-claude-md/","/../../yml-file-operations/","/../../wsl-config/"];
+  var el = document.getElementById('nav-random-article');
+  if (!el) return;
+  el.addEventListener('click', function (e) {
+    e.preventDefault();
+    if (!urls.length) return;
+    var next = urls[Math.floor(Math.random() * urls.length)];
+    if (next) window.location.href = next;
+  });
+})();</script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":200,"height":200},"mobile":{"show":false},"react":{"opacity":0.7},"log":false});</script></body></html>

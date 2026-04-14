@@ -1,0 +1,203 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="canace 的博客"><meta itemprop="name" content="查询：`Git Diff` 这种差异对比，和 Web 端版本更新弹窗的思路是不是有异曲同工之处"><meta itemprop="image" content="https://raw.githubusercontent.com/Canace22/Assets/main/images/snow-other.png"><meta property="og:image" content="https://raw.githubusercontent.com/Canace22/Assets/main/images/snow-other.png"><meta name="description" itemprop="description" content="&lt;h2 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h2&gt;&lt;p&gt;&lt;code&gt;git diff&lt;/code&gt; 这种文件差异对比，和 &lt;code&gt;Web端版本更新弹窗实现&lt;/code&gt; 这篇文章里的思路，是不是有异曲同工之处？&lt;/p&gt;
+&lt;h2 id=&quot;结论&quot;&gt;&lt;a href=&quot;#结论&quot; class=&quot;headerlink&quot; title=&quot;结论&quot;&gt;&lt;/a&gt;结论&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;有，在抽象层上是相通的；但在实现层上不是一回事。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;它们共同在做的事情都是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;先拿到两个状态&lt;/li&gt;
+&lt;li&gt;再判断这两个状态是否不同&lt;/li&gt;
+&lt;li&gt;一旦不同，就触发后续动作&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;所以从思维模型上看，两者确实有“异曲同工之处”。&lt;/p&gt;
+&lt;h2 id=&quot;相通的地方&quot;&gt;&lt;a href=&quot;#相通的地方&quot; class=&quot;headerlink&quot; title=&quot;相通的地方&quot;&gt;&lt;/a&gt;相通的地方&lt;/h2&gt;&lt;h3 id=&quot;1-都是在回答“旧状态和新状态有什么不同”&quot;&gt;&lt;a href=&quot;#1-都是在回答“旧状态和新状态有什么不同”&quot; class=&quot;headerlink&quot; title=&quot;1. 都是在回答“旧状态和新状态有什么不同”&quot;&gt;&lt;/a&gt;1. 都是在回答“旧状态和新状态有什么不同”&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;git diff&lt;/code&gt;：比较两个版本的文件内容差异&lt;/li&gt;
+&lt;li&gt;版本更新弹窗：比较“当前页面版本”和“远端最新版本”是否不同&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;它们背后的共同问题都是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;系统如何知道自己已经落后于目标状态&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;2-都是在做“差异驱动”&quot;&gt;&lt;a href=&quot;#2-都是在做“差异驱动”&quot; class=&quot;headerlink&quot; title=&quot;2. 都是在做“差异驱动”&quot;&gt;&lt;/a&gt;2. 都是在做“差异驱动”&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;git diff&lt;/code&gt; 发现差异后，可以审查、合并、打 patch&lt;/li&gt;
+&lt;li&gt;版本检测发现差异后，可以弹窗、刷新、更新资源&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;也就是说，两者都不是无脑全量重做，而是先判断“有没有变化”，再决定下一步。&lt;/p&gt;
+&lt;h3 id=&quot;3-都隐含了一个“基线”概念&quot;&gt;&lt;a href=&quot;#3-都隐含了一个“基线”概念&quot; class=&quot;headerlink&quot; title=&quot;3. 都隐含了一个“基线”概念&quot;&gt;&lt;/a&gt;3. 都隐含了一个“基线”概念&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;git diff&lt;/code&gt; 要有两个提交、两个文件版本，或者工作区与暂存区&lt;/li&gt;
+&lt;li&gt;版本更新弹窗也要有“当前版本”和“服务端版本”&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;没有基线，就没有 diff。&lt;/p&gt;
+&lt;h2 id=&quot;不同的地方&quot;&gt;&lt;a href=&quot;#不同的地方&quot; class=&quot;headerlink&quot; title=&quot;不同的地方&quot;&gt;&lt;/a&gt;不同的地方&lt;/h2&gt;&lt;h3 id=&quot;1-git-diff-比较的是内容本身&quot;&gt;&lt;a href=&quot;#1-git-diff-比较的是内容本身&quot; class=&quot;headerlink&quot; title=&quot;1. git diff 比较的是内容本身&quot;&gt;&lt;/a&gt;1. &lt;code&gt;git diff&lt;/code&gt; 比较的是内容本身&lt;/h3&gt;&lt;p&gt;&lt;code&gt;git diff&lt;/code&gt; 真正关心的是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;哪一行改了&lt;/li&gt;
+&lt;li&gt;哪些内容新增、删除、移动了&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;它输出的是&lt;strong&gt;结构化的内容差异&lt;/strong&gt;。&lt;/p&gt;
+&lt;h3 id=&quot;2-版本更新弹窗比较的是版本标记&quot;&gt;&lt;a href=&quot;#2-版本更新弹窗比较的是版本标记&quot; class=&quot;headerlink&quot; title=&quot;2. 版本更新弹窗比较的是版本标记&quot;&gt;&lt;/a&gt;2. 版本更新弹窗比较的是版本标记&lt;/h3&gt;&lt;p&gt;那篇文章里的方案主要是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;比较本地版本号和远端版本号&lt;/li&gt;
+&lt;li&gt;只判断“变了没有”&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;它并不关心：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;哪个文件改了&lt;/li&gt;
+&lt;li&gt;改了几行&lt;/li&gt;
+&lt;li&gt;哪部分资源需要单独 patch&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;所以它更接近：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;差异检测&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;而不是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;差异表达&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;3-后续动作不同&quot;&gt;&lt;a href=&quot;#3-后续动作不同&quot; class=&quot;headerlink&quot; title=&quot;3. 后续动作不同&quot;&gt;&lt;/a&gt;3. 后续动作不同&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;git diff&lt;/code&gt; 后续常见动作是审查、合并、打补丁&lt;/li&gt;
+&lt;li&gt;版本更新弹窗后续动作是提示用户刷新，重新拿一套最新资源&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;所以 &lt;code&gt;git diff&lt;/code&gt; 更像：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;“把差异看清楚”&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;而版本更新弹窗更像：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;“先知道已经不一样了，然后直接切到最新状态”&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;更准确的类比&quot;&gt;&lt;a href=&quot;#更准确的类比&quot; class=&quot;headerlink&quot; title=&quot;更准确的类比&quot;&gt;&lt;/a&gt;更准确的类比&lt;/h2&gt;&lt;p&gt;如果非要类比，&lt;code&gt;Web端版本更新弹窗实现&lt;/code&gt; 更像是在做：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;git diff --quiet&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;也就是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;我不太关心具体改了什么&lt;/li&gt;
+&lt;li&gt;我只关心“有没有变化”&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;一旦发现变了，就进入下一步动作。&lt;/p&gt;
+&lt;h2 id=&quot;我的判断&quot;&gt;&lt;a href=&quot;#我的判断&quot; class=&quot;headerlink&quot; title=&quot;我的判断&quot;&gt;&lt;/a&gt;我的判断&lt;/h2&gt;&lt;p&gt;所以答案是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;是的，它们在“先比对状态，再由差异驱动动作”这个抽象层面是相通的&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;但 &lt;code&gt;git diff&lt;/code&gt; 是内容级 diff，版本更新弹窗更多只是版本级 diff&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;一句话概括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;git diff&lt;/code&gt; 是“差异长什么样”&lt;/li&gt;
+&lt;li&gt;版本更新弹窗是“只要知道有差异就够了”&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;相关页面&quot;&gt;&lt;a href=&quot;#相关页面&quot; class=&quot;headerlink&quot; title=&quot;相关页面&quot;&gt;&lt;/a&gt;相关页面&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;../sources/webpage-version-update-popup-implementation.html&quot;&gt;来源：Web端版本更新弹窗实现&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;review-web-version-update-popup-scheme.html&quot;&gt;查询：Web端版本更新弹窗这篇文章里的方案有什么问题，有更好的方案吗&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;in-app-file-update-vs-app-updater-vs-git-diff.html&quot;&gt;查询：如果是应用内的文件更新，像 &lt;code&gt;git diff&lt;/code&gt; 这种，跟前面说的应用更新有什么区别&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+"><title>查询：`Git Diff` 这种差异对比，和 Web 端版本更新弹窗的思路是不是有异曲同工之处</title><link rel="stylesheet" type="text/css" href="../../css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/normalize.css/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="../../favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="../../favicon.ico"><link rel="apple-touch-icon" href="../../apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="../../apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="../../atom.xml"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/clipboard/dist/clipboard.min.js"></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.js"></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.css"><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">查询：`Git Diff` 这种差异对比，和 Web 端版本更新弹窗的思路是不是有异曲同工之处</h1><a id="logo" href="../../.">Canace 的博客</a><p class="description">Tomorrow is another day</p></div><div id="nav-menu"><a href="../../."><i class="fa fa-home"> 主页</i></a><a href="../../archives/"><i class="fa fa-archive"> 文章归档</i></a><a class="current" href="../"><i class="fa fa-book"> 知识库</i></a><a href="../../about/"><i class="fa fa-user"> 关于我</i></a><a href="../../atom.xml"><i class="fa fa-rss"> 订阅</i></a><a id="nav-random-article" href="#" title="随机文章" aria-label="随机文章"><i class="fa fa-random"> 随机文章</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">查询：`Git Diff` 这种差异对比，和 Web 端版本更新弹窗的思路是不是有异曲同工之处</h1><div class="clear"><div class="toc-article" id="toc"><div class="toc-title">目录</div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-text">问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E8%AE%BA"><span class="toc-text">结论</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E9%80%9A%E7%9A%84%E5%9C%B0%E6%96%B9"><span class="toc-text">相通的地方</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E9%83%BD%E6%98%AF%E5%9C%A8%E5%9B%9E%E7%AD%94%E2%80%9C%E6%97%A7%E7%8A%B6%E6%80%81%E5%92%8C%E6%96%B0%E7%8A%B6%E6%80%81%E6%9C%89%E4%BB%80%E4%B9%88%E4%B8%8D%E5%90%8C%E2%80%9D"><span class="toc-text">1. 都是在回答“旧状态和新状态有什么不同”</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%83%BD%E6%98%AF%E5%9C%A8%E5%81%9A%E2%80%9C%E5%B7%AE%E5%BC%82%E9%A9%B1%E5%8A%A8%E2%80%9D"><span class="toc-text">2. 都是在做“差异驱动”</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E9%83%BD%E9%9A%90%E5%90%AB%E4%BA%86%E4%B8%80%E4%B8%AA%E2%80%9C%E5%9F%BA%E7%BA%BF%E2%80%9D%E6%A6%82%E5%BF%B5"><span class="toc-text">3. 都隐含了一个“基线”概念</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8D%E5%90%8C%E7%9A%84%E5%9C%B0%E6%96%B9"><span class="toc-text">不同的地方</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-git-diff-%E6%AF%94%E8%BE%83%E7%9A%84%E6%98%AF%E5%86%85%E5%AE%B9%E6%9C%AC%E8%BA%AB"><span class="toc-text">1. git diff 比较的是内容本身</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%89%88%E6%9C%AC%E6%9B%B4%E6%96%B0%E5%BC%B9%E7%AA%97%E6%AF%94%E8%BE%83%E7%9A%84%E6%98%AF%E7%89%88%E6%9C%AC%E6%A0%87%E8%AE%B0"><span class="toc-text">2. 版本更新弹窗比较的是版本标记</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%90%8E%E7%BB%AD%E5%8A%A8%E4%BD%9C%E4%B8%8D%E5%90%8C"><span class="toc-text">3. 后续动作不同</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B4%E5%87%86%E7%A1%AE%E7%9A%84%E7%B1%BB%E6%AF%94"><span class="toc-text">更准确的类比</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E7%9A%84%E5%88%A4%E6%96%AD"><span class="toc-text">我的判断</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E9%A1%B5%E9%9D%A2"><span class="toc-text">相关页面</span></a></li></ol></div></div><div class="post-content"><h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p><code>git diff</code> 这种文件差异对比，和 <code>Web端版本更新弹窗实现</code> 这篇文章里的思路，是不是有异曲同工之处？</p>
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p><strong>有，在抽象层上是相通的；但在实现层上不是一回事。</strong></p>
+<p>它们共同在做的事情都是：</p>
+<ul>
+<li>先拿到两个状态</li>
+<li>再判断这两个状态是否不同</li>
+<li>一旦不同，就触发后续动作</li>
+</ul>
+<p>所以从思维模型上看，两者确实有“异曲同工之处”。</p>
+<h2 id="相通的地方"><a href="#相通的地方" class="headerlink" title="相通的地方"></a>相通的地方</h2><h3 id="1-都是在回答“旧状态和新状态有什么不同”"><a href="#1-都是在回答“旧状态和新状态有什么不同”" class="headerlink" title="1. 都是在回答“旧状态和新状态有什么不同”"></a>1. 都是在回答“旧状态和新状态有什么不同”</h3><ul>
+<li><code>git diff</code>：比较两个版本的文件内容差异</li>
+<li>版本更新弹窗：比较“当前页面版本”和“远端最新版本”是否不同</li>
+</ul>
+<p>它们背后的共同问题都是：</p>
+<ul>
+<li><strong>系统如何知道自己已经落后于目标状态</strong></li>
+</ul>
+<h3 id="2-都是在做“差异驱动”"><a href="#2-都是在做“差异驱动”" class="headerlink" title="2. 都是在做“差异驱动”"></a>2. 都是在做“差异驱动”</h3><ul>
+<li><code>git diff</code> 发现差异后，可以审查、合并、打 patch</li>
+<li>版本检测发现差异后，可以弹窗、刷新、更新资源</li>
+</ul>
+<p>也就是说，两者都不是无脑全量重做，而是先判断“有没有变化”，再决定下一步。</p>
+<h3 id="3-都隐含了一个“基线”概念"><a href="#3-都隐含了一个“基线”概念" class="headerlink" title="3. 都隐含了一个“基线”概念"></a>3. 都隐含了一个“基线”概念</h3><ul>
+<li><code>git diff</code> 要有两个提交、两个文件版本，或者工作区与暂存区</li>
+<li>版本更新弹窗也要有“当前版本”和“服务端版本”</li>
+</ul>
+<p>没有基线，就没有 diff。</p>
+<h2 id="不同的地方"><a href="#不同的地方" class="headerlink" title="不同的地方"></a>不同的地方</h2><h3 id="1-git-diff-比较的是内容本身"><a href="#1-git-diff-比较的是内容本身" class="headerlink" title="1. git diff 比较的是内容本身"></a>1. <code>git diff</code> 比较的是内容本身</h3><p><code>git diff</code> 真正关心的是：</p>
+<ul>
+<li>哪一行改了</li>
+<li>哪些内容新增、删除、移动了</li>
+</ul>
+<p>它输出的是<strong>结构化的内容差异</strong>。</p>
+<h3 id="2-版本更新弹窗比较的是版本标记"><a href="#2-版本更新弹窗比较的是版本标记" class="headerlink" title="2. 版本更新弹窗比较的是版本标记"></a>2. 版本更新弹窗比较的是版本标记</h3><p>那篇文章里的方案主要是：</p>
+<ul>
+<li>比较本地版本号和远端版本号</li>
+<li>只判断“变了没有”</li>
+</ul>
+<p>它并不关心：</p>
+<ul>
+<li>哪个文件改了</li>
+<li>改了几行</li>
+<li>哪部分资源需要单独 patch</li>
+</ul>
+<p>所以它更接近：</p>
+<ul>
+<li><strong>差异检测</strong></li>
+</ul>
+<p>而不是：</p>
+<ul>
+<li><strong>差异表达</strong></li>
+</ul>
+<h3 id="3-后续动作不同"><a href="#3-后续动作不同" class="headerlink" title="3. 后续动作不同"></a>3. 后续动作不同</h3><ul>
+<li><code>git diff</code> 后续常见动作是审查、合并、打补丁</li>
+<li>版本更新弹窗后续动作是提示用户刷新，重新拿一套最新资源</li>
+</ul>
+<p>所以 <code>git diff</code> 更像：</p>
+<ul>
+<li>“把差异看清楚”</li>
+</ul>
+<p>而版本更新弹窗更像：</p>
+<ul>
+<li>“先知道已经不一样了，然后直接切到最新状态”</li>
+</ul>
+<h2 id="更准确的类比"><a href="#更准确的类比" class="headerlink" title="更准确的类比"></a>更准确的类比</h2><p>如果非要类比，<code>Web端版本更新弹窗实现</code> 更像是在做：</p>
+<ul>
+<li><code>git diff --quiet</code></li>
+</ul>
+<p>也就是：</p>
+<ul>
+<li>我不太关心具体改了什么</li>
+<li>我只关心“有没有变化”</li>
+</ul>
+<p>一旦发现变了，就进入下一步动作。</p>
+<h2 id="我的判断"><a href="#我的判断" class="headerlink" title="我的判断"></a>我的判断</h2><p>所以答案是：</p>
+<ul>
+<li><strong>是的，它们在“先比对状态，再由差异驱动动作”这个抽象层面是相通的</strong></li>
+<li><strong>但 <code>git diff</code> 是内容级 diff，版本更新弹窗更多只是版本级 diff</strong></li>
+</ul>
+<p>一句话概括：</p>
+<ul>
+<li><code>git diff</code> 是“差异长什么样”</li>
+<li>版本更新弹窗是“只要知道有差异就够了”</li>
+</ul>
+<h2 id="相关页面"><a href="#相关页面" class="headerlink" title="相关页面"></a>相关页面</h2><ul>
+<li><a href="../sources/webpage-version-update-popup-implementation.html">来源：Web端版本更新弹窗实现</a></li>
+<li><a href="review-web-version-update-popup-scheme.html">查询：Web端版本更新弹窗这篇文章里的方案有什么问题，有更好的方案吗</a></li>
+<li><a href="in-app-file-update-vs-app-updater-vs-git-diff.html">查询：如果是应用内的文件更新，像 <code>git diff</code> 这种，跟前面说的应用更新有什么区别</a></li>
+</ul>
+</div></div></div></div><div class="pure-u-1 pure-u-md-1-4"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 常用文档</i></div><ul></ul><a href="/git-common-commands" title="Git 文档" target="_blank">Git 文档</a><ul></ul><a href="/common-programming-prompt-words" title="常用开发提示词" target="_blank">常用开发提示词</a></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="../../categories/cli/">工程化与运维</a><span class="category-list-count">50</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/soft/">软技能与思考</a><span class="category-list-count">48</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/intelligent/">AI探索</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/web/">Web开发</a><span class="category-list-count">142</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/coding/">编程基础</a><span class="category-list-count">42</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/site/">网站建设</a><span class="category-list-count">5</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="../../tags/performance/" style="font-size: 15px; color: #7a9fb8">性能优化</a> <a href="../../tags/essays/" style="font-size: 15px; color: #3679a7">随笔</a> <a href="../../tags/AI%E5%8E%9F%E7%90%86/" style="font-size: 15px; color: #96aebf">AI原理</a> <a href="../../tags/backend/" style="font-size: 15px; color: #5f90b1">后端</a> <a href="../../tags/Python-Go-%E5%85%B6%E4%BB%96/" style="font-size: 15px; color: #88a6bb">Python/Go/其他</a> <a href="../../tags/api-services/" style="font-size: 15px; color: #bec4c9">API&服务</a> <a href="../../tags/computer-science/" style="font-size: 15px; color: #2972a4">计算机科学</a> <a href="../../tags/JavaScript-TypeScript/" style="font-size: 15px; color: #0e639d">JavaScript&TypeScript</a> <a href="../../tags/%E8%81%8C%E4%B8%9A%E5%8F%91%E5%B1%95/" style="font-size: 15px; color: #7a9fb8">职业发展</a> <a href="../../tags/AI%E7%BC%96%E7%A8%8B/" style="font-size: 15px; color: #7a9fb8">AI编程</a> <a href="../../tags/%E7%BF%BB%E8%AF%91/" style="font-size: 15px; color: #ccc">翻译</a> <a href="../../tags/reading-notes/" style="font-size: 15px; color: #a3b5c2">读书笔记</a> <a href="../../tags/frontend/" style="font-size: 15px; color: #005b9a">前端</a> <a href="../../tags/frameworks-libs/" style="font-size: 15px; color: #5288ae">框架与库</a> <a href="../../tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/" style="font-size: 15px; color: #88a6bb">系统设计</a> <a href="../../tags/programming-languages/" style="font-size: 15px; color: #b1bdc5">编程语言</a> <a href="../../tags/css-visualization/" style="font-size: 15px; color: #1b6aa1">CSS与可视化</a> <a href="../../tags/build-deploy/" style="font-size: 15px; color: #6d97b5">构建与部署</a> <a href="../../tags/dev-tools/" style="font-size: 15px; color: #4481ab">开发工具</a> <a href="../../tags/Agent-Skill/" style="font-size: 15px; color: #ccc">Agent,Skill</a> <a href="../../tags/Node-js/" style="font-size: 15px; color: #7a9fb8">Node.js</a> <a href="../../tags/cross-platform/" style="font-size: 15px; color: #88a6bb">跨端方案</a> <a href="../../tags/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/" style="font-size: 15px; color: #ccc">项目管理</a> <a href="../../tags/%E7%9F%A5%E8%AF%86%E5%BA%93/" style="font-size: 15px; color: #ccc">知识库</a> <a href="../../tags/code-quality/" style="font-size: 15px; color: #bec4c9">代码质量</a></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2026 <a href="../../." rel="nofollow">Canace 的博客</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="../../js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.js" async></script><script type="text/javascript" src="../../js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.css"><link rel="stylesheet" type="text/css" href="../../css/search.css?v=0.0.0"><script type="text/javascript" src="../../js/search.js?v=0.0.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+   search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="/js/copycode.js" successtext="复制成功!"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/mermaid@11.14.0/dist/mermaid.min.js"></script><script type="text/javascript">document.addEventListener('DOMContentLoaded', function () {
+  if (!window.mermaid) return;
+  mermaid.initialize({"theme":"default","logLevel":5,"startOnLoad":true,"arrowMarkerAbsolute":false,"flowchart":{"htmlLabels":true,"useMaxWidth":true,"curve":"linear"},"sequence":{"diagramMarginX":50,"diagramMarginY":10,"actorMargin":50,"width":150,"height":65,"boxMargin":10,"boxTextMargin":5,"noteMargin":10,"messageMargin":35,"mirrorActors":true,"bottomMarginAdj":1,"useMaxWidth":true},"gantt":{"titleTopMargin":25,"barHeight":20,"barGap":4,"topPadding":50,"leftPadding":75,"gridLineStartPadding":35,"fontSize":11,"fontFamily":"\"Open-Sans\", \"sans-serif\"","numberSectionStyles":4,"axisFormat":"%Y-%m-%d"},"class":{},"git":{}});
+});
+</script><script type="text/javascript" src="../../js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="../../js/smartresize.js?v=0.0.0"></script><script type="text/javascript">(function () {
+  var urls = ["/../../6-common-website-usability-issues-and-solutions/","/../../2024-year-end-summary/","/../../AI-knowledge-base/","/../../Django-channels/","/../../MySQL/","/../../NP-P-NPC/","/../../JavaScript-call-apply-bind/","/../../about-doing-technology/","/../../WebRTC/","/../../about-forgetfulness/","/../../agent-coding-stability/","/../../ai-coding-game/","/../../add-skeleton-screen/","/../../ai-coding-share/","/../../ai-make-you-boring/","/../../ai-coding-ide/","/../../ai-expansion/","/../../ai-optimize-ui/","/../../ai-worker/","/../../algorithm-book-notes-for-everyone/","/../../angular-navigation-content-linkage/","/../../ant-design-pitfalls/","/../../angel-love/","/../../ants/","/../../async-data-console-issues/","/../../axios-network-request-encapsulation/","/../../binary-search/","/../../bash-data-processing/","/../../beego-getting-started/","/../../blog-category/","/../../boolean-variables-in-project-application/","/../../box-model/","/../../brief-discussion-on-dns-pollution/","/../../bracket-matching/","/../../brief-discussion-on-visual-form-design/","/../../browser-kernel-and-writing/","/../../build-django-blog-system/","/../../build-typescript-library/","/../../calculate-rice-cooker-reservation-time/","/../../canvas-draw-dynamic-path/","/../../cascade/","/../../build-tinymce-img-plugin/","/../../canvas-draw-sprite-export/","/../../centos-server-login-config/","/../../ckeditor-usage-in-angular/","/../../code-optimization/","/../../common-algorithm-ideas/","/../../common-git-workflows/","/../../common-image-format-comparison/","/../../climbing-stairs/","/../../common-programming-prompt-words/","/../../common-regular-expressions/","/../../common-terminal-commands/","/../../computer-graphics-1/","/../../count-beautiful-subarrays/","/../../count-number-of-islands/","/../../count-total-elements-of-array-objects/","/../../computer-graphics-2/","/../../create-object-based-on-null/","/../../cross-origin-resource-sharing/","/../../css-background-image-application/","/../../css-circular-progress-bar/","/../../css-notes/","/../../css-positioning-detailed/","/../../css-positioning/","/../../css-series-basics/","/../../css-layout-guide/","/../../css-series-cascade/","/../../css-series-box-dimensions/","/../../css-series-flow-and-dimensions/","/../../css-series-history-and-document-flow/","/../../css-series-inline-elements-and-flow/","/../../css-series-text-processing/","/../../css-tips/","/../../css-series-flow-destruction-and-protection/","/../../css3-animation-vs-js-animation/","/../../css-two-color-pie-chart/","/../../cursor-debugger/","/../../custom-github-activity/","/../../css2-block-element-center/","/../../deep-work-philosophy-interpretation/","/../../deep-copy-of-arrays-and-objects/","/../../disable-image-dragging/","/../../cursor-skill-web-search-download-movie/","/../../docker-documentation/","/../../docker-frontend-environment-setup/","/../../doing-things-with-vscode/","/../../egg/","/../../dropdown-list-implementation/","/../../element-plus-table-component-scaling-issue-solution/","/../../es2020-new-features/","/../../extra-thick-chicken-soup/","/../../file-naming-pitfalls-record/","/../../ffmpeg-extract-audio-track/","/../../find-median-sorted-arrays/","/../../firefox-remove-various-dashed-borders/","/../../first-day-morning-run/","/../../first-screen-optimization/","/../../first-screen-time-vs-white-screen-time/","/../../flow-simple-tutorial/","/../../fix-github-image-issue-on-mac/","/../../flutter-learning-notes-dart-basics/","/../../frontend-draw-graphic-captcha/","/../../flutter-learning-notes-quick-start/","/../../frontend-performance-optimization/","/../../four-js-tips/","/../../frontend-xx-dockerization/","/../../fullscreen-solution-for-webpage-or-html-elements/","/../../fun-console/","/../../function-currying/","/../../function-without-global-variable-counting/","/../../functional-programming/","/../../generate-random-array-in-specified-range/","/../../get-css-style/","/../../gemini-new-session-memory/","/../../ghost-whitespace-nodes/","/../../git-common-commands/","/../../get-longest-common-prefix/","/../../git-domain-config/","/../../git-environment-config/","/../../git-usage-guide/","/../../gitbook-generate-ebook/","/../../github-action-auto-deploy-page/","/../../github-practical-tips/","/../../github-travis-auto-build-vue-to-gitpage/","/../../gitlab-ci-config-template/","/../../gitpage-hexo/","/../../go-getting-started/","/../../hexo-blog-migration/","/../../hexo-getting-started/","/../../hexo-math-formula-support/","/../../how-to-create-a-robust-system/","/../../html-notes/","/../../homebrew-common-commands/","/../../how-to-optimize-animation/","/../../html-to-text-js/","/../../http-notes/","/../../http-server/","/../../image-lazy-loading-implementation/","/../../implement-array-flatten/","/../../interview-strategy/","/../../improve-work-efficiency-with-cursor-practical-notes/","/../../interesting-css-cascade-issues/","/../../issue-03/","/../../issue-05/","/../../issue-04/","/../../issue-07/","/../../issue-06/","/../../issue-08/","/../../issue-09/","/../../issue-10/","/../../issue-11/","/../../issue-12/","/../../issue-1/","/../../issue-15/","/../../issue-14/","/../../issue-13/","/../../issue-2/","/../../japanese-learning-notes/","/../../javaScript-promise/","/../../javascript-basics-primitive-vs-reference-types/","/../../javascript-basics-type-conversion/","/../../javascript-common-code-snippets/","/../../javascript-built-in-deep-copy/","/../../javascript-detect-caps-lock/","/../../javascript-functions/","/../../javascript-new-implementation-principle/","/../../javascript-object-oriented-programming/","/../../javascript-soul-questions/","/../../javascript-tricks/","/../../js-execution/","/../../js-linked-list-implementation/","/../../js-overview/","/../../js-modal-blog/","/../../js-string-to-base64/","/../../js-timezone/","/../../key-value-role-in-vue-components/","/../../jump-to-specific-position-in-article/","/../../knowledge-anxiety/","/../../kindness/","/../../kpi-vs-okr/","/../../knn-algorithm/","/../../leave-page-popup/","/../../linux-background-script-execution/","/../../lodash-source-analysis-array-chunk/","/../../lodash-source-analysis-array-slice/","/../../mac-debug-ios-web-page/","/../../mac-install-mysql/","/../../llm-wiki/","/../../manchester-by-the-sea/","/../../mini-program-tabs-sticky/","/../../model-training-steps/","/../../modify-autofill-style/","/../../modify-scrollbar-style-compatible/","/../../method-to-login-to-south-china-normal-university-campus-network/","/../../module-specifications/","/../../n-n-order-matrix-algorithm/","/../../node-version-management/","/../../nodeJs/","/../../nodejs-config/","/../../node-notes-in-depth/","/../../nodejs-module-mechanism/","/../../nodejs-notes/","/../../notes-about-writing-weekly-reports/","/../../number-precise-to-two-decimal-places/","/../../object-property-value-monitoring/","/../../one-click-generate-responsive-table/","/../../package-json-field-list/","/../../pagination-algorithm/","/../../npm-common-commands/","/../../palindrome-number-judgment/","/../../personal-knowledge-base/","/../../pixi-basics/","/../../pixi-js-sprite-loading-cache-removal/","/../../pixijs-vertexData-null/","/../../pinyin-learning-project-notes/","/../../port-number-modification/","/../../prisma-getting-started-guide/","/../../product-updates-rss-file-diff-mental-model/","/../../project-modularization-principles/","/../../proxy-observer-pattern/","/../../python3-installation/","/../../python-pitfalls-collection/","/../../record-service-degradation-due-to-emergency/","/../../react-hooks-create-movie-app/","/../../qwen-milk-tea-ui/","/../../recursive-tree/","/../../refactoring-vs-architecture/","/../../remove-parent-nodes-with-duplicate-child-ids/","/../../removeDuplicates/","/../../removeElement/","/../../regular-expressions/","/../../reverse-integer/","/../../reverse-words-in-string/","/../../roman-numerals-to-integer/","/../../rss-telegram-selfhost/","/../../scroll-pagination/","/../../sentence-excerpts/","/../../settimeout-simulate-setinterval/","/../../singly-linked-list-concatenation/","/../../science-popularization/","/../../solve-github-dns-pollution-issue/","/../../software-version-number-definition/","/../../ss-installation/","/../../sublime-text-nodejs-config/","/../../some-concepts/","/../../string-and-code-rigor/","/../../systematic-method-for-fragmented-reading-knowledge/","/../../talking-about-browser-cache-mechanism/","/../../talking-about-vuex/","/../../talking-about-webpage-adaptive-and-responsive-layout/","/../../tcp-ip-three-way-handshake/","/../../thoughts-on-ad-blocker-plugins/","/../../thoughts-on-branch-management/","/../../table-cell-equal-division/","/../../thoughts-on-technical-growth/","/../../time-complexity-vs-space-complexity/","/../../three-js-basics-practice/","/../../timestamp-to-date/","/../../translate-use-claude-code/","/../../two-sum-problem/","/../../time-zero/","/../../typescript-environment-config/","/../../ubuntu-configure-frontend-environment/","/../../ubuntu-configure-ss/","/../../understanding-byte-order/","/../../unavoidable-bug-chrome-translation-caused-trouble/","/../../understanding-cookies/","/../../ubuntu-install-tensorflow/","/../../understanding-instanceof/","/../../validate-string/","/../../variables/","/../../vue-config-template/","/../../vue-data-driven-view-implementation/","/../../vue-details-i-didnt-know/","/../../vscode-code-formatting-summary/","/../../vue-dynamic-change-title/","/../../vue-dynamic-component-import-note-not-async/","/../../vue-test-unit/","/../../vue3-notes/","/../../web-performance-optimization-debounce/","/../../web-security-csrf/","/../../web-security-xss-attack/","/../../vue-project-setup-steps/","/../../webpack-dynamic-modify-resource-domain/","/../../webpack-gulp-bundle-vue-component-library/","/../../webpack5-new-features-module-federation-notes/","/../../wechat-mini-program-pitfalls/","/../../webpage-version-update-popup-implementation/","/../../webpack/","/../../what-happened-to-vue/","/../../what-happens-from-url-to-display/","/../../why-frontend-needs-framework/","/../../why-not-let-ai-write-for-us/","/../../why-we-need-to-read/","/../../why-graphics-card/","/../../windows-tricks/","/../../why-write-wechat-official-account/","/../../words-of-experience/","/../../wordpress-installation/","/../../work-for/","/../../writing-a-good-claude-md/","/../../yml-file-operations/","/../../wsl-config/"];
+  var el = document.getElementById('nav-random-article');
+  if (!el) return;
+  el.addEventListener('click', function (e) {
+    e.preventDefault();
+    if (!urls.length) return;
+    var next = urls[Math.floor(Math.random() * urls.length)];
+    if (next) window.location.href = next;
+  });
+})();</script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":200,"height":200},"mobile":{"show":false},"react":{"opacity":0.7},"log":false});</script></body></html>
