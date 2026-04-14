@@ -6,7 +6,7 @@
   <link href="https://canace.site/atom.xml" rel="self"/>
   
   <link href="https://canace.site/"/>
-  <updated>2026-04-14T04:00:32.473Z</updated>
+  <updated>2026-04-14T05:59:41.094Z</updated>
   <id>https://canace.site/</id>
   
   <author>
@@ -17,20 +17,14 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>产品更新、RSS 订阅以及文件 Diff 类需求实现模型</title>
+    <title>产品更新、RSS订阅以及文件diff类需求实现模型</title>
     <link href="https://canace.site/product-updates-rss-file-diff-mental-model/"/>
     <id>https://canace.site/product-updates-rss-file-diff-mental-model/</id>
     <published>2026-04-14T02:00:00.000Z</published>
-    <updated>2026-04-14T04:00:32.473Z</updated>
+    <updated>2026-04-14T05:59:41.094Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
+    <summary type="html">把 Web 版本更新、RSS、应用更新与文件 diff 抽象为「发现更新—判断差异—处理差异」与五层模型，先定差异粒度再选发现机制与状态描述；附场景对照表、落地四问，并设想 checklist、prompt 与 skill，尚未实践。</summary>
     
     
     
