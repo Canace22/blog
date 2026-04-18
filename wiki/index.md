@@ -11,10 +11,16 @@
 
 ## Concepts
 
-- [假设驱动 AI 调试](concepts/hypothesis-driven-ai-debugging.md)
+- [提升 AI Coding 稳定性的经验上下文模式](concepts/agent-coding-stability.md)
+- [AI-assisted development](concepts/ai-assisted-development.md)
+- [AI Knowledge Bases](concepts/ai-knowledge-bases.md)
 - [AI 时代的贫富分化与劳动迁移](concepts/ai-wealth-labor-shift.md)
+- [AI 角色分工：多角色专业化实践](concepts/ai-worker.md)
+- [Chat assistant user memory](concepts/chat-assistant-user-memory.md)
 - [编译式知识库](concepts/compiled-knowledge-vault.md)
 - [Harness Engineering](concepts/harness-engineering.md)
+- [假设驱动 AI 调试](concepts/hypothesis-driven-ai-debugging.md)
+- [LLM Knowledge Bases](concepts/llm-knowledge-bases.md)
 - [LLM 维护的知识库](concepts/llm-maintained-wiki.md)
 - [LOP（面向大模型编程）模式](concepts/lop-patterns.md)
 - [RSS / Telegram 自建推送](concepts/rss-telegram-selfhost.md)
