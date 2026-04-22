@@ -39,7 +39,7 @@ date: 2025-09-14 17:32:04
 ├── 5. 软技能与思考 (Soft Skills & Reflections)
 │   ├── 项目管理 (Project Management)
 │   ├── 职业发展 (Career Development) // 替换原有的"职场"
-│   ├── 读书笔记 (Reading Notes)
+│   ├── 笔记 (Reading Notes)
 │   └── 随笔 (Essays & Musings) // "随笔", "七日谈"可以归入这里
 │
 └── 6. 网站建设 (Site Meta) // 替换"博客相关"

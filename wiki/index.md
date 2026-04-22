@@ -24,6 +24,7 @@
 - [LLM 维护的知识库](concepts/llm-maintained-wiki.md)
 - [LOP（面向大模型编程）模式](concepts/lop-patterns.md)
 - [叙事结构](concepts/narrative-structures.md)
+- [叙事节奏心理学](concepts/narrative-pacing-psychology.md)
 - [RSS / Telegram 自建推送](concepts/rss-telegram-selfhost.md)
 
 ## Queries
@@ -312,6 +313,8 @@
 
 ### 软技能与思考
 
+- [节奏心理学：叙事中的「情绪推手」](sources/rhythm-psychology.md) — `source/_posts/rhythm-psychology.md`
+- [叙事研究](sources/narrative-research.md) — `source/_posts/narrative-research.md`
 - [产品更新、RSS订阅以及文件diff类需求实现模型](sources/product-updates-rss-file-diff-mental-model.md) — `source/_posts/product-updates-rss-file-diff-mental-model.md`
 - [AI 让人变得无趣](sources/ai-make-you-boring.md) — `source/_posts/ai-make-you-boring.md`
 - [为什么不要让LLM帮我们写文档](sources/why-not-let-ai-write-for-us.md) — 摘要归档（原博文已从 `source/_posts` 删除）

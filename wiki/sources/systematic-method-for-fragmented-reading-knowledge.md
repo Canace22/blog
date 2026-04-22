@@ -2,7 +2,7 @@
 
 - **源文件**：[`source/_posts/systematic-method-for-fragmented-reading-knowledge.md`](../../source/_posts/systematic-method-for-fragmented-reading-knowledge.md)
 - **分类**：软技能与思考
-- **标签**：读书笔记
+- **标签**：笔记
 - **日期**：2017-05-06 16:59:38
 
 ## 摘要

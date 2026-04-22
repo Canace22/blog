@@ -1,5 +1,6 @@
 # Wiki Log
 
+- 2026-04-22：Ingest `source/_posts/narrative-research.md`、`source/_posts/rhythm-psychology.md` → 新增 `wiki/sources/narrative-research.md`、`wiki/sources/rhythm-psychology.md`；新增概念 `wiki/concepts/narrative-pacing-psychology.md`；`wiki/concepts/narrative-structures.md` 补「仓库内笔记」互链；更新 `wiki/index.md`（Concepts / 软技能与思考）。
 - 2026-04-20：Ingest `source/_posts/product-updates-rss-file-diff-mental-model.md` → 新增 `wiki/sources/product-updates-rss-file-diff-mental-model.md`，记录五层模型（更新发现/状态描述/差异判断/动作执行/用户交互）、场景对照表与落地四问；在 `wiki/reports/message-delivery-comparison-report.md` 相关页面区块补入该来源条目（本文为报告内模型的博文呈现，同时新增 AI Coding 整合设想）；更新 `wiki/index.md`（软技能与思考）。
 - 2026-04-18：Ingest `source/_posts/openclaw-usage-experience.md` → 新增 `wiki/sources/openclaw-usage-experience.md`，扩展 `wiki/concepts/llm-maintained-wiki.md`（Claim C4、Evidence E4、来源）、`wiki/concepts/chat-assistant-user-memory.md`（仓库内证据）；更新 `wiki/index.md`（AI探索）。
 - 2026-04-14：将本轮围绕 `webpage-version-update-popup-implementation`、RSS 推送、`electron-updater`、应用内文件更新与 `git diff` 的连续讨论收束为报告 `wiki/reports/message-delivery-comparison-report.md`，按“消息推送 → RSS / 应用更新 / 网页版本更新”主轴组织，并补入 diff 思维对照与横向表格；更新 `wiki/index.md` Reports。

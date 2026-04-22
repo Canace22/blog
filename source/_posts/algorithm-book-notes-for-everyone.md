@@ -4,7 +4,7 @@ description: '算法核心是准确且能停止的步骤，结构化编程和数
 comments: true
 date: 2017-03-07 20:08:41
 categories: 软技能与思考
-tags: 读书笔记
+tags: 笔记
 toc: true
 ---
 

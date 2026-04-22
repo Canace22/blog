@@ -204,7 +204,7 @@ Machine-oriented index of the author’s public blog: base URL, local Hexo `_pos
 | 2020-07-18 | [好玩的 console](https://canace.site/fun-console/) | Web开发 | JavaScript&TypeScript |
 | 2020-07-14 | [常用图片格式比较](https://canace.site/common-image-format-comparison/) | 编程基础 | 计算机科学 |
 | 2020-07-13 | [幽灵空白节点](https://canace.site/ghost-whitespace-nodes/) | Web开发 | CSS与可视化 |
-| 2020-07-12 | [重构 vs 架构](https://canace.site/refactoring-vs-architecture/) | 软技能与思考 | 读书笔记 |
+| 2020-07-12 | [重构 vs 架构](https://canace.site/refactoring-vs-architecture/) | 软技能与思考 | 笔记 |
 | 2020-07-12 | [级联](https://canace.site/cascade/) | 软技能与思考 | CSS与可视化 |
 | 2020-07-08 | [css background-image 的应用](https://canace.site/css-background-image-application/) | Web开发 | 前端,  CSS与可视化 |
 | 2020-06-22 | [Git 安装配置及分支管理](https://canace.site/git-usage-guide/) | 工程化与运维 | 开发工具 |
@@ -319,7 +319,7 @@ Machine-oriented index of the author’s public blog: base URL, local Hexo `_pos
 | 2018-05-27 | [ubuntu 下配置ss](https://canace.site/ubuntu-configure-ss/) | 工程化与运维 | 系统设计 |
 | 2018-05-27 | [ubuntu 下 tensorflow CPU release 版安装](https://canace.site/ubuntu-install-tensorflow/) | AI探索 | AI原理 |
 | 2018-05-27 | [tensorflow 模型训练步骤](https://canace.site/model-training-steps/) | AI探索 | AI原理 |
-| 2018-05-20 | [深度工作哲学解读](https://canace.site/deep-work-philosophy-interpretation/) | 软技能与思考 | 读书笔记 |
+| 2018-05-20 | [深度工作哲学解读](https://canace.site/deep-work-philosophy-interpretation/) | 软技能与思考 | 笔记 |
 | 2018-05-20 | [海边的曼彻斯特](https://canace.site/manchester-by-the-sea/) | 软技能与思考 | 随笔 |
 | 2018-05-20 | [搭建 Django 博客系统](https://canace.site/build-django-blog-system/) | Web开发 | 后端,  Python/Go/其他 |
 | 2018-05-20 | [天使之恋](https://canace.site/angel-love/) | 软技能与思考 | 随笔 |
@@ -336,6 +336,6 @@ Machine-oriented index of the author’s public blog: base URL, local Hexo `_pos
 | 2017-05-09 | [nodeJs 配置](https://canace.site/nodejs-config/) | Web开发 | 后端,  Node.js |
 | 2017-05-09 | [git环境配置](https://canace.site/git-environment-config/) | 工程化与运维 | 开发工具 |
 | 2017-05-09 | [git域名配置](https://canace.site/git-domain-config/) | 工程化与运维 | 开发工具 |
-| 2017-05-06 | [碎片化阅读知识系统化方法](https://canace.site/systematic-method-for-fragmented-reading-knowledge/) | 软技能与思考 | 读书笔记 |
-| 2017-03-07 | [写给大家看的算法书笔记](https://canace.site/algorithm-book-notes-for-everyone/) | 软技能与思考 | 读书笔记 |
+| 2017-05-06 | [碎片化阅读知识系统化方法](https://canace.site/systematic-method-for-fragmented-reading-knowledge/) | 软技能与思考 | 笔记 |
+| 2017-03-07 | [写给大家看的算法书笔记](https://canace.site/algorithm-book-notes-for-everyone/) | 软技能与思考 | 笔记 |
 | 2016-05-20 | [关于写周报的思考](https://canace.site/notes-about-writing-weekly-reports/) | 软技能与思考 | 职业发展 |

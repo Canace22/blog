@@ -34,7 +34,7 @@
 ├── 5. 软技能与思考 (Soft Skills & Reflections)
 │   ├── 项目管理 (Project Management)
 │   ├── 职业发展 (Career Development)
-│   ├── 读书笔记 (Reading Notes)
+│   ├── 笔记 (Notes)
 │   └── 随笔 (Essays & Musings)
 │
 └── 6. 网站建设 (Site Meta) // 博客搭建、Hexo 配置等

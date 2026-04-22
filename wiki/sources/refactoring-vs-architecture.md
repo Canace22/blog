@@ -2,7 +2,7 @@
 
 - **源文件**：[`source/_posts/refactoring-vs-architecture.md`](../../source/_posts/refactoring-vs-architecture.md)
 - **分类**：软技能与思考
-- **标签**：读书笔记
+- **标签**：笔记
 - **日期**：2020-07-12 17:04:49
 
 ## 摘要

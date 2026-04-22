@@ -2,7 +2,7 @@
 
 - **源文件**：[`source/_posts/deep-work-philosophy-interpretation.md`](../../source/_posts/deep-work-philosophy-interpretation.md)
 - **分类**：软技能与思考
-- **标签**：读书笔记
+- **标签**：笔记
 - **日期**：2018-05-20 17:01:28
 
 ## 摘要
