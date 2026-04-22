@@ -23,6 +23,7 @@
 - [LLM Knowledge Bases](concepts/llm-knowledge-bases.md)
 - [LLM 维护的知识库](concepts/llm-maintained-wiki.md)
 - [LOP（面向大模型编程）模式](concepts/lop-patterns.md)
+- [叙事结构](concepts/narrative-structures.md)
 - [RSS / Telegram 自建推送](concepts/rss-telegram-selfhost.md)
 
 ## Queries
@@ -305,11 +306,13 @@
 - [如何做AI角色分工：我的应用心得](sources/ai-worker.md) — `source/_posts/ai-worker.md`
 - [AI赋能存量项目——从函数助手到业务伙伴](sources/ai-coding-share.md) — `source/_posts/ai-coding-share.md`
 - [AI协作编程——传统IDE快速切换到AI IDE](sources/ai-coding-ide.md) — `source/_posts/ai-coding-ide.md`
+- [OpenClaw 的一些使用体验](sources/openclaw-usage-experience.md) — `source/_posts/openclaw-usage-experience.md`
 - [我们是否需要AI知识库](sources/AI-knowledge-base.md) — `source/_posts/AI-knowledge-base.md`
 - [Gemini 对话：AI、贫富差距与劳动形态](sources/gemini-ai-wealth-gap-dialogue.md) — Gemini 会话整理（摘要见该页，可追溯外部链接）
 
 ### 软技能与思考
 
+- [产品更新、RSS订阅以及文件diff类需求实现模型](sources/product-updates-rss-file-diff-mental-model.md) — `source/_posts/product-updates-rss-file-diff-mental-model.md`
 - [AI 让人变得无趣](sources/ai-make-you-boring.md) — `source/_posts/ai-make-you-boring.md`
 - [为什么不要让LLM帮我们写文档](sources/why-not-let-ai-write-for-us.md) — 摘要归档（原博文已从 `source/_posts` 删除）
 - [为什么要写微信公众号](sources/why-write-wechat-official-account.md) — `source/_posts/why-write-wechat-official-account.md`

@@ -1,5 +1,7 @@
 # Wiki Log
 
+- 2026-04-20：Ingest `source/_posts/product-updates-rss-file-diff-mental-model.md` → 新增 `wiki/sources/product-updates-rss-file-diff-mental-model.md`，记录五层模型（更新发现/状态描述/差异判断/动作执行/用户交互）、场景对照表与落地四问；在 `wiki/reports/message-delivery-comparison-report.md` 相关页面区块补入该来源条目（本文为报告内模型的博文呈现，同时新增 AI Coding 整合设想）；更新 `wiki/index.md`（软技能与思考）。
+- 2026-04-18：Ingest `source/_posts/openclaw-usage-experience.md` → 新增 `wiki/sources/openclaw-usage-experience.md`，扩展 `wiki/concepts/llm-maintained-wiki.md`（Claim C4、Evidence E4、来源）、`wiki/concepts/chat-assistant-user-memory.md`（仓库内证据）；更新 `wiki/index.md`（AI探索）。
 - 2026-04-14：将本轮围绕 `webpage-version-update-popup-implementation`、RSS 推送、`electron-updater`、应用内文件更新与 `git diff` 的连续讨论收束为报告 `wiki/reports/message-delivery-comparison-report.md`，按“消息推送 → RSS / 应用更新 / 网页版本更新”主轴组织，并补入 diff 思维对照与横向表格；更新 `wiki/index.md` Reports。
 - 2026-04-14：Query「`git diff` 这种差异对比，和 Web 端版本更新弹窗的思路是不是有异曲同工之处」→ 新增 `wiki/queries/git-diff-and-web-version-check.md`，说明两者在“状态比对驱动后续动作”这一抽象层面相通，但 `git diff` 属于内容级差异表达，而版本更新弹窗更接近版本级差异检测，并更新 `wiki/index.md` Queries。
 - 2026-04-14：Query「如果是应用内的文件更新，像 `git diff` 这种，跟前面说的应用更新有什么区别」→ 新增 `wiki/queries/in-app-file-update-vs-app-updater-vs-git-diff.md`，区分应用更新、应用内文件同步与 `git diff` 三种“diff”语境，强调 manifest/hash/chunk 与文本行级 diff 的差别，并更新 `wiki/index.md` Queries。

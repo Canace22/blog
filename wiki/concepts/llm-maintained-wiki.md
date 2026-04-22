@@ -13,6 +13,7 @@
 | C1 | LLM-maintained wiki 的基础形态是三层：原始资料层、wiki 维护层、规则层。 | High | E1, E2 |
 | C2 | 仅有持久化页面还不够；要提升为可维护知识层，需要引入更明确的证据与健康信号。 | Medium | E1, E3 |
 | C3 | 在 agent 工作流中，wiki 应承担 system of record 的角色，而不是临时聊天缓存。 | Medium | E1, E2, E3 |
+| C4 | 仅靠工作区文件与 AGENTS 约定，不足以保证跨会话「记忆行为」一致；实际效果仍受模型对规则的遵循程度影响。 | Medium | E4 |
 
 ## Evidence（来源与依据）
 
@@ -22,6 +23,8 @@
   `source/_posts/*.md` 作为只读输入，`wiki/` 作为维护层，`AGENTS.md` 提供工作流约束。
 - `E3` [OpenClaw Memory Wiki](../sources/openclaw-memory-wiki.md)
   该来源强调 structured claims/evidence、provenance、contradictions、dashboard、lint，说明知识维护可从 "持久化" 继续升级到 "可验证维护"。
+- `E4` [OpenClaw 的一些使用体验](../sources/openclaw-usage-experience.md)
+  作者描述内置 memory 文件链路与自建 wiki/Notion 的实践，并指出特定模型对「写入记忆」类守则的主观遵循差异。
 
 ## 三层结构（当前可执行模型）
 
@@ -55,3 +58,4 @@
 
 - [使用大模型来维护知识库](../sources/llm-wiki.md)
 - [OpenClaw Memory Wiki](../sources/openclaw-memory-wiki.md)
+- [OpenClaw 的一些使用体验](../sources/openclaw-usage-experience.md)

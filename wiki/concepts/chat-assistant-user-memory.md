@@ -23,3 +23,4 @@ Cross-session summaries can make assistants feel “aware” of stable preferenc
 ## Current Evidence In Repo
 
 - [Gemini User Summary note](../sources/gemini-user-summary-cross-session.md)
+- [OpenClaw 的一些使用体验](../sources/openclaw-usage-experience.md) — workspace 内 `memory/`、`MEMORY.md` 等文件化连续性，与厂商 User Summary 对照

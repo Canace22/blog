@@ -322,6 +322,7 @@ flowchart LR
 
 ## 相关页面
 
+- [来源：产品更新、RSS订阅以及文件diff类需求实现模型](../sources/product-updates-rss-file-diff-mental-model.md)（博文；将本报告的五层模型整理为第一人称实践笔记，并补充落地四问与 AI Coding 整合设想）
 - [来源：Web端版本更新弹窗实现](../sources/webpage-version-update-popup-implementation.md)
 - [RSS / Telegram 自建推送](../concepts/rss-telegram-selfhost.md)
 - [查询：Web端版本更新弹窗的数据推送跟 RSS 方案有什么异同](../queries/web-version-popup-vs-rss.md)
