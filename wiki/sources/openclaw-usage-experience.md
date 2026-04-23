@@ -20,5 +20,6 @@
 
 - [OpenClaw Memory Wiki](openclaw-memory-wiki.md)
 - [LLM 维护的知识库](../concepts/llm-maintained-wiki.md)
+- [定时任务](scheduled-tasks.md)（系统 `crontab` 与 workspace 内定时的分工、Mac 表达式备忘）
 - [RSS / Telegram 自建推送](../concepts/rss-telegram-selfhost.md)
 - [Mac / Linux 虚拟机资源与 OpenClaw 开发](../queries/mac-linux-vm-openclaw-dev.md)

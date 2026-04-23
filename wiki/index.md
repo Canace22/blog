@@ -23,9 +23,10 @@
 - [LLM Knowledge Bases](concepts/llm-knowledge-bases.md)
 - [LLM 维护的知识库](concepts/llm-maintained-wiki.md)
 - [LOP（面向大模型编程）模式](concepts/lop-patterns.md)
-- [叙事结构](concepts/narrative-structures.md)
 - [叙事节奏心理学](concepts/narrative-pacing-psychology.md)
+- [叙事结构](concepts/narrative-structures.md)
 - [RSS / Telegram 自建推送](concepts/rss-telegram-selfhost.md)
+- [系统 crontab 与 OpenClaw 定时任务](concepts/crontab-and-openclaw-cron.md)
 
 ## Queries
 
@@ -260,6 +261,7 @@
 - [Notion+Chrome书签打造个人知识库](sources/personal-knowledge-base.md) — `source/_posts/personal-knowledge-base.md`
 - [npm 常用命令](sources/npm-common-commands.md) — `source/_posts/npm-common-commands.md`
 - [linux后台执行脚本](sources/linux-background-script-execution.md) — `source/_posts/linux-background-script-execution.md`
+- [定时任务](sources/scheduled-tasks.md) — `source/_posts/scheduled-tasks.md`
 - [用 Cursor 提高工作效率实战笔记](sources/improve-work-efficiency-with-cursor-practical-notes.md) — `source/_posts/improve-work-efficiency-with-cursor-practical-notes.md`
 - [图片懒加载实现](sources/image-lazy-loading-implementation.md) — `source/_posts/image-lazy-loading-implementation.md`
 - [gitpage 搭建 hexo 博客](sources/gitpage-hexo.md) — `source/_posts/gitpage-hexo.md`

@@ -1,5 +1,6 @@
 # Wiki Log
 
+- 2026-04-23：Ingest `source/_posts/scheduled-tasks.md` → 新增 `wiki/sources/scheduled-tasks.md`；新增概念 `wiki/concepts/crontab-and-openclaw-cron.md`（与 `openclaw-usage-experience` 互链）；`wiki/sources/openclaw-usage-experience.md` 关联区补入定时任务；更新 `wiki/index.md`（Concepts / 工程化与运维）。
 - 2026-04-22：Ingest `source/_posts/narrative-research.md`、`source/_posts/rhythm-psychology.md` → 新增 `wiki/sources/narrative-research.md`、`wiki/sources/rhythm-psychology.md`；新增概念 `wiki/concepts/narrative-pacing-psychology.md`；`wiki/concepts/narrative-structures.md` 补「仓库内笔记」互链；更新 `wiki/index.md`（Concepts / 软技能与思考）。
 - 2026-04-20：Ingest `source/_posts/product-updates-rss-file-diff-mental-model.md` → 新增 `wiki/sources/product-updates-rss-file-diff-mental-model.md`，记录五层模型（更新发现/状态描述/差异判断/动作执行/用户交互）、场景对照表与落地四问；在 `wiki/reports/message-delivery-comparison-report.md` 相关页面区块补入该来源条目（本文为报告内模型的博文呈现，同时新增 AI Coding 整合设想）；更新 `wiki/index.md`（软技能与思考）。
 - 2026-04-18：Ingest `source/_posts/openclaw-usage-experience.md` → 新增 `wiki/sources/openclaw-usage-experience.md`，扩展 `wiki/concepts/llm-maintained-wiki.md`（Claim C4、Evidence E4、来源）、`wiki/concepts/chat-assistant-user-memory.md`（仓库内证据）；更新 `wiki/index.md`（AI探索）。
