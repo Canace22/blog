@@ -6,7 +6,7 @@
   <link href="https://canace.site/atom.xml" rel="self"/>
   
   <link href="https://canace.site/"/>
-  <updated>2026-04-23T02:13:31.096Z</updated>
+  <updated>2026-04-25T06:37:25.071Z</updated>
   <id>https://canace.site/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>定时任务</title>
+    <title>Openclaw定时任务</title>
     <link href="https://canace.site/scheduled-tasks/"/>
     <id>https://canace.site/scheduled-tasks/</id>
     <published>2026-04-23T02:00:00.000Z</published>
-    <updated>2026-04-23T02:13:31.096Z</updated>
+    <updated>2026-04-25T06:37:25.071Z</updated>
     
     
     <summary type="html">系统 crontab 与 openclaw 工作空间任务的分工，以及 Mac 上查看编辑与五段式表达式写法备忘。</summary>
