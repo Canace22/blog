@@ -43,3 +43,5 @@
 - 2026-04-09：Ingest `source/_posts/ai-coding-game.md` → 新增 `wiki/sources/ai-coding-game.md`、`wiki/concepts/lop-patterns.md`，更新 `wiki/concepts/llm-maintained-wiki.md`、`wiki/index.md`。
 - 2026-04-09：批量 ingest source/_posts（301 篇），生成/更新 wiki/sources（跳过手写保留 2 篇），重写 wiki/index.md Sources 区块。
 - 2026-04-14：检查 `wiki/concepts/` 分层后，重新归类明显非“稳定概念”的页面：`ai-outsourcing-writing-thinking`、`web-frontend-knowledge-graph` 移至 `wiki/reports/`；`mac-linux-vm-openclaw-dev`、`wechat-official-account-read-optimization`、`whisper-gemini-video-subtitles` 移至 `wiki/queries/`。同步修正 `wiki/index.md` 与相关回链；移除失效的 `concepts/vue-key.md` 目录入口，并把残留坏链改回现有来源页或纯文本说明。
+- 2026-04-30：Ingest 转发 Telegram「嘴码专项工作频道」软件开发范式演进 → 、，更新  Sources / Concepts。
+- 2026-04-30：Ingest 转发 Telegram「嘴码专项工作频道」软件开发范式演进 → `wiki/sources/software-development-paradigms.md`、`wiki/concepts/software-development-paradigms.md`，更新 `wiki/index.md` Sources / Concepts。
