@@ -66,6 +66,7 @@ When asked to lint the wiki, check for:
 - Distinguish source-backed claims from synthesis.
 - Keep each page focused on one source or one concept.
 - Use bullet lists when they improve scanability.
+- When creating or materially updating maintained wiki pages (`wiki/sources/`, `wiki/concepts/`, `wiki/queries/`, `wiki/reports/`—not `wiki/index.md` or `wiki/log.md` unless the human asks), append a brief **signature** at the **end** of the page body: who produced the draft or edit (assistant / model or tool identifier) and the date (ISO `YYYY-MM-DD` in UTC recommended), so attribution is explicit.
 
 ## Current Seed Topic
 

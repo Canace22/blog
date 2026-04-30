@@ -1,5 +1,6 @@
 # Wiki Log
 
+- 2026-04-30：Ingest Telegram 群聊观点（三也）→ 新增 `wiki/sources/sanye-ai-organize-thoughts.md`，扩展 `wiki/reports/ai-outsourcing-writing-thinking.md`（新增"来自群聊的实践印证"章节）；更新 `wiki/index.md`（软技能与思考 / Reports）。
 - 2026-04-23：Ingest `source/_posts/scheduled-tasks.md` → 新增 `wiki/sources/scheduled-tasks.md`；新增概念 `wiki/concepts/crontab-and-openclaw-cron.md`（与 `openclaw-usage-experience` 互链）；`wiki/sources/openclaw-usage-experience.md` 关联区补入定时任务；更新 `wiki/index.md`（Concepts / 工程化与运维）。
 - 2026-04-22：Ingest `source/_posts/narrative-research.md`、`source/_posts/rhythm-psychology.md` → 新增 `wiki/sources/narrative-research.md`、`wiki/sources/rhythm-psychology.md`；新增概念 `wiki/concepts/narrative-pacing-psychology.md`；`wiki/concepts/narrative-structures.md` 补「仓库内笔记」互链；更新 `wiki/index.md`（Concepts / 软技能与思考）。
 - 2026-04-20：Ingest `source/_posts/product-updates-rss-file-diff-mental-model.md` → 新增 `wiki/sources/product-updates-rss-file-diff-mental-model.md`，记录五层模型（更新发现/状态描述/差异判断/动作执行/用户交互）、场景对照表与落地四问；在 `wiki/reports/message-delivery-comparison-report.md` 相关页面区块补入该来源条目（本文为报告内模型的博文呈现，同时新增 AI Coding 整合设想）；更新 `wiki/index.md`（软技能与思考）。
@@ -43,5 +44,5 @@
 - 2026-04-09：Ingest `source/_posts/ai-coding-game.md` → 新增 `wiki/sources/ai-coding-game.md`、`wiki/concepts/lop-patterns.md`，更新 `wiki/concepts/llm-maintained-wiki.md`、`wiki/index.md`。
 - 2026-04-09：批量 ingest source/_posts（301 篇），生成/更新 wiki/sources（跳过手写保留 2 篇），重写 wiki/index.md Sources 区块。
 - 2026-04-14：检查 `wiki/concepts/` 分层后，重新归类明显非“稳定概念”的页面：`ai-outsourcing-writing-thinking`、`web-frontend-knowledge-graph` 移至 `wiki/reports/`；`mac-linux-vm-openclaw-dev`、`wechat-official-account-read-optimization`、`whisper-gemini-video-subtitles` 移至 `wiki/queries/`。同步修正 `wiki/index.md` 与相关回链；移除失效的 `concepts/vue-key.md` 目录入口，并把残留坏链改回现有来源页或纯文本说明。
-- 2026-04-30：Ingest 转发 Telegram「嘴码专项工作频道」软件开发范式演进 → 、，更新  Sources / Concepts。
 - 2026-04-30：Ingest 转发 Telegram「嘴码专项工作频道」软件开发范式演进 → `wiki/sources/software-development-paradigms.md`、`wiki/concepts/software-development-paradigms.md`，更新 `wiki/index.md` Sources / Concepts。
+- 2026-04-30：Ingest Cursor 会话（Hermes：小米 MiMo vs MiniMax、`/anthropic` 与模型名点号）→ `wiki/sources/cursor-hermes-xiaomi-mimo-minimax.md`、`wiki/concepts/hermes-anthropic-endpoint-model-id-normalization.md`；更新 `wiki/index.md`（Concepts / AI探索）。

@@ -5,7 +5,7 @@
 - [消息推送：RSS、应用更新、网页版本更新与 diff 思维对照报告](reports/message-delivery-comparison-report.md)
 - [Harness Engineering 资料整理](reports/harness-engineering-reading-notes.md)
 - [从 Harness 到 Compiled Wiki：个人研究路线图](reports/harness-to-compiled-wiki-roadmap.md)
-- [AI 外包写作与思维：对照阅读](reports/ai-outsourcing-writing-thinking.md)
+- [AI 外包写作与思维：对照阅读](reports/ai-outsourcing-writing-thinking.md)（含三也群聊实践案例）
 - [Web 前端开发知识图谱](reports/web-frontend-knowledge-graph.md)
 - [博客草稿：我原来写的项目规则、Skill、知识库，其实已经是在做 Harness Engineering](reports/harness-engineering-blog-draft.md)
 
@@ -29,6 +29,7 @@
 - [叙事结构](concepts/narrative-structures.md)
 - [RSS / Telegram 自建推送](concepts/rss-telegram-selfhost.md)
 - [系统 crontab 与 OpenClaw 定时任务](concepts/crontab-and-openclaw-cron.md)
+- [Hermes：`/anthropic` 网关与模型名点号规范化](concepts/hermes-anthropic-endpoint-model-id-normalization.md)
 
 ## Queries
 
@@ -314,12 +315,14 @@
 - [AI赋能存量项目——从函数助手到业务伙伴](sources/ai-coding-share.md) — `source/_posts/ai-coding-share.md`
 - [AI协作编程——传统IDE快速切换到AI IDE](sources/ai-coding-ide.md) — `source/_posts/ai-coding-ide.md`
 - [OpenClaw 的一些使用体验](sources/openclaw-usage-experience.md) — `source/_posts/openclaw-usage-experience.md`
+- [Cursor 会话：Hermes 小米 MiMo 与 MiniMax /anthropic 与模型名](sources/cursor-hermes-xiaomi-mimo-minimax.md) — Cursor 工作区 `~/.hermes` 整理（无对应 `source/_posts`）
 - [我们是否需要AI知识库](sources/AI-knowledge-base.md) — `source/_posts/AI-knowledge-base.md`
 - [Gemini 对话：AI、贫富差距与劳动形态](sources/gemini-ai-wealth-gap-dialogue.md) — Gemini 会话整理（摘要见该页，可追溯外部链接）
 
 ### 软技能与思考
 
 - [节奏心理学：叙事中的「情绪推手」](sources/rhythm-psychology.md) — `source/_posts/rhythm-psychology.md`
+- [三也：把想法丢给 AI 拎主线](sources/sanye-ai-organize-thoughts.md) — Telegram 群聊（2026-04-30）
 - [叙事研究](sources/narrative-research.md) — `source/_posts/narrative-research.md`
 - [产品更新、RSS订阅以及文件diff类需求实现模型](sources/product-updates-rss-file-diff-mental-model.md) — `source/_posts/product-updates-rss-file-diff-mental-model.md`
 - [AI 让人变得无趣](sources/ai-make-you-boring.md) — `source/_posts/ai-make-you-boring.md`
