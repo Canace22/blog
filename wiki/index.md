@@ -13,6 +13,7 @@
 
 - [提升 AI Coding 稳定性的经验上下文模式](concepts/agent-coding-stability.md)
 - [AI-assisted development](concepts/ai-assisted-development.md)
+- [Cursor Cookbook](concepts/cursor-cookbook.md)
 - [AI Knowledge Bases](concepts/ai-knowledge-bases.md)
 - [软件开发范式演进](concepts/software-development-paradigms.md)
 - [AI 时代的贫富分化与劳动迁移](concepts/ai-wealth-labor-shift.md)
@@ -59,6 +60,7 @@
 - [罗马数字转整数](sources/roman-numerals-to-integer.md) — `source/_posts/roman-numerals-to-integer.md`
 - [原地删除数组中的重复值](sources/removeDuplicates.md) — `source/_posts/removeDuplicates.md`
 - [软件开发范式演进](sources/software-development-paradigms.md) — `source/_posts/software-development-paradigms.md`
+- [Cursor Cookbook](sources/cursor-cookbook.md)
 - [整数反转](sources/reverse-integer.md) — `source/_posts/reverse-integer.md`
 - [原地删除数组中的指定元素](sources/removeElement.md) — `source/_posts/removeElement.md`
 - [正则](sources/regular-expressions.md) — `source/_posts/regular-expressions.md`
