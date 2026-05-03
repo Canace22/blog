@@ -26,9 +26,9 @@
 - [AI 让人变得无趣](../sources/ai-make-you-boring.md)（博客译文/述评，2026-04-02）
 - Alex Woods：[Don't Let AI Write For You](https://alexhwoods.com/dont-let-ai-write-for-you/)（英文原文）
 
-## 来自群聊的实践印证
+## 来自网络上看的实践印证
 
-Telegram 群聊中，三也描述了一种具体的工作流：
+抖音评论区看到了一种具体的工作流：
 
 > 把脑子里的一团想法丢给 AI，让 AI 解读自己并帮助拎出一条主线，接着删去偏离主线的想法，保留有用的部分。
 
@@ -38,10 +38,8 @@ Telegram 群聊中，三也描述了一种具体的工作流：
 - 关键在于：**最终判断力仍在人手里**，AI 只是整理工具
 - 与"思维外包"的核心区别：思考过程没有被跳过，只是被 AI 加速了结构化
 
-详见 [三也：把想法丢给 AI 拎主线](../sources/sanye-ai-organize-thoughts.md)。
-
 ## 另见
 
-- [三也：把想法丢给 AI 拎主线](../sources/sanye-ai-organize-thoughts.md)（群聊实践案例）
+- [把想法丢给 AI 拎主线](../sources/sanye-ai-organize-thoughts.md)
 - [AI使人膨胀](../sources/ai-expansion.md)（相邻主题：工具与自我膨胀）
 - [LLM 维护的知识库](../concepts/llm-maintained-wiki.md)（本仓库元主题：如何用 LLM **维护**知识而非替代思考）
