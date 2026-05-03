@@ -6,7 +6,7 @@
   <link href="https://canace.site/atom.xml" rel="self"/>
   
   <link href="https://canace.site/"/>
-  <updated>2026-04-25T08:03:29.453Z</updated>
+  <updated>2026-05-03T02:06:18.162Z</updated>
   <id>https://canace.site/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>AI 如何让我们躺平</title>
+    <link href="https://canace.site/how-ai-lets-us-lie-flat/"/>
+    <id>https://canace.site/how-ai-lets-us-lie-flat/</id>
+    <published>2026-05-03T02:00:00.000Z</published>
+    <updated>2026-05-03T02:06:18.162Z</updated>
+    
+    
+    <summary type="html">借「方向要对、提效后要少做工时」讨论躺平：AI 若边界不清，容易加长屏幕时间与无效产出；更合理的用法是在圈定范围内提效，避免越界堆出 vibe coding 却挤占生活与深耕。</summary>
+    
+    
+    
+    <category term="软技能与思考" scheme="https://canace.site/categories/soft/"/>
+    
+    
+    <category term="随笔" scheme="https://canace.site/tags/essays/"/>
+    
+  </entry>
   
   <entry>
     <title>Openclaw定时任务</title>
@@ -375,25 +394,6 @@
     
     
     <summary type="html">AI 编辑器用不好别急着换，先找适合自己的插件和配置，性能问题也能解决。</summary>
-    
-    
-    
-    <category term="AI探索" scheme="https://canace.site/categories/intelligent/"/>
-    
-    
-    <category term="AI编程" scheme="https://canace.site/tags/AI%E7%BC%96%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>面向大模型编程(LOP)在游戏制作流程中的应用畅想</title>
-    <link href="https://canace.site/ai-coding-game/"/>
-    <id>https://canace.site/ai-coding-game/</id>
-    <published>2025-12-10T10:39:22.000Z</published>
-    <updated>2026-04-08T01:46:50.038Z</updated>
-    
-    
-    <summary type="html">大模型编程能提升游戏开发效率，但需结构化引导避免随机性，适合内容迭代和玩家共创。</summary>
     
     
     
