@@ -1,5 +1,7 @@
 # Wiki Log
 
+- 2026-05-07：将对话「费米化」沉淀为查询页 `wiki/queries/fermiization-for-ai-boundary.md`（聚焦 AI 提效边界场景下的四指标估算法与触发收缩规则）；补充 `wiki/concepts/ai-usage-boundary-and-efficiency-backfire.md` 的“费米化落地”段落与回链；更新 `wiki/index.md` Queries。
+- 2026-05-07：Ingest `source/_posts/how-ai-lets-us-lie-flat.md` → 新增 `wiki/sources/how-ai-lets-us-lie-flat.md`；新增概念 `wiki/concepts/ai-usage-boundary-and-efficiency-backfire.md`（与 `ai-assisted-development` 互链）；更新 `wiki/index.md`（Concepts / 软技能与思考）。
 - 2026-04-30：Ingest Telegram 群聊观点（三也）→ 新增 `wiki/sources/sanye-ai-organize-thoughts.md`，扩展 `wiki/reports/ai-outsourcing-writing-thinking.md`（新增"来自群聊的实践印证"章节）；更新 `wiki/index.md`（软技能与思考 / Reports）。
 - 2026-04-23：Ingest `source/_posts/scheduled-tasks.md` → 新增 `wiki/sources/scheduled-tasks.md`；新增概念 `wiki/concepts/crontab-and-openclaw-cron.md`（与 `openclaw-usage-experience` 互链）；`wiki/sources/openclaw-usage-experience.md` 关联区补入定时任务；更新 `wiki/index.md`（Concepts / 工程化与运维）。
 - 2026-04-22：Ingest `source/_posts/narrative-research.md`、`source/_posts/rhythm-psychology.md` → 新增 `wiki/sources/narrative-research.md`、`wiki/sources/rhythm-psychology.md`；新增概念 `wiki/concepts/narrative-pacing-psychology.md`；`wiki/concepts/narrative-structures.md` 补「仓库内笔记」互链；更新 `wiki/index.md`（Concepts / 软技能与思考）。

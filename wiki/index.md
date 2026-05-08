@@ -17,6 +17,7 @@
 - [AI Knowledge Bases](concepts/ai-knowledge-bases.md)
 - [软件开发范式演进](concepts/software-development-paradigms.md)
 - [AI 时代的贫富分化与劳动迁移](concepts/ai-wealth-labor-shift.md)
+- [AI 使用边界与提效反噬](concepts/ai-usage-boundary-and-efficiency-backfire.md)
 - [AI 角色分工：多角色专业化实践](concepts/ai-worker.md)
 - [Chat assistant user memory](concepts/chat-assistant-user-memory.md)
 - [编译式知识库](concepts/compiled-knowledge-vault.md)
@@ -33,6 +34,7 @@
 
 ## Queries
 
+- [如何把「费米化」用在 AI 提效边界管理里](queries/fermiization-for-ai-boundary.md)
 - [`git diff` 这种差异对比，和 Web 端版本更新弹窗的思路是不是有异曲同工之处](queries/git-diff-and-web-version-check.md)
 - [如果是应用内的文件更新，像 `git diff` 这种，跟前面说的应用更新有什么区别](queries/in-app-file-update-vs-app-updater-vs-git-diff.md)
 - [我的文章涵盖 AI Coding 哪几方面](queries/ai-coding-coverage.md)
@@ -326,6 +328,7 @@
 - [叙事研究](sources/narrative-research.md) — `source/_posts/narrative-research.md`
 - [产品更新、RSS订阅以及文件diff类需求实现模型](sources/product-updates-rss-file-diff-mental-model.md) — `source/_posts/product-updates-rss-file-diff-mental-model.md`
 - [AI 让人变得无趣](sources/ai-make-you-boring.md) — `source/_posts/ai-make-you-boring.md`
+- [AI 如何让我们躺平](sources/how-ai-lets-us-lie-flat.md) — `source/_posts/how-ai-lets-us-lie-flat.md`
 - [为什么不要让LLM帮我们写文档](sources/why-not-let-ai-write-for-us.md) — 摘要归档（原博文已从 `source/_posts` 删除）
 - [为什么要写微信公众号](sources/why-write-wechat-official-account.md) — `source/_posts/why-write-wechat-official-account.md`
 - [工作与事业](sources/work-for.md) — `source/_posts/work-for.md`
