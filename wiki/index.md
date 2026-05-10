@@ -24,6 +24,7 @@
 - [Harness Engineering](concepts/harness-engineering.md)
 - [假设驱动 AI 调试](concepts/hypothesis-driven-ai-debugging.md)
 - [LLM Knowledge Bases](concepts/llm-knowledge-bases.md)
+- [大语言模型工作原理概览](concepts/large-language-model-fundamentals.md)
 - [LLM 维护的知识库](concepts/llm-maintained-wiki.md)
 - [LOP（面向大模型编程）模式](concepts/lop-patterns.md)
 - [叙事节奏心理学](concepts/narrative-pacing-psychology.md)
@@ -34,6 +35,7 @@
 
 ## Queries
 
+- [大模型「训练阶段」和日常助手、LLM Wiki 分别是什么关系](queries/llm-training-vs-inference-and-maintained-wiki.md)
 - [如何把「费米化」用在 AI 提效边界管理里](queries/fermiization-for-ai-boundary.md)
 - [`git diff` 这种差异对比，和 Web 端版本更新弹窗的思路是不是有异曲同工之处](queries/git-diff-and-web-version-check.md)
 - [如果是应用内的文件更新，像 `git diff` 这种，跟前面说的应用更新有什么区别](queries/in-app-file-update-vs-app-updater-vs-git-diff.md)
@@ -320,6 +322,7 @@
 - [Cursor 会话：Hermes 小米 MiMo 与 MiniMax /anthropic 与模型名](sources/cursor-hermes-xiaomi-mimo-minimax.md) — Cursor 工作区 `~/.hermes` 整理（无对应 `source/_posts`）
 - [我们是否需要AI知识库](sources/AI-knowledge-base.md) — `source/_posts/AI-knowledge-base.md`
 - [Gemini 对话：AI、贫富差距与劳动形态](sources/gemini-ai-wealth-gap-dialogue.md) — Gemini 会话整理（摘要见该页，可追溯外部链接）
+- [Gemini 摘要：Karpathy《大语言模型简介》演讲（YouTube）](sources/gemini-karpathy-intro-llm-youtube.md) — 用户提供的 Gemini 摘录整理（主链原视频）
 
 ### 软技能与思考
 
@@ -391,6 +394,7 @@
 
 ### 外部研究资料
 
+- [How LLMs Work（可视化长文）](sources/ynarwal-how-llms-work-visual.md) — `https://ynarwal.github.io/how-llms-work/index.html`
 - [Pi Coding Agent / pi-mono](sources/pi-coding-agent.md) — `https://github.com/badlogic/pi-mono/tree/main`
 - [karpathy / autoresearch](sources/karpathy-autoresearch.md) — `https://github.com/karpathy/autoresearch`
 - [OpenClaw Memory Wiki](sources/openclaw-memory-wiki.md) — `https://docs.openclaw.ai/plugins/memory-wiki`

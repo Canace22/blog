@@ -27,6 +27,9 @@ An LLM knowledge base is a workflow where immutable source material is increment
 ## Current Evidence In Repo
 
 - [Source: llm-wiki](../sources/llm-wiki.md)
+- [Source: Gemini 摘要——Karpathy LLM 入门演讲（YouTube）](../sources/gemini-karpathy-intro-llm-youtube.md)
+- [Source: How LLMs Work（可视化长文）](../sources/ynarwal-how-llms-work-visual.md)
+- [Concept: 大语言模型工作原理概览](large-language-model-fundamentals.md)
 - [Source: Thread by @karpathy](../sources/thread-by-karpathy.md)
 - [Source: OpenClaw agent + memory-wiki](../sources/openclaw-agent-pi-mono.md) (external pattern pointer)
 - [Concept: AI Knowledge Bases](ai-knowledge-bases.md)
@@ -44,3 +47,7 @@ An LLM knowledge base is a workflow where immutable source material is increment
 ## Early Takeaway
 
 Even at small scale, this method can be useful because the wiki index and concise summaries reduce repeated search effort and make later questions easier to answer consistently.
+
+---
+
+*Evidence 区补充 Karpathy 演讲摘要、`ynarwal-how-llms-work-visual` 与 `large-language-model-fundamentals` 互链；2026-05-10。*

@@ -1,5 +1,8 @@
 # Wiki Log
 
+- 2026-05-10：Query 沉淀（对话：训练阶段 vs 推理编排、交互是否 SFT、LLM Wiki 定位、「文本即世界」限定）→ `wiki/queries/llm-training-vs-inference-and-maintained-wiki.md`；更新 `large-language-model-fundamentals`、`llm-maintained-wiki`、`wiki/sources/llm-wiki.md`、`wiki/index.md` Queries。
+- 2026-05-10：补充外部资料 `https://ynarwal.github.io/how-llms-work/index.html` → 新增 `wiki/sources/ynarwal-how-llms-work-visual.md`；`gemini-karpathy-intro-llm-youtube`、`large-language-model-fundamentals`、`llm-knowledge-bases` 互链；`wiki/index.md` 外部研究资料。
+- 2026-05-10：Ingest 用户提供的 Gemini 摘要（Karpathy YouTube：`https://www.youtube.com/watch?v=zjkBMFhNj_g`）→ 新增 `wiki/sources/gemini-karpathy-intro-llm-youtube.md`、概念 `wiki/concepts/large-language-model-fundamentals.md`；`wiki/concepts/llm-knowledge-bases.md` 补证据链；更新 `wiki/index.md`（Concepts / AI探索）。
 - 2026-05-07：将对话「费米化」沉淀为查询页 `wiki/queries/fermiization-for-ai-boundary.md`（聚焦 AI 提效边界场景下的四指标估算法与触发收缩规则）；补充 `wiki/concepts/ai-usage-boundary-and-efficiency-backfire.md` 的“费米化落地”段落与回链；更新 `wiki/index.md` Queries。
 - 2026-05-07：Ingest `source/_posts/how-ai-lets-us-lie-flat.md` → 新增 `wiki/sources/how-ai-lets-us-lie-flat.md`；新增概念 `wiki/concepts/ai-usage-boundary-and-efficiency-backfire.md`（与 `ai-assisted-development` 互链）；更新 `wiki/index.md`（Concepts / 软技能与思考）。
 - 2026-04-30：Ingest Telegram 群聊观点（三也）→ 新增 `wiki/sources/sanye-ai-organize-thoughts.md`，扩展 `wiki/reports/ai-outsourcing-writing-thinking.md`（新增"来自群聊的实践印证"章节）；更新 `wiki/index.md`（软技能与思考 / Reports）。

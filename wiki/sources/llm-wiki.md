@@ -22,3 +22,8 @@
 ## 关联概念
 
 - [LLM 维护的知识库](../concepts/llm-maintained-wiki.md)
+- [大模型「训练阶段」和日常助手、LLM Wiki 分别是什么关系](../queries/llm-training-vs-inference-and-maintained-wiki.md)（辨析微调 vs 推理编排）
+
+---
+
+*关联区补 query 链；2026-05-10。*
