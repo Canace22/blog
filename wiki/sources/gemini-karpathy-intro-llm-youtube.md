@@ -43,6 +43,7 @@ Gemini 展开轮次提到例如「约 6000 块 GPU、跑 12 天、约 200 万美
 
 ## 另见
 
+- [LLM 训练的真相：Andrej Karpathy 的分享笔记](llm-training-truth.md) — 仓库内 `source/_posts` 笔记，与本文主题同脉络
 - [How LLMs Work（可视化长文，Karpathy 脉络）](ynarwal-how-llms-work-visual.md) — <https://ynarwal.github.io/how-llms-work/index.html>
 - [大语言模型工作原理概览](../concepts/large-language-model-fundamentals.md)
 - [Karpathy autoresearch（仓库）](karpathy-autoresearch.md)（同一作者，主题不同：自动研究/训练脚本组织）
