@@ -45,6 +45,10 @@ An LLM knowledge base is a workflow where immutable source material is increment
 5. Save useful answers back into the wiki.
 6. Periodically lint for missing links, stale claims, and gaps.
 
+## Related Enterprise Approaches
+
+- [Pinecone Nexus](../sources/pinecone-nexus-knowledge-engine.md) 将"预编译知识"产品化为企业基础设施：Context Compiler 自动构建 artifact，KnowQL 提供声明式查询，KRAFTBench 量化了编译式 vs 查询时组装的差距（token 成本差 7-80 倍）。本仓库的 LLM-maintained wiki 可视为同一思路的小型个人版。
+
 ## Early Takeaway
 
 Even at small scale, this method can be useful because the wiki index and concise summaries reduce repeated search effort and make later questions easier to answer consistently.

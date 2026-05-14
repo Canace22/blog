@@ -10,6 +10,7 @@ An AI knowledge base is a collection of documents that an AI system can consult 
 - AI knowledge bases are useful for review and recall, such as revisiting study material after natural forgetting.
 - They are also useful for deeper topic study when the tool can generate supporting artifacts such as mind maps, reports, audio, or video summaries.
 - In organizational settings, a private knowledge base can reduce the manual work of searching internal systems and documents.
+- Enterprise AI knowledge base infrastructure (e.g. Pinecone Nexus) can reduce per-query token costs by 7–80x compared to query-time assembly approaches like Agentic RAG or coding-agent sandboxes.
 - This source explicitly warns against outsourcing understanding entirely to AI; efficiency is not the same as internalized knowledge.
 
 ## Common Use Cases In This Repo
@@ -28,10 +29,17 @@ An AI knowledge base is a collection of documents that an AI system can consult 
 
 The main tension in the current sources is not whether AI knowledge bases are useful, but how they should be used. They are strongest when they reduce recall and search costs while still leaving the human responsible for reading, judging, and integrating what matters.
 
+## Enterprise vs. Personal Scale
+
+- [Pinecone Nexus](../sources/pinecone-nexus-knowledge-engine.md) represents the enterprise extreme: a Knowledge Engine that auto-compiles domain-specific artifacts via a Context Compiler, serving agents through a declarative query language (KnowQL).
+- [LLM Knowledge Bases](llm-knowledge-bases.md) (this repo's approach) represent the personal extreme: an LLM incrementally maintains a markdown wiki from immutable sources.
+- Both share the same core insight — pre-compiling knowledge is cheaper than assembling it at query time — but differ in scale, tooling, and automation depth.
+
 ## Current Evidence In Repo
 
 - [Source: 我们是否需要AI知识库](../sources/why-we-need-ai-knowledge-bases.md)
 - [Source: Gemini User Summary (cross-session)](../sources/gemini-user-summary-cross-session.md)
+- [Source: Pinecone Nexus：Knowledge Engine](../sources/pinecone-nexus-knowledge-engine.md)
 - [Concept: LLM Knowledge Bases](llm-knowledge-bases.md)
 - [Concept: Chat assistant user memory](chat-assistant-user-memory.md)
 - [Concept: AI-assisted development](ai-assisted-development.md)

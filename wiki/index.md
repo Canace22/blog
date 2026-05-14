@@ -324,6 +324,7 @@
 - [Gemini 对话：AI、贫富差距与劳动形态](sources/gemini-ai-wealth-gap-dialogue.md) — Gemini 会话整理（摘要见该页，可追溯外部链接）
 - [Gemini 摘要：Karpathy《大语言模型简介》演讲（YouTube）](sources/gemini-karpathy-intro-llm-youtube.md) — 用户提供的 Gemini 摘录整理（主链原视频）
 - [LLM 训练的真相：Andrej Karpathy 的分享笔记](sources/llm-training-truth.md) — `source/_posts/llm-training-truth.md`
+- [Pinecone Nexus：Knowledge Engine](sources/pinecone-nexus-knowledge-engine.md) — Pinecone 官方博客（预编译知识、Context Compiler、KRAFTBench）
 
 ### 软技能与思考
 

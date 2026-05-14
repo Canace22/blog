@@ -1,5 +1,6 @@
 # Wiki Log
 
+- 2026-05-12：Ingest `https://www.pinecone.io/blog/introducing-nexus-knowledge-engine/` → 新增 `wiki/sources/pinecone-nexus-knowledge-engine.md`；扩展 `wiki/concepts/compiled-knowledge-vault.md`（来源）、`wiki/concepts/harness-engineering.md`（Pinecone/Nexus 路线）、`wiki/concepts/llm-knowledge-bases.md`（企业级对照）、`wiki/concepts/ai-knowledge-bases.md`（企业 vs 个人规模对照）；更新 `wiki/index.md`（AI探索）。
 - 2026-05-10：Ingest `source/_posts/llm-training-truth.md` → 新增 `wiki/sources/llm-training-truth.md`；`large-language-model-fundamentals`、`gemini-karpathy-intro-llm-youtube`、`llm-knowledge-bases` 互链；更新 `wiki/index.md`（AI探索）。
 - 2026-05-10：Query 沉淀（对话：训练阶段 vs 推理编排、交互是否 SFT、LLM Wiki 定位、「文本即世界」限定）→ `wiki/queries/llm-training-vs-inference-and-maintained-wiki.md`；更新 `large-language-model-fundamentals`、`llm-maintained-wiki`、`wiki/sources/llm-wiki.md`、`wiki/index.md` Queries。
 - 2026-05-10：补充外部资料 `https://ynarwal.github.io/how-llms-work/index.html` → 新增 `wiki/sources/ynarwal-how-llms-work-visual.md`；`gemini-karpathy-intro-llm-youtube`、`large-language-model-fundamentals`、`llm-knowledge-bases` 互链；`wiki/index.md` 外部研究资料。

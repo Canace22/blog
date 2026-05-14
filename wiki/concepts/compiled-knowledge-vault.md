@@ -47,3 +47,4 @@
 
 - [使用大模型来维护知识库](../sources/llm-wiki.md)
 - [OpenClaw Memory Wiki](../sources/openclaw-memory-wiki.md)
+- [Pinecone Nexus：Knowledge Engine](../sources/pinecone-nexus-knowledge-engine.md)——企业级"预编译知识"的产品化实践，Context Compiler 自动构建 artifact 层，KRAFTBench 显示 token 成本比 Agentic RAG 低 7 倍
