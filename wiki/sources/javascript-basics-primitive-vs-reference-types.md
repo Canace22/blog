@@ -9,3 +9,6 @@
 
 基本数据类型操作值，引用类型操作地址，复制时行为不同，传递都是按值进行的。
 
+## 另见
+
+- [JavaScript 垃圾回收](../concepts/javascript-garbage-collection.md)（引用对象与可达性）

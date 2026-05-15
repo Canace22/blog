@@ -1,5 +1,6 @@
 # Wiki Log
 
+- 2026-05-14：Ingest 用户粘贴对话摘录（JavaScript GC 入门）→ 新增 `wiki/sources/assistant-javascript-garbage-collection-overview.md`、`wiki/concepts/javascript-garbage-collection.md`；与 `js-execution`、`javascript-basics-primitive-vs-reference-types` 互链；更新 `wiki/index.md`（Concepts / Web开发）。
 - 2026-05-12：Ingest `https://www.pinecone.io/blog/introducing-nexus-knowledge-engine/` → 新增 `wiki/sources/pinecone-nexus-knowledge-engine.md`；扩展 `wiki/concepts/compiled-knowledge-vault.md`（来源）、`wiki/concepts/harness-engineering.md`（Pinecone/Nexus 路线）、`wiki/concepts/llm-knowledge-bases.md`（企业级对照）、`wiki/concepts/ai-knowledge-bases.md`（企业 vs 个人规模对照）；更新 `wiki/index.md`（AI探索）。
 - 2026-05-10：Ingest `source/_posts/llm-training-truth.md` → 新增 `wiki/sources/llm-training-truth.md`；`large-language-model-fundamentals`、`gemini-karpathy-intro-llm-youtube`、`llm-knowledge-bases` 互链；更新 `wiki/index.md`（AI探索）。
 - 2026-05-10：Query 沉淀（对话：训练阶段 vs 推理编排、交互是否 SFT、LLM Wiki 定位、「文本即世界」限定）→ `wiki/queries/llm-training-vs-inference-and-maintained-wiki.md`；更新 `large-language-model-fundamentals`、`llm-maintained-wiki`、`wiki/sources/llm-wiki.md`、`wiki/index.md` Queries。

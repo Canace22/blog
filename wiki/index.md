@@ -22,6 +22,7 @@
 - [Chat assistant user memory](concepts/chat-assistant-user-memory.md)
 - [编译式知识库](concepts/compiled-knowledge-vault.md)
 - [Harness Engineering](concepts/harness-engineering.md)
+- [JavaScript 垃圾回收](concepts/javascript-garbage-collection.md)
 - [假设驱动 AI 调试](concepts/hypothesis-driven-ai-debugging.md)
 - [LLM Knowledge Bases](concepts/llm-knowledge-bases.md)
 - [大语言模型工作原理概览](concepts/large-language-model-fundamentals.md)
@@ -161,6 +162,7 @@
 - [时区、时间戳？](sources/js-timezone.md) — `source/_posts/js-timezone.md`
 - [Js 字符串转 base64](sources/js-string-to-base64.md) — `source/_posts/js-string-to-base64.md`
 - [JavaScript 在 V8 引擎浏览器上是怎么执行的](sources/js-execution.md) — `source/_posts/js-execution.md`
+- [对话摘录：JavaScript 垃圾回收（GC）入门说明](sources/assistant-javascript-garbage-collection-overview.md) — 用户粘贴对话归档
 - [JS 模态框————angular](sources/js-modal-blog.md) — `source/_posts/js-modal-blog.md`
 - [JavaScript 灵魂拷问](sources/javascript-soul-questions.md) — `source/_posts/javascript-soul-questions.md`
 - [JavaScript 奇技淫巧](sources/javascript-tricks.md) — `source/_posts/javascript-tricks.md`
