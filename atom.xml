@@ -6,7 +6,7 @@
   <link href="https://canace.site/atom.xml" rel="self"/>
   
   <link href="https://canace.site/"/>
-  <updated>2026-05-10T03:44:09.143Z</updated>
+  <updated>2026-05-10T03:52:23.049Z</updated>
   <id>https://canace.site/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://canace.site/llm-training-truth/"/>
     <id>https://canace.site/llm-training-truth/</id>
     <published>2026-05-10T02:00:00.000Z</published>
-    <updated>2026-05-10T03:44:09.143Z</updated>
+    <updated>2026-05-10T03:52:23.049Z</updated>
     
     
     <summary type="html">结合 Andrej Karpathy 的分享，把 LLM 的诞生拆解成三个核心步骤：爬取、压缩、预测。</summary>

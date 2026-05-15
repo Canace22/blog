@@ -1,0 +1,251 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="canace 的博客"><meta itemprop="name" content="2026-05-12 Pinecone Nexus：Knowledge Engine"><meta itemprop="image" content="https://raw.githubusercontent.com/Canace22/Assets/main/images/snow-other.png"><meta property="og:image" content="https://raw.githubusercontent.com/Canace22/Assets/main/images/snow-other.png"><meta name="description" itemprop="description" content="&lt;ul&gt;
+&lt;li&gt;来源：&lt;a href=&quot;https://www.pinecone.io/blog/introducing-nexus-knowledge-engine/&quot;&gt;https://www.pinecone.io/blog/introducing-nexus-knowledge-engine/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;作者：Jeff Zhu, Siva Ragavan&lt;/li&gt;
+&lt;li&gt;日期：2026-05-04&lt;/li&gt;
+&lt;li&gt;出版：Pinecone&lt;/li&gt;
+&lt;li&gt;分类：工程 &amp;#x2F; AI 基础设施&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;核心论点&quot;&gt;&lt;a href=&quot;#核心论点&quot; class=&quot;headerlink&quot; title=&quot;核心论点&quot;&gt;&lt;/a&gt;核心论点&lt;/h2&gt;&lt;p&gt;生产级 AI agent 的瓶颈不在模型推理能力，而在&lt;strong&gt;上下文工程&lt;/strong&gt;（context engineering）——把原始数据编译成模型可直接使用的结构化知识。Pinecone 将此产品化为 &lt;strong&gt;Knowledge Engine&lt;/strong&gt;。&lt;/p&gt;
+&lt;h2 id=&quot;问题：agent-把-token-和延迟花在”组装上下文”上&quot;&gt;&lt;a href=&quot;#问题：agent-把-token-和延迟花在”组装上下文”上&quot; class=&quot;headerlink&quot; title=&quot;问题：agent 把 token 和延迟花在”组装上下文”上&quot;&gt;&lt;/a&gt;问题：agent 把 token 和延迟花在”组装上下文”上&lt;/h2&gt;&lt;p&gt;作者用一个投资分析 agent（比较 NVIDIA、Microsoft、Walmart 的 10-K 股票回购数据）说明四种生产要求：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;准确性&lt;/strong&gt;：可重复的正确答案&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;延迟&lt;/strong&gt;：秒级，不是分钟级&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Token 成本&lt;/strong&gt;：每次调用有上限&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;治理&lt;/strong&gt;：字段级权限和溯源&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;两种常见方案都有缺陷：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Agentic RAG&lt;/strong&gt;：分块嵌入文档，agent 多轮检索和重排序&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Coding Agent（沙箱）&lt;/strong&gt;：给 agent 文件系统工具（grep、read），让它自己循环&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;两种都迫使 agent 在查询时组装知识，消耗大量 token 和延迟在”找路”而非”推理”上。&lt;/p&gt;
+&lt;h2 id=&quot;解决方案：预编译知识（Compiled-Knowledge）&quot;&gt;&lt;a href=&quot;#解决方案：预编译知识（Compiled-Knowledge）&quot; class=&quot;headerlink&quot; title=&quot;解决方案：预编译知识（Compiled Knowledge）&quot;&gt;&lt;/a&gt;解决方案：预编译知识（Compiled Knowledge）&lt;/h2&gt;&lt;p&gt;核心洞察：提前把数据加工成编码了所需结构的 &lt;strong&gt;artifact&lt;/strong&gt;，而不是每次查询时推导结构。这与知识图谱、语义层等数据基础设施思路一脉相承，但应用于 agent 场景。&lt;/p&gt;
+&lt;h3 id=&quot;规模化挑战&quot;&gt;&lt;a href=&quot;#规模化挑战&quot; class=&quot;headerlink&quot; title=&quot;规模化挑战&quot;&gt;&lt;/a&gt;规模化挑战&lt;/h3&gt;&lt;p&gt;即使为一个领域构建 artifact 层也需要数月和专业团队。一个公司有几十个领域（销售、法务、财务、客服、研发），手工构建不现实。&lt;/p&gt;
+&lt;h2 id=&quot;Pinecone-Nexus-架构&quot;&gt;&lt;a href=&quot;#Pinecone-Nexus-架构&quot; class=&quot;headerlink&quot; title=&quot;Pinecone Nexus 架构&quot;&gt;&lt;/a&gt;Pinecone Nexus 架构&lt;/h2&gt;&lt;p&gt;四个可组合原语：&lt;/p&gt;
+&lt;h3 id=&quot;1-Artifact（制品）&quot;&gt;&lt;a href=&quot;#1-Artifact（制品）&quot; class=&quot;headerlink&quot; title=&quot;1. Artifact（制品）&quot;&gt;&lt;/a&gt;1. Artifact（制品）&lt;/h3&gt;&lt;p&gt;为特定任务构建的、带类型和治理的信息单元。同一源数据为不同 agent 生成不同形状的 artifact：市场分析 agent 拿到财务指标，合规 agent 拿到风险因素披露。&lt;/p&gt;
+&lt;h3 id=&quot;2-Context（上下文）&quot;&gt;&lt;a href=&quot;#2-Context（上下文）&quot; class=&quot;headerlink&quot; title=&quot;2. Context（上下文）&quot;&gt;&lt;/a&gt;2. Context（上下文）&lt;/h3&gt;&lt;p&gt;为特定角色、团队或工作流策划的 artifact 集合。分析师的 bundle 包含财务指标加上 MD&amp;amp;A 和分部报告等叙述性章节。&lt;/p&gt;
+&lt;h3 id=&quot;3-Knowledge（知识）&quot;&gt;&lt;a href=&quot;#3-Knowledge（知识）&quot; class=&quot;headerlink&quot; title=&quot;3. Knowledge（知识）&quot;&gt;&lt;/a&gt;3. Knowledge（知识）&lt;/h3&gt;&lt;p&gt;公司内所有 context 的总体。查询可跨多个 context，引擎处理路由。&lt;/p&gt;
+&lt;h3 id=&quot;4-Knowledge-Engine（知识引擎）&quot;&gt;&lt;a href=&quot;#4-Knowledge-Engine（知识引擎）&quot; class=&quot;headerlink&quot; title=&quot;4. Knowledge Engine（知识引擎）&quot;&gt;&lt;/a&gt;4. Knowledge Engine（知识引擎）&lt;/h3&gt;&lt;p&gt;构建和提供上述所有内容的系统，核心是 &lt;strong&gt;Context Compiler&lt;/strong&gt;。&lt;/p&gt;
+&lt;h2 id=&quot;Context-Compiler（上下文编译器）&quot;&gt;&lt;a href=&quot;#Context-Compiler（上下文编译器）&quot; class=&quot;headerlink&quot; title=&quot;Context Compiler（上下文编译器）&quot;&gt;&lt;/a&gt;Context Compiler（上下文编译器）&lt;/h2&gt;&lt;p&gt;一个自主 coding agent，使用以下组件构建任务优化的 context：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;评估集&lt;/strong&gt;（eval set）：每个领域的代表性任务 + 已知答案 + 数据源&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;预审技能库&lt;/strong&gt;（pre-vetted skills）：文档处理、实体提取、分块等可组合技能&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;反馈循环&lt;/strong&gt;：每轮迭代对 eval 信号评分&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;编译器迭代修改两个函数——&lt;code&gt;curate()&lt;/code&gt;（制品构建）和 &lt;code&gt;query()&lt;/code&gt;（知识检索），运行 eval 并优化直到通过。领域专家无需检索专业知识即可产出优化的 context，编译器自动发现 artifact 结构、粒度和策略。早期合作伙伴从数月缩短到数天即可服务新领域。&lt;/p&gt;
+&lt;h2 id=&quot;KnowQL（知识查询语言）&quot;&gt;&lt;a href=&quot;#KnowQL（知识查询语言）&quot; class=&quot;headerlink&quot; title=&quot;KnowQL（知识查询语言）&quot;&gt;&lt;/a&gt;KnowQL（知识查询语言）&lt;/h2&gt;&lt;p&gt;声明式查询接口，agent 指定&lt;em&gt;需要什么&lt;/em&gt;，返回精确、带类型、带引用的响应。四类参数：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Intent&lt;/strong&gt;：问题、响应形状、目标 context（可跨多个 context 组合）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Filter&lt;/strong&gt;：确定性谓词和访问控制策略&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Provenance&lt;/strong&gt;：字段级引用，构建时内嵌，非事后重建&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Control&lt;/strong&gt;：预算包络，含深度和延迟目标；成本以结果声明，非 token&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;示例&quot;&gt;&lt;a href=&quot;#示例&quot; class=&quot;headerlink&quot; title=&quot;示例&quot;&gt;&lt;/a&gt;示例&lt;/h3&gt;&lt;p&gt;结构化 JSON 对象指定问题、ground truth 要求和带类型的输出形状（&lt;code&gt;company_name&lt;/code&gt;、&lt;code&gt;repurchased_usd_millions&lt;/code&gt; 等）。引擎返回类型化响应；agent 唯一的推理步骤是比较数值。&lt;/p&gt;
+&lt;h2 id=&quot;基准测试：KRAFTBench&quot;&gt;&lt;a href=&quot;#基准测试：KRAFTBench&quot; class=&quot;headerlink&quot; title=&quot;基准测试：KRAFTBench&quot;&gt;&lt;/a&gt;基准测试：KRAFTBench&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;KRAFTBench&lt;/strong&gt;（Knowledge Retrieval Assessment Framework for Text）衡量不同检索机制下 agent 响应的准确性、延迟和 token 成本。&lt;/p&gt;
+&lt;h3 id=&quot;设置&quot;&gt;&lt;a href=&quot;#设置&quot; class=&quot;headerlink&quot; title=&quot;设置&quot;&gt;&lt;/a&gt;设置&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;493 份 S&amp;amp;P 500 公司 2022 年 10-K 文件（每份约 500KB，总计约 245MB）&lt;/li&gt;
+&lt;li&gt;150 个难题，覆盖 9 个行业、10 个财务主题&lt;/li&gt;
+&lt;li&gt;三种难度形态：多事实、多公司、多步骤&lt;/li&gt;
+&lt;li&gt;约束：每题 120 秒、100 万 token 上限&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;结果&quot;&gt;&lt;a href=&quot;#结果&quot; class=&quot;headerlink&quot; title=&quot;结果&quot;&gt;&lt;/a&gt;结果&lt;/h3&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;方案&lt;/th&gt;
+&lt;th&gt;完成率&lt;/th&gt;
+&lt;th&gt;平均延迟&lt;/th&gt;
+&lt;th&gt;平均准确率&lt;/th&gt;
+&lt;th&gt;平均 Token&lt;/th&gt;
+&lt;th&gt;平均步骤&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Pinecone Nexus&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;100% (150&amp;#x2F;150)&lt;/td&gt;
+&lt;td&gt;22.7s&lt;/td&gt;
+&lt;td&gt;0.680&lt;/td&gt;
+&lt;td&gt;6,733&lt;/td&gt;
+&lt;td&gt;1.69&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Agentic RAG&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;98.7% (148&amp;#x2F;150)&lt;/td&gt;
+&lt;td&gt;37.9s&lt;/td&gt;
+&lt;td&gt;0.413&lt;/td&gt;
+&lt;td&gt;49,103&lt;/td&gt;
+&lt;td&gt;7.77&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Coding Agent&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;62.7% (94&amp;#x2F;150)&lt;/td&gt;
+&lt;td&gt;84.1s&lt;/td&gt;
+&lt;td&gt;0.585&lt;/td&gt;
+&lt;td&gt;528,301&lt;/td&gt;
+&lt;td&gt;14.77&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;p&gt;Nexus 的 token 成本约为 RAG 的 1&amp;#x2F;7、Coding Agent 的 1&amp;#x2F;80。&lt;/p&gt;
+&lt;h3 id=&quot;失败模式&quot;&gt;&lt;a href=&quot;#失败模式&quot; class=&quot;headerlink&quot; title=&quot;失败模式&quot;&gt;&lt;/a&gt;失败模式&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Coding Agent&lt;/strong&gt;：宽泛正则匹配返回数百结果，消歧耗尽 token 预算&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Agentic RAG&lt;/strong&gt;：分解为 18 个子事实，但美元数字与分块不共置时丢失信息&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Nexus&lt;/strong&gt;：编译好的公司级”fact sheet”制品实现多实体比较的单次回答&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;企业集成示例：Box-→-Unstructured-→-Pinecone-Nexus&quot;&gt;&lt;a href=&quot;#企业集成示例：Box-→-Unstructured-→-Pinecone-Nexus&quot; class=&quot;headerlink&quot; title=&quot;企业集成示例：Box → Unstructured → Pinecone Nexus&quot;&gt;&lt;/a&gt;企业集成示例：Box → Unstructured → Pinecone Nexus&lt;/h2&gt;&lt;p&gt;法律审查工作流：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Box&lt;/strong&gt;：存储源文档，含文件元数据和访问控制列表&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Unstructured&lt;/strong&gt;：解析 PDF&amp;#x2F;Word 为结构化格式，提取实体、表格，传递权限元数据&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Pinecone Nexus&lt;/strong&gt;：摄入解析输出，运行 Context Compiler，产出制品（如合同续期条款表），查询时强制执行权限过滤&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;同一合同 context 可服务法务运维 agent、销售续期风险 agent、合规 agent——全部来自同一 Box 源。&lt;/p&gt;
+&lt;h2 id=&quot;对本仓库的启示&quot;&gt;&lt;a href=&quot;#对本仓库的启示&quot; class=&quot;headerlink&quot; title=&quot;对本仓库的启示&quot;&gt;&lt;/a&gt;对本仓库的启示&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Context Compiler 的思路&lt;/strong&gt;与本仓库的 LLM-maintained wiki 工作流高度共鸣：都是把原始材料预编译成结构化知识层&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Artifact &amp;#x2F; Context &amp;#x2F; Knowledge 的分层&lt;/strong&gt;与 &lt;code&gt;wiki/sources&lt;/code&gt; → &lt;code&gt;wiki/concepts&lt;/code&gt; → &lt;code&gt;wiki/index.md&lt;/code&gt; 的层次对应&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;KnowQL 的声明式查询&lt;/strong&gt;提示了 agent 查询知识库的一种理想形态：指定需要什么形状的数据，而非自己组装&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;KRAFTBench&lt;/strong&gt; 量化了”预编译 vs 查询时组装”的差距：token 成本差 7-80 倍，延迟差 2-4 倍&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;相关&quot;&gt;&lt;a href=&quot;#相关&quot; class=&quot;headerlink&quot; title=&quot;相关&quot;&gt;&lt;/a&gt;相关&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;../concepts/compiled-knowledge-vault.html&quot;&gt;编译式知识库&lt;/a&gt;——Nexus 的 “compiled knowledge” 与此概念直接对应&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;../concepts/llm-knowledge-bases.html&quot;&gt;LLM 维护的知识库&lt;/a&gt;——本仓库的 LLM-maintained wiki 是小型个人版的”知识预编译”&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;../concepts/harness-engineering.html&quot;&gt;Harness Engineering&lt;/a&gt;——Context Compiler 属于 harness 的一种实现&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;../concepts/ai-knowledge-bases.html&quot;&gt;AI Knowledge Bases&lt;/a&gt;——Nexus 是企业级 AI 知识库的基础设施方案&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;em&gt;assistant 整理；2026-05-12&lt;/em&gt;&lt;/p&gt;
+"><title>2026-05-12 Pinecone Nexus：Knowledge Engine</title><link rel="stylesheet" type="text/css" href="../../css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/normalize.css/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="../../favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="../../favicon.ico"><link rel="apple-touch-icon" href="../../apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="../../apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="../../atom.xml"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/clipboard/dist/clipboard.min.js"></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.js"></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.css"><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">2026-05-12 Pinecone Nexus：Knowledge Engine</h1><a id="logo" href="../../.">Canace 的博客</a><p class="description">Tomorrow is another day</p></div><div id="nav-menu"><a href="../../."><i class="fa fa-home"> 主页</i></a><a href="../../archives/"><i class="fa fa-archive"> 文章归档</i></a><a class="current" href="../"><i class="fa fa-book"> 知识库</i></a><a href="../../about/"><i class="fa fa-user"> 关于我</i></a><a href="../../atom.xml"><i class="fa fa-rss"> 订阅</i></a><a id="nav-random-article" href="#" title="随机文章" aria-label="随机文章"><i class="fa fa-random"> 随机文章</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">2026-05-12 Pinecone Nexus：Knowledge Engine</h1><div class="clear"><div class="toc-article" id="toc"><div class="toc-title">目录</div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E8%AE%BA%E7%82%B9"><span class="toc-text">核心论点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%EF%BC%9Aagent-%E6%8A%8A-token-%E5%92%8C%E5%BB%B6%E8%BF%9F%E8%8A%B1%E5%9C%A8%E2%80%9D%E7%BB%84%E8%A3%85%E4%B8%8A%E4%B8%8B%E6%96%87%E2%80%9D%E4%B8%8A"><span class="toc-text">问题：agent 把 token 和延迟花在”组装上下文”上</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9A%E9%A2%84%E7%BC%96%E8%AF%91%E7%9F%A5%E8%AF%86%EF%BC%88Compiled-Knowledge%EF%BC%89"><span class="toc-text">解决方案：预编译知识（Compiled Knowledge）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%84%E6%A8%A1%E5%8C%96%E6%8C%91%E6%88%98"><span class="toc-text">规模化挑战</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Pinecone-Nexus-%E6%9E%B6%E6%9E%84"><span class="toc-text">Pinecone Nexus 架构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Artifact%EF%BC%88%E5%88%B6%E5%93%81%EF%BC%89"><span class="toc-text">1. Artifact（制品）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Context%EF%BC%88%E4%B8%8A%E4%B8%8B%E6%96%87%EF%BC%89"><span class="toc-text">2. Context（上下文）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Knowledge%EF%BC%88%E7%9F%A5%E8%AF%86%EF%BC%89"><span class="toc-text">3. Knowledge（知识）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Knowledge-Engine%EF%BC%88%E7%9F%A5%E8%AF%86%E5%BC%95%E6%93%8E%EF%BC%89"><span class="toc-text">4. Knowledge Engine（知识引擎）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Context-Compiler%EF%BC%88%E4%B8%8A%E4%B8%8B%E6%96%87%E7%BC%96%E8%AF%91%E5%99%A8%EF%BC%89"><span class="toc-text">Context Compiler（上下文编译器）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#KnowQL%EF%BC%88%E7%9F%A5%E8%AF%86%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80%EF%BC%89"><span class="toc-text">KnowQL（知识查询语言）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B"><span class="toc-text">示例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E5%87%86%E6%B5%8B%E8%AF%95%EF%BC%9AKRAFTBench"><span class="toc-text">基准测试：KRAFTBench</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE"><span class="toc-text">设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%93%E6%9E%9C"><span class="toc-text">结果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%B1%E8%B4%A5%E6%A8%A1%E5%BC%8F"><span class="toc-text">失败模式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%81%E4%B8%9A%E9%9B%86%E6%88%90%E7%A4%BA%E4%BE%8B%EF%BC%9ABox-%E2%86%92-Unstructured-%E2%86%92-Pinecone-Nexus"><span class="toc-text">企业集成示例：Box → Unstructured → Pinecone Nexus</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E6%9C%AC%E4%BB%93%E5%BA%93%E7%9A%84%E5%90%AF%E7%A4%BA"><span class="toc-text">对本仓库的启示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3"><span class="toc-text">相关</span></a></li></ol></div></div><div class="post-content"><ul>
+<li>来源：<a target="_blank" rel="noopener" href="https://www.pinecone.io/blog/introducing-nexus-knowledge-engine/">https://www.pinecone.io/blog/introducing-nexus-knowledge-engine/</a></li>
+<li>作者：Jeff Zhu, Siva Ragavan</li>
+<li>日期：2026-05-04</li>
+<li>出版：Pinecone</li>
+<li>分类：工程 &#x2F; AI 基础设施</li>
+</ul>
+<h2 id="核心论点"><a href="#核心论点" class="headerlink" title="核心论点"></a>核心论点</h2><p>生产级 AI agent 的瓶颈不在模型推理能力，而在<strong>上下文工程</strong>（context engineering）——把原始数据编译成模型可直接使用的结构化知识。Pinecone 将此产品化为 <strong>Knowledge Engine</strong>。</p>
+<h2 id="问题：agent-把-token-和延迟花在”组装上下文”上"><a href="#问题：agent-把-token-和延迟花在”组装上下文”上" class="headerlink" title="问题：agent 把 token 和延迟花在”组装上下文”上"></a>问题：agent 把 token 和延迟花在”组装上下文”上</h2><p>作者用一个投资分析 agent（比较 NVIDIA、Microsoft、Walmart 的 10-K 股票回购数据）说明四种生产要求：</p>
+<ul>
+<li><strong>准确性</strong>：可重复的正确答案</li>
+<li><strong>延迟</strong>：秒级，不是分钟级</li>
+<li><strong>Token 成本</strong>：每次调用有上限</li>
+<li><strong>治理</strong>：字段级权限和溯源</li>
+</ul>
+<p>两种常见方案都有缺陷：</p>
+<ol>
+<li><strong>Agentic RAG</strong>：分块嵌入文档，agent 多轮检索和重排序</li>
+<li><strong>Coding Agent（沙箱）</strong>：给 agent 文件系统工具（grep、read），让它自己循环</li>
+</ol>
+<p>两种都迫使 agent 在查询时组装知识，消耗大量 token 和延迟在”找路”而非”推理”上。</p>
+<h2 id="解决方案：预编译知识（Compiled-Knowledge）"><a href="#解决方案：预编译知识（Compiled-Knowledge）" class="headerlink" title="解决方案：预编译知识（Compiled Knowledge）"></a>解决方案：预编译知识（Compiled Knowledge）</h2><p>核心洞察：提前把数据加工成编码了所需结构的 <strong>artifact</strong>，而不是每次查询时推导结构。这与知识图谱、语义层等数据基础设施思路一脉相承，但应用于 agent 场景。</p>
+<h3 id="规模化挑战"><a href="#规模化挑战" class="headerlink" title="规模化挑战"></a>规模化挑战</h3><p>即使为一个领域构建 artifact 层也需要数月和专业团队。一个公司有几十个领域（销售、法务、财务、客服、研发），手工构建不现实。</p>
+<h2 id="Pinecone-Nexus-架构"><a href="#Pinecone-Nexus-架构" class="headerlink" title="Pinecone Nexus 架构"></a>Pinecone Nexus 架构</h2><p>四个可组合原语：</p>
+<h3 id="1-Artifact（制品）"><a href="#1-Artifact（制品）" class="headerlink" title="1. Artifact（制品）"></a>1. Artifact（制品）</h3><p>为特定任务构建的、带类型和治理的信息单元。同一源数据为不同 agent 生成不同形状的 artifact：市场分析 agent 拿到财务指标，合规 agent 拿到风险因素披露。</p>
+<h3 id="2-Context（上下文）"><a href="#2-Context（上下文）" class="headerlink" title="2. Context（上下文）"></a>2. Context（上下文）</h3><p>为特定角色、团队或工作流策划的 artifact 集合。分析师的 bundle 包含财务指标加上 MD&amp;A 和分部报告等叙述性章节。</p>
+<h3 id="3-Knowledge（知识）"><a href="#3-Knowledge（知识）" class="headerlink" title="3. Knowledge（知识）"></a>3. Knowledge（知识）</h3><p>公司内所有 context 的总体。查询可跨多个 context，引擎处理路由。</p>
+<h3 id="4-Knowledge-Engine（知识引擎）"><a href="#4-Knowledge-Engine（知识引擎）" class="headerlink" title="4. Knowledge Engine（知识引擎）"></a>4. Knowledge Engine（知识引擎）</h3><p>构建和提供上述所有内容的系统，核心是 <strong>Context Compiler</strong>。</p>
+<h2 id="Context-Compiler（上下文编译器）"><a href="#Context-Compiler（上下文编译器）" class="headerlink" title="Context Compiler（上下文编译器）"></a>Context Compiler（上下文编译器）</h2><p>一个自主 coding agent，使用以下组件构建任务优化的 context：</p>
+<ol>
+<li><strong>评估集</strong>（eval set）：每个领域的代表性任务 + 已知答案 + 数据源</li>
+<li><strong>预审技能库</strong>（pre-vetted skills）：文档处理、实体提取、分块等可组合技能</li>
+<li><strong>反馈循环</strong>：每轮迭代对 eval 信号评分</li>
+</ol>
+<p>编译器迭代修改两个函数——<code>curate()</code>（制品构建）和 <code>query()</code>（知识检索），运行 eval 并优化直到通过。领域专家无需检索专业知识即可产出优化的 context，编译器自动发现 artifact 结构、粒度和策略。早期合作伙伴从数月缩短到数天即可服务新领域。</p>
+<h2 id="KnowQL（知识查询语言）"><a href="#KnowQL（知识查询语言）" class="headerlink" title="KnowQL（知识查询语言）"></a>KnowQL（知识查询语言）</h2><p>声明式查询接口，agent 指定<em>需要什么</em>，返回精确、带类型、带引用的响应。四类参数：</p>
+<ul>
+<li><strong>Intent</strong>：问题、响应形状、目标 context（可跨多个 context 组合）</li>
+<li><strong>Filter</strong>：确定性谓词和访问控制策略</li>
+<li><strong>Provenance</strong>：字段级引用，构建时内嵌，非事后重建</li>
+<li><strong>Control</strong>：预算包络，含深度和延迟目标；成本以结果声明，非 token</li>
+</ul>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><p>结构化 JSON 对象指定问题、ground truth 要求和带类型的输出形状（<code>company_name</code>、<code>repurchased_usd_millions</code> 等）。引擎返回类型化响应；agent 唯一的推理步骤是比较数值。</p>
+<h2 id="基准测试：KRAFTBench"><a href="#基准测试：KRAFTBench" class="headerlink" title="基准测试：KRAFTBench"></a>基准测试：KRAFTBench</h2><p><strong>KRAFTBench</strong>（Knowledge Retrieval Assessment Framework for Text）衡量不同检索机制下 agent 响应的准确性、延迟和 token 成本。</p>
+<h3 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h3><ul>
+<li>493 份 S&amp;P 500 公司 2022 年 10-K 文件（每份约 500KB，总计约 245MB）</li>
+<li>150 个难题，覆盖 9 个行业、10 个财务主题</li>
+<li>三种难度形态：多事实、多公司、多步骤</li>
+<li>约束：每题 120 秒、100 万 token 上限</li>
+</ul>
+<h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><table>
+<thead>
+<tr>
+<th>方案</th>
+<th>完成率</th>
+<th>平均延迟</th>
+<th>平均准确率</th>
+<th>平均 Token</th>
+<th>平均步骤</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Pinecone Nexus</strong></td>
+<td>100% (150&#x2F;150)</td>
+<td>22.7s</td>
+<td>0.680</td>
+<td>6,733</td>
+<td>1.69</td>
+</tr>
+<tr>
+<td><strong>Agentic RAG</strong></td>
+<td>98.7% (148&#x2F;150)</td>
+<td>37.9s</td>
+<td>0.413</td>
+<td>49,103</td>
+<td>7.77</td>
+</tr>
+<tr>
+<td><strong>Coding Agent</strong></td>
+<td>62.7% (94&#x2F;150)</td>
+<td>84.1s</td>
+<td>0.585</td>
+<td>528,301</td>
+<td>14.77</td>
+</tr>
+</tbody></table>
+<p>Nexus 的 token 成本约为 RAG 的 1&#x2F;7、Coding Agent 的 1&#x2F;80。</p>
+<h3 id="失败模式"><a href="#失败模式" class="headerlink" title="失败模式"></a>失败模式</h3><ul>
+<li><strong>Coding Agent</strong>：宽泛正则匹配返回数百结果，消歧耗尽 token 预算</li>
+<li><strong>Agentic RAG</strong>：分解为 18 个子事实，但美元数字与分块不共置时丢失信息</li>
+<li><strong>Nexus</strong>：编译好的公司级”fact sheet”制品实现多实体比较的单次回答</li>
+</ul>
+<h2 id="企业集成示例：Box-→-Unstructured-→-Pinecone-Nexus"><a href="#企业集成示例：Box-→-Unstructured-→-Pinecone-Nexus" class="headerlink" title="企业集成示例：Box → Unstructured → Pinecone Nexus"></a>企业集成示例：Box → Unstructured → Pinecone Nexus</h2><p>法律审查工作流：</p>
+<ol>
+<li><strong>Box</strong>：存储源文档，含文件元数据和访问控制列表</li>
+<li><strong>Unstructured</strong>：解析 PDF&#x2F;Word 为结构化格式，提取实体、表格，传递权限元数据</li>
+<li><strong>Pinecone Nexus</strong>：摄入解析输出，运行 Context Compiler，产出制品（如合同续期条款表），查询时强制执行权限过滤</li>
+</ol>
+<p>同一合同 context 可服务法务运维 agent、销售续期风险 agent、合规 agent——全部来自同一 Box 源。</p>
+<h2 id="对本仓库的启示"><a href="#对本仓库的启示" class="headerlink" title="对本仓库的启示"></a>对本仓库的启示</h2><ul>
+<li><strong>Context Compiler 的思路</strong>与本仓库的 LLM-maintained wiki 工作流高度共鸣：都是把原始材料预编译成结构化知识层</li>
+<li><strong>Artifact &#x2F; Context &#x2F; Knowledge 的分层</strong>与 <code>wiki/sources</code> → <code>wiki/concepts</code> → <code>wiki/index.md</code> 的层次对应</li>
+<li><strong>KnowQL 的声明式查询</strong>提示了 agent 查询知识库的一种理想形态：指定需要什么形状的数据，而非自己组装</li>
+<li><strong>KRAFTBench</strong> 量化了”预编译 vs 查询时组装”的差距：token 成本差 7-80 倍，延迟差 2-4 倍</li>
+</ul>
+<h2 id="相关"><a href="#相关" class="headerlink" title="相关"></a>相关</h2><ul>
+<li><a href="../concepts/compiled-knowledge-vault.html">编译式知识库</a>——Nexus 的 “compiled knowledge” 与此概念直接对应</li>
+<li><a href="../concepts/llm-knowledge-bases.html">LLM 维护的知识库</a>——本仓库的 LLM-maintained wiki 是小型个人版的”知识预编译”</li>
+<li><a href="../concepts/harness-engineering.html">Harness Engineering</a>——Context Compiler 属于 harness 的一种实现</li>
+<li><a href="../concepts/ai-knowledge-bases.html">AI Knowledge Bases</a>——Nexus 是企业级 AI 知识库的基础设施方案</li>
+</ul>
+<hr>
+<p><em>assistant 整理；2026-05-12</em></p>
+</div></div></div></div><div class="pure-u-1 pure-u-md-1-4"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 常用文档</i></div><ul></ul><a href="/git-common-commands" title="Git 文档" target="_blank">Git 文档</a><ul></ul><a href="/common-programming-prompt-words" title="常用开发提示词" target="_blank">常用开发提示词</a></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="../../categories/soft/">软技能与思考</a><span class="category-list-count">51</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/cli/">工程化与运维</a><span class="category-list-count">51</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/intelligent/">AI探索</a><span class="category-list-count">18</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/web/">Web开发</a><span class="category-list-count">142</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/coding/">编程基础</a><span class="category-list-count">42</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/site/">网站建设</a><span class="category-list-count">5</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="../../tags/essays/" style="font-size: 15px; color: #3679a7">随笔</a> <a href="../../tags/performance/" style="font-size: 15px; color: #88a6bb">性能优化</a> <a href="../../tags/AI%E5%8E%9F%E7%90%86/" style="font-size: 15px; color: #a3b5c2">AI原理</a> <a href="../../tags/backend/" style="font-size: 15px; color: #5f90b1">后端</a> <a href="../../tags/Python-Go-%E5%85%B6%E4%BB%96/" style="font-size: 15px; color: #96aebf">Python/Go/其他</a> <a href="../../tags/api-services/" style="font-size: 15px; color: #bec4c9">API&服务</a> <a href="../../tags/JavaScript-TypeScript/" style="font-size: 15px; color: #0e639d">JavaScript&TypeScript</a> <a href="../../tags/%E8%81%8C%E4%B8%9A%E5%8F%91%E5%B1%95/" style="font-size: 15px; color: #88a6bb">职业发展</a> <a href="../../tags/AI%E7%BC%96%E7%A8%8B/" style="font-size: 15px; color: #7a9fb8">AI编程</a> <a href="../../tags/computer-science/" style="font-size: 15px; color: #2972a4">计算机科学</a> <a href="../../tags/%E7%BF%BB%E8%AF%91/" style="font-size: 15px; color: #ccc">翻译</a> <a href="../../tags/notes/" style="font-size: 15px; color: #a3b5c2">笔记</a> <a href="../../tags/frontend/" style="font-size: 15px; color: #005b9a">前端</a> <a href="../../tags/frameworks-libs/" style="font-size: 15px; color: #5288ae">框架与库</a> <a href="../../tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/" style="font-size: 15px; color: #96aebf">系统设计</a> <a href="../../tags/programming-languages/" style="font-size: 15px; color: #b1bdc5">编程语言</a> <a href="../../tags/css-visualization/" style="font-size: 15px; color: #1b6aa1">CSS与可视化</a> <a href="../../tags/build-deploy/" style="font-size: 15px; color: #6d97b5">构建与部署</a> <a href="../../tags/dev-tools/" style="font-size: 15px; color: #4481ab">开发工具</a> <a href="../../tags/Agent-Skill/" style="font-size: 15px; color: #ccc">Agent,Skill</a> <a href="../../tags/Node-js/" style="font-size: 15px; color: #88a6bb">Node.js</a> <a href="../../tags/cross-platform/" style="font-size: 15px; color: #96aebf">跨端方案</a> <a href="../../tags/%E7%9F%A5%E8%AF%86%E5%BA%93/" style="font-size: 15px; color: #ccc">知识库</a> <a href="../../tags/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/" style="font-size: 15px; color: #ccc">项目管理</a> <a href="../../tags/code-quality/" style="font-size: 15px; color: #bec4c9">代码质量</a></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2026 <a href="../../." rel="nofollow">Canace 的博客</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="../../js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.js" async></script><script type="text/javascript" src="../../js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.css"><link rel="stylesheet" type="text/css" href="../../css/search.css?v=0.0.0"><script type="text/javascript" src="../../js/search.js?v=0.0.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+   search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="/js/copycode.js" successtext="复制成功!"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/mermaid@11.14.0/dist/mermaid.min.js"></script><script type="text/javascript">document.addEventListener('DOMContentLoaded', function () {
+  if (!window.mermaid) return;
+  mermaid.initialize({"theme":"default","logLevel":5,"startOnLoad":true,"arrowMarkerAbsolute":false,"flowchart":{"htmlLabels":true,"useMaxWidth":true,"curve":"linear"},"sequence":{"diagramMarginX":50,"diagramMarginY":10,"actorMargin":50,"width":150,"height":65,"boxMargin":10,"boxTextMargin":5,"noteMargin":10,"messageMargin":35,"mirrorActors":true,"bottomMarginAdj":1,"useMaxWidth":true},"gantt":{"titleTopMargin":25,"barHeight":20,"barGap":4,"topPadding":50,"leftPadding":75,"gridLineStartPadding":35,"fontSize":11,"fontFamily":"\"Open-Sans\", \"sans-serif\"","numberSectionStyles":4,"axisFormat":"%Y-%m-%d"},"class":{},"git":{}});
+});
+</script><script type="text/javascript" src="../../js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="../../js/smartresize.js?v=0.0.0"></script><script type="text/javascript">(function () {
+  var urls = ["/../../2024-year-end-summary/","/../../6-common-website-usability-issues-and-solutions/","/../../AI-knowledge-base/","/../../Django-channels/","/../../MySQL/","/../../WebRTC/","/../../JavaScript-call-apply-bind/","/../../about-doing-technology/","/../../add-skeleton-screen/","/../../about-forgetfulness/","/../../agent-coding-stability/","/../../ai-coding-ide/","/../../NP-P-NPC/","/../../ai-expansion/","/../../ai-coding-share/","/../../ai-coding-game/","/../../ai-make-you-boring/","/../../ai-optimize-ui/","/../../ai-worker/","/../../ants/","/../../angel-love/","/../../async-data-console-issues/","/../../algorithm-book-notes-for-everyone/","/../../angular-navigation-content-linkage/","/../../beego-getting-started/","/../../ant-design-pitfalls/","/../../bash-data-processing/","/../../blog-category/","/../../boolean-variables-in-project-application/","/../../binary-search/","/../../axios-network-request-encapsulation/","/../../bracket-matching/","/../../brief-discussion-on-dns-pollution/","/../../box-model/","/../../browser-kernel-and-writing/","/../../brief-discussion-on-visual-form-design/","/../../build-django-blog-system/","/../../build-tinymce-img-plugin/","/../../build-typescript-library/","/../../canvas-draw-dynamic-path/","/../../cascade/","/../../centos-server-login-config/","/../../calculate-rice-cooker-reservation-time/","/../../ckeditor-usage-in-angular/","/../../canvas-draw-sprite-export/","/../../code-optimization/","/../../common-algorithm-ideas/","/../../common-git-workflows/","/../../common-image-format-comparison/","/../../climbing-stairs/","/../../common-programming-prompt-words/","/../../common-terminal-commands/","/../../computer-graphics-2/","/../../computer-graphics-1/","/../../count-beautiful-subarrays/","/../../count-total-elements-of-array-objects/","/../../common-regular-expressions/","/../../create-object-based-on-null/","/../../css-circular-progress-bar/","/../../css-background-image-application/","/../../count-number-of-islands/","/../../css-layout-guide/","/../../css-notes/","/../../css-positioning/","/../../cross-origin-resource-sharing/","/../../css-positioning-detailed/","/../../css-series-basics/","/../../css-series-box-dimensions/","/../../css-series-cascade/","/../../css-series-history-and-document-flow/","/../../css-series-flow-destruction-and-protection/","/../../css-series-text-processing/","/../../css-series-flow-and-dimensions/","/../../css-tips/","/../../css-series-inline-elements-and-flow/","/../../css3-animation-vs-js-animation/","/../../cursor-debugger/","/../../custom-github-activity/","/../../cursor-skill-web-search-download-movie/","/../../css2-block-element-center/","/../../css-two-color-pie-chart/","/../../disable-image-dragging/","/../../deep-copy-of-arrays-and-objects/","/../../deep-work-philosophy-interpretation/","/../../docker-frontend-environment-setup/","/../../doing-things-with-vscode/","/../../egg/","/../../dropdown-list-implementation/","/../../extra-thick-chicken-soup/","/../../es2020-new-features/","/../../docker-documentation/","/../../ffmpeg-extract-audio-track/","/../../file-naming-pitfalls-record/","/../../find-median-sorted-arrays/","/../../firefox-remove-various-dashed-borders/","/../../element-plus-table-component-scaling-issue-solution/","/../../first-day-morning-run/","/../../first-screen-optimization/","/../../fix-github-image-issue-on-mac/","/../../first-screen-time-vs-white-screen-time/","/../../flow-simple-tutorial/","/../../flutter-learning-notes-dart-basics/","/../../flutter-learning-notes-quick-start/","/../../frontend-performance-optimization/","/../../frontend-draw-graphic-captcha/","/../../four-js-tips/","/../../frontend-xx-dockerization/","/../../fullscreen-solution-for-webpage-or-html-elements/","/../../fun-console/","/../../function-currying/","/../../functional-programming/","/../../generate-random-array-in-specified-range/","/../../get-css-style/","/../../function-without-global-variable-counting/","/../../gemini-new-session-memory/","/../../ghost-whitespace-nodes/","/../../git-common-commands/","/../../get-longest-common-prefix/","/../../git-usage-guide/","/../../github-action-auto-deploy-page/","/../../github-practical-tips/","/../../git-environment-config/","/../../github-travis-auto-build-vue-to-gitpage/","/../../gitbook-generate-ebook/","/../../gitlab-ci-config-template/","/../../hexo-blog-migration/","/../../hexo-getting-started/","/../../gitpage-hexo/","/../../hexo-math-formula-support/","/../../go-getting-started/","/../../git-domain-config/","/../../how-ai-lets-us-lie-flat/","/../../how-to-optimize-animation/","/../../homebrew-common-commands/","/../../html-to-text-js/","/../../html-notes/","/../../http-notes/","/../../how-to-create-a-robust-system/","/../../image-lazy-loading-implementation/","/../../implement-array-flatten/","/../../http-server/","/../../interesting-css-cascade-issues/","/../../improve-work-efficiency-with-cursor-practical-notes/","/../../issue-04/","/../../issue-03/","/../../issue-06/","/../../interview-strategy/","/../../issue-05/","/../../issue-08/","/../../issue-11/","/../../issue-10/","/../../issue-12/","/../../issue-1/","/../../issue-13/","/../../issue-15/","/../../issue-2/","/../../japanese-learning-notes/","/../../issue-09/","/../../issue-07/","/../../javaScript-promise/","/../../issue-14/","/../../javascript-basics-primitive-vs-reference-types/","/../../javascript-detect-caps-lock/","/../../javascript-basics-type-conversion/","/../../javascript-built-in-deep-copy/","/../../javascript-new-implementation-principle/","/../../javascript-common-code-snippets/","/../../javascript-object-oriented-programming/","/../../javascript-functions/","/../../javascript-tricks/","/../../javascript-soul-questions/","/../../js-execution/","/../../js-overview/","/../../js-string-to-base64/","/../../js-linked-list-implementation/","/../../js-timezone/","/../../js-modal-blog/","/../../jump-to-specific-position-in-article/","/../../key-value-role-in-vue-components/","/../../leave-page-popup/","/../../kindness/","/../../linux-background-script-execution/","/../../knn-algorithm/","/../../llm-wiki/","/../../kpi-vs-okr/","/../../llm-training-truth/","/../../lodash-source-analysis-array-chunk/","/../../mac-install-mysql/","/../../manchester-by-the-sea/","/../../mac-debug-ios-web-page/","/../../lodash-source-analysis-array-slice/","/../../method-to-login-to-south-china-normal-university-campus-network/","/../../knowledge-anxiety/","/../../model-training-steps/","/../../modify-autofill-style/","/../../modify-scrollbar-style-compatible/","/../../mini-program-tabs-sticky/","/../../narrative-research/","/../../n-n-order-matrix-algorithm/","/../../node-notes-in-depth/","/../../node-version-management/","/../../module-specifications/","/../../nodejs-config/","/../../nodeJs/","/../../nodejs-module-mechanism/","/../../notes-about-writing-weekly-reports/","/../../nodejs-notes/","/../../number-precise-to-two-decimal-places/","/../../npm-common-commands/","/../../package-json-field-list/","/../../object-property-value-monitoring/","/../../openclaw-usage-experience/","/../../one-click-generate-responsive-table/","/../../pagination-algorithm/","/../../palindrome-number-judgment/","/../../personal-knowledge-base/","/../../pinyin-learning-project-notes/","/../../pixijs-vertexData-null/","/../../pixi-js-sprite-loading-cache-removal/","/../../prisma-getting-started-guide/","/../../port-number-modification/","/../../pixi-basics/","/../../product-updates-rss-file-diff-mental-model/","/../../project-modularization-principles/","/../../python-pitfalls-collection/","/../../proxy-observer-pattern/","/../../python3-installation/","/../../qwen-milk-tea-ui/","/../../recursive-tree/","/../../record-service-degradation-due-to-emergency/","/../../react-hooks-create-movie-app/","/../../remove-parent-nodes-with-duplicate-child-ids/","/../../refactoring-vs-architecture/","/../../removeDuplicates/","/../../regular-expressions/","/../../reverse-words-in-string/","/../../removeElement/","/../../roman-numerals-to-integer/","/../../reverse-integer/","/../../rhythm-psychology/","/../../rss-telegram-selfhost/","/../../scheduled-tasks/","/../../science-popularization/","/../../scroll-pagination/","/../../settimeout-simulate-setinterval/","/../../singly-linked-list-concatenation/","/../../ss-installation/","/../../sentence-excerpts/","/../../some-concepts/","/../../software-version-number-definition/","/../../string-and-code-rigor/","/../../systematic-method-for-fragmented-reading-knowledge/","/../../sublime-text-nodejs-config/","/../../solve-github-dns-pollution-issue/","/../../talking-about-browser-cache-mechanism/","/../../table-cell-equal-division/","/../../tcp-ip-three-way-handshake/","/../../talking-about-webpage-adaptive-and-responsive-layout/","/../../thoughts-on-ad-blocker-plugins/","/../../thoughts-on-branch-management/","/../../talking-about-vuex/","/../../time-zero/","/../../thoughts-on-technical-growth/","/../../translate-use-claude-code/","/../../two-sum-problem/","/../../timestamp-to-date/","/../../three-js-basics-practice/","/../../typescript-environment-config/","/../../ubuntu-configure-frontend-environment/","/../../ubuntu-configure-ss/","/../../ubuntu-install-tensorflow/","/../../unavoidable-bug-chrome-translation-caused-trouble/","/../../understanding-byte-order/","/../../time-complexity-vs-space-complexity/","/../../understanding-cookies/","/../../understanding-instanceof/","/../../vscode-code-formatting-summary/","/../../vue-config-template/","/../../vue-data-driven-view-implementation/","/../../validate-string/","/../../vue-details-i-didnt-know/","/../../vue-dynamic-change-title/","/../../variables/","/../../vue-project-setup-steps/","/../../vue-dynamic-component-import-note-not-async/","/../../vue-test-unit/","/../../web-security-xss-attack/","/../../web-security-csrf/","/../../web-performance-optimization-debounce/","/../../webpack-dynamic-modify-resource-domain/","/../../webpack-gulp-bundle-vue-component-library/","/../../webpack/","/../../webpack5-new-features-module-federation-notes/","/../../vue3-notes/","/../../what-happens-from-url-to-display/","/../../what-happened-to-vue/","/../../why-frontend-needs-framework/","/../../wechat-mini-program-pitfalls/","/../../why-graphics-card/","/../../webpage-version-update-popup-implementation/","/../../why-we-need-to-read/","/../../why-write-wechat-official-account/","/../../wordpress-installation/","/../../windows-tricks/","/../../work-for/","/../../writing-a-good-claude-md/","/../../why-not-let-ai-write-for-us/","/../../words-of-experience/","/../../wsl-config/","/../../yml-file-operations/"];
+  var el = document.getElementById('nav-random-article');
+  if (!el) return;
+  el.addEventListener('click', function (e) {
+    e.preventDefault();
+    if (!urls.length) return;
+    var next = urls[Math.floor(Math.random() * urls.length)];
+    if (next) window.location.href = next;
+  });
+})();</script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":200,"height":200},"mobile":{"show":false},"react":{"opacity":0.7},"log":false});</script></body></html>
