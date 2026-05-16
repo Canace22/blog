@@ -8,12 +8,19 @@
 
 **怎么说会触发：**
 
-- 「创建博客」「新建一篇文章」「建一篇空白博客」→ 只生成**空白文章**（仅含 front matter 元数据，无正文）
+- 「帮我写一篇博客」「根据材料写文章」「整理成博客」→ 先读 `roles/blog-writer.md`，默认在 `source/_drafts/` 起草，用户确认后再迁移到 `source/_posts/`
+- 「创建博客」「新建一篇空白文章」「建一篇空白博客」「只要 front matter」→ 只生成**空白文章**（仅含 front matter 元数据，无正文）
 - 「给这篇文章改下分类/标签」「把这篇的 tags 改成 xxx」
 - 「跑一下博客预览」「本地起一下 Hexo」「构建博客」
 - 「按规范检查/修一下这篇的 front matter」
 
-**Agent 会做的事：** 创建博客时只写元数据不写正文；修改时按 `docs/hexo-blog.md` 和 `docs/categories-tags.md` 用对路径和 Front Matter 格式，分类和标签从规范里选。
+**Agent 会做的事：** 写正文时按 `roles/blog-writer.md` 走草稿流程；创建空白文章时只写元数据不写正文；修改时按 `docs/hexo-blog.md` 和 `docs/categories-tags.md` 用对路径和 Front Matter 格式，分类和标签从规范里选。
+
+## 与 blog-writer 角色的分工
+
+- `roles/blog-writer.md`：负责文章观点、结构、正文、Mermaid 图和草稿确认流程。
+- `.cursor/skills/hexo-blog/SKILL.md`：负责 Hexo 路径、Front Matter、分类标签、预览、构建和摘要命令。
+- 如果用户要“写文章/写博客正文”，先使用 `roles/blog-writer.md`；如果用户只要“新建空白博客/改 front matter/跑 Hexo 命令”，使用 `hexo-blog` 技能即可。
 
 ## 路径与命令
 
@@ -60,13 +67,22 @@ date: 2025-01-01 10:00:00
 
 可选：`description`、`toc: true` 等按需添加。
 
-## 新建文章流程（仅元数据）
+## 新建空白文章流程（仅元数据）
 
-创建博客时**只生成空白文章**：文件内仅包含 front matter，不写正文。
+用户明确要求空白文章时，文件内仅包含 front matter，不写正文。
 
 1. 在 `source/_posts/` 下新建 `.md` 文件（如 `my-new-post.md`）。
 2. 写入标准 Front Matter，按 [categories-tags.md](categories-tags.md) 选择正确的 `categories` 和 `tags`；`title` 可先用占位或用户提供的标题。
 3. 正文留空，由用户后续自行撰写；撰写时正文格式遵循 `.cursor/rules/md.mdc`（ruanyf/document-style-guide）。
+
+## 写新文章流程（正文草稿）
+
+用户要求写博客正文时，按 `roles/blog-writer.md`：
+
+1. 先复述用户核心观点，确认要写的主线。
+2. 先给章节骨架，不直接一口气定稿。
+3. 在 `source/_drafts/` 下起草。
+4. 用户确认后，再迁移到 `source/_posts/`。
 
 ## 修改已有文章时
 

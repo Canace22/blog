@@ -8,7 +8,7 @@
 2. 在 `source/_drafts/` 下起新文件。
 3. 反复迭代到用户确认。
 4. 用户确认后再迁移到 `source/_posts/`。
-5. 发布后由 `wiki-curator` 角色按 `AGENTS.md` 的 Ingest Workflow 落到 `wiki/`。
+5. 发布后由 `wiki-curator` 角色按 `roles/wiki-curator.md` 的 Ingest Workflow 落到 `wiki/`。
 
 ## Front Matter 模板
 
@@ -37,7 +37,7 @@ date: YYYY-MM-DD HH:MM:SS
 
 ## 不要做
 
-- 不要直接改 `source/_posts/` 里已发布的文章（视作 immutable，参见 AGENTS.md）。
+- 不要直接改 `source/_posts/` 里已发布的文章；新文章默认先放 `source/_drafts/`，用户确认后再发布。
 - 不要自动生成 README、CHANGELOG 类文件。
 - 不要在文章里附带"由 AI 协助生成"署名（用户在 wiki 维护页才需要签名）。
 - 不要替用户决定结论性观点；不确定的地方留 TODO 让用户选。
