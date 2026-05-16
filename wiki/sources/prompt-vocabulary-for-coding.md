@@ -26,3 +26,5 @@ Title uses the author’s spelling “Promt”; content is reference material, n
 
 - [常用开发提示词](common-programming-prompt-words.md)：面向日常开发的英汉提示词表（博文摘要）。
 - [Grok 会话摘录：repeat / redundant 词义](grok-vocabulary-repeat-redundant.md)：两条通用词义对照，格式与「单词 + 释义 + 例句」类笔记一致。
+- [Promt 工程师（阅读链接）](prompt-engineering-reading-list.md)：Prompt 工程入门指南合集。
+- [反向提示词工程](reverse-prompt-engineering.md)：从答案反推 prompt 的方向。

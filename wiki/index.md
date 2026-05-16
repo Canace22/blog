@@ -33,6 +33,9 @@
 - [RSS / Telegram 自建推送](concepts/rss-telegram-selfhost.md)
 - [系统 crontab 与 OpenClaw 定时任务](concepts/crontab-and-openclaw-cron.md)
 - [Hermes：`/anthropic` 网关与模型名点号规范化](concepts/hermes-anthropic-endpoint-model-id-normalization.md)
+- [自动化测试](concepts/automated-testing.md)
+- [DeepSeek-V4](concepts/deepseek-v4.md)
+- [生成式辩证可能性空间搜索](concepts/generative-dialectical-possibility-space-search.md)
 
 ## Queries
 
@@ -247,6 +250,7 @@
 
 ### 工程化与运维
 
+- [自动化测试](sources/automated-testing.md) — 测试金字塔与 CI/Stage/Prod 全流程（无对应 `source/_posts`，独立维护）
 - [Vscode 配置 wsl 并配置 node 环境](sources/wsl-config.md) — `source/_posts/wsl-config.md`
 - [Windows 奇技淫巧](sources/windows-tricks.md) — `source/_posts/windows-tricks.md`
 - [Webpack5 新特性 - 模块联邦笔记](sources/webpack5-new-features-module-federation-notes.md) — `source/_posts/webpack5-new-features-module-federation-notes.md`
@@ -327,6 +331,21 @@
 - [Gemini 摘要：Karpathy《大语言模型简介》演讲（YouTube）](sources/gemini-karpathy-intro-llm-youtube.md) — 用户提供的 Gemini 摘录整理（主链原视频）
 - [LLM 训练的真相：Andrej Karpathy 的分享笔记](sources/llm-training-truth.md) — `source/_posts/llm-training-truth.md`
 - [Pinecone Nexus：Knowledge Engine](sources/pinecone-nexus-knowledge-engine.md) — Pinecone 官方博客（预编译知识、Context Compiler、KRAFTBench）
+- [DeepSeek-V4 技术报告](sources/deepseek-v4.md) — Hugging Face 技术报告（MoE / 长上下文 / 注意力升级）
+- [反向提示词工程](sources/reverse-prompt-engineering.md) — 从答案反推 prompt 的思路（个人速记）
+- [AI 辅助开发探索](sources/ai-assisted-development-exploration.md) — 项目级 context 文件与 Agent 角色分工笔记（来自 `AI 探索/`）
+- [Canace 博客索引](sources/canace-blog-index.md) — 博客文章总表的机器可读副本（来自 `AI 探索/`）
+- [Cursor 使用 Playwright MCP](sources/cursor-playwright-mcp.md) — MCP server 注册与 E2E 提示词样例（来自 `AI 探索/`）
+- [Gemini 新会话与 User Summary](sources/gemini-user-summary-cross-session.md) — 跨会话记忆机制观察（来自 `AI 探索/`）
+- [Harness Engineering（链接集）](sources/harness-engineering-links.md) — 资料合集书签（来自 `AI 探索/`）
+- [如何提升 AI 代码质量](sources/improving-ai-code-quality.md) — AI 协作落地清单（来自 `AI 探索/`）
+- [OpenClaw Agent 基座与 memory-wiki](sources/openclaw-agent-pi-mono.md) — pi-mono 与 memory-wiki 插件备查（来自 `AI 探索/`）
+- [Promt 工程师（阅读链接）](sources/prompt-engineering-reading-list.md) — Prompt Engineering 入门指南合集（来自 `AI 探索/`）
+- [Promt 英语单词（编程提示词常用动词）](sources/prompt-vocabulary-for-coding.md) — 写 prompt 时常用英文动词表（来自 `AI 探索/`）
+- [Thread by @karpathy](sources/thread-by-karpathy.md) — LLM + Obsidian 编译式 wiki 的灵感线程
+- [我们是否需要AI知识库（笔记版）](sources/why-we-need-ai-knowledge-bases.md) — 早期短笔记版（来自 `AI 探索/`，与博文 `AI-knowledge-base.md` 互为对照）
+- [@123olp —— 生成式辩证可能性空间搜索（X）](sources/x-123olp-generative-dialectical-possibility-search.md) — 用户提供的帖文摘录
+- [Claude CLI 速记：`/effort` 与 `/model`](sources/claude-cli-effort-model-commands.md) — 终端常用斜杠命令速记
 
 ### 软技能与思考
 

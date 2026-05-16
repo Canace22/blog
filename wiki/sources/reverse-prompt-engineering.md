@@ -23,3 +23,13 @@
 ## 挑战
 
 同一答案对应无数 prompt，解不唯一。需要加约束（最短长度、最自然表达等）才能收敛到有用解。
+
+## 另见（本库相近资料）
+
+- [Promt 工程师（阅读链接）](prompt-engineering-reading-list.md)：Prompt Engineering 通用入门资源。
+- [Promt 英语单词（编程提示词常用动词）](prompt-vocabulary-for-coding.md)：写 prompt 时常用的英文动词表。
+- [常用开发提示词](common-programming-prompt-words.md)：博文沉淀的高频提示词清单。
+
+---
+
+*本页由助手在 2026-05-16 维护，将"反向 prompt"与本库内 Prompt Engineering 相关 source 串联。*

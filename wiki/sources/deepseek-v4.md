@@ -28,3 +28,8 @@ DeepSeek-V4 系列包括两个 MoE 模型：DeepSeek-V4-Pro（1.6T 参数，49B 
 ## 链接
 
 - https://huggingface.co/collections/deepseek-ai/deepseek-v4
+
+## 相关
+
+- [DeepSeek-V4](../concepts/deepseek-v4.md)（仓库内概念页摘要）
+- [大语言模型工作原理概览](../concepts/large-language-model-fundamentals.md)（MoE 与注意力放在 LLM 整体训练框架中）
