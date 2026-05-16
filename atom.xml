@@ -6,7 +6,7 @@
   <link href="https://canace.site/atom.xml" rel="self"/>
   
   <link href="https://canace.site/"/>
-  <updated>2026-05-16T02:23:21.207Z</updated>
+  <updated>2026-05-10T03:52:23.049Z</updated>
   <id>https://canace.site/</id>
   
   <author>
@@ -15,25 +15,6 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>从 AI Coding 到 LLM Wiki：我的个人 AI 工作流复盘</title>
-    <link href="https://canace.site/personal-ai-engineering-workflow/"/>
-    <id>https://canace.site/personal-ai-engineering-workflow/</id>
-    <published>2026-05-16T02:30:00.000Z</published>
-    <updated>2026-05-16T02:23:21.207Z</updated>
-    
-    
-    <summary type="html">复盘这一年多围绕 AI 工程化写过的文章，把项目规则、任务拆解、Skill、知识库和生成式 UI 串成一套个人可落地的 AI 工作流。</summary>
-    
-    
-    
-    <category term="AI探索" scheme="https://canace.site/categories/intelligent/"/>
-    
-    
-    <category term="AI编程" scheme="https://canace.site/tags/AI%E7%BC%96%E7%A8%8B/"/>
-    
-  </entry>
   
   <entry>
     <title>LLM 训练的真相：Andrej Karpathy 的分享笔记</title>
@@ -394,6 +375,25 @@
     
     
     <summary type="html">用AI结合SUS、PUEU和HEART模型优化界面，能提升可用性和用户体验，适合快速迭代改进设计。</summary>
+    
+    
+    
+    <category term="AI探索" scheme="https://canace.site/categories/intelligent/"/>
+    
+    
+    <category term="AI编程" scheme="https://canace.site/tags/AI%E7%BC%96%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>AI使人膨胀</title>
+    <link href="https://canace.site/ai-expansion/"/>
+    <id>https://canace.site/ai-expansion/</id>
+    <published>2026-01-05T01:10:12.000Z</published>
+    <updated>2026-04-02T02:52:43.965Z</updated>
+    
+    
+    <summary type="html">AI让人膨胀，效率不升反降，关键在认知错位和节奏失控。</summary>
     
     
     
