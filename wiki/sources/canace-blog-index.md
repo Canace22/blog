@@ -17,7 +17,7 @@ Machine-oriented index of the author’s public blog: base URL, local Hexo `_pos
 ## Related Concepts
 
 - [AI Knowledge Bases](../concepts/ai-knowledge-bases.md)
-- [AI-assisted development](../concepts/ai-assisted-development.md)
+- [AI 辅助开发](../concepts/ai-assisted-development.md)
 
 ## Notes
 

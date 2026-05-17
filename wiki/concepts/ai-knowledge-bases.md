@@ -42,4 +42,4 @@ The main tension in the current sources is not whether AI knowledge bases are us
 - [Source: Pinecone Nexus：Knowledge Engine](../sources/pinecone-nexus-knowledge-engine.md)
 - [Concept: LLM Knowledge Bases](llm-knowledge-bases.md)
 - [Concept: Chat assistant user memory](chat-assistant-user-memory.md)
-- [Concept: AI-assisted development](ai-assisted-development.md)
+- [概念：AI 辅助开发](ai-assisted-development.md)

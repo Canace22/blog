@@ -15,7 +15,7 @@ Minimal how-to: JSON snippet for registering the Playwright MCP server in Cursor
 
 ## Related Concepts
 
-- [AI-assisted development](../concepts/ai-assisted-development.md)
+- [AI 辅助开发](../concepts/ai-assisted-development.md)
 - [自动化测试](../concepts/automated-testing.md)（E2E 层位于该概念的测试金字塔顶端）
 
 ## 另见（本库相近资料）

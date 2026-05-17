@@ -16,7 +16,7 @@ A bookmark-style list of references around “harness engineering” and related
 
 ## Related Concepts
 
-- [AI-assisted development](../concepts/ai-assisted-development.md)
+- [AI 辅助开发](../concepts/ai-assisted-development.md)
 
 ## Notes
 

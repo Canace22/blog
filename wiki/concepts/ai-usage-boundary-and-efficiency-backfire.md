@@ -27,7 +27,7 @@
 
 ## 与相关概念的关系
 
-- [AI-assisted development](ai-assisted-development.md)：强调流程治理与质量责任；本页补充个人层面的时间/边界治理。
+- [AI 辅助开发](ai-assisted-development.md)：强调流程治理与质量责任；本页补充个人层面的时间/边界治理。
 
 ---
 _Edited by assistant (Codex 5.3) on 2026-05-07._

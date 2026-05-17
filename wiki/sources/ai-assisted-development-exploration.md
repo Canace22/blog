@@ -1,23 +1,23 @@
-# Source: AI 辅助开发探索
+# 来源：AI 辅助开发探索
 
-## Source File
+## 源文件
 
 - `AI 探索/AI 辅助开发探索.md`
 
-## Summary
+## 摘要
 
-Notes on structuring AI-assisted development: project-level context files (example front matter and stacks), and a three-role framing for engineers in agent-heavy workflows (orchestrator, mentor, problem solver), with external references.
+关于如何结构化地做 AI 辅助开发：项目级上下文文件（示例 front matter 与技术栈）、以及在重度智能体工作流里工程师的三种角色（编排者、导师审阅者、问题解决者），并附外部参考。
 
-## Key Points
+## 要点
 
-- **Context**: Recommends defining project-level rules (stack, env, code style, file layout conventions) in a single place the agent can read.
-- **Roles**: Orchestrating multiple agents; reviewing AI like a junior; focusing on problem identification over raw typing.
-- **References**: Links to Yuque, WeChat article, and Sanity blog (first-attempt quality theme).
+- **上下文**：建议把项目级规则（技术栈、环境、代码风格、目录约定）集中写在一处，便于智能体读取。
+- **角色**：编排多个智能体；像带初级开发一样审 AI；更重视「找准问题」而不是纯打字。
+- **参考**：语雀、公众号文章、Sanity 博客等链接（围绕「第一次就尽量可用」主题）。
 
-## Related Concepts
+## 相关概念
 
-- [AI-assisted development](../concepts/ai-assisted-development.md)
+- [AI 辅助开发](../concepts/ai-assisted-development.md)
 
-## Notes
+## 备注
 
-Uses Obsidian-style `[[工作流]]` wikilink in the source; the wiki uses standard markdown links.
+源 Obsidian 笔记里使用 `[[工作流]]` 式双链；本 wiki 条目使用标准 Markdown 链接。

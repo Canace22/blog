@@ -16,7 +16,7 @@ Vocabulary cheat sheet: English verbs common in coding prompts (develop, edit, c
 
 ## Related Concepts
 
-- [AI-assisted development](../concepts/ai-assisted-development.md)
+- [AI 辅助开发](../concepts/ai-assisted-development.md)
 
 ## Notes
 

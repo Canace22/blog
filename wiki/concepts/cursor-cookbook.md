@@ -14,7 +14,7 @@ Cursor 官方维护的 SDK 示例仓库，提供 TypeScript API 在自建应用 
 
 ## Relationship To This Wiki
 
-- 属于 [[AI-assisted development]] 工具链的一员
+- 属于 [[AI 辅助开发|ai-assisted-development]] 工具链的一员
 - 类似 [[Coding Agent]]（Codex/Claude Code/Pi），但属于商业闭源 SDK
 - 与 Harness Engineering 理念相关——通过 SDK 将 AI coding agent 嵌入自定义工作流
 

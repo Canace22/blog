@@ -19,7 +19,7 @@ Practical checklist for better outcomes with AI-generated code: stronger docs an
 
 ## Related Concepts
 
-- [AI-assisted development](../concepts/ai-assisted-development.md)
+- [AI 辅助开发](../concepts/ai-assisted-development.md)
 - [AI Knowledge Bases](../concepts/ai-knowledge-bases.md)
 
 ## Notes

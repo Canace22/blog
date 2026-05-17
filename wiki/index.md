@@ -2,6 +2,7 @@
 
 ## Reports
 
+- [AI 工程化写作主轴：四主题索引与下一篇方向](reports/ai-engineering-theme-synthesis.md)（四组博文内核 + 共同主线 + 下一篇方向）
 - [消息推送：RSS、应用更新、网页版本更新与 diff 思维对照报告](reports/message-delivery-comparison-report.md)
 - [Harness Engineering 资料整理](reports/harness-engineering-reading-notes.md)
 - [从 Harness 到 Compiled Wiki：个人研究路线图](reports/harness-to-compiled-wiki-roadmap.md)
@@ -12,7 +13,7 @@
 ## Concepts
 
 - [提升 AI Coding 稳定性的经验上下文模式](concepts/agent-coding-stability.md)
-- [AI-assisted development](concepts/ai-assisted-development.md)
+- [AI 辅助开发](concepts/ai-assisted-development.md)
 - [Cursor Cookbook](concepts/cursor-cookbook.md)
 - [AI Knowledge Bases](concepts/ai-knowledge-bases.md)
 - [软件开发范式演进](concepts/software-development-paradigms.md)

@@ -33,7 +33,7 @@
 ## 相关概念
 
 - [AI 使用边界与提效反噬](../concepts/ai-usage-boundary-and-efficiency-backfire.md)
-- [AI-assisted development](../concepts/ai-assisted-development.md)
+- [AI 辅助开发](../concepts/ai-assisted-development.md)
 
 ---
 _Edited by assistant (Codex 5.3) on 2026-05-07._

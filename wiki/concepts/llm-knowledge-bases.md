@@ -34,7 +34,7 @@ An LLM knowledge base is a workflow where immutable source material is increment
 - [Source: Thread by @karpathy](../sources/thread-by-karpathy.md)
 - [Source: OpenClaw agent + memory-wiki](../sources/openclaw-agent-pi-mono.md) (external pattern pointer)
 - [Concept: AI Knowledge Bases](ai-knowledge-bases.md)
-- [Concept: AI-assisted development](ai-assisted-development.md)
+- [概念：AI 辅助开发](ai-assisted-development.md)
 
 ## Practical Loop
 

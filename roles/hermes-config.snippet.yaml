@@ -1,0 +1,114 @@
+# Hermes config 片段：把 roles/ 接入 ~/.hermes/config.yaml
+#
+# 用法：把下面的两个 section 合并到 ~/.hermes/config.yaml 的对应位置。
+# 注意：YAML 不支持深合并，要手工把条目并到已有的 agent.personalities / quick_commands 下，
+# 不要整段替换。
+#
+# 设计思路：
+# - personality 必须是 inline 字符串（Hermes 不支持文件引用），
+#   所以用"指针式 personality"——只放一行指令让模型去读 roles/xxx.md。
+# - quick_commands 只支持 exec / alias，不支持纯 prompt，
+#   所以用 alias 把 /blog-writer 这种短命令路由到 /personality blog-writer。
+# - 模型切换不能跟 personality 绑在一起做成一个 quick_command；
+#   规则多的角色（wiki-curator / blog-writer）建议 /personality 后再 /model 手动切。
+
+# ─────────────────────────────────────────────────────────────────────
+# 1) agent.personalities：把下面 4 条并入 ~/.hermes/config.yaml 的
+#    agent.personalities 下（跟 helpful/concise/kawaii 等并列）
+# ─────────────────────────────────────────────────────────────────────
+agent:
+  personalities:
+
+    # 翻译助手——短角色，inline 写完也行，但这里仍用文件指针以便统一维护
+    translator: >
+      You are operating as the "translator" role defined in
+      /Users/canace/Desktop/blog/roles/translator.md. Read that file once
+      using your file tools, then strictly follow its rules: detect input
+      language, translate CN↔EN, output in the prescribed sections.
+      Do not write code, draw diagrams, or do anything outside translation.
+
+    # 周报助手——输入 git log，输出归类后的 markdown
+    weekly-report: >
+      You are operating as the "weekly-report" role defined in
+      /Users/canace/Desktop/blog/roles/weekly-report.md. Read that file
+      first, then ask the user to paste their git log (or run the suggested
+      git command themselves), and produce the weekly report in the format
+      specified there.
+
+    # 博客写作——长角色，必须读文件
+    blog-writer: >
+      You are operating as the "blog-writer" role defined in
+      /Users/canace/Desktop/blog/roles/blog-writer.md. Read that file
+      thoroughly BEFORE responding. Honor all rules including front matter
+      template, style guidelines, and the immutability of source/_posts/*.md.
+      Start drafts in source/_drafts/ only.
+      推荐用 Claude/Sonnet 或 Gemini Pro 跑此角色——小模型对长规则衰减严重。
+
+    # Wiki 维护——最规则密的角色
+    wiki-curator: >
+      You are operating as the "wiki-curator" role defined in
+      /Users/canace/Desktop/blog/roles/wiki-curator.md. Read that file in
+      full BEFORE taking any action on the wiki. The wiki rules in that
+      file are authoritative; AGENTS.md is only a router. Follow the
+      Ingest / Query / Lint workflows exactly. Never modify source/_posts/.
+      建议先 /model 切到 claude-sonnet 或同等强度模型再启用本角色。
+
+# ─────────────────────────────────────────────────────────────────────
+# 2) quick_commands：把下面条目并入 ~/.hermes/config.yaml 的 quick_commands 下
+#    这样可以 /translator、/blog-writer 等一键切换
+# ─────────────────────────────────────────────────────────────────────
+quick_commands:
+
+  translator:
+    type: alias
+    target: /personality translator
+
+  weekly-report:
+    type: alias
+    target: /personality weekly-report
+
+  blog-writer:
+    type: alias
+    target: /personality blog-writer
+
+  wiki-curator:
+    type: alias
+    target: /personality wiki-curator
+
+  # 一键回到默认人设
+  reset-role:
+    type: alias
+    target: /personality helpful
+
+# ─────────────────────────────────────────────────────────────────────
+# 3) 可选：fallback_model
+#    如果你想 wiki-curator / blog-writer 跑长任务时自动 fallback 到强模型，
+#    把下面这段并入 ~/.hermes/config.yaml 的顶层（已有 fallback_providers: [] 那块附近）。
+#    需要先 `hermes auth login` 或者配好对应 API key。
+# ─────────────────────────────────────────────────────────────────────
+
+# fallback_model:
+#   provider: openrouter           # 或 nous / openai-codex
+#   model: anthropic/claude-sonnet-4
+#   # 触发条件：上游 429 / 529 / 503 / 连接失败时自动切
+
+# ─────────────────────────────────────────────────────────────────────
+# 怎么用
+# ─────────────────────────────────────────────────────────────────────
+#
+# 1. 在博客根目录启动 Hermes：
+#       cd ~/Desktop/blog && hermes
+#    AGENTS.md 自动加载，roles/ 通过 progressive subdirectory discovery 按需注入。
+#
+# 2. 想专注于某个任务时切角色：
+#       /blog-writer        # 进入博客写作模式
+#       /wiki-curator       # 进入 wiki 维护模式（建议先 /model 切到强模型）
+#       /translator         # 进入翻译模式
+#       /weekly-report      # 进入周报模式
+#       /reset-role         # 回到默认 helpful
+#
+# 3. 角色切换不会清空对话；要彻底隔离上下文，用 /new 或 /reset 开新会话。
+#
+# 4. 当前默认模型是 mimo-v2.5-pro（小模型）。简单任务（translator / weekly-report）
+#    够用；长规则角色（blog-writer / wiki-curator）建议手动 /model 切到强模型，
+#    或启用上面那段 fallback_model。

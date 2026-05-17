@@ -16,7 +16,7 @@ Short note pointing to an agent codebase used by OpenClaw and to OpenClaw’s me
 ## Related Concepts
 
 - [LLM Knowledge Bases](../concepts/llm-knowledge-bases.md)
-- [AI-assisted development](../concepts/ai-assisted-development.md)
+- [AI 辅助开发](../concepts/ai-assisted-development.md)
 
 ## Notes
 

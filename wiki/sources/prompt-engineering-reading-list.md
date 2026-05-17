@@ -15,7 +15,7 @@ Two-link reading list for prompt engineering (English and Chinese guide resource
 
 ## Related Concepts
 
-- [AI-assisted development](../concepts/ai-assisted-development.md)
+- [AI 辅助开发](../concepts/ai-assisted-development.md)
 
 ## Notes
 
