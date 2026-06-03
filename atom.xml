@@ -6,7 +6,7 @@
   <link href="https://canace.site/atom.xml" rel="self"/>
   
   <link href="https://canace.site/"/>
-  <updated>2026-05-10T03:52:23.049Z</updated>
+  <updated>2026-06-03T02:01:13.530Z</updated>
   <id>https://canace.site/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>RAG vs Graph RAG</title>
+    <link href="https://canace.site/rag-vs-graph-rag/"/>
+    <id>https://canace.site/rag-vs-graph-rag/</id>
+    <published>2026-06-02T23:41:25.000Z</published>
+    <updated>2026-06-03T02:01:13.530Z</updated>
+    
+    
+    <summary type="html">对比传统 RAG 与 Graph RAG 的工作原理、适用场景与成本差异，帮助选择合适的知识库检索方案。</summary>
+    
+    
+    
+    <category term="AI探索" scheme="https://canace.site/categories/intelligent/"/>
+    
+    
+    <category term="AI原理" scheme="https://canace.site/tags/AI%E5%8E%9F%E7%90%86/"/>
+    
+  </entry>
   
   <entry>
     <title>LLM 训练的真相：Andrej Karpathy 的分享笔记</title>
@@ -375,25 +394,6 @@
     
     
     <summary type="html">用AI结合SUS、PUEU和HEART模型优化界面，能提升可用性和用户体验，适合快速迭代改进设计。</summary>
-    
-    
-    
-    <category term="AI探索" scheme="https://canace.site/categories/intelligent/"/>
-    
-    
-    <category term="AI编程" scheme="https://canace.site/tags/AI%E7%BC%96%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>AI使人膨胀</title>
-    <link href="https://canace.site/ai-expansion/"/>
-    <id>https://canace.site/ai-expansion/</id>
-    <published>2026-01-05T01:10:12.000Z</published>
-    <updated>2026-04-02T02:52:43.965Z</updated>
-    
-    
-    <summary type="html">AI让人膨胀，效率不升反降，关键在认知错位和节奏失控。</summary>
     
     
     

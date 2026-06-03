@@ -1,0 +1,171 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="canace 的博客"><meta itemprop="name" content="2026-06-03 RAG 与 Graph RAG"><meta itemprop="image" content="https://raw.githubusercontent.com/Canace22/Assets/main/images/snow-other.png"><meta property="og:image" content="https://raw.githubusercontent.com/Canace22/Assets/main/images/snow-other.png"><meta name="description" itemprop="description" content="&lt;h2 id=&quot;传统-RAG（检索增强生成）&quot;&gt;&lt;a href=&quot;#传统-RAG（检索增强生成）&quot; class=&quot;headerlink&quot; title=&quot;传统 RAG（检索增强生成）&quot;&gt;&lt;/a&gt;传统 RAG（检索增强生成）&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;RAG（Retrieval-Augmented Generation）&lt;/strong&gt; 在问答前先从知识库取相关片段，再交给大模型生成答案。典型步骤：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;阶段&lt;/th&gt;
+&lt;th&gt;做什么&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td&gt;切块（Chunking）&lt;/td&gt;
+&lt;td&gt;把 PDF、Word 等切成固定长度文本块&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;向量化（Embedding）&lt;/td&gt;
+&lt;td&gt;文本块 → 向量，存入向量库&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;检索（Retrieval）&lt;/td&gt;
+&lt;td&gt;问题也向量化，按相似度取 Top-K 块&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;生成&lt;/td&gt;
+&lt;td&gt;把块作为 context，由 LLM 总结回答&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;强项&lt;/strong&gt;：语义检索、自然语言提问、实现与运维相对轻（向量库为主）。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;弱项（源文归纳）&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;局部召回&lt;/strong&gt;：问「三大核心风险」时，若风险分散在多章，仅靠含「风险」字样的块难做全局归纳。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;跨块关系&lt;/strong&gt;：事实分布在不相邻文档时（如 A 文档法人、B 文档控股链），难自动拼成多跳推理。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;Graph-RAG&quot;&gt;&lt;a href=&quot;#Graph-RAG&quot; class=&quot;headerlink&quot; title=&quot;Graph RAG&quot;&gt;&lt;/a&gt;Graph RAG&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Graph RAG&lt;/strong&gt;（微软等推动）把文档视为 &lt;strong&gt;实体—关系网络&lt;/strong&gt;，而非孤立文本块：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;实体与关系抽取&lt;/strong&gt;：LLM 从文本抽出人&amp;#x2F;事&amp;#x2F;物及「属于、导致」等关系。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;图谱构建&lt;/strong&gt;：实体与关系连成知识图谱。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;社区聚类（Community Detection）&lt;/strong&gt;：关系紧密的子图划为社区，并为每个社区 &lt;strong&gt;预生成摘要&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;检索与生成&lt;/strong&gt;：除具体实体外，可调用社区摘要，回答宏观、关系型问题。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;强项&lt;/strong&gt;：全书级故事线、用户反馈核心主题、多跳关系（如 A → B → C）。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;成本&lt;/strong&gt;：建图与聚类阶段 LLM 调用多；常需人工校验实体关系；除向量库外常需图数据库（如 Neo4j，商业版能力更完整）。&lt;/p&gt;
+&lt;h2 id=&quot;与仓库内其它概念的关系&quot;&gt;&lt;a href=&quot;#与仓库内其它概念的关系&quot; class=&quot;headerlink&quot; title=&quot;与仓库内其它概念的关系&quot;&gt;&lt;/a&gt;与仓库内其它概念的关系&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href=&quot;../concepts/ai-knowledge-bases.html&quot;&gt;AI Knowledge Bases&lt;/a&gt;&lt;/strong&gt;：产品化知识库多在 &lt;strong&gt;查询时&lt;/strong&gt; 检索上传文档；RAG 是其中常见底座。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href=&quot;../concepts/llm-knowledge-bases.html&quot;&gt;LLM Knowledge Bases&lt;/a&gt;&lt;/strong&gt;：维护型 wiki 是 &lt;strong&gt;预编译合成&lt;/strong&gt;，与「每次问才捞碎片」的 Plain RAG 形成对照；可与 RAG 检索层组合使用。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href=&quot;../concepts/lop-patterns.html&quot;&gt;LOP 模式&lt;/a&gt;&lt;/strong&gt; 中的「RAG 式生成」：IDE 里 &lt;code&gt;@codebase&lt;/code&gt;、向量库即传统 RAG 形态。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href=&quot;../concepts/compiled-knowledge-vault.html&quot;&gt;编译式知识库&lt;/a&gt;&lt;/strong&gt; &amp;#x2F; &lt;a href=&quot;../sources/pinecone-nexus-knowledge-engine.html&quot;&gt;Pinecone Nexus&lt;/a&gt;：企业侧用 &lt;strong&gt;预编译 artifact&lt;/strong&gt; 降低 Agentic RAG 的查询时 token 成本，与 Graph RAG「先建结构再答」同属 &lt;strong&gt;先投入、后检索更省&lt;/strong&gt; 的思路，但技术路径不同（artifact&amp;#x2F;图社区 vs 纯向量块）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;选型（源文结论）&quot;&gt;&lt;a href=&quot;#选型（源文结论）&quot; class=&quot;headerlink&quot; title=&quot;选型（源文结论）&quot;&gt;&lt;/a&gt;选型（源文结论）&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;场景&lt;/th&gt;
+&lt;th&gt;倾向&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td&gt;结构化、块级语义检索够用&lt;/td&gt;
+&lt;td&gt;传统 RAG&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;跨文档关系、宏观摘要、多跳推理&lt;/td&gt;
+&lt;td&gt;Graph RAG，或 &lt;strong&gt;RAG + Graph RAG&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;成本敏感、语料可切块即可&lt;/td&gt;
+&lt;td&gt;优先 RAG，慎用全量 Graph 管线&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;h2 id=&quot;来源&quot;&gt;&lt;a href=&quot;#来源&quot; class=&quot;headerlink&quot; title=&quot;来源&quot;&gt;&lt;/a&gt;来源&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;../sources/rag-vs-graph-rag.html&quot;&gt;RAG VS Graph RAG&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;../sources/ynarwal-how-llms-work-visual.html&quot;&gt;How LLMs Work（可视化长文）&lt;/a&gt;（RAG 章节背景）&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;../concepts/large-language-model-fundamentals.html&quot;&gt;大语言模型工作原理概览&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;em&gt;维护：Cursor Agent，2026-06-03。&lt;/em&gt;&lt;/p&gt;
+"><title>2026-06-03 RAG 与 Graph RAG</title><link rel="stylesheet" type="text/css" href="../../css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/normalize.css/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="../../favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="../../favicon.ico"><link rel="apple-touch-icon" href="../../apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="../../apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="../../atom.xml"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/clipboard/dist/clipboard.min.js"></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.js"></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.css"><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">2026-06-03 RAG 与 Graph RAG</h1><a id="logo" href="../../.">Canace 的博客</a><p class="description">Tomorrow is another day</p></div><div id="nav-menu"><a href="../../."><i class="fa fa-home"> 主页</i></a><a href="../../archives/"><i class="fa fa-archive"> 文章归档</i></a><a class="current" href="../"><i class="fa fa-book"> 知识库</i></a><a href="../../about/"><i class="fa fa-user"> 关于我</i></a><a href="../../atom.xml"><i class="fa fa-rss"> 订阅</i></a><a id="nav-random-article" href="#" title="随机文章" aria-label="随机文章"><i class="fa fa-random"> 随机文章</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">2026-06-03 RAG 与 Graph RAG</h1><div class="clear"><div class="toc-article" id="toc"><div class="toc-title">目录</div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%A0%E7%BB%9F-RAG%EF%BC%88%E6%A3%80%E7%B4%A2%E5%A2%9E%E5%BC%BA%E7%94%9F%E6%88%90%EF%BC%89"><span class="toc-text">传统 RAG（检索增强生成）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Graph-RAG"><span class="toc-text">Graph RAG</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8E%E4%BB%93%E5%BA%93%E5%86%85%E5%85%B6%E5%AE%83%E6%A6%82%E5%BF%B5%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-text">与仓库内其它概念的关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%89%E5%9E%8B%EF%BC%88%E6%BA%90%E6%96%87%E7%BB%93%E8%AE%BA%EF%BC%89"><span class="toc-text">选型（源文结论）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9D%A5%E6%BA%90"><span class="toc-text">来源</span></a></li></ol></div></div><div class="post-content"><h2 id="传统-RAG（检索增强生成）"><a href="#传统-RAG（检索增强生成）" class="headerlink" title="传统 RAG（检索增强生成）"></a>传统 RAG（检索增强生成）</h2><p><strong>RAG（Retrieval-Augmented Generation）</strong> 在问答前先从知识库取相关片段，再交给大模型生成答案。典型步骤：</p>
+<table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>做什么</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>切块（Chunking）</td>
+<td>把 PDF、Word 等切成固定长度文本块</td>
+</tr>
+<tr>
+<td>向量化（Embedding）</td>
+<td>文本块 → 向量，存入向量库</td>
+</tr>
+<tr>
+<td>检索（Retrieval）</td>
+<td>问题也向量化，按相似度取 Top-K 块</td>
+</tr>
+<tr>
+<td>生成</td>
+<td>把块作为 context，由 LLM 总结回答</td>
+</tr>
+</tbody></table>
+<p><strong>强项</strong>：语义检索、自然语言提问、实现与运维相对轻（向量库为主）。</p>
+<p><strong>弱项（源文归纳）</strong>：</p>
+<ul>
+<li><strong>局部召回</strong>：问「三大核心风险」时，若风险分散在多章，仅靠含「风险」字样的块难做全局归纳。</li>
+<li><strong>跨块关系</strong>：事实分布在不相邻文档时（如 A 文档法人、B 文档控股链），难自动拼成多跳推理。</li>
+</ul>
+<h2 id="Graph-RAG"><a href="#Graph-RAG" class="headerlink" title="Graph RAG"></a>Graph RAG</h2><p><strong>Graph RAG</strong>（微软等推动）把文档视为 <strong>实体—关系网络</strong>，而非孤立文本块：</p>
+<ol>
+<li><strong>实体与关系抽取</strong>：LLM 从文本抽出人&#x2F;事&#x2F;物及「属于、导致」等关系。</li>
+<li><strong>图谱构建</strong>：实体与关系连成知识图谱。</li>
+<li><strong>社区聚类（Community Detection）</strong>：关系紧密的子图划为社区，并为每个社区 <strong>预生成摘要</strong>。</li>
+<li><strong>检索与生成</strong>：除具体实体外，可调用社区摘要，回答宏观、关系型问题。</li>
+</ol>
+<p><strong>强项</strong>：全书级故事线、用户反馈核心主题、多跳关系（如 A → B → C）。</p>
+<p><strong>成本</strong>：建图与聚类阶段 LLM 调用多；常需人工校验实体关系；除向量库外常需图数据库（如 Neo4j，商业版能力更完整）。</p>
+<h2 id="与仓库内其它概念的关系"><a href="#与仓库内其它概念的关系" class="headerlink" title="与仓库内其它概念的关系"></a>与仓库内其它概念的关系</h2><ul>
+<li><strong><a href="../concepts/ai-knowledge-bases.html">AI Knowledge Bases</a></strong>：产品化知识库多在 <strong>查询时</strong> 检索上传文档；RAG 是其中常见底座。</li>
+<li><strong><a href="../concepts/llm-knowledge-bases.html">LLM Knowledge Bases</a></strong>：维护型 wiki 是 <strong>预编译合成</strong>，与「每次问才捞碎片」的 Plain RAG 形成对照；可与 RAG 检索层组合使用。</li>
+<li><strong><a href="../concepts/lop-patterns.html">LOP 模式</a></strong> 中的「RAG 式生成」：IDE 里 <code>@codebase</code>、向量库即传统 RAG 形态。</li>
+<li><strong><a href="../concepts/compiled-knowledge-vault.html">编译式知识库</a></strong> &#x2F; <a href="../sources/pinecone-nexus-knowledge-engine.html">Pinecone Nexus</a>：企业侧用 <strong>预编译 artifact</strong> 降低 Agentic RAG 的查询时 token 成本，与 Graph RAG「先建结构再答」同属 <strong>先投入、后检索更省</strong> 的思路，但技术路径不同（artifact&#x2F;图社区 vs 纯向量块）。</li>
+</ul>
+<h2 id="选型（源文结论）"><a href="#选型（源文结论）" class="headerlink" title="选型（源文结论）"></a>选型（源文结论）</h2><table>
+<thead>
+<tr>
+<th>场景</th>
+<th>倾向</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>结构化、块级语义检索够用</td>
+<td>传统 RAG</td>
+</tr>
+<tr>
+<td>跨文档关系、宏观摘要、多跳推理</td>
+<td>Graph RAG，或 <strong>RAG + Graph RAG</strong></td>
+</tr>
+<tr>
+<td>成本敏感、语料可切块即可</td>
+<td>优先 RAG，慎用全量 Graph 管线</td>
+</tr>
+</tbody></table>
+<h2 id="来源"><a href="#来源" class="headerlink" title="来源"></a>来源</h2><ul>
+<li><a href="../sources/rag-vs-graph-rag.html">RAG VS Graph RAG</a></li>
+<li><a href="../sources/ynarwal-how-llms-work-visual.html">How LLMs Work（可视化长文）</a>（RAG 章节背景）</li>
+<li><a href="../concepts/large-language-model-fundamentals.html">大语言模型工作原理概览</a></li>
+</ul>
+<hr>
+<p><em>维护：Cursor Agent，2026-06-03。</em></p>
+</div></div></div></div><div class="pure-u-1 pure-u-md-1-4"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 常用文档</i></div><ul></ul><a href="/git-common-commands" title="Git 文档" target="_blank">Git 文档</a><ul></ul><a href="/common-programming-prompt-words" title="常用开发提示词" target="_blank">常用开发提示词</a></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="../../categories/soft/">软技能与思考</a><span class="category-list-count">51</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/intelligent/">AI探索</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/cli/">工程化与运维</a><span class="category-list-count">51</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/web/">Web开发</a><span class="category-list-count">142</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/coding/">编程基础</a><span class="category-list-count">42</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/site/">网站建设</a><span class="category-list-count">5</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="../../tags/essays/" style="font-size: 15px; color: #3679a7">随笔</a> <a href="../../tags/AI%E5%8E%9F%E7%90%86/" style="font-size: 15px; color: #96aebf">AI原理</a> <a href="../../tags/performance/" style="font-size: 15px; color: #88a6bb">性能优化</a> <a href="../../tags/backend/" style="font-size: 15px; color: #5f90b1">后端</a> <a href="../../tags/Python-Go-%E5%85%B6%E4%BB%96/" style="font-size: 15px; color: #96aebf">Python/Go/其他</a> <a href="../../tags/api-services/" style="font-size: 15px; color: #bec4c9">API&服务</a> <a href="../../tags/computer-science/" style="font-size: 15px; color: #2972a4">计算机科学</a> <a href="../../tags/JavaScript-TypeScript/" style="font-size: 15px; color: #0e639d">JavaScript&TypeScript</a> <a href="../../tags/%E8%81%8C%E4%B8%9A%E5%8F%91%E5%B1%95/" style="font-size: 15px; color: #88a6bb">职业发展</a> <a href="../../tags/AI%E7%BC%96%E7%A8%8B/" style="font-size: 15px; color: #7a9fb8">AI编程</a> <a href="../../tags/%E7%BF%BB%E8%AF%91/" style="font-size: 15px; color: #ccc">翻译</a> <a href="../../tags/frontend/" style="font-size: 15px; color: #005b9a">前端</a> <a href="../../tags/frameworks-libs/" style="font-size: 15px; color: #5288ae">框架与库</a> <a href="../../tags/notes/" style="font-size: 15px; color: #a3b5c2">笔记</a> <a href="../../tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/" style="font-size: 15px; color: #96aebf">系统设计</a> <a href="../../tags/programming-languages/" style="font-size: 15px; color: #b1bdc5">编程语言</a> <a href="../../tags/css-visualization/" style="font-size: 15px; color: #1b6aa1">CSS与可视化</a> <a href="../../tags/build-deploy/" style="font-size: 15px; color: #6d97b5">构建与部署</a> <a href="../../tags/dev-tools/" style="font-size: 15px; color: #4481ab">开发工具</a> <a href="../../tags/Agent-Skill/" style="font-size: 15px; color: #ccc">Agent,Skill</a> <a href="../../tags/Node-js/" style="font-size: 15px; color: #88a6bb">Node.js</a> <a href="../../tags/cross-platform/" style="font-size: 15px; color: #96aebf">跨端方案</a> <a href="../../tags/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/" style="font-size: 15px; color: #ccc">项目管理</a> <a href="../../tags/%E7%9F%A5%E8%AF%86%E5%BA%93/" style="font-size: 15px; color: #ccc">知识库</a> <a href="../../tags/code-quality/" style="font-size: 15px; color: #bec4c9">代码质量</a></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2026 <a href="../../." rel="nofollow">Canace 的博客</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="../../js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.js" async></script><script type="text/javascript" src="../../js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.css"><link rel="stylesheet" type="text/css" href="../../css/search.css?v=0.0.0"><script type="text/javascript" src="../../js/search.js?v=0.0.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+   search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="/js/copycode.js" successtext="复制成功!"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/mermaid@11.14.0/dist/mermaid.min.js"></script><script type="text/javascript">document.addEventListener('DOMContentLoaded', function () {
+  if (!window.mermaid) return;
+  mermaid.initialize({"theme":"default","logLevel":5,"startOnLoad":true,"arrowMarkerAbsolute":false,"flowchart":{"htmlLabels":true,"useMaxWidth":true,"curve":"linear"},"sequence":{"diagramMarginX":50,"diagramMarginY":10,"actorMargin":50,"width":150,"height":65,"boxMargin":10,"boxTextMargin":5,"noteMargin":10,"messageMargin":35,"mirrorActors":true,"bottomMarginAdj":1,"useMaxWidth":true},"gantt":{"titleTopMargin":25,"barHeight":20,"barGap":4,"topPadding":50,"leftPadding":75,"gridLineStartPadding":35,"fontSize":11,"fontFamily":"\"Open-Sans\", \"sans-serif\"","numberSectionStyles":4,"axisFormat":"%Y-%m-%d"},"class":{},"git":{}});
+});
+</script><script type="text/javascript" src="../../js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="../../js/smartresize.js?v=0.0.0"></script><script type="text/javascript">(function () {
+  var urls = ["/../../2024-year-end-summary/","/../../AI-knowledge-base/","/../../6-common-website-usability-issues-and-solutions/","/../../Django-channels/","/../../MySQL/","/../../NP-P-NPC/","/../../WebRTC/","/../../JavaScript-call-apply-bind/","/../../about-doing-technology/","/../../about-forgetfulness/","/../../agent-coding-stability/","/../../add-skeleton-screen/","/../../ai-coding-ide/","/../../ai-coding-share/","/../../ai-expansion/","/../../ai-make-you-boring/","/../../ai-coding-game/","/../../ai-optimize-ui/","/../../ai-worker/","/../../angel-love/","/../../angular-navigation-content-linkage/","/../../ant-design-pitfalls/","/../../ants/","/../../algorithm-book-notes-for-everyone/","/../../axios-network-request-encapsulation/","/../../async-data-console-issues/","/../../binary-search/","/../../beego-getting-started/","/../../blog-category/","/../../bash-data-processing/","/../../boolean-variables-in-project-application/","/../../box-model/","/../../bracket-matching/","/../../brief-discussion-on-dns-pollution/","/../../brief-discussion-on-visual-form-design/","/../../browser-kernel-and-writing/","/../../build-tinymce-img-plugin/","/../../build-typescript-library/","/../../calculate-rice-cooker-reservation-time/","/../../canvas-draw-dynamic-path/","/../../build-django-blog-system/","/../../cascade/","/../../centos-server-login-config/","/../../canvas-draw-sprite-export/","/../../ckeditor-usage-in-angular/","/../../climbing-stairs/","/../../common-algorithm-ideas/","/../../common-git-workflows/","/../../common-image-format-comparison/","/../../code-optimization/","/../../common-programming-prompt-words/","/../../common-regular-expressions/","/../../computer-graphics-1/","/../../computer-graphics-2/","/../../common-terminal-commands/","/../../count-beautiful-subarrays/","/../../count-number-of-islands/","/../../count-total-elements-of-array-objects/","/../../create-object-based-on-null/","/../../cross-origin-resource-sharing/","/../../css-background-image-application/","/../../css-layout-guide/","/../../css-positioning-detailed/","/../../css-notes/","/../../css-circular-progress-bar/","/../../css-series-basics/","/../../css-series-flow-and-dimensions/","/../../css-series-box-dimensions/","/../../css-series-flow-destruction-and-protection/","/../../css-positioning/","/../../css-series-history-and-document-flow/","/../../css-series-cascade/","/../../css-series-inline-elements-and-flow/","/../../css-series-text-processing/","/../../css-tips/","/../../css2-block-element-center/","/../../css-two-color-pie-chart/","/../../cursor-debugger/","/../../cursor-skill-web-search-download-movie/","/../../custom-github-activity/","/../../css3-animation-vs-js-animation/","/../../deep-copy-of-arrays-and-objects/","/../../deep-work-philosophy-interpretation/","/../../disable-image-dragging/","/../../docker-documentation/","/../../docker-frontend-environment-setup/","/../../dropdown-list-implementation/","/../../doing-things-with-vscode/","/../../element-plus-table-component-scaling-issue-solution/","/../../egg/","/../../ffmpeg-extract-audio-track/","/../../extra-thick-chicken-soup/","/../../es2020-new-features/","/../../find-median-sorted-arrays/","/../../first-day-morning-run/","/../../firefox-remove-various-dashed-borders/","/../../file-naming-pitfalls-record/","/../../first-screen-optimization/","/../../first-screen-time-vs-white-screen-time/","/../../flutter-learning-notes-dart-basics/","/../../flutter-learning-notes-quick-start/","/../../flow-simple-tutorial/","/../../fix-github-image-issue-on-mac/","/../../four-js-tips/","/../../frontend-performance-optimization/","/../../fullscreen-solution-for-webpage-or-html-elements/","/../../frontend-xx-dockerization/","/../../frontend-draw-graphic-captcha/","/../../fun-console/","/../../function-currying/","/../../functional-programming/","/../../gemini-new-session-memory/","/../../generate-random-array-in-specified-range/","/../../function-without-global-variable-counting/","/../../get-css-style/","/../../get-longest-common-prefix/","/../../git-common-commands/","/../../git-domain-config/","/../../git-environment-config/","/../../ghost-whitespace-nodes/","/../../git-usage-guide/","/../../gitbook-generate-ebook/","/../../github-action-auto-deploy-page/","/../../github-travis-auto-build-vue-to-gitpage/","/../../gitlab-ci-config-template/","/../../github-practical-tips/","/../../go-getting-started/","/../../hexo-blog-migration/","/../../gitpage-hexo/","/../../hexo-getting-started/","/../../hexo-math-formula-support/","/../../homebrew-common-commands/","/../../how-ai-lets-us-lie-flat/","/../../how-to-optimize-animation/","/../../how-to-create-a-robust-system/","/../../html-to-text-js/","/../../html-notes/","/../../http-server/","/../../http-notes/","/../../implement-array-flatten/","/../../improve-work-efficiency-with-cursor-practical-notes/","/../../interesting-css-cascade-issues/","/../../image-lazy-loading-implementation/","/../../interview-strategy/","/../../issue-03/","/../../issue-05/","/../../issue-04/","/../../issue-06/","/../../issue-07/","/../../issue-08/","/../../issue-09/","/../../issue-10/","/../../issue-1/","/../../issue-11/","/../../issue-12/","/../../issue-14/","/../../issue-2/","/../../issue-13/","/../../japanese-learning-notes/","/../../javaScript-promise/","/../../issue-15/","/../../javascript-basics-primitive-vs-reference-types/","/../../javascript-basics-type-conversion/","/../../javascript-common-code-snippets/","/../../javascript-detect-caps-lock/","/../../javascript-built-in-deep-copy/","/../../javascript-functions/","/../../javascript-new-implementation-principle/","/../../javascript-soul-questions/","/../../javascript-tricks/","/../../javascript-object-oriented-programming/","/../../js-execution/","/../../js-linked-list-implementation/","/../../js-overview/","/../../js-modal-blog/","/../../js-string-to-base64/","/../../js-timezone/","/../../jump-to-specific-position-in-article/","/../../key-value-role-in-vue-components/","/../../knn-algorithm/","/../../kindness/","/../../knowledge-anxiety/","/../../leave-page-popup/","/../../kpi-vs-okr/","/../../linux-background-script-execution/","/../../llm-training-truth/","/../../lodash-source-analysis-array-chunk/","/../../mac-debug-ios-web-page/","/../../lodash-source-analysis-array-slice/","/../../llm-wiki/","/../../manchester-by-the-sea/","/../../mac-install-mysql/","/../../method-to-login-to-south-china-normal-university-campus-network/","/../../mini-program-tabs-sticky/","/../../model-training-steps/","/../../modify-autofill-style/","/../../modify-scrollbar-style-compatible/","/../../module-specifications/","/../../n-n-order-matrix-algorithm/","/../../narrative-research/","/../../node-notes-in-depth/","/../../node-version-management/","/../../nodejs-module-mechanism/","/../../nodeJs/","/../../nodejs-notes/","/../../nodejs-config/","/../../npm-common-commands/","/../../number-precise-to-two-decimal-places/","/../../object-property-value-monitoring/","/../../one-click-generate-responsive-table/","/../../notes-about-writing-weekly-reports/","/../../package-json-field-list/","/../../openclaw-usage-experience/","/../../palindrome-number-judgment/","/../../personal-knowledge-base/","/../../pinyin-learning-project-notes/","/../../pagination-algorithm/","/../../pixi-basics/","/../../pixi-js-sprite-loading-cache-removal/","/../../prisma-getting-started-guide/","/../../product-updates-rss-file-diff-mental-model/","/../../port-number-modification/","/../../pixijs-vertexData-null/","/../../proxy-observer-pattern/","/../../project-modularization-principles/","/../../python-pitfalls-collection/","/../../qwen-milk-tea-ui/","/../../python3-installation/","/../../rag-vs-graph-rag/","/../../react-hooks-create-movie-app/","/../../recursive-tree/","/../../refactoring-vs-architecture/","/../../regular-expressions/","/../../record-service-degradation-due-to-emergency/","/../../remove-parent-nodes-with-duplicate-child-ids/","/../../removeDuplicates/","/../../removeElement/","/../../reverse-integer/","/../../reverse-words-in-string/","/../../roman-numerals-to-integer/","/../../rss-telegram-selfhost/","/../../scheduled-tasks/","/../../rhythm-psychology/","/../../scroll-pagination/","/../../singly-linked-list-concatenation/","/../../science-popularization/","/../../settimeout-simulate-setinterval/","/../../sentence-excerpts/","/../../software-version-number-definition/","/../../some-concepts/","/../../ss-installation/","/../../solve-github-dns-pollution-issue/","/../../string-and-code-rigor/","/../../sublime-text-nodejs-config/","/../../systematic-method-for-fragmented-reading-knowledge/","/../../table-cell-equal-division/","/../../talking-about-vuex/","/../../talking-about-browser-cache-mechanism/","/../../talking-about-webpage-adaptive-and-responsive-layout/","/../../tcp-ip-three-way-handshake/","/../../thoughts-on-ad-blocker-plugins/","/../../thoughts-on-branch-management/","/../../thoughts-on-technical-growth/","/../../three-js-basics-practice/","/../../time-complexity-vs-space-complexity/","/../../timestamp-to-date/","/../../translate-use-claude-code/","/../../time-zero/","/../../two-sum-problem/","/../../ubuntu-configure-frontend-environment/","/../../ubuntu-install-tensorflow/","/../../unavoidable-bug-chrome-translation-caused-trouble/","/../../ubuntu-configure-ss/","/../../typescript-environment-config/","/../../understanding-byte-order/","/../../understanding-instanceof/","/../../understanding-cookies/","/../../validate-string/","/../../vscode-code-formatting-summary/","/../../vue-data-driven-view-implementation/","/../../vue-config-template/","/../../variables/","/../../vue-dynamic-change-title/","/../../vue-dynamic-component-import-note-not-async/","/../../vue-test-unit/","/../../vue-details-i-didnt-know/","/../../vue-project-setup-steps/","/../../vue3-notes/","/../../web-performance-optimization-debounce/","/../../web-security-csrf/","/../../web-security-xss-attack/","/../../webpack-dynamic-modify-resource-domain/","/../../webpack-gulp-bundle-vue-component-library/","/../../webpack5-new-features-module-federation-notes/","/../../wechat-mini-program-pitfalls/","/../../webpage-version-update-popup-implementation/","/../../webpack/","/../../what-happened-to-vue/","/../../what-happens-from-url-to-display/","/../../why-frontend-needs-framework/","/../../why-graphics-card/","/../../why-not-let-ai-write-for-us/","/../../why-write-wechat-official-account/","/../../windows-tricks/","/../../wordpress-installation/","/../../why-we-need-to-read/","/../../words-of-experience/","/../../writing-a-good-claude-md/","/../../wsl-config/","/../../yml-file-operations/","/../../work-for/"];
+  var el = document.getElementById('nav-random-article');
+  if (!el) return;
+  el.addEventListener('click', function (e) {
+    e.preventDefault();
+    if (!urls.length) return;
+    var next = urls[Math.floor(Math.random() * urls.length)];
+    if (next) window.location.href = next;
+  });
+})();</script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":200,"height":200},"mobile":{"show":false},"react":{"opacity":0.7},"log":false});</script></body></html>
