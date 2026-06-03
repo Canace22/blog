@@ -123,8 +123,8 @@
 
 ## 相关页面
 
-- [Harness Engineering 资料整理](harness-engineering-reading-notes.md)
-- [博客草稿：我原来写的项目规则、Skill、知识库，其实已经是在做 Harness Engineering](harness-engineering-blog-draft.md)
+- [Harness Engineering 资料整理](../reports/harness-engineering-reading-notes.md)
+- [博客草稿：我原来写的项目规则、Skill、知识库，其实已经是在做 Harness Engineering](../reports/harness-engineering-blog-draft.md)
 - [Harness Engineering](../concepts/harness-engineering.md)
 - [LLM 维护的知识库](../concepts/llm-maintained-wiki.md)
 - [编译式知识库](../concepts/compiled-knowledge-vault.md)

@@ -24,4 +24,4 @@
 ## 关联概念
 
 - [假设驱动 AI 调试](../concepts/hypothesis-driven-ai-debugging.md)
-- [Karpathy autoresearch（来源）](karpathy-autoresearch.md)
+- [Karpathy autoresearch（来源）](../sources/karpathy-autoresearch.md)

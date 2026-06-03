@@ -26,9 +26,11 @@
 
 ## 另见（本库相近资料）
 
-- [Promt 工程师（阅读链接）](prompt-engineering-reading-list.md)：Prompt Engineering 通用入门资源。
-- [Promt 英语单词（编程提示词常用动词）](prompt-vocabulary-for-coding.md)：写 prompt 时常用的英文动词表。
-- [常用开发提示词](common-programming-prompt-words.md)：博文沉淀的高频提示词清单。
+- [Promt 工程师（阅读链接）](../sources/prompt-engineering-reading-list.md)：Prompt Engineering 通用入门资源。
+- [Promt 英语单词（编程提示词常用动词）](../sources/prompt-vocabulary-for-coding.md)：写 prompt 时常用的英文动词表。
+- [常用开发提示词](../sources/common-programming-prompt-words.md)：博文沉淀的高频提示词清单。
+- [Grok 会话摘录：repeat / redundant](../sources/grok-vocabulary-repeat-redundant.md)
+- [生成式辩证可能性空间搜索](../concepts/generative-dialectical-possibility-space-search.md)
 
 ---
 

@@ -40,7 +40,7 @@
 
 ## 与已有概念的关系
 
-- [LLM 维护的知识库](llm-maintained-wiki.md) 更强调“让 agent 持续维护 wiki”
+- [LLM 维护的知识库](../concepts/llm-maintained-wiki.md) 更强调“让 agent 持续维护 wiki”
 - 本页更强调“wiki 维护到什么程度，才足够稳定地服务 agent”
 
 ## 来源
@@ -48,3 +48,4 @@
 - [使用大模型来维护知识库](../sources/llm-wiki.md)
 - [OpenClaw Memory Wiki](../sources/openclaw-memory-wiki.md)
 - [Pinecone Nexus：Knowledge Engine](../sources/pinecone-nexus-knowledge-engine.md)——企业级"预编译知识"的产品化实践，Context Compiler 自动构建 artifact 层，KRAFTBench 显示 token 成本比 Agentic RAG 低 7 倍
+- [RAG 与 Graph RAG](../concepts/rag-and-graph-rag.md)——查询时向量 RAG / 图 RAG 与「预编译 wiki」的对照

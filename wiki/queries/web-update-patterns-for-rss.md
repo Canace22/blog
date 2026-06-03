@@ -122,7 +122,9 @@ SSE 比 WebSocket 更适合 RSS 这类“单向通知”场景。
 
 ## 相关页面
 
+- [消息推送对照报告](../reports/message-delivery-comparison-report.md)
 - [来源：Web端版本更新弹窗实现](../sources/webpage-version-update-popup-implementation.md)
+- [查询：`git diff` 与 Web 版本更新弹窗是否异曲同工](../queries/git-diff-and-web-version-check.md)
 - [来源：Gemini 对话——indes/flowerss-bot 项目原理](../sources/gemini-flowerss-bot-principle.md)
 - [RSS / Telegram 自建推送](../concepts/rss-telegram-selfhost.md)
-- [查询：Web端版本更新弹窗的数据推送跟 RSS 方案有什么异同](web-version-popup-vs-rss.md)
+- [查询：Web端版本更新弹窗的数据推送跟 RSS 方案有什么异同](../queries/web-version-popup-vs-rss.md)

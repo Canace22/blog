@@ -38,6 +38,7 @@
 - [DeepSeek-V4](concepts/deepseek-v4.md)
 - [生成式辩证可能性空间搜索](concepts/generative-dialectical-possibility-space-search.md)
 - [Electron 打包与发布渠道](concepts/electron-build-channels.md)
+- [RAG 与 Graph RAG](concepts/rag-and-graph-rag.md)
 
 ## Queries
 
@@ -71,7 +72,7 @@
 - [单向列表拼接](sources/singly-linked-list-concatenation.md) — `source/_posts/singly-linked-list-concatenation.md`
 - [罗马数字转整数](sources/roman-numerals-to-integer.md) — `source/_posts/roman-numerals-to-integer.md`
 - [原地删除数组中的重复值](sources/removeDuplicates.md) — `source/_posts/removeDuplicates.md`
-- [软件开发范式演进](sources/software-development-paradigms.md) — `source/_posts/software-development-paradigms.md`
+- [软件开发范式演进](sources/software-development-paradigms.md) — Telegram 摘录（无对应 `source/_posts`）
 - [Cursor Cookbook](sources/cursor-cookbook.md)
 - [整数反转](sources/reverse-integer.md) — `source/_posts/reverse-integer.md`
 - [原地删除数组中的指定元素](sources/removeElement.md) — `source/_posts/removeElement.md`
@@ -350,6 +351,8 @@
 - [我们是否需要AI知识库（笔记版）](sources/why-we-need-ai-knowledge-bases.md) — 早期短笔记版（来自 `AI 探索/`，与博文 `AI-knowledge-base.md` 互为对照）
 - [@123olp —— 生成式辩证可能性空间搜索（X）](sources/x-123olp-generative-dialectical-possibility-search.md) — 用户提供的帖文摘录
 - [Claude CLI 速记：`/effort` 与 `/model`](sources/claude-cli-effort-model-commands.md) — 终端常用斜杠命令速记
+- [RAG VS Graph RAG](sources/rag-vs-graph-rag.md) — `source/_posts/rag-vs-graph-rag.md`
+- [软件开发范式演进](sources/software-development-paradigms.md) — Telegram 摘录（无对应 `source/_posts`）
 
 ### 软技能与思考
 

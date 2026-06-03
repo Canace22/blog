@@ -23,6 +23,6 @@ Source contains no additional commentary beyond the references.
 
 ## 另见（本库相近资料）
 
-- [Promt 英语单词（编程提示词常用动词）](prompt-vocabulary-for-coding.md)
-- [反向提示词工程](reverse-prompt-engineering.md)：把同一答案反推为 prompt 的思路。
-- [常用开发提示词](common-programming-prompt-words.md)
+- [Promt 英语单词（编程提示词常用动词）](../sources/prompt-vocabulary-for-coding.md)
+- [反向提示词工程](../sources/reverse-prompt-engineering.md)：把同一答案反推为 prompt 的思路。
+- [常用开发提示词](../sources/common-programming-prompt-words.md)

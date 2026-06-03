@@ -31,7 +31,7 @@ flowchart LR
 
 ## 与仓库内邻近概念的关系
 
-- **[假设驱动 AI 调试](hypothesis-driven-ai-debugging.md)**：同样强调**假设（路径）外化**、**证据**与**小步实验**；本概念额外突出辩证展开（正反、矛盾、Steelman）与「可能性空间」上的显式搜索/剪枝语言。二者可对照使用：前者偏调试与工程排错记录，后者偏研究与策略性推理表述。
+- **[假设驱动 AI 调试](../concepts/hypothesis-driven-ai-debugging.md)**：同样强调**假设（路径）外化**、**证据**与**小步实验**；本概念额外突出辩证展开（正反、矛盾、Steelman）与「可能性空间」上的显式搜索/剪枝语言。二者可对照使用：前者偏调试与工程排错记录，后者偏研究与策略性推理表述。
 
 ## 开放问题（合成）
 
@@ -41,4 +41,4 @@ flowchart LR
 ## 相关
 
 - [来源：@123olp —— 生成式辩证可能性空间搜索（X）](../sources/x-123olp-generative-dialectical-possibility-search.md)
-- [假设驱动 AI 调试](hypothesis-driven-ai-debugging.md)
+- [假设驱动 AI 调试](../concepts/hypothesis-driven-ai-debugging.md)

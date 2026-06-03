@@ -334,3 +334,4 @@ flowchart LR
 - [查询：`git diff` 这种差异对比，和 Web 端版本更新弹窗的思路是不是有异曲同工之处](../queries/git-diff-and-web-version-check.md)
 - [来源：Electron QA 与正式安装包如何共存](../sources/electron-qa-prod-coexist-install.md)（本机双渠道安装 vs 更新投递，正交）
 - [查询：正式包安装会覆盖 QA 包，能否两种包共存](../queries/qa-prod-packages-coexist.md)
+- [Electron 打包与发布渠道](../concepts/electron-build-channels.md)

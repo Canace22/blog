@@ -20,7 +20,7 @@ Minimal how-to: JSON snippet for registering the Playwright MCP server in Cursor
 
 ## 另见（本库相近资料）
 
-- [来源：自动化测试](automated-testing.md)（Playwright 在 E2E 中的工具栈定位）
+- [来源：自动化测试](../sources/automated-testing.md)（Playwright 在 E2E 中的工具栈定位）
 
 ## Notes
 

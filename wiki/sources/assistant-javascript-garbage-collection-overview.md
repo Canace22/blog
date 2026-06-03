@@ -62,8 +62,8 @@ b.ref = a;
 
 ## 另见（本库相近资料）
 
-- [JavaScript 在 V8 引擎浏览器上是怎么执行的](js-execution.md)（执行模型与事件循环）
-- [JavaScript基础 —— 基本数据类型与引用类型的异同](javascript-basics-primitive-vs-reference-types.md)（引用与对象生命周期直觉）
+- [JavaScript 在 V8 引擎浏览器上是怎么执行的](../sources/js-execution.md)（执行模型与事件循环）
+- [JavaScript基础 —— 基本数据类型与引用类型的异同](../sources/javascript-basics-primitive-vs-reference-types.md)（引用与对象生命周期直觉）
 
 ---
 

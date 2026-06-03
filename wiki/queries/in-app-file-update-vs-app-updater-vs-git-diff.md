@@ -200,6 +200,9 @@
 
 ## 相关页面
 
-- [查询：`version.json + 轮询弹窗` 方案，对照 `electron-updater` 该怎么理解](web-version-json-vs-electron-updater.md)
-- [查询：刚刚讨论的差异对比，如果用在 app 文件 diff 场景里该怎么理解](app-file-diff-with-update-delivery.md)
-- [查询：Web端版本更新弹窗这篇文章里的方案有什么问题，有更好的方案吗](review-web-version-update-popup-scheme.md)
+- [消息推送：RSS、应用更新、网页版本更新与 diff 思维对照报告](../reports/message-delivery-comparison-report.md)
+- [Electron 打包与发布渠道](../concepts/electron-build-channels.md)
+- [查询：`version.json + 轮询弹窗` 方案，对照 `electron-updater` 该怎么理解](../queries/web-version-json-vs-electron-updater.md)
+- [查询：刚刚讨论的差异对比，如果用在 app 文件 diff 场景里该怎么理解](../queries/app-file-diff-with-update-delivery.md)
+- [查询：Web端版本更新弹窗这篇文章里的方案有什么问题，有更好的方案吗](../queries/review-web-version-update-popup-scheme.md)
+- [产品更新、RSS 与文件 diff 思维模型](../sources/product-updates-rss-file-diff-mental-model.md)

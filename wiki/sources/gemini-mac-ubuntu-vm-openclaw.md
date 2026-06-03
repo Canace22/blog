@@ -38,10 +38,10 @@
 
 ## 环境初始化（对话中的示例命令，需自行校验）
 
-对话中出现两类路径：包管理器全局安装（`npm install -g openclaw`）与 `nvm` 安装 Node 22、以及 `git clone` 某 GitHub 仓库后 `npm install`。**具体包名、CLI 子命令与仓库 URL 以官方为准**；本知识库另见 [OpenClaw Memory Wiki](openclaw-memory-wiki.md)（插件与知识层设计，非安装手册）。
+对话中出现两类路径：包管理器全局安装（`npm install -g openclaw`）与 `nvm` 安装 Node 22、以及 `git clone` 某 GitHub 仓库后 `npm install`。**具体包名、CLI 子命令与仓库 URL 以官方为准**；本知识库另见 [OpenClaw Memory Wiki](../sources/openclaw-memory-wiki.md)（插件与知识层设计，非安装手册）。
 
 ## 另见
 
 - [Mac / Linux 虚拟机资源与 OpenClaw 开发](../queries/mac-linux-vm-openclaw-dev.md)
-- [OpenClaw Memory Wiki](openclaw-memory-wiki.md)
-- [Pi Coding Agent / OpenClaw 集成线索](pi-coding-agent.md)
+- [OpenClaw Memory Wiki](../sources/openclaw-memory-wiki.md)
+- [Pi Coding Agent / OpenClaw 集成线索](../sources/pi-coding-agent.md)

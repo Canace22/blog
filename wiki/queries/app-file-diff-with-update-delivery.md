@@ -206,6 +206,9 @@
 
 ## 相关页面
 
+- [消息推送对照报告](../reports/message-delivery-comparison-report.md)
+- [产品更新、RSS 与文件 diff 思维模型](../sources/product-updates-rss-file-diff-mental-model.md)
 - [来源：Web端版本更新弹窗实现](../sources/webpage-version-update-popup-implementation.md)
-- [查询：Web端版本更新弹窗这篇文章里的方案有什么问题，有更好的方案吗](review-web-version-update-popup-scheme.md)
-- [查询：Web端版本更新弹窗里的几种推送方式，对 RSS 推送机制有什么可借鉴之处](web-update-patterns-for-rss.md)
+- [查询：应用内文件更新 vs 应用更新 vs `git diff`](../queries/in-app-file-update-vs-app-updater-vs-git-diff.md)
+- [查询：Web端版本更新弹窗这篇文章里的方案有什么问题，有更好的方案吗](../queries/review-web-version-update-popup-scheme.md)
+- [查询：Web端版本更新弹窗里的几种推送方式，对 RSS 推送机制有什么可借鉴之处](../queries/web-update-patterns-for-rss.md)

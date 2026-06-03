@@ -36,5 +36,5 @@
 ## 另见
 
 - [RSS / Telegram 自建推送](../concepts/rss-telegram-selfhost.md)
-- [Gemini 对话：自建 RSS 推 Telegram（flowerss-bot）](gemini-rss-flowerss-telegram-selfhost.md)（部署与排错侧重）
-- [RSS 推送到 TG 的可行性探索](rss-telegram-selfhost.md)（Hexo 博文实践）
+- [Gemini 对话：自建 RSS 推 Telegram（flowerss-bot）](../sources/gemini-rss-flowerss-telegram-selfhost.md)（部署与排错侧重）
+- [RSS 推送到 TG 的可行性探索](../sources/rss-telegram-selfhost.md)（Hexo 博文实践）

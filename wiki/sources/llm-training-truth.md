@@ -20,8 +20,8 @@
 ## 相关概念与证据链
 
 - [大语言模型工作原理概览](../concepts/large-language-model-fundamentals.md)
-- [来源：Gemini 摘要——Karpathy《大语言模型简介》演讲（YouTube）](gemini-karpathy-intro-llm-youtube.md)（视频主线与数字宜以此摘要页回指原片）
-- [How LLMs Work（可视化长文）](ynarwal-how-llms-work-visual.md)
+- [来源：Gemini 摘要——Karpathy《大语言模型简介》演讲（YouTube）](../sources/gemini-karpathy-intro-llm-youtube.md)（视频主线与数字宜以此摘要页回指原片）
+- [How LLMs Work（可视化长文）](../sources/ynarwal-how-llms-work-visual.md)
 - [大模型「训练阶段」和日常助手、LLM Wiki 分别是什么关系](../queries/llm-training-vs-inference-and-maintained-wiki.md)
 
 ---

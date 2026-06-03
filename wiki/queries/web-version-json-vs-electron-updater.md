@@ -165,6 +165,10 @@
 
 ## 相关页面
 
+- [消息推送对照报告](../reports/message-delivery-comparison-report.md)
+- [Electron 打包与发布渠道](../concepts/electron-build-channels.md)
+- [产品更新、RSS 与文件 diff 思维模型](../sources/product-updates-rss-file-diff-mental-model.md)
 - [来源：Web端版本更新弹窗实现](../sources/webpage-version-update-popup-implementation.md)
-- [查询：刚刚讨论的差异对比，如果用在 app 文件 diff 场景里该怎么理解](app-file-diff-with-update-delivery.md)
-- [查询：Web端版本更新弹窗这篇文章里的方案有什么问题，有更好的方案吗](review-web-version-update-popup-scheme.md)
+- [查询：如果是应用内的文件更新……与 `git diff` 的区别](../queries/in-app-file-update-vs-app-updater-vs-git-diff.md)
+- [查询：刚刚讨论的差异对比，如果用在 app 文件 diff 场景里该怎么理解](../queries/app-file-diff-with-update-delivery.md)
+- [查询：Web端版本更新弹窗这篇文章里的方案有什么问题，有更好的方案吗](../queries/review-web-version-update-popup-scheme.md)

@@ -154,6 +154,8 @@
 
 ## 相关页面
 
+- [消息推送对照报告](../reports/message-delivery-comparison-report.md)
 - [来源：Web端版本更新弹窗实现](../sources/webpage-version-update-popup-implementation.md)
-- [查询：Web端版本更新弹窗的数据推送跟 RSS 方案有什么异同](web-version-popup-vs-rss.md)
-- [查询：Web端版本更新弹窗里的几种推送方式，对 RSS 推送机制有什么可借鉴之处](web-update-patterns-for-rss.md)
+- [查询：`git diff` 与 Web 版本更新弹窗是否异曲同工](../queries/git-diff-and-web-version-check.md)
+- [查询：Web端版本更新弹窗的数据推送跟 RSS 方案有什么异同](../queries/web-version-popup-vs-rss.md)
+- [查询：Web端版本更新弹窗里的几种推送方式，对 RSS 推送机制有什么可借鉴之处](../queries/web-update-patterns-for-rss.md)

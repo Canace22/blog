@@ -38,6 +38,6 @@ E2E 测试（成本高、不稳定，少）
 ## 相关
 
 - [自动化测试](../concepts/automated-testing.md)（仓库内概念页：测试金字塔与完整流程汇总）
-- [Vue 单元测试](vue-test-unit.md)（同主题前端实践）
-- [Cursor 使用 Playwright MCP](cursor-playwright-mcp.md)（E2E 工具栈，与本文「E2E 用 Playwright」对应）
+- [Vue 单元测试](../sources/vue-test-unit.md)（同主题前端实践）
+- [Cursor 使用 Playwright MCP](../sources/cursor-playwright-mcp.md)（E2E 工具栈，与本文「E2E 用 Playwright」对应）
 - [自动化视觉测试方案](https://www.notion.so/2ed41c9133c5809bad28f109b8c46260)

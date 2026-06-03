@@ -13,8 +13,8 @@ According to the author’s conversation with Gemini ([source](../sources/gemini
 
 ## Contrast With Other Patterns
 
-- **[AI Knowledge Bases](ai-knowledge-bases.md)**: Often user-uploaded documents the model retrieves at query time; oriented around *your files*, not automatic profiling.
-- **[LLM Knowledge Bases](llm-knowledge-bases.md)**: A maintained markdown wiki the user (and agent) curates explicitly; transparent and portable compared to opaque vendor summaries.
+- **[AI Knowledge Bases](../concepts/ai-knowledge-bases.md)**: Often user-uploaded documents the model retrieves at query time; oriented around *your files*, not automatic profiling.
+- **[LLM Knowledge Bases](../concepts/llm-knowledge-bases.md)**: A maintained markdown wiki the user (and agent) curates explicitly; transparent and portable compared to opaque vendor summaries.
 
 ## Practical Takeaway
 

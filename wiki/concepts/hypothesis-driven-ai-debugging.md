@@ -6,7 +6,7 @@
 
 ## 与 Harness 的关系
 
-这类做法把**可验证性**和**人类可读的运行记录**前置：规则文件或会话指令告诉模型如何列假设、如何写证据；文件系统承担「外部记忆」，减轻仅靠模型上下文承载推理的压力。这与 [Harness Engineering](harness-engineering.md) 中强调的反馈回路、验收与结构化上下文一致，只是落点具体在调试场景。
+这类做法把**可验证性**和**人类可读的运行记录**前置：规则文件或会话指令告诉模型如何列假设、如何写证据；文件系统承担「外部记忆」，减轻仅靠模型上下文承载推理的压力。这与 [Harness Engineering](../concepts/harness-engineering.md) 中强调的反馈回路、验收与结构化上下文一致，只是落点具体在调试场景。
 
 ## 两条可对照的实践
 
@@ -26,7 +26,7 @@
 
 ## 相关
 
-- [Harness Engineering](harness-engineering.md)
-- [LLM 维护的知识库](llm-maintained-wiki.md)
+- [Harness Engineering](../concepts/harness-engineering.md)
+- [LLM 维护的知识库](../concepts/llm-maintained-wiki.md)
 - [来源：Shen Huang —— 假设驱动调试与 DEBUG.md](../sources/shenhuang-hypothesis-debug-x-thread.md)
 - [来源：karpathy / autoresearch](../sources/karpathy-autoresearch.md)

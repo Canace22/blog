@@ -1,7 +1,8 @@
 # 软件开发范式演进
 
 ## 来源
-- `wiki/sources/software-development-paradigms.md`（转发自 Telegram 频道「嘴码专项工作频道」，2026-04-30）
+
+- [软件开发范式演进（Telegram 摘录）](../sources/software-development-paradigms.md)（频道「嘴码专项工作频道」，2026-04-30）
 
 ## 核心要点
 
@@ -17,6 +18,12 @@
 | 组件化/分层架构 | 职责明确边界清晰、可组合可替换 | 分层、依赖注入 |
 | 微服务/云原生 | 服务独立部署、弹性扩展 | 容器化、弹性、可观测 |
 
-## 与其他概念关联
+## 另见
 
-- 属于 [[LLM 维护的知识库]] 的被动 Wiki 原料——通过 Ingest workflow 从 Telegram 来源转化而来
+- [LLM 维护的知识库](../concepts/llm-maintained-wiki.md) — 本页原料经 Ingest 从 Telegram 来源转入 wiki
+- [软件开发范式演进（来源）](../sources/software-development-paradigms.md)
+- [AI 辅助开发](../concepts/ai-assisted-development.md)
+
+---
+
+*维护：Cursor Agent，2026-06-03。*

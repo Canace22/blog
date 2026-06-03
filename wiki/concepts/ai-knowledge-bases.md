@@ -22,7 +22,7 @@ An AI knowledge base is a collection of documents that an AI system can consult 
 ## Relationship To LLM Knowledge Bases
 
 - A typical AI knowledge base often works at query time: the assistant consults uploaded files and responds on demand.
-- An [LLM Knowledge Base](llm-knowledge-bases.md) adds a maintained wiki layer that stores summaries, cross-links, and synthesis ahead of time.
+- An [LLM Knowledge Base](../concepts/llm-knowledge-bases.md) adds a maintained wiki layer that stores summaries, cross-links, and synthesis ahead of time.
 - The approaches overlap, but they optimize for different things: retrieval and convenience on one side, durable synthesis and compounding structure on the other.
 
 ## Synthesis
@@ -32,14 +32,20 @@ The main tension in the current sources is not whether AI knowledge bases are us
 ## Enterprise vs. Personal Scale
 
 - [Pinecone Nexus](../sources/pinecone-nexus-knowledge-engine.md) represents the enterprise extreme: a Knowledge Engine that auto-compiles domain-specific artifacts via a Context Compiler, serving agents through a declarative query language (KnowQL).
-- [LLM Knowledge Bases](llm-knowledge-bases.md) (this repo's approach) represent the personal extreme: an LLM incrementally maintains a markdown wiki from immutable sources.
+- [LLM Knowledge Bases](../concepts/llm-knowledge-bases.md) (this repo's approach) represent the personal extreme: an LLM incrementally maintains a markdown wiki from immutable sources.
 - Both share the same core insight — pre-compiling knowledge is cheaper than assembling it at query time — but differ in scale, tooling, and automation depth.
+
+## Retrieval Backends (Synthesis)
+
+- **Traditional RAG** (chunk + embedding + vector search) fits many personal and enterprise KB products; see [RAG 与 Graph RAG](../concepts/rag-and-graph-rag.md).
+- **Graph RAG** adds entity–relation graphs and community summaries for macro and multi-hop questions, at higher build and ops cost (same concept page).
 
 ## Current Evidence In Repo
 
+- [Source: RAG VS Graph RAG](../sources/rag-vs-graph-rag.md)
 - [Source: 我们是否需要AI知识库](../sources/why-we-need-ai-knowledge-bases.md)
 - [Source: Gemini User Summary (cross-session)](../sources/gemini-user-summary-cross-session.md)
 - [Source: Pinecone Nexus：Knowledge Engine](../sources/pinecone-nexus-knowledge-engine.md)
-- [Concept: LLM Knowledge Bases](llm-knowledge-bases.md)
-- [Concept: Chat assistant user memory](chat-assistant-user-memory.md)
-- [概念：AI 辅助开发](ai-assisted-development.md)
+- [Concept: LLM Knowledge Bases](../concepts/llm-knowledge-bases.md)
+- [Concept: Chat assistant user memory](../concepts/chat-assistant-user-memory.md)
+- [概念：AI 辅助开发](../concepts/ai-assisted-development.md)

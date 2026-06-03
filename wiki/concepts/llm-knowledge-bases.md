@@ -6,9 +6,10 @@ An LLM knowledge base is a workflow where immutable source material is increment
 
 ## Why It Is Different From Plain RAG
 
-- Plain RAG retrieves raw fragments at question time.
+- Plain RAG retrieves raw fragments at question time (chunk → embed → similarity search); see [RAG 与 Graph RAG](../concepts/rag-and-graph-rag.md) for the classic pipeline and limits on cross-document relations.
 - This method maintains a durable synthesis ahead of time.
 - Cross-links, summaries, and contradictions accumulate instead of being rediscovered for every query.
+- **Graph RAG** is another query-time–heavy path (graph + community summaries); the maintained wiki here is closer to **pre-compiled synthesis**, not a full knowledge graph product.
 
 ## Working Model In This Repo
 
@@ -30,11 +31,13 @@ An LLM knowledge base is a workflow where immutable source material is increment
 - [Source: Gemini 摘要——Karpathy LLM 入门演讲（YouTube）](../sources/gemini-karpathy-intro-llm-youtube.md)
 - [Source: LLM 训练的真相（Karpathy 分享笔记，博文）](../sources/llm-training-truth.md)
 - [Source: How LLMs Work（可视化长文）](../sources/ynarwal-how-llms-work-visual.md)
-- [Concept: 大语言模型工作原理概览](large-language-model-fundamentals.md)
+- [Concept: 大语言模型工作原理概览](../concepts/large-language-model-fundamentals.md)
 - [Source: Thread by @karpathy](../sources/thread-by-karpathy.md)
 - [Source: OpenClaw agent + memory-wiki](../sources/openclaw-agent-pi-mono.md) (external pattern pointer)
-- [Concept: AI Knowledge Bases](ai-knowledge-bases.md)
-- [概念：AI 辅助开发](ai-assisted-development.md)
+- [Concept: AI Knowledge Bases](../concepts/ai-knowledge-bases.md)
+- [Concept: RAG 与 Graph RAG](../concepts/rag-and-graph-rag.md)
+- [Source: RAG VS Graph RAG](../sources/rag-vs-graph-rag.md)
+- [概念：AI 辅助开发](../concepts/ai-assisted-development.md)
 
 ## Practical Loop
 

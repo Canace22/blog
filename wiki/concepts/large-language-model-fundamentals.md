@@ -42,11 +42,12 @@
 
 ## 与其它仓库概念的衔接
 
-- [LLM Knowledge Bases](llm-knowledge-bases.md)：本仓库如何把 LLM 用于**持久化知识层**（与「模型如何训练」正交但相关）。
+- [LLM Knowledge Bases](../concepts/llm-knowledge-bases.md)：本仓库如何把 LLM 用于**持久化知识层**（与「模型如何训练」正交但相关）。
 - [使用大模型来维护知识库](../sources/llm-wiki.md)：实践向笔记与外部 Karpathy Gist。
 - [LLM 训练的真相：Andrej Karpathy 的分享笔记](../sources/llm-training-truth.md)：仓库内博文，「爬取 / 有损压缩 / 预测 + 对齐」叙事与 Karpathy 入门线并列作备忘。
 - [为什么 AI 大模型需要显卡](../sources/why-graphics-card.md)：算力侧补充阅读。
 - [How LLMs Work（可视化长文）](../sources/ynarwal-how-llms-work-visual.md)：与 Karpathy 演讲互补的在线长文。
+- [RAG 与 Graph RAG](../concepts/rag-and-graph-rag.md)：推理阶段常见检索增强路径（与训练阶段正交）。
 
 ---
 

@@ -14,9 +14,14 @@ Cursor 官方维护的 SDK 示例仓库，提供 TypeScript API 在自建应用 
 
 ## Relationship To This Wiki
 
-- 属于 [[AI 辅助开发|ai-assisted-development]] 工具链的一员
-- 类似 [[Coding Agent]]（Codex/Claude Code/Pi），但属于商业闭源 SDK
-- 与 Harness Engineering 理念相关——通过 SDK 将 AI coding agent 嵌入自定义工作流
+- 属于 [AI 辅助开发](../concepts/ai-assisted-development.md) 工具链的一员
+- 与开源 **Coding Agent**（Codex / Claude Code / Pi 等，见 [OpenClaw Agent 基座](../sources/openclaw-agent-pi-mono.md)）类似，但 Cursor SDK 为商业闭源、需 API Key
+- 与 [Harness Engineering](../concepts/harness-engineering.md) 相关——通过 SDK 将 AI coding agent 嵌入自定义工作流
+
+## 另见
+
+- [Cursor 使用 Playwright MCP](../sources/cursor-playwright-mcp.md)
+- [一个提升 AI Coding 稳定性的思路](../sources/agent-coding-stability.md)
 
 ## Current Evidence In Repo
 
@@ -27,4 +32,5 @@ Cursor 官方维护的 SDK 示例仓库，提供 TypeScript API 在自建应用 
 Cursor SDK 的定位是让开发者在自己产品里集成 Cursor agent 能力，而非直接使用 Cursor IDE。核心价值在于：本地+云端统一 API、流式事件监听、状态管理。相比开源 Codex/Claude Code，优势是 Cursor 自身产品体验好；劣势是闭源、需付费 API Key。
 
 ---
-*Synthesized by assistant, 2026-04-30*
+
+*维护：Cursor Agent，2026-06-03。*

@@ -73,7 +73,7 @@
 
 ## 关联概念
 
-- [Gemini 对话：Mac Ubuntu 虚拟机与 OpenClaw（环境规划摘要）](gemini-mac-ubuntu-vm-openclaw.md)
+- [Gemini 对话：Mac Ubuntu 虚拟机与 OpenClaw（环境规划摘要）](../sources/gemini-mac-ubuntu-vm-openclaw.md)
 - [LLM 维护的知识库](../concepts/llm-maintained-wiki.md)
 - [编译式知识库](../concepts/compiled-knowledge-vault.md)
 - [Harness Engineering](../concepts/harness-engineering.md)

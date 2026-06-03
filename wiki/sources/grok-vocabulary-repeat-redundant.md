@@ -26,5 +26,7 @@
 
 ## 另见（本库相近资料）
 
-- [常用开发提示词](common-programming-prompt-words.md)（Hexo 博文摘要）：系统整理日常开发里写提示常用的英汉对照与例句，表格结构与本次摘录相近。
-- [Promt 英语单词（编程提示词常用动词）](prompt-vocabulary-for-coding.md)：偏「对模型下指令」的动词表，条目格式同样含释义与例句（原笔记路径见该页）。
+- [常用开发提示词](../sources/common-programming-prompt-words.md)（Hexo 博文摘要）：系统整理日常开发里写提示常用的英汉对照与例句，表格结构与本次摘录相近。
+- [Promt 英语单词（编程提示词常用动词）](../sources/prompt-vocabulary-for-coding.md)：偏「对模型下指令」的动词表，条目格式同样含释义与例句（原笔记路径见该页）。
+- [反向提示词工程](../sources/reverse-prompt-engineering.md)
+- [Promt 工程师（阅读链接）](../sources/prompt-engineering-reading-list.md)

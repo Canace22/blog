@@ -32,6 +32,6 @@
 
 ## 来源与边界
 
-- 结构类总览见 [叙事结构](narrative-structures.md)。
+- 结构类总览见 [叙事结构](../concepts/narrative-structures.md)。
 - 仓库内笔记：[叙事研究](../sources/narrative-research.md)（结构、弧线、网文框架）、[节奏心理学：叙事中的「情绪推手」](../sources/rhythm-psychology.md)（本文主要依据）。
 - 文中心理学概念为通俗应用归纳，非临床诊断语境。

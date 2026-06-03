@@ -17,8 +17,9 @@
 ## 与本 Wiki 的关系
 
 - 本仓库多篇「AI 工程化」博文可串成一张**主题地图**（四组主题、共同主线、下一篇方向）：[AI 工程化写作主轴：四主题索引与下一篇方向](../reports/ai-engineering-theme-synthesis.md)。
-- [大语言模型知识库](llm-knowledge-bases.md)：给智能体超出单次对话的、可结构化的长期背景的一种方式。
-- [AI 知识库](ai-knowledge-bases.md)：覆盖「上传资料再查询」式落地；实际开发里常把两种路子组合使用。
+- [大语言模型知识库](../concepts/llm-knowledge-bases.md)：给智能体超出单次对话的、可结构化的长期背景的一种方式。
+- [AI 知识库](../concepts/ai-knowledge-bases.md)：覆盖「上传资料再查询」式落地；实际开发里常把两种路子组合使用。
+- [RAG 与 Graph RAG](../concepts/rag-and-graph-rag.md)：知识库检索底座（向量 RAG vs 图 RAG）选型参考。
 
 ## 仓库内当前证据链
 

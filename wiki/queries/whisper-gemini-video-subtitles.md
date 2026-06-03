@@ -39,6 +39,12 @@
 - **人名与术语**：在 Gemini 提示里附「术语表」或「不要翻译的专名列表」。
 - **成本与隐私**：长视频可分批翻译；敏感内容优先本地模型或离线策略。
 
-## 相关链接
+## 另见
 
 - [Wiki 索引](../index.md)
+- [Gemini 摘要：Karpathy LLM 入门演讲](../sources/gemini-karpathy-intro-llm-youtube.md)（同属 Gemini 工作流示例）
+- [AI 辅助开发](../concepts/ai-assisted-development.md)
+
+---
+
+*维护：Cursor Agent，2026-06-03。*

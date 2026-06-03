@@ -17,7 +17,7 @@
 
 ## 与既有材料的关系
 
-这个思路恰好是《[AI 让人变得无趣](ai-make-you-boring.md)》和《[为什么不要让LLM帮我们写文档](why-not-let-ai-write-for-us.md)》所倡导的**正确用法**的一个具体实例：
+这个思路恰好是《[AI 让人变得无趣](../sources/ai-make-you-boring.md)》和《[为什么不要让LLM帮我们写文档](../sources/why-not-let-ai-write-for-us.md)》所倡导的**正确用法**的一个具体实例：
 
 - 两篇文章都反对**思维外包**（让 AI 替你想、替你写）
 - 但都支持**工具辅助**（AI 做调研、整理、生成候选）
@@ -39,8 +39,8 @@
 ## 另见
 
 - [AI 外包写作与思维：对照阅读](../reports/ai-outsourcing-writing-thinking.md)（三篇材料的合成报告）
-- [AI 让人变得无趣](ai-make-you-boring.md)
-- [为什么不要让LLM帮我们写文档](why-not-let-ai-write-for-us.md)
+- [AI 让人变得无趣](../sources/ai-make-you-boring.md)
+- [为什么不要让LLM帮我们写文档](../sources/why-not-let-ai-write-for-us.md)
 
 ---
 assistant / 2026-04-30

@@ -12,11 +12,20 @@ Machine-oriented index of the author’s public blog: base URL, local Hexo `_pos
 
 - Blog: https://canace.site — catalog when a topic first appeared as a full article on the site.
 - Snapshot in source: 297 posts, last updated 2026-03-24 (see blockquote in mirrored section).
+- **快照后增量**见下文「维护补录」表（不改动下方 verbatim 镜像，避免大范围 diff）。
 - Many rows under 「AI探索」 relate to AI coding, Cursor, Claude Code, and knowledge bases.
+
+## 维护补录（快照 2026-03-24 之后）
+
+| 日期 | 标题 | 分类 | 标签 |
+|------|------|------|------|
+| 2026-06-03 | [RAG VS Graph RAG](https://canace.site/rag-vs-graph-rag/) | AI探索 | AI原理 |
 
 ## Related Concepts
 
 - [AI Knowledge Bases](../concepts/ai-knowledge-bases.md)
+- [RAG 与 Graph RAG](../concepts/rag-and-graph-rag.md)
+- [RAG VS Graph RAG](../sources/rag-vs-graph-rag.md)
 - [AI 辅助开发](../concepts/ai-assisted-development.md)
 
 ## Notes

@@ -33,4 +33,4 @@
 
 ## 另见
 
-- [LLM 维护的知识库](llm-maintained-wiki.md)（本仓库元主题）
+- [LLM 维护的知识库](../concepts/llm-maintained-wiki.md)（本仓库元主题）

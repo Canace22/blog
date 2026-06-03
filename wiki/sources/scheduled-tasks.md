@@ -19,5 +19,5 @@
 ## 关联
 
 - [系统 crontab 与 OpenClaw 定时任务](../concepts/crontab-and-openclaw-cron.md)
-- [OpenClaw 的一些使用体验](openclaw-usage-experience.md)（同主题：workspace 内 RSS/盯盘与定时，可与系统层分工）
-- [linux后台执行脚本](linux-background-script-execution.md)（长驻/会话维度的对照）
+- [OpenClaw 的一些使用体验](../sources/openclaw-usage-experience.md)（同主题：workspace 内 RSS/盯盘与定时，可与系统层分工）
+- [linux后台执行脚本](../sources/linux-background-script-execution.md)（长驻/会话维度的对照）

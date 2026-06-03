@@ -9,14 +9,15 @@
 | Prompt-to-Code | 单轮直达可运行产物 | 一键小项目、Artifacts |
 | Agent 编程 | 多轮编辑/终端/日志 | Cursor 自主改代码、跑测 |
 | 验证与结构化推理 | 技术选型→结构→边界→安全 | thinking 块、long-thinking |
-| RAG 式生成 | 检索私有库作 context | `@codebase`、向量库 |
+| RAG 式生成 | 检索私有库作 context | `@codebase`、向量库（见 [RAG 与 Graph RAG](../concepts/rag-and-graph-rag.md)） |
 | 骨架后填充 | 人定结构与契约，模型补实现 | 文件树 + `// LOP:` 占位 |
 | 自愈迭代 | 运行/测试失败反馈回路 | Fix with AI、循环 patch |
 
 ## 与「持久化 wiki / 知识库」的交集
 
-RAG 依赖检索当日 context；**结构化文档沉淀**（游戏策划、设定、API 说明等）既可作为 RAG 料，也可由 agent 维护成 wiki，与 [LLM 维护的知识库](llm-maintained-wiki.md) 同属「跨会话记忆」思路。
+RAG 依赖检索当日 context；**结构化文档沉淀**（游戏策划、设定、API 说明等）既可作为 RAG 料，也可由 agent 维护成 wiki，与 [LLM 维护的知识库](../concepts/llm-maintained-wiki.md) 同属「跨会话记忆」思路。
 
 ## 来源
 
 - [面向大模型编程（LOP）在游戏制作流程中的应用畅想](../sources/ai-coding-game.md)
+- [RAG VS Graph RAG](../sources/rag-vs-graph-rag.md)

@@ -43,6 +43,7 @@
 | 知识库 ≠ 让 AI 替你学习；定位应是知识复盘、主题阅读、专有资料检索，否则易沦为被动接收器。 | [AI-knowledge-base](../sources/AI-knowledge-base.md) · [AI Knowledge Bases](../concepts/ai-knowledge-bases.md) |
 | 三层架构思路：原始资料 + 规则文件（`CLAUDE.md` / `AGENTS.md`）+ wiki（由 LLM 维护的索引/概念/报告），作跨 agent 长期上下文。 | [llm-wiki](../sources/llm-wiki.md) · [LLM 维护的知识库](../concepts/llm-maintained-wiki.md) |
 | Gemini 跨会话「记得你」依赖云端 User Summary（提炼后的记忆碎片），新会话再注入上下文。 | [gemini-new-session-memory](../sources/gemini-new-session-memory.md) · [Chat assistant user memory](../concepts/chat-assistant-user-memory.md) |
+| 传统 RAG（切块 + 向量检索）与 Graph RAG（实体关系图 + 社区摘要）的适用场景与成本；复杂关系检索可 RAG + Graph 组合。 | [rag-vs-graph-rag](../sources/rag-vs-graph-rag.md) · [RAG 与 Graph RAG](../concepts/rag-and-graph-rag.md) |
 
 ## 四、生成式 UI：聊天交互的下一步
 
@@ -58,7 +59,7 @@
 
 **全年叙事主轴（合成）**：上下文工程 → 流程/角色拆解 → Skill / 知识库沉淀 → 生成式 UI 边界探索。
 
-**下一篇可写方向（用户笔记）**：把已验证的「AI 角色框架」与「LLM Wiki」串成一条完整的**个人 AI 工作流案例**（含目录骨架 + 规则模板）。与仓库内已有路线图可对照：[从 Harness 到 Compiled Wiki：个人研究路线图](harness-to-compiled-wiki-roadmap.md)、[Harness Engineering](../concepts/harness-engineering.md)。
+**下一篇可写方向（用户笔记）**：把已验证的「AI 角色框架」与「LLM Wiki」串成一条完整的**个人 AI 工作流案例**（含目录骨架 + 规则模板）。与仓库内已有路线图可对照：[从 Harness 到 Compiled Wiki：个人研究路线图](../reports/harness-to-compiled-wiki-roadmap.md)、[Harness Engineering](../concepts/harness-engineering.md)。
 
 ---
 

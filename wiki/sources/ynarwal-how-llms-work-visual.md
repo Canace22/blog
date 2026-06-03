@@ -10,7 +10,7 @@
 
 ## 与本仓库其它条目的关系
 
-- 与 [Gemini 摘要：Karpathy《大语言模型简介》演讲（YouTube）](gemini-karpathy-intro-llm-youtube.md) 主题同轨：可把本站摘要当作「提纲」，把该页当作「带交互与插图的展开阅读」。
+- 与 [Gemini 摘要：Karpathy《大语言模型简介》演讲（YouTube）](../sources/gemini-karpathy-intro-llm-youtube.md) 主题同轨：可把本站摘要当作「提纲」，把该页当作「带交互与插图的展开阅读」。
 - 概念整理见 [大语言模型工作原理概览](../concepts/large-language-model-fundamentals.md)。
 
 ## 关键点（据页面结构归纳）

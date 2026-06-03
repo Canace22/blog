@@ -113,6 +113,9 @@
 
 ## 相关页面
 
+- [消息推送：RSS、应用更新、网页版本更新与 diff 思维对照报告](../reports/message-delivery-comparison-report.md)
+- [产品更新、RSS 与文件 diff 思维模型](../sources/product-updates-rss-file-diff-mental-model.md)
 - [来源：Web端版本更新弹窗实现](../sources/webpage-version-update-popup-implementation.md)
-- [查询：Web端版本更新弹窗这篇文章里的方案有什么问题，有更好的方案吗](review-web-version-update-popup-scheme.md)
-- [查询：如果是应用内的文件更新，像 `git diff` 这种，跟前面说的应用更新有什么区别](in-app-file-update-vs-app-updater-vs-git-diff.md)
+- [查询：`version.json + 轮询` 对照 `electron-updater`](../queries/web-version-json-vs-electron-updater.md)
+- [查询：Web端版本更新弹窗这篇文章里的方案有什么问题，有更好的方案吗](../queries/review-web-version-update-popup-scheme.md)
+- [查询：如果是应用内的文件更新，像 `git diff` 这种，跟前面说的应用更新有什么区别](../queries/in-app-file-update-vs-app-updater-vs-git-diff.md)

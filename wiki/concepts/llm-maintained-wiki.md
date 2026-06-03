@@ -52,8 +52,8 @@
 ## 相关
 
 - [大模型「训练阶段」和日常助手、LLM Wiki 分别是什么关系](../queries/llm-training-vs-inference-and-maintained-wiki.md) — 说明 wiki 维护**不属于** SFT/RLHF 流水线，而是推理期沉淀的体外知识层。
-- [编译式知识库](compiled-knowledge-vault.md) — 更强调 claim / evidence / provenance / lint / dashboard。
-- [LOP 模式与产物](lop-patterns.md) — 游戏中的「结构化文档沉淀再迭代」与 wiki/RAG 长期记忆可对照。
+- [编译式知识库](../concepts/compiled-knowledge-vault.md) — 更强调 claim / evidence / provenance / lint / dashboard。
+- [LOP 模式与产物](../concepts/lop-patterns.md) — 游戏中的「结构化文档沉淀再迭代」与 wiki/RAG 长期记忆可对照。
 
 ## 来源
 
