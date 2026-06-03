@@ -37,6 +37,7 @@
 - [自动化测试](concepts/automated-testing.md)
 - [DeepSeek-V4](concepts/deepseek-v4.md)
 - [生成式辩证可能性空间搜索](concepts/generative-dialectical-possibility-space-search.md)
+- [Electron 打包与发布渠道](concepts/electron-build-channels.md)
 
 ## Queries
 
@@ -53,6 +54,7 @@
 - [`version.json + 轮询弹窗` 方案，对照 `electron-updater` 该怎么理解](queries/web-version-json-vs-electron-updater.md)
 - [Web端版本更新弹窗里的几种推送方式，对 RSS 推送机制有什么可借鉴之处](queries/web-update-patterns-for-rss.md)
 - [Web端版本更新弹窗这篇文章里的方案有什么问题，有更好的方案吗](queries/review-web-version-update-popup-scheme.md)
+- [正式包安装会覆盖 QA 包，能否两种包共存](queries/qa-prod-packages-coexist.md)
 
 ## Category
 
@@ -251,6 +253,7 @@
 
 ### 工程化与运维
 
+- [Electron QA 与正式安装包如何共存](sources/electron-qa-prod-coexist-install.md) — `source/_posts/electron-qa-prod-coexist-install.md`
 - [自动化测试](sources/automated-testing.md) — 测试金字塔与 CI/Stage/Prod 全流程（无对应 `source/_posts`，独立维护）
 - [Vscode 配置 wsl 并配置 node 环境](sources/wsl-config.md) — `source/_posts/wsl-config.md`
 - [Windows 奇技淫巧](sources/windows-tricks.md) — `source/_posts/windows-tricks.md`

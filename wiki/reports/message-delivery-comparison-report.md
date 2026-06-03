@@ -332,3 +332,5 @@ flowchart LR
 - [查询：`version.json + 轮询弹窗` 方案，对照 `electron-updater` 该怎么理解](../queries/web-version-json-vs-electron-updater.md)
 - [查询：如果是应用内的文件更新，像 `git diff` 这种，跟前面说的应用更新有什么区别](../queries/in-app-file-update-vs-app-updater-vs-git-diff.md)
 - [查询：`git diff` 这种差异对比，和 Web 端版本更新弹窗的思路是不是有异曲同工之处](../queries/git-diff-and-web-version-check.md)
+- [来源：Electron QA 与正式安装包如何共存](../sources/electron-qa-prod-coexist-install.md)（本机双渠道安装 vs 更新投递，正交）
+- [查询：正式包安装会覆盖 QA 包，能否两种包共存](../queries/qa-prod-packages-coexist.md)
