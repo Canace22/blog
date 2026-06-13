@@ -54,6 +54,7 @@ AI 工具需要支持**对话框分组/归类**，同一组下的对话应用同
 - [Harness Engineering](../concepts/harness-engineering.md) — 角色分工是 harness 的一部分
 - [Skill](../concepts/harness-engineering.md) — 角色可以通过 Skill 封装
 - [Agent Coding 稳定性](../concepts/agent-coding-stability.md) — 两者都旨在提升 AI 输出的稳定性
+- [Claude Code 并行代理](../concepts/claude-code-parallel-agents.md) — 产品内建子代理/代理团队与人为多角色隔离的对照
 
 ## 待探索
 

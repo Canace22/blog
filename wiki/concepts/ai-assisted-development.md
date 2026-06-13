@@ -13,6 +13,7 @@
 - **工具链**：在 Cursor 里通过 Playwright MCP 做浏览器自动化（[Cursor Playwright MCP](../sources/cursor-playwright-mcp.md)）。
 - **提示用语**：写提示词时英文动词尽量一致、减少歧义（[提示词常用词汇](../sources/prompt-vocabulary-for-coding.md)）。
 - **延伸阅读**：提示工程读物与 Harness 工程化资料可当书签（[提示工程阅读清单](../sources/prompt-engineering-reading-list.md)，[Harness 工程化链接集](../sources/harness-engineering-links.md)）。
+- **Claude Code 官方工作流**：[常见工作流](claude-code-workflows.md)（读库/调试/PR/plan mode/计划任务）；[并行代理](claude-code-parallel-agents.md)（子代理、代理视图、团队、动态工作流）。
 
 ## 与本 Wiki 的关系
 
@@ -31,6 +32,8 @@
 - [提示工程阅读清单](../sources/prompt-engineering-reading-list.md)
 - [Harness 工程化链接集](../sources/harness-engineering-links.md)
 - [Canace 博客索引](../sources/canace-blog-index.md)（较长文章目录，含大量 AI 编程主题）
+- [Claude Code 常见工作流程](../sources/claude-code-common-workflows.md)
+- [Claude Code 并行运行代理](../sources/claude-code-parallel-agents.md)
 
 ## 综合结论
 

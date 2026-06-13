@@ -14,6 +14,7 @@
 
 ## 另见（本库相近资料）
 
+- [Claude Code 常见工作流程](claude-code-common-workflows.md)：官方工作流与 CLI 模式（plan mode、headless、`--worktree`）。
 - [Cursor Cookbook](../concepts/cursor-cookbook.md)：同属 AI IDE 操作速记。
 - [Cursor 会话：Hermes 小米 MiMo 与 MiniMax /anthropic 与模型名](../sources/cursor-hermes-xiaomi-mimo-minimax.md)：模型切换语义在网关侧的对照。
 - [Promt 工程师（阅读链接）](../sources/prompt-engineering-reading-list.md)

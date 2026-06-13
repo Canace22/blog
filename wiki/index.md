@@ -39,6 +39,8 @@
 - [生成式辩证可能性空间搜索](concepts/generative-dialectical-possibility-space-search.md)
 - [Electron 打包与发布渠道](concepts/electron-build-channels.md)
 - [RAG 与 Graph RAG](concepts/rag-and-graph-rag.md)
+- [Claude Code 常见工作流](concepts/claude-code-workflows.md)
+- [Claude Code 并行代理](concepts/claude-code-parallel-agents.md)
 
 ## Queries
 
@@ -351,6 +353,8 @@
 - [我们是否需要AI知识库（笔记版）](sources/why-we-need-ai-knowledge-bases.md) — 早期短笔记版（来自 `AI 探索/`，与博文 `AI-knowledge-base.md` 互为对照）
 - [@123olp —— 生成式辩证可能性空间搜索（X）](sources/x-123olp-generative-dialectical-possibility-search.md) — 用户提供的帖文摘录
 - [Claude CLI 速记：`/effort` 与 `/model`](sources/claude-cli-effort-model-commands.md) — 终端常用斜杠命令速记
+- [Claude Code 常见工作流程](sources/claude-code-common-workflows.md) — Claude Code 官方文档剪藏（提示模式、会话、plan mode、计划任务）
+- [Claude Code 并行运行代理](sources/claude-code-parallel-agents.md) — Claude Code 官方文档剪藏（子代理、代理视图、团队、动态工作流）
 - [RAG VS Graph RAG](sources/rag-vs-graph-rag.md) — `source/_posts/rag-vs-graph-rag.md`
 - [软件开发范式演进](sources/software-development-paradigms.md) — Telegram 摘录（无对应 `source/_posts`）
 
