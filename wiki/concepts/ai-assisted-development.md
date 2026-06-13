@@ -34,6 +34,7 @@
 - [Canace 博客索引](../sources/canace-blog-index.md)（较长文章目录，含大量 AI 编程主题）
 - [Claude Code 常见工作流程](../sources/claude-code-common-workflows.md)
 - [Claude Code 并行运行代理](../sources/claude-code-parallel-agents.md)
+- [查询：我的文章涵盖 AI Coding 哪几方面](../queries/ai-coding-coverage.md)
 
 ## 综合结论
 

@@ -22,6 +22,8 @@ Cursor 官方维护的 SDK 示例仓库，提供 TypeScript API 在自建应用 
 
 - [Cursor 使用 Playwright MCP](../sources/cursor-playwright-mcp.md)
 - [一个提升 AI Coding 稳定性的思路](../sources/agent-coding-stability.md)
+- [Claude Code 并行代理](claude-code-parallel-agents.md)（Agent Kanban / 多会话编排的对照）
+- [Claude Code 常见工作流](claude-code-workflows.md)
 
 ## Current Evidence In Repo
 

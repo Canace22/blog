@@ -34,10 +34,11 @@
 ### 4. Agent、Skill、MCP 与工具扩展
 
 - 关注 AI 如何调用工具、接入外部上下文、把重复流程封装成 Skill，而不是停留在聊天补全层。
-- 代表文章：
+- 代表文章 / 资料：
   - [Cursor 编写 SKILL：通过 web 搜索并下载电影](../sources/cursor-skill-web-search-download-movie.md)
   - [用 Cursor 提高工作效率实战笔记](../sources/improve-work-efficiency-with-cursor-practical-notes.md)
   - [首次尝试95%都是垃圾：一位工程师使用Claude Code的6周之旅](../sources/translate-use-claude-code.md)
+  - [Claude Code 常见工作流程](../sources/claude-code-common-workflows.md) · [Claude Code 并行运行代理](../sources/claude-code-parallel-agents.md)（官方文档摘要）
 
 ### 5. 稳定性、Review 与质量控制
 
@@ -75,17 +76,22 @@
 
 ## 当前没有明确展开的方向
 
-### Harness
+### Harness（已有概念页，博文仍偏邻近）
 
-- 当前仓库里没有直接出现 `harness` / `harnness` 这一表述。
-- 但有一些内容和 harness 思路接近，主要是：
+- 仓库内已有 [Harness Engineering](../concepts/harness-engineering.md) 概念与 [Harness 资料整理](../reports/harness-engineering-reading-notes.md)；个人博文侧仍以邻近实践为主：
   - [面向大模型编程(LOP)在游戏制作流程中的应用畅想](../sources/ai-coding-game.md) 中的 **Self-Healing / Iterative Refinement Loop**
   - [AI赋能存量项目——从函数助手到业务伙伴](../sources/ai-coding-share.md) 中的 **工作流/任务拆解**
   - [一个提升 AI Coding 稳定性的思路](../sources/agent-coding-stability.md) 中的 **经验上下文 / 解决问题模式**
   - [Cursor 编写 SKILL：通过 web 搜索并下载电影](../sources/cursor-skill-web-search-download-movie.md) 中的 **Skill 流程封装**
-- 因此可以说：你写过一些与 harness 邻近的内容，但还没有专门从 **agent harness / eval harness / execution harness** 这个角度系统展开。
+- 尚未从 **agent harness / eval harness / execution harness** 角度写成长文，但 wiki 层已可对照官方 Claude Code [并行代理](../concepts/claude-code-parallel-agents.md) 与 [常见工作流](../concepts/claude-code-workflows.md)。
 
 ## 相关概念
 
 - [LOP（面向大模型编程）模式](../concepts/lop-patterns.md)
 - [LLM 维护的知识库](../concepts/llm-maintained-wiki.md)
+- [AI 辅助开发](../concepts/ai-assisted-development.md)
+- [Claude Code 常见工作流](../concepts/claude-code-workflows.md)
+
+---
+
+*修订：Cursor Agent，2026-06-13（lint：Harness 段落与 Claude Code 来源）。*

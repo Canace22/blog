@@ -1,5 +1,6 @@
 # Wiki Log
 
+- 2026-06-13：Lint：`review-web-version-update-popup-scheme` 6 条绝对路径死链改为 wiki 来源链；`translate-use-claude-code` 补另见；`ai-coding-coverage` 更新 Harness 段落并链入 Claude Code 来源/概念；`ai-engineering-theme-synthesis` 组二补 Claude Code 行；`cursor-cookbook`、`agent-coding-stability`、`ai-assisted-development` 补 Claude Code 互链。
 - 2026-06-13：Ingest `wiki/Clippings/常见工作流程.md`、`wiki/Clippings/并行运行代理.md`（Claude Code 官方文档剪藏）→ 新增 `wiki/sources/claude-code-common-workflows.md`、`wiki/sources/claude-code-parallel-agents.md`；新增概念 `wiki/concepts/claude-code-workflows.md`、`wiki/concepts/claude-code-parallel-agents.md`；`ai-assisted-development`、`ai-worker` 补互链；更新 `wiki/index.md`（Concepts / AI探索）。维护页不链至 `wiki/Clippings/`。
 - 2026-06-03：Lint 续修（concepts/reports）：`wiki/concepts` 18 页、`wiki/reports` 3 页裸 `*.md` 链改为 `../concepts|sources|queries|reports/`；修正 `index.md` 中 `software-development-paradigms` 无 `_posts` 的说明并列入 AI探索；`ai-engineering-theme-synthesis` 第三节补 RAG 行；`ai-assisted-development`、`large-language-model-fundamentals` 链至 `rag-and-graph-rag`。
 - 2026-06-03：Lint 续修：批量将 `wiki/sources`、`wiki/queries` 内同目录 `*.md` 链接规范为 `../sources/`、`../queries/`（32 文件）；message-delivery 相关 7 条 query 与 `message-delivery-comparison-report` 补枢纽互链。

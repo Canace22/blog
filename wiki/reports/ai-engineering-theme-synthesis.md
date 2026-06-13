@@ -29,6 +29,7 @@
 | Cursor Agent 模式入门全景：rules、`@codebase`、图片转代码、Figma MCP、运维脚本；给 AI 三次机会，工程师做机长不当副驾驶。 | [improve-work-efficiency-with-cursor-practical-notes](../sources/improve-work-efficiency-with-cursor-practical-notes.md) |
 | 译文核心结论：「首次 95% 是垃圾、三次尝试才能用」；把 AI 当成记忆每天重置的初级开发，用 `Claude.md` + MCP 给它记忆。 | [translate-use-claude-code](../sources/translate-use-claude-code.md) |
 | Skill 写法：总结经验 → 提炼流程 → 标注易跑偏点；适合 Skill 的是「重复 + 有模板」的操作。 | [cursor-skill-web-search-download-movie](../sources/cursor-skill-web-search-download-movie.md) |
+| Claude Code 官方：读库/调试/PR 提示模式、plan mode、headless、计划任务；并行见子代理/代理视图/动态工作流。 | [claude-code-common-workflows](../sources/claude-code-common-workflows.md) · [claude-code-parallel-agents](../sources/claude-code-parallel-agents.md) · [概念：Claude Code 常见工作流](../concepts/claude-code-workflows.md) |
 | 日常英文开发动词对照表，给人和 AI 一份共享词典，减少歧义。 | [common-programming-prompt-words](../sources/common-programming-prompt-words.md) |
 | Electron 里 Cursor debugger 失效可能是 CSP：为 `connect-src` 放行 `http://127.0.0.1:7242`。 | [cursor-debugger](../sources/cursor-debugger.md) |
 

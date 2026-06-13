@@ -15,10 +15,7 @@
 
 ### 1. 首次访问会被误判成“发现新版本”
 
-来源代码里，`currentVersion` 来自 `localStorage`，若没有就默认为 `0.0.0`，然后马上去拉 `/version.json` 做比较：
-
-- 见 [`source/_posts/webpage-version-update-popup-implementation.md:123`](/Users/canace/Desktop/blog/source/_posts/webpage-version-update-popup-implementation.md:123)
-- 见 [`source/_posts/webpage-version-update-popup-implementation.md:154`](/Users/canace/Desktop/blog/source/_posts/webpage-version-update-popup-implementation.md:154)
+来源代码里，`currentVersion` 来自 `localStorage`，若没有就默认为 `0.0.0`，然后马上去拉 `/version.json` 做比较（见 [来源：Web端版本更新弹窗实现](../sources/webpage-version-update-popup-implementation.md) 中 Demo 的 `checkVersion` / `localStorage` 逻辑）。
 
 这会导致：
 
@@ -31,9 +28,7 @@
 
 ### 2. `window.location.reload(true)` 不能跨浏览器保证“强制刷新”
 
-文中的 demo 用了：
-
-- [`source/_posts/webpage-version-update-popup-implementation.md:182`](/Users/canace/Desktop/blog/source/_posts/webpage-version-update-popup-implementation.md:182)
+文中的 demo 用了 `window.location.reload(true)`（见 [来源页](../sources/webpage-version-update-popup-implementation.md) Demo 刷新逻辑）。
 
 但 MDN 说明里提到，`reload()` 的 `forceGet` 参数是**非标准**的，`true` 只在 Firefox 支持，其他浏览器不能指望它帮你跳过缓存。  
 参考：
@@ -44,10 +39,7 @@
 
 ### 3. `version.json` 用时间戳防缓存虽然有效，但比较粗暴
 
-文中方案通过给 `version.json` 拼 `?t=Date.now()` 来避免缓存：
-
-- [`source/_posts/webpage-version-update-popup-implementation.md:120`](/Users/canace/Desktop/blog/source/_posts/webpage-version-update-popup-implementation.md:120)
-- [`source/_posts/webpage-version-update-popup-implementation.md:151`](/Users/canace/Desktop/blog/source/_posts/webpage-version-update-popup-implementation.md:151)
+文中方案通过给 `version.json` 拼 `?t=Date.now()` 来避免缓存（见 [来源页](../sources/webpage-version-update-popup-implementation.md) 轮询请求写法）。
 
 这能工作，但副作用是：
 
@@ -66,9 +58,7 @@
 
 ### 4. “稍后提醒”缺少节流，可能反复骚扰用户
 
-点击“稍后提醒”后只是把弹窗移除：
-
-- [`source/_posts/webpage-version-update-popup-implementation.md:185`](/Users/canace/Desktop/blog/source/_posts/webpage-version-update-popup-implementation.md:185)
+点击「稍后提醒」后只是把弹窗移除（见 [来源页](../sources/webpage-version-update-popup-implementation.md) 弹窗关闭处理）。
 
 但 `currentVersion` 仍然旧，定时器也没停；下一次轮询仍会继续弹出。  
 这不一定是 bug，但用户体验通常不够好，至少应该有：
