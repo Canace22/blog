@@ -58,6 +58,7 @@
 ## 来源
 
 - [使用大模型来维护知识库](../sources/llm-wiki.md)
+- [程序员愿意为 Claude 写文档，但不愿为同事写](../sources/claude-handoff-doc-to-repo.md) — handoff doc 审阅后入 repo
 - [OpenClaw Memory Wiki](../sources/openclaw-memory-wiki.md)
 - [OpenClaw 的一些使用体验](../sources/openclaw-usage-experience.md)
 

@@ -49,3 +49,4 @@ The main tension in the current sources is not whether AI knowledge bases are us
 - [Concept: LLM Knowledge Bases](../concepts/llm-knowledge-bases.md)
 - [Concept: Chat assistant user memory](../concepts/chat-assistant-user-memory.md)
 - [概念：AI 辅助开发](../concepts/ai-assisted-development.md)
+- [AI 协作心理负担](../concepts/ai-collaboration-psychological-burden.md) — 依赖 AI 检索而不内化时的主观风险

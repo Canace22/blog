@@ -10,6 +10,7 @@
 ## 来自本仓库的证据
 
 - [AI 如何让我们躺平](../sources/how-ai-lets-us-lie-flat.md)：指出 AI 使用中的时间延长、投入增加与越界产出问题，并主张在圈定范围内提效。
+- [AI使人膨胀](../sources/ai-expansion.md)：从认知错位、AI 捧杀、节奏失控、决策疲劳、价值感空虚五个角度展开，是提效反噬最完整的个人叙述。
 
 ## 可执行检查清单（轻量）
 
@@ -28,6 +29,7 @@
 ## 与相关概念的关系
 
 - [AI 辅助开发](../concepts/ai-assisted-development.md)：强调流程治理与质量责任；本页补充个人层面的时间/边界治理。
+- [AI 协作心理负担](../concepts/ai-collaboration-psychological-burden.md)：本页属其「提效反噬」子线；完整对照见 [AI 协作心理负担：主题对照与来源索引](../reports/ai-collaboration-psychological-burden.md)。
 
 ---
-_Edited by assistant (Codex 5.3) on 2026-05-07._
+_Edited by assistant (Composer) on 2026-06-15._

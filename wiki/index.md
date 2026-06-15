@@ -7,6 +7,7 @@
 - [Harness Engineering 资料整理](reports/harness-engineering-reading-notes.md)
 - [从 Harness 到 Compiled Wiki：个人研究路线图](reports/harness-to-compiled-wiki-roadmap.md)
 - [AI 外包写作与思维：对照阅读](reports/ai-outsourcing-writing-thinking.md)（含三也群聊实践案例）
+- [AI 协作心理负担：主题对照与来源索引](reports/ai-collaboration-psychological-burden.md)（提效反噬 + 思维外包 + 来源互链）
 - [Web 前端开发知识图谱](reports/web-frontend-knowledge-graph.md)
 - [博客草稿：我原来写的项目规则、Skill、知识库，其实已经是在做 Harness Engineering](reports/harness-engineering-blog-draft.md)
 
@@ -19,6 +20,7 @@
 - [软件开发范式演进](concepts/software-development-paradigms.md)
 - [AI 时代的贫富分化与劳动迁移](concepts/ai-wealth-labor-shift.md)
 - [AI 使用边界与提效反噬](concepts/ai-usage-boundary-and-efficiency-backfire.md)
+- [AI 协作心理负担](concepts/ai-collaboration-psychological-burden.md)
 - [AI 角色分工：多角色专业化实践](concepts/ai-worker.md)
 - [Chat assistant user memory](concepts/chat-assistant-user-memory.md)
 - [编译式知识库](concepts/compiled-knowledge-vault.md)
@@ -323,6 +325,7 @@
 - [一个提升 AI Coding 稳定性的思路](sources/agent-coding-stability.md) — `source/_posts/agent-coding-stability.md`
 - [Cursor 编写 SKILL：通过 web 搜索并下载电影](sources/cursor-skill-web-search-download-movie.md) — `source/_posts/cursor-skill-web-search-download-movie.md`
 - [AI协作编程——如何写好项目规则](sources/writing-a-good-claude-md.md) — `source/_posts/writing-a-good-claude-md.md`
+- [程序员愿意为 Claude 写文档，但不愿为同事写](sources/claude-handoff-doc-to-repo.md) — `source/_posts/claude-handoff-doc-to-repo.md`
 - [为什么AI大模型需要“显卡”/TPU、GPU与AMD之间有什么区别](sources/why-graphics-card.md) — `source/_posts/why-graphics-card.md`
 - [ubuntu 下 tensorflow CPU release 版安装](sources/ubuntu-install-tensorflow.md) — `source/_posts/ubuntu-install-tensorflow.md`
 - [首次尝试95%都是垃圾：一位工程师使用Claude Code的6周之旅](sources/translate-use-claude-code.md) — `source/_posts/translate-use-claude-code.md`

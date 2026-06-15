@@ -19,7 +19,12 @@
 ## 相关概念
 
 - [AI 使用边界与提效反噬](../concepts/ai-usage-boundary-and-efficiency-backfire.md)
+- [AI 协作心理负担](../concepts/ai-collaboration-psychological-burden.md)
 - [AI 辅助开发](../concepts/ai-assisted-development.md)
 
+## 另见
+
+- [AI使人膨胀](ai-expansion.md)（决策疲劳、价值感空虚、AI 捧杀）
+
 ---
-_Edited by assistant (Codex 5.3) on 2026-05-07._
+_Edited by assistant (Composer) on 2026-06-15._

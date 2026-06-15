@@ -19,3 +19,4 @@
 
 - [AI 外包写作与思维：对照阅读](../reports/ai-outsourcing-writing-thinking.md)
 - [AI 让人变得无趣](../sources/ai-make-you-boring.md)（相邻主题：思维外包与表达可信度）
+- [AI 协作心理负担](../concepts/ai-collaboration-psychological-burden.md)

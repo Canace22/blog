@@ -42,4 +42,8 @@
 
 - [把想法丢给 AI 拎主线](../sources/sanye-ai-organize-thoughts.md)
 - [AI使人膨胀](../sources/ai-expansion.md)（相邻主题：工具与自我膨胀）
+- [AI 如何让我们躺平](../sources/how-ai-lets-us-lie-flat.md)（相邻主题：提效反噬与边界）
+- [我们是否需要AI知识库](../sources/AI-knowledge-base.md)（相邻主题：依赖与内化）
+- [AI 协作心理负担](../concepts/ai-collaboration-psychological-burden.md)（概念入口）
+- [AI 协作心理负担：主题对照与来源索引](ai-collaboration-psychological-burden.md)（本主题完整 report）
 - [LLM 维护的知识库](../concepts/llm-maintained-wiki.md)（本仓库元主题：如何用 LLM **维护**知识而非替代思考）

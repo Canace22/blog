@@ -22,7 +22,9 @@
 - [我们是否需要AI知识库（笔记版）](../sources/why-we-need-ai-knowledge-bases.md)
 - [AI Knowledge Bases](../concepts/ai-knowledge-bases.md)
 - [RAG 与 Graph RAG](../concepts/rag-and-graph-rag.md)
+- [AI 协作心理负担](../concepts/ai-collaboration-psychological-burden.md)（依赖 AI 投喂 vs 内化知识的张力）
+- [AI 外包写作与思维：对照阅读](../reports/ai-outsourcing-writing-thinking.md)
 
 ---
 
-*维护：Cursor Agent，2026-06-03。*
+*维护：Cursor Agent，2026-06-15。*

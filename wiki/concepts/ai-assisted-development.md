@@ -21,6 +21,7 @@
 - [大语言模型知识库](../concepts/llm-knowledge-bases.md)：给智能体超出单次对话的、可结构化的长期背景的一种方式。
 - [AI 知识库](../concepts/ai-knowledge-bases.md)：覆盖「上传资料再查询」式落地；实际开发里常把两种路子组合使用。
 - [RAG 与 Graph RAG](../concepts/rag-and-graph-rag.md)：知识库检索底座（向量 RAG vs 图 RAG）选型参考。
+- [AI 协作心理负担](../concepts/ai-collaboration-psychological-burden.md)：深度用 AI 时的提效反噬、思维外包与价值感问题（与流程治理互补）。
 
 ## 仓库内当前证据链
 
