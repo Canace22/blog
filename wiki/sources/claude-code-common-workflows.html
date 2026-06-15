@@ -1,0 +1,155 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="canace 的博客"><meta itemprop="name" content="2026-06-13 来源：Claude Code 常见工作流程"><meta itemprop="image" content="https://raw.githubusercontent.com/Canace22/Assets/main/images/snow-other.png"><meta property="og:image" content="https://raw.githubusercontent.com/Canace22/Assets/main/images/snow-other.png"><meta name="description" itemprop="description" content="&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;来源类型&lt;/strong&gt;：Claude Code 官方文档剪藏&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;原文&lt;/strong&gt;：&lt;a href=&quot;https://code.claude.com/docs/zh-CN/common-workflows&quot;&gt;常见工作流程&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;整理日期&lt;/strong&gt;：2026-06-13&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;摘要&quot;&gt;&lt;a href=&quot;#摘要&quot; class=&quot;headerlink&quot; title=&quot;摘要&quot;&gt;&lt;/a&gt;摘要&lt;/h2&gt;&lt;p&gt;Claude Code 官方整理的日常开发工作流：从提示模式（读库、修 bug、重构、测、PR、文档）到会话恢复、worktree 并行、plan mode、子代理委派、headless 管道，以及按计划自动跑任务。各模式可在 CLI &amp;#x2F; 桌面 &amp;#x2F; IDE 等界面复用，措辞按项目调整即可。&lt;/p&gt;
+&lt;h2 id=&quot;要点&quot;&gt;&lt;a href=&quot;#要点&quot; class=&quot;headerlink&quot; title=&quot;要点&quot;&gt;&lt;/a&gt;要点&lt;/h2&gt;&lt;h3 id=&quot;提示工作流&quot;&gt;&lt;a href=&quot;#提示工作流&quot; class=&quot;headerlink&quot; title=&quot;提示工作流&quot;&gt;&lt;/a&gt;提示工作流&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;读新库&lt;/strong&gt;：先宽后窄；问约定与术语；大库见 &lt;a href=&quot;https://code.claude.com/docs/zh-CN/large-codebases&quot;&gt;Monorepos 文档&lt;/a&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;修 bug&lt;/strong&gt;：给出复现命令与堆栈；说明间歇&amp;#x2F;持续；让 Claude 先定位再改。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;重构&lt;/strong&gt;：小步、可测；必要时要求向后兼容；可先要「现代做法」说明。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;写测试&lt;/strong&gt;：点名要测的行为；Claude 会对齐现有测试风格；可要求补边界用例。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;开 PR&lt;/strong&gt;：可直接说「create a pr」；&lt;code&gt;gh pr create&lt;/code&gt; 后会话可链到 PR（&lt;code&gt;claude --from-pr&lt;/code&gt; &amp;#x2F; &lt;code&gt;/resume&lt;/code&gt;）；提交前让人审风险点。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;文档&lt;/strong&gt;：指定 JSDoc&amp;#x2F;docstring 等风格；要示例；覆盖公共 API 与复杂逻辑。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;笔记&amp;#x2F;非代码目录&lt;/strong&gt;：与代码库一样可搜改 reorganize；&lt;code&gt;.claude/&lt;/code&gt;、&lt;code&gt;CLAUDE.md&lt;/code&gt; 与其他工具配置并存；每次工具调用会重读文件。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;图像&lt;/strong&gt;：截图&amp;#x2F;UI&amp;#x2F;图表作上下文；对话可多图。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;@ 引用&lt;/strong&gt;：快速带入文件&amp;#x2F;目录；目录只列清单不读全文；父目录 &lt;code&gt;CLAUDE.md&lt;/code&gt; 会进上下文。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;自询能力&lt;/strong&gt;：Claude 可读自家文档回答 MCP、权限、Bedrock、限制等；&lt;code&gt;/powerup&lt;/code&gt; 有交互课。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;会话与模式&quot;&gt;&lt;a href=&quot;#会话与模式&quot; class=&quot;headerlink&quot; title=&quot;会话与模式&quot;&gt;&lt;/a&gt;会话与模式&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;恢复&lt;/strong&gt;：&lt;code&gt;claude --continue&lt;/code&gt; 续最近会话；&lt;code&gt;claude --resume&lt;/code&gt; &amp;#x2F; &lt;code&gt;/resume&lt;/code&gt; 选历史；跨会话不必重讲上下文。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Worktree 并行&lt;/strong&gt;：&lt;code&gt;claude --worktree &amp;lt;name&amp;gt;&lt;/code&gt; 隔离分支检出；多终端不同名即可并行；Agent View 可一屏监控（见 &lt;a href=&quot;../concepts/claude-code-parallel-agents.html&quot;&gt;并行代理&lt;/a&gt;）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Plan mode&lt;/strong&gt;：&lt;code&gt;claude --permission-mode plan&lt;/code&gt; 或 &lt;code&gt;Shift+Tab&lt;/code&gt;；先计划、批准后再改盘。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;子代理&lt;/strong&gt;：大库探索委派出去，只收摘要回主对话（详见 &lt;a href=&quot;../concepts/claude-code-parallel-agents.html&quot;&gt;并行代理概念&lt;/a&gt;）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Headless&lt;/strong&gt;：&lt;code&gt;claude -p &amp;quot;...&amp;quot;&lt;/code&gt; 管道 stdin&amp;#x2F;stdout，适合 CI、钩子、批处理。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;按计划运行&quot;&gt;&lt;a href=&quot;#按计划运行&quot; class=&quot;headerlink&quot; title=&quot;按计划运行&quot;&gt;&lt;/a&gt;按计划运行&lt;/h3&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;方式&lt;/th&gt;
+&lt;th&gt;运行位置&lt;/th&gt;
+&lt;th&gt;适合&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td&gt;Routines&lt;/td&gt;
+&lt;td&gt;Anthropic 托管&lt;/td&gt;
+&lt;td&gt;机关机也跑；可 API&amp;#x2F;GitHub 触发&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;桌面计划任务&lt;/td&gt;
+&lt;td&gt;本机桌面&lt;/td&gt;
+&lt;td&gt;需本地文件&amp;#x2F;未提交改动&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;GitHub Actions&lt;/td&gt;
+&lt;td&gt;CI&lt;/td&gt;
+&lt;td&gt;与 PR 等仓库事件绑定&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;/loop&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;当前 CLI 会话&lt;/td&gt;
+&lt;td&gt;会话内轮询；新对话停止&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;p&gt;计划任务提示要写清成功标准与结果处理方式（无法澄清）。&lt;/p&gt;
+&lt;h2 id=&quot;另见&quot;&gt;&lt;a href=&quot;#另见&quot; class=&quot;headerlink&quot; title=&quot;另见&quot;&gt;&lt;/a&gt;另见&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;../concepts/claude-code-workflows.html&quot;&gt;Claude Code 常见工作流&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;../concepts/claude-code-parallel-agents.html&quot;&gt;Claude Code 并行代理&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;claude-code-parallel-agents.html&quot;&gt;Claude Code 并行运行代理（来源）&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;claude-cli-effort-model-commands.html&quot;&gt;Claude CLI 速记：&lt;code&gt;/effort&lt;/code&gt; 与 &lt;code&gt;/model&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;../concepts/ai-assisted-development.html&quot;&gt;AI 辅助开发&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;translate-use-claude-code.html&quot;&gt;首次尝试95%都是垃圾：一位工程师使用 Claude Code 的 6 周之旅&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;em&gt;维护：Cursor Agent，2026-06-13。&lt;/em&gt;&lt;/p&gt;
+"><title>2026-06-13 来源：Claude Code 常见工作流程</title><link rel="stylesheet" type="text/css" href="../../css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/normalize.css/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="../../favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="../../favicon.ico"><link rel="apple-touch-icon" href="../../apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="../../apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="../../atom.xml"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/clipboard/dist/clipboard.min.js"></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.js"></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.css"><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">2026-06-13 来源：Claude Code 常见工作流程</h1><a id="logo" href="../../.">Canace 的博客</a><p class="description">Tomorrow is another day</p></div><div id="nav-menu"><a href="../../."><i class="fa fa-home"> 主页</i></a><a href="../../archives/"><i class="fa fa-archive"> 文章归档</i></a><a class="current" href="../"><i class="fa fa-book"> 知识库</i></a><a href="../../about/"><i class="fa fa-user"> 关于我</i></a><a href="../../atom.xml"><i class="fa fa-rss"> 订阅</i></a><a id="nav-random-article" href="#" title="随机文章" aria-label="随机文章"><i class="fa fa-random"> 随机文章</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">2026-06-13 来源：Claude Code 常见工作流程</h1><div class="clear"><div class="toc-article" id="toc"><div class="toc-title">目录</div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%91%98%E8%A6%81"><span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A6%81%E7%82%B9"><span class="toc-text">要点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%90%E7%A4%BA%E5%B7%A5%E4%BD%9C%E6%B5%81"><span class="toc-text">提示工作流</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%9A%E8%AF%9D%E4%B8%8E%E6%A8%A1%E5%BC%8F"><span class="toc-text">会话与模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%89%E8%AE%A1%E5%88%92%E8%BF%90%E8%A1%8C"><span class="toc-text">按计划运行</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%A6%E8%A7%81"><span class="toc-text">另见</span></a></li></ol></div></div><div class="post-content"><ul>
+<li><strong>来源类型</strong>：Claude Code 官方文档剪藏</li>
+<li><strong>原文</strong>：<a target="_blank" rel="noopener" href="https://code.claude.com/docs/zh-CN/common-workflows">常见工作流程</a></li>
+<li><strong>整理日期</strong>：2026-06-13</li>
+</ul>
+<h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>Claude Code 官方整理的日常开发工作流：从提示模式（读库、修 bug、重构、测、PR、文档）到会话恢复、worktree 并行、plan mode、子代理委派、headless 管道，以及按计划自动跑任务。各模式可在 CLI &#x2F; 桌面 &#x2F; IDE 等界面复用，措辞按项目调整即可。</p>
+<h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><h3 id="提示工作流"><a href="#提示工作流" class="headerlink" title="提示工作流"></a>提示工作流</h3><ul>
+<li><strong>读新库</strong>：先宽后窄；问约定与术语；大库见 <a target="_blank" rel="noopener" href="https://code.claude.com/docs/zh-CN/large-codebases">Monorepos 文档</a>。</li>
+<li><strong>修 bug</strong>：给出复现命令与堆栈；说明间歇&#x2F;持续；让 Claude 先定位再改。</li>
+<li><strong>重构</strong>：小步、可测；必要时要求向后兼容；可先要「现代做法」说明。</li>
+<li><strong>写测试</strong>：点名要测的行为；Claude 会对齐现有测试风格；可要求补边界用例。</li>
+<li><strong>开 PR</strong>：可直接说「create a pr」；<code>gh pr create</code> 后会话可链到 PR（<code>claude --from-pr</code> &#x2F; <code>/resume</code>）；提交前让人审风险点。</li>
+<li><strong>文档</strong>：指定 JSDoc&#x2F;docstring 等风格；要示例；覆盖公共 API 与复杂逻辑。</li>
+<li><strong>笔记&#x2F;非代码目录</strong>：与代码库一样可搜改 reorganize；<code>.claude/</code>、<code>CLAUDE.md</code> 与其他工具配置并存；每次工具调用会重读文件。</li>
+<li><strong>图像</strong>：截图&#x2F;UI&#x2F;图表作上下文；对话可多图。</li>
+<li><strong>@ 引用</strong>：快速带入文件&#x2F;目录；目录只列清单不读全文；父目录 <code>CLAUDE.md</code> 会进上下文。</li>
+<li><strong>自询能力</strong>：Claude 可读自家文档回答 MCP、权限、Bedrock、限制等；<code>/powerup</code> 有交互课。</li>
+</ul>
+<h3 id="会话与模式"><a href="#会话与模式" class="headerlink" title="会话与模式"></a>会话与模式</h3><ul>
+<li><strong>恢复</strong>：<code>claude --continue</code> 续最近会话；<code>claude --resume</code> &#x2F; <code>/resume</code> 选历史；跨会话不必重讲上下文。</li>
+<li><strong>Worktree 并行</strong>：<code>claude --worktree &lt;name&gt;</code> 隔离分支检出；多终端不同名即可并行；Agent View 可一屏监控（见 <a href="../concepts/claude-code-parallel-agents.html">并行代理</a>）。</li>
+<li><strong>Plan mode</strong>：<code>claude --permission-mode plan</code> 或 <code>Shift+Tab</code>；先计划、批准后再改盘。</li>
+<li><strong>子代理</strong>：大库探索委派出去，只收摘要回主对话（详见 <a href="../concepts/claude-code-parallel-agents.html">并行代理概念</a>）。</li>
+<li><strong>Headless</strong>：<code>claude -p &quot;...&quot;</code> 管道 stdin&#x2F;stdout，适合 CI、钩子、批处理。</li>
+</ul>
+<h3 id="按计划运行"><a href="#按计划运行" class="headerlink" title="按计划运行"></a>按计划运行</h3><table>
+<thead>
+<tr>
+<th>方式</th>
+<th>运行位置</th>
+<th>适合</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Routines</td>
+<td>Anthropic 托管</td>
+<td>机关机也跑；可 API&#x2F;GitHub 触发</td>
+</tr>
+<tr>
+<td>桌面计划任务</td>
+<td>本机桌面</td>
+<td>需本地文件&#x2F;未提交改动</td>
+</tr>
+<tr>
+<td>GitHub Actions</td>
+<td>CI</td>
+<td>与 PR 等仓库事件绑定</td>
+</tr>
+<tr>
+<td><code>/loop</code></td>
+<td>当前 CLI 会话</td>
+<td>会话内轮询；新对话停止</td>
+</tr>
+</tbody></table>
+<p>计划任务提示要写清成功标准与结果处理方式（无法澄清）。</p>
+<h2 id="另见"><a href="#另见" class="headerlink" title="另见"></a>另见</h2><ul>
+<li><a href="../concepts/claude-code-workflows.html">Claude Code 常见工作流</a></li>
+<li><a href="../concepts/claude-code-parallel-agents.html">Claude Code 并行代理</a></li>
+<li><a href="claude-code-parallel-agents.html">Claude Code 并行运行代理（来源）</a></li>
+<li><a href="claude-cli-effort-model-commands.html">Claude CLI 速记：<code>/effort</code> 与 <code>/model</code></a></li>
+<li><a href="../concepts/ai-assisted-development.html">AI 辅助开发</a></li>
+<li><a href="translate-use-claude-code.html">首次尝试95%都是垃圾：一位工程师使用 Claude Code 的 6 周之旅</a></li>
+</ul>
+<hr>
+<p><em>维护：Cursor Agent，2026-06-13。</em></p>
+</div></div></div></div><div class="pure-u-1 pure-u-md-1-4"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 常用文档</i></div><ul></ul><a href="/git-common-commands" title="Git 文档" target="_blank">Git 文档</a><ul></ul><a href="/common-programming-prompt-words" title="常用开发提示词" target="_blank">常用开发提示词</a></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="../../categories/soft/">软技能与思考</a><span class="category-list-count">51</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/cli/">工程化与运维</a><span class="category-list-count">51</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/intelligent/">AI探索</a><span class="category-list-count">20</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/web/">Web开发</a><span class="category-list-count">142</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/coding/">编程基础</a><span class="category-list-count">42</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/site/">网站建设</a><span class="category-list-count">5</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="../../tags/essays/" style="font-size: 15px; color: #3679a7">随笔</a> <a href="../../tags/performance/" style="font-size: 15px; color: #88a6bb">性能优化</a> <a href="../../tags/AI%E5%8E%9F%E7%90%86/" style="font-size: 15px; color: #96aebf">AI原理</a> <a href="../../tags/backend/" style="font-size: 15px; color: #5f90b1">后端</a> <a href="../../tags/Python-Go-%E5%85%B6%E4%BB%96/" style="font-size: 15px; color: #96aebf">Python/Go/其他</a> <a href="../../tags/JavaScript-TypeScript/" style="font-size: 15px; color: #0e639d">JavaScript&TypeScript</a> <a href="../../tags/computer-science/" style="font-size: 15px; color: #2972a4">计算机科学</a> <a href="../../tags/%E8%81%8C%E4%B8%9A%E5%8F%91%E5%B1%95/" style="font-size: 15px; color: #88a6bb">职业发展</a> <a href="../../tags/api-services/" style="font-size: 15px; color: #bec4c9">API&服务</a> <a href="../../tags/AI%E7%BC%96%E7%A8%8B/" style="font-size: 15px; color: #7a9fb8">AI编程</a> <a href="../../tags/%E7%BF%BB%E8%AF%91/" style="font-size: 15px; color: #ccc">翻译</a> <a href="../../tags/notes/" style="font-size: 15px; color: #a3b5c2">笔记</a> <a href="../../tags/frontend/" style="font-size: 15px; color: #005b9a">前端</a> <a href="../../tags/frameworks-libs/" style="font-size: 15px; color: #5288ae">框架与库</a> <a href="../../tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/" style="font-size: 15px; color: #96aebf">系统设计</a> <a href="../../tags/programming-languages/" style="font-size: 15px; color: #b1bdc5">编程语言</a> <a href="../../tags/css-visualization/" style="font-size: 15px; color: #1b6aa1">CSS与可视化</a> <a href="../../tags/build-deploy/" style="font-size: 15px; color: #6d97b5">构建与部署</a> <a href="../../tags/dev-tools/" style="font-size: 15px; color: #4481ab">开发工具</a> <a href="../../tags/Agent-Skill/" style="font-size: 15px; color: #ccc">Agent,Skill</a> <a href="../../tags/Node-js/" style="font-size: 15px; color: #88a6bb">Node.js</a> <a href="../../tags/cross-platform/" style="font-size: 15px; color: #96aebf">跨端方案</a> <a href="../../tags/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/" style="font-size: 15px; color: #ccc">项目管理</a> <a href="../../tags/%E7%9F%A5%E8%AF%86%E5%BA%93/" style="font-size: 15px; color: #ccc">知识库</a> <a href="../../tags/code-quality/" style="font-size: 15px; color: #bec4c9">代码质量</a></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2026 <a href="../../." rel="nofollow">Canace 的博客</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="../../js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.js" async></script><script type="text/javascript" src="../../js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.css"><link rel="stylesheet" type="text/css" href="../../css/search.css?v=0.0.0"><script type="text/javascript" src="../../js/search.js?v=0.0.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+   search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="/js/copycode.js" successtext="复制成功!"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/mermaid@11.14.0/dist/mermaid.min.js"></script><script type="text/javascript">document.addEventListener('DOMContentLoaded', function () {
+  if (!window.mermaid) return;
+  mermaid.initialize({"theme":"default","logLevel":5,"startOnLoad":true,"arrowMarkerAbsolute":false,"flowchart":{"htmlLabels":true,"useMaxWidth":true,"curve":"linear"},"sequence":{"diagramMarginX":50,"diagramMarginY":10,"actorMargin":50,"width":150,"height":65,"boxMargin":10,"boxTextMargin":5,"noteMargin":10,"messageMargin":35,"mirrorActors":true,"bottomMarginAdj":1,"useMaxWidth":true},"gantt":{"titleTopMargin":25,"barHeight":20,"barGap":4,"topPadding":50,"leftPadding":75,"gridLineStartPadding":35,"fontSize":11,"fontFamily":"\"Open-Sans\", \"sans-serif\"","numberSectionStyles":4,"axisFormat":"%Y-%m-%d"},"class":{},"git":{}});
+});
+</script><script type="text/javascript" src="../../js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="../../js/smartresize.js?v=0.0.0"></script><script type="text/javascript">(function () {
+  var urls = ["/../../2024-year-end-summary/","/../../6-common-website-usability-issues-and-solutions/","/../../AI-knowledge-base/","/../../Django-channels/","/../../JavaScript-call-apply-bind/","/../../NP-P-NPC/","/../../WebRTC/","/../../about-doing-technology/","/../../about-forgetfulness/","/../../MySQL/","/../../add-skeleton-screen/","/../../agent-coding-stability/","/../../ai-coding-share/","/../../ai-make-you-boring/","/../../ai-expansion/","/../../ai-coding-game/","/../../ai-optimize-ui/","/../../ai-worker/","/../../algorithm-book-notes-for-everyone/","/../../angular-navigation-content-linkage/","/../../ai-coding-ide/","/../../angel-love/","/../../ants/","/../../axios-network-request-encapsulation/","/../../async-data-console-issues/","/../../ant-design-pitfalls/","/../../bash-data-processing/","/../../beego-getting-started/","/../../blog-category/","/../../boolean-variables-in-project-application/","/../../box-model/","/../../binary-search/","/../../bracket-matching/","/../../brief-discussion-on-dns-pollution/","/../../browser-kernel-and-writing/","/../../build-django-blog-system/","/../../build-tinymce-img-plugin/","/../../brief-discussion-on-visual-form-design/","/../../calculate-rice-cooker-reservation-time/","/../../build-typescript-library/","/../../canvas-draw-sprite-export/","/../../cascade/","/../../centos-server-login-config/","/../../ckeditor-usage-in-angular/","/../../canvas-draw-dynamic-path/","/../../climbing-stairs/","/../../code-optimization/","/../../claude-handoff-doc-to-repo/","/../../common-git-workflows/","/../../common-image-format-comparison/","/../../common-programming-prompt-words/","/../../common-regular-expressions/","/../../common-algorithm-ideas/","/../../common-terminal-commands/","/../../computer-graphics-1/","/../../count-beautiful-subarrays/","/../../count-number-of-islands/","/../../count-total-elements-of-array-objects/","/../../computer-graphics-2/","/../../create-object-based-on-null/","/../../cross-origin-resource-sharing/","/../../css-background-image-application/","/../../css-layout-guide/","/../../css-circular-progress-bar/","/../../css-positioning/","/../../css-positioning-detailed/","/../../css-series-basics/","/../../css-notes/","/../../css-series-box-dimensions/","/../../css-series-cascade/","/../../css-series-flow-and-dimensions/","/../../css-series-flow-destruction-and-protection/","/../../css-series-inline-elements-and-flow/","/../../css-series-text-processing/","/../../css-tips/","/../../css-two-color-pie-chart/","/../../css2-block-element-center/","/../../cursor-debugger/","/../../css-series-history-and-document-flow/","/../../custom-github-activity/","/../../cursor-skill-web-search-download-movie/","/../../deep-copy-of-arrays-and-objects/","/../../css3-animation-vs-js-animation/","/../../deep-work-philosophy-interpretation/","/../../docker-documentation/","/../../doing-things-with-vscode/","/../../docker-frontend-environment-setup/","/../../disable-image-dragging/","/../../egg/","/../../element-plus-table-component-scaling-issue-solution/","/../../es2020-new-features/","/../../extra-thick-chicken-soup/","/../../firefox-remove-various-dashed-borders/","/../../find-median-sorted-arrays/","/../../file-naming-pitfalls-record/","/../../ffmpeg-extract-audio-track/","/../../first-day-morning-run/","/../../first-screen-time-vs-white-screen-time/","/../../fix-github-image-issue-on-mac/","/../../flow-simple-tutorial/","/../../flutter-learning-notes-quick-start/","/../../flutter-learning-notes-dart-basics/","/../../dropdown-list-implementation/","/../../first-screen-optimization/","/../../frontend-draw-graphic-captcha/","/../../fullscreen-solution-for-webpage-or-html-elements/","/../../four-js-tips/","/../../frontend-xx-dockerization/","/../../frontend-performance-optimization/","/../../fun-console/","/../../function-currying/","/../../function-without-global-variable-counting/","/../../gemini-new-session-memory/","/../../get-css-style/","/../../generate-random-array-in-specified-range/","/../../get-longest-common-prefix/","/../../git-common-commands/","/../../git-domain-config/","/../../git-usage-guide/","/../../functional-programming/","/../../git-environment-config/","/../../gitbook-generate-ebook/","/../../github-practical-tips/","/../../github-travis-auto-build-vue-to-gitpage/","/../../gitlab-ci-config-template/","/../../github-action-auto-deploy-page/","/../../go-getting-started/","/../../hexo-blog-migration/","/../../hexo-getting-started/","/../../homebrew-common-commands/","/../../gitpage-hexo/","/../../how-ai-lets-us-lie-flat/","/../../how-to-create-a-robust-system/","/../../hexo-math-formula-support/","/../../how-to-optimize-animation/","/../../html-notes/","/../../http-notes/","/../../http-server/","/../../html-to-text-js/","/../../implement-array-flatten/","/../../image-lazy-loading-implementation/","/../../improve-work-efficiency-with-cursor-practical-notes/","/../../issue-03/","/../../issue-04/","/../../issue-05/","/../../interesting-css-cascade-issues/","/../../interview-strategy/","/../../issue-06/","/../../issue-07/","/../../issue-09/","/../../issue-08/","/../../issue-10/","/../../ghost-whitespace-nodes/","/../../issue-1/","/../../issue-11/","/../../issue-13/","/../../issue-14/","/../../issue-15/","/../../issue-12/","/../../javascript-common-code-snippets/","/../../javascript-basics-primitive-vs-reference-types/","/../../issue-2/","/../../javascript-new-implementation-principle/","/../../javaScript-promise/","/../../javascript-basics-type-conversion/","/../../javascript-object-oriented-programming/","/../../javascript-soul-questions/","/../../javascript-tricks/","/../../japanese-learning-notes/","/../../js-execution/","/../../javascript-detect-caps-lock/","/../../javascript-built-in-deep-copy/","/../../js-linked-list-implementation/","/../../js-timezone/","/../../jump-to-specific-position-in-article/","/../../key-value-role-in-vue-components/","/../../javascript-functions/","/../../js-overview/","/../../knowledge-anxiety/","/../../js-string-to-base64/","/../../js-modal-blog/","/../../kpi-vs-okr/","/../../knn-algorithm/","/../../leave-page-popup/","/../../kindness/","/../../linux-background-script-execution/","/../../llm-wiki/","/../../mac-install-mysql/","/../../lodash-source-analysis-array-slice/","/../../lodash-source-analysis-array-chunk/","/../../llm-training-truth/","/../../method-to-login-to-south-china-normal-university-campus-network/","/../../modify-autofill-style/","/../../model-training-steps/","/../../modify-scrollbar-style-compatible/","/../../mini-program-tabs-sticky/","/../../mac-debug-ios-web-page/","/../../module-specifications/","/../../n-n-order-matrix-algorithm/","/../../node-notes-in-depth/","/../../manchester-by-the-sea/","/../../nodejs-config/","/../../nodeJs/","/../../notes-about-writing-weekly-reports/","/../../nodejs-notes/","/../../number-precise-to-two-decimal-places/","/../../nodejs-module-mechanism/","/../../one-click-generate-responsive-table/","/../../node-version-management/","/../../npm-common-commands/","/../../openclaw-usage-experience/","/../../narrative-research/","/../../palindrome-number-judgment/","/../../object-property-value-monitoring/","/../../package-json-field-list/","/../../personal-knowledge-base/","/../../pinyin-learning-project-notes/","/../../pagination-algorithm/","/../../pixi-js-sprite-loading-cache-removal/","/../../pixi-basics/","/../../pixijs-vertexData-null/","/../../port-number-modification/","/../../project-modularization-principles/","/../../product-updates-rss-file-diff-mental-model/","/../../python-pitfalls-collection/","/../../prisma-getting-started-guide/","/../../proxy-observer-pattern/","/../../python3-installation/","/../../qwen-milk-tea-ui/","/../../recursive-tree/","/../../rag-vs-graph-rag/","/../../react-hooks-create-movie-app/","/../../record-service-degradation-due-to-emergency/","/../../refactoring-vs-architecture/","/../../regular-expressions/","/../../removeDuplicates/","/../../remove-parent-nodes-with-duplicate-child-ids/","/../../removeElement/","/../../reverse-words-in-string/","/../../rhythm-psychology/","/../../roman-numerals-to-integer/","/../../reverse-integer/","/../../scheduled-tasks/","/../../science-popularization/","/../../rss-telegram-selfhost/","/../../sentence-excerpts/","/../../software-version-number-definition/","/../../singly-linked-list-concatenation/","/../../ss-installation/","/../../scroll-pagination/","/../../solve-github-dns-pollution-issue/","/../../some-concepts/","/../../settimeout-simulate-setinterval/","/../../systematic-method-for-fragmented-reading-knowledge/","/../../sublime-text-nodejs-config/","/../../string-and-code-rigor/","/../../talking-about-browser-cache-mechanism/","/../../table-cell-equal-division/","/../../talking-about-webpage-adaptive-and-responsive-layout/","/../../talking-about-vuex/","/../../thoughts-on-branch-management/","/../../tcp-ip-three-way-handshake/","/../../thoughts-on-ad-blocker-plugins/","/../../thoughts-on-technical-growth/","/../../time-complexity-vs-space-complexity/","/../../time-zero/","/../../three-js-basics-practice/","/../../timestamp-to-date/","/../../typescript-environment-config/","/../../translate-use-claude-code/","/../../ubuntu-configure-frontend-environment/","/../../two-sum-problem/","/../../unavoidable-bug-chrome-translation-caused-trouble/","/../../ubuntu-configure-ss/","/../../understanding-cookies/","/../../understanding-byte-order/","/../../ubuntu-install-tensorflow/","/../../validate-string/","/../../variables/","/../../vscode-code-formatting-summary/","/../../vue-details-i-didnt-know/","/../../vue-data-driven-view-implementation/","/../../vue-config-template/","/../../understanding-instanceof/","/../../vue-test-unit/","/../../vue-dynamic-component-import-note-not-async/","/../../vue3-notes/","/../../web-performance-optimization-debounce/","/../../vue-project-setup-steps/","/../../vue-dynamic-change-title/","/../../webpack-dynamic-modify-resource-domain/","/../../web-security-xss-attack/","/../../web-security-csrf/","/../../webpack-gulp-bundle-vue-component-library/","/../../webpack5-new-features-module-federation-notes/","/../../webpack/","/../../webpage-version-update-popup-implementation/","/../../wechat-mini-program-pitfalls/","/../../what-happened-to-vue/","/../../what-happens-from-url-to-display/","/../../why-we-need-to-read/","/../../why-not-let-ai-write-for-us/","/../../why-write-wechat-official-account/","/../../windows-tricks/","/../../why-graphics-card/","/../../why-frontend-needs-framework/","/../../words-of-experience/","/../../work-for/","/../../writing-a-good-claude-md/","/../../wordpress-installation/","/../../yml-file-operations/","/../../wsl-config/"];
+  var el = document.getElementById('nav-random-article');
+  if (!el) return;
+  el.addEventListener('click', function (e) {
+    e.preventDefault();
+    if (!urls.length) return;
+    var next = urls[Math.floor(Math.random() * urls.length)];
+    if (next) window.location.href = next;
+  });
+})();</script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":200,"height":200},"mobile":{"show":false},"react":{"opacity":0.7},"log":false});</script></body></html>

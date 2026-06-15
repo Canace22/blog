@@ -1,0 +1,155 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="canace 的博客"><meta itemprop="name" content="2026-06-13 来源：Claude Code 并行运行代理"><meta itemprop="image" content="https://raw.githubusercontent.com/Canace22/Assets/main/images/snow-other.png"><meta property="og:image" content="https://raw.githubusercontent.com/Canace22/Assets/main/images/snow-other.png"><meta name="description" itemprop="description" content="&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;来源类型&lt;/strong&gt;：Claude Code 官方文档剪藏（大型代码库文档「并行代理」章节）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;原文&lt;/strong&gt;：&lt;a href=&quot;https://code.claude.com/docs/zh-CN/large-codebases#%E6%B7%BB%E5%8A%A0%E6%8C%89%E7%9B%AE%E5%BD%95-skills&quot;&gt;并行运行代理&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;整理日期&lt;/strong&gt;：2026-06-13&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;摘要&quot;&gt;&lt;a href=&quot;#摘要&quot; class=&quot;headerlink&quot; title=&quot;摘要&quot;&gt;&lt;/a&gt;摘要&lt;/h2&gt;&lt;p&gt;对比 Claude Code 四种并行化路径：&lt;strong&gt;子代理&lt;/strong&gt;（单会话内委派）、&lt;strong&gt;代理视图&lt;/strong&gt;（后台多会话一屏监控）、&lt;strong&gt;代理团队&lt;/strong&gt;（实验性，主导者协调任务列表与队友消息）、&lt;strong&gt;动态工作流&lt;/strong&gt;（脚本批量跑子代理并交叉验证）。另述 worktree 隔离、&lt;code&gt;/batch&lt;/code&gt; skill、以及与子代理&amp;#x2F;后台 bash&amp;#x2F;routine 的边界。&lt;/p&gt;
+&lt;h2 id=&quot;四种并行方式&quot;&gt;&lt;a href=&quot;#四种并行方式&quot; class=&quot;headerlink&quot; title=&quot;四种并行方式&quot;&gt;&lt;/a&gt;四种并行方式&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;方法&lt;/th&gt;
+&lt;th&gt;提供什么&lt;/th&gt;
+&lt;th&gt;何时用&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td&gt;子代理&lt;/td&gt;
+&lt;td&gt;单会话内委派；独立上下文；结果摘要回主对话&lt;/td&gt;
+&lt;td&gt;辅助任务会淹没主对话（搜索、日志、大段文件），且之后不再细查原文&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;代理视图&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;claude agents&lt;/code&gt; 一屏分派&amp;#x2F;监控后台会话&lt;/td&gt;
+&lt;td&gt;多个独立任务；fire-and-forget；需要时再介入&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;代理团队&lt;/td&gt;
+&lt;td&gt;多会话 + 共享任务列表 + 代理间消息；主导者协调（默认关闭）&lt;/td&gt;
+&lt;td&gt;希望 Claude 拆项目、分配并保持同步&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;动态工作流&lt;/td&gt;
+&lt;td&gt;脚本跑许多子代理并互验（研究预览）&lt;/td&gt;
+&lt;td&gt;任务过大或需多角度交叉检查（全库审计、大批量迁移、研究互证）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;p&gt;工作人员本质都是 Claude 会话；不同工具通过 &lt;a href=&quot;https://code.claude.com/docs/zh-CN/mcp&quot;&gt;MCP&lt;/a&gt; 暴露。&lt;/p&gt;
+&lt;h2 id=&quot;辅助机制（非独立「跑代理」方式）&quot;&gt;&lt;a href=&quot;#辅助机制（非独立「跑代理」方式）&quot; class=&quot;headerlink&quot; title=&quot;辅助机制（非独立「跑代理」方式）&quot;&gt;&lt;/a&gt;辅助机制（非独立「跑代理」方式）&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Worktrees&lt;/strong&gt;：每会话独立 git 检出，避免并行改同一文件；Agent View 自动为分派会话建 worktree；子代理也可各用 worktree。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;/batch&lt;/code&gt; skill&lt;/strong&gt;：把大改动拆成 5–30 个 worktree 隔离子代理，各开 PR；是子代理 + worktree 打包，不是第五种协调风格。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;后台 bash&lt;/strong&gt;：跑 shell 不阻塞对话，不生成代理。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;分叉子代理&lt;/strong&gt;：继承完整对话上下文，仍是子代理的一种 spawn 方式。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Routine&lt;/strong&gt;：云端按计划跑，不是本机并行会话。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;并行会增加 token 消耗（见 &lt;a href=&quot;https://code.claude.com/docs/zh-CN/costs&quot;&gt;Costs&lt;/a&gt;）。&lt;/p&gt;
+&lt;h2 id=&quot;选型三问&quot;&gt;&lt;a href=&quot;#选型三问&quot; class=&quot;headerlink&quot; title=&quot;选型三问&quot;&gt;&lt;/a&gt;选型三问&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;谁协调？&lt;/strong&gt; Claude 单对话委派 → 子代理；人交付后检查 → 代理视图；Claude 计划分配 → 代理团队；脚本固定流程 → 动态工作流。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;工作人员要互聊吗？&lt;/strong&gt; 子代理只回报主对话；代理视图只回报你；代理团队队友可互发消息、共享任务列表。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;会碰同一文件吗？&lt;/strong&gt; 用 worktree 隔离；代理团队默认不隔离 worktree，需 &lt;a href=&quot;https://code.claude.com/docs/zh-CN/agent-teams#avoid-file-conflicts&quot;&gt;分区工作&lt;/a&gt; 让各队友负责不同文件集。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;检查运行中工作&quot;&gt;&lt;a href=&quot;#检查运行中工作&quot; class=&quot;headerlink&quot; title=&quot;检查运行中工作&quot;&gt;&lt;/a&gt;检查运行中工作&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;后台会话：&lt;code&gt;claude agents&lt;/code&gt;（代理视图）&lt;/li&gt;
+&lt;li&gt;当前会话子代理：&lt;code&gt;/agents&lt;/code&gt;（Running &amp;#x2F; Library；与 &lt;code&gt;claude agents&lt;/code&gt; 不同）&lt;/li&gt;
+&lt;li&gt;当前会话后台项：&lt;code&gt;/tasks&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;动态工作流：&lt;code&gt;/workflows&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;桌面：并行会话总览见桌面文档&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;另见&quot;&gt;&lt;a href=&quot;#另见&quot; class=&quot;headerlink&quot; title=&quot;另见&quot;&gt;&lt;/a&gt;另见&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;../concepts/claude-code-parallel-agents.html&quot;&gt;Claude Code 并行代理&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;claude-code-common-workflows.html&quot;&gt;Claude Code 常见工作流程（来源）&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;../concepts/claude-code-workflows.html&quot;&gt;Claude Code 常见工作流&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;../concepts/ai-worker.html&quot;&gt;AI 角色分工：多角色专业化实践&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;../concepts/cursor-cookbook.html&quot;&gt;Cursor Cookbook&lt;/a&gt;（Cursor 侧 Agent Kanban &amp;#x2F; Cloud Agents 对照）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;em&gt;维护：Cursor Agent，2026-06-13。&lt;/em&gt;&lt;/p&gt;
+"><title>2026-06-13 来源：Claude Code 并行运行代理</title><link rel="stylesheet" type="text/css" href="../../css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/normalize.css/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="../../favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="../../favicon.ico"><link rel="apple-touch-icon" href="../../apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="../../apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="../../atom.xml"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/clipboard/dist/clipboard.min.js"></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.js"></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.css"><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">2026-06-13 来源：Claude Code 并行运行代理</h1><a id="logo" href="../../.">Canace 的博客</a><p class="description">Tomorrow is another day</p></div><div id="nav-menu"><a href="../../."><i class="fa fa-home"> 主页</i></a><a href="../../archives/"><i class="fa fa-archive"> 文章归档</i></a><a class="current" href="../"><i class="fa fa-book"> 知识库</i></a><a href="../../about/"><i class="fa fa-user"> 关于我</i></a><a href="../../atom.xml"><i class="fa fa-rss"> 订阅</i></a><a id="nav-random-article" href="#" title="随机文章" aria-label="随机文章"><i class="fa fa-random"> 随机文章</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">2026-06-13 来源：Claude Code 并行运行代理</h1><div class="clear"><div class="toc-article" id="toc"><div class="toc-title">目录</div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%91%98%E8%A6%81"><span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E7%A7%8D%E5%B9%B6%E8%A1%8C%E6%96%B9%E5%BC%8F"><span class="toc-text">四种并行方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%85%E5%8A%A9%E6%9C%BA%E5%88%B6%EF%BC%88%E9%9D%9E%E7%8B%AC%E7%AB%8B%E3%80%8C%E8%B7%91%E4%BB%A3%E7%90%86%E3%80%8D%E6%96%B9%E5%BC%8F%EF%BC%89"><span class="toc-text">辅助机制（非独立「跑代理」方式）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%89%E5%9E%8B%E4%B8%89%E9%97%AE"><span class="toc-text">选型三问</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A3%80%E6%9F%A5%E8%BF%90%E8%A1%8C%E4%B8%AD%E5%B7%A5%E4%BD%9C"><span class="toc-text">检查运行中工作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%A6%E8%A7%81"><span class="toc-text">另见</span></a></li></ol></div></div><div class="post-content"><ul>
+<li><strong>来源类型</strong>：Claude Code 官方文档剪藏（大型代码库文档「并行代理」章节）</li>
+<li><strong>原文</strong>：<a target="_blank" rel="noopener" href="https://code.claude.com/docs/zh-CN/large-codebases#%E6%B7%BB%E5%8A%A0%E6%8C%89%E7%9B%AE%E5%BD%95-skills">并行运行代理</a></li>
+<li><strong>整理日期</strong>：2026-06-13</li>
+</ul>
+<h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>对比 Claude Code 四种并行化路径：<strong>子代理</strong>（单会话内委派）、<strong>代理视图</strong>（后台多会话一屏监控）、<strong>代理团队</strong>（实验性，主导者协调任务列表与队友消息）、<strong>动态工作流</strong>（脚本批量跑子代理并交叉验证）。另述 worktree 隔离、<code>/batch</code> skill、以及与子代理&#x2F;后台 bash&#x2F;routine 的边界。</p>
+<h2 id="四种并行方式"><a href="#四种并行方式" class="headerlink" title="四种并行方式"></a>四种并行方式</h2><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>提供什么</th>
+<th>何时用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>子代理</td>
+<td>单会话内委派；独立上下文；结果摘要回主对话</td>
+<td>辅助任务会淹没主对话（搜索、日志、大段文件），且之后不再细查原文</td>
+</tr>
+<tr>
+<td>代理视图</td>
+<td><code>claude agents</code> 一屏分派&#x2F;监控后台会话</td>
+<td>多个独立任务；fire-and-forget；需要时再介入</td>
+</tr>
+<tr>
+<td>代理团队</td>
+<td>多会话 + 共享任务列表 + 代理间消息；主导者协调（默认关闭）</td>
+<td>希望 Claude 拆项目、分配并保持同步</td>
+</tr>
+<tr>
+<td>动态工作流</td>
+<td>脚本跑许多子代理并互验（研究预览）</td>
+<td>任务过大或需多角度交叉检查（全库审计、大批量迁移、研究互证）</td>
+</tr>
+</tbody></table>
+<p>工作人员本质都是 Claude 会话；不同工具通过 <a target="_blank" rel="noopener" href="https://code.claude.com/docs/zh-CN/mcp">MCP</a> 暴露。</p>
+<h2 id="辅助机制（非独立「跑代理」方式）"><a href="#辅助机制（非独立「跑代理」方式）" class="headerlink" title="辅助机制（非独立「跑代理」方式）"></a>辅助机制（非独立「跑代理」方式）</h2><ul>
+<li><strong>Worktrees</strong>：每会话独立 git 检出，避免并行改同一文件；Agent View 自动为分派会话建 worktree；子代理也可各用 worktree。</li>
+<li><strong><code>/batch</code> skill</strong>：把大改动拆成 5–30 个 worktree 隔离子代理，各开 PR；是子代理 + worktree 打包，不是第五种协调风格。</li>
+<li><strong>后台 bash</strong>：跑 shell 不阻塞对话，不生成代理。</li>
+<li><strong>分叉子代理</strong>：继承完整对话上下文，仍是子代理的一种 spawn 方式。</li>
+<li><strong>Routine</strong>：云端按计划跑，不是本机并行会话。</li>
+</ul>
+<p>并行会增加 token 消耗（见 <a target="_blank" rel="noopener" href="https://code.claude.com/docs/zh-CN/costs">Costs</a>）。</p>
+<h2 id="选型三问"><a href="#选型三问" class="headerlink" title="选型三问"></a>选型三问</h2><ol>
+<li><strong>谁协调？</strong> Claude 单对话委派 → 子代理；人交付后检查 → 代理视图；Claude 计划分配 → 代理团队；脚本固定流程 → 动态工作流。</li>
+<li><strong>工作人员要互聊吗？</strong> 子代理只回报主对话；代理视图只回报你；代理团队队友可互发消息、共享任务列表。</li>
+<li><strong>会碰同一文件吗？</strong> 用 worktree 隔离；代理团队默认不隔离 worktree，需 <a target="_blank" rel="noopener" href="https://code.claude.com/docs/zh-CN/agent-teams#avoid-file-conflicts">分区工作</a> 让各队友负责不同文件集。</li>
+</ol>
+<h2 id="检查运行中工作"><a href="#检查运行中工作" class="headerlink" title="检查运行中工作"></a>检查运行中工作</h2><ul>
+<li>后台会话：<code>claude agents</code>（代理视图）</li>
+<li>当前会话子代理：<code>/agents</code>（Running &#x2F; Library；与 <code>claude agents</code> 不同）</li>
+<li>当前会话后台项：<code>/tasks</code></li>
+<li>动态工作流：<code>/workflows</code></li>
+<li>桌面：并行会话总览见桌面文档</li>
+</ul>
+<h2 id="另见"><a href="#另见" class="headerlink" title="另见"></a>另见</h2><ul>
+<li><a href="../concepts/claude-code-parallel-agents.html">Claude Code 并行代理</a></li>
+<li><a href="claude-code-common-workflows.html">Claude Code 常见工作流程（来源）</a></li>
+<li><a href="../concepts/claude-code-workflows.html">Claude Code 常见工作流</a></li>
+<li><a href="../concepts/ai-worker.html">AI 角色分工：多角色专业化实践</a></li>
+<li><a href="../concepts/cursor-cookbook.html">Cursor Cookbook</a>（Cursor 侧 Agent Kanban &#x2F; Cloud Agents 对照）</li>
+</ul>
+<hr>
+<p><em>维护：Cursor Agent，2026-06-13。</em></p>
+</div></div></div></div><div class="pure-u-1 pure-u-md-1-4"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 常用文档</i></div><ul></ul><a href="/git-common-commands" title="Git 文档" target="_blank">Git 文档</a><ul></ul><a href="/common-programming-prompt-words" title="常用开发提示词" target="_blank">常用开发提示词</a></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="../../categories/soft/">软技能与思考</a><span class="category-list-count">51</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/cli/">工程化与运维</a><span class="category-list-count">51</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/intelligent/">AI探索</a><span class="category-list-count">20</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/web/">Web开发</a><span class="category-list-count">142</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/coding/">编程基础</a><span class="category-list-count">42</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/site/">网站建设</a><span class="category-list-count">5</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="../../tags/essays/" style="font-size: 15px; color: #3679a7">随笔</a> <a href="../../tags/performance/" style="font-size: 15px; color: #88a6bb">性能优化</a> <a href="../../tags/AI%E5%8E%9F%E7%90%86/" style="font-size: 15px; color: #96aebf">AI原理</a> <a href="../../tags/backend/" style="font-size: 15px; color: #5f90b1">后端</a> <a href="../../tags/Python-Go-%E5%85%B6%E4%BB%96/" style="font-size: 15px; color: #96aebf">Python/Go/其他</a> <a href="../../tags/JavaScript-TypeScript/" style="font-size: 15px; color: #0e639d">JavaScript&TypeScript</a> <a href="../../tags/computer-science/" style="font-size: 15px; color: #2972a4">计算机科学</a> <a href="../../tags/%E8%81%8C%E4%B8%9A%E5%8F%91%E5%B1%95/" style="font-size: 15px; color: #88a6bb">职业发展</a> <a href="../../tags/api-services/" style="font-size: 15px; color: #bec4c9">API&服务</a> <a href="../../tags/AI%E7%BC%96%E7%A8%8B/" style="font-size: 15px; color: #7a9fb8">AI编程</a> <a href="../../tags/%E7%BF%BB%E8%AF%91/" style="font-size: 15px; color: #ccc">翻译</a> <a href="../../tags/notes/" style="font-size: 15px; color: #a3b5c2">笔记</a> <a href="../../tags/frontend/" style="font-size: 15px; color: #005b9a">前端</a> <a href="../../tags/frameworks-libs/" style="font-size: 15px; color: #5288ae">框架与库</a> <a href="../../tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/" style="font-size: 15px; color: #96aebf">系统设计</a> <a href="../../tags/programming-languages/" style="font-size: 15px; color: #b1bdc5">编程语言</a> <a href="../../tags/css-visualization/" style="font-size: 15px; color: #1b6aa1">CSS与可视化</a> <a href="../../tags/build-deploy/" style="font-size: 15px; color: #6d97b5">构建与部署</a> <a href="../../tags/dev-tools/" style="font-size: 15px; color: #4481ab">开发工具</a> <a href="../../tags/Agent-Skill/" style="font-size: 15px; color: #ccc">Agent,Skill</a> <a href="../../tags/Node-js/" style="font-size: 15px; color: #88a6bb">Node.js</a> <a href="../../tags/cross-platform/" style="font-size: 15px; color: #96aebf">跨端方案</a> <a href="../../tags/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/" style="font-size: 15px; color: #ccc">项目管理</a> <a href="../../tags/%E7%9F%A5%E8%AF%86%E5%BA%93/" style="font-size: 15px; color: #ccc">知识库</a> <a href="../../tags/code-quality/" style="font-size: 15px; color: #bec4c9">代码质量</a></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2026 <a href="../../." rel="nofollow">Canace 的博客</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="../../js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.js" async></script><script type="text/javascript" src="../../js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.css"><link rel="stylesheet" type="text/css" href="../../css/search.css?v=0.0.0"><script type="text/javascript" src="../../js/search.js?v=0.0.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+   search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="/js/copycode.js" successtext="复制成功!"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/mermaid@11.14.0/dist/mermaid.min.js"></script><script type="text/javascript">document.addEventListener('DOMContentLoaded', function () {
+  if (!window.mermaid) return;
+  mermaid.initialize({"theme":"default","logLevel":5,"startOnLoad":true,"arrowMarkerAbsolute":false,"flowchart":{"htmlLabels":true,"useMaxWidth":true,"curve":"linear"},"sequence":{"diagramMarginX":50,"diagramMarginY":10,"actorMargin":50,"width":150,"height":65,"boxMargin":10,"boxTextMargin":5,"noteMargin":10,"messageMargin":35,"mirrorActors":true,"bottomMarginAdj":1,"useMaxWidth":true},"gantt":{"titleTopMargin":25,"barHeight":20,"barGap":4,"topPadding":50,"leftPadding":75,"gridLineStartPadding":35,"fontSize":11,"fontFamily":"\"Open-Sans\", \"sans-serif\"","numberSectionStyles":4,"axisFormat":"%Y-%m-%d"},"class":{},"git":{}});
+});
+</script><script type="text/javascript" src="../../js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="../../js/smartresize.js?v=0.0.0"></script><script type="text/javascript">(function () {
+  var urls = ["/../../2024-year-end-summary/","/../../6-common-website-usability-issues-and-solutions/","/../../AI-knowledge-base/","/../../Django-channels/","/../../JavaScript-call-apply-bind/","/../../NP-P-NPC/","/../../WebRTC/","/../../about-doing-technology/","/../../about-forgetfulness/","/../../MySQL/","/../../add-skeleton-screen/","/../../agent-coding-stability/","/../../ai-coding-share/","/../../ai-make-you-boring/","/../../ai-expansion/","/../../ai-coding-game/","/../../ai-optimize-ui/","/../../ai-worker/","/../../algorithm-book-notes-for-everyone/","/../../angular-navigation-content-linkage/","/../../ai-coding-ide/","/../../angel-love/","/../../ants/","/../../axios-network-request-encapsulation/","/../../async-data-console-issues/","/../../ant-design-pitfalls/","/../../bash-data-processing/","/../../beego-getting-started/","/../../blog-category/","/../../boolean-variables-in-project-application/","/../../box-model/","/../../binary-search/","/../../bracket-matching/","/../../brief-discussion-on-dns-pollution/","/../../browser-kernel-and-writing/","/../../build-django-blog-system/","/../../build-tinymce-img-plugin/","/../../brief-discussion-on-visual-form-design/","/../../calculate-rice-cooker-reservation-time/","/../../build-typescript-library/","/../../canvas-draw-sprite-export/","/../../cascade/","/../../centos-server-login-config/","/../../ckeditor-usage-in-angular/","/../../canvas-draw-dynamic-path/","/../../climbing-stairs/","/../../code-optimization/","/../../claude-handoff-doc-to-repo/","/../../common-git-workflows/","/../../common-image-format-comparison/","/../../common-programming-prompt-words/","/../../common-regular-expressions/","/../../common-algorithm-ideas/","/../../common-terminal-commands/","/../../computer-graphics-1/","/../../count-beautiful-subarrays/","/../../count-number-of-islands/","/../../count-total-elements-of-array-objects/","/../../computer-graphics-2/","/../../create-object-based-on-null/","/../../cross-origin-resource-sharing/","/../../css-background-image-application/","/../../css-layout-guide/","/../../css-circular-progress-bar/","/../../css-positioning/","/../../css-positioning-detailed/","/../../css-series-basics/","/../../css-notes/","/../../css-series-box-dimensions/","/../../css-series-cascade/","/../../css-series-flow-and-dimensions/","/../../css-series-flow-destruction-and-protection/","/../../css-series-inline-elements-and-flow/","/../../css-series-text-processing/","/../../css-tips/","/../../css-two-color-pie-chart/","/../../css2-block-element-center/","/../../cursor-debugger/","/../../css-series-history-and-document-flow/","/../../custom-github-activity/","/../../cursor-skill-web-search-download-movie/","/../../deep-copy-of-arrays-and-objects/","/../../css3-animation-vs-js-animation/","/../../deep-work-philosophy-interpretation/","/../../docker-documentation/","/../../doing-things-with-vscode/","/../../docker-frontend-environment-setup/","/../../disable-image-dragging/","/../../egg/","/../../element-plus-table-component-scaling-issue-solution/","/../../es2020-new-features/","/../../extra-thick-chicken-soup/","/../../firefox-remove-various-dashed-borders/","/../../find-median-sorted-arrays/","/../../file-naming-pitfalls-record/","/../../ffmpeg-extract-audio-track/","/../../first-day-morning-run/","/../../first-screen-time-vs-white-screen-time/","/../../fix-github-image-issue-on-mac/","/../../flow-simple-tutorial/","/../../flutter-learning-notes-quick-start/","/../../flutter-learning-notes-dart-basics/","/../../dropdown-list-implementation/","/../../first-screen-optimization/","/../../frontend-draw-graphic-captcha/","/../../fullscreen-solution-for-webpage-or-html-elements/","/../../four-js-tips/","/../../frontend-xx-dockerization/","/../../frontend-performance-optimization/","/../../fun-console/","/../../function-currying/","/../../function-without-global-variable-counting/","/../../gemini-new-session-memory/","/../../get-css-style/","/../../generate-random-array-in-specified-range/","/../../get-longest-common-prefix/","/../../git-common-commands/","/../../git-domain-config/","/../../git-usage-guide/","/../../functional-programming/","/../../git-environment-config/","/../../gitbook-generate-ebook/","/../../github-practical-tips/","/../../github-travis-auto-build-vue-to-gitpage/","/../../gitlab-ci-config-template/","/../../github-action-auto-deploy-page/","/../../go-getting-started/","/../../hexo-blog-migration/","/../../hexo-getting-started/","/../../homebrew-common-commands/","/../../gitpage-hexo/","/../../how-ai-lets-us-lie-flat/","/../../how-to-create-a-robust-system/","/../../hexo-math-formula-support/","/../../how-to-optimize-animation/","/../../html-notes/","/../../http-notes/","/../../http-server/","/../../html-to-text-js/","/../../implement-array-flatten/","/../../image-lazy-loading-implementation/","/../../improve-work-efficiency-with-cursor-practical-notes/","/../../issue-03/","/../../issue-04/","/../../issue-05/","/../../interesting-css-cascade-issues/","/../../interview-strategy/","/../../issue-06/","/../../issue-07/","/../../issue-09/","/../../issue-08/","/../../issue-10/","/../../ghost-whitespace-nodes/","/../../issue-1/","/../../issue-11/","/../../issue-13/","/../../issue-14/","/../../issue-15/","/../../issue-12/","/../../javascript-common-code-snippets/","/../../javascript-basics-primitive-vs-reference-types/","/../../issue-2/","/../../javascript-new-implementation-principle/","/../../javaScript-promise/","/../../javascript-basics-type-conversion/","/../../javascript-object-oriented-programming/","/../../javascript-soul-questions/","/../../javascript-tricks/","/../../japanese-learning-notes/","/../../js-execution/","/../../javascript-detect-caps-lock/","/../../javascript-built-in-deep-copy/","/../../js-linked-list-implementation/","/../../js-timezone/","/../../jump-to-specific-position-in-article/","/../../key-value-role-in-vue-components/","/../../javascript-functions/","/../../js-overview/","/../../knowledge-anxiety/","/../../js-string-to-base64/","/../../js-modal-blog/","/../../kpi-vs-okr/","/../../knn-algorithm/","/../../leave-page-popup/","/../../kindness/","/../../linux-background-script-execution/","/../../llm-wiki/","/../../mac-install-mysql/","/../../lodash-source-analysis-array-slice/","/../../lodash-source-analysis-array-chunk/","/../../llm-training-truth/","/../../method-to-login-to-south-china-normal-university-campus-network/","/../../modify-autofill-style/","/../../model-training-steps/","/../../modify-scrollbar-style-compatible/","/../../mini-program-tabs-sticky/","/../../mac-debug-ios-web-page/","/../../module-specifications/","/../../n-n-order-matrix-algorithm/","/../../node-notes-in-depth/","/../../manchester-by-the-sea/","/../../nodejs-config/","/../../nodeJs/","/../../notes-about-writing-weekly-reports/","/../../nodejs-notes/","/../../number-precise-to-two-decimal-places/","/../../nodejs-module-mechanism/","/../../one-click-generate-responsive-table/","/../../node-version-management/","/../../npm-common-commands/","/../../openclaw-usage-experience/","/../../narrative-research/","/../../palindrome-number-judgment/","/../../object-property-value-monitoring/","/../../package-json-field-list/","/../../personal-knowledge-base/","/../../pinyin-learning-project-notes/","/../../pagination-algorithm/","/../../pixi-js-sprite-loading-cache-removal/","/../../pixi-basics/","/../../pixijs-vertexData-null/","/../../port-number-modification/","/../../project-modularization-principles/","/../../product-updates-rss-file-diff-mental-model/","/../../python-pitfalls-collection/","/../../prisma-getting-started-guide/","/../../proxy-observer-pattern/","/../../python3-installation/","/../../qwen-milk-tea-ui/","/../../recursive-tree/","/../../rag-vs-graph-rag/","/../../react-hooks-create-movie-app/","/../../record-service-degradation-due-to-emergency/","/../../refactoring-vs-architecture/","/../../regular-expressions/","/../../removeDuplicates/","/../../remove-parent-nodes-with-duplicate-child-ids/","/../../removeElement/","/../../reverse-words-in-string/","/../../rhythm-psychology/","/../../roman-numerals-to-integer/","/../../reverse-integer/","/../../scheduled-tasks/","/../../science-popularization/","/../../rss-telegram-selfhost/","/../../sentence-excerpts/","/../../software-version-number-definition/","/../../singly-linked-list-concatenation/","/../../ss-installation/","/../../scroll-pagination/","/../../solve-github-dns-pollution-issue/","/../../some-concepts/","/../../settimeout-simulate-setinterval/","/../../systematic-method-for-fragmented-reading-knowledge/","/../../sublime-text-nodejs-config/","/../../string-and-code-rigor/","/../../talking-about-browser-cache-mechanism/","/../../table-cell-equal-division/","/../../talking-about-webpage-adaptive-and-responsive-layout/","/../../talking-about-vuex/","/../../thoughts-on-branch-management/","/../../tcp-ip-three-way-handshake/","/../../thoughts-on-ad-blocker-plugins/","/../../thoughts-on-technical-growth/","/../../time-complexity-vs-space-complexity/","/../../time-zero/","/../../three-js-basics-practice/","/../../timestamp-to-date/","/../../typescript-environment-config/","/../../translate-use-claude-code/","/../../ubuntu-configure-frontend-environment/","/../../two-sum-problem/","/../../unavoidable-bug-chrome-translation-caused-trouble/","/../../ubuntu-configure-ss/","/../../understanding-cookies/","/../../understanding-byte-order/","/../../ubuntu-install-tensorflow/","/../../validate-string/","/../../variables/","/../../vscode-code-formatting-summary/","/../../vue-details-i-didnt-know/","/../../vue-data-driven-view-implementation/","/../../vue-config-template/","/../../understanding-instanceof/","/../../vue-test-unit/","/../../vue-dynamic-component-import-note-not-async/","/../../vue3-notes/","/../../web-performance-optimization-debounce/","/../../vue-project-setup-steps/","/../../vue-dynamic-change-title/","/../../webpack-dynamic-modify-resource-domain/","/../../web-security-xss-attack/","/../../web-security-csrf/","/../../webpack-gulp-bundle-vue-component-library/","/../../webpack5-new-features-module-federation-notes/","/../../webpack/","/../../webpage-version-update-popup-implementation/","/../../wechat-mini-program-pitfalls/","/../../what-happened-to-vue/","/../../what-happens-from-url-to-display/","/../../why-we-need-to-read/","/../../why-not-let-ai-write-for-us/","/../../why-write-wechat-official-account/","/../../windows-tricks/","/../../why-graphics-card/","/../../why-frontend-needs-framework/","/../../words-of-experience/","/../../work-for/","/../../writing-a-good-claude-md/","/../../wordpress-installation/","/../../yml-file-operations/","/../../wsl-config/"];
+  var el = document.getElementById('nav-random-article');
+  if (!el) return;
+  el.addEventListener('click', function (e) {
+    e.preventDefault();
+    if (!urls.length) return;
+    var next = urls[Math.floor(Math.random() * urls.length)];
+    if (next) window.location.href = next;
+  });
+})();</script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":200,"height":200},"mobile":{"show":false},"react":{"opacity":0.7},"log":false});</script></body></html>
