@@ -6,7 +6,7 @@
   <link href="https://canace.site/atom.xml" rel="self"/>
   
   <link href="https://canace.site/"/>
-  <updated>2026-06-13T02:37:39.050Z</updated>
+  <updated>2026-06-17T10:56:47.532Z</updated>
   <id>https://canace.site/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>跟 AI 说 Ok，它为什么有时不继续</title>
+    <link href="https://canace.site/go-ahead-vs-continue-ai-chat/"/>
+    <id>https://canace.site/go-ahead-vs-continue-ai-chat/</id>
+    <published>2026-06-17T02:00:00.000Z</published>
+    <updated>2026-06-17T10:56:47.532Z</updated>
+    
+    
+    <summary type="html">go ahead 和 continue 在跟 AI 对话时该怎么选，以及为什么单独回 ok 常常拦不住 AI 停下来</summary>
+    
+    
+    
+    <category term="AI探索" scheme="https://canace.site/categories/intelligent/"/>
+    
+    
+    <category term="AI编程" scheme="https://canace.site/tags/AI%E7%BC%96%E7%A8%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>程序员愿意为 Claude 写文档，但不愿为同事写</title>
@@ -382,25 +401,6 @@
     <category term="前端" scheme="https://canace.site/tags/frontend/"/>
     
     <category term="框架与库" scheme="https://canace.site/tags/frameworks-libs/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>解决 Cursor Debugger 模式在 Electron 项目中无法使用问题</title>
-    <link href="https://canace.site/cursor-debugger/"/>
-    <id>https://canace.site/cursor-debugger/</id>
-    <published>2026-02-05T02:14:13.000Z</published>
-    <updated>2026-02-24T06:31:22.555Z</updated>
-    
-    
-    <summary type="html">electron 项目使用 cursor 调试模式时需调整 content-security-policy 允许本地端口连接</summary>
-    
-    
-    
-    <category term="工程化与运维" scheme="https://canace.site/categories/cli/"/>
-    
-    
-    <category term="开发工具" scheme="https://canace.site/tags/dev-tools/"/>
     
   </entry>
   

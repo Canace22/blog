@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>跟 AI 说 Ok，它为什么有时不继续</title>
+      <link href="/go-ahead-vs-continue-ai-chat/"/>
+      <url>/go-ahead-vs-continue-ai-chat/</url>
+      
+        <content type="html"><![CDATA[<p>日常用 AI 写代码，我经常会遇到一个问题：它问我要不要继续，我回了个 <strong>ok</strong>，结果它就不写了。换成 yes，每次都能继续写，为什么不用 continue，因为我懒，不想打字。</p><p>遇到过很多次之后，我就在想为什么会这样呢？今天我换成了 go ahead，也能按照口令继续，于是尝试着探索了一下，结论是：ok 语义太模糊了，他更贴近语义“我知道了”，而不是请继续，在一些比较保守的 AI 工具中，比如 Cursor，遇到模糊不清的回答，会默认继续等待指令，而不是接着干活。要记住，AI 是执行指令的工具，想让他干活就得发布指令，而不是真的称兄道弟一样的日常 okook！</p><p>同样是指令，那么 go ahead 和 continue 有什么区别呢？下面是查资料做的一些笔记，大家可以看看。</p><h2 id="go-ahead-和-continue-差在哪"><a href="#go-ahead-和-continue-差在哪" class="headerlink" title="go ahead 和 continue 差在哪"></a>go ahead 和 continue 差在哪</h2><p>这两个词都能翻成「继续」，但语气不一样。</p><table><thead><tr><th></th><th>go ahead</th><th>continue</th></tr></thead><tbody><tr><td>语气</td><td>口语、随意</td><td>中性、偏正式</td></tr><tr><td>常见角色</td><td>许可、鼓励对方去做</td><td>描述动作在延续</td></tr><tr><td>隐含意思</td><td>可以了，你去做吧</td><td>接着做、接着进行</td></tr></tbody></table><p><strong>go ahead</strong> 偏人际互动：同意、催促、放行。</p><ul><li>“Can I open the window?” → “<strong>Go ahead</strong>.”（可以，你开吧）</li><li>“<strong>Go ahead</strong>, tell me what happened.”（说吧，我听着）</li><li>“I’ll <strong>go ahead</strong> and send the email.”（那我就先发了）</li></ul><p><strong>continue</strong> 偏状态描述：没停、接着进行、从中断处恢复。</p><ul><li>“Please <strong>continue</strong> reading.”（请接着读）</li><li>“<strong>Continue</strong> from where you left off.”（从你停下的地方接着来）</li><li>“To <strong>continue</strong>, click Next.”（UI 里很常见）</li></ul><p>一句话记：<strong>go ahead ≈ 许可或主动开干；continue ≈ 动作或状态的延续。</strong></p><pre class="mermaid">flowchart LR  A[AI 问你] --> B{你在等什么?}  B -->|等对方许可| C[Go ahead]  B -->|动作已在进行| D[Continue / Keep going]  C --> E[可以做了 / 你说吧]  D --> F[别停 / 接着来]</pre><h2 id="AI-问「要继续吗」，回哪个"><a href="#AI-问「要继续吗」，回哪个" class="headerlink" title="AI 问「要继续吗」，回哪个"></a>AI 问「要继续吗」，回哪个</h2><p>AI 问 “Should I continue?” 时，通常是在<strong>等你许可</strong>，不是在描述进度。</p><p>这时可以回“go ahead”，快去干吧！放开干吧！</p><p>单独回”Continue”也能懂，但有点像在下命令，略生硬，现在不都在讲 AI 平权嘛，既然是我们的小助手，那就公平交流吧，之前看网上说用这种公平的语气，AI 的回答会更好，也不知道真假。</p><h2 id="详细讲讲回复“ok”为什么-AI-不继续了"><a href="#详细讲讲回复“ok”为什么-AI-不继续了" class="headerlink" title="详细讲讲回复“ok”为什么 AI 不继续了"></a>详细讲讲回复“ok”为什么 AI 不继续了</h2><p>我总结了几个常见原因，有些上面结论也说过。</p><h3 id="1-ok-更像「收到了」，不像「请动手」"><a href="#1-ok-更像「收到了」，不像「请动手」" class="headerlink" title="1. ok 更像「收到了」，不像「请动手」"></a>1. ok 更像「收到了」，不像「请动手」</h3><table><thead><tr><th>我的回复</th><th>AI 常见理解</th></tr></thead><tbody><tr><td>ok</td><td>收到了 &#x2F; 明白了 &#x2F; 对话可以结束</td></tr><tr><td>go ahead &#x2F; yes, continue</td><td>明确许可，继续做</td></tr><tr><td>do it &#x2F; implement it</td><td>明确指令，动手做</td></tr></tbody></table><p>我说 ok，AI 可能觉得我在确认它刚才说的内容，而不是让它接着写代码。</p><h3 id="2-上一轮-AI-可能已经在收尾"><a href="#2-上一轮-AI-可能已经在收尾" class="headerlink" title="2. 上一轮 AI 可能已经在收尾"></a>2. 上一轮 AI 可能已经在收尾</h3><p>如果它刚说完「以上是方案，你看有没有问题」或「需要的话我可以帮你实现」，我回 <strong>ok</strong>，它很容易理解成：<strong>用户认可了，任务结束。</strong></p><p>它不会自动假设我还要它继续实现。</p><h3 id="3-AI-偏保守"><a href="#3-AI-偏保守" class="headerlink" title="3. AI 偏保守"></a>3. AI 偏保守</h3><p>很多 AI 被设计成：没收到<strong>明确动作指令</strong>就不继续大段输出或改代码，避免「用户只是随口应一声，我却自作主张写一堆」。</p><p>所以”ok“这种模糊回复，容易触发「先停住，等更清楚的指示」。</p><h2 id="该怎么用这些词汇呢？"><a href="#该怎么用这些词汇呢？" class="headerlink" title="该怎么用这些词汇呢？"></a>该怎么用这些词汇呢？</h2><p>下次 AI 问要不要继续，或者做完一半停下来，可以尽量说清楚<strong>要什么动作</strong>：</p><table><thead><tr><th>想让它…</th><th>我会这么说</th></tr></thead><tbody><tr><td>继续写代码</td><td>yes&#x2F;Go ahead(and implement it)</td></tr><tr><td>接着上一步</td><td>Continue(from where you left off)</td></tr><tr><td>做完整个任务</td><td>Please finish the rest.</td></tr><tr><td>别只讲方案，要动手</td><td>Don’t just explain — implement it.</td></tr></tbody></table>]]></content>
+      
+      
+      <categories>
+          
+          <category> AI探索 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> AI编程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>程序员愿意为 Claude 写文档，但不愿为同事写</title>
       <link href="/claude-handoff-doc-to-repo/"/>
       <url>/claude-handoff-doc-to-repo/</url>
