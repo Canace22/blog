@@ -1,7 +1,7 @@
 ---
 title: 一个提升 AI Coding 稳定性的思路
 description: Agent 不稳定往往因为只给了目标没给解法；把个人解决问题的流程记录下来、抽象成模式并作为上下文给 AI，相当于提供经验上下文，可写成 Skill 复用。
-categories: AI探索
+categories: AI工程化
 tags: AI编程
 author: Canace
 comments: true

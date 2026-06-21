@@ -1,7 +1,7 @@
 ---
 title: 使用大模型来维护知识库
-categories: AI探索
-tags: 知识库
+categories: AI工程化
+tags: AI编程
 description: 介绍「原始资料 + 规则文件 + wiki」分工：人只负责输入，大模型维护持久化知识库（索引、对话总结、报告等），作为跨 agent 的长期上下文；说明三层架构、wiki 目录设计与落地步骤，并关联 Karpathy 的 LLM Wiki 思路。
 author: Canace
 comments: true

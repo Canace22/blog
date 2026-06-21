@@ -1,7 +1,7 @@
 ---
 title: RAG VS Graph RAG
-categories: AI探索
-tags: AI原理
+categories: AI工程化
+tags: AI编程
 description: 对比传统 RAG 与 Graph RAG 的工作原理、适用场景与成本差异，帮助选择合适的知识库检索方案。
 author: Canace
 toc: true

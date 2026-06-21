@@ -1,8 +1,8 @@
 ---
 title: Cursor 编写 SKILL：通过 web 搜索并下载电影
 description: 用 Cursor 创建技能可实现网页搜索并下载电影资源，流程清晰但需注意细节把控。
-categories: AI探索
-tags: Agent,Skill
+categories: AI工程化
+tags: AI编程
 author: Canace
 comments: true
 date: 2026-03-08 10:00:00

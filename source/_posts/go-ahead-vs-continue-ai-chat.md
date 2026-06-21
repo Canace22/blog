@@ -1,7 +1,7 @@
 ---
 title: 跟 AI 说 ok，它为什么有时不继续
 description: go ahead 和 continue 在跟 AI 对话时该怎么选，以及为什么单独回 ok 常常拦不住 AI 停下来
-categories: AI探索
+categories: AI工程化
 tags: AI编程
 author: Canace
 comments: true

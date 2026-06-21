@@ -1,7 +1,7 @@
 ---
 title: AI Native 不是接个 API：我们踩坑总结的方法论
 description: 为游戏研发团队做 AI Native 应用的一年实践，总结 AI 化与 AI Native 的差别，以及围绕业务实体重构生产体系的方法
-categories: AI探索
+categories: AI工程化
 tags: AI编程
 author: Canace
 comments: true

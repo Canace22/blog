@@ -1,7 +1,7 @@
 ---
 title: OpenClaw 的一些使用体验
 description: 围绕 OpenClaw 的 memory 与自建 wiki 同步 Notion、RSS 筛选写入数据库、条件盯盘与自研 Prompt 工具整合等场景的实践记录，并顺带写了对模型是否遵守记忆规则、QQ 推送限制与 SOUL 设定的一点感受。
-categories: AI探索
+categories: AI工程化
 tags: AI编程
 author: Canace
 comments: true

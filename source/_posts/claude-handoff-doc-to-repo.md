@@ -1,7 +1,7 @@
 ---
 title: 程序员愿意为 Claude 写文档，但不愿为同事写
 description: Mark Dominus 把 Claude 交接文档和项目总结审阅后提交进仓库，AI 写、人来审，解决没人愿意写文档的老问题。
-categories: AI探索
+categories: AI工程化
 tags: AI编程
 author: Canace
 toc: true
