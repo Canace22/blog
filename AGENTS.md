@@ -24,3 +24,7 @@ the relevant local files before changing anything.
 - Prefer existing repository conventions over inventing new structure.
 - If a role file conflicts with this entry guide, the role file wins for that
   task.
+
+## Document Formatting
+
+Follow the formatting guidelines in https://github.com/ruanyf/document-style-guide/tree/master and docs/categories-tags.md.
