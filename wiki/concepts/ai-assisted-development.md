@@ -11,7 +11,8 @@
 - **质量与安全**：始终以验证为先；留意状态、性能与安全；采用分层审阅——模型先做一遍、人在架构与业务上把关、团队照常守住质量线（[如何提升 AI 代码质量](../sources/improving-ai-code-quality.md)）。
 - **迭代**：接受多轮循环；早期输出往往是在帮系统「弄清任务到底是什么」（[如何提升 AI 代码质量](../sources/improving-ai-code-quality.md)）。
 - **工具链**：在 Cursor 里通过 Playwright MCP 做浏览器自动化（[Cursor Playwright MCP](../sources/cursor-playwright-mcp.md)）。
-- **提示用语**：写提示词时英文动词尽量一致、减少歧义（[提示词常用词汇](../sources/prompt-vocabulary-for-coding.md)）。
+- **提示用语**：写提示词时英文动词尽量一致、减少歧义（[提示词常用词汇](../sources/prompt-vocabulary-for-coding.md)）；"go ahead"表许可，"continue"表状态延续，"ok"语义模糊常触发 AI 等待而非继续（[跟 AI 说 ok，它为什么有时不继续](../sources/go-ahead-vs-continue-ai-chat.md)）。
+- **AI Native 四阶段**：AI 化（接 API）→ AI Workflow → AI Native System（架构从设计之初就以 AI 为核心）→ AI Native Organization；以业务实体为中心重建生产体系，知识图谱与标准化 SOP 是落地基石（[AI Native 不是接个 API](../sources/ai-native.md)）。
 - **延伸阅读**：提示工程读物与 Harness 工程化资料可当书签（[提示工程阅读清单](../sources/prompt-engineering-reading-list.md)，[Harness 工程化链接集](../sources/harness-engineering-links.md)）。
 - **Claude Code 官方工作流**：[常见工作流](claude-code-workflows.md)（读库/调试/PR/plan mode/计划任务）；[并行代理](claude-code-parallel-agents.md)（子代理、代理视图、团队、动态工作流）。
 
@@ -35,6 +36,8 @@
 - [Canace 博客索引](../sources/canace-blog-index.md)（较长文章目录，含大量 AI 编程主题）
 - [Claude Code 常见工作流程](../sources/claude-code-common-workflows.md)
 - [Claude Code 并行运行代理](../sources/claude-code-parallel-agents.md)
+- [AI Native 不是接个 API](../sources/ai-native.md)
+- [跟 AI 说 ok，它为什么有时不继续](../sources/go-ahead-vs-continue-ai-chat.md)
 - [查询：我的文章涵盖 AI Coding 哪几方面](../queries/ai-coding-coverage.md)
 
 ## 综合结论

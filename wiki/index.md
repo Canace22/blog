@@ -360,6 +360,8 @@
 - [Claude Code 并行运行代理](sources/claude-code-parallel-agents.md) — Claude Code 官方文档剪藏（子代理、代理视图、团队、动态工作流）
 - [RAG VS Graph RAG](sources/rag-vs-graph-rag.md) — `source/_posts/rag-vs-graph-rag.md`
 - [软件开发范式演进](sources/software-development-paradigms.md) — Telegram 摘录（无对应 `source/_posts`）
+- [AI Native 不是接个 API](sources/ai-native.md) — `source/_posts/ai-native.md`（AI化 vs AI Native 四阶段 + 实体中心架构）
+- [跟 AI 说 ok，它为什么有时不继续](sources/go-ahead-vs-continue-ai-chat.md) — `source/_posts/go-ahead-vs-continue-ai-chat.md`（go ahead / continue / ok 语义对比）
 
 ### 软技能与思考
 
