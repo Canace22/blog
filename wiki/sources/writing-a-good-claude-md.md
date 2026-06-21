@@ -1,7 +1,7 @@
 # 来源：AI协作编程——如何写好项目规则
 
 - **源文件**：[`source/_posts/writing-a-good-claude-md.md`](../../source/_posts/writing-a-good-claude-md.md)
-- **分类**：AI探索
+- **分类**：AI工程化
 - **标签**：AI编程
 - **日期**：2025-12-08 09:50:26
 

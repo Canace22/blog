@@ -1,7 +1,7 @@
 # 来源：RAG VS Graph RAG
 
 - **源文件**：[`source/_posts/rag-vs-graph-rag.md`](../../source/_posts/rag-vs-graph-rag.md)
-- **分类**：AI探索
+- **分类**：AI工程化
 - **标签**：AI原理
 - **日期**：2026-06-03 07:41:25
 

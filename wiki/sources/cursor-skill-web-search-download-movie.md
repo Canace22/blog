@@ -1,7 +1,7 @@
 # 来源：Cursor 编写 SKILL：通过 web 搜索并下载电影
 
 - **源文件**：[`source/_posts/cursor-skill-web-search-download-movie.md`](../../source/_posts/cursor-skill-web-search-download-movie.md)
-- **分类**：AI探索
+- **分类**：AI工程化
 - **标签**：Agent,Skill
 - **日期**：2026-03-08 10:00:00
 

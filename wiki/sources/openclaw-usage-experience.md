@@ -1,7 +1,7 @@
 # 来源：OpenClaw 的一些使用体验
 
 - **源文件**：[`source/_posts/openclaw-usage-experience.md`](../../source/_posts/openclaw-usage-experience.md)
-- **分类**：AI探索
+- **分类**：AI工程化
 - **标签**：AI编程
 - **日期**：2026-04-18 10:00:00
 

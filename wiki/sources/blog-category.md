@@ -3,19 +3,19 @@
 - **源文件**：[`source/_posts/blog-category.md`](../../source/_posts/blog-category.md)
 - **分类**：网站建设
 - **标签**：—
-- **日期**：2025-09-14 17:32:04（最近一次源文件更新：2026-04-22）
+- **日期**：2025-09-14 17:32:04（最近一次源文件更新：2026-06-21）
 
 ## 摘要
 
-按「开发工作流」组织的博客分类规范：**基础理论 → 技术实现 → 工程实践 → 软技能**。一级分类共 6 个：编程基础、Web 开发、工程化与运维、AI 探索、软技能与思考、网站建设。该分类树也是 `wiki/index.md` 的 `## Category` 区段的依据。
+按「开发工作流」组织的博客分类规范：**基础理论 → 技术实现 → 工程实践 → 软技能**。一级分类共 7 个：编程基础、Web 开发、工程化与运维、AI 探索、AI 工程化、软技能与思考、网站建设。2026-06-21 新增 AI 工程化，将原 AI 探索中实战/方法论类文章（共 15 篇）迁移至该分类；AI 探索保留原理/体验/观察类文章。该分类树也是 `wiki/index.md` 的 `## Category` 区段的依据。
 
 ## 完整分类树（与源文件对齐）
 
-```
+```text
 1. 编程基础 (Programming Foundations)
    ├── 计算机科学 (Computer Science)       // 算法 / 网络 / 操作系统
    ├── 编程语言 (Programming Languages)    // 语言特性 / 语法对比
-   └── 系统设计 (System Design)            // 替换原有的「系统」
+   └── 系统设计 (System Design)
 
 2. Web 开发 (Web Development)
    ├── 前端 (Frontend)
@@ -35,17 +35,19 @@
    ├── 代码质量 (Code Quality)            // 单元测试 / 规范 / Eslint
    └── 开发工具 (Dev Tools)               // Git / VSCode / Npm / Shell
 
-4. AI 探索 (AI)
-   ├── AI 编程 (AI Coding)                // Cursor / Claude Code / AI 辅助开发
-   └── AI 原理 (AI Fundamentals)          // 模型训练 / GPU/TPU / 知识库
+4. AI 探索 (AI Exploration)
+   └── AI 原理 (AI Fundamentals)          // 模型训练 / GPU/TPU / LLM 原理 / 体验观察
 
-5. 软技能与思考 (Soft Skills & Reflections)
+5. AI 工程化 (AI Engineering)
+   └── AI 编程 (AI Coding)                // Cursor / Claude Code / Prompt 工程 / 知识库 / AI Native 架构
+
+6. 软技能与思考 (Soft Skills & Reflections)
    ├── 项目管理
-   ├── 职业发展                            // 替换原有的「职场」
+   ├── 职业发展
    ├── 笔记 (Reading Notes)
-   └── 随笔 (Essays & Musings)            // 「随笔」「七日谈」可归入此处
+   └── 随笔 (Essays & Musings)
 
-6. 网站建设 (Site Meta)                   // 替换原有的「博客相关」
+7. 网站建设 (Site Meta)
 ```
 
 ## 与 wiki 维护的关系

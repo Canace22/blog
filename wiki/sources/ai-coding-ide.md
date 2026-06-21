@@ -1,7 +1,7 @@
 # 来源：AI协作编程——传统IDE快速切换到AI IDE
 
 - **源文件**：[`source/_posts/ai-coding-ide.md`](../../source/_posts/ai-coding-ide.md)
-- **分类**：AI探索
+- **分类**：AI工程化
 - **标签**：AI编程
 - **日期**：2025-12-06 16:12:13
 

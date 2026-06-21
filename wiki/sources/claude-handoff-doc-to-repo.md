@@ -1,7 +1,7 @@
 # 来源：程序员愿意为 Claude 写文档，但不愿为同事写
 
 - **源文件**：[`source/_posts/claude-handoff-doc-to-repo.md`](../../source/_posts/claude-handoff-doc-to-repo.md)
-- **分类**：AI探索
+- **分类**：AI工程化
 - **标签**：AI编程
 - **日期**：2026-06-13 10:00:00
 

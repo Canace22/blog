@@ -1,7 +1,7 @@
 # 来源：一个提升 AI Coding 稳定性的思路
 
 - **源文件**：[`source/_posts/agent-coding-stability.md`](../../source/_posts/agent-coding-stability.md)
-- **分类**：AI探索
+- **分类**：AI工程化
 - **标签**：AI编程
 - **日期**：2026-03-09 10:00:00
 

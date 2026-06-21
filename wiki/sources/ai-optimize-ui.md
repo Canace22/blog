@@ -1,7 +1,7 @@
 # 来源：使用 AI 优化界面交互
 
 - **源文件**：[`source/_posts/ai-optimize-ui.md`](../../source/_posts/ai-optimize-ui.md)
-- **分类**：AI探索
+- **分类**：AI工程化
 - **标签**：AI编程
 - **日期**：2026-01-18 10:44:28
 

@@ -1,6 +1,6 @@
 # 来源：Electron QA 与正式安装包如何共存
 
-- **源文件**：[`source/_posts/electron-qa-prod-coexist-install.md`](../../source/_posts/electron-qa-prod-coexist-install.md)
+- **源文件**：`source/_posts/electron-qa-prod-coexist-install.md`（原文已从仓库删除，摘要保留于此）
 - **分类**：工程化与运维
 - **标签**：构建与部署、跨平台
 - **日期**：2026-05-28 10:00:00
