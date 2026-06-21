@@ -2,7 +2,7 @@
 
 根据开发工作流整理：**基础理论** → **技术实现** → **工程实践** → **软技能**。
 
-```
+```text
 .
 ├── 1. 编程基础 (Programming Foundations)
 │   ├── 计算机科学 (Computer Science)  // 算法, 计算机网络, 操作系统等
@@ -27,17 +27,19 @@
 │   ├── 代码质量 (Code Quality) // 单元测试, 代码规范, Eslint
 │   └── 开发工具 (Dev Tools) // Git, VSCode, Npm, Shell 脚本等
 │
-├── 4. AI探索 (AI)
-│   ├── AI编程 (AI Coding) // Cursor, Claude Code, AI辅助开发等
-│   └── AI原理 (AI Fundamentals) // 模型训练, GPU/TPU, 知识库等
+├── 4. AI探索 (AI Exploration)
+│   └── AI原理 (AI Fundamentals) // 模型训练, GPU/TPU, LLM 原理, 体验观察等
 │
-├── 5. 软技能与思考 (Soft Skills & Reflections)
+├── 5. AI工程化 (AI Engineering)
+│   └── AI编程 (AI Coding) // Cursor, Claude Code, Prompt 工程, 知识库, AI Native 架构等
+│
+├── 6. 软技能与思考 (Soft Skills & Reflections)
 │   ├── 项目管理 (Project Management)
 │   ├── 职业发展 (Career Development)
 │   ├── 笔记 (Notes)
 │   └── 随笔 (Essays & Musings)
 │
-└── 6. 网站建设 (Site Meta) // 博客搭建、Hexo 配置等
+└── 7. 网站建设 (Site Meta) // 博客搭建、Hexo 配置等
 ```
 
 与标签的对应关系见 [categories-tags.md](categories-tags.md)。
