@@ -1,5 +1,6 @@
 # Wiki Log
 
+- 2026-06-19：Query「AI 产品的形态分化与底层逻辑」→ 新增 `wiki/queries/ai-product-forms-and-models.md`（同一模型多形态、沙箱 vs 直接执行架构差异、token 效率对比、Cursor 商业模式定位、产品形态全景）；更新 `wiki/index.md` Queries。
 - 2026-06-21：Lint：① 修复 `wiki/sources/electron-qa-prod-coexist-install.md` 死链（源文件已删除，改为纯文字归因）；② 批量将 11 个 wiki/sources 页面的 `**分类**：AI探索` 更新为 `AI工程化`（对应博文已改分类）；③ `wiki/sources/narrative-research.md`、`wiki/sources/rhythm-psychology.md` 补「相关概念」互链（指向 `narrative-structures`、`narrative-pacing-psychology`）；④ `wiki/sources/blog-category.md` 摘要与分类树同步更新（新增 AI工程化，编号 5/6/7 顺延）；⑤ `wiki/index.md` Category 区段将 AI探索 拆分为 AI探索（原理/体验/观察）与 AI工程化（工具/实战/方法论）两小节。
 - 2026-06-21：Ingest `source/_posts/ai-native.md`（AI化 vs AI Native 四阶段、实体中心架构、SOP/Pipeline 方法论）→ 新增 `wiki/sources/ai-native.md`；Ingest `source/_posts/go-ahead-vs-continue-ai-chat.md`（go ahead / continue / ok 语义对比，保守型 AI 工具的等待行为）→ 新增 `wiki/sources/go-ahead-vs-continue-ai-chat.md`；`wiki/concepts/ai-assisted-development.md` 补「提示用语」与「AI Native 四阶段」互链；`wiki/concepts/software-development-paradigms.md` 新增「AI 集成阶段演进」段落；更新 `wiki/index.md`（AI探索 两条新目录）。
 - 2026-06-15：将「AI 协作心理负担」主题升格为 report `wiki/reports/ai-collaboration-psychological-burden.md`（来源对照、文章归属、阅读顺序）；概念页改为定义 + 指向 report；更新 `wiki/index.md` Reports、`ai-outsourcing-writing-thinking` 互链。

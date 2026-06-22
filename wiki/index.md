@@ -46,6 +46,7 @@
 
 ## Queries
 
+- [AI 产品的形态分化与底层逻辑](queries/ai-product-forms-and-models.md)（同一模型多形态、沙箱 vs 直接执行、token 效率、商业模式）
 - [大模型「训练阶段」和日常助手、LLM Wiki 分别是什么关系](queries/llm-training-vs-inference-and-maintained-wiki.md)
 - [如何把「费米化」用在 AI 提效边界管理里](queries/fermiization-for-ai-boundary.md)
 - [`git diff` 这种差异对比，和 Web 端版本更新弹窗的思路是不是有异曲同工之处](queries/git-diff-and-web-version-check.md)
