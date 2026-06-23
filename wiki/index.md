@@ -336,6 +336,7 @@
 
 ### AI工程化
 
+- [原来我一直用错了 Cowork](sources/use-cowork.md) — `source/_posts/use-cowork.md`（Cowork / Claude Code / Cursor 定位、token 消耗与省额度实践）
 - [AI Native 不是接个 API](sources/ai-native.md) — `source/_posts/ai-native.md`（AI化 vs AI Native 四阶段 + 实体中心架构）
 - [跟 AI 说 ok，它为什么有时不继续](sources/go-ahead-vs-continue-ai-chat.md) — `source/_posts/go-ahead-vs-continue-ai-chat.md`（go ahead / continue / ok 语义对比）
 - [使用大模型来维护知识库](sources/llm-wiki.md) — `source/_posts/llm-wiki.md`

@@ -15,6 +15,7 @@
 - **AI Native 四阶段**：AI 化（接 API）→ AI Workflow → AI Native System（架构从设计之初就以 AI 为核心）→ AI Native Organization；以业务实体为中心重建生产体系，知识图谱与标准化 SOP 是落地基石（[AI Native 不是接个 API](../sources/ai-native.md)）。
 - **延伸阅读**：提示工程读物与 Harness 工程化资料可当书签（[提示工程阅读清单](../sources/prompt-engineering-reading-list.md)，[Harness 工程化链接集](../sources/harness-engineering-links.md)）。
 - **Claude Code 官方工作流**：[常见工作流](claude-code-workflows.md)（读库/调试/PR/plan mode/计划任务）；[并行代理](claude-code-parallel-agents.md)（子代理、代理视图、团队、动态工作流）。
+- **工具选型与 token hygiene**：Cowork（沙箱桌面 Agent）面向非技术用户，Computer Use / Memory 开销大；开发者写代码优先 CLI（Claude Code）或 IDE（Cursor），避免用错产品导致额度快速耗尽（[原来我一直用错了 Cowork](../sources/use-cowork.md)）。
 
 ## 与本 Wiki 的关系
 
@@ -38,6 +39,7 @@
 - [Claude Code 并行运行代理](../sources/claude-code-parallel-agents.md)
 - [AI Native 不是接个 API](../sources/ai-native.md)
 - [跟 AI 说 ok，它为什么有时不继续](../sources/go-ahead-vs-continue-ai-chat.md)
+- [原来我一直用错了 Cowork](../sources/use-cowork.md)
 - [查询：我的文章涵盖 AI Coding 哪几方面](../queries/ai-coding-coverage.md)
 
 ## 综合结论
