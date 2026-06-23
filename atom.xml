@@ -6,7 +6,7 @@
   <link href="https://canace.site/atom.xml" rel="self"/>
   
   <link href="https://canace.site/"/>
-  <updated>2026-06-21T04:45:51.322Z</updated>
+  <updated>2026-06-23T03:01:40.568Z</updated>
   <id>https://canace.site/</id>
   
   <author>
@@ -17,21 +17,40 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>原来我一直用错了 Cowork</title>
+    <link href="https://canace.site/use-cowork/"/>
+    <id>https://canace.site/use-cowork/</id>
+    <published>2026-06-23T02:00:00.000Z</published>
+    <updated>2026-06-23T03:01:40.568Z</updated>
+    
+    
+    <summary type="html">Cowork、Claude Code 与 Cursor 定位不同，token 消耗差异大</summary>
+    
+    
+    
+    <category term="AI工程化" scheme="https://canace.site/categories/AI%E5%B7%A5%E7%A8%8B%E5%8C%96/"/>
+    
+    
+    <category term="AI编程" scheme="https://canace.site/tags/AI%E7%BC%96%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
     <title>AI Native 不是接个 API：我们踩坑总结的方法论</title>
     <link href="https://canace.site/ai-native/"/>
     <id>https://canace.site/ai-native/</id>
     <published>2026-06-20T02:00:00.000Z</published>
-    <updated>2026-06-21T04:45:51.322Z</updated>
+    <updated>2026-06-21T05:07:33.522Z</updated>
     
     
     <summary type="html">为游戏研发团队做 AI Native 应用的一年实践，总结 AI 化与 AI Native 的差别，以及围绕业务实体重构生产体系的方法</summary>
     
     
     
-    <category term="AI探索" scheme="https://canace.site/categories/intelligent/"/>
+    <category term="AI工程化" scheme="https://canace.site/categories/AI%E5%B7%A5%E7%A8%8B%E5%8C%96/"/>
     
     
-    <category term="AI实践" scheme="https://canace.site/tags/AI%E5%AE%9E%E8%B7%B5/"/>
+    <category term="AI编程" scheme="https://canace.site/tags/AI%E7%BC%96%E7%A8%8B/"/>
     
   </entry>
   
@@ -40,14 +59,14 @@
     <link href="https://canace.site/go-ahead-vs-continue-ai-chat/"/>
     <id>https://canace.site/go-ahead-vs-continue-ai-chat/</id>
     <published>2026-06-17T02:00:00.000Z</published>
-    <updated>2026-06-17T10:56:47.532Z</updated>
+    <updated>2026-06-21T05:08:52.229Z</updated>
     
     
     <summary type="html">go ahead 和 continue 在跟 AI 对话时该怎么选，以及为什么单独回 ok 常常拦不住 AI 停下来</summary>
     
     
     
-    <category term="AI探索" scheme="https://canace.site/categories/intelligent/"/>
+    <category term="AI工程化" scheme="https://canace.site/categories/AI%E5%B7%A5%E7%A8%8B%E5%8C%96/"/>
     
     
     <category term="AI编程" scheme="https://canace.site/tags/AI%E7%BC%96%E7%A8%8B/"/>
@@ -59,14 +78,14 @@
     <link href="https://canace.site/claude-handoff-doc-to-repo/"/>
     <id>https://canace.site/claude-handoff-doc-to-repo/</id>
     <published>2026-06-13T02:00:00.000Z</published>
-    <updated>2026-06-13T02:37:39.050Z</updated>
+    <updated>2026-06-21T05:07:33.513Z</updated>
     
     
     <summary type="html">Mark Dominus 把 Claude 交接文档和项目总结审阅后提交进仓库，AI 写、人来审，解决没人愿意写文档的老问题。</summary>
     
     
     
-    <category term="AI探索" scheme="https://canace.site/categories/intelligent/"/>
+    <category term="AI工程化" scheme="https://canace.site/categories/AI%E5%B7%A5%E7%A8%8B%E5%8C%96/"/>
     
     
     <category term="AI编程" scheme="https://canace.site/tags/AI%E7%BC%96%E7%A8%8B/"/>
@@ -78,17 +97,17 @@
     <link href="https://canace.site/rag-vs-graph-rag/"/>
     <id>https://canace.site/rag-vs-graph-rag/</id>
     <published>2026-06-02T23:41:25.000Z</published>
-    <updated>2026-06-03T02:01:13.530Z</updated>
+    <updated>2026-06-21T05:07:42.452Z</updated>
     
     
     <summary type="html">对比传统 RAG 与 Graph RAG 的工作原理、适用场景与成本差异，帮助选择合适的知识库检索方案。</summary>
     
     
     
-    <category term="AI探索" scheme="https://canace.site/categories/intelligent/"/>
+    <category term="AI工程化" scheme="https://canace.site/categories/AI%E5%B7%A5%E7%A8%8B%E5%8C%96/"/>
     
     
-    <category term="AI原理" scheme="https://canace.site/tags/AI%E5%8E%9F%E7%90%86/"/>
+    <category term="AI编程" scheme="https://canace.site/tags/AI%E7%BC%96%E7%A8%8B/"/>
     
   </entry>
   
@@ -198,14 +217,14 @@
     <link href="https://canace.site/openclaw-usage-experience/"/>
     <id>https://canace.site/openclaw-usage-experience/</id>
     <published>2026-04-18T02:00:00.000Z</published>
-    <updated>2026-04-22T01:13:31.721Z</updated>
+    <updated>2026-06-21T05:07:33.533Z</updated>
     
     
     <summary type="html">围绕 OpenClaw 的 memory 与自建 wiki 同步 Notion、RSS 筛选写入数据库、条件盯盘与自研 Prompt 工具整合等场景的实践记录，并顺带写了对模型是否遵守记忆规则、QQ 推送限制与 SOUL 设定的一点感受。</summary>
     
     
     
-    <category term="AI探索" scheme="https://canace.site/categories/intelligent/"/>
+    <category term="AI工程化" scheme="https://canace.site/categories/AI%E5%B7%A5%E7%A8%8B%E5%8C%96/"/>
     
     
     <category term="AI编程" scheme="https://canace.site/tags/AI%E7%BC%96%E7%A8%8B/"/>
@@ -274,17 +293,17 @@
     <link href="https://canace.site/llm-wiki/"/>
     <id>https://canace.site/llm-wiki/</id>
     <published>2026-04-08T01:45:45.000Z</published>
-    <updated>2026-04-09T05:54:54.242Z</updated>
+    <updated>2026-06-21T05:07:42.448Z</updated>
     
     
     <summary type="html">介绍「原始资料 + 规则文件 + wiki」分工：人只负责输入，大模型维护持久化知识库（索引、对话总结、报告等），作为跨 agent 的长期上下文；说明三层架构、wiki 目录设计与落地步骤，并关联 Karpathy 的 LLM Wiki 思路。</summary>
     
     
     
-    <category term="AI探索" scheme="https://canace.site/categories/intelligent/"/>
+    <category term="AI工程化" scheme="https://canace.site/categories/AI%E5%B7%A5%E7%A8%8B%E5%8C%96/"/>
     
     
-    <category term="知识库" scheme="https://canace.site/tags/%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
+    <category term="AI编程" scheme="https://canace.site/tags/AI%E7%BC%96%E7%A8%8B/"/>
     
   </entry>
   
@@ -350,14 +369,14 @@
     <link href="https://canace.site/agent-coding-stability/"/>
     <id>https://canace.site/agent-coding-stability/</id>
     <published>2026-03-09T02:00:00.000Z</published>
-    <updated>2026-03-21T03:58:51.432Z</updated>
+    <updated>2026-06-21T05:07:33.528Z</updated>
     
     
     <summary type="html">Agent 不稳定往往因为只给了目标没给解法；把个人解决问题的流程记录下来、抽象成模式并作为上下文给 AI，相当于提供经验上下文，可写成 Skill 复用。</summary>
     
     
     
-    <category term="AI探索" scheme="https://canace.site/categories/intelligent/"/>
+    <category term="AI工程化" scheme="https://canace.site/categories/AI%E5%B7%A5%E7%A8%8B%E5%8C%96/"/>
     
     
     <category term="AI编程" scheme="https://canace.site/tags/AI%E7%BC%96%E7%A8%8B/"/>
@@ -369,36 +388,17 @@
     <link href="https://canace.site/cursor-skill-web-search-download-movie/"/>
     <id>https://canace.site/cursor-skill-web-search-download-movie/</id>
     <published>2026-03-08T02:00:00.000Z</published>
-    <updated>2026-03-08T05:48:00.803Z</updated>
+    <updated>2026-06-21T05:07:42.446Z</updated>
     
     
     <summary type="html">用 Cursor 创建技能可实现网页搜索并下载电影资源，流程清晰但需注意细节把控。</summary>
     
     
     
-    <category term="AI探索" scheme="https://canace.site/categories/intelligent/"/>
+    <category term="AI工程化" scheme="https://canace.site/categories/AI%E5%B7%A5%E7%A8%8B%E5%8C%96/"/>
     
     
-    <category term="Agent,Skill" scheme="https://canace.site/tags/Agent-Skill/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>千问点奶茶时弹出的 UI 是怎么实现的，是生成式 UI 吗</title>
-    <link href="https://canace.site/qwen-milk-tea-ui/"/>
-    <id>https://canace.site/qwen-milk-tea-ui/</id>
-    <published>2026-02-28T07:35:00.000Z</published>
-    <updated>2026-02-28T07:45:46.171Z</updated>
-    
-    
-    <summary type="html">从硬编码、AI 生成 HTML、模板卡片到 A2UI Schema 四种方案，对比聊天场景中交互式 UI 的实现方式与可控性。</summary>
-    
-    
-    
-    <category term="Web开发" scheme="https://canace.site/categories/web/"/>
-    
-    
-    <category term="前端" scheme="https://canace.site/tags/frontend/"/>
+    <category term="AI编程" scheme="https://canace.site/tags/AI%E7%BC%96%E7%A8%8B/"/>
     
   </entry>
   

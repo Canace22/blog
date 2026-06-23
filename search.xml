@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>原来我一直用错了 Cowork</title>
+      <link href="/use-cowork/"/>
+      <url>/use-cowork/</url>
+      
+        <content type="html"><![CDATA[<p>昨天用 Claude Cowork 时，发现它操作的是沙盒环境，不能直接执行命令。我心想 Claude Code 不是什么都能干吗？为什么 Cowork 不行？查了一下，还真是——这二者虽然都是 agent，产品理念完全不一样。</p><p>下面我用 Anthropic 的产品和 Cursor 举例，类似的 Codex、Copilot 也是同理，就不展开了。</p><h3 id="一-Cowork、Claude-Code-与-Cursor-的差异"><a href="#一-Cowork、Claude-Code-与-Cursor-的差异" class="headerlink" title="一. Cowork、Claude Code 与 Cursor 的差异"></a>一. Cowork、Claude Code 与 Cursor 的差异</h3><h4 id="1-Cowork"><a href="#1-Cowork" class="headerlink" title="1. Cowork"></a>1. Cowork</h4><p>Cowork 面向的是非技术人员——不懂编程，对 agent 操作文件的风险更是一无所知。万一 agent 乱改了用户的文件，产品可是要背大锅的。</p><p>说到 AI 背锅，想起昨天刷小红书看到的一条内容：微博老板发了条微博，说是他的 agent 工具发的。评论区一群人回复：谁说 AI 不能背锅！这不就能背吗！抖机灵归抖机灵，但也说明了一件事——用户对 AI 误操作的担忧是真实存在的。</p><p>所以 Cowork 做了一个关键限制：agent 的执行范围被框在沙盒环境里，不能直接在用户电脑上跑命令。代价就是我昨天遇到的情况——要自己复制粘贴命令执行完，再把结果贴回交互界面。</p><h4 id="2-Claude-Code"><a href="#2-Claude-Code" class="headerlink" title="2. Claude Code"></a>2. Claude Code</h4><p>Claude Code 是给开发者用的。它直接跑在终端里，拥有完整的 shell 权限——装依赖、改配置、操作任意文件，什么都能干。</p><p>代价是：我们得自己把关。操作失误没有安全网。Auto Mode 有安全分类器兜底，但本质上还是你授权它在真实环境里执行。</p><p>个人感觉，写代码还是用这种 CLI 工具比较好，不是网上说的极客范，而是真的省事很多，还节省 token——这个后面会讲。</p><h4 id="3-Cursor"><a href="#3-Cursor" class="headerlink" title="3. Cursor"></a>3. Cursor</h4><p>Cursor 是 IDE 嵌入式方案。它能读取完整项目上下文，在本地执行，本质是「编辑器 + AI」而不是独立 agent（不过 Cursor 最近也强化了 Agent 模式，能自主拆任务、多步骤执行）。</p><h3 id="二-Token-消耗为什么这么大"><a href="#二-Token-消耗为什么这么大" class="headerlink" title="二. Token 消耗为什么这么大"></a>二. Token 消耗为什么这么大</h3><p>最近几个月发现我的 token 消耗量非常大，Claude 和 Codex 都是 20 刀的套餐，几个小任务就用完了。</p><p>分析下来，原因主要有三个：</p><p>第一，上下文太长。 中大型项目本身上下文就长，再加上我定的规则比较复杂，以及 agent 的系统提示词，token 消耗很容易上去。</p><p>第二，使用方式变了。 去年我会圈出特定文件让 agent 改，今年更激进——一句话说清需求，让 agent 自己拆任务、找文件、执行。agent 猜测意图、与我交互、搜索定位，每一步都在消耗 token。</p><p>第三，用错了产品。 这是最关键的一点。虽然都是 agent 产品，但定位和策略不一样。Cowork 会自己调用工具操作电脑、截图分析意图，还有记忆功能——这些都是开销。</p><p>这类工作助手最早主打的能力之一就是 Computer Use：帮用户操作电脑、处理文件。听起来很美好，但视觉理解比文本理解贵 10-50 倍。你跟 agent 说「这个界面有什么问题」，它会自己截图、分析内容——每一次视觉调用都是实打实的 token 支出。</p><p>还有一个容易忽略的点：Cowork 和 Codex 现在都支持 Memory 了。做过的任务会更新记忆，记忆本身也是一笔 token 开销。看起来是「帮你记住了」，实际上是「帮你花了钱」。</p><h3 id="三-程序员如何节省-token-消耗"><a href="#三-程序员如何节省-token-消耗" class="headerlink" title="三. 程序员如何节省 token 消耗"></a>三. 程序员如何节省 token 消耗</h3><ul><li>用对工具：写代码就用 Claude Code 这类 CLI 工具，别用 Cowork。同样一个需求，Cowork 要截图、分析界面、调用工具，token 消耗可能是 CLI 的好几倍</li><li>喂准上下文：别一句话丢过去让 agent 自己猜。圈出相关文件、写清楚约束条件，agent 定位越准，中间的搜索和交互就越少</li><li>控制规则长度：项目规则（AGENTS.md、.cursorrules）越长，每次对话带入的 token 就越多。定期清理过时的规则，只保留真正需要的</li><li>渐进式加载上下文：特别是 monorepo 项目，模块多、上下文大，别一次性全喂进去。按需引用当前任务相关的模块，减少无关内容的 token 浪费</li><li>排除无用文件：package-lock.json、node_modules 这类大文件对 agent 没有参考价值，但会占满上下文窗口。配置好 .gitignore 和忽略规则，别让它们混进来</li><li>善用压缩：大部分 CLI 工具都支持上下文压缩，对话太长时主动触发一次，比让它自动压缩效果更好</li><li>警惕 Memory：Memory 听起来很贴心，但每次读写都是 token。如果你的任务是一次性的，不需要让 agent 记住，可以关掉这个功能。另外提一点，不知道大家有没有发现，自从加了 Memory，agent 工具并没有更好用了，反而幻觉概览更高了。</li></ul><h3 id="四-总结"><a href="#四-总结" class="headerlink" title="四. 总结"></a>四. 总结</h3><p>这三个工具没有绝对的好坏，关键看你要干什么：</p><ul><li>处理日常文件 → Cowork，安全省心</li><li>开发者写代码、搞工程 → Claude Code，能力天花板最高</li><li>习惯所见即所得 → Cursor，上下文感知最好</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> AI工程化 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> AI编程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>AI Native 不是接个 API：我们踩坑总结的方法论</title>
       <link href="/ai-native/"/>
       <url>/ai-native/</url>
@@ -13,14 +38,14 @@
       
       <categories>
           
-          <category> AI探索 </category>
+          <category> AI工程化 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> AI实践 </tag>
+            <tag> AI编程 </tag>
             
         </tags>
       
@@ -38,7 +63,7 @@
       
       <categories>
           
-          <category> AI探索 </category>
+          <category> AI工程化 </category>
           
       </categories>
       
@@ -63,7 +88,7 @@
       
       <categories>
           
-          <category> AI探索 </category>
+          <category> AI工程化 </category>
           
       </categories>
       
@@ -88,14 +113,14 @@
       
       <categories>
           
-          <category> AI探索 </category>
+          <category> AI工程化 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> AI原理 </tag>
+            <tag> AI编程 </tag>
             
         </tags>
       
@@ -238,7 +263,7 @@
       
       <categories>
           
-          <category> AI探索 </category>
+          <category> AI工程化 </category>
           
       </categories>
       
@@ -338,14 +363,14 @@
       
       <categories>
           
-          <category> AI探索 </category>
+          <category> AI工程化 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 知识库 </tag>
+            <tag> AI编程 </tag>
             
         </tags>
       
@@ -438,7 +463,7 @@
       
       <categories>
           
-          <category> AI探索 </category>
+          <category> AI工程化 </category>
           
       </categories>
       
@@ -463,14 +488,14 @@
       
       <categories>
           
-          <category> AI探索 </category>
+          <category> AI工程化 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> Agent,Skill </tag>
+            <tag> AI编程 </tag>
             
         </tags>
       
@@ -565,7 +590,7 @@
       
       <categories>
           
-          <category> AI探索 </category>
+          <category> AI工程化 </category>
           
       </categories>
       
@@ -615,7 +640,7 @@
       
       <categories>
           
-          <category> AI探索 </category>
+          <category> AI工程化 </category>
           
       </categories>
       
@@ -640,7 +665,7 @@
       
       <categories>
           
-          <category> AI探索 </category>
+          <category> AI工程化 </category>
           
       </categories>
       
@@ -665,7 +690,7 @@
       
       <categories>
           
-          <category> AI探索 </category>
+          <category> AI工程化 </category>
           
       </categories>
       
@@ -690,7 +715,7 @@
       
       <categories>
           
-          <category> AI探索 </category>
+          <category> AI工程化 </category>
           
       </categories>
       
@@ -740,7 +765,7 @@
       
       <categories>
           
-          <category> AI探索 </category>
+          <category> AI工程化 </category>
           
       </categories>
       
@@ -909,14 +934,14 @@
       
       <categories>
           
-          <category> AI探索 </category>
+          <category> AI工程化 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 开发工具 </tag>
+            <tag> AI编程 </tag>
             
         </tags>
       
@@ -7842,11 +7867,11 @@
     
     
     <entry>
-      <title>Git域名配置</title>
-      <link href="/git-domain-config/"/>
-      <url>/git-domain-config/</url>
+      <title>Git环境配置</title>
+      <link href="/git-environment-config/"/>
+      <url>/git-environment-config/</url>
       
-        <content type="html"><![CDATA[<p>git 域名配置</p><span id="more"></span><ol><li><p>在 Godaddy 购买的域名；</p></li><li><p>查找 DNSpod 解析域名，没什么难度，就是添加一条记录，保存而已，记得在添加域名到 DNSpod 之后，复制两个 NS 地址到 godaddy 的域名服务器下；</p></li><li><p>Git 项目根目录下创建 CNAME 文件，把域名填进去，push 就行了。</p></li></ol>]]></content>
+        <content type="html"><![CDATA[<p>结合了一些网上的方法，结合自己配置的实际情况写的文档。</p><span id="more"></span><ol><li><p>下载 git 主程序，下载地址：<a href="https://git-scm.com/downloads%EF%BC%8C">https://git-scm.com/downloads，</a> 双击安装包，一路 next 就行；</p></li><li><p>对于技术小白的我来说，命令行神马的太复杂了，所以就需要一个 git 界面画的软件来帮助我啦，这个软件就是 TortoiseGit，下载地址：<a href="https://tortoisegit.org/download/%EF%BC%8C">https://tortoisegit.org/download/，</a> 分为 32 位版和 64 位版，下载时要选好，安装的时候也是一路 next；</p></li><li><p>接下来就是解决怎么把本地项目关联发布到 git 上的问题了；</p></li></ol><p>(1) 首先打开 git 上的项目，复制 git 的 HTTP 地址；</p><p>(2) 然后创打开硬盘里的一个目录，最好是专门开发用的目录，点右键，选择“Git Clone…”，将地址复制进去，点击 OK；<br>(3) 出现 Success 提示，就代表 clone 成功了，close 掉对话框，然后就出现了名为 git 项目的文件夹了；</p><ol start="4"><li>本地改动保存为一个版本，我们以新建文件为例；</li></ol><p>(1) 首先，打开刚才生成文件夹，新建一个名为 readme.txt 的空文件；</p><p>(2) 然后在这里鼠标右击，选择 Git Commit -&gt; “master”…，会弹出一个对话框（注意：这里可能会提醒设置用户名、密码 和邮箱，点击确定，填写 git 账户的用户名和注册邮箱以及密码即可）；</p>]]></content>
       
       
       <categories>
@@ -7867,11 +7892,11 @@
     
     
     <entry>
-      <title>Git环境配置</title>
-      <link href="/git-environment-config/"/>
-      <url>/git-environment-config/</url>
+      <title>Git域名配置</title>
+      <link href="/git-domain-config/"/>
+      <url>/git-domain-config/</url>
       
-        <content type="html"><![CDATA[<p>结合了一些网上的方法，结合自己配置的实际情况写的文档。</p><span id="more"></span><ol><li><p>下载 git 主程序，下载地址：<a href="https://git-scm.com/downloads%EF%BC%8C">https://git-scm.com/downloads，</a> 双击安装包，一路 next 就行；</p></li><li><p>对于技术小白的我来说，命令行神马的太复杂了，所以就需要一个 git 界面画的软件来帮助我啦，这个软件就是 TortoiseGit，下载地址：<a href="https://tortoisegit.org/download/%EF%BC%8C">https://tortoisegit.org/download/，</a> 分为 32 位版和 64 位版，下载时要选好，安装的时候也是一路 next；</p></li><li><p>接下来就是解决怎么把本地项目关联发布到 git 上的问题了；</p></li></ol><p>(1) 首先打开 git 上的项目，复制 git 的 HTTP 地址；</p><p>(2) 然后创打开硬盘里的一个目录，最好是专门开发用的目录，点右键，选择“Git Clone…”，将地址复制进去，点击 OK；<br>(3) 出现 Success 提示，就代表 clone 成功了，close 掉对话框，然后就出现了名为 git 项目的文件夹了；</p><ol start="4"><li>本地改动保存为一个版本，我们以新建文件为例；</li></ol><p>(1) 首先，打开刚才生成文件夹，新建一个名为 readme.txt 的空文件；</p><p>(2) 然后在这里鼠标右击，选择 Git Commit -&gt; “master”…，会弹出一个对话框（注意：这里可能会提醒设置用户名、密码 和邮箱，点击确定，填写 git 账户的用户名和注册邮箱以及密码即可）；</p>]]></content>
+        <content type="html"><![CDATA[<p>git 域名配置</p><span id="more"></span><ol><li><p>在 Godaddy 购买的域名；</p></li><li><p>查找 DNSpod 解析域名，没什么难度，就是添加一条记录，保存而已，记得在添加域名到 DNSpod 之后，复制两个 NS 地址到 godaddy 的域名服务器下；</p></li><li><p>Git 项目根目录下创建 CNAME 文件，把域名填进去，push 就行了。</p></li></ol>]]></content>
       
       
       <categories>

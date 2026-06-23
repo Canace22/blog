@@ -1,0 +1,353 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="canace 的博客"><meta itemprop="name" content="2026-06-22 查询：AI 产品的形态分化与底层逻辑"><meta itemprop="image" content="https://raw.githubusercontent.com/Canace22/Assets/main/images/snow-other.png"><meta property="og:image" content="https://raw.githubusercontent.com/Canace22/Assets/main/images/snow-other.png"><meta name="description" itemprop="description" content="&lt;h2 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h2&gt;&lt;p&gt;同一个 AI 能力为什么会分化成多种产品形态？不同形态之间的差异本质上是什么？&lt;/p&gt;
+&lt;h2 id=&quot;角度一：体感差异-—-同一个产品，CLI-和-App-体验天差地别&quot;&gt;&lt;a href=&quot;#角度一：体感差异-—-同一个产品，CLI-和-App-体验天差地别&quot; class=&quot;headerlink&quot; title=&quot;角度一：体感差异 — 同一个产品，CLI 和 App 体验天差地别&quot;&gt;&lt;/a&gt;角度一：体感差异 — 同一个产品，CLI 和 App 体验天差地别&lt;/h2&gt;&lt;p&gt;Claude Code 和 Cowork 是同一个模型底座，但用起来完全不一样：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Code&lt;/strong&gt;：直接执行命令，干完活直接告诉你结果&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Cowork&lt;/strong&gt;：沙箱里绕来绕去，很多事做不了，感觉束手束脚&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;同样的现象也出现在 OpenAI 的 Codex CLI vs Codex App 上。&lt;/p&gt;
+&lt;h2 id=&quot;角度二：架构差异-—-沙箱-vs-直接执行&quot;&gt;&lt;a href=&quot;#角度二：架构差异-—-沙箱-vs-直接执行&quot; class=&quot;headerlink&quot; title=&quot;角度二：架构差异 — 沙箱 vs 直接执行&quot;&gt;&lt;/a&gt;角度二：架构差异 — 沙箱 vs 直接执行&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;CLI（Code &amp;#x2F; Codex CLI）&lt;/th&gt;
+&lt;th&gt;桌面 Agent（Cowork &amp;#x2F; Codex App）&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td&gt;执行环境&lt;/td&gt;
+&lt;td&gt;真实文件系统&lt;/td&gt;
+&lt;td&gt;隔离 VM 沙箱&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;安全性&lt;/td&gt;
+&lt;td&gt;靠用户把关 + AI 安全分类器&lt;/td&gt;
+&lt;td&gt;天然隔离，AI 乱来也不伤系统&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;权限&lt;/td&gt;
+&lt;td&gt;完整 shell&lt;/td&gt;
+&lt;td&gt;受限&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;目标用户&lt;/td&gt;
+&lt;td&gt;开发者（懂风险）&lt;/td&gt;
+&lt;td&gt;非技术用户（需要保护）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;p&gt;根本矛盾：&lt;strong&gt;给开发者沙箱 → 权限不够；给非技术用户 shell → 太危险。&lt;/strong&gt; 所以只能拆成两个产品。&lt;/p&gt;
+&lt;h2 id=&quot;角度三：Token-效率-—-视觉理解比文本理解贵-10-50-倍&quot;&gt;&lt;a href=&quot;#角度三：Token-效率-—-视觉理解比文本理解贵-10-50-倍&quot; class=&quot;headerlink&quot; title=&quot;角度三：Token 效率 — 视觉理解比文本理解贵 10-50 倍&quot;&gt;&lt;/a&gt;角度三：Token 效率 — 视觉理解比文本理解贵 10-50 倍&lt;/h2&gt;&lt;p&gt;Cowork &amp;#x2F; Codex App 的 token 消耗远大于 CLI，原因是：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;截屏开销&lt;/strong&gt; — 桌面 Agent 每操作一步都要”看一眼屏幕”，每张图都是大量 token&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;子 Agent 并行&lt;/strong&gt; — 复杂任务拆出多个子 Agent，token 乘法增长&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;沙箱上下文&lt;/strong&gt; — VM 环境需要额外描述，增加上下文开销&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;隐藏工作&lt;/strong&gt; — 截图分析、视觉理解用户看不到但 token 照烧&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;CLI 为什么省：纯文本交互、精准读写、没有视觉开销。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;这是行业通病，不只是 Anthropic 的问题。&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;角度四：产品形态-—-同一个大脑，多副面孔&quot;&gt;&lt;a href=&quot;#角度四：产品形态-—-同一个大脑，多副面孔&quot; class=&quot;headerlink&quot; title=&quot;角度四：产品形态 — 同一个大脑，多副面孔&quot;&gt;&lt;/a&gt;角度四：产品形态 — 同一个大脑，多副面孔&lt;/h2&gt;&lt;p&gt;Anthropic 和 OpenAI 都把同一个模型铺成多种形态：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;形态&lt;/th&gt;
+&lt;th&gt;Claude&lt;/th&gt;
+&lt;th&gt;OpenAI&lt;/th&gt;
+&lt;th&gt;交互方式&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td&gt;聊天 Bot&lt;/td&gt;
+&lt;td&gt;Claude.ai&lt;/td&gt;
+&lt;td&gt;ChatGPT&lt;/td&gt;
+&lt;td&gt;对话框一问一答&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CLI Agent&lt;/td&gt;
+&lt;td&gt;Claude Code&lt;/td&gt;
+&lt;td&gt;Codex CLI&lt;/td&gt;
+&lt;td&gt;终端命令行&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;IDE 插件&lt;/td&gt;
+&lt;td&gt;VS Code 插件&lt;/td&gt;
+&lt;td&gt;Copilot&lt;/td&gt;
+&lt;td&gt;编辑器内联&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;桌面 Agent&lt;/td&gt;
+&lt;td&gt;Cowork&lt;/td&gt;
+&lt;td&gt;Codex App&lt;/td&gt;
+&lt;td&gt;沙箱桌面&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;搜索引擎&lt;/td&gt;
+&lt;td&gt;—&lt;/td&gt;
+&lt;td&gt;Perplexity&lt;/td&gt;
+&lt;td&gt;搜索 + 引用&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;语音助手&lt;/td&gt;
+&lt;td&gt;—&lt;/td&gt;
+&lt;td&gt;Siri &amp;#x2F; Gemini Live&lt;/td&gt;
+&lt;td&gt;语音对话&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;图&amp;#x2F;视频生成&lt;/td&gt;
+&lt;td&gt;—&lt;/td&gt;
+&lt;td&gt;Midjourney &amp;#x2F; Sora&lt;/td&gt;
+&lt;td&gt;文生图&amp;#x2F;视频&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;代码生成平台&lt;/td&gt;
+&lt;td&gt;—&lt;/td&gt;
+&lt;td&gt;Replit &amp;#x2F; v0 &amp;#x2F; Bolt&lt;/td&gt;
+&lt;td&gt;一句话出应用&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;为什么同一个能力要铺这么多入口？&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;用户在哪里，产品就在哪里（终端&amp;#x2F;编辑器&amp;#x2F;桌面&amp;#x2F;浏览器）&lt;/li&gt;
+&lt;li&gt;不同入口覆盖不同竞争对手赛道&lt;/li&gt;
+&lt;li&gt;不同入口 &amp;#x3D; 不同付费层级，同一个模型卖 N 份钱&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;角度五：商业模式-—-Cursor-为什么是”异类”&quot;&gt;&lt;a href=&quot;#角度五：商业模式-—-Cursor-为什么是”异类”&quot; class=&quot;headerlink&quot; title=&quot;角度五：商业模式 — Cursor 为什么是”异类”&quot;&gt;&lt;/a&gt;角度五：商业模式 — Cursor 为什么是”异类”&lt;/h2&gt;&lt;p&gt;三种赚钱逻辑：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;模式&lt;/th&gt;
+&lt;th&gt;代表&lt;/th&gt;
+&lt;th&gt;赚什么&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td&gt;卖模型&lt;/td&gt;
+&lt;td&gt;Anthropic（Code、Cowork、Chat）&lt;/td&gt;
+&lt;td&gt;按量收费 &amp;#x2F; 订阅&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;卖编辑器&lt;/td&gt;
+&lt;td&gt;Cursor&lt;/td&gt;
+&lt;td&gt;订阅制，模型是成本&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;卖平台&lt;/td&gt;
+&lt;td&gt;GitHub Copilot&lt;/td&gt;
+&lt;td&gt;绑定生态抽成&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;p&gt;Cursor 不卖模型，卖编辑器体验。护城河在用户习惯（快捷键、配置、工作流），不在模型能力。所以它接入多家模型来对冲风险——模型可以换，编辑器习惯换不了。&lt;/p&gt;
+&lt;h2 id=&quot;角度六：Pro-套餐的额度困境&quot;&gt;&lt;a href=&quot;#角度六：Pro-套餐的额度困境&quot; class=&quot;headerlink&quot; title=&quot;角度六：Pro 套餐的额度困境&quot;&gt;&lt;/a&gt;角度六：Pro 套餐的额度困境&lt;/h2&gt;&lt;p&gt;Pro 套餐（$20&amp;#x2F;月）下 Chat、Cowork、Code 共享同一个 token pool：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Chat → 消耗最小&lt;/li&gt;
+&lt;li&gt;Code → 消耗中等&lt;/li&gt;
+&lt;li&gt;Cowork → 消耗最大（截图 + 子 Agent）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Cowork 最先把额度吃光。这也是为什么 Max 套餐（$100-160&amp;#x2F;月）才给 Cowork 更高的 Race Mode 限额。&lt;/p&gt;
+&lt;h2 id=&quot;核心结论&quot;&gt;&lt;a href=&quot;#核心结论&quot; class=&quot;headerlink&quot; title=&quot;核心结论&quot;&gt;&lt;/a&gt;核心结论&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;AI 产品的形态分化不是技术问题，是商业和用户问题。同一个大脑，多副面孔，每张脸对应一个使用场景、一类目标用户、一个竞争对手赛道。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;形态分化背后的统一逻辑：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;架构差异&lt;/strong&gt;（沙箱 vs 直接执行）→ 决定了能力边界&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;目标用户&lt;/strong&gt;（开发者 vs 非技术用户）→ 决定了产品形态&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Token 成本&lt;/strong&gt;（文本 vs 视觉）→ 决定了使用成本&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;商业模式&lt;/strong&gt;（卖模型 &amp;#x2F; 卖编辑器 &amp;#x2F; 卖平台）→ 决定了盈利方式&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;相关概念&quot;&gt;&lt;a href=&quot;#相关概念&quot; class=&quot;headerlink&quot; title=&quot;相关概念&quot;&gt;&lt;/a&gt;相关概念&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;../concepts/ai-assisted-development.html&quot;&gt;AI 辅助开发&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;../concepts/ai-worker.html&quot;&gt;AI 角色分工&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;../concepts/harness-engineering.html&quot;&gt;Harness Engineering&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;../concepts/claude-code-workflows.html&quot;&gt;Claude Code 常见工作流&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;em&gt;修订：Hermes Agent，2026-06-19。&lt;/em&gt;&lt;/p&gt;
+"><title>2026-06-22 查询：AI 产品的形态分化与底层逻辑</title><link rel="stylesheet" type="text/css" href="../../css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/normalize.css/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="../../favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="../../favicon.ico"><link rel="apple-touch-icon" href="../../apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="../../apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="../../atom.xml"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/clipboard/dist/clipboard.min.js"></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.js"></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.css"><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">2026-06-22 查询：AI 产品的形态分化与底层逻辑</h1><a id="logo" href="../../.">Canace 的博客</a><p class="description">Tomorrow is another day</p></div><div id="nav-menu"><a href="../../."><i class="fa fa-home"> 主页</i></a><a href="../../archives/"><i class="fa fa-archive"> 文章归档</i></a><a class="current" href="../"><i class="fa fa-book"> 知识库</i></a><a href="../../about/"><i class="fa fa-user"> 关于我</i></a><a href="../../atom.xml"><i class="fa fa-rss"> 订阅</i></a><a id="nav-random-article" href="#" title="随机文章" aria-label="随机文章"><i class="fa fa-random"> 随机文章</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">2026-06-22 查询：AI 产品的形态分化与底层逻辑</h1><div class="clear"><div class="toc-article" id="toc"><div class="toc-title">目录</div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-text">问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%92%E5%BA%A6%E4%B8%80%EF%BC%9A%E4%BD%93%E6%84%9F%E5%B7%AE%E5%BC%82-%E2%80%94-%E5%90%8C%E4%B8%80%E4%B8%AA%E4%BA%A7%E5%93%81%EF%BC%8CCLI-%E5%92%8C-App-%E4%BD%93%E9%AA%8C%E5%A4%A9%E5%B7%AE%E5%9C%B0%E5%88%AB"><span class="toc-text">角度一：体感差异 — 同一个产品，CLI 和 App 体验天差地别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%92%E5%BA%A6%E4%BA%8C%EF%BC%9A%E6%9E%B6%E6%9E%84%E5%B7%AE%E5%BC%82-%E2%80%94-%E6%B2%99%E7%AE%B1-vs-%E7%9B%B4%E6%8E%A5%E6%89%A7%E8%A1%8C"><span class="toc-text">角度二：架构差异 — 沙箱 vs 直接执行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%92%E5%BA%A6%E4%B8%89%EF%BC%9AToken-%E6%95%88%E7%8E%87-%E2%80%94-%E8%A7%86%E8%A7%89%E7%90%86%E8%A7%A3%E6%AF%94%E6%96%87%E6%9C%AC%E7%90%86%E8%A7%A3%E8%B4%B5-10-50-%E5%80%8D"><span class="toc-text">角度三：Token 效率 — 视觉理解比文本理解贵 10-50 倍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%92%E5%BA%A6%E5%9B%9B%EF%BC%9A%E4%BA%A7%E5%93%81%E5%BD%A2%E6%80%81-%E2%80%94-%E5%90%8C%E4%B8%80%E4%B8%AA%E5%A4%A7%E8%84%91%EF%BC%8C%E5%A4%9A%E5%89%AF%E9%9D%A2%E5%AD%94"><span class="toc-text">角度四：产品形态 — 同一个大脑，多副面孔</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%92%E5%BA%A6%E4%BA%94%EF%BC%9A%E5%95%86%E4%B8%9A%E6%A8%A1%E5%BC%8F-%E2%80%94-Cursor-%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AF%E2%80%9D%E5%BC%82%E7%B1%BB%E2%80%9D"><span class="toc-text">角度五：商业模式 — Cursor 为什么是”异类”</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%92%E5%BA%A6%E5%85%AD%EF%BC%9APro-%E5%A5%97%E9%A4%90%E7%9A%84%E9%A2%9D%E5%BA%A6%E5%9B%B0%E5%A2%83"><span class="toc-text">角度六：Pro 套餐的额度困境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E7%BB%93%E8%AE%BA"><span class="toc-text">核心结论</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5"><span class="toc-text">相关概念</span></a></li></ol></div></div><div class="post-content"><h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>同一个 AI 能力为什么会分化成多种产品形态？不同形态之间的差异本质上是什么？</p>
+<h2 id="角度一：体感差异-—-同一个产品，CLI-和-App-体验天差地别"><a href="#角度一：体感差异-—-同一个产品，CLI-和-App-体验天差地别" class="headerlink" title="角度一：体感差异 — 同一个产品，CLI 和 App 体验天差地别"></a>角度一：体感差异 — 同一个产品，CLI 和 App 体验天差地别</h2><p>Claude Code 和 Cowork 是同一个模型底座，但用起来完全不一样：</p>
+<ul>
+<li><strong>Code</strong>：直接执行命令，干完活直接告诉你结果</li>
+<li><strong>Cowork</strong>：沙箱里绕来绕去，很多事做不了，感觉束手束脚</li>
+</ul>
+<p>同样的现象也出现在 OpenAI 的 Codex CLI vs Codex App 上。</p>
+<h2 id="角度二：架构差异-—-沙箱-vs-直接执行"><a href="#角度二：架构差异-—-沙箱-vs-直接执行" class="headerlink" title="角度二：架构差异 — 沙箱 vs 直接执行"></a>角度二：架构差异 — 沙箱 vs 直接执行</h2><table>
+<thead>
+<tr>
+<th></th>
+<th>CLI（Code &#x2F; Codex CLI）</th>
+<th>桌面 Agent（Cowork &#x2F; Codex App）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>执行环境</td>
+<td>真实文件系统</td>
+<td>隔离 VM 沙箱</td>
+</tr>
+<tr>
+<td>安全性</td>
+<td>靠用户把关 + AI 安全分类器</td>
+<td>天然隔离，AI 乱来也不伤系统</td>
+</tr>
+<tr>
+<td>权限</td>
+<td>完整 shell</td>
+<td>受限</td>
+</tr>
+<tr>
+<td>目标用户</td>
+<td>开发者（懂风险）</td>
+<td>非技术用户（需要保护）</td>
+</tr>
+</tbody></table>
+<p>根本矛盾：<strong>给开发者沙箱 → 权限不够；给非技术用户 shell → 太危险。</strong> 所以只能拆成两个产品。</p>
+<h2 id="角度三：Token-效率-—-视觉理解比文本理解贵-10-50-倍"><a href="#角度三：Token-效率-—-视觉理解比文本理解贵-10-50-倍" class="headerlink" title="角度三：Token 效率 — 视觉理解比文本理解贵 10-50 倍"></a>角度三：Token 效率 — 视觉理解比文本理解贵 10-50 倍</h2><p>Cowork &#x2F; Codex App 的 token 消耗远大于 CLI，原因是：</p>
+<ol>
+<li><strong>截屏开销</strong> — 桌面 Agent 每操作一步都要”看一眼屏幕”，每张图都是大量 token</li>
+<li><strong>子 Agent 并行</strong> — 复杂任务拆出多个子 Agent，token 乘法增长</li>
+<li><strong>沙箱上下文</strong> — VM 环境需要额外描述，增加上下文开销</li>
+<li><strong>隐藏工作</strong> — 截图分析、视觉理解用户看不到但 token 照烧</li>
+</ol>
+<p>CLI 为什么省：纯文本交互、精准读写、没有视觉开销。</p>
+<blockquote>
+<p><strong>这是行业通病，不只是 Anthropic 的问题。</strong></p>
+</blockquote>
+<h2 id="角度四：产品形态-—-同一个大脑，多副面孔"><a href="#角度四：产品形态-—-同一个大脑，多副面孔" class="headerlink" title="角度四：产品形态 — 同一个大脑，多副面孔"></a>角度四：产品形态 — 同一个大脑，多副面孔</h2><p>Anthropic 和 OpenAI 都把同一个模型铺成多种形态：</p>
+<table>
+<thead>
+<tr>
+<th>形态</th>
+<th>Claude</th>
+<th>OpenAI</th>
+<th>交互方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>聊天 Bot</td>
+<td>Claude.ai</td>
+<td>ChatGPT</td>
+<td>对话框一问一答</td>
+</tr>
+<tr>
+<td>CLI Agent</td>
+<td>Claude Code</td>
+<td>Codex CLI</td>
+<td>终端命令行</td>
+</tr>
+<tr>
+<td>IDE 插件</td>
+<td>VS Code 插件</td>
+<td>Copilot</td>
+<td>编辑器内联</td>
+</tr>
+<tr>
+<td>桌面 Agent</td>
+<td>Cowork</td>
+<td>Codex App</td>
+<td>沙箱桌面</td>
+</tr>
+<tr>
+<td>搜索引擎</td>
+<td>—</td>
+<td>Perplexity</td>
+<td>搜索 + 引用</td>
+</tr>
+<tr>
+<td>语音助手</td>
+<td>—</td>
+<td>Siri &#x2F; Gemini Live</td>
+<td>语音对话</td>
+</tr>
+<tr>
+<td>图&#x2F;视频生成</td>
+<td>—</td>
+<td>Midjourney &#x2F; Sora</td>
+<td>文生图&#x2F;视频</td>
+</tr>
+<tr>
+<td>代码生成平台</td>
+<td>—</td>
+<td>Replit &#x2F; v0 &#x2F; Bolt</td>
+<td>一句话出应用</td>
+</tr>
+</tbody></table>
+<p><strong>为什么同一个能力要铺这么多入口？</strong></p>
+<ol>
+<li>用户在哪里，产品就在哪里（终端&#x2F;编辑器&#x2F;桌面&#x2F;浏览器）</li>
+<li>不同入口覆盖不同竞争对手赛道</li>
+<li>不同入口 &#x3D; 不同付费层级，同一个模型卖 N 份钱</li>
+</ol>
+<h2 id="角度五：商业模式-—-Cursor-为什么是”异类”"><a href="#角度五：商业模式-—-Cursor-为什么是”异类”" class="headerlink" title="角度五：商业模式 — Cursor 为什么是”异类”"></a>角度五：商业模式 — Cursor 为什么是”异类”</h2><p>三种赚钱逻辑：</p>
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th>代表</th>
+<th>赚什么</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>卖模型</td>
+<td>Anthropic（Code、Cowork、Chat）</td>
+<td>按量收费 &#x2F; 订阅</td>
+</tr>
+<tr>
+<td>卖编辑器</td>
+<td>Cursor</td>
+<td>订阅制，模型是成本</td>
+</tr>
+<tr>
+<td>卖平台</td>
+<td>GitHub Copilot</td>
+<td>绑定生态抽成</td>
+</tr>
+</tbody></table>
+<p>Cursor 不卖模型，卖编辑器体验。护城河在用户习惯（快捷键、配置、工作流），不在模型能力。所以它接入多家模型来对冲风险——模型可以换，编辑器习惯换不了。</p>
+<h2 id="角度六：Pro-套餐的额度困境"><a href="#角度六：Pro-套餐的额度困境" class="headerlink" title="角度六：Pro 套餐的额度困境"></a>角度六：Pro 套餐的额度困境</h2><p>Pro 套餐（$20&#x2F;月）下 Chat、Cowork、Code 共享同一个 token pool：</p>
+<ul>
+<li>Chat → 消耗最小</li>
+<li>Code → 消耗中等</li>
+<li>Cowork → 消耗最大（截图 + 子 Agent）</li>
+</ul>
+<p>Cowork 最先把额度吃光。这也是为什么 Max 套餐（$100-160&#x2F;月）才给 Cowork 更高的 Race Mode 限额。</p>
+<h2 id="核心结论"><a href="#核心结论" class="headerlink" title="核心结论"></a>核心结论</h2><blockquote>
+<p>AI 产品的形态分化不是技术问题，是商业和用户问题。同一个大脑，多副面孔，每张脸对应一个使用场景、一类目标用户、一个竞争对手赛道。</p>
+</blockquote>
+<p>形态分化背后的统一逻辑：</p>
+<ul>
+<li><strong>架构差异</strong>（沙箱 vs 直接执行）→ 决定了能力边界</li>
+<li><strong>目标用户</strong>（开发者 vs 非技术用户）→ 决定了产品形态</li>
+<li><strong>Token 成本</strong>（文本 vs 视觉）→ 决定了使用成本</li>
+<li><strong>商业模式</strong>（卖模型 &#x2F; 卖编辑器 &#x2F; 卖平台）→ 决定了盈利方式</li>
+</ul>
+<h2 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h2><ul>
+<li><a href="../concepts/ai-assisted-development.html">AI 辅助开发</a></li>
+<li><a href="../concepts/ai-worker.html">AI 角色分工</a></li>
+<li><a href="../concepts/harness-engineering.html">Harness Engineering</a></li>
+<li><a href="../concepts/claude-code-workflows.html">Claude Code 常见工作流</a></li>
+</ul>
+<hr>
+<p><em>修订：Hermes Agent，2026-06-19。</em></p>
+</div></div></div></div><div class="pure-u-1 pure-u-md-1-4"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 常用文档</i></div><ul></ul><a href="/git-common-commands" title="Git 文档" target="_blank">Git 文档</a><ul></ul><a href="/common-programming-prompt-words" title="常用开发提示词" target="_blank">常用开发提示词</a></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="../../categories/soft/">软技能与思考</a><span class="category-list-count">51</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/intelligent/">AI探索</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/web/">Web开发</a><span class="category-list-count">142</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/cli/">工程化与运维</a><span class="category-list-count">51</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/coding/">编程基础</a><span class="category-list-count">42</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/AI%E5%B7%A5%E7%A8%8B%E5%8C%96/">AI工程化</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/site/">网站建设</a><span class="category-list-count">5</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="../../tags/essays/" style="font-size: 15px; color: #3a7ba8">随笔</a> <a href="../../tags/AI%E5%8E%9F%E7%90%86/" style="font-size: 15px; color: #a0b4c1">AI原理</a> <a href="../../tags/backend/" style="font-size: 15px; color: #6694b3">后端</a> <a href="../../tags/Python-Go-%E5%85%B6%E4%BB%96/" style="font-size: 15px; color: #92acbe">Python/Go/其他</a> <a href="../../tags/performance/" style="font-size: 15px; color: #83a4ba">性能优化</a> <a href="../../tags/JavaScript-TypeScript/" style="font-size: 15px; color: #0f639e">JavaScript&TypeScript</a> <a href="../../tags/api-services/" style="font-size: 15px; color: #bdc4c8">API&服务</a> <a href="../../tags/computer-science/" style="font-size: 15px; color: #2c73a5">计算机科学</a> <a href="../../tags/%E8%81%8C%E4%B8%9A%E5%8F%91%E5%B1%95/" style="font-size: 15px; color: #83a4ba">职业发展</a> <a href="../../tags/AI%E7%BC%96%E7%A8%8B/" style="font-size: 15px; color: #6694b3">AI编程</a> <a href="../../tags/%E7%BF%BB%E8%AF%91/" style="font-size: 15px; color: #ccc">翻译</a> <a href="../../tags/notes/" style="font-size: 15px; color: #a0b4c1">笔记</a> <a href="../../tags/frontend/" style="font-size: 15px; color: #005b9a">前端</a> <a href="../../tags/frameworks-libs/" style="font-size: 15px; color: #578baf">框架与库</a> <a href="../../tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/" style="font-size: 15px; color: #92acbe">系统设计</a> <a href="../../tags/programming-languages/" style="font-size: 15px; color: #afbcc5">编程语言</a> <a href="../../tags/css-visualization/" style="font-size: 15px; color: #1d6ba1">CSS与可视化</a> <a href="../../tags/build-deploy/" style="font-size: 15px; color: #759cb7">构建与部署</a> <a href="../../tags/dev-tools/" style="font-size: 15px; color: #4983ac">开发工具</a> <a href="../../tags/Node-js/" style="font-size: 15px; color: #83a4ba">Node.js</a> <a href="../../tags/cross-platform/" style="font-size: 15px; color: #92acbe">跨端方案</a> <a href="../../tags/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/" style="font-size: 15px; color: #ccc">项目管理</a> <a href="../../tags/code-quality/" style="font-size: 15px; color: #bdc4c8">代码质量</a></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2026 <a href="../../." rel="nofollow">Canace 的博客</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="../../js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.js" async></script><script type="text/javascript" src="../../js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.css"><link rel="stylesheet" type="text/css" href="../../css/search.css?v=0.0.0"><script type="text/javascript" src="../../js/search.js?v=0.0.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+   search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="/js/copycode.js" successtext="复制成功!"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/mermaid@11.14.0/dist/mermaid.min.js"></script><script type="text/javascript">document.addEventListener('DOMContentLoaded', function () {
+  if (!window.mermaid) return;
+  mermaid.initialize({"theme":"default","logLevel":5,"startOnLoad":true,"arrowMarkerAbsolute":false,"flowchart":{"htmlLabels":true,"useMaxWidth":true,"curve":"linear"},"sequence":{"diagramMarginX":50,"diagramMarginY":10,"actorMargin":50,"width":150,"height":65,"boxMargin":10,"boxTextMargin":5,"noteMargin":10,"messageMargin":35,"mirrorActors":true,"bottomMarginAdj":1,"useMaxWidth":true},"gantt":{"titleTopMargin":25,"barHeight":20,"barGap":4,"topPadding":50,"leftPadding":75,"gridLineStartPadding":35,"fontSize":11,"fontFamily":"\"Open-Sans\", \"sans-serif\"","numberSectionStyles":4,"axisFormat":"%Y-%m-%d"},"class":{},"git":{}});
+});
+</script><script type="text/javascript" src="../../js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="../../js/smartresize.js?v=0.0.0"></script><script type="text/javascript">(function () {
+  var urls = ["/../../2024-year-end-summary/","/../../AI-knowledge-base/","/../../Django-channels/","/../../6-common-website-usability-issues-and-solutions/","/../../JavaScript-call-apply-bind/","/../../MySQL/","/../../NP-P-NPC/","/../../WebRTC/","/../../about-doing-technology/","/../../add-skeleton-screen/","/../../about-forgetfulness/","/../../agent-coding-stability/","/../../ai-coding-game/","/../../ai-coding-ide/","/../../ai-make-you-boring/","/../../ai-native/","/../../ai-coding-share/","/../../ai-expansion/","/../../ai-worker/","/../../ai-optimize-ui/","/../../algorithm-book-notes-for-everyone/","/../../angel-love/","/../../angular-navigation-content-linkage/","/../../ant-design-pitfalls/","/../../ants/","/../../bash-data-processing/","/../../async-data-console-issues/","/../../beego-getting-started/","/../../binary-search/","/../../axios-network-request-encapsulation/","/../../blog-category/","/../../boolean-variables-in-project-application/","/../../box-model/","/../../bracket-matching/","/../../build-django-blog-system/","/../../brief-discussion-on-visual-form-design/","/../../browser-kernel-and-writing/","/../../brief-discussion-on-dns-pollution/","/../../build-tinymce-img-plugin/","/../../build-typescript-library/","/../../calculate-rice-cooker-reservation-time/","/../../canvas-draw-sprite-export/","/../../cascade/","/../../canvas-draw-dynamic-path/","/../../centos-server-login-config/","/../../ckeditor-usage-in-angular/","/../../climbing-stairs/","/../../common-algorithm-ideas/","/../../code-optimization/","/../../claude-handoff-doc-to-repo/","/../../common-git-workflows/","/../../common-programming-prompt-words/","/../../common-regular-expressions/","/../../common-image-format-comparison/","/../../common-terminal-commands/","/../../computer-graphics-1/","/../../computer-graphics-2/","/../../count-number-of-islands/","/../../count-total-elements-of-array-objects/","/../../cross-origin-resource-sharing/","/../../count-beautiful-subarrays/","/../../create-object-based-on-null/","/../../css-layout-guide/","/../../css-notes/","/../../css-circular-progress-bar/","/../../css-positioning-detailed/","/../../css-background-image-application/","/../../css-positioning/","/../../css-series-basics/","/../../css-series-box-dimensions/","/../../css-series-cascade/","/../../css-series-flow-and-dimensions/","/../../css-series-history-and-document-flow/","/../../css-series-flow-destruction-and-protection/","/../../css-series-text-processing/","/../../css-series-inline-elements-and-flow/","/../../css-tips/","/../../css2-block-element-center/","/../../css-two-color-pie-chart/","/../../cursor-skill-web-search-download-movie/","/../../custom-github-activity/","/../../css3-animation-vs-js-animation/","/../../cursor-debugger/","/../../deep-work-philosophy-interpretation/","/../../docker-documentation/","/../../disable-image-dragging/","/../../deep-copy-of-arrays-and-objects/","/../../doing-things-with-vscode/","/../../dropdown-list-implementation/","/../../egg/","/../../docker-frontend-environment-setup/","/../../es2020-new-features/","/../../element-plus-table-component-scaling-issue-solution/","/../../extra-thick-chicken-soup/","/../../ffmpeg-extract-audio-track/","/../../file-naming-pitfalls-record/","/../../firefox-remove-various-dashed-borders/","/../../first-day-morning-run/","/../../first-screen-optimization/","/../../first-screen-time-vs-white-screen-time/","/../../find-median-sorted-arrays/","/../../flow-simple-tutorial/","/../../flutter-learning-notes-dart-basics/","/../../flutter-learning-notes-quick-start/","/../../fix-github-image-issue-on-mac/","/../../four-js-tips/","/../../frontend-draw-graphic-captcha/","/../../frontend-xx-dockerization/","/../../frontend-performance-optimization/","/../../fullscreen-solution-for-webpage-or-html-elements/","/../../fun-console/","/../../function-without-global-variable-counting/","/../../gemini-new-session-memory/","/../../function-currying/","/../../functional-programming/","/../../generate-random-array-in-specified-range/","/../../get-longest-common-prefix/","/../../get-css-style/","/../../git-common-commands/","/../../ghost-whitespace-nodes/","/../../git-environment-config/","/../../git-usage-guide/","/../../github-action-auto-deploy-page/","/../../git-domain-config/","/../../gitbook-generate-ebook/","/../../github-travis-auto-build-vue-to-gitpage/","/../../github-practical-tips/","/../../gitpage-hexo/","/../../go-getting-started/","/../../gitlab-ci-config-template/","/../../go-ahead-vs-continue-ai-chat/","/../../hexo-blog-migration/","/../../how-to-create-a-robust-system/","/../../how-ai-lets-us-lie-flat/","/../../hexo-getting-started/","/../../homebrew-common-commands/","/../../how-to-optimize-animation/","/../../http-notes/","/../../html-to-text-js/","/../../html-notes/","/../../http-server/","/../../implement-array-flatten/","/../../image-lazy-loading-implementation/","/../../improve-work-efficiency-with-cursor-practical-notes/","/../../interesting-css-cascade-issues/","/../../interview-strategy/","/../../issue-03/","/../../hexo-math-formula-support/","/../../issue-05/","/../../issue-06/","/../../issue-04/","/../../issue-07/","/../../issue-08/","/../../issue-09/","/../../issue-10/","/../../issue-1/","/../../issue-11/","/../../issue-13/","/../../issue-14/","/../../issue-12/","/../../issue-15/","/../../issue-2/","/../../javascript-basics-primitive-vs-reference-types/","/../../javaScript-promise/","/../../javascript-basics-type-conversion/","/../../javascript-built-in-deep-copy/","/../../japanese-learning-notes/","/../../javascript-common-code-snippets/","/../../javascript-detect-caps-lock/","/../../javascript-functions/","/../../javascript-soul-questions/","/../../javascript-new-implementation-principle/","/../../javascript-tricks/","/../../js-linked-list-implementation/","/../../javascript-object-oriented-programming/","/../../js-execution/","/../../js-string-to-base64/","/../../js-modal-blog/","/../../jump-to-specific-position-in-article/","/../../js-timezone/","/../../js-overview/","/../../key-value-role-in-vue-components/","/../../kindness/","/../../knn-algorithm/","/../../kpi-vs-okr/","/../../knowledge-anxiety/","/../../leave-page-popup/","/../../llm-training-truth/","/../../linux-background-script-execution/","/../../llm-wiki/","/../../lodash-source-analysis-array-slice/","/../../mac-debug-ios-web-page/","/../../lodash-source-analysis-array-chunk/","/../../mac-install-mysql/","/../../manchester-by-the-sea/","/../../mini-program-tabs-sticky/","/../../method-to-login-to-south-china-normal-university-campus-network/","/../../modify-scrollbar-style-compatible/","/../../model-training-steps/","/../../modify-autofill-style/","/../../n-n-order-matrix-algorithm/","/../../narrative-research/","/../../module-specifications/","/../../node-notes-in-depth/","/../../node-version-management/","/../../nodeJs/","/../../nodejs-config/","/../../nodejs-notes/","/../../nodejs-module-mechanism/","/../../object-property-value-monitoring/","/../../number-precise-to-two-decimal-places/","/../../notes-about-writing-weekly-reports/","/../../npm-common-commands/","/../../one-click-generate-responsive-table/","/../../openclaw-usage-experience/","/../../package-json-field-list/","/../../palindrome-number-judgment/","/../../pagination-algorithm/","/../../pinyin-learning-project-notes/","/../../personal-knowledge-base/","/../../pixi-basics/","/../../pixijs-vertexData-null/","/../../pixi-js-sprite-loading-cache-removal/","/../../port-number-modification/","/../../prisma-getting-started-guide/","/../../project-modularization-principles/","/../../proxy-observer-pattern/","/../../product-updates-rss-file-diff-mental-model/","/../../python-pitfalls-collection/","/../../python3-installation/","/../../qwen-milk-tea-ui/","/../../react-hooks-create-movie-app/","/../../record-service-degradation-due-to-emergency/","/../../recursive-tree/","/../../rag-vs-graph-rag/","/../../refactoring-vs-architecture/","/../../regular-expressions/","/../../remove-parent-nodes-with-duplicate-child-ids/","/../../removeDuplicates/","/../../removeElement/","/../../reverse-words-in-string/","/../../reverse-integer/","/../../rss-telegram-selfhost/","/../../rhythm-psychology/","/../../roman-numerals-to-integer/","/../../scheduled-tasks/","/../../scroll-pagination/","/../../sentence-excerpts/","/../../settimeout-simulate-setinterval/","/../../science-popularization/","/../../software-version-number-definition/","/../../solve-github-dns-pollution-issue/","/../../singly-linked-list-concatenation/","/../../some-concepts/","/../../string-and-code-rigor/","/../../sublime-text-nodejs-config/","/../../systematic-method-for-fragmented-reading-knowledge/","/../../ss-installation/","/../../table-cell-equal-division/","/../../talking-about-browser-cache-mechanism/","/../../talking-about-vuex/","/../../talking-about-webpage-adaptive-and-responsive-layout/","/../../tcp-ip-three-way-handshake/","/../../thoughts-on-ad-blocker-plugins/","/../../thoughts-on-branch-management/","/../../thoughts-on-technical-growth/","/../../time-complexity-vs-space-complexity/","/../../three-js-basics-practice/","/../../time-zero/","/../../two-sum-problem/","/../../timestamp-to-date/","/../../typescript-environment-config/","/../../translate-use-claude-code/","/../../ubuntu-configure-frontend-environment/","/../../ubuntu-configure-ss/","/../../unavoidable-bug-chrome-translation-caused-trouble/","/../../understanding-byte-order/","/../../understanding-cookies/","/../../ubuntu-install-tensorflow/","/../../understanding-instanceof/","/../../validate-string/","/../../use-cowork/","/../../variables/","/../../vscode-code-formatting-summary/","/../../vue-details-i-didnt-know/","/../../vue-dynamic-component-import-note-not-async/","/../../vue-config-template/","/../../vue-test-unit/","/../../vue-project-setup-steps/","/../../vue-dynamic-change-title/","/../../vue3-notes/","/../../web-performance-optimization-debounce/","/../../vue-data-driven-view-implementation/","/../../web-security-csrf/","/../../webpack-gulp-bundle-vue-component-library/","/../../webpack-dynamic-modify-resource-domain/","/../../webpack/","/../../webpack5-new-features-module-federation-notes/","/../../web-security-xss-attack/","/../../webpage-version-update-popup-implementation/","/../../wechat-mini-program-pitfalls/","/../../what-happened-to-vue/","/../../why-we-need-to-read/","/../../why-frontend-needs-framework/","/../../what-happens-from-url-to-display/","/../../why-graphics-card/","/../../why-write-wechat-official-account/","/../../windows-tricks/","/../../why-not-let-ai-write-for-us/","/../../wordpress-installation/","/../../words-of-experience/","/../../work-for/","/../../wsl-config/","/../../yml-file-operations/","/../../writing-a-good-claude-md/"];
+  var el = document.getElementById('nav-random-article');
+  if (!el) return;
+  el.addEventListener('click', function (e) {
+    e.preventDefault();
+    if (!urls.length) return;
+    var next = urls[Math.floor(Math.random() * urls.length)];
+    if (next) window.location.href = next;
+  });
+})();</script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":200,"height":200},"mobile":{"show":false},"react":{"opacity":0.7},"log":false});</script></body></html>
