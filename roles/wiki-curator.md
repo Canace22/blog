@@ -104,7 +104,7 @@ When asked to lint the wiki, check for:
 - Do not link maintained wiki pages to `wiki/Clippings/xxx.md`.
 - Do not create a `queries/` page for every one-off answer; only save durable
   outputs.
-- Do not use this role for translation or blog drafting. Use
+- Do not use this role for translation or blog metadata drafts. Use
   `roles/translator.md` or `roles/blog-writer.md` instead.
 
 ## Current Seed Topic

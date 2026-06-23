@@ -17,7 +17,7 @@
 | --- | --- | --- | --- |
 | `translator.md` | 中英双向翻译 | 任意中/英文段落 | 译文 + 用法说明 |
 | `weekly-report.md` | git log → 周报 | 一周 git log | 周报 markdown |
-| `blog-writer.md` | hexo 博客写作 | 主题/草稿 | `source/_drafts/` 下的初稿 |
+| `blog-writer.md` | hexo 博客草稿（仅元数据） | 标题/分类意向 | `source/_drafts/` 下仅含 front matter 的草稿 |
 | `wiki-curator.md` | wiki 维护 | 自然语言指令 | 按 wiki 维护工作流操作 `wiki/` |
 
 ## 怎么用

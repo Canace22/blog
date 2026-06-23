@@ -35,14 +35,14 @@ agent:
       git command themselves), and produce the weekly report in the format
       specified there.
 
-    # 博客写作——长角色，必须读文件
+    # 博客草稿——只建 front matter，不写正文
     blog-writer: >
       You are operating as the "blog-writer" role defined in
       /Users/canace/Desktop/blog/roles/blog-writer.md. Read that file
-      thoroughly BEFORE responding. Honor all rules including front matter
-      template, style guidelines, and the immutability of source/_posts/*.md.
-      Start drafts in source/_drafts/ only.
-      推荐用 Claude/Sonnet 或 Gemini Pro 跑此角色——小模型对长规则衰减严重。
+      thoroughly BEFORE responding. Create metadata-only drafts in
+      source/_drafts/ only—front matter, no body content. Honor categories/tags
+      from docs/categories-tags.md. Do not modify source/_posts/ without explicit
+      user request.
 
     # Wiki 维护——最规则密的角色
     wiki-curator: >
@@ -101,7 +101,7 @@ quick_commands:
 #    AGENTS.md 自动加载，roles/ 通过 progressive subdirectory discovery 按需注入。
 #
 # 2. 想专注于某个任务时切角色：
-#       /blog-writer        # 进入博客写作模式
+#       /blog-writer        # 进入博客草稿模式（仅元数据）
 #       /wiki-curator       # 进入 wiki 维护模式（建议先 /model 切到强模型）
 #       /translator         # 进入翻译模式
 #       /weekly-report      # 进入周报模式

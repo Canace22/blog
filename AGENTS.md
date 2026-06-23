@@ -6,10 +6,10 @@ first.
 
 ## Role Routing
 
-- Blog writing, article drafting, article structure, or turning notes into a
-  Hexo post: read `roles/blog-writer.md` first. Draft new articles in
-  `source/_drafts/` and move to `source/_posts/` only after the human confirms,
-  unless the human explicitly asks to publish directly.
+- Creating a new Hexo blog draft: read `roles/blog-writer.md` first. Create
+  metadata-only files in `source/_drafts/` (front matter only, no body); move to
+  `source/_posts/` only after the human confirms, unless they explicitly ask to
+  publish directly.
 - Translation: read `roles/translator.md` first.
 - Weekly report generation: read `roles/weekly-report.md` first.
 - Wiki maintenance, source ingest, durable query capture, report synthesis, or
