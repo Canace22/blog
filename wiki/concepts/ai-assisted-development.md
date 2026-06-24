@@ -16,6 +16,7 @@
 - **延伸阅读**：提示工程读物与 Harness 工程化资料可当书签（[提示工程阅读清单](../sources/prompt-engineering-reading-list.md)，[Harness 工程化链接集](../sources/harness-engineering-links.md)）。
 - **Claude Code 官方工作流**：[常见工作流](claude-code-workflows.md)（读库/调试/PR/plan mode/计划任务）；[并行代理](claude-code-parallel-agents.md)（子代理、代理视图、团队、动态工作流）。
 - **工具选型与 token hygiene**：Cowork（沙箱桌面 Agent）面向非技术用户，Computer Use / Memory 开销大；开发者写代码优先 CLI（Claude Code）或 IDE（Cursor），避免用错产品导致额度快速耗尽（[原来我一直用错了 Cowork](../sources/use-cowork.md)）。
+- **轻量召回**：关联文档 / Agent 旧文召回可先用关键词重合排序，不必为小功能上 embedding（[关键词重合召回](../concepts/keyword-overlap-recall.md)）。
 
 ## 与本 Wiki 的关系
 

@@ -41,13 +41,18 @@
 - [生成式辩证可能性空间搜索](concepts/generative-dialectical-possibility-space-search.md)
 - [Electron 打包与发布渠道](concepts/electron-build-channels.md)
 - [RAG 与 Graph RAG](concepts/rag-and-graph-rag.md)
+- [关键词重合召回](concepts/keyword-overlap-recall.md)
 - [Claude Code 常见工作流](concepts/claude-code-workflows.md)
 - [Claude Code 并行代理](concepts/claude-code-parallel-agents.md)
 
 ## Queries
 
+- [过拟合是什么](queries/what-is-overfitting.md)（定义、与欠拟合对照、LLM 与检索类比）
 - [AI 产品的形态分化与底层逻辑](queries/ai-product-forms-and-models.md)（同一模型多形态、沙箱 vs 直接执行、token 效率、商业模式）
 - [大模型「训练阶段」和日常助手、LLM Wiki 分别是什么关系](queries/llm-training-vs-inference-and-maintained-wiki.md)
+- [Codex Memory 是本地缓存命中吗](queries/codex-memory-local-cache.md)
+- [关联文档搜索能不用向量 embedding 吗](queries/related-doc-keyword-similarity-search.md)（md-render 关键词重合召回）
+- [SQLite FTS5 是什么，文档检索什么时候用它](queries/sqlite-fts5-for-doc-search.md)（关键词重合 vs FTS5 vs embedding）
 - [如何把「费米化」用在 AI 提效边界管理里](queries/fermiization-for-ai-boundary.md)
 - [`git diff` 这种差异对比，和 Web 端版本更新弹窗的思路是不是有异曲同工之处](queries/git-diff-and-web-version-check.md)
 - [如果是应用内的文件更新，像 `git diff` 这种，跟前面说的应用更新有什么区别](queries/in-app-file-update-vs-app-updater-vs-git-diff.md)

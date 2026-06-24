@@ -1,5 +1,10 @@
 # Wiki Log
 
+- 2026-06-24：Query「过拟合是什么」→ 新增 `wiki/queries/what-is-overfitting.md`（定义、欠拟合对照、应对、LLM 与关键词召回类比）；`large-language-model-fundamentals` 补互链；更新 `wiki/index.md` Queries。
+- 2026-06-24：Query「SQLite FTS5 是什么，文档检索什么时候用它」→ 新增 `wiki/queries/sqlite-fts5-for-doc-search.md`（FTS5 能力、与关键词重合/embedding 对照、选型）；`related-doc-keyword-similarity-search`、`keyword-overlap-recall` 补互链；更新 `wiki/index.md` Queries。
+- 2026-06-24：对话「md-render 关联文档按相似度搜索」从 `wiki/sources/` 迁至 `wiki/queries/related-doc-keyword-similarity-search.md`；更新 `keyword-overlap-recall`、`ai-knowledge-bases`、`wiki/index.md` 互链。
+- 2026-06-24：删除草稿 `source/_drafts/related-doc-keyword-similarity-search.md`；`wiki/sources/related-doc-keyword-similarity-search.md`、`wiki/index.md` 改为纯文字归因（摘要保留）。
+- 2026-06-24：Ingest 对话「md-render 关联文档按相似度搜索」（关键词重合召回、`contextRecall.js`、无 embedding）→ 草稿 `source/_drafts/related-doc-keyword-similarity-search.md`；新增 `wiki/sources/related-doc-keyword-similarity-search.md`、`wiki/concepts/keyword-overlap-recall.md`；`wiki/concepts/ai-knowledge-bases.md` 补检索后端互链；更新 `wiki/index.md`（Concepts / AI工程化）。
 - 2026-06-23：Ingest `source/_posts/use-cowork.md`（Cowork / Claude Code / Cursor 定位差异、token 消耗三因、Computer Use / Memory 开销、程序员省 token 清单）→ 新增 `wiki/sources/use-cowork.md`；`wiki/queries/ai-product-forms-and-models.md` 补实践佐证链；`wiki/concepts/ai-assisted-development.md` 补工具选型与 token hygiene；`wiki/concepts/chat-assistant-user-memory.md` 补 Memory token / 幻觉权衡；更新 `wiki/index.md`（AI工程化）。
 - 2026-06-19：Query「AI 产品的形态分化与底层逻辑」→ 新增 `wiki/queries/ai-product-forms-and-models.md`（同一模型多形态、沙箱 vs 直接执行架构差异、token 效率对比、Cursor 商业模式定位、产品形态全景）；更新 `wiki/index.md` Queries。
 - 2026-06-21：Lint：① 修复 `wiki/sources/electron-qa-prod-coexist-install.md` 死链（源文件已删除，改为纯文字归因）；② 批量将 11 个 wiki/sources 页面的 `**分类**：AI探索` 更新为 `AI工程化`（对应博文已改分类）；③ `wiki/sources/narrative-research.md`、`wiki/sources/rhythm-psychology.md` 补「相关概念」互链（指向 `narrative-structures`、`narrative-pacing-psychology`）；④ `wiki/sources/blog-category.md` 摘要与分类树同步更新（新增 AI工程化，编号 5/6/7 顺延）；⑤ `wiki/index.md` Category 区段将 AI探索 拆分为 AI探索（原理/体验/观察）与 AI工程化（工具/实战/方法论）两小节。

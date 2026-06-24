@@ -39,10 +39,12 @@ The main tension in the current sources is not whether AI knowledge bases are us
 
 - **Traditional RAG** (chunk + embedding + vector search) fits many personal and enterprise KB products; see [RAG 与 Graph RAG](../concepts/rag-and-graph-rag.md).
 - **Graph RAG** adds entity–relation graphs and community summaries for macro and multi-hop questions, at higher build and ops cost (same concept page).
+- **Keyword overlap recall** (title/body keyword hit counting, no embedding) fits lightweight UI search and agent recall in small workspaces; see [关键词重合召回](../concepts/keyword-overlap-recall.md) and [关联文档搜索能不用向量 embedding 吗](../queries/related-doc-keyword-similarity-search.md).
 
 ## Current Evidence In Repo
 
 - [Source: RAG VS Graph RAG](../sources/rag-vs-graph-rag.md)
+- [Query: 关联文档搜索能不用向量 embedding 吗](../queries/related-doc-keyword-similarity-search.md)
 - [Source: 我们是否需要AI知识库](../sources/why-we-need-ai-knowledge-bases.md)
 - [Source: Gemini User Summary (cross-session)](../sources/gemini-user-summary-cross-session.md)
 - [Source: Pinecone Nexus：Knowledge Engine](../sources/pinecone-nexus-knowledge-engine.md)

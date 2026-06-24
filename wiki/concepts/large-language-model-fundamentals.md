@@ -20,6 +20,8 @@
 
 **合成说明**：三者解决的是不同问题——能力规模、交互格式、与人类偏好对齐——而不是互相替代。
 
+**泛化与过拟合**：训练目标是在分布上拟合得好且能推广到新样本；对齐数据过少时也可能在对齐集上过拟合。入门定义见 [过拟合是什么](../queries/what-is-overfitting.md)。
+
 ## 架构想象：LLM 作为「内核」
 
 - **上下文**：有限窗口 ≈ 工作内存，需要取舍放什么进窗口。
@@ -51,4 +53,4 @@
 
 ---
 
-*概念页：助手根据 `gemini-karpathy-intro-llm-youtube` 整理，并链入 `ynarwal-how-llms-work-visual`、`llm-training-truth`；补「训练 vs 推理 / LLM Wiki」段落并链至 query；2026-05-10。*
+*概念页：助手根据 `gemini-karpathy-intro-llm-youtube` 整理，并链入 `ynarwal-how-llms-work-visual`、`llm-training-truth`；补「训练 vs 推理 / LLM Wiki」段落并链至 query；补过拟合互链；2026-06-24。*
