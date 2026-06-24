@@ -1,0 +1,183 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="canace 的博客"><meta itemprop="name" content="2026-06-23 Codex Memory 是本地缓存命中吗"><meta itemprop="image" content="https://raw.githubusercontent.com/Canace22/Assets/main/images/snow-other.png"><meta property="og:image" content="https://raw.githubusercontent.com/Canace22/Assets/main/images/snow-other.png"><meta name="description" itemprop="description" content="&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;性质&lt;/strong&gt;：对话沉淀为可复用 Q&amp;amp;A（无独立 &lt;code&gt;source/_posts&lt;/code&gt; 剪藏）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;日期&lt;/strong&gt;：2026-06-23&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;问题背景&quot;&gt;&lt;a href=&quot;#问题背景&quot; class=&quot;headerlink&quot; title=&quot;问题背景&quot;&gt;&lt;/a&gt;问题背景&lt;/h2&gt;&lt;p&gt;看到 Codex 本地的 &lt;code&gt;MEMORY.md&lt;/code&gt; 内容很多，容易把它理解成「本地缓存命中」：以前问过的问题，之后就直接从缓存里拿答案。&lt;/p&gt;
+&lt;p&gt;这个理解有一部分是对的，但如果把它当成普通缓存，就会误判它在 agent 工作流里的作用。&lt;/p&gt;
+&lt;h2 id=&quot;1-它是不是本地缓存命中？&quot;&gt;&lt;a href=&quot;#1-它是不是本地缓存命中？&quot; class=&quot;headerlink&quot; title=&quot;1. 它是不是本地缓存命中？&quot;&gt;&lt;/a&gt;1. 它是不是本地缓存命中？&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;可以部分这么理解，但不准确。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;MEMORY.md&lt;/code&gt; 的作用更像一个长期工作记忆索引，而不是把历史内容全文塞进上下文、命中后直接复用答案。&lt;/p&gt;
+&lt;p&gt;它主要帮助 agent 快速判断：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;这个问题以前是否处理过类似链路；&lt;/li&gt;
+&lt;li&gt;应该优先查看哪些文件、模块或命令；&lt;/li&gt;
+&lt;li&gt;用户在某个项目里的稳定偏好是什么；&lt;/li&gt;
+&lt;li&gt;哪些历史结论可能有用，但需要重新验证。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;2-它和普通缓存有什么不同？&quot;&gt;&lt;a href=&quot;#2-它和普通缓存有什么不同？&quot; class=&quot;headerlink&quot; title=&quot;2. 它和普通缓存有什么不同？&quot;&gt;&lt;/a&gt;2. 它和普通缓存有什么不同？&lt;/h2&gt;&lt;p&gt;普通缓存通常追求「输入相同，直接返回已有结果」。但 Codex memory 更接近「路由线索」：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;对比项&lt;/th&gt;
+&lt;th&gt;普通缓存&lt;/th&gt;
+&lt;th&gt;Codex memory&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td&gt;主要目标&lt;/td&gt;
+&lt;td&gt;复用结果&lt;/td&gt;
+&lt;td&gt;缩小探索范围&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;命中后动作&lt;/td&gt;
+&lt;td&gt;直接返回或直接使用&lt;/td&gt;
+&lt;td&gt;继续读取当前文件和上下文&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;适合内容&lt;/td&gt;
+&lt;td&gt;稳定计算结果&lt;/td&gt;
+&lt;td&gt;项目偏好、历史路径、常见入口&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;风险&lt;/td&gt;
+&lt;td&gt;缓存过期&lt;/td&gt;
+&lt;td&gt;记忆过期或场景迁移错误&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;p&gt;所以它不是「命中后直接执行」，而是告诉 agent：&lt;strong&gt;从哪里开始查更可能快&lt;/strong&gt;。&lt;/p&gt;
+&lt;h2 id=&quot;3-实际使用流程&quot;&gt;&lt;a href=&quot;#3-实际使用流程&quot; class=&quot;headerlink&quot; title=&quot;3. 实际使用流程&quot;&gt;&lt;/a&gt;3. 实际使用流程&lt;/h2&gt;&lt;p&gt;典型流程是：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;先看压缩摘要，判断是否可能相关；&lt;/li&gt;
+&lt;li&gt;按关键词检索 &lt;code&gt;MEMORY.md&lt;/code&gt;；&lt;/li&gt;
+&lt;li&gt;只有命中明确条目时，才打开对应 rollout、skill 或历史记录；&lt;/li&gt;
+&lt;li&gt;回到当前仓库，以当前文件、命令和运行结果为准。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;这和 &lt;a href=&quot;../concepts/llm-maintained-wiki.html&quot;&gt;LLM 维护的知识库&lt;/a&gt; 的思路接近：持久化材料负责降低重复探索成本，但不能替代当前验证。&lt;/p&gt;
+&lt;h2 id=&quot;4-什么时候可以信-memory？&quot;&gt;&lt;a href=&quot;#4-什么时候可以信-memory？&quot; class=&quot;headerlink&quot; title=&quot;4. 什么时候可以信 memory？&quot;&gt;&lt;/a&gt;4. 什么时候可以信 memory？&lt;/h2&gt;&lt;p&gt;适合信的部分：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;用户长期偏好；&lt;/li&gt;
+&lt;li&gt;项目常见入口；&lt;/li&gt;
+&lt;li&gt;之前踩过的坑；&lt;/li&gt;
+&lt;li&gt;某类问题的排查路径。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;需要重新验证的部分：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;当前代码实现；&lt;/li&gt;
+&lt;li&gt;命令输出；&lt;/li&gt;
+&lt;li&gt;依赖版本；&lt;/li&gt;
+&lt;li&gt;文件路径；&lt;/li&gt;
+&lt;li&gt;最近改动后的行为。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;尤其是代码仓库会不断变化，memory 里的历史结论只能当作线索，不能当作现状。&lt;/p&gt;
+&lt;h2 id=&quot;一句话总结&quot;&gt;&lt;a href=&quot;#一句话总结&quot; class=&quot;headerlink&quot; title=&quot;一句话总结&quot;&gt;&lt;/a&gt;一句话总结&lt;/h2&gt;&lt;p&gt;Codex memory 更像是「本地长期工作记忆 + 检索索引 + 历史经验路由」，不是「缓存命中后直接返回答案」。&lt;/p&gt;
+&lt;h2 id=&quot;另见&quot;&gt;&lt;a href=&quot;#另见&quot; class=&quot;headerlink&quot; title=&quot;另见&quot;&gt;&lt;/a&gt;另见&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;../concepts/chat-assistant-user-memory.html&quot;&gt;Chat assistant user memory&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;../concepts/llm-maintained-wiki.html&quot;&gt;LLM 维护的知识库&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;../concepts/llm-knowledge-bases.html&quot;&gt;LLM Knowledge Bases&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;llm-training-vs-inference-and-maintained-wiki.html&quot;&gt;大模型「训练阶段」和日常助手、LLM Wiki 分别是什么关系&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;em&gt;Query 草稿：Codex 整理本轮讨论；2026-06-23。&lt;/em&gt;&lt;/p&gt;
+"><title>2026-06-23 Codex Memory 是本地缓存命中吗</title><link rel="stylesheet" type="text/css" href="../../css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/normalize.css/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="../../favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="../../favicon.ico"><link rel="apple-touch-icon" href="../../apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="../../apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="../../atom.xml"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/clipboard/dist/clipboard.min.js"></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.js"></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.css"><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">2026-06-23 Codex Memory 是本地缓存命中吗</h1><a id="logo" href="../../.">Canace 的博客</a><p class="description">Tomorrow is another day</p></div><div id="nav-menu"><a href="../../."><i class="fa fa-home"> 主页</i></a><a href="../../archives/"><i class="fa fa-archive"> 文章归档</i></a><a class="current" href="../"><i class="fa fa-book"> 知识库</i></a><a href="../../about/"><i class="fa fa-user"> 关于我</i></a><a href="../../atom.xml"><i class="fa fa-rss"> 订阅</i></a><a id="nav-random-article" href="#" title="随机文章" aria-label="随机文章"><i class="fa fa-random"> 随机文章</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">2026-06-23 Codex Memory 是本地缓存命中吗</h1><div class="clear"><div class="toc-article" id="toc"><div class="toc-title">目录</div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E8%83%8C%E6%99%AF"><span class="toc-text">问题背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%AE%83%E6%98%AF%E4%B8%8D%E6%98%AF%E6%9C%AC%E5%9C%B0%E7%BC%93%E5%AD%98%E5%91%BD%E4%B8%AD%EF%BC%9F"><span class="toc-text">1. 它是不是本地缓存命中？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%AE%83%E5%92%8C%E6%99%AE%E9%80%9A%E7%BC%93%E5%AD%98%E6%9C%89%E4%BB%80%E4%B9%88%E4%B8%8D%E5%90%8C%EF%BC%9F"><span class="toc-text">2. 它和普通缓存有什么不同？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%AE%9E%E9%99%85%E4%BD%BF%E7%94%A8%E6%B5%81%E7%A8%8B"><span class="toc-text">3. 实际使用流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E5%8F%AF%E4%BB%A5%E4%BF%A1-memory%EF%BC%9F"><span class="toc-text">4. 什么时候可以信 memory？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%80%BB%E7%BB%93"><span class="toc-text">一句话总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%A6%E8%A7%81"><span class="toc-text">另见</span></a></li></ol></div></div><div class="post-content"><ul>
+<li><strong>性质</strong>：对话沉淀为可复用 Q&amp;A（无独立 <code>source/_posts</code> 剪藏）。</li>
+<li><strong>日期</strong>：2026-06-23</li>
+</ul>
+<h2 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h2><p>看到 Codex 本地的 <code>MEMORY.md</code> 内容很多，容易把它理解成「本地缓存命中」：以前问过的问题，之后就直接从缓存里拿答案。</p>
+<p>这个理解有一部分是对的，但如果把它当成普通缓存，就会误判它在 agent 工作流里的作用。</p>
+<h2 id="1-它是不是本地缓存命中？"><a href="#1-它是不是本地缓存命中？" class="headerlink" title="1. 它是不是本地缓存命中？"></a>1. 它是不是本地缓存命中？</h2><p><strong>可以部分这么理解，但不准确。</strong></p>
+<p><code>MEMORY.md</code> 的作用更像一个长期工作记忆索引，而不是把历史内容全文塞进上下文、命中后直接复用答案。</p>
+<p>它主要帮助 agent 快速判断：</p>
+<ul>
+<li>这个问题以前是否处理过类似链路；</li>
+<li>应该优先查看哪些文件、模块或命令；</li>
+<li>用户在某个项目里的稳定偏好是什么；</li>
+<li>哪些历史结论可能有用，但需要重新验证。</li>
+</ul>
+<h2 id="2-它和普通缓存有什么不同？"><a href="#2-它和普通缓存有什么不同？" class="headerlink" title="2. 它和普通缓存有什么不同？"></a>2. 它和普通缓存有什么不同？</h2><p>普通缓存通常追求「输入相同，直接返回已有结果」。但 Codex memory 更接近「路由线索」：</p>
+<table>
+<thead>
+<tr>
+<th>对比项</th>
+<th>普通缓存</th>
+<th>Codex memory</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>主要目标</td>
+<td>复用结果</td>
+<td>缩小探索范围</td>
+</tr>
+<tr>
+<td>命中后动作</td>
+<td>直接返回或直接使用</td>
+<td>继续读取当前文件和上下文</td>
+</tr>
+<tr>
+<td>适合内容</td>
+<td>稳定计算结果</td>
+<td>项目偏好、历史路径、常见入口</td>
+</tr>
+<tr>
+<td>风险</td>
+<td>缓存过期</td>
+<td>记忆过期或场景迁移错误</td>
+</tr>
+</tbody></table>
+<p>所以它不是「命中后直接执行」，而是告诉 agent：<strong>从哪里开始查更可能快</strong>。</p>
+<h2 id="3-实际使用流程"><a href="#3-实际使用流程" class="headerlink" title="3. 实际使用流程"></a>3. 实际使用流程</h2><p>典型流程是：</p>
+<ol>
+<li>先看压缩摘要，判断是否可能相关；</li>
+<li>按关键词检索 <code>MEMORY.md</code>；</li>
+<li>只有命中明确条目时，才打开对应 rollout、skill 或历史记录；</li>
+<li>回到当前仓库，以当前文件、命令和运行结果为准。</li>
+</ol>
+<p>这和 <a href="../concepts/llm-maintained-wiki.html">LLM 维护的知识库</a> 的思路接近：持久化材料负责降低重复探索成本，但不能替代当前验证。</p>
+<h2 id="4-什么时候可以信-memory？"><a href="#4-什么时候可以信-memory？" class="headerlink" title="4. 什么时候可以信 memory？"></a>4. 什么时候可以信 memory？</h2><p>适合信的部分：</p>
+<ul>
+<li>用户长期偏好；</li>
+<li>项目常见入口；</li>
+<li>之前踩过的坑；</li>
+<li>某类问题的排查路径。</li>
+</ul>
+<p>需要重新验证的部分：</p>
+<ul>
+<li>当前代码实现；</li>
+<li>命令输出；</li>
+<li>依赖版本；</li>
+<li>文件路径；</li>
+<li>最近改动后的行为。</li>
+</ul>
+<p>尤其是代码仓库会不断变化，memory 里的历史结论只能当作线索，不能当作现状。</p>
+<h2 id="一句话总结"><a href="#一句话总结" class="headerlink" title="一句话总结"></a>一句话总结</h2><p>Codex memory 更像是「本地长期工作记忆 + 检索索引 + 历史经验路由」，不是「缓存命中后直接返回答案」。</p>
+<h2 id="另见"><a href="#另见" class="headerlink" title="另见"></a>另见</h2><ul>
+<li><a href="../concepts/chat-assistant-user-memory.html">Chat assistant user memory</a></li>
+<li><a href="../concepts/llm-maintained-wiki.html">LLM 维护的知识库</a></li>
+<li><a href="../concepts/llm-knowledge-bases.html">LLM Knowledge Bases</a></li>
+<li><a href="llm-training-vs-inference-and-maintained-wiki.html">大模型「训练阶段」和日常助手、LLM Wiki 分别是什么关系</a></li>
+</ul>
+<hr>
+<p><em>Query 草稿：Codex 整理本轮讨论；2026-06-23。</em></p>
+</div></div></div></div><div class="pure-u-1 pure-u-md-1-4"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 常用文档</i></div><ul></ul><a href="/git-common-commands" title="Git 文档" target="_blank">Git 文档</a><ul></ul><a href="/common-programming-prompt-words" title="常用开发提示词" target="_blank">常用开发提示词</a></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="../../categories/soft/">软技能与思考</a><span class="category-list-count">51</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/intelligent/">AI探索</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/cli/">工程化与运维</a><span class="category-list-count">51</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/web/">Web开发</a><span class="category-list-count">142</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/coding/">编程基础</a><span class="category-list-count">42</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/AI%E5%B7%A5%E7%A8%8B%E5%8C%96/">AI工程化</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/site/">网站建设</a><span class="category-list-count">5</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="../../tags/essays/" style="font-size: 15px; color: #3a7ba8">随笔</a> <a href="../../tags/AI%E5%8E%9F%E7%90%86/" style="font-size: 15px; color: #a0b4c1">AI原理</a> <a href="../../tags/performance/" style="font-size: 15px; color: #83a4ba">性能优化</a> <a href="../../tags/backend/" style="font-size: 15px; color: #6694b3">后端</a> <a href="../../tags/Python-Go-%E5%85%B6%E4%BB%96/" style="font-size: 15px; color: #92acbe">Python/Go/其他</a> <a href="../../tags/JavaScript-TypeScript/" style="font-size: 15px; color: #0f639e">JavaScript&TypeScript</a> <a href="../../tags/api-services/" style="font-size: 15px; color: #bdc4c8">API&服务</a> <a href="../../tags/%E8%81%8C%E4%B8%9A%E5%8F%91%E5%B1%95/" style="font-size: 15px; color: #83a4ba">职业发展</a> <a href="../../tags/computer-science/" style="font-size: 15px; color: #2c73a5">计算机科学</a> <a href="../../tags/AI%E7%BC%96%E7%A8%8B/" style="font-size: 15px; color: #6694b3">AI编程</a> <a href="../../tags/%E7%BF%BB%E8%AF%91/" style="font-size: 15px; color: #ccc">翻译</a> <a href="../../tags/notes/" style="font-size: 15px; color: #a0b4c1">笔记</a> <a href="../../tags/frontend/" style="font-size: 15px; color: #005b9a">前端</a> <a href="../../tags/frameworks-libs/" style="font-size: 15px; color: #578baf">框架与库</a> <a href="../../tags/css-visualization/" style="font-size: 15px; color: #1d6ba1">CSS与可视化</a> <a href="../../tags/programming-languages/" style="font-size: 15px; color: #afbcc5">编程语言</a> <a href="../../tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/" style="font-size: 15px; color: #92acbe">系统设计</a> <a href="../../tags/build-deploy/" style="font-size: 15px; color: #759cb7">构建与部署</a> <a href="../../tags/dev-tools/" style="font-size: 15px; color: #4983ac">开发工具</a> <a href="../../tags/Node-js/" style="font-size: 15px; color: #83a4ba">Node.js</a> <a href="../../tags/cross-platform/" style="font-size: 15px; color: #92acbe">跨端方案</a> <a href="../../tags/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/" style="font-size: 15px; color: #ccc">项目管理</a> <a href="../../tags/code-quality/" style="font-size: 15px; color: #bdc4c8">代码质量</a></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2026 <a href="../../." rel="nofollow">Canace 的博客</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="../../js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.js" async></script><script type="text/javascript" src="../../js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.css"><link rel="stylesheet" type="text/css" href="../../css/search.css?v=0.0.0"><script type="text/javascript" src="../../js/search.js?v=0.0.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+   search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="/js/copycode.js" successtext="复制成功!"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/mermaid@11.14.0/dist/mermaid.min.js"></script><script type="text/javascript">document.addEventListener('DOMContentLoaded', function () {
+  if (!window.mermaid) return;
+  mermaid.initialize({"theme":"default","logLevel":5,"startOnLoad":true,"arrowMarkerAbsolute":false,"flowchart":{"htmlLabels":true,"useMaxWidth":true,"curve":"linear"},"sequence":{"diagramMarginX":50,"diagramMarginY":10,"actorMargin":50,"width":150,"height":65,"boxMargin":10,"boxTextMargin":5,"noteMargin":10,"messageMargin":35,"mirrorActors":true,"bottomMarginAdj":1,"useMaxWidth":true},"gantt":{"titleTopMargin":25,"barHeight":20,"barGap":4,"topPadding":50,"leftPadding":75,"gridLineStartPadding":35,"fontSize":11,"fontFamily":"\"Open-Sans\", \"sans-serif\"","numberSectionStyles":4,"axisFormat":"%Y-%m-%d"},"class":{},"git":{}});
+});
+</script><script type="text/javascript" src="../../js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="../../js/smartresize.js?v=0.0.0"></script><script type="text/javascript">(function () {
+  var urls = ["/../../2024-year-end-summary/","/../../AI-knowledge-base/","/../../6-common-website-usability-issues-and-solutions/","/../../Django-channels/","/../../JavaScript-call-apply-bind/","/../../MySQL/","/../../about-doing-technology/","/../../NP-P-NPC/","/../../WebRTC/","/../../agent-coding-stability/","/../../add-skeleton-screen/","/../../ai-coding-game/","/../../about-forgetfulness/","/../../ai-coding-ide/","/../../ai-expansion/","/../../ai-native/","/../../ai-optimize-ui/","/../../ai-make-you-boring/","/../../ai-worker/","/../../ai-coding-share/","/../../algorithm-book-notes-for-everyone/","/../../angel-love/","/../../angular-navigation-content-linkage/","/../../ant-design-pitfalls/","/../../axios-network-request-encapsulation/","/../../beego-getting-started/","/../../async-data-console-issues/","/../../ants/","/../../binary-search/","/../../box-model/","/../../blog-category/","/../../boolean-variables-in-project-application/","/../../bracket-matching/","/../../brief-discussion-on-visual-form-design/","/../../browser-kernel-and-writing/","/../../brief-discussion-on-dns-pollution/","/../../build-typescript-library/","/../../build-django-blog-system/","/../../calculate-rice-cooker-reservation-time/","/../../bash-data-processing/","/../../build-tinymce-img-plugin/","/../../canvas-draw-sprite-export/","/../../centos-server-login-config/","/../../ckeditor-usage-in-angular/","/../../canvas-draw-dynamic-path/","/../../claude-handoff-doc-to-repo/","/../../cascade/","/../../common-algorithm-ideas/","/../../code-optimization/","/../../climbing-stairs/","/../../common-git-workflows/","/../../common-image-format-comparison/","/../../common-regular-expressions/","/../../common-terminal-commands/","/../../common-programming-prompt-words/","/../../computer-graphics-1/","/../../computer-graphics-2/","/../../count-beautiful-subarrays/","/../../count-total-elements-of-array-objects/","/../../create-object-based-on-null/","/../../count-number-of-islands/","/../../cross-origin-resource-sharing/","/../../css-background-image-application/","/../../css-circular-progress-bar/","/../../css-notes/","/../../css-layout-guide/","/../../css-positioning-detailed/","/../../css-positioning/","/../../css-series-basics/","/../../css-series-cascade/","/../../css-series-flow-and-dimensions/","/../../css-series-box-dimensions/","/../../css-series-flow-destruction-and-protection/","/../../css-series-history-and-document-flow/","/../../css-series-inline-elements-and-flow/","/../../css-series-text-processing/","/../../css2-block-element-center/","/../../css-tips/","/../../css-two-color-pie-chart/","/../../css3-animation-vs-js-animation/","/../../cursor-debugger/","/../../cursor-skill-web-search-download-movie/","/../../custom-github-activity/","/../../deep-copy-of-arrays-and-objects/","/../../deep-work-philosophy-interpretation/","/../../docker-frontend-environment-setup/","/../../docker-documentation/","/../../doing-things-with-vscode/","/../../disable-image-dragging/","/../../dropdown-list-implementation/","/../../egg/","/../../es2020-new-features/","/../../element-plus-table-component-scaling-issue-solution/","/../../extra-thick-chicken-soup/","/../../ffmpeg-extract-audio-track/","/../../find-median-sorted-arrays/","/../../file-naming-pitfalls-record/","/../../firefox-remove-various-dashed-borders/","/../../first-day-morning-run/","/../../first-screen-time-vs-white-screen-time/","/../../first-screen-optimization/","/../../fix-github-image-issue-on-mac/","/../../flow-simple-tutorial/","/../../flutter-learning-notes-dart-basics/","/../../flutter-learning-notes-quick-start/","/../../frontend-draw-graphic-captcha/","/../../four-js-tips/","/../../frontend-performance-optimization/","/../../frontend-xx-dockerization/","/../../fullscreen-solution-for-webpage-or-html-elements/","/../../fun-console/","/../../function-currying/","/../../function-without-global-variable-counting/","/../../gemini-new-session-memory/","/../../functional-programming/","/../../generate-random-array-in-specified-range/","/../../get-longest-common-prefix/","/../../get-css-style/","/../../ghost-whitespace-nodes/","/../../git-common-commands/","/../../git-domain-config/","/../../git-environment-config/","/../../git-usage-guide/","/../../github-action-auto-deploy-page/","/../../github-travis-auto-build-vue-to-gitpage/","/../../gitbook-generate-ebook/","/../../github-practical-tips/","/../../go-ahead-vs-continue-ai-chat/","/../../gitpage-hexo/","/../../gitlab-ci-config-template/","/../../hexo-blog-migration/","/../../go-getting-started/","/../../hexo-getting-started/","/../../hexo-math-formula-support/","/../../homebrew-common-commands/","/../../how-ai-lets-us-lie-flat/","/../../how-to-create-a-robust-system/","/../../how-to-optimize-animation/","/../../http-notes/","/../../html-notes/","/../../html-to-text-js/","/../../image-lazy-loading-implementation/","/../../http-server/","/../../implement-array-flatten/","/../../improve-work-efficiency-with-cursor-practical-notes/","/../../interesting-css-cascade-issues/","/../../interview-strategy/","/../../issue-05/","/../../issue-07/","/../../issue-08/","/../../issue-06/","/../../issue-1/","/../../issue-04/","/../../issue-03/","/../../issue-10/","/../../issue-09/","/../../issue-11/","/../../issue-12/","/../../issue-13/","/../../issue-14/","/../../issue-15/","/../../issue-2/","/../../javaScript-promise/","/../../javascript-basics-primitive-vs-reference-types/","/../../javascript-built-in-deep-copy/","/../../javascript-common-code-snippets/","/../../japanese-learning-notes/","/../../javascript-basics-type-conversion/","/../../javascript-detect-caps-lock/","/../../javascript-object-oriented-programming/","/../../javascript-soul-questions/","/../../javascript-new-implementation-principle/","/../../javascript-functions/","/../../javascript-tricks/","/../../js-linked-list-implementation/","/../../js-modal-blog/","/../../js-execution/","/../../js-overview/","/../../js-string-to-base64/","/../../js-timezone/","/../../jump-to-specific-position-in-article/","/../../kindness/","/../../key-value-role-in-vue-components/","/../../kpi-vs-okr/","/../../leave-page-popup/","/../../linux-background-script-execution/","/../../knn-algorithm/","/../../knowledge-anxiety/","/../../llm-training-truth/","/../../lodash-source-analysis-array-slice/","/../../lodash-source-analysis-array-chunk/","/../../llm-wiki/","/../../mac-debug-ios-web-page/","/../../mac-install-mysql/","/../../manchester-by-the-sea/","/../../method-to-login-to-south-china-normal-university-campus-network/","/../../mini-program-tabs-sticky/","/../../model-training-steps/","/../../modify-autofill-style/","/../../modify-scrollbar-style-compatible/","/../../n-n-order-matrix-algorithm/","/../../module-specifications/","/../../narrative-research/","/../../node-notes-in-depth/","/../../node-version-management/","/../../nodejs-module-mechanism/","/../../nodeJs/","/../../nodejs-config/","/../../notes-about-writing-weekly-reports/","/../../nodejs-notes/","/../../number-precise-to-two-decimal-places/","/../../object-property-value-monitoring/","/../../package-json-field-list/","/../../npm-common-commands/","/../../openclaw-usage-experience/","/../../one-click-generate-responsive-table/","/../../palindrome-number-judgment/","/../../pagination-algorithm/","/../../personal-knowledge-base/","/../../pinyin-learning-project-notes/","/../../pixi-basics/","/../../pixi-js-sprite-loading-cache-removal/","/../../port-number-modification/","/../../pixijs-vertexData-null/","/../../product-updates-rss-file-diff-mental-model/","/../../project-modularization-principles/","/../../proxy-observer-pattern/","/../../prisma-getting-started-guide/","/../../python-pitfalls-collection/","/../../python3-installation/","/../../qwen-milk-tea-ui/","/../../react-hooks-create-movie-app/","/../../record-service-degradation-due-to-emergency/","/../../rag-vs-graph-rag/","/../../recursive-tree/","/../../refactoring-vs-architecture/","/../../remove-parent-nodes-with-duplicate-child-ids/","/../../regular-expressions/","/../../reverse-words-in-string/","/../../removeDuplicates/","/../../removeElement/","/../../rhythm-psychology/","/../../roman-numerals-to-integer/","/../../rss-telegram-selfhost/","/../../scheduled-tasks/","/../../scroll-pagination/","/../../reverse-integer/","/../../science-popularization/","/../../settimeout-simulate-setinterval/","/../../singly-linked-list-concatenation/","/../../software-version-number-definition/","/../../sentence-excerpts/","/../../ss-installation/","/../../some-concepts/","/../../string-and-code-rigor/","/../../solve-github-dns-pollution-issue/","/../../sublime-text-nodejs-config/","/../../talking-about-browser-cache-mechanism/","/../../systematic-method-for-fragmented-reading-knowledge/","/../../talking-about-webpage-adaptive-and-responsive-layout/","/../../talking-about-vuex/","/../../table-cell-equal-division/","/../../tcp-ip-three-way-handshake/","/../../thoughts-on-ad-blocker-plugins/","/../../thoughts-on-branch-management/","/../../thoughts-on-technical-growth/","/../../three-js-basics-practice/","/../../time-complexity-vs-space-complexity/","/../../time-zero/","/../../timestamp-to-date/","/../../translate-use-claude-code/","/../../ubuntu-configure-ss/","/../../two-sum-problem/","/../../ubuntu-configure-frontend-environment/","/../../typescript-environment-config/","/../../unavoidable-bug-chrome-translation-caused-trouble/","/../../ubuntu-install-tensorflow/","/../../understanding-cookies/","/../../understanding-instanceof/","/../../use-cowork/","/../../understanding-byte-order/","/../../variables/","/../../validate-string/","/../../vscode-code-formatting-summary/","/../../vue-config-template/","/../../vue-data-driven-view-implementation/","/../../vue-details-i-didnt-know/","/../../vue-dynamic-component-import-note-not-async/","/../../vue-project-setup-steps/","/../../vue-dynamic-change-title/","/../../vue3-notes/","/../../vue-test-unit/","/../../web-performance-optimization-debounce/","/../../web-security-xss-attack/","/../../webpack-dynamic-modify-resource-domain/","/../../web-security-csrf/","/../../webpack-gulp-bundle-vue-component-library/","/../../webpage-version-update-popup-implementation/","/../../wechat-mini-program-pitfalls/","/../../what-happened-to-vue/","/../../webpack/","/../../webpack5-new-features-module-federation-notes/","/../../what-happens-from-url-to-display/","/../../why-not-let-ai-write-for-us/","/../../why-write-wechat-official-account/","/../../why-we-need-to-read/","/../../why-graphics-card/","/../../windows-tricks/","/../../why-frontend-needs-framework/","/../../wordpress-installation/","/../../words-of-experience/","/../../work-for/","/../../writing-a-good-claude-md/","/../../wsl-config/","/../../yml-file-operations/"];
+  var el = document.getElementById('nav-random-article');
+  if (!el) return;
+  el.addEventListener('click', function (e) {
+    e.preventDefault();
+    if (!urls.length) return;
+    var next = urls[Math.floor(Math.random() * urls.length)];
+    if (next) window.location.href = next;
+  });
+})();</script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":200,"height":200},"mobile":{"show":false},"react":{"opacity":0.7},"log":false});</script></body></html>
