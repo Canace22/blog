@@ -122,6 +122,7 @@ SSE 比 WebSocket 更适合 RSS 这类“单向通知”场景。
 
 ## 相关页面
 
+- [推送方式与 RSS 借鉴](../concepts/push-patterns-for-rss.md)（本查询的概念化版本）
 - [消息推送对照报告](../reports/message-delivery-comparison-report.md)
 - [来源：Web端版本更新弹窗实现](../sources/webpage-version-update-popup-implementation.md)
 - [查询：`git diff` 与 Web 版本更新弹窗是否异曲同工](../queries/git-diff-and-web-version-check.md)

@@ -1,5 +1,6 @@
 # Wiki Log
 
+- 2026-06-26：Lint 维护：将 3 个 substantial query 升格为概念页 → 新增 `wiki/concepts/diff-three-layer-model.md`（应用更新 / 应用内文件更新 / git diff 三层对照）、`wiki/concepts/update-system-layers.md`（从轻量提醒到完整 updater 的五层模型）、`wiki/concepts/push-patterns-for-rss.md`（轮询 / WebSocket / SSE / Push API 对 RSS 的启发）；更新 `wiki/index.md` Concepts；更新 3 个 query 页互链；更新 `electron-build-channels`、`rss-telegram-selfhost` 概念页互链。
 - 2026-06-24：Query「过拟合是什么」→ 新增 `wiki/queries/what-is-overfitting.md`（定义、欠拟合对照、应对、LLM 与关键词召回类比）；`large-language-model-fundamentals` 补互链；更新 `wiki/index.md` Queries。
 - 2026-06-24：Query「SQLite FTS5 是什么，文档检索什么时候用它」→ 新增 `wiki/queries/sqlite-fts5-for-doc-search.md`（FTS5 能力、与关键词重合/embedding 对照、选型）；`related-doc-keyword-similarity-search`、`keyword-overlap-recall` 补互链；更新 `wiki/index.md` Queries。
 - 2026-06-24：对话「md-render 关联文档按相似度搜索」从 `wiki/sources/` 迁至 `wiki/queries/related-doc-keyword-similarity-search.md`；更新 `keyword-overlap-recall`、`ai-knowledge-bases`、`wiki/index.md` 互链。

@@ -200,6 +200,8 @@
 
 ## 相关页面
 
+- [Diff 三层对照](../concepts/diff-three-layer-model.md)（本查询的概念化版本）
+- [更新系统分层](../concepts/update-system-layers.md)
 - [消息推送：RSS、应用更新、网页版本更新与 diff 思维对照报告](../reports/message-delivery-comparison-report.md)
 - [Electron 打包与发布渠道](../concepts/electron-build-channels.md)
 - [查询：`version.json + 轮询弹窗` 方案，对照 `electron-updater` 该怎么理解](../queries/web-version-json-vs-electron-updater.md)

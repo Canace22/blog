@@ -18,6 +18,8 @@
 
 ## 相关
 
+- [更新系统分层](update-system-layers.md)（从轻量提醒到完整 updater 的五层模型）
+- [Diff 三层对照](diff-three-layer-model.md)（应用更新 / 应用内文件更新 / git diff 三种 diff 层级）
 - [查询：QA 与正式包能否本机共存](../queries/qa-prod-packages-coexist.md)
 
 ---

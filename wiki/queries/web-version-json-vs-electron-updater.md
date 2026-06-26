@@ -165,6 +165,8 @@
 
 ## 相关页面
 
+- [更新系统分层](../concepts/update-system-layers.md)（本查询的概念化版本）
+- [Diff 三层对照](../concepts/diff-three-layer-model.md)
 - [消息推送对照报告](../reports/message-delivery-comparison-report.md)
 - [Electron 打包与发布渠道](../concepts/electron-build-channels.md)
 - [产品更新、RSS 与文件 diff 思维模型](../sources/product-updates-rss-file-diff-mental-model.md)

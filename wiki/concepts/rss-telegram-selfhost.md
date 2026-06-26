@@ -29,4 +29,5 @@
 
 ## 相关
 
+- [推送方式与 RSS 借鉴](push-patterns-for-rss.md)（从 Web 推送方式看 RSS 架构启发）
 - [Mac / Linux 虚拟机资源与 OpenClaw 开发](../queries/mac-linux-vm-openclaw-dev.md)（同属「开发环境出网/代理」语境时可对照）

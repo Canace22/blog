@@ -40,6 +40,9 @@
 - [DeepSeek-V4](concepts/deepseek-v4.md)
 - [生成式辩证可能性空间搜索](concepts/generative-dialectical-possibility-space-search.md)
 - [Electron 打包与发布渠道](concepts/electron-build-channels.md)
+- [Diff 三层对照](concepts/diff-three-layer-model.md)（应用更新 / 应用内文件更新 / git diff 三种 diff 层级）
+- [更新系统分层](concepts/update-system-layers.md)（从轻量提醒到完整 updater 的五层模型）
+- [推送方式与 RSS 借鉴](concepts/push-patterns-for-rss.md)（轮询 / 长轮询 / WebSocket / SSE / Push API 对 RSS 的启发）
 - [RAG 与 Graph RAG](concepts/rag-and-graph-rag.md)
 - [关键词重合召回](concepts/keyword-overlap-recall.md)
 - [Claude Code 常见工作流](concepts/claude-code-workflows.md)
