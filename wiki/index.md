@@ -69,6 +69,7 @@
 - [Web端版本更新弹窗里的几种推送方式，对 RSS 推送机制有什么可借鉴之处](queries/web-update-patterns-for-rss.md)
 - [Web端版本更新弹窗这篇文章里的方案有什么问题，有更好的方案吗](queries/review-web-version-update-popup-scheme.md)
 - [正式包安装会覆盖 QA 包，能否两种包共存](queries/qa-prod-packages-coexist.md)
+- [SQLite、Hexo db.json 与 IndexedDB 的区别](queries/sqlite-vs-hexo-db-vs-indexeddb.md)（关系型数据库 vs JSON 缓存 vs 浏览器 NoSQL）
 
 ## Category
 
@@ -277,6 +278,7 @@
 - [webpack 动态修改资源域名](sources/webpack-dynamic-modify-resource-domain.md) — `source/_posts/webpack-dynamic-modify-resource-domain.md`
 - [网页性能优化-防抖](sources/web-performance-optimization-debounce.md) — `source/_posts/web-performance-optimization-debounce.md`
 - [Vue 单元测试](sources/vue-test-unit.md) — `source/_posts/vue-test-unit.md`
+- [跟 Jest 相比，Vitest 的优势是什么](sources/vitest-vs-jest-advantages.md) — `source/_posts/vitest-vs-jest-advantages.md`
 - [vue 项目搭建步骤](sources/vue-project-setup-steps.md) — `source/_posts/vue-project-setup-steps.md`
 - [vue-config 配置模板](sources/vue-config-template.md) — `source/_posts/vue-config-template.md`
 - [vscode代码格式化总结](sources/vscode-code-formatting-summary.md) — `source/_posts/vscode-code-formatting-summary.md`
