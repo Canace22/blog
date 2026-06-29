@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Vitest 笔记</title>
+      <link href="/vitest-vs-jest-advantages/"/>
+      <url>/vitest-vs-jest-advantages/</url>
+      
+        <content type="html"><![CDATA[<h2 id="跟-jest-相比，vitest-的优势是什么"><a href="#跟-jest-相比，vitest-的优势是什么" class="headerlink" title="跟 jest 相比，vitest 的优势是什么"></a>跟 jest 相比，vitest 的优势是什么</h2><ol><li><p>在使用 vite 的项目里可以复用配置，不需要额外加配置，jest 还需要babel等配置</p></li><li><p>原生 ESM 支持，jest 需要额外配置才能支持，在 monorepo 项目中支持 import&#x2F;export，如果用 jest，在不做任何配置的情况下，只能用 cjs 语法，require&#x2F;exports</p></li><li><p>开发体验更快</p></li></ol><ul><li><p>和 vite 共用一套 transform 管线，省去了中间转义的过程，使用 esm 做转义，开销比 Babel 全量转义小</p></li><li><p>继承 vite 的按需解析，watch 反馈更快，jest 在启动时需要扫描，大量 transform 文件，大项目冷启动慢</p></li></ul><h2 id="局限性"><a href="#局限性" class="headerlink" title="局限性"></a>局限性</h2><p>Vite &gt;&#x3D;v6.0.0 and Node &gt;&#x3D;v20.0.0，这意味着在 node 版本比较低的项目里 Vitest 是不适用的</p><h2 id="为什么会有it-test两种断言语法"><a href="#为什么会有it-test两种断言语法" class="headerlink" title="为什么会有it&#x2F;test两种断言语法"></a>为什么会有it&#x2F;test两种断言语法</h2><p>来自 BDD（行为驱动开发）习惯：</p><table><thead><tr><th><strong>API</strong></th><th><strong>读起来像</strong></th></tr></thead><tbody><tr><td><code>describe</code></td><td>「描述一组行为」</td></tr><tr><td><code>it</code></td><td>「它应该……」→ <code>it(&#39;should compress and call write tool&#39;, ...)</code></td></tr><tr><td><code>test</code></td><td>「测试……」→ 更直白</td></tr></tbody></table><p>Jasmine 最早用 <code>describe</code> + <code>it</code>；Jest&#x2F;Vitest 保留这套，同时提供 <code>test</code> 给更喜欢直白命名的人。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工程化与运维 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 代码质量 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>原来我一直用错了 Cowork</title>
       <link href="/use-cowork/"/>
       <url>/use-cowork/</url>

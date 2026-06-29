@@ -6,7 +6,7 @@
   <link href="https://canace.site/atom.xml" rel="self"/>
   
   <link href="https://canace.site/"/>
-  <updated>2026-06-23T03:01:40.568Z</updated>
+  <updated>2026-06-29T02:06:16.021Z</updated>
   <id>https://canace.site/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Vitest 笔记</title>
+    <link href="https://canace.site/vitest-vs-jest-advantages/"/>
+    <id>https://canace.site/vitest-vs-jest-advantages/</id>
+    <published>2026-06-29T02:00:00.000Z</published>
+    <updated>2026-06-29T02:06:16.021Z</updated>
+    
+    
+    <summary type="html">Vitest 相对 Jest 的配置复用、ESM 支持与开发体验对比，附版本要求及 it/test 语法来源</summary>
+    
+    
+    
+    <category term="工程化与运维" scheme="https://canace.site/categories/cli/"/>
+    
+    
+    <category term="代码质量" scheme="https://canace.site/tags/code-quality/"/>
+    
+  </entry>
   
   <entry>
     <title>原来我一直用错了 Cowork</title>
@@ -373,25 +392,6 @@
     
     
     <summary type="html">Agent 不稳定往往因为只给了目标没给解法；把个人解决问题的流程记录下来、抽象成模式并作为上下文给 AI，相当于提供经验上下文，可写成 Skill 复用。</summary>
-    
-    
-    
-    <category term="AI工程化" scheme="https://canace.site/categories/AI%E5%B7%A5%E7%A8%8B%E5%8C%96/"/>
-    
-    
-    <category term="AI编程" scheme="https://canace.site/tags/AI%E7%BC%96%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Cursor 编写 SKILL：通过 Web 搜索并下载电影</title>
-    <link href="https://canace.site/cursor-skill-web-search-download-movie/"/>
-    <id>https://canace.site/cursor-skill-web-search-download-movie/</id>
-    <published>2026-03-08T02:00:00.000Z</published>
-    <updated>2026-06-21T05:07:42.446Z</updated>
-    
-    
-    <summary type="html">用 Cursor 创建技能可实现网页搜索并下载电影资源，流程清晰但需注意细节把控。</summary>
     
     
     

@@ -69,9 +69,6 @@
         .post .post-content h3 {
             color: var(--high-text-color) !important;
         }
-        .post .post-content h2 {
-            border-bottom: 1px solid var(--line-background-color) !important;
-        }
         .post .post-content {
             color: var(--modium-text-color) !important;
         }
