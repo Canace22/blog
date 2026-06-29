@@ -50,6 +50,7 @@
 
 ## Queries
 
+- [Vitest 里 vi 是什么，beforeEach 什么时候用](queries/vitest-vi-beforeEach-mock-setup.md)（mock 工具、生命周期钩子、单测 setup 分工）
 - [过拟合是什么](queries/what-is-overfitting.md)（定义、与欠拟合对照、LLM 与检索类比）
 - [AI 产品的形态分化与底层逻辑](queries/ai-product-forms-and-models.md)（同一模型多形态、沙箱 vs 直接执行、token 效率、商业模式）
 - [大模型「训练阶段」和日常助手、LLM Wiki 分别是什么关系](queries/llm-training-vs-inference-and-maintained-wiki.md)

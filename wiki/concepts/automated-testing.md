@@ -30,6 +30,13 @@
 
 Jasmine 习惯：`describe` 描述行为组，`it` 读作「它应该……」，Jest/Vitest 保留；`test` 是更直白的等价写法。
 
+## Vitest mock 与 beforeEach
+
+- **`vi`**：Vitest 的 mock 工具（`vi.fn`、`vi.mock`、`vi.clearAllMocks`），对应 Jest 的 `jest`。
+- **`beforeEach`**：每个 `it` 前执行的 setup，常用于清 mock、设默认返回值、伪造 `window.electron` 等；需要隔离用 `beforeEach`，昂贵全局准备用 `beforeAll`。
+
+详见 [Vitest 里 vi 是什么，beforeEach 什么时候用](../queries/vitest-vi-beforeEach-mock-setup.md)。
+
 ## 相关来源
 
 - [跟 Jest 相比，Vitest 的优势是什么](../sources/vitest-vs-jest-advantages.md)

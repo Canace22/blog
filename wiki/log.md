@@ -1,5 +1,6 @@
 # Wiki Log
 
+- 2026-06-29：Query「Vitest 里 vi 是什么，beforeEach 什么时候用」（NarrativeEngine 单测对话）→ 新增 `wiki/queries/vitest-vi-beforeEach-mock-setup.md`；`wiki/concepts/automated-testing.md` 补 mock / beforeEach 段落；更新 `wiki/index.md` Queries。
 - 2026-06-29：Ingest `source/_posts/vitest-vs-jest-advantages.md` → 新增 `wiki/sources/vitest-vs-jest-advantages.md`，更新 `wiki/concepts/automated-testing.md`（Vitest vs Jest、BDD 断言语法），更新 `wiki/index.md`（工程化与运维）。
 - 2026-06-26：Lint 维护：将 3 个 substantial query 升格为概念页 → 新增 `wiki/concepts/diff-three-layer-model.md`（应用更新 / 应用内文件更新 / git diff 三层对照）、`wiki/concepts/update-system-layers.md`（从轻量提醒到完整 updater 的五层模型）、`wiki/concepts/push-patterns-for-rss.md`（轮询 / WebSocket / SSE / Push API 对 RSS 的启发）；更新 `wiki/index.md` Concepts；更新 3 个 query 页互链；更新 `electron-build-channels`、`rss-telegram-selfhost` 概念页互链。
 - 2026-06-24：Query「过拟合是什么」→ 新增 `wiki/queries/what-is-overfitting.md`（定义、欠拟合对照、应对、LLM 与关键词召回类比）；`large-language-model-fundamentals` 补互链；更新 `wiki/index.md` Queries。
