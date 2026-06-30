@@ -9,3 +9,8 @@
 
 模块化要分清业务和UI，业务逻辑放业务组件，UI只负责展示，公共部分统一抽离。
 
+## 另见
+
+- [微前端与 Monorepo](../concepts/micro-frontend-and-monorepo.md)（仓库层组织与运行时解耦）
+- [前端大项目架构痛点：微前端、Monorepo 与大厂实践](../queries/microfrontend-monorepo-large-app-architecture.md)
+

@@ -47,6 +47,7 @@
 - [关键词重合召回](concepts/keyword-overlap-recall.md)
 - [Claude Code 常见工作流](concepts/claude-code-workflows.md)
 - [Claude Code 并行代理](concepts/claude-code-parallel-agents.md)
+- [微前端与 Monorepo](concepts/micro-frontend-and-monorepo.md)（仓库层 vs 运行时解耦、模块联邦轻量替代、选型代价）
 
 ## Queries
 
@@ -71,6 +72,7 @@
 - [Web端版本更新弹窗这篇文章里的方案有什么问题，有更好的方案吗](queries/review-web-version-update-popup-scheme.md)
 - [正式包安装会覆盖 QA 包，能否两种包共存](queries/qa-prod-packages-coexist.md)
 - [SQLite、Hexo db.json 与 IndexedDB 的区别](queries/sqlite-vs-hexo-db-vs-indexeddb.md)（关系型数据库 vs JSON 缓存 vs 浏览器 NoSQL）
+- [前端大项目架构痛点：微前端、Monorepo 与大厂实践](queries/microfrontend-monorepo-large-app-architecture.md)（迁移壁垒、运行时解耦、qiankun/支付宝案例）
 
 ## Category
 

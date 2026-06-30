@@ -82,7 +82,7 @@ flowchart TB
 | Vue | [key 值在 vue 组件中的作用](../sources/key-value-role-in-vue-components.md)、[我所不知道的 Vue 细节](../sources/vue-details-i-didnt-know.md)、[说说 Vuex](../sources/talking-about-vuex.md) |
 | 图形 | [three.js 基础实战 —— 创建画布](../sources/three-js-basics-practice.md)、[PixiJs 极简教程](../sources/pixi-basics.md)、[WebRTC](../sources/WebRTC.md) |
 | 小程序 / 跨端 | [微信小程序小技巧](../sources/wechat-mini-program-pitfalls.md)、[MAC 调试 IOS 真机上 Web 网页的方法](../sources/mac-debug-ios-web-page.md) |
-| 工程化 | [Webpack5 新特性 - 模块联邦笔记](../sources/webpack5-new-features-module-federation-notes.md)、[图片懒加载实现](../sources/image-lazy-loading-implementation.md)、[web 优化 ——— 添加骨架屏](../sources/add-skeleton-screen.md) |
+| 工程化 | [微前端与 Monorepo](../concepts/micro-frontend-and-monorepo.md)、[前端大项目架构痛点](../queries/microfrontend-monorepo-large-app-architecture.md)、[Webpack5 新特性 - 模块联邦笔记](../sources/webpack5-new-features-module-federation-notes.md)、[图片懒加载实现](../sources/image-lazy-loading-implementation.md)、[web 优化 ——— 添加骨架屏](../sources/add-skeleton-screen.md) |
 
 完整列表以 [Wiki Index](../index.md) 中 **Web开发**、**编程基础**（HTTP/Cookie/安全/URL）、**工程化与运维** 三节为准。
 

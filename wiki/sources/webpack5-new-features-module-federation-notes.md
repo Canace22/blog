@@ -9,3 +9,8 @@
 
 模块联邦实现动态共享模块，避免重复打包但需注意依赖冲突问题。
 
+## 另见
+
+- [微前端与 Monorepo](../concepts/micro-frontend-and-monorepo.md)（模块联邦作为微前端轻量替代）
+- [前端大项目架构痛点：微前端、Monorepo 与大厂实践](../queries/microfrontend-monorepo-large-app-architecture.md)
+
