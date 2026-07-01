@@ -1,5 +1,7 @@
 # Wiki Log
 
+- 2026-07-01：Query「md-render：资产优先与业务编排原则」（对话沉淀）→ 新增 `wiki/queries/md-render-asset-orchestration-principles.md`；`related-doc-keyword-similarity-search`、`sqlite-fts5-for-doc-search`、`compiled-knowledge-vault`、`keyword-overlap-recall` 互链；更新 `wiki/index.md` Queries。
+- 2026-06-30：Query「写作与思考框架全景图：从骨架到灵魂」（对话沉淀）→ 新增 `wiki/queries/writing-thinking-frameworks-panorama.md`；`narrative-structures`、`narrative-pacing-psychology`、`wechat-official-account-read-optimization`、`ai-outsourcing-writing-thinking` 互链；更新 `wiki/index.md` Queries。
 - 2026-06-30：Query「前端大项目架构痛点：微前端、Monorepo 与大厂实践」（对话沉淀）→ 新增 `wiki/queries/microfrontend-monorepo-large-app-architecture.md`、`wiki/concepts/micro-frontend-and-monorepo.md`；`webpack5-new-features-module-federation-notes`、`project-modularization-principles`、`web-frontend-knowledge-graph` 补互链；更新 `wiki/index.md`（Concepts / Queries）。
 - 2026-06-29：Query「Vitest 里 vi 是什么，beforeEach 什么时候用」（NarrativeEngine 单测对话）→ 新增 `wiki/queries/vitest-vi-beforeEach-mock-setup.md`；`wiki/concepts/automated-testing.md` 补 mock / beforeEach 段落；更新 `wiki/index.md` Queries。
 - 2026-06-29：Ingest `source/_posts/vitest-vs-jest-advantages.md` → 新增 `wiki/sources/vitest-vs-jest-advantages.md`，更新 `wiki/concepts/automated-testing.md`（Vitest vs Jest、BDD 断言语法），更新 `wiki/index.md`（工程化与运维）。

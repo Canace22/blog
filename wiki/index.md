@@ -73,6 +73,8 @@
 - [正式包安装会覆盖 QA 包，能否两种包共存](queries/qa-prod-packages-coexist.md)
 - [SQLite、Hexo db.json 与 IndexedDB 的区别](queries/sqlite-vs-hexo-db-vs-indexeddb.md)（关系型数据库 vs JSON 缓存 vs 浏览器 NoSQL）
 - [前端大项目架构痛点：微前端、Monorepo 与大厂实践](queries/microfrontend-monorepo-large-app-architecture.md)（迁移壁垒、运行时解耦、qiankun/支付宝案例）
+- [写作与思考框架全景图：从骨架到灵魂](queries/writing-thinking-frameworks-panorama.md)（金字塔/SCQA、托尔明/英雄之旅/卡片盒、技术新媒体三结构）
+- [md-render：资产优先与业务编排原则](queries/md-render-asset-orchestration-principles.md)（资产核心、编排层、五类需求判断）
 
 ## Category
 

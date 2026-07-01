@@ -92,6 +92,7 @@ Christopher Booker 总结的故事原型：
 
 - [叙事研究](../sources/narrative-research.md)：在本文框架上补充菲希特曲线、跳房子结构、人物弧线、三层冲突、互动叙事与网文实战框架。
 - 节奏与情绪机制（爽点、断章、流体验等）见 [叙事节奏心理学](../concepts/narrative-pacing-psychology.md)。
+- 写作框架选型（结构化写作 vs 故事流 vs 技术新媒体实战）见 [写作与思考框架全景图](../queries/writing-thinking-frameworks-panorama.md)。
 
 ## 资料来源
 

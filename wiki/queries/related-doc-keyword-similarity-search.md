@@ -29,6 +29,7 @@
 ## 另见
 
 - [SQLite FTS5 是什么，文档检索什么时候用它](sqlite-fts5-for-doc-search.md)（FTS5 / embedding 升级路径详解）
+- [md-render：资产优先与业务编排原则](md-render-asset-orchestration-principles.md)（关联召回应挂在资产层，不绑业务页）
 - [关键词重合召回](../concepts/keyword-overlap-recall.md)
 - [RAG 与 Graph RAG](../concepts/rag-and-graph-rag.md)（向量检索对照）
 - [AI Knowledge Bases](../concepts/ai-knowledge-bases.md)
