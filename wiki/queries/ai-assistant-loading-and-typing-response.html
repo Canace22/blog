@@ -1,0 +1,179 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="canace 的博客"><meta itemprop="name" content="2026-07-01 AI 助手响应时，为什么要显示 Loading 或打字效果"><meta itemprop="image" content="https://raw.githubusercontent.com/Canace22/Assets/main/images/snow-other.png"><meta property="og:image" content="https://raw.githubusercontent.com/Canace22/Assets/main/images/snow-other.png"><meta name="description" itemprop="description" content="&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;性质&lt;/strong&gt;：对话沉淀为可复用 Q&amp;amp;A&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;日期&lt;/strong&gt;：2026-07-01&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;项目上下文&lt;/strong&gt;：md-render AI 助手 &amp;#x2F; AgentPanel 响应态&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;关键词&lt;/strong&gt;：AI 助手、loading、打字效果、非流式响应、AgentPanel、响应态、感知延迟&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h2&gt;&lt;p&gt;AI 助手正在处理用户请求时，如果界面没有任何反馈，用户会看到一段「空等」：输入已经发出，但下方没有 loading，也没有打字效果，直到模型最终返回后才一次性出现整段回答。&lt;/p&gt;
+&lt;p&gt;这种体验的问题不在于模型一定慢，而在于&lt;strong&gt;应用没有把 agent 的执行阶段表达出来&lt;/strong&gt;。用户无法区分：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;请求是否已经发送；&lt;/li&gt;
+&lt;li&gt;AI 是否还在思考；&lt;/li&gt;
+&lt;li&gt;是否正在调用工具；&lt;/li&gt;
+&lt;li&gt;是否已经有回复但还没展示；&lt;/li&gt;
+&lt;li&gt;是否卡死或出错。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;回答&quot;&gt;&lt;a href=&quot;#回答&quot; class=&quot;headerlink&quot; title=&quot;回答&quot;&gt;&lt;/a&gt;回答&lt;/h2&gt;&lt;p&gt;这类问题本质上是&lt;strong&gt;长耗时 AI 交互缺少响应态设计&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;传统表单提交可以靠按钮 loading 解决，但 AI 助手更像一条持续对话：用户关注的是消息流本身。因此响应态应该出现在对话区底部，而不是只在发送按钮上显示一个禁用状态。&lt;/p&gt;
+&lt;h3 id=&quot;推荐分层&quot;&gt;&lt;a href=&quot;#推荐分层&quot; class=&quot;headerlink&quot; title=&quot;推荐分层&quot;&gt;&lt;/a&gt;推荐分层&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;等待模型阶段：显示 loading&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;用户发送消息后，立即追加用户消息，并在消息列表底部显示「AI 正在思考」。这能确认请求已经进入系统，不会让用户误以为输入没发出去。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;工具执行阶段：显示任务状态&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;如果 agent 调用了读文档、写文档、创建文件等工具，继续沿用工具消息展示 running &amp;#x2F; done 状态。这样用户能看到 AI 不是静默等待，而是在分步执行。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;最终回复阶段：打字式输出&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;如果底层模型接口不是流式返回，也可以在拿到 &lt;code&gt;finalText&lt;/code&gt; 后，由前端本地把同一条 assistant 消息分块填充，模拟打字输出。&lt;/p&gt;
+&lt;p&gt;这不是为了伪装成真正 streaming，而是为了让用户感知「回答正在出现」，避免长文本一次性跳出造成突兀。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;特殊协议阶段：隐藏内部结构&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;如果 assistant 文本里包含给 UI 解析的隐藏协议，例如 &lt;code&gt;agent-choice&lt;/code&gt; JSON 注释，打字过程中不能把未闭合的内部协议闪给用户。应在 typing 状态下临时剥离未闭合协议，等完整文本结束后再交给解析器渲染选择卡片。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;在-md-render-里的实现&quot;&gt;&lt;a href=&quot;#在-md-render-里的实现&quot; class=&quot;headerlink&quot; title=&quot;在 md-render 里的实现&quot;&gt;&lt;/a&gt;在 md-render 里的实现&lt;/h2&gt;&lt;p&gt;这次实现没有改 &lt;code&gt;agentEngine&lt;/code&gt;、IPC 或模型调用链，而是把响应态控制收在 &lt;code&gt;AgentPanel.jsx&lt;/code&gt; 展示层。&lt;/p&gt;
+&lt;h3 id=&quot;核心改动&quot;&gt;&lt;a href=&quot;#核心改动&quot; class=&quot;headerlink&quot; title=&quot;核心改动&quot;&gt;&lt;/a&gt;核心改动&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;新增响应态字段&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;AgentPanel.jsx&lt;/code&gt; 增加局部状态：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;assistantActivity&lt;/code&gt;：区分 &lt;code&gt;thinking&lt;/code&gt; &amp;#x2F; &lt;code&gt;typing&lt;/code&gt; &amp;#x2F; 空闲；&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;runningSessionId&lt;/code&gt;：记录当前任务属于哪个会话，避免切会话后把 loading 显示到错误会话；&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;messagesRef&lt;/code&gt;：用于消息更新后自动滚到底部。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;等待阶段显示底部 loading&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;runTurn&lt;/code&gt; 追加用户消息后，立即进入 &lt;code&gt;thinking&lt;/code&gt;：&lt;/p&gt;
+&lt;figure class=&quot;highlight text&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;用户消息入流&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  → setRunning(true)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  → assistantActivity = thinking&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  → 消息列表底部显示「AI 正在思考」&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;最终文本改为本地打字&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;原来 &lt;code&gt;runAgent&lt;/code&gt; 完成后直接 append 一条完整 assistant 消息。现在改成：&lt;/p&gt;
+&lt;figure class=&quot;highlight text&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;runAgent 返回 finalText&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  → 先保存模型 history&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  → append 一条 typing=true 的空 assistant 消息&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  → 每 18ms 填充 4 个字符&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  → 长文本用更大 chunk，避免过多渲染&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  → 完成后 typing=false&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;停止响应的处理&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;用户点停止时，会取消 &lt;code&gt;AbortController&lt;/code&gt;，清掉响应态，不再额外追加「出错了：已取消」。如果已经进入打字阶段，当前已输出的片段会保留为一条普通 assistant 消息。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;选择卡片协议兼容&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;typing 状态下，渲染层先用 &lt;code&gt;stripPartialChoiceProtocol&lt;/code&gt; 临时去掉未闭合的 &lt;code&gt;&amp;lt;!-- agent-choice ...&lt;/code&gt;。等文本完整后，再走原来的 &lt;code&gt;parseAssistantChoiceCards&lt;/code&gt;，把隐藏协议渲染成选择卡片。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;为什么不改-agentEngine&quot;&gt;&lt;a href=&quot;#为什么不改-agentEngine&quot; class=&quot;headerlink&quot; title=&quot;为什么不改 agentEngine&quot;&gt;&lt;/a&gt;为什么不改 agentEngine&lt;/h3&gt;&lt;p&gt;&lt;code&gt;agentEngine&lt;/code&gt; 的职责是：组织 prompt、调用模型、执行工具、返回最终历史。&lt;br&gt;loading、打字效果、滚动、复制按钮显示时机，都是 UI 展示行为。&lt;/p&gt;
+&lt;p&gt;如果把这些写进引擎层，会让纯逻辑模块依赖 React 消息状态，反而破坏原有边界。更合理的边界是：&lt;/p&gt;
+&lt;figure class=&quot;highlight text&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;agentEngine 返回最终文本和事件&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  → AgentPanel 负责消息流展示&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  → CSS 负责 loading / cursor 动效&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;验证点&quot;&gt;&lt;a href=&quot;#验证点&quot; class=&quot;headerlink&quot; title=&quot;验证点&quot;&gt;&lt;/a&gt;验证点&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;普通回复：发送后立刻显示「AI 正在思考」，返回后逐步出现文本。&lt;/li&gt;
+&lt;li&gt;长回复：打字效果不会造成明显卡顿，文本会自动滚到底部。&lt;/li&gt;
+&lt;li&gt;工具调用：工具 running &amp;#x2F; done 状态照常显示，最终回答仍打字输出。&lt;/li&gt;
+&lt;li&gt;中途停止：不追加「出错了：已取消」，当前响应态会清掉。&lt;/li&gt;
+&lt;li&gt;选择卡片：打字过程中不暴露 &lt;code&gt;agent-choice&lt;/code&gt; JSON，完成后正常渲染卡片。&lt;/li&gt;
+&lt;li&gt;切换会话：loading 只显示在发起请求的会话里。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;一句话总结&quot;&gt;&lt;a href=&quot;#一句话总结&quot; class=&quot;headerlink&quot; title=&quot;一句话总结&quot;&gt;&lt;/a&gt;一句话总结&lt;/h2&gt;&lt;p&gt;AI 助手的响应态不是装饰，而是长耗时 agent 交互的基本反馈层：等待时给 loading，完成后本地打字输出，内部协议只给 UI 解析，不直接暴露给用户。&lt;/p&gt;
+&lt;h2 id=&quot;另见&quot;&gt;&lt;a href=&quot;#另见&quot; class=&quot;headerlink&quot; title=&quot;另见&quot;&gt;&lt;/a&gt;另见&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;ai-assistant-choice-cards-protocol.html&quot;&gt;AI 助手让用户选择时，为什么要做成选择卡片&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;md-render-asset-orchestration-principles.html&quot;&gt;md-render：资产优先与业务编排原则&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;../concepts/ai-assisted-development.html&quot;&gt;AI 辅助开发&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;../concepts/agent-coding-stability.html&quot;&gt;提升 AI Coding 稳定性的经验上下文模式&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;em&gt;Query 草稿：Codex 整理本轮 md-render AI 助手响应态改造；2026-07-01。&lt;/em&gt;&lt;/p&gt;
+"><title>2026-07-01 AI 助手响应时，为什么要显示 Loading 或打字效果</title><link rel="stylesheet" type="text/css" href="../../css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/normalize.css/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="../../favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="../../favicon.ico"><link rel="apple-touch-icon" href="../../apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="../../apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="../../atom.xml"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/clipboard/dist/clipboard.min.js"></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.js"></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.css"><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">2026-07-01 AI 助手响应时，为什么要显示 Loading 或打字效果</h1><a id="logo" href="../../.">Canace 的博客</a><p class="description">Tomorrow is another day</p></div><div id="nav-menu"><a href="../../."><i class="fa fa-home"> 主页</i></a><a href="../../archives/"><i class="fa fa-archive"> 文章归档</i></a><a class="current" href="../"><i class="fa fa-book"> 知识库</i></a><a href="../../about/"><i class="fa fa-user"> 关于我</i></a><a href="../../atom.xml"><i class="fa fa-rss"> 订阅</i></a><a id="nav-random-article" href="#" title="随机文章" aria-label="随机文章"><i class="fa fa-random"> 随机文章</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">2026-07-01 AI 助手响应时，为什么要显示 Loading 或打字效果</h1><div class="clear"><div class="toc-article" id="toc"><div class="toc-title">目录</div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-text">问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9E%E7%AD%94"><span class="toc-text">回答</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A8%E8%8D%90%E5%88%86%E5%B1%82"><span class="toc-text">推荐分层</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8-md-render-%E9%87%8C%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-text">在 md-render 里的实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E6%94%B9%E5%8A%A8"><span class="toc-text">核心改动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E6%94%B9-agentEngine"><span class="toc-text">为什么不改 agentEngine</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AA%8C%E8%AF%81%E7%82%B9"><span class="toc-text">验证点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%80%BB%E7%BB%93"><span class="toc-text">一句话总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%A6%E8%A7%81"><span class="toc-text">另见</span></a></li></ol></div></div><div class="post-content"><ul>
+<li><strong>性质</strong>：对话沉淀为可复用 Q&amp;A</li>
+<li><strong>日期</strong>：2026-07-01</li>
+<li><strong>项目上下文</strong>：md-render AI 助手 &#x2F; AgentPanel 响应态</li>
+<li><strong>关键词</strong>：AI 助手、loading、打字效果、非流式响应、AgentPanel、响应态、感知延迟</li>
+</ul>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>AI 助手正在处理用户请求时，如果界面没有任何反馈，用户会看到一段「空等」：输入已经发出，但下方没有 loading，也没有打字效果，直到模型最终返回后才一次性出现整段回答。</p>
+<p>这种体验的问题不在于模型一定慢，而在于<strong>应用没有把 agent 的执行阶段表达出来</strong>。用户无法区分：</p>
+<ul>
+<li>请求是否已经发送；</li>
+<li>AI 是否还在思考；</li>
+<li>是否正在调用工具；</li>
+<li>是否已经有回复但还没展示；</li>
+<li>是否卡死或出错。</li>
+</ul>
+<h2 id="回答"><a href="#回答" class="headerlink" title="回答"></a>回答</h2><p>这类问题本质上是<strong>长耗时 AI 交互缺少响应态设计</strong>。</p>
+<p>传统表单提交可以靠按钮 loading 解决，但 AI 助手更像一条持续对话：用户关注的是消息流本身。因此响应态应该出现在对话区底部，而不是只在发送按钮上显示一个禁用状态。</p>
+<h3 id="推荐分层"><a href="#推荐分层" class="headerlink" title="推荐分层"></a>推荐分层</h3><ol>
+<li><p><strong>等待模型阶段：显示 loading</strong></p>
+<p>用户发送消息后，立即追加用户消息，并在消息列表底部显示「AI 正在思考」。这能确认请求已经进入系统，不会让用户误以为输入没发出去。</p>
+</li>
+<li><p><strong>工具执行阶段：显示任务状态</strong></p>
+<p>如果 agent 调用了读文档、写文档、创建文件等工具，继续沿用工具消息展示 running &#x2F; done 状态。这样用户能看到 AI 不是静默等待，而是在分步执行。</p>
+</li>
+<li><p><strong>最终回复阶段：打字式输出</strong></p>
+<p>如果底层模型接口不是流式返回，也可以在拿到 <code>finalText</code> 后，由前端本地把同一条 assistant 消息分块填充，模拟打字输出。</p>
+<p>这不是为了伪装成真正 streaming，而是为了让用户感知「回答正在出现」，避免长文本一次性跳出造成突兀。</p>
+</li>
+<li><p><strong>特殊协议阶段：隐藏内部结构</strong></p>
+<p>如果 assistant 文本里包含给 UI 解析的隐藏协议，例如 <code>agent-choice</code> JSON 注释，打字过程中不能把未闭合的内部协议闪给用户。应在 typing 状态下临时剥离未闭合协议，等完整文本结束后再交给解析器渲染选择卡片。</p>
+</li>
+</ol>
+<h2 id="在-md-render-里的实现"><a href="#在-md-render-里的实现" class="headerlink" title="在 md-render 里的实现"></a>在 md-render 里的实现</h2><p>这次实现没有改 <code>agentEngine</code>、IPC 或模型调用链，而是把响应态控制收在 <code>AgentPanel.jsx</code> 展示层。</p>
+<h3 id="核心改动"><a href="#核心改动" class="headerlink" title="核心改动"></a>核心改动</h3><ol>
+<li><p><strong>新增响应态字段</strong></p>
+<p><code>AgentPanel.jsx</code> 增加局部状态：</p>
+<ul>
+<li><code>assistantActivity</code>：区分 <code>thinking</code> &#x2F; <code>typing</code> &#x2F; 空闲；</li>
+<li><code>runningSessionId</code>：记录当前任务属于哪个会话，避免切会话后把 loading 显示到错误会话；</li>
+<li><code>messagesRef</code>：用于消息更新后自动滚到底部。</li>
+</ul>
+</li>
+<li><p><strong>等待阶段显示底部 loading</strong></p>
+<p><code>runTurn</code> 追加用户消息后，立即进入 <code>thinking</code>：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">用户消息入流</span><br><span class="line">  → setRunning(true)</span><br><span class="line">  → assistantActivity = thinking</span><br><span class="line">  → 消息列表底部显示「AI 正在思考」</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>最终文本改为本地打字</strong></p>
+<p>原来 <code>runAgent</code> 完成后直接 append 一条完整 assistant 消息。现在改成：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">runAgent 返回 finalText</span><br><span class="line">  → 先保存模型 history</span><br><span class="line">  → append 一条 typing=true 的空 assistant 消息</span><br><span class="line">  → 每 18ms 填充 4 个字符</span><br><span class="line">  → 长文本用更大 chunk，避免过多渲染</span><br><span class="line">  → 完成后 typing=false</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>停止响应的处理</strong></p>
+<p>用户点停止时，会取消 <code>AbortController</code>，清掉响应态，不再额外追加「出错了：已取消」。如果已经进入打字阶段，当前已输出的片段会保留为一条普通 assistant 消息。</p>
+</li>
+<li><p><strong>选择卡片协议兼容</strong></p>
+<p>typing 状态下，渲染层先用 <code>stripPartialChoiceProtocol</code> 临时去掉未闭合的 <code>&lt;!-- agent-choice ...</code>。等文本完整后，再走原来的 <code>parseAssistantChoiceCards</code>，把隐藏协议渲染成选择卡片。</p>
+</li>
+</ol>
+<h3 id="为什么不改-agentEngine"><a href="#为什么不改-agentEngine" class="headerlink" title="为什么不改 agentEngine"></a>为什么不改 agentEngine</h3><p><code>agentEngine</code> 的职责是：组织 prompt、调用模型、执行工具、返回最终历史。<br>loading、打字效果、滚动、复制按钮显示时机，都是 UI 展示行为。</p>
+<p>如果把这些写进引擎层，会让纯逻辑模块依赖 React 消息状态，反而破坏原有边界。更合理的边界是：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">agentEngine 返回最终文本和事件</span><br><span class="line">  → AgentPanel 负责消息流展示</span><br><span class="line">  → CSS 负责 loading / cursor 动效</span><br></pre></td></tr></table></figure>
+
+<h2 id="验证点"><a href="#验证点" class="headerlink" title="验证点"></a>验证点</h2><ul>
+<li>普通回复：发送后立刻显示「AI 正在思考」，返回后逐步出现文本。</li>
+<li>长回复：打字效果不会造成明显卡顿，文本会自动滚到底部。</li>
+<li>工具调用：工具 running &#x2F; done 状态照常显示，最终回答仍打字输出。</li>
+<li>中途停止：不追加「出错了：已取消」，当前响应态会清掉。</li>
+<li>选择卡片：打字过程中不暴露 <code>agent-choice</code> JSON，完成后正常渲染卡片。</li>
+<li>切换会话：loading 只显示在发起请求的会话里。</li>
+</ul>
+<h2 id="一句话总结"><a href="#一句话总结" class="headerlink" title="一句话总结"></a>一句话总结</h2><p>AI 助手的响应态不是装饰，而是长耗时 agent 交互的基本反馈层：等待时给 loading，完成后本地打字输出，内部协议只给 UI 解析，不直接暴露给用户。</p>
+<h2 id="另见"><a href="#另见" class="headerlink" title="另见"></a>另见</h2><ul>
+<li><a href="ai-assistant-choice-cards-protocol.html">AI 助手让用户选择时，为什么要做成选择卡片</a></li>
+<li><a href="md-render-asset-orchestration-principles.html">md-render：资产优先与业务编排原则</a></li>
+<li><a href="../concepts/ai-assisted-development.html">AI 辅助开发</a></li>
+<li><a href="../concepts/agent-coding-stability.html">提升 AI Coding 稳定性的经验上下文模式</a></li>
+</ul>
+<p><em>Query 草稿：Codex 整理本轮 md-render AI 助手响应态改造；2026-07-01。</em></p>
+</div></div></div></div><div class="pure-u-1 pure-u-md-1-4"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 常用文档</i></div><ul></ul><a href="/git-common-commands" title="Git 文档" target="_blank">Git 文档</a><ul></ul><a href="/common-programming-prompt-words" title="常用开发提示词" target="_blank">常用开发提示词</a></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="../../categories/soft/">软技能与思考</a><span class="category-list-count">51</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/cli/">工程化与运维</a><span class="category-list-count">52</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/web/">Web开发</a><span class="category-list-count">142</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/intelligent/">AI探索</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/coding/">编程基础</a><span class="category-list-count">42</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/AI%E5%B7%A5%E7%A8%8B%E5%8C%96/">AI工程化</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/site/">网站建设</a><span class="category-list-count">5</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="../../tags/essays/" style="font-size: 15px; color: #3a7ba8">随笔</a> <a href="../../tags/performance/" style="font-size: 15px; color: #83a4ba">性能优化</a> <a href="../../tags/backend/" style="font-size: 15px; color: #6694b3">后端</a> <a href="../../tags/Python-Go-%E5%85%B6%E4%BB%96/" style="font-size: 15px; color: #92acbe">Python/Go/其他</a> <a href="../../tags/JavaScript-TypeScript/" style="font-size: 15px; color: #0f639e">JavaScript&TypeScript</a> <a href="../../tags/AI%E5%8E%9F%E7%90%86/" style="font-size: 15px; color: #a0b4c1">AI原理</a> <a href="../../tags/api-services/" style="font-size: 15px; color: #bdc4c8">API&服务</a> <a href="../../tags/computer-science/" style="font-size: 15px; color: #2c73a5">计算机科学</a> <a href="../../tags/%E8%81%8C%E4%B8%9A%E5%8F%91%E5%B1%95/" style="font-size: 15px; color: #83a4ba">职业发展</a> <a href="../../tags/AI%E7%BC%96%E7%A8%8B/" style="font-size: 15px; color: #6694b3">AI编程</a> <a href="../../tags/%E7%BF%BB%E8%AF%91/" style="font-size: 15px; color: #ccc">翻译</a> <a href="../../tags/frontend/" style="font-size: 15px; color: #005b9a">前端</a> <a href="../../tags/frameworks-libs/" style="font-size: 15px; color: #578baf">框架与库</a> <a href="../../tags/notes/" style="font-size: 15px; color: #a0b4c1">笔记</a> <a href="../../tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/" style="font-size: 15px; color: #92acbe">系统设计</a> <a href="../../tags/programming-languages/" style="font-size: 15px; color: #afbcc5">编程语言</a> <a href="../../tags/css-visualization/" style="font-size: 15px; color: #1d6ba1">CSS与可视化</a> <a href="../../tags/build-deploy/" style="font-size: 15px; color: #759cb7">构建与部署</a> <a href="../../tags/dev-tools/" style="font-size: 15px; color: #4983ac">开发工具</a> <a href="../../tags/Node-js/" style="font-size: 15px; color: #83a4ba">Node.js</a> <a href="../../tags/cross-platform/" style="font-size: 15px; color: #92acbe">跨端方案</a> <a href="../../tags/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/" style="font-size: 15px; color: #ccc">项目管理</a> <a href="../../tags/code-quality/" style="font-size: 15px; color: #afbcc5">代码质量</a></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2026 <a href="../../." rel="nofollow">Canace 的博客</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="../../js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.js" async></script><script type="text/javascript" src="../../js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.css"><link rel="stylesheet" type="text/css" href="../../css/search.css?v=0.0.0"><script type="text/javascript" src="../../js/search.js?v=0.0.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+   search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="/js/copycode.js" successtext="复制成功!"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/mermaid@11.14.0/dist/mermaid.min.js"></script><script type="text/javascript">document.addEventListener('DOMContentLoaded', function () {
+  if (!window.mermaid) return;
+  mermaid.initialize({"theme":"default","logLevel":5,"startOnLoad":true,"arrowMarkerAbsolute":false,"flowchart":{"htmlLabels":true,"useMaxWidth":true,"curve":"linear"},"sequence":{"diagramMarginX":50,"diagramMarginY":10,"actorMargin":50,"width":150,"height":65,"boxMargin":10,"boxTextMargin":5,"noteMargin":10,"messageMargin":35,"mirrorActors":true,"bottomMarginAdj":1,"useMaxWidth":true},"gantt":{"titleTopMargin":25,"barHeight":20,"barGap":4,"topPadding":50,"leftPadding":75,"gridLineStartPadding":35,"fontSize":11,"fontFamily":"\"Open-Sans\", \"sans-serif\"","numberSectionStyles":4,"axisFormat":"%Y-%m-%d"},"class":{},"git":{}});
+});
+</script><script type="text/javascript" src="../../js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="../../js/smartresize.js?v=0.0.0"></script><script type="text/javascript">(function () {
+  var urls = ["/../../2024-year-end-summary/","/../../6-common-website-usability-issues-and-solutions/","/../../Django-channels/","/../../JavaScript-call-apply-bind/","/../../AI-knowledge-base/","/../../MySQL/","/../../NP-P-NPC/","/../../about-forgetfulness/","/../../about-doing-technology/","/../../WebRTC/","/../../add-skeleton-screen/","/../../ai-coding-ide/","/../../agent-coding-stability/","/../../ai-coding-share/","/../../ai-coding-game/","/../../ai-native/","/../../ai-make-you-boring/","/../../ai-worker/","/../../ai-optimize-ui/","/../../angular-navigation-content-linkage/","/../../algorithm-book-notes-for-everyone/","/../../ant-design-pitfalls/","/../../angel-love/","/../../async-data-console-issues/","/../../ants/","/../../axios-network-request-encapsulation/","/../../binary-search/","/../../beego-getting-started/","/../../bash-data-processing/","/../../blog-category/","/../../boolean-variables-in-project-application/","/../../bracket-matching/","/../../box-model/","/../../ai-expansion/","/../../brief-discussion-on-dns-pollution/","/../../brief-discussion-on-visual-form-design/","/../../build-django-blog-system/","/../../browser-kernel-and-writing/","/../../build-typescript-library/","/../../calculate-rice-cooker-reservation-time/","/../../build-tinymce-img-plugin/","/../../canvas-draw-dynamic-path/","/../../canvas-draw-sprite-export/","/../../cascade/","/../../centos-server-login-config/","/../../climbing-stairs/","/../../claude-handoff-doc-to-repo/","/../../code-optimization/","/../../common-algorithm-ideas/","/../../common-image-format-comparison/","/../../common-git-workflows/","/../../ckeditor-usage-in-angular/","/../../common-programming-prompt-words/","/../../common-regular-expressions/","/../../common-terminal-commands/","/../../computer-graphics-1/","/../../count-number-of-islands/","/../../computer-graphics-2/","/../../count-total-elements-of-array-objects/","/../../count-beautiful-subarrays/","/../../create-object-based-on-null/","/../../cross-origin-resource-sharing/","/../../css-background-image-application/","/../../css-notes/","/../../css-circular-progress-bar/","/../../css-positioning-detailed/","/../../css-layout-guide/","/../../css-positioning/","/../../css-series-cascade/","/../../css-series-flow-destruction-and-protection/","/../../css-series-basics/","/../../css-series-box-dimensions/","/../../css-series-flow-and-dimensions/","/../../css-series-history-and-document-flow/","/../../css-series-inline-elements-and-flow/","/../../css-tips/","/../../css-series-text-processing/","/../../css-two-color-pie-chart/","/../../css2-block-element-center/","/../../css3-animation-vs-js-animation/","/../../cursor-debugger/","/../../cursor-skill-web-search-download-movie/","/../../custom-github-activity/","/../../deep-copy-of-arrays-and-objects/","/../../disable-image-dragging/","/../../deep-work-philosophy-interpretation/","/../../docker-documentation/","/../../docker-frontend-environment-setup/","/../../doing-things-with-vscode/","/../../dropdown-list-implementation/","/../../egg/","/../../es2020-new-features/","/../../element-plus-table-component-scaling-issue-solution/","/../../extra-thick-chicken-soup/","/../../ffmpeg-extract-audio-track/","/../../file-naming-pitfalls-record/","/../../find-median-sorted-arrays/","/../../firefox-remove-various-dashed-borders/","/../../first-day-morning-run/","/../../first-screen-optimization/","/../../first-screen-time-vs-white-screen-time/","/../../fix-github-image-issue-on-mac/","/../../flow-simple-tutorial/","/../../flutter-learning-notes-quick-start/","/../../flutter-learning-notes-dart-basics/","/../../four-js-tips/","/../../frontend-draw-graphic-captcha/","/../../frontend-performance-optimization/","/../../frontend-xx-dockerization/","/../../fullscreen-solution-for-webpage-or-html-elements/","/../../fun-console/","/../../function-without-global-variable-counting/","/../../functional-programming/","/../../function-currying/","/../../gemini-new-session-memory/","/../../get-css-style/","/../../generate-random-array-in-specified-range/","/../../get-longest-common-prefix/","/../../ghost-whitespace-nodes/","/../../git-common-commands/","/../../git-domain-config/","/../../git-environment-config/","/../../git-usage-guide/","/../../gitbook-generate-ebook/","/../../github-action-auto-deploy-page/","/../../github-practical-tips/","/../../github-travis-auto-build-vue-to-gitpage/","/../../gitlab-ci-config-template/","/../../go-ahead-vs-continue-ai-chat/","/../../hexo-getting-started/","/../../go-getting-started/","/../../hexo-blog-migration/","/../../hexo-math-formula-support/","/../../how-ai-lets-us-lie-flat/","/../../homebrew-common-commands/","/../../how-to-create-a-robust-system/","/../../gitpage-hexo/","/../../how-to-optimize-animation/","/../../html-notes/","/../../html-to-text-js/","/../../http-notes/","/../../http-server/","/../../image-lazy-loading-implementation/","/../../implement-array-flatten/","/../../improve-work-efficiency-with-cursor-practical-notes/","/../../interesting-css-cascade-issues/","/../../issue-04/","/../../issue-03/","/../../issue-05/","/../../interview-strategy/","/../../issue-06/","/../../issue-07/","/../../issue-08/","/../../issue-09/","/../../issue-10/","/../../issue-1/","/../../issue-11/","/../../issue-12/","/../../issue-13/","/../../issue-14/","/../../issue-15/","/../../issue-2/","/../../japanese-learning-notes/","/../../javaScript-promise/","/../../javascript-basics-primitive-vs-reference-types/","/../../javascript-basics-type-conversion/","/../../javascript-built-in-deep-copy/","/../../javascript-common-code-snippets/","/../../javascript-detect-caps-lock/","/../../javascript-new-implementation-principle/","/../../javascript-functions/","/../../javascript-object-oriented-programming/","/../../javascript-soul-questions/","/../../javascript-tricks/","/../../js-execution/","/../../js-linked-list-implementation/","/../../js-overview/","/../../js-modal-blog/","/../../js-string-to-base64/","/../../js-timezone/","/../../jump-to-specific-position-in-article/","/../../kindness/","/../../knn-algorithm/","/../../knowledge-anxiety/","/../../key-value-role-in-vue-components/","/../../kpi-vs-okr/","/../../leave-page-popup/","/../../linux-background-script-execution/","/../../llm-wiki/","/../../lodash-source-analysis-array-chunk/","/../../mac-install-mysql/","/../../llm-training-truth/","/../../mac-debug-ios-web-page/","/../../lodash-source-analysis-array-slice/","/../../modify-autofill-style/","/../../manchester-by-the-sea/","/../../model-training-steps/","/../../method-to-login-to-south-china-normal-university-campus-network/","/../../mini-program-tabs-sticky/","/../../modify-scrollbar-style-compatible/","/../../module-specifications/","/../../n-n-order-matrix-algorithm/","/../../narrative-research/","/../../node-notes-in-depth/","/../../node-version-management/","/../../nodejs-config/","/../../nodejs-notes/","/../../nodejs-module-mechanism/","/../../nodeJs/","/../../notes-about-writing-weekly-reports/","/../../npm-common-commands/","/../../number-precise-to-two-decimal-places/","/../../object-property-value-monitoring/","/../../one-click-generate-responsive-table/","/../../openclaw-usage-experience/","/../../package-json-field-list/","/../../pagination-algorithm/","/../../palindrome-number-judgment/","/../../personal-knowledge-base/","/../../pinyin-learning-project-notes/","/../../pixi-basics/","/../../pixi-js-sprite-loading-cache-removal/","/../../pixijs-vertexData-null/","/../../port-number-modification/","/../../prisma-getting-started-guide/","/../../product-updates-rss-file-diff-mental-model/","/../../proxy-observer-pattern/","/../../python-pitfalls-collection/","/../../project-modularization-principles/","/../../python3-installation/","/../../qwen-milk-tea-ui/","/../../rag-vs-graph-rag/","/../../react-hooks-create-movie-app/","/../../record-service-degradation-due-to-emergency/","/../../recursive-tree/","/../../refactoring-vs-architecture/","/../../regular-expressions/","/../../remove-parent-nodes-with-duplicate-child-ids/","/../../removeDuplicates/","/../../removeElement/","/../../reverse-integer/","/../../reverse-words-in-string/","/../../rhythm-psychology/","/../../roman-numerals-to-integer/","/../../scheduled-tasks/","/../../rss-telegram-selfhost/","/../../science-popularization/","/../../scroll-pagination/","/../../sentence-excerpts/","/../../settimeout-simulate-setinterval/","/../../singly-linked-list-concatenation/","/../../software-version-number-definition/","/../../solve-github-dns-pollution-issue/","/../../string-and-code-rigor/","/../../systematic-method-for-fragmented-reading-knowledge/","/../../sublime-text-nodejs-config/","/../../talking-about-browser-cache-mechanism/","/../../ss-installation/","/../../talking-about-vuex/","/../../talking-about-webpage-adaptive-and-responsive-layout/","/../../tcp-ip-three-way-handshake/","/../../some-concepts/","/../../thoughts-on-ad-blocker-plugins/","/../../thoughts-on-technical-growth/","/../../thoughts-on-branch-management/","/../../three-js-basics-practice/","/../../time-complexity-vs-space-complexity/","/../../time-zero/","/../../timestamp-to-date/","/../../two-sum-problem/","/../../translate-use-claude-code/","/../../ubuntu-configure-frontend-environment/","/../../typescript-environment-config/","/../../ubuntu-configure-ss/","/../../ubuntu-install-tensorflow/","/../../unavoidable-bug-chrome-translation-caused-trouble/","/../../understanding-byte-order/","/../../understanding-cookies/","/../../use-cowork/","/../../understanding-instanceof/","/../../validate-string/","/../../table-cell-equal-division/","/../../vscode-code-formatting-summary/","/../../vitest-vs-jest-advantages/","/../../vue-config-template/","/../../vue-details-i-didnt-know/","/../../vue-data-driven-view-implementation/","/../../vue-dynamic-change-title/","/../../vue-project-setup-steps/","/../../vue-dynamic-component-import-note-not-async/","/../../vue-test-unit/","/../../vue3-notes/","/../../variables/","/../../web-performance-optimization-debounce/","/../../webpack-gulp-bundle-vue-component-library/","/../../webpack/","/../../webpage-version-update-popup-implementation/","/../../web-security-csrf/","/../../webpack5-new-features-module-federation-notes/","/../../wechat-mini-program-pitfalls/","/../../what-happens-from-url-to-display/","/../../webpack-dynamic-modify-resource-domain/","/../../why-graphics-card/","/../../web-security-xss-attack/","/../../why-frontend-needs-framework/","/../../why-not-let-ai-write-for-us/","/../../why-we-need-to-read/","/../../why-write-wechat-official-account/","/../../what-happened-to-vue/","/../../windows-tricks/","/../../wsl-config/","/../../writing-a-good-claude-md/","/../../wordpress-installation/","/../../yml-file-operations/","/../../words-of-experience/","/../../work-for/"];
+  var el = document.getElementById('nav-random-article');
+  if (!el) return;
+  el.addEventListener('click', function (e) {
+    e.preventDefault();
+    if (!urls.length) return;
+    var next = urls[Math.floor(Math.random() * urls.length)];
+    if (next) window.location.href = next;
+  });
+})();</script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":200,"height":200},"mobile":{"show":false},"react":{"opacity":0.7},"log":false});</script></body></html>
