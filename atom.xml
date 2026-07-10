@@ -6,7 +6,7 @@
   <link href="https://canace.site/atom.xml" rel="self"/>
   
   <link href="https://canace.site/"/>
-  <updated>2026-06-29T03:22:09.517Z</updated>
+  <updated>2026-07-10T02:52:56.540Z</updated>
   <id>https://canace.site/</id>
   
   <author>
@@ -15,6 +15,44 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>搞懂 GPT-5.6：Sol、Terra、Luna 和 Thinking Effort</title>
+    <link href="https://canace.site/gpt-5-6-sol-terra-luna/"/>
+    <id>https://canace.site/gpt-5-6-sol-terra-luna/</id>
+    <published>2026-07-10T02:49:12.000Z</published>
+    <updated>2026-07-10T02:52:56.540Z</updated>
+    
+    
+    <summary type="html">OpenAI 从 GPT-5.6 起用 Sol / Terra / Luna 表示能力层级，Thinking Effort 则是另一维的思考时长参数。</summary>
+    
+    
+    
+    <category term="AI探索" scheme="https://canace.site/categories/intelligent/"/>
+    
+    
+    <category term="AI原理" scheme="https://canace.site/tags/AI%E5%8E%9F%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>在 CLI 里用 Claude Design 做原型设计</title>
+    <link href="https://canace.site/claude-design-cli-prototyping/"/>
+    <id>https://canace.site/claude-design-cli-prototyping/</id>
+    <published>2026-07-09T06:56:25.000Z</published>
+    <updated>2026-07-09T09:24:27.463Z</updated>
+    
+    
+    <summary type="html">配置 Claude Design MCP 后，可在终端用自然语言生成设计系统、导出交互原型，并同步成前端组件代码。</summary>
+    
+    
+    
+    <category term="AI工程化" scheme="https://canace.site/categories/AI%E5%B7%A5%E7%A8%8B%E5%8C%96/"/>
+    
+    
+    <category term="AI编程" scheme="https://canace.site/tags/AI%E7%BC%96%E7%A8%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>Vitest 笔记</title>
@@ -361,44 +399,6 @@
     
     
     <category term="翻译" scheme="https://canace.site/tags/%E7%BF%BB%E8%AF%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>为什么要写微信公众号</title>
-    <link href="https://canace.site/why-write-wechat-official-account/"/>
-    <id>https://canace.site/why-write-wechat-official-account/</id>
-    <published>2026-03-31T02:00:00.000Z</published>
-    <updated>2026-03-31T02:55:45.382Z</updated>
-    
-    
-    <summary type="html">记录公众号运营中在知识沉淀、传播度与流量之间的拉扯，以及对初心与读者反馈的反思。</summary>
-    
-    
-    
-    <category term="软技能与思考" scheme="https://canace.site/categories/soft/"/>
-    
-    
-    <category term="随笔" scheme="https://canace.site/tags/essays/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>一个提升 AI Coding 稳定性的思路</title>
-    <link href="https://canace.site/agent-coding-stability/"/>
-    <id>https://canace.site/agent-coding-stability/</id>
-    <published>2026-03-09T02:00:00.000Z</published>
-    <updated>2026-06-21T05:07:33.528Z</updated>
-    
-    
-    <summary type="html">Agent 不稳定往往因为只给了目标没给解法；把个人解决问题的流程记录下来、抽象成模式并作为上下文给 AI，相当于提供经验上下文，可写成 Skill 复用。</summary>
-    
-    
-    
-    <category term="AI工程化" scheme="https://canace.site/categories/AI%E5%B7%A5%E7%A8%8B%E5%8C%96/"/>
-    
-    
-    <category term="AI编程" scheme="https://canace.site/tags/AI%E7%BC%96%E7%A8%8B/"/>
     
   </entry>
   
