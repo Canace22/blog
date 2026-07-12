@@ -6,7 +6,7 @@
   <link href="https://canace.site/atom.xml" rel="self"/>
   
   <link href="https://canace.site/"/>
-  <updated>2026-07-10T02:52:56.540Z</updated>
+  <updated>2026-07-12T04:03:04.272Z</updated>
   <id>https://canace.site/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://canace.site/gpt-5-6-sol-terra-luna/"/>
     <id>https://canace.site/gpt-5-6-sol-terra-luna/</id>
     <published>2026-07-10T02:49:12.000Z</published>
-    <updated>2026-07-10T02:52:56.540Z</updated>
+    <updated>2026-07-12T04:03:04.272Z</updated>
     
     
     <summary type="html">OpenAI 从 GPT-5.6 起用 Sol / Terra / Luna 表示能力层级，Thinking Effort 则是另一维的思考时长参数。</summary>
@@ -40,7 +40,7 @@
     <link href="https://canace.site/claude-design-cli-prototyping/"/>
     <id>https://canace.site/claude-design-cli-prototyping/</id>
     <published>2026-07-09T06:56:25.000Z</published>
-    <updated>2026-07-09T09:24:27.463Z</updated>
+    <updated>2026-07-12T04:03:07.763Z</updated>
     
     
     <summary type="html">配置 Claude Design MCP 后，可在终端用自然语言生成设计系统、导出交互原型，并同步成前端组件代码。</summary>
