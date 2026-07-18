@@ -277,3 +277,33 @@ error: RPC failed; curl 7 Failed to connect to 127.0.0.1 port 1080: Connection r
 ```
 
 解决方法，取消全局代理 `unset http_proxy`
+
+### 七、worktree 操作
+
+#### 1、看哪些 worktree 正在用哪些分支
+
+```bash
+git worktree list
+git worktree list --porcelain
+```
+
+#### 2、在 demo worktree 里，把分支释放出来
+
+```bash
+cd <demo-worktree-path>
+git switch --detach
+```
+
+#### 3、回到主项目 worktree，切到这个分支
+
+```bash
+cd <main-worktree-path>
+git switch <branch>
+```
+
+#### 4、验证当前状态
+
+```bash
+git status --short --branch
+git worktree list
+```
