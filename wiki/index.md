@@ -75,6 +75,8 @@
 - [前端大项目架构痛点：微前端、Monorepo 与大厂实践](queries/microfrontend-monorepo-large-app-architecture.md)（迁移壁垒、运行时解耦、qiankun/支付宝案例）
 - [写作与思考框架全景图：从骨架到灵魂](queries/writing-thinking-frameworks-panorama.md)（金字塔/SCQA、托尔明/英雄之旅/卡片盒、技术新媒体三结构）
 - [md-render：资产优先与业务编排原则](queries/md-render-asset-orchestration-principles.md)（资产核心、编排层、五类需求判断）
+- [AI 助手让用户选择时，为什么要做成选择卡片](queries/ai-assistant-choice-cards-protocol.md)（结构化输出协议、选择卡片、点击后续跑 agent）
+- [AI 助手响应时，为什么要显示 loading 或打字效果](queries/ai-assistant-loading-and-typing-response.md)（响应态、非流式打字、AgentPanel 展示边界）
 
 ## Category
 
@@ -457,3 +459,4 @@
 - [Pi Coding Agent / pi-mono](sources/pi-coding-agent.md) — `https://github.com/badlogic/pi-mono/tree/main`
 - [karpathy / autoresearch](sources/karpathy-autoresearch.md) — `https://github.com/karpathy/autoresearch`
 - [OpenClaw Memory Wiki](sources/openclaw-memory-wiki.md) — `https://docs.openclaw.ai/plugins/memory-wiki`
+- [Programmers need to start meditating now（Jake Gold）](sources/jacob-gold-programmers-need-to-meditate.md) — `https://jacob.gold/posts/programmers-need-to-start-meditating-now/`（心流消失、DMN、需冥想补偿，含用户解读）

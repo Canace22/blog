@@ -11,6 +11,7 @@
 
 - [AI 如何让我们躺平](../sources/how-ai-lets-us-lie-flat.md)：指出 AI 使用中的时间延长、投入增加与越界产出问题，并主张在圈定范围内提效。
 - [AI使人膨胀](../sources/ai-expansion.md)：从认知错位、AI 捧杀、节奏失控、决策疲劳、价值感空虚五个角度展开，是提效反噬最完整的个人叙述。
+- [Programmers need to start meditating now（Jake Gold）](../sources/jacob-gold-programmers-need-to-meditate.md)：补上生理机制角度——写代码曾靠心流抑制默认模式网络（DMN）带来专注与平静；转向多 Agent 上下文切换后心流消失，"高效"是透支注意力的多巴胺幻觉，需靠冥想或低信息密度的手脑协同活动来补偿。
 
 ## 可执行检查清单（轻量）
 

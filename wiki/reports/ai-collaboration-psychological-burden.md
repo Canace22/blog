@@ -20,6 +20,7 @@
 | 认知错位、AI 捧杀、失去节奏、决策疲劳、创造力剥离感 | [AI使人膨胀](../sources/ai-expansion.md) | **主文**：本主题最完整的个人叙述 |
 | 屏幕时间变长、vibe coding 堆低价值产出、需圈定 AI 任务范围 | [AI 如何让我们躺平](../sources/how-ai-lets-us-lie-flat.md) | 边界与「方向不对则越忙越空」 |
 | 边界定义、检查清单、费米化复盘 | [AI 使用边界与提效反噬](../concepts/ai-usage-boundary-and-efficiency-backfire.md) · [如何把「费米化」用在 AI 提效边界管理里](../queries/fermiization-for-ai-boundary.md) | 概念与可执行复盘 |
+| 心流 → DMN 抑制的生理机制、多 Agent 切换让心流消失、"高效"是透支注意力的假象、需靠冥想/低信息密度爱好补偿 | [Programmers need to start meditating now（Jake Gold）](../sources/jacob-gold-programmers-need-to-meditate.md) | 补生理机制视角 + 具体应对方案 |
 
 **典型机制（合成）**
 
@@ -49,6 +50,7 @@
 | [为什么不要让LLM帮我们写文档](../sources/why-not-let-ai-write-for-us.md) | 是 | 思维外包、信任 |
 | [我们是否需要AI知识库](../sources/AI-knowledge-base.md) | 是（部分） | 依赖 vs 内化 |
 | [程序员愿意为 Claude 写文档，但不愿为同事写](../sources/claude-handoff-doc-to-repo.md) | **相邻** | AI 协作文档线；折射「为 AI 优化 vs 为人协作」，非心理负担主文 |
+| [Programmers need to start meditating now（Jake Gold）](../sources/jacob-gold-programmers-need-to-meditate.md) | 是 | 提效反噬的生理机制侧写 + 应对方案（冥想、低信息密度爱好） |
 | [知识焦虑](../sources/knowledge-anxiety.md) | 否 | 2022 生活随笔，与 AI 无关 |
 
 ## 合成结论
@@ -59,6 +61,7 @@
    - 每天留一段无 AI 深度工作时间；
    - AI 交互任务批处理，减少碎片化；
    - 只采纳自己看得懂的内容。
+   - 另见 [Jake Gold 的补充](../sources/jacob-gold-programmers-need-to-meditate.md)：工作本身若已无法提供心流，就主动找替代品——冥想 App，或低信息密度的手脑协同爱好（乐器、拼图、运动）。
 3. **文档用法要分流**：handoff doc / 项目规则可「AI 写、人来审」并提交 repo（见 [claude-handoff-doc-to-repo](../sources/claude-handoff-doc-to-repo.md)），与 [AI协作编程——如何写好项目规则](../sources/writing-a-good-claude-md.md) 同属协作文档线；这解决的是**上下文与维护**，不能替代上述边界与思考过程。
 4. **与「正确用法」的对照**：人先倒想法 → AI 帮筛主线 → 人再砍（见 [把想法丢给 AI 拎主线](../sources/sanye-ai-organize-thoughts.md) 与 [AI 外包写作与思维](ai-outsourcing-writing-thinking.md)）——思考未被跳过，只是结构化加速。
 

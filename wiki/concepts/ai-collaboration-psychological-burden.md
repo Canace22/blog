@@ -8,7 +8,7 @@
 
 ## 两条子线（简述）
 
-1. **提效反噬**：局部加速、总投入上升 → 见 [AI 使用边界与提效反噬](ai-usage-boundary-and-efficiency-backfire.md)
+1. **提效反噬**：局部加速、总投入上升 → 见 [AI 使用边界与提效反噬](ai-usage-boundary-and-efficiency-backfire.md)；生理机制侧写见 [Programmers need to start meditating now](../sources/jacob-gold-programmers-need-to-meditate.md)（心流消失、DMN、需主动补偿）
 2. **思维与价值外包**：跳过程、损害信任与深度 → 见 [AI 外包写作与思维：对照阅读](../reports/ai-outsourcing-writing-thinking.md)
 
 ---

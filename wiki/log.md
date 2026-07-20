@@ -1,5 +1,7 @@
 # Wiki Log
 
+- 2026-07-01：Query「AI 助手响应时，为什么要显示 loading 或打字效果」（md-render 对话沉淀）→ 新增 `wiki/queries/ai-assistant-loading-and-typing-response.md`；更新 `wiki/index.md` Queries。
+- 2026-07-01：Query「AI 助手让用户选择时，为什么要做成选择卡片」（md-render 对话沉淀）→ 新增 `wiki/queries/ai-assistant-choice-cards-protocol.md`；更新 `wiki/index.md` Queries。
 - 2026-07-01：Query「md-render：资产优先与业务编排原则」（对话沉淀）→ 新增 `wiki/queries/md-render-asset-orchestration-principles.md`；`related-doc-keyword-similarity-search`、`sqlite-fts5-for-doc-search`、`compiled-knowledge-vault`、`keyword-overlap-recall` 互链；更新 `wiki/index.md` Queries。
 - 2026-06-30：Query「写作与思考框架全景图：从骨架到灵魂」（对话沉淀）→ 新增 `wiki/queries/writing-thinking-frameworks-panorama.md`；`narrative-structures`、`narrative-pacing-psychology`、`wechat-official-account-read-optimization`、`ai-outsourcing-writing-thinking` 互链；更新 `wiki/index.md` Queries。
 - 2026-06-30：Query「前端大项目架构痛点：微前端、Monorepo 与大厂实践」（对话沉淀）→ 新增 `wiki/queries/microfrontend-monorepo-large-app-architecture.md`、`wiki/concepts/micro-frontend-and-monorepo.md`；`webpack5-new-features-module-federation-notes`、`project-modularization-principles`、`web-frontend-knowledge-graph` 补互链；更新 `wiki/index.md`（Concepts / Queries）。
@@ -82,3 +84,4 @@
 - 2026-04-30：Ingest 转发 Telegram「嘴码专项工作频道」软件开发范式演进 → `wiki/sources/software-development-paradigms.md`、`wiki/concepts/software-development-paradigms.md`，更新 `wiki/index.md` Sources / Concepts。
 - 2026-04-30：Ingest Cursor 会话（Hermes：小米 MiMo vs MiniMax、`/anthropic` 与模型名点号）→ `wiki/sources/cursor-hermes-xiaomi-mimo-minimax.md`、`wiki/concepts/hermes-anthropic-endpoint-model-id-normalization.md`；更新 `wiki/index.md`（Concepts / AI探索）。
 - 2026-05-28：Ingest Token 优化分析（对话沉淀）→ 新增 `wiki/sources/hermes-agent-token-optimization.md`（Memory/Session/Skill/Cron 六维度省 token 策略）；更新 `wiki/index.md`（AI探索）。
+- 2026-07-14：Ingest 外部文章「Programmers need to start meditating now」（Jake Gold）+ 用户解读 → 新增 `wiki/sources/jacob-gold-programmers-need-to-meditate.md`；更新 `wiki/concepts/ai-usage-boundary-and-efficiency-backfire.md`、`wiki/concepts/ai-collaboration-psychological-burden.md`、`wiki/reports/ai-collaboration-psychological-burden.md`（补生理机制/DMN 视角与应对方案）；更新 `wiki/index.md`（外部研究资料）。
