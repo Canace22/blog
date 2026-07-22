@@ -1,8 +1,9 @@
 ---
 title: n * n 阶矩阵算法
-description: 暴力破解矩阵乘法效率低但实现简单结果直观
+description: 从暴力破解实现 n*n 阶矩阵乘法出发，探讨 Strassen 分治算法、矩阵转置与 TypedArray 的 Cache 优化，以及 WebGPU/WebGL 并行加速等性能优化路径
 comments: true
 date: 2018-07-30 21:42:14
+updated: 2026-07-22 10:24:00
 categories: 编程基础
 tags: 计算机科学
 toc: true
