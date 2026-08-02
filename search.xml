@@ -4,6 +4,56 @@
   
     
     <entry>
+      <title>我让 Claude 给视频里的人脸打码，顺手做成了一个 Skill</title>
+      <link href="/video-face-mosaic-skill/"/>
+      <url>/video-face-mosaic-skill/</url>
+      
+        <content type="html"><![CDATA[<p>昨天跳完舞，想给视频里的其他人打码发布，又难到了我。</p><p>我首先想到的是剪映。它有人脸跟踪和局部打码功能，我之前也尝试用过，但画面里的人一多，处理起来就比较麻烦：需要逐个添加遮罩、调整跟踪，人物互相遮挡或者快速移动时，还容易出现跟丢和漏脸的情况。</p><p>更麻烦的是，我不是要把所有人都打码，而是要指定保留其中一个人。</p><p>如果视频只有几秒，手动处理也不是不行。但视频稍微长一点，画面里的人再多一点，光是逐个添加遮罩和检查有没有漏脸，就很折磨了。</p><p>我干脆把视频交给 Claude，让它想办法处理。</p><p>Claude 不仅把视频做出来了，还把整个过程整理成了一个可以重复使用的 Skill。以后再遇到类似的视频，我只需要告诉 Claude：“保留左边穿棕色衣服的人，其他人全部打码。”它就知道接下来应该怎么做。</p><h2 id="这件事比“识别人脸”复杂一点"><a href="#这件事比“识别人脸”复杂一点" class="headerlink" title="这件事比“识别人脸”复杂一点"></a>这件事比“识别人脸”复杂一点</h2><p>最直接的思路，是先用模型检测每一帧里的人脸，再在检测框内加上马赛克。听起来并不复杂，但如果只做到这一步，成片的效果通常不好。</p><p>人脸检测不是每一帧都稳定。人物侧脸、低头、被遮挡或者移动太快时，模型都可能短暂漏检。如果直接按照每一帧的检测结果打码，马赛克就会时有时无，不断闪烁，甚至偶尔露出完整的人脸。</p><p>所以，这个工作流没有停留在人脸检测，而是要把同一个人的检测框连接成一条连续轨迹。中间偶尔漏掉几帧，就根据前后帧的位置进行补齐，让马赛克能够持续跟着人物移动。</p><p>另一个问题是，怎么告诉 Claude 应该保留谁。</p><p>这里并不是让模型自动识别“这个人是我”。Claude 会先从视频里抽取几张参考画面，并给检测到的人脸加上编号。我只需要在其中一帧里指出要保留的人，脚本就会从这个位置向前、向后跟踪。正式渲染时，属于这个人的人脸框会从打码列表里排除，其他检测到的人脸继续打码。</p><p>这样，给 AI 比较模糊的一句话，就能实现人脸打码了，比如输入一句：</p><blockquote><p>保留我框住的这个人，其他人全部打码。</p></blockquote><h2 id="中途还踩了一个-HDR-的坑"><a href="#中途还踩了一个-HDR-的坑" class="headerlink" title="中途还踩了一个 HDR 的坑"></a>中途还踩了一个 HDR 的坑</h2><p>第一次处理出来的视频，人脸打码本身没有太大问题，但成片明显变灰、变白了，和原视频的颜色差别很大。</p><p>检查后才发现，源视频是手机拍摄的 HDR 素材。如果按照普通 SDR 视频的方式解码和重新编码，BT.2020、HLG 等色彩信息可能会丢失。播放器用错误的方式解释画面颜色，看起来就像视频被蒙上了一层灰。</p><p>为了解决这个问题，正式处理前需要先用 ffprobe 检查视频的色彩信息。如果检测到 HLG 或 HDR10，就换成适合 HDR 素材的处理方式，使用更高位深的管线和 HEVC 10bit 输出，同时把原视频的色彩元数据重新写回去。</p><p>重新处理后，视频的亮度和颜色才恢复正常。</p><p>由此可见，一套真正可以复用的视频处理流程，不能只包含核心功能，还得包含输入检查和结果验收。</p><h2 id="我把这套流程整理成了一个-Skill"><a href="#我把这套流程整理成了一个-Skill" class="headerlink" title="我把这套流程整理成了一个 Skill"></a>我把这套流程整理成了一个 Skill</h2><p>视频处理完成后，我顺手把这次用到的脚本、处理步骤和踩过的坑，整理成了一个 <code>video-face-mosaic</code> Skill。</p><p>这次整理的 Skill 已经放到了 GitHub：</p><p><a href="https://github.com/Canace22/my-skills/tree/main/video-face-mosaic">video-face-mosaic Skill</a></p><p>如果你也有“视频里只保留一个人，其他人全部打码”的需求，可以直接拿去试试。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> AI工程化 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> AI编程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Claude Code 使用笔记</title>
+      <link href="/claude-note/"/>
+      <url>/claude-note/</url>
+      
+        <content type="html"><![CDATA[<h2 id="cc-总是问权限"><a href="#cc-总是问权限" class="headerlink" title="cc 总是问权限"></a>cc 总是问权限</h2><p>在执行长任务时，总是被权限询问打断，体验非常不好，可以配置一下 setting.json，放开所有权限，注意风险点：bypass 模式下 rm -rf、git push –force、任意网络请求都不会再问。如果想保守一点也可以配置为 auto，只拦截真正危险的操作。</p><figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;permissions&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;defaultMode&quot;</span><span class="punctuation">:</span> <span class="string">&quot;bypassPermissions&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> AI工程化 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> AI编程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>我的 Vibe Coding 撞墙了，兄弟们</title>
       <link href="/vibe-coding-problem/"/>
       <url>/vibe-coding-problem/</url>
@@ -7967,11 +8017,11 @@
     
     
     <entry>
-      <title>Git环境配置</title>
-      <link href="/git-environment-config/"/>
-      <url>/git-environment-config/</url>
+      <title>Git域名配置</title>
+      <link href="/git-domain-config/"/>
+      <url>/git-domain-config/</url>
       
-        <content type="html"><![CDATA[<p>结合了一些网上的方法，结合自己配置的实际情况写的文档。</p><span id="more"></span><ol><li><p>下载 git 主程序，下载地址：<a href="https://git-scm.com/downloads%EF%BC%8C">https://git-scm.com/downloads，</a> 双击安装包，一路 next 就行；</p></li><li><p>对于技术小白的我来说，命令行神马的太复杂了，所以就需要一个 git 界面画的软件来帮助我啦，这个软件就是 TortoiseGit，下载地址：<a href="https://tortoisegit.org/download/%EF%BC%8C">https://tortoisegit.org/download/，</a> 分为 32 位版和 64 位版，下载时要选好，安装的时候也是一路 next；</p></li><li><p>接下来就是解决怎么把本地项目关联发布到 git 上的问题了；</p></li></ol><p>(1) 首先打开 git 上的项目，复制 git 的 HTTP 地址；</p><p>(2) 然后创打开硬盘里的一个目录，最好是专门开发用的目录，点右键，选择“Git Clone…”，将地址复制进去，点击 OK；<br>(3) 出现 Success 提示，就代表 clone 成功了，close 掉对话框，然后就出现了名为 git 项目的文件夹了；</p><ol start="4"><li>本地改动保存为一个版本，我们以新建文件为例；</li></ol><p>(1) 首先，打开刚才生成文件夹，新建一个名为 readme.txt 的空文件；</p><p>(2) 然后在这里鼠标右击，选择 Git Commit -&gt; “master”…，会弹出一个对话框（注意：这里可能会提醒设置用户名、密码 和邮箱，点击确定，填写 git 账户的用户名和注册邮箱以及密码即可）；</p>]]></content>
+        <content type="html"><![CDATA[<p>git 域名配置</p><span id="more"></span><ol><li><p>在 Godaddy 购买的域名；</p></li><li><p>查找 DNSpod 解析域名，没什么难度，就是添加一条记录，保存而已，记得在添加域名到 DNSpod 之后，复制两个 NS 地址到 godaddy 的域名服务器下；</p></li><li><p>Git 项目根目录下创建 CNAME 文件，把域名填进去，push 就行了。</p></li></ol>]]></content>
       
       
       <categories>
@@ -7992,11 +8042,11 @@
     
     
     <entry>
-      <title>Git域名配置</title>
-      <link href="/git-domain-config/"/>
-      <url>/git-domain-config/</url>
+      <title>Git环境配置</title>
+      <link href="/git-environment-config/"/>
+      <url>/git-environment-config/</url>
       
-        <content type="html"><![CDATA[<p>git 域名配置</p><span id="more"></span><ol><li><p>在 Godaddy 购买的域名；</p></li><li><p>查找 DNSpod 解析域名，没什么难度，就是添加一条记录，保存而已，记得在添加域名到 DNSpod 之后，复制两个 NS 地址到 godaddy 的域名服务器下；</p></li><li><p>Git 项目根目录下创建 CNAME 文件，把域名填进去，push 就行了。</p></li></ol>]]></content>
+        <content type="html"><![CDATA[<p>结合了一些网上的方法，结合自己配置的实际情况写的文档。</p><span id="more"></span><ol><li><p>下载 git 主程序，下载地址：<a href="https://git-scm.com/downloads%EF%BC%8C">https://git-scm.com/downloads，</a> 双击安装包，一路 next 就行；</p></li><li><p>对于技术小白的我来说，命令行神马的太复杂了，所以就需要一个 git 界面画的软件来帮助我啦，这个软件就是 TortoiseGit，下载地址：<a href="https://tortoisegit.org/download/%EF%BC%8C">https://tortoisegit.org/download/，</a> 分为 32 位版和 64 位版，下载时要选好，安装的时候也是一路 next；</p></li><li><p>接下来就是解决怎么把本地项目关联发布到 git 上的问题了；</p></li></ol><p>(1) 首先打开 git 上的项目，复制 git 的 HTTP 地址；</p><p>(2) 然后创打开硬盘里的一个目录，最好是专门开发用的目录，点右键，选择“Git Clone…”，将地址复制进去，点击 OK；<br>(3) 出现 Success 提示，就代表 clone 成功了，close 掉对话框，然后就出现了名为 git 项目的文件夹了；</p><ol start="4"><li>本地改动保存为一个版本，我们以新建文件为例；</li></ol><p>(1) 首先，打开刚才生成文件夹，新建一个名为 readme.txt 的空文件；</p><p>(2) 然后在这里鼠标右击，选择 Git Commit -&gt; “master”…，会弹出一个对话框（注意：这里可能会提醒设置用户名、密码 和邮箱，点击确定，填写 git 账户的用户名和注册邮箱以及密码即可）；</p>]]></content>
       
       
       <categories>

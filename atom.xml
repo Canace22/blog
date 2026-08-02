@@ -6,7 +6,7 @@
   <link href="https://canace.site/atom.xml" rel="self"/>
   
   <link href="https://canace.site/"/>
-  <updated>2026-07-20T02:54:44.047Z</updated>
+  <updated>2026-08-02T08:49:15.689Z</updated>
   <id>https://canace.site/</id>
   
   <author>
@@ -15,6 +15,44 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>我让 Claude 给视频里的人脸打码，顺手做成了一个 Skill</title>
+    <link href="https://canace.site/video-face-mosaic-skill/"/>
+    <id>https://canace.site/video-face-mosaic-skill/</id>
+    <published>2026-08-02T08:46:26.000Z</published>
+    <updated>2026-08-02T08:49:15.689Z</updated>
+    
+    
+    <summary type="html">用 Claude 处理视频人脸打码，保留指定人物，顺便把轨迹补齐和 HDR 处理沉淀成可复用的 Skill。</summary>
+    
+    
+    
+    <category term="AI工程化" scheme="https://canace.site/categories/AI%E5%B7%A5%E7%A8%8B%E5%8C%96/"/>
+    
+    
+    <category term="AI编程" scheme="https://canace.site/tags/AI%E7%BC%96%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Claude Code 使用笔记</title>
+    <link href="https://canace.site/claude-note/"/>
+    <id>https://canace.site/claude-note/</id>
+    <published>2026-07-27T01:53:30.000Z</published>
+    <updated>2026-07-27T02:23:01.221Z</updated>
+    
+    
+    <summary type="html">记录 Claude Code 使用中的经验。</summary>
+    
+    
+    
+    <category term="AI工程化" scheme="https://canace.site/categories/AI%E5%B7%A5%E7%A8%8B%E5%8C%96/"/>
+    
+    
+    <category term="AI编程" scheme="https://canace.site/tags/AI%E7%BC%96%E7%A8%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>我的 Vibe Coding 撞墙了，兄弟们</title>
@@ -361,44 +399,6 @@
     
     
     <category term="随笔" scheme="https://canace.site/tags/essays/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>使用大模型来维护知识库</title>
-    <link href="https://canace.site/llm-wiki/"/>
-    <id>https://canace.site/llm-wiki/</id>
-    <published>2026-04-08T01:45:45.000Z</published>
-    <updated>2026-06-21T05:07:42.448Z</updated>
-    
-    
-    <summary type="html">介绍「原始资料 + 规则文件 + wiki」分工：人只负责输入，大模型维护持久化知识库（索引、对话总结、报告等），作为跨 agent 的长期上下文；说明三层架构、wiki 目录设计与落地步骤，并关联 Karpathy 的 LLM Wiki 思路。</summary>
-    
-    
-    
-    <category term="AI工程化" scheme="https://canace.site/categories/AI%E5%B7%A5%E7%A8%8B%E5%8C%96/"/>
-    
-    
-    <category term="AI编程" scheme="https://canace.site/tags/AI%E7%BC%96%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Gemini 在打开新会话时，是如何有记忆的</title>
-    <link href="https://canace.site/gemini-new-session-memory/"/>
-    <id>https://canace.site/gemini-new-session-memory/</id>
-    <published>2026-04-02T07:00:00.000Z</published>
-    <updated>2026-04-02T03:53:17.674Z</updated>
-    
-    
-    <summary type="html">探讨 Google Gemini 在新对话中仍能呈现「记得你」的体验背后，可能涉及的账户级记忆、Saved info、跨会话摘要等机制与边界。</summary>
-    
-    
-    
-    <category term="AI探索" scheme="https://canace.site/categories/intelligent/"/>
-    
-    
-    <category term="AI原理" scheme="https://canace.site/tags/AI%E5%8E%9F%E7%90%86/"/>
     
   </entry>
   
