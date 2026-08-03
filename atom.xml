@@ -6,7 +6,7 @@
   <link href="https://canace.site/atom.xml" rel="self"/>
   
   <link href="https://canace.site/"/>
-  <updated>2026-08-03T09:39:00.606Z</updated>
+  <updated>2026-08-03T10:03:17.146Z</updated>
   <id>https://canace.site/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>AI 生成到 90% 突然断了：点“继续”，会发生什么？</title>
+    <title>AI 生成到 90% 突然断了：你的解决方案是？</title>
     <link href="https://canace.site/ai-stream-recovery/"/>
     <id>https://canace.site/ai-stream-recovery/</id>
     <published>2026-08-03T08:33:58.000Z</published>
-    <updated>2026-08-03T09:39:00.606Z</updated>
+    <updated>2026-08-03T10:03:17.146Z</updated>
     
     
     <summary type="html">从内容损坏、断点定位到事件重放和 KV Cache，讲清 AI 流式生成中断后真正发生了什么。</summary>
