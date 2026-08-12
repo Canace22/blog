@@ -4,6 +4,56 @@
   
     
     <entry>
+      <title>关于内容创作的一些思考</title>
+      <link href="/content-create-thinking/"/>
+      <url>/content-create-thinking/</url>
+      
+        <content type="html"><![CDATA[<p>最近不太想接着更新微信公众号等内容平台了，主要原因有以下几个吧</p><h2 id="一-写作压力"><a href="#一-写作压力" class="headerlink" title="一. 写作压力"></a>一. 写作压力</h2><p>业余时间更新博客文章，可以随意写我想写的。更新到微信公众号等平台还需要考虑选题，文风，会不会有阅读量等诸多繁杂的事宜，一周更新一篇文章都挺难的。这给了一些我无形的压力，每周我都要周末抽半天呆在电脑前面想：写什么，怎么写这个问题，挺耗时间的。</p><p>关于文风这个，有时候看多了别人的，再对比自己那点阅读量。就会怀疑，是不是自己写得不好，想着让 AI 帮忙润色，但是效果往往很差，AI 会有一些口癖或者官腔，让我一眼就感觉味道太明显，看不下去，于是自己动手改，又改半天，死循环，越写越没意思感觉。</p><p>可以写自己每周的一些实践、思考或者笔记内容，但是这些也需要时间整理才能发到不同的平台，微信公众号这些平台对内容有一些偏好，需要适配才会有流量，如果按照我的想法随意写，多半可能是没什么流量的，这种更新上去也没什么意思。</p><h2 id="二-平台偏好"><a href="#二-平台偏好" class="headerlink" title="二. 平台偏好"></a>二. 平台偏好</h2><p>刚刚说到了平台偏好，经过我一段时间的观察，微信公众号、掘金等内容平台，现在都比较热衷于推一些有话题的文章，技术类文章什么会有话题呢？焦虑、争议、放大 xx 技术能力对生产、生活的影响等。</p><p>比如，我之前刷 x 和微信公众号就看到了很多讲 codex&#x2F;xxx + obsidian 建自生长知识库啥的，讲得天花乱坠，流量都挺好，我几个月前也写了一篇这个文章，意思基本一样，但是我写得很平，没什么话题点，流量就一般般。</p><p>我不刻意去往那方面写，是因为我不想刻意去夸大某些能力，误导别人，尽量的只阐述，不深入过多的观点。obsidian 他只是个笔记工具啊，是可以结合双链，可视化知识库数据，但他没有这么神，他就是一个笔记工具。codex 等智能体也只是帮我们整理数据而已，结合起来就是 AI 帮我们做数据（内容）整理，我们的笔记可以分门别类好，加上 AI 的语义化搜索，可以让 AI 更懂我们这部分内容。</p><p>不过我也挺佩服他们的，各种概念造的风生水起，牛。</p><h2 id="三-混淆了写作和内容运营"><a href="#三-混淆了写作和内容运营" class="headerlink" title="三. 混淆了写作和内容运营"></a>三. 混淆了写作和内容运营</h2><p>以上说的东西，我都会在写作的时候同步思考，这就把写作和内容运营两个完全不同的性质混在了一起，把事情变复杂了，我想接下来我可能还是继续写博客，内容运营相关的工作分配给我的 AI 助手去做，持续沉淀这方面的 AI 能力，同时也保住我的本心，描述和记录我的一些想法和实践。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 软技能与思考 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 随笔 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>深入 Claude Code 的 Web 工具：WebFetch 与 WebSearch</title>
+      <link href="/claude-webfetch/"/>
+      <url>/claude-webfetch/</url>
+      
+        <content type="html"><![CDATA[<p>Claude Code 有两个内置 Web 工具：</p><ul><li><p>WebFetch: 接收一个 URL 回答这个 URL 页面相关的问题，返回的是关于这个页面的问题答案和一些获取到的元数据</p></li><li><p>WebSearch: 跟搜索引擎一样，接收查询信息，返回一些网址索引和标题摘要</p></li></ul><p>参考文献：</p><p><a href="https://wire.wise-relations.com/news/2026-04-01-claude-code-websearch-leak/">Claude Code Leak: How WebSearch Sees Your Website</a></p><p><a href="https://mikhail.io/2025/10/claude-code-web-tools/">Inside Claude Code’s Web Tools: WebFetch vs WebSearch</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> AI工程化 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> AI编程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>AI 生成到 90% 突然断了：你的解决方案是？</title>
       <link href="/ai-stream-recovery/"/>
       <url>/ai-stream-recovery/</url>
@@ -8042,11 +8092,11 @@
     
     
     <entry>
-      <title>Git环境配置</title>
-      <link href="/git-environment-config/"/>
-      <url>/git-environment-config/</url>
+      <title>Git域名配置</title>
+      <link href="/git-domain-config/"/>
+      <url>/git-domain-config/</url>
       
-        <content type="html"><![CDATA[<p>结合了一些网上的方法，结合自己配置的实际情况写的文档。</p><span id="more"></span><ol><li><p>下载 git 主程序，下载地址：<a href="https://git-scm.com/downloads%EF%BC%8C">https://git-scm.com/downloads，</a> 双击安装包，一路 next 就行；</p></li><li><p>对于技术小白的我来说，命令行神马的太复杂了，所以就需要一个 git 界面画的软件来帮助我啦，这个软件就是 TortoiseGit，下载地址：<a href="https://tortoisegit.org/download/%EF%BC%8C">https://tortoisegit.org/download/，</a> 分为 32 位版和 64 位版，下载时要选好，安装的时候也是一路 next；</p></li><li><p>接下来就是解决怎么把本地项目关联发布到 git 上的问题了；</p></li></ol><p>(1) 首先打开 git 上的项目，复制 git 的 HTTP 地址；</p><p>(2) 然后创打开硬盘里的一个目录，最好是专门开发用的目录，点右键，选择“Git Clone…”，将地址复制进去，点击 OK；<br>(3) 出现 Success 提示，就代表 clone 成功了，close 掉对话框，然后就出现了名为 git 项目的文件夹了；</p><ol start="4"><li>本地改动保存为一个版本，我们以新建文件为例；</li></ol><p>(1) 首先，打开刚才生成文件夹，新建一个名为 readme.txt 的空文件；</p><p>(2) 然后在这里鼠标右击，选择 Git Commit -&gt; “master”…，会弹出一个对话框（注意：这里可能会提醒设置用户名、密码 和邮箱，点击确定，填写 git 账户的用户名和注册邮箱以及密码即可）；</p>]]></content>
+        <content type="html"><![CDATA[<p>git 域名配置</p><span id="more"></span><ol><li><p>在 Godaddy 购买的域名；</p></li><li><p>查找 DNSpod 解析域名，没什么难度，就是添加一条记录，保存而已，记得在添加域名到 DNSpod 之后，复制两个 NS 地址到 godaddy 的域名服务器下；</p></li><li><p>Git 项目根目录下创建 CNAME 文件，把域名填进去，push 就行了。</p></li></ol>]]></content>
       
       
       <categories>
@@ -8067,11 +8117,11 @@
     
     
     <entry>
-      <title>Git域名配置</title>
-      <link href="/git-domain-config/"/>
-      <url>/git-domain-config/</url>
+      <title>Git环境配置</title>
+      <link href="/git-environment-config/"/>
+      <url>/git-environment-config/</url>
       
-        <content type="html"><![CDATA[<p>git 域名配置</p><span id="more"></span><ol><li><p>在 Godaddy 购买的域名；</p></li><li><p>查找 DNSpod 解析域名，没什么难度，就是添加一条记录，保存而已，记得在添加域名到 DNSpod 之后，复制两个 NS 地址到 godaddy 的域名服务器下；</p></li><li><p>Git 项目根目录下创建 CNAME 文件，把域名填进去，push 就行了。</p></li></ol>]]></content>
+        <content type="html"><![CDATA[<p>结合了一些网上的方法，结合自己配置的实际情况写的文档。</p><span id="more"></span><ol><li><p>下载 git 主程序，下载地址：<a href="https://git-scm.com/downloads%EF%BC%8C">https://git-scm.com/downloads，</a> 双击安装包，一路 next 就行；</p></li><li><p>对于技术小白的我来说，命令行神马的太复杂了，所以就需要一个 git 界面画的软件来帮助我啦，这个软件就是 TortoiseGit，下载地址：<a href="https://tortoisegit.org/download/%EF%BC%8C">https://tortoisegit.org/download/，</a> 分为 32 位版和 64 位版，下载时要选好，安装的时候也是一路 next；</p></li><li><p>接下来就是解决怎么把本地项目关联发布到 git 上的问题了；</p></li></ol><p>(1) 首先打开 git 上的项目，复制 git 的 HTTP 地址；</p><p>(2) 然后创打开硬盘里的一个目录，最好是专门开发用的目录，点右键，选择“Git Clone…”，将地址复制进去，点击 OK；<br>(3) 出现 Success 提示，就代表 clone 成功了，close 掉对话框，然后就出现了名为 git 项目的文件夹了；</p><ol start="4"><li>本地改动保存为一个版本，我们以新建文件为例；</li></ol><p>(1) 首先，打开刚才生成文件夹，新建一个名为 readme.txt 的空文件；</p><p>(2) 然后在这里鼠标右击，选择 Git Commit -&gt; “master”…，会弹出一个对话框（注意：这里可能会提醒设置用户名、密码 和邮箱，点击确定，填写 git 账户的用户名和注册邮箱以及密码即可）；</p>]]></content>
       
       
       <categories>
