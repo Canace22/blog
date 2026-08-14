@@ -13,6 +13,8 @@
 
 ## Concepts
 
+- [Skill、会话与执行环境](concepts/skill-session-runtime.md)
+- [AI 流式生成恢复](concepts/ai-stream-recovery.md)
 - [提升 AI Coding 稳定性的经验上下文模式](concepts/agent-coding-stability.md)
 - [AI 辅助开发](concepts/ai-assisted-development.md)
 - [Cursor Cookbook](concepts/cursor-cookbook.md)
@@ -335,6 +337,7 @@
 
 ### AI探索
 
+- [搞懂 GPT-5.6：Sol、Terra、Luna 和 Thinking Effort](sources/gpt-5-6-sol-terra-luna.md) — `source/_posts/gpt-5-6-sol-terra-luna.md`（模型层级、Thinking Effort 与任务选型）
 - [Gemini 在打开新会话时，是如何有记忆的](sources/gemini-new-session-memory.md) — `source/_posts/gemini-new-session-memory.md`
 - [AI使人膨胀](sources/ai-expansion.md) — `source/_posts/ai-expansion.md`
 - [为什么AI大模型需要”显卡”/TPU、GPU与AMD之间有什么区别](sources/why-graphics-card.md) — `source/_posts/why-graphics-card.md`
@@ -349,10 +352,16 @@
 - [我们是否需要AI知识库（笔记版）](sources/why-we-need-ai-knowledge-bases.md) — 早期短笔记版（来自 `AI 探索/`，与博文 `AI-knowledge-base.md` 互为对照）
 - [@123olp —— 生成式辩证可能性空间搜索（X）](sources/x-123olp-generative-dialectical-possibility-search.md) — 用户提供的帖文摘录
 - [Gemini 新会话与 User Summary](sources/gemini-user-summary-cross-session.md) — 跨会话记忆机制观察（来自 `AI 探索/`）
-- [软件开发范式演进](sources/software-development-paradigms.md) — Telegram 摘录（无对应 `source/_posts`）
 
 ### AI工程化
 
+- [笔记本都合上了，Claude 为什么还能在手机上执行电脑上装的技能？](sources/claude-skill-cross-device.md) — `source/_posts/claude-skill-cross-device.md`（Skill / 会话 / 执行环境，云端容器与跨设备入口）
+- [深入 Claude Code 的 Web 工具：WebFetch 与 WebSearch](sources/claude-webfetch.md) — `source/_posts/claude-webfetch.md`（读取已知页面与搜索候选页面的工具差异）
+- [AI 生成到 90% 突然断了：你的解决方案是？](sources/ai-stream-recovery.md) — `source/_posts/ai-stream-recovery.md`（连接恢复、事件重放、语义续写与 KV Cache）
+- [我让 Claude 给视频里的人脸打码，顺手做成了一个 Skill](sources/video-face-mosaic-skill.md) — `source/_posts/video-face-mosaic-skill.md`（人脸轨迹、指定人物保留与 HDR 处理）
+- [Claude Code 使用笔记](sources/claude-note.md) — `source/_posts/claude-note.md`（权限模式与风险边界）
+- [我的 vibe coding 撞墙了，兄弟们](sources/vibe-coding-problem.md) — `source/_posts/vibe-coding-problem.md`（审查、追问、独立实践与学习闭环）
+- [在 CLI 里用 Claude Design 做原型设计](sources/claude-design-cli-prototyping.md) — `source/_posts/claude-design-cli-prototyping.md`（设计系统、交互原型与代码导入）
 - [原来我一直用错了 Cowork](sources/use-cowork.md) — `source/_posts/use-cowork.md`（Cowork / Claude Code / Cursor 定位、token 消耗与省额度实践）
 - [AI Native 不是接个 API](sources/ai-native.md) — `source/_posts/ai-native.md`（AI化 vs AI Native 四阶段 + 实体中心架构）
 - [跟 AI 说 ok，它为什么有时不继续](sources/go-ahead-vs-continue-ai-chat.md) — `source/_posts/go-ahead-vs-continue-ai-chat.md`（go ahead / continue / ok 语义对比）
@@ -387,6 +396,7 @@
 
 ### 软技能与思考
 
+- [关于内容创作的一些思考](sources/content-create-thinking.md) — `source/_posts/content-create-thinking.md`（写作压力、平台偏好与内容运营边界）
 - [节奏心理学：叙事中的「情绪推手」](sources/rhythm-psychology.md) — `source/_posts/rhythm-psychology.md`
 - [三也：把想法丢给 AI 拎主线](sources/sanye-ai-organize-thoughts.md) — Telegram 群聊（2026-04-30）
 - [叙事研究](sources/narrative-research.md) — `source/_posts/narrative-research.md`

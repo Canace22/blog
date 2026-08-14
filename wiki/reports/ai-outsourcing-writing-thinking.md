@@ -38,6 +38,12 @@
 - 关键在于：**最终判断力仍在人手里**，AI 只是整理工具
 - 与"思维外包"的核心区别：思考过程没有被跳过，只是被 AI 加速了结构化
 
+## 写作与内容运营的边界
+
+[关于内容创作的一些思考](../sources/content-create-thinking.md) 提供了个人实践视角。平台写作会同时引入选题、流量、文风和更新频率等运营压力。若再用 AI 润色并反复去除“AI 味”，写作成本可能继续上升。
+
+这篇材料把前面的原则进一步落到任务分工上：作者保留博客正文的个人表达，把选题适配、分发等内容运营工作交给 AI 助手。这样既使用了 AI 的整理能力，也没有把核心思考和表达交出去。
+
 ## 另见
 
 - [把想法丢给 AI 拎主线](../sources/sanye-ai-organize-thoughts.md)
@@ -47,3 +53,8 @@
 - [AI 协作心理负担](../concepts/ai-collaboration-psychological-burden.md)（概念入口）
 - [AI 协作心理负担：主题对照与来源索引](ai-collaboration-psychological-burden.md)（本主题完整 report）
 - [LLM 维护的知识库](../concepts/llm-maintained-wiki.md)（本仓库元主题：如何用 LLM **维护**知识而非替代思考）
+- [关于内容创作的一些思考](../sources/content-create-thinking.md)（写作与内容运营的边界）
+
+---
+
+*修订：assistant（Codex），2026-08-12。*

@@ -36,15 +36,20 @@
 - 关注 AI 如何调用工具、接入外部上下文、把重复流程封装成 Skill，而不是停留在聊天补全层。
 - 代表文章 / 资料：
   - [Cursor 编写 SKILL：通过 web 搜索并下载电影](../sources/cursor-skill-web-search-download-movie.md)
+  - [我让 Claude 给视频里的人脸打码，顺手做成了一个 Skill](../sources/video-face-mosaic-skill.md)
+  - [笔记本都合上了，Claude 为什么还能在手机上执行电脑上装的技能？](../sources/claude-skill-cross-device.md)
   - [用 Cursor 提高工作效率实战笔记](../sources/improve-work-efficiency-with-cursor-practical-notes.md)
   - [首次尝试95%都是垃圾：一位工程师使用Claude Code的6周之旅](../sources/translate-use-claude-code.md)
   - [Claude Code 常见工作流程](../sources/claude-code-common-workflows.md) · [Claude Code 并行运行代理](../sources/claude-code-parallel-agents.md)（官方文档摘要）
+  - [深入 Claude Code 的 Web 工具：WebFetch 与 WebSearch](../sources/claude-webfetch.md)
 
 ### 5. 稳定性、Review 与质量控制
 
 - 你写的内容反复强调：AI 首次输出往往不可靠，关键在于经验上下文、三次尝试、人工 review、测试与渐进修正。
 - 代表文章：
   - [一个提升 AI Coding 稳定性的思路](../sources/agent-coding-stability.md)
+  - [我的 vibe coding 撞墙了，兄弟们](../sources/vibe-coding-problem.md)
+  - [AI 生成到 90% 突然断了：你的解决方案是？](../sources/ai-stream-recovery.md)
   - [首次尝试95%都是垃圾：一位工程师使用Claude Code的6周之旅](../sources/translate-use-claude-code.md)
   - [AI赋能存量项目——从函数助手到业务伙伴](../sources/ai-coding-share.md)
 
@@ -53,6 +58,8 @@
 - 不只是泛谈效率，而是落到前端初始化、图片转页面、Figma 到代码、文档生成、运维脚本、Bug 修复、界面优化、游戏制作等具体场景。
 - 代表文章：
   - [用 Cursor 提高工作效率实战笔记](../sources/improve-work-efficiency-with-cursor-practical-notes.md)
+  - [在 CLI 里用 Claude Design 做原型设计](../sources/claude-design-cli-prototyping.md)
+  - [我让 Claude 给视频里的人脸打码，顺手做成了一个 Skill](../sources/video-face-mosaic-skill.md)
   - [使用 AI 优化界面交互](../sources/ai-optimize-ui.md)
   - [面向大模型编程(LOP)在游戏制作流程中的应用畅想](../sources/ai-coding-game.md)
 
@@ -63,6 +70,15 @@
   - [使用大模型来维护知识库](../sources/llm-wiki.md)
   - [我们是否需要AI知识库](../sources/AI-knowledge-base.md)
   - [Gemini 在打开新会话时，是如何有记忆的](../sources/gemini-new-session-memory.md)
+
+### 8. 模型、权限与成本边界
+
+- 新增文章开始讨论模型档位、Thinking Effort、权限模式和额度消耗。这些内容属于 AI Coding 的运行边界，决定任务该用多少能力，以及 Agent 可以自主执行到什么程度。
+- 代表文章：
+  - [搞懂 GPT-5.6：Sol、Terra、Luna 和 Thinking Effort](../sources/gpt-5-6-sol-terra-luna.md)
+  - [Claude Code 使用笔记](../sources/claude-note.md)
+  - [原来我一直用错了 Cowork](../sources/use-cowork.md)
+  - [笔记本都合上了，Claude 为什么还能在手机上执行电脑上装的技能？](../sources/claude-skill-cross-device.md)
 
 ## 总体判断
 
@@ -91,7 +107,8 @@
 - [LLM 维护的知识库](../concepts/llm-maintained-wiki.md)
 - [AI 辅助开发](../concepts/ai-assisted-development.md)
 - [Claude Code 常见工作流](../concepts/claude-code-workflows.md)
+- [Skill、会话与执行环境](../concepts/skill-session-runtime.md)
 
 ---
 
-*修订：Cursor Agent，2026-06-13（lint：Harness 段落与 Claude Code 来源）。*
+*修订：Cursor Agent，2026-08-14（补充 Skill / 会话 / 执行环境与跨设备继续任务）。*

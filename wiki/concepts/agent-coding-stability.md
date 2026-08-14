@@ -7,6 +7,8 @@ Agent 不稳定往往因为只给了目标没给解法。把个人解决问题�
 ## 来源
 
 - [一个提升 AI Coding 稳定性的思路](../sources/agent-coding-stability.md)（博客原文）
+- [我让 Claude 给视频里的人脸打码，顺手做成了一个 Skill](../sources/video-face-mosaic-skill.md)（Skill 沉淀案例）
+- [笔记本都合上了，Claude 为什么还能在手机上执行电脑上装的技能？](../sources/claude-skill-cross-device.md)（跨设备继续执行 Skill）
 
 ## 核心论述
 
@@ -41,6 +43,8 @@ Agent 不稳定往往因为只给了目标没给解法。把个人解决问题�
 
 将经验写成 Skill，加到 Coding 编辑器里，让 AI 自行调用。大大提高开发效率。
 
+Skill 带走的是做法，不是某台电脑的安装状态。跨设备继续任务时，还要看会话跑在云端还是本地，以及那个执行环境能不能按 Skill 准备依赖。详见 [Skill、会话与执行环境](skill-session-runtime.md)。
+
 ## 关键模式
 
 **Debug 模式**：复现问题 → 查看日志 → 缩小问题范围 → 验证假设 → 修复问题
@@ -59,5 +63,12 @@ Agent 不稳定往往因为只给了目标没给解法。把个人解决问题�
 - [LLM 维护的知识库](../concepts/llm-maintained-wiki.md) — 经验库可以沉淀在 wiki 中
 - [LOP 模式](../concepts/lop-patterns.md) — 面向大模型编程，核心是给模型方法而非只给目标
 - [Claude Code 常见工作流](../concepts/claude-code-workflows.md) — 官方提示工作流与自定义 Skill/经验模式互补
+- [Skill、会话与执行环境](skill-session-runtime.md) — Skill 可跨设备载入，但不携带本机运行环境
+- [我让 Claude 给视频里的人脸打码，顺手做成了一个 Skill](../sources/video-face-mosaic-skill.md) — 经验封装成 Skill 的完整案例
+- [笔记本都合上了，Claude 为什么还能在手机上执行电脑上装的技能？](../sources/claude-skill-cross-device.md) — Skill 沉淀后的跨设备执行边界
 - [程序员愿意为 Claude 写文档，但不愿为同事写](../sources/claude-handoff-doc-to-repo.md) — handoff doc 审阅后入 repo，跨会话上下文
 - [Hermes：`/anthropic` 网关与模型名点号规范化](../concepts/hermes-anthropic-endpoint-model-id-normalization.md) — 多厂商 agent 配置类坑位可写成可复用排查笔记
+
+---
+
+*维护：Cursor Agent，2026-08-14。*

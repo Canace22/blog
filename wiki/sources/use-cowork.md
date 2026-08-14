@@ -39,10 +39,13 @@ First-person practice note on misusing Claude Cowork for developer work. Contras
 
 - [AI 辅助开发](../concepts/ai-assisted-development.md)
 - [Chat assistant user memory](../concepts/chat-assistant-user-memory.md)
+- [Skill、会话与执行环境](../concepts/skill-session-runtime.md)
 
 ## 另见（本库相近资料）
 
 - [查询：AI 产品的形态分化与底层逻辑](../queries/ai-product-forms-and-models.md)（沙箱 vs 直接执行、token 效率、产品形态全景）
+- [Skill、会话与执行环境](../concepts/skill-session-runtime.md)（云端会话 / Remote Control，沙箱执行与跨设备入口）
+- [笔记本都合上了，Claude 为什么还能在手机上执行电脑上装的技能？](../sources/claude-skill-cross-device.md)
 - [Claude Code 常见工作流程](../sources/claude-code-common-workflows.md)
 - [Claude Code 并行运行代理](../sources/claude-code-parallel-agents.md)
 - [用 Cursor 提高工作效率实战笔记](../sources/improve-work-efficiency-with-cursor-practical-notes.md)
@@ -50,4 +53,4 @@ First-person practice note on misusing Claude Cowork for developer work. Contras
 
 ---
 
-*维护：Cursor Agent，2026-06-23。*
+*维护：Cursor Agent，2026-08-14。*

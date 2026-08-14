@@ -1,5 +1,10 @@
 # Wiki Log
 
+- 2026-08-14：Wiki lint：结构检查通过（索引覆盖、无断链、无 Clippings 回链、无零入链页）；补 `agent-coding-stability`、`claude-code-workflows`、`ai-stream-recovery`、`ai-assisted-development` 互链；规范近期 AI 工程化来源页相对路径；`content-create-thinking` 补心理负担互链。
+- 2026-08-14：同步 `source/_posts/claude-skill-cross-device.md` 与 wiki：来源页标题/摘要对齐博文（云端 zip Skill、`/mnt/skills`、相册边界）；补 `description`；更新 `skill-session-runtime`、`use-cowork`、`video-face-mosaic-skill`、`claude-code-workflows`、`ai-assisted-development`、`ai-coding-coverage` 与 `wiki/index.md` 链接文案。
+- 2026-08-14：Ingest `source/_posts/claude-skill-cross-device.md` → 新增来源页与概念 `wiki/concepts/skill-session-runtime.md`；更新 `video-face-mosaic-skill`、`use-cowork`、`claude-code-workflows`、`ai-assisted-development`、`agent-coding-stability`、`ai-coding-coverage`、`ai-engineering-theme-synthesis` 与 `wiki/index.md`。
+- 2026-08-12：Wiki lint：补齐 6 篇 `source/_posts` 的来源页和索引；更新 AI 辅助开发、Claude Code 工作流、AI 使用边界、AI 外包写作与思维，以及 AI Coding 覆盖面；为 `sqlite-vs-hexo-db-vs-indexeddb` 补双向知识链；移除“软件开发范式演进”的重复分类。验证无断链、无未索引维护页、无缺失来源页。
+- 2026-08-12：Ingest `source/_posts/ai-stream-recovery.md`、`source/_posts/claude-webfetch.md` → 新增两个来源页与概念 `wiki/concepts/ai-stream-recovery.md`；更新 `wiki/concepts/claude-code-workflows.md`、`wiki/index.md`（Concepts / AI工程化）。检查 `hexo-blog-migration.md`，本次仅移除 description 引号，既有来源摘要无需更新。
 - 2026-07-01：Query「AI 助手响应时，为什么要显示 loading 或打字效果」（md-render 对话沉淀）→ 新增 `wiki/queries/ai-assistant-loading-and-typing-response.md`；更新 `wiki/index.md` Queries。
 - 2026-07-01：Query「AI 助手让用户选择时，为什么要做成选择卡片」（md-render 对话沉淀）→ 新增 `wiki/queries/ai-assistant-choice-cards-protocol.md`；更新 `wiki/index.md` Queries。
 - 2026-07-01：Query「md-render：资产优先与业务编排原则」（对话沉淀）→ 新增 `wiki/queries/md-render-asset-orchestration-principles.md`；`related-doc-keyword-similarity-search`、`sqlite-fts5-for-doc-search`、`compiled-knowledge-vault`、`keyword-overlap-recall` 互链；更新 `wiki/index.md` Queries。

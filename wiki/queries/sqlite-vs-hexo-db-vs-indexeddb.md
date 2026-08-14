@@ -76,6 +76,12 @@ SQLite 什么情况下用？和 Hexo 的本地数据库（db.json）有什么区
 
 ## 相关链接
 
+- [SQLite FTS5 是什么，文档检索什么时候用它](sqlite-fts5-for-doc-search.md)
+- [Notion + Chrome 书签打造个人知识库](../sources/personal-knowledge-base.md)
 - [SQLite 官网](https://www.sqlite.org/)
 - [IndexedDB MDN 文档](https://developer.mozilla.org/zh-CN/docs/Web/API/IndexedDB_API)
 - [Hexo 官网](https://hexo.io/)
+
+---
+
+*修订：assistant（Codex），2026-08-12。*

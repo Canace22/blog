@@ -69,10 +69,11 @@ FTS5 优势：**本地、无模型、延迟低、比 `includes` 专业**。
 ## 另见
 
 - [关联文档搜索能不用向量 embedding 吗](related-doc-keyword-similarity-search.md)
+- [SQLite、Hexo db.json 与 IndexedDB 的区别](sqlite-vs-hexo-db-vs-indexeddb.md)
 - [关键词重合召回](../concepts/keyword-overlap-recall.md)
 - [RAG 与 Graph RAG](../concepts/rag-and-graph-rag.md)
 - [AI Knowledge Bases](../concepts/ai-knowledge-bases.md)
 
 ---
 
-*Query 草稿：Cursor Agent；2026-06-24。*
+*修订：assistant（Codex），2026-08-12。*
