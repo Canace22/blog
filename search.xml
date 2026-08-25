@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>如何开发一个有手感的赛车游戏 Demo</title>
+      <link href="/fable-pixel-game-vibe-coding/"/>
+      <url>/fable-pixel-game-vibe-coding/</url>
+      
+        <content type="html"><![CDATA[<p>今天在 Reddit 看到一篇游戏 Vibe Coding 吐槽帖，讨论用 AI 工具 Fable 开发像素游戏时遇到的困难。</p><p>楼主的情况：</p><ul><li>连续使用 Claude Pro Max 20X 和 Fable 开发了 4 周，消耗约 330 亿 tokens。</li><li>项目已有约 4 万行代码，两周前从 Phaser 迁移到 Godot。</li><li>目前仍未解决车辆移动等基础问题，因此质疑为什么 Fable 的效果这么差。</li></ul><p>我翻了下评论，很多人认为：问题主要不在 Fable，而在开发方法。AI 可以显著降低写代码的门槛，但不会替开发者补齐游戏设计、空间透视、工程架构和验收判断能力。如果没有预期结果，投入再多 tokens 也很难把项目救回来。</p><p>所以，AI 时代的游戏开发，应该是什么样的呢？</p><p>根据这篇帖子的讨论，我尝试去做了一个同类型游戏，期望能做出一个可玩性高，手感还不错的赛车游戏。结果没有令我失望，做出来的游戏，在我的电脑上玩起来还是蛮好的，起码是可以硬控住半个钟的水平吧。</p><p>这是<a href="https://canace22.github.io/claude-car-game/">游戏地址</a></p><p><img src="https://canace22.github.io/picx-images-hosting/20260824/image.8l0to7ks5w.webp" alt="俯视像素赛车游戏画面"></p><p><img src="https://canace22.github.io/picx-images-hosting/20260824/image.5flbp9sgsz.webp" alt="游戏内状态与网格调试叠加"></p><p>做这个游戏之前，我根据帖子的评论，梳理出了一份 AI 开发必须遵守的规则，每条准则都关联到相关的评论区内容。</p><h2 id="L1-先定视角，美术和运动都服从视角"><a href="#L1-先定视角，美术和运动都服从视角" class="headerlink" title="L1 先定视角，美术和运动都服从视角"></a>L1 先定视角，美术和运动都服从视角</h2><blockquote><p>“你选的视角简直难到令人发指。3&#x2F;4 俯视是噩梦，等距或纯俯视要容易得多。” — Crazy_Memory</p></blockquote><p><strong>纯俯视（pure top-down）。</strong> 所有素材、所有位移都在同一个平面里，没有透视换算。</p><h2 id="L2-车辆必须”车头朝哪就往哪走”，不能横移"><a href="#L2-车辆必须”车头朝哪就往哪走”，不能横移" class="headerlink" title="L2 车辆必须”车头朝哪就往哪走”，不能横移"></a>L2 车辆必须”车头朝哪就往哪走”，不能横移</h2><blockquote><p>“卡车不是在开，是在横移（strafing）。除非做漂移游戏，所有移动都应该相对车头向前。” — Taziar43</p></blockquote><p>车只有 <code>angle</code> 和 <code>speed</code> 两个运动量，位移永远是 <code>(sin a, -cos a) * speed</code>。</p><p>左右键改的是 <code>angle</code>，不是 <code>x</code>。速度为 0 时打方向盘无效。</p><h2 id="L3-方向离散化，别让平滑插值和有限朝向素材打架"><a href="#L3-方向离散化，别让平滑插值和有限朝向素材打架" class="headerlink" title="L3 方向离散化，别让平滑插值和有限朝向素材打架"></a>L3 方向离散化，别让平滑插值和有限朝向素材打架</h2><blockquote><p>“等距视角最好只用 4 个（含对角线 8 个）方向。平滑过渡会和有限的朝向素材形成不协调。” — wirthmore</p></blockquote><p>车角度连续，但<strong>贴图预渲染 16 个朝向</strong>，渲染时吸附到最近的一档。像素块不会被亚像素旋转糊掉。</p><h2 id="L4-光源方向全局统一"><a href="#L4-光源方向全局统一" class="headerlink" title="L4 光源方向全局统一"></a>L4 光源方向全局统一</h2><blockquote><p>“建筑一面亮一面暗，阴影不可能从亮面延伸出去。” — nixarn</p><p>“阴影不一致，很多东西根本没影子，看起来像随手贴上去的。” — Taziar43</p></blockquote><p>光源固定左上，所有阴影统一偏移 <code>(+2, +3)</code>，同一个半透明黑。没有例外。</p><h2 id="L5-先做调试工具，再做内容"><a href="#L5-先做调试工具，再做内容" class="headerlink" title="L5 先做调试工具，再做内容"></a>L5 先做调试工具，再做内容</h2><blockquote><p>“加个等距网格叠加开关。任何没对齐网格的东西就是要修的。然后把你观察到的告诉 AI。” — Taziar43</p><p>“用 AI 写调参和测试工具，是它最大的价值之一。” — mkawer</p></blockquote><p>第一个版本就带 <code>G</code> 网格叠加、<code>H</code> 状态面板（角度&#x2F;速度&#x2F;是否在路面&#x2F;FPS）、<code>T</code> 慢放。</p><p>人能看见问题，才能把问题说清楚。</p><h2 id="L6-代码量是负债，不是成绩"><a href="#L6-代码量是负债，不是成绩" class="headerlink" title="L6 代码量是负债，不是成绩"></a>L6 代码量是负债，不是成绩</h2><blockquote><p>“40000 行？这个阶段应该只有几百行。基础框架跑通之前不要堆功能。” — Taziar43</p><p>“AI 让你很容易重复造轮子，最后你得到一辆装了 20 倍轮子、而且朝向各不相同的车。” — ImANoobAtLife7</p></blockquote><p>单文件、无依赖、无框架。任何一个阶段结束时代码超过 1200 行就先重构再继续。</p><h2 id="L7-分阶段，每阶段验收完再往下走"><a href="#L7-分阶段，每阶段验收完再往下走" class="headerlink" title="L7 分阶段，每阶段验收完再往下走"></a>L7 分阶段，每阶段验收完再往下走</h2><blockquote><p>“把项目切成阶段，做完一个阶段先确认这阶段做好了再继续。趁上下文还热，把这一阶段的问题解决掉。” — Taziar43</p></blockquote><p>每个阶段 &#x3D; 一次 commit + 一次 Pages 部署 + 一条 devlog。上一阶段不可玩，不开下一阶段。</p><h2 id="L8-描述要具体到可验证"><a href="#L8-描述要具体到可验证" class="headerlink" title="L8 描述要具体到可验证"></a>L8 描述要具体到可验证</h2><blockquote><p>“AI 给不了你说不出口的东西。” — Vickie184</p><p>“指方向它很强，只说 ‘fix it’ 它就原地转圈。” — Taziar43</p></blockquote><p>devlog 里每条问题都写成”现象 + 期望 + 判定方式”，不写”手感不好”。</p><h2 id="L9-便宜的手感技巧优先做"><a href="#L9-便宜的手感技巧优先做" class="headerlink" title="L9 便宜的手感技巧优先做"></a>L9 便宜的手感技巧优先做</h2><blockquote><p>“车后面加几个圆点当尘土，成本极低，效果巨大。” — Interesting_Swimmer2</p></blockquote><p>尘土、屏幕震动、速度线、轮胎印，这类”低成本高回报”的东西排在新玩法前面。</p><h2 id="L10-你得知道自己在做什么"><a href="#L10-你得知道自己在做什么" class="headerlink" title="L10 你得知道自己在做什么"></a>L10 你得知道自己在做什么</h2><blockquote><p>“你可以不读 AI 写的每一行代码，但你必须理解你要实现的逻辑。这个游戏的问题不是代码问题，是设计问题。” — Taziar43</p></blockquote><p>每个系统在写代码前，先在 GAME-SPEC &#x2F; CODE-SPEC 里用一句人话写清楚它的规则。</p><p>这里只是针对这一类游戏的一个例子，游戏的玩法有很多涉及的场景类型就更多，我觉得至少可以参照这套模式去复刻出的不同的玩法和场景交互，从而慢慢搭出一个更大的框架，有了框架，换皮就更简单了。</p><p>做完这个小的游戏框架之后，我也让 AI 切分支换了下皮，比如普通的赛车游戏，变成武侠风格的赛马游戏，AI 换皮很快，不过还是太老实了，我没告诉他骑马和开车的交互体验是有区别的，他就真的只是换个皮。</p><p>还是那句话，知道自己想要什么，AI 才能锦上添花，如果自己都不知道想做成什么样子，那别说几万行代码了，可能几百万行代码，上千亿的 token 消耗完了，很只是个勉强能玩的 demo。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> AI工程化 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> AI编程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>一轮对话 Vibe Coding 出可直接上手玩的浏览器 3D 游戏</title>
       <link href="/word-2-game/"/>
       <url>/word-2-game/</url>
