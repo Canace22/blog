@@ -6,7 +6,7 @@
   <link href="https://canace.site/atom.xml" rel="self"/>
   
   <link href="https://canace.site/"/>
-  <updated>2026-08-25T03:50:47.346Z</updated>
+  <updated>2026-08-26T02:43:29.964Z</updated>
   <id>https://canace.site/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Codex Agent Harness 套壳实现自己的 AI 产品</title>
+    <link href="https://canace.site/how-can-i-use-codex-harness/"/>
+    <id>https://canace.site/how-can-i-use-codex-harness/</id>
+    <published>2026-08-26T01:17:47.000Z</published>
+    <updated>2026-08-26T02:43:29.964Z</updated>
+    
+    
+    <summary type="html">用 Codex 开源 Agent Harness 套壳做自己的 AI 产品：自建产品层与任务编排，编码执行交给 Codex。</summary>
+    
+    
+    
+    <category term="AI工程化" scheme="https://canace.site/categories/AI%E5%B7%A5%E7%A8%8B%E5%8C%96/"/>
+    
+    
+    <category term="AI编程" scheme="https://canace.site/tags/AI%E7%BC%96%E7%A8%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>如何开发一个有手感的赛车游戏 Demo</title>
@@ -374,25 +393,6 @@
     
     
     <category term="AI原理" scheme="https://canace.site/tags/AI%E5%8E%9F%E7%90%86/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>AI 如何让我们躺平</title>
-    <link href="https://canace.site/how-ai-lets-us-lie-flat/"/>
-    <id>https://canace.site/how-ai-lets-us-lie-flat/</id>
-    <published>2026-05-03T02:00:00.000Z</published>
-    <updated>2026-05-03T02:14:01.731Z</updated>
-    
-    
-    <summary type="html">借「方向要对、提效后要少做工时」讨论躺平：AI 若边界不清，容易加长屏幕时间与无效产出；更合理的用法是在圈定范围内提效，避免越界堆出 vibe coding 却挤占生活与深耕。</summary>
-    
-    
-    
-    <category term="软技能与思考" scheme="https://canace.site/categories/soft/"/>
-    
-    
-    <category term="随笔" scheme="https://canace.site/tags/essays/"/>
     
   </entry>
   
