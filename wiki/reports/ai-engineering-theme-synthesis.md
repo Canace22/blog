@@ -15,7 +15,7 @@
 | `Claude.md` 不是越多越好；前沿模型也只能稳定遵守约 150–200 条指令；规则要宁缺毋滥、少于 300 行、少写代码风格、少模板生成。 | [writing-a-good-claude-md](../sources/writing-a-good-claude-md.md) |
 | 不同任务用不同 Agent 分组（翻译/周报/调研），隔离上下文 + 定制 Prompt 比单对话串问更稳。 | [ai-worker](../sources/ai-worker.md) |
 | Agent 不稳常因「只给目标没给解法」；把个人调 bug、做新功能的固定步骤抽成 Skill 再喂回去，就是经验上下文。 | [agent-coding-stability](../sources/agent-coding-stability.md) · [概念：提升 AI Coding 稳定性的经验上下文模式](../concepts/agent-coding-stability.md) |
-| 对 LOP 六种姿势（Direct / Agent / CoV / RAG / Skeleton-Fill / Self-Heal）的整理，并畅想结构化文档驱动的剧本与玩法迭代。 | [ai-coding-game](../sources/ai-coding-game.md) · [LOP 模式](../concepts/lop-patterns.md) |
+| 对 LOP 六种姿势（Direct / Agent / CoV / RAG / Skeleton-Fill / Self-Heal）的整理，并畅想结构化文档驱动的剧本与玩法迭代。一次性 vibe 可做竖切原型；要手感就得先定规则、分阶段验收。 | [ai-coding-game](../sources/ai-coding-game.md) · [word-2-game](../sources/word-2-game.md) · [fable-pixel-game-vibe-coding](../sources/fable-pixel-game-vibe-coding.md) · [LOP 模式](../concepts/lop-patterns.md) |
 | 用 SUS、PUEU、HEART 等可量化模型当 prompt，让 AI 给 UI/UX 打分并迭代，把主观审美换成客观抓手。 | [ai-optimize-ui](../sources/ai-optimize-ui.md) |
 
 ## 二、工具与 SKILL 实战：让重复的事变成可复用资产
@@ -33,6 +33,7 @@
 | Claude Code 官方：读库/调试/PR 提示模式、plan mode、headless、计划任务；并行见子代理/代理视图/动态工作流。 | [claude-code-common-workflows](../sources/claude-code-common-workflows.md) · [claude-code-parallel-agents](../sources/claude-code-parallel-agents.md) · [概念：Claude Code 常见工作流](../concepts/claude-code-workflows.md) |
 | 日常英文开发动词对照表，给人和 AI 一份共享词典，减少歧义。 | [common-programming-prompt-words](../sources/common-programming-prompt-words.md) |
 | Electron 里 Cursor debugger 失效可能是 CSP：为 `connect-src` 放行 `http://127.0.0.1:7242`。 | [cursor-debugger](../sources/cursor-debugger.md) |
+| 自建产品层和任务编排，编码执行套开源 Codex Harness；复杂任务先规划再执行，规划失败时把原始目标一并交给 Codex。 | [how-can-i-use-codex-harness](../sources/how-can-i-use-codex-harness.md) · [Harness Engineering](../concepts/harness-engineering.md) |
 
 ## 三、知识库 / 上下文工程：给 AI 一份「持久记忆」
 
@@ -65,4 +66,4 @@
 
 ---
 
-*草稿与编排：assistant（Cursor），2026-05-16；续补 Skill / 会话 / 执行环境：Cursor Agent，2026-08-14。*
+*草稿与编排：assistant（Cursor），2026-05-16；续补 Skill / 会话 / 执行环境：Cursor Agent，2026-08-14；lint 补 Codex Harness 与游戏实践：Cursor Agent，2026-09-02。*

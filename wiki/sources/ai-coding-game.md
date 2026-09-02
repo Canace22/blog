@@ -26,3 +26,9 @@
 
 - [LOP 模式与产物](../concepts/lop-patterns.md)
 - [LLM 维护的知识库](../concepts/llm-maintained-wiki.md)（与「结构化沉淀、再喂给模型」一致）
+- [一轮对话 Vibe Coding 出可直接上手玩的浏览器 3D 游戏](word-2-game.md)
+- [如何开发一个有手感的赛车游戏 demo](fable-pixel-game-vibe-coding.md)
+
+---
+
+*修订：Cursor Agent，2026-09-02。*

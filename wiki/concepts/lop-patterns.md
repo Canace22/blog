@@ -17,7 +17,17 @@
 
 RAG 依赖检索当日 context；**结构化文档沉淀**（游戏策划、设定、API 说明等）既可作为 RAG 料，也可由 agent 维护成 wiki，与 [LLM 维护的知识库](../concepts/llm-maintained-wiki.md) 同属「跨会话记忆」思路。
 
+## 仓库内对照
+
+- [一轮对话 Vibe Coding 出可直接上手玩的浏览器 3D 游戏](../sources/word-2-game.md)：Prompt-to-Code / 一次性竖切，适合验证方向。
+- [如何开发一个有手感的赛车游戏 demo](../sources/fable-pixel-game-vibe-coding.md)：先定规则和验收，再分阶段迭代；更接近 Agent 编程 + 自愈，而不是只丢一条提示词。
+
 ## 来源
 
 - [面向大模型编程（LOP）在游戏制作流程中的应用畅想](../sources/ai-coding-game.md)
 - [RAG VS Graph RAG](../sources/rag-vs-graph-rag.md)
+- [查询：AI编程和 Vibe Coding 的差异在哪](../queries/ai-programming-vs-vibe-coding.md)
+
+---
+
+*修订：Cursor Agent，2026-09-02。*

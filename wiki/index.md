@@ -64,6 +64,7 @@
 - [`git diff` 这种差异对比，和 Web 端版本更新弹窗的思路是不是有异曲同工之处](queries/git-diff-and-web-version-check.md)
 - [如果是应用内的文件更新，像 `git diff` 这种，跟前面说的应用更新有什么区别](queries/in-app-file-update-vs-app-updater-vs-git-diff.md)
 - [我的文章涵盖 AI Coding 哪几方面](queries/ai-coding-coverage.md)
+- [AI编程和 Vibe Coding 的差异在哪](queries/ai-programming-vs-vibe-coding.md)（人是否还管代码、适用场景、何时切回审查）
 - [Mac / Linux 虚拟机资源与 OpenClaw 开发](queries/mac-linux-vm-openclaw-dev.md)
 - [外语视频翻译字幕：Whisper 打轴 + Gemini 翻译](queries/whisper-gemini-video-subtitles.md)
 - [微信公众号阅读优化](queries/wechat-official-account-read-optimization.md)
@@ -355,6 +356,9 @@
 
 ### AI工程化
 
+- [Codex Agent Harness 套壳实现自己的 AI 产品](sources/how-can-i-use-codex-harness.md) — `source/_posts/how-can-i-use-codex-harness.md`（产品层与任务编排自建，编码执行交给 Codex Harness）
+- [如何开发一个有手感的赛车游戏 demo](sources/fable-pixel-game-vibe-coding.md) — `source/_posts/fable-pixel-game-vibe-coding.md`（Fable 吐槽帖 10 条准则 + 俯视赛车 demo）
+- [一轮对话 Vibe Coding 出可直接上手玩的浏览器 3D 游戏](sources/word-2-game.md) — `source/_posts/word-2-game.md`（概念图 + 一条提示词，one-shot 可玩原型）
 - [笔记本都合上了，Claude 为什么还能在手机上执行电脑上装的技能？](sources/claude-skill-cross-device.md) — `source/_posts/claude-skill-cross-device.md`（Skill / 会话 / 执行环境，云端容器与跨设备入口）
 - [深入 Claude Code 的 Web 工具：WebFetch 与 WebSearch](sources/claude-webfetch.md) — `source/_posts/claude-webfetch.md`（读取已知页面与搜索候选页面的工具差异）
 - [AI 生成到 90% 突然断了：你的解决方案是？](sources/ai-stream-recovery.md) — `source/_posts/ai-stream-recovery.md`（连接恢复、事件重放、语义续写与 KV Cache）
@@ -396,6 +400,7 @@
 
 ### 软技能与思考
 
+- [一个系统做得怎样，从来都不是技术问题](sources/good-system.md) — `source/_posts/good-system.md`（系统服务特定场景；AI 产品按服务对象拆分）
 - [关于内容创作的一些思考](sources/content-create-thinking.md) — `source/_posts/content-create-thinking.md`（写作压力、平台偏好与内容运营边界）
 - [节奏心理学：叙事中的「情绪推手」](sources/rhythm-psychology.md) — `source/_posts/rhythm-psychology.md`
 - [三也：把想法丢给 AI 拎主线](sources/sanye-ai-organize-thoughts.md) — Telegram 群聊（2026-04-30）

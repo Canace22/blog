@@ -101,7 +101,9 @@ Cowork 最先把额度吃光。这也是为什么 Max 套餐（$100-160/月）�
 ## 仓库内实践佐证
 
 - [原来我一直用错了 Cowork](../sources/use-cowork.md) — 第一人称体感：Cowork 沙箱限制、Computer Use / Memory 的 token 开销、程序员省 token 清单与选型建议
+- [一个系统做得怎样，从来都不是技术问题](../sources/good-system.md) — 系统好不好先看服务对象；AI 厂商把同一能力拆成多个入口，也是这个原因
+- [Codex Agent Harness 套壳实现自己的 AI 产品](../sources/how-can-i-use-codex-harness.md) — 自建产品层和编排，编码执行套 Codex Harness；形态分化也可以发生在「自研 Agent vs 套壳运行时」
 
 ---
 
-_修订：Cursor Agent，2026-06-23（补实践佐证链）。_
+_修订：Cursor Agent，2026-09-02。_

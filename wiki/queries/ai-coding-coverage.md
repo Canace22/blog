@@ -62,6 +62,8 @@
   - [我让 Claude 给视频里的人脸打码，顺手做成了一个 Skill](../sources/video-face-mosaic-skill.md)
   - [使用 AI 优化界面交互](../sources/ai-optimize-ui.md)
   - [面向大模型编程(LOP)在游戏制作流程中的应用畅想](../sources/ai-coding-game.md)
+  - [一轮对话 Vibe Coding 出可直接上手玩的浏览器 3D 游戏](../sources/word-2-game.md)
+  - [如何开发一个有手感的赛车游戏 demo](../sources/fable-pixel-game-vibe-coding.md)
 
 ### 7. AI Coding 的长期记忆层与知识沉淀
 
@@ -80,6 +82,13 @@
   - [原来我一直用错了 Cowork](../sources/use-cowork.md)
   - [笔记本都合上了，Claude 为什么还能在手机上执行电脑上装的技能？](../sources/claude-skill-cross-device.md)
 
+### 9. Harness 与产品套壳
+
+- 关注点从「怎么写 prompt」转到「怎么给 agent 一个可工作的执行环境」，以及如何在自建产品层里复用现成 harness。
+- 代表文章：
+  - [Codex Agent Harness 套壳实现自己的 AI 产品](../sources/how-can-i-use-codex-harness.md)
+  - [Harness Engineering](../concepts/harness-engineering.md)
+
 ## 总体判断
 
 如果做一句话概括，你的 AI Coding 文章更偏向：
@@ -90,16 +99,9 @@
 
 相对来说，重心不在模型训练原理或底层算法，而在「如何把 AI 真正接入开发工作流，并让它稳定地产出结果」。
 
-## 当前没有明确展开的方向
+## 仍可继续展开的方向
 
-### Harness（已有概念页，博文仍偏邻近）
-
-- 仓库内已有 [Harness Engineering](../concepts/harness-engineering.md) 概念与 [Harness 资料整理](../reports/harness-engineering-reading-notes.md)；个人博文侧仍以邻近实践为主：
-  - [面向大模型编程(LOP)在游戏制作流程中的应用畅想](../sources/ai-coding-game.md) 中的 **Self-Healing / Iterative Refinement Loop**
-  - [AI赋能存量项目——从函数助手到业务伙伴](../sources/ai-coding-share.md) 中的 **工作流/任务拆解**
-  - [一个提升 AI Coding 稳定性的思路](../sources/agent-coding-stability.md) 中的 **经验上下文 / 解决问题模式**
-  - [Cursor 编写 SKILL：通过 web 搜索并下载电影](../sources/cursor-skill-web-search-download-movie.md) 中的 **Skill 流程封装**
-- 尚未从 **agent harness / eval harness / execution harness** 角度写成长文，但 wiki 层已可对照官方 Claude Code [并行代理](../concepts/claude-code-parallel-agents.md) 与 [常见工作流](../concepts/claude-code-workflows.md)。
+eval harness、验收契约，以及多 Agent 编排里的锁与灾备细节，目前主要落在 [Codex Agent Harness 套壳](../sources/how-can-i-use-codex-harness.md) 一篇里，还可以按项目再写。
 
 ## 相关概念
 
@@ -108,7 +110,10 @@
 - [AI 辅助开发](../concepts/ai-assisted-development.md)
 - [Claude Code 常见工作流](../concepts/claude-code-workflows.md)
 - [Skill、会话与执行环境](../concepts/skill-session-runtime.md)
+- [AI编程和 Vibe Coding 的差异在哪](ai-programming-vs-vibe-coding.md)
+- [Harness Engineering](../concepts/harness-engineering.md)
+- [Codex Agent Harness 套壳实现自己的 AI 产品](../sources/how-can-i-use-codex-harness.md)
 
 ---
 
-*修订：Cursor Agent，2026-08-14（补充 Skill / 会话 / 执行环境与跨设备继续任务）。*
+*修订：Cursor Agent，2026-09-02（补 Codex Harness 套壳与两篇游戏实践）。*

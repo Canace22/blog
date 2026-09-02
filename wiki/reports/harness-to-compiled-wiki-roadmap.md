@@ -19,6 +19,7 @@
 
 - [Harness Engineering](../concepts/harness-engineering.md)
 - [Pi Coding Agent / pi-mono](../sources/pi-coding-agent.md)
+- [Codex Agent Harness 套壳实现自己的 AI 产品](../sources/how-can-i-use-codex-harness.md)
 
 关注点：
 
@@ -110,7 +111,7 @@
 
 ## 博客选题池（可直接开写）
 
-- 从 Prompt 到 Harness：为什么 AI Coding 的瓶颈在执行环境
+- 从 Prompt 到 Harness：为什么 AI Coding 的瓶颈在执行环境（已有实践稿：[Codex Agent Harness 套壳](../sources/how-can-i-use-codex-harness.md)）
 - 从 Memory 到 Wiki：为什么跨会话记忆需要结构化沉淀
 - 从 Wiki 到 Compiled Wiki：知识库如何从“可读”走向“可维护”
 - AGENTS.md + Wiki + Lint：个人开发者的最小 Agent 基础设施
@@ -128,3 +129,8 @@
 - [Harness Engineering](../concepts/harness-engineering.md)
 - [LLM 维护的知识库](../concepts/llm-maintained-wiki.md)
 - [编译式知识库](../concepts/compiled-knowledge-vault.md)
+- [Codex Agent Harness 套壳实现自己的 AI 产品](../sources/how-can-i-use-codex-harness.md)
+
+---
+
+*修订：Cursor Agent，2026-09-02。*

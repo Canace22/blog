@@ -44,6 +44,8 @@ First-person practice note on misusing Claude Cowork for developer work. Contras
 ## 另见（本库相近资料）
 
 - [查询：AI 产品的形态分化与底层逻辑](../queries/ai-product-forms-and-models.md)（沙箱 vs 直接执行、token 效率、产品形态全景）
+- [一个系统做得怎样，从来都不是技术问题](good-system.md)
+- [Codex Agent Harness 套壳实现自己的 AI 产品](how-can-i-use-codex-harness.md)
 - [Skill、会话与执行环境](../concepts/skill-session-runtime.md)（云端会话 / Remote Control，沙箱执行与跨设备入口）
 - [笔记本都合上了，Claude 为什么还能在手机上执行电脑上装的技能？](../sources/claude-skill-cross-device.md)
 - [Claude Code 常见工作流程](../sources/claude-code-common-workflows.md)
@@ -53,4 +55,4 @@ First-person practice note on misusing Claude Cowork for developer work. Contras
 
 ---
 
-*维护：Cursor Agent，2026-08-14。*
+*维护：Cursor Agent，2026-08-14；lint 补系统/Harness 互链，2026-09-02。*

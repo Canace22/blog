@@ -68,7 +68,8 @@ Skill 带走的是做法，不是某台电脑的安装状态。跨设备继续�
 - [笔记本都合上了，Claude 为什么还能在手机上执行电脑上装的技能？](../sources/claude-skill-cross-device.md) — Skill 沉淀后的跨设备执行边界
 - [程序员愿意为 Claude 写文档，但不愿为同事写](../sources/claude-handoff-doc-to-repo.md) — handoff doc 审阅后入 repo，跨会话上下文
 - [Hermes：`/anthropic` 网关与模型名点号规范化](../concepts/hermes-anthropic-endpoint-model-id-normalization.md) — 多厂商 agent 配置类坑位可写成可复用排查笔记
+- [如何开发一个有手感的赛车游戏 demo](../sources/fable-pixel-game-vibe-coding.md) — GAME-SPEC / 分阶段验收，把「方法」写在写代码之前
 
 ---
 
-*维护：Cursor Agent，2026-08-14。*
+*维护：Cursor Agent，2026-09-02。*

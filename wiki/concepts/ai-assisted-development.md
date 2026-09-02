@@ -8,7 +8,7 @@
 
 - **项目上下文**：把技术栈、运行环境、风格与约定集中写清楚，让模型少「瞎猜」，更接近「第二次就顺手」的质量（[AI 辅助开发探索](../sources/ai-assisted-development-exploration.md)）。
 - **角色分工**：把工程师定位成智能体的编排者、输出的导师审阅者、问题的解决者，而不是唯一打字员（同上篇）。
-- **质量与安全**：始终以验证为先；留意状态、性能与安全；采用分层审阅——模型先做一遍、人在架构与业务上把关、团队照常守住质量线（[如何提升 AI 代码质量](../sources/improving-ai-code-quality.md)）。当产出增加而理解没有沉淀时，应把审查、追问、独立实践和复盘放回工作流（[我的 vibe coding 撞墙了](../sources/vibe-coding-problem.md)）。
+- **质量与安全**：始终以验证为先；留意状态、性能与安全；采用分层审阅——模型先做一遍、人在架构与业务上把关、团队照常守住质量线（[如何提升 AI 代码质量](../sources/improving-ai-code-quality.md)）。当产出增加而理解没有沉淀时，应把审查、追问、独立实践和复盘放回工作流（[我的 vibe coding 撞墙了](../sources/vibe-coding-problem.md)）。游戏或原型也一样：一次性 vibe 适合验证方向（[一轮对话 Vibe Coding 出 3D 游戏](../sources/word-2-game.md)）；要可玩可维护，就得先定视角和规则、分阶段验收、把代码量当负债（[如何开发一个有手感的赛车游戏 demo](../sources/fable-pixel-game-vibe-coding.md)，[AI编程和 Vibe Coding 的差异在哪](../queries/ai-programming-vs-vibe-coding.md)）。
 - **迭代**：接受多轮循环；早期输出往往是在帮系统「弄清任务到底是什么」（[如何提升 AI 代码质量](../sources/improving-ai-code-quality.md)）。
 - **工具链**：在 Cursor 里通过 Playwright MCP 做浏览器自动化（[Cursor Playwright MCP](../sources/cursor-playwright-mcp.md)）；在 Claude Code 中把设计探索、原型导出和代码导入串起来（[在 CLI 里用 Claude Design 做原型设计](../sources/claude-design-cli-prototyping.md)）。
 - **Skill 沉淀**：把一次性解决方案补齐输入检查、异常处理和结果验收，再封装成可复用流程（[视频人脸打码 Skill](../sources/video-face-mosaic-skill.md)）。Skill 保存的是做法，不会带走本机依赖；跨设备能否继续，取决于会话跑在云端还是 Remote Control 本地会话（[Skill、会话与执行环境](skill-session-runtime.md)，[笔记本合上后手机继续执行 Skill](../sources/claude-skill-cross-device.md)）。
@@ -17,7 +17,7 @@
 - **AI Native 四阶段**：AI 化（接 API）→ AI Workflow → AI Native System（架构从设计之初就以 AI 为核心）→ AI Native Organization；以业务实体为中心重建生产体系，知识图谱与标准化 SOP 是落地基石（[AI Native 不是接个 API](../sources/ai-native.md)）。
 - **延伸阅读**：提示工程读物与 Harness 工程化资料可当书签（[提示工程阅读清单](../sources/prompt-engineering-reading-list.md)，[Harness 工程化链接集](../sources/harness-engineering-links.md)）。
 - **Claude Code 官方工作流**：[常见工作流](claude-code-workflows.md)（读库/调试/PR/plan mode/计划任务）；[并行代理](claude-code-parallel-agents.md)（子代理、代理视图、团队、动态工作流）。
-- **工具与模型选型**：Cowork（沙箱桌面 Agent）面向非技术用户，Computer Use / Memory 开销大；开发者写代码优先 CLI（Claude Code）或 IDE（Cursor），避免用错产品导致额度快速耗尽（[原来我一直用错了 Cowork](../sources/use-cowork.md)）。模型与 Thinking Effort 也应按任务难度选择，不必让所有工作都使用最高档位（[GPT-5.6 Sol、Terra、Luna 和 Thinking Effort](../sources/gpt-5-6-sol-terra-luna.md)）。
+- **工具与模型选型**：Cowork（沙箱桌面 Agent）面向非技术用户，Computer Use / Memory 开销大；开发者写代码优先 CLI（Claude Code）或 IDE（Cursor），避免用错产品导致额度快速耗尽（[原来我一直用错了 Cowork](../sources/use-cowork.md)）。模型与 Thinking Effort 也应按任务难度选择，不必让所有工作都使用最高档位（[GPT-5.6 Sol、Terra、Luna 和 Thinking Effort](../sources/gpt-5-6-sol-terra-luna.md)）。若要做自己的 AI 产品，编码执行可以套 Codex 开源 Harness，产品层和任务编排仍要自建（[Codex Agent Harness 套壳](../sources/how-can-i-use-codex-harness.md)）。产品拆分首先看服务对象，不是功能清单（[一个系统做得怎样，从来都不是技术问题](../sources/good-system.md)）。
 - **轻量召回**：关联文档 / Agent 旧文召回可先用关键词重合排序，不必为小功能上 embedding（[关键词重合召回](../concepts/keyword-overlap-recall.md)）。
 
 ## 与本 Wiki 的关系
@@ -52,6 +52,11 @@
 - [笔记本合上后手机继续执行 Skill](../sources/claude-skill-cross-device.md)
 - [GPT-5.6 Sol、Terra、Luna 和 Thinking Effort](../sources/gpt-5-6-sol-terra-luna.md)
 - [查询：我的文章涵盖 AI Coding 哪几方面](../queries/ai-coding-coverage.md)
+- [查询：AI编程和 Vibe Coding 的差异在哪](../queries/ai-programming-vs-vibe-coding.md)
+- [Codex Agent Harness 套壳实现自己的 AI 产品](../sources/how-can-i-use-codex-harness.md)
+- [如何开发一个有手感的赛车游戏 demo](../sources/fable-pixel-game-vibe-coding.md)
+- [一轮对话 Vibe Coding 出可直接上手玩的浏览器 3D 游戏](../sources/word-2-game.md)
+- [一个系统做得怎样，从来都不是技术问题](../sources/good-system.md)
 
 ## 综合结论
 
@@ -59,4 +64,4 @@
 
 ---
 
-*修订：Cursor Agent，2026-08-14。*
+*修订：Cursor Agent，2026-09-02。*
