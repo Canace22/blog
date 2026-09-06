@@ -6,7 +6,7 @@
   <link href="https://canace.site/atom.xml" rel="self"/>
   
   <link href="https://canace.site/"/>
-  <updated>2026-09-06T09:23:21.363Z</updated>
+  <updated>2026-09-06T09:35:51.929Z</updated>
   <id>https://canace.site/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>开了一堆 AI 会话，验收不过来</title>
+    <title>Vibe Coding 开了一堆会话，验收不过来</title>
     <link href="https://canace.site/ai-review-bottleneck/"/>
     <id>https://canace.site/ai-review-bottleneck/</id>
     <published>2026-09-06T07:21:02.000Z</published>
-    <updated>2026-09-06T09:23:21.363Z</updated>
+    <updated>2026-09-06T09:35:51.929Z</updated>
     
     
     <summary type="html">并行开一堆 AI 会话时验收跟不上，任务还可能互相改文件，所以按模块分批做、人负责验收，AI 最多帮着调度。</summary>
