@@ -6,7 +6,7 @@
   <link href="https://canace.site/atom.xml" rel="self"/>
   
   <link href="https://canace.site/"/>
-  <updated>2026-09-06T09:35:51.929Z</updated>
+  <updated>2026-09-07T03:50:07.330Z</updated>
   <id>https://canace.site/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>最新版 Codex 工作流的问题</title>
+    <link href="https://canace.site/ai-self-awareness/"/>
+    <id>https://canace.site/ai-self-awareness/</id>
+    <published>2026-09-07T03:31:01.000Z</published>
+    <updated>2026-09-07T03:50:07.330Z</updated>
+    
+    
+    <summary type="html">AI 不问确认就按推测继续干，理解偏了整条进度就废，该人介入的节点不能省。</summary>
+    
+    
+    
+    <category term="AI工程化" scheme="https://canace.site/categories/AI%E5%B7%A5%E7%A8%8B%E5%8C%96/"/>
+    
+    
+    <category term="AI编程" scheme="https://canace.site/tags/AI%E7%BC%96%E7%A8%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>Vibe Coding 开了一堆会话，验收不过来</title>
@@ -367,25 +386,6 @@
     
     
     <summary type="html">Mark Dominus 把 Claude 交接文档和项目总结审阅后提交进仓库，AI 写、人来审，解决没人愿意写文档的老问题。</summary>
-    
-    
-    
-    <category term="AI工程化" scheme="https://canace.site/categories/AI%E5%B7%A5%E7%A8%8B%E5%8C%96/"/>
-    
-    
-    <category term="AI编程" scheme="https://canace.site/tags/AI%E7%BC%96%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>RAG vs Graph RAG</title>
-    <link href="https://canace.site/rag-vs-graph-rag/"/>
-    <id>https://canace.site/rag-vs-graph-rag/</id>
-    <published>2026-06-02T23:41:25.000Z</published>
-    <updated>2026-06-21T05:07:42.452Z</updated>
-    
-    
-    <summary type="html">对比传统 RAG 与 Graph RAG 的工作原理、适用场景与成本差异，帮助选择合适的知识库检索方案。</summary>
     
     
     
