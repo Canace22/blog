@@ -14,6 +14,8 @@
 - [Programmers need to start meditating now（Jake Gold）](../sources/jacob-gold-programmers-need-to-meditate.md)：补上生理机制角度——写代码曾靠心流抑制默认模式网络（DMN）带来专注与平静；转向多 Agent 上下文切换后心流消失，"高效"是透支注意力的多巴胺幻觉，需靠冥想或低信息密度的手脑协同活动来补偿。
 - [我的 vibe coding 撞墙了](../sources/vibe-coding-problem.md)：补充学习反馈角度——代码产出增长不等于理解增长，需要把审查、追问、独立实现和复盘重新放回协作流程。
 - [如何开发一个有手感的赛车游戏 demo](../sources/fable-pixel-game-vibe-coding.md)：对照案例是约 330 亿 tokens、4 万行代码仍过不了车辆移动；代码量和 token 消耗是负债，没有设计预期时加码救不回来。
+- [Vibe Coding 开了一堆会话，验收不过来](../sources/ai-review-bottleneck.md)：并行会话的上限是人的验收带宽；worktree 防文件冲突，防不了验收堆叠。
+- [最新版 Codex 工作流的问题](../sources/ai-self-awareness.md)：不问确认按推测继续，人没盯着就会把额度与偏航一起放大。
 
 ## 可执行检查清单（轻量）
 
@@ -33,7 +35,8 @@
 ## 与相关概念的关系
 
 - [AI 辅助开发](../concepts/ai-assisted-development.md)：强调流程治理与质量责任；本页补充个人层面的时间/边界治理。
+- [Agent 工作流](agent-workflow.md)：自动续跑和无限并行是工作流设计问题；省略问人、验收节点会把局部提效变成额度与注意力透支。
 - [AI 协作心理负担](../concepts/ai-collaboration-psychological-burden.md)：本页属其「提效反噬」子线；完整对照见 [AI 协作心理负担：主题对照与来源索引](../reports/ai-collaboration-psychological-burden.md)。
 
 ---
-*修订：Cursor Agent，2026-09-02。*
+*修订：Cursor Agent，2026-09-07。*

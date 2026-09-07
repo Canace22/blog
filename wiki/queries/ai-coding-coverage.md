@@ -43,7 +43,17 @@
   - [Claude Code 常见工作流程](../sources/claude-code-common-workflows.md) · [Claude Code 并行运行代理](../sources/claude-code-parallel-agents.md)（官方文档摘要）
   - [深入 Claude Code 的 Web 工具：WebFetch 与 WebSearch](../sources/claude-webfetch.md)
 
-### 5. 稳定性、Review 与质量控制
+### 5. Agent 工作流
+
+- 关注点是任务循环怎么跑：单会话何时停下来问人，多会话如何分批、防文件交叉、对齐人的验收带宽。人介入是约束，工作流才是主题。
+- 代表文章：
+  - [最新版 Codex 工作流的问题](../sources/ai-self-awareness.md)
+  - [Vibe Coding 开了一堆会话，验收不过来](../sources/ai-review-bottleneck.md)
+  - [Agent 工作流](../concepts/agent-workflow.md)
+  - [跟 AI 说 ok，它为什么有时不继续](../sources/go-ahead-vs-continue-ai-chat.md)
+  - [Claude Code 并行运行代理](../sources/claude-code-parallel-agents.md)
+
+### 6. 稳定性、Review 与质量控制
 
 - 你写的内容反复强调：AI 首次输出往往不可靠，关键在于经验上下文、三次尝试、人工 review、测试与渐进修正。
 - 代表文章：
@@ -53,7 +63,7 @@
   - [首次尝试95%都是垃圾：一位工程师使用Claude Code的6周之旅](../sources/translate-use-claude-code.md)
   - [AI赋能存量项目——从函数助手到业务伙伴](../sources/ai-coding-share.md)
 
-### 6. AI Coding 在具体开发场景中的落地
+### 7. AI Coding 在具体开发场景中的落地
 
 - 不只是泛谈效率，而是落到前端初始化、图片转页面、Figma 到代码、文档生成、运维脚本、Bug 修复、界面优化、游戏制作等具体场景。
 - 代表文章：
@@ -65,7 +75,7 @@
   - [一轮对话 Vibe Coding 出可直接上手玩的浏览器 3D 游戏](../sources/word-2-game.md)
   - [如何开发一个有手感的赛车游戏 demo](../sources/fable-pixel-game-vibe-coding.md)
 
-### 7. AI Coding 的长期记忆层与知识沉淀
+### 8. AI Coding 的长期记忆层与知识沉淀
 
 - 这一块是你的一个明显特色：不把 AI Coding 只看成对话式生成，而是和知识库、跨会话记忆、持久化 wiki 联系起来。
 - 代表文章：
@@ -73,7 +83,7 @@
   - [我们是否需要AI知识库](../sources/AI-knowledge-base.md)
   - [Gemini 在打开新会话时，是如何有记忆的](../sources/gemini-new-session-memory.md)
 
-### 8. 模型、权限与成本边界
+### 9. 模型、权限与成本边界
 
 - 新增文章开始讨论模型档位、Thinking Effort、权限模式和额度消耗。这些内容属于 AI Coding 的运行边界，决定任务该用多少能力，以及 Agent 可以自主执行到什么程度。
 - 代表文章：
@@ -82,7 +92,7 @@
   - [原来我一直用错了 Cowork](../sources/use-cowork.md)
   - [笔记本都合上了，Claude 为什么还能在手机上执行电脑上装的技能？](../sources/claude-skill-cross-device.md)
 
-### 9. Harness 与产品套壳
+### 10. Harness 与产品套壳
 
 - 关注点从「怎么写 prompt」转到「怎么给 agent 一个可工作的执行环境」，以及如何在自建产品层里复用现成 harness。
 - 代表文章：
@@ -101,7 +111,7 @@
 
 ## 仍可继续展开的方向
 
-eval harness、验收契约，以及多 Agent 编排里的锁与灾备细节，目前主要落在 [Codex Agent Harness 套壳](../sources/how-can-i-use-codex-harness.md) 一篇里，还可以按项目再写。
+eval harness、验收契约，以及多 Agent 编排里的锁与灾备细节，目前主要落在 [Codex Agent Harness 套壳](../sources/how-can-i-use-codex-harness.md) 一篇里；单会话问/继续与多会话分批见 [Agent 工作流](../concepts/agent-workflow.md)。
 
 ## 相关概念
 
@@ -112,8 +122,9 @@ eval harness、验收契约，以及多 Agent 编排里的锁与灾备细节，�
 - [Skill、会话与执行环境](../concepts/skill-session-runtime.md)
 - [AI编程和 Vibe Coding 的差异在哪](ai-programming-vs-vibe-coding.md)
 - [Harness Engineering](../concepts/harness-engineering.md)
+- [Agent 工作流](../concepts/agent-workflow.md)
 - [Codex Agent Harness 套壳实现自己的 AI 产品](../sources/how-can-i-use-codex-harness.md)
 
 ---
 
-*修订：Cursor Agent，2026-09-02（补 Codex Harness 套壳与两篇游戏实践）。*
+*修订：Cursor Agent，2026-09-07。*

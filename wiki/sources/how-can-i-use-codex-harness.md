@@ -26,5 +26,9 @@
 - [查询：我的文章涵盖 AI Coding 哪几方面](../queries/ai-coding-coverage.md)
 - [AI 辅助开发](../concepts/ai-assisted-development.md)
 - [原来我一直用错了 Cowork](use-cowork.md)
+- [Agent 工作流](../concepts/agent-workflow.md)
+- [Vibe Coding 开了一堆会话，验收不过来](ai-review-bottleneck.md)
+- [最新版 Codex 工作流的问题](ai-self-awareness.md)
+- [Claude Code 并行代理](../concepts/claude-code-parallel-agents.md)
 
-*维护：Cursor Agent，2026-09-02。*
+*维护：Cursor Agent，2026-09-07。*

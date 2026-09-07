@@ -23,7 +23,9 @@
 - [AI 使用边界与提效反噬](../concepts/ai-usage-boundary-and-efficiency-backfire.md)
 - [AI 协作心理负担](../concepts/ai-collaboration-psychological-burden.md)
 - [查询：AI编程和 Vibe Coding 的差异在哪](../queries/ai-programming-vs-vibe-coding.md)
+- [Vibe Coding 开了一堆会话，验收不过来](ai-review-bottleneck.md)
+- [Agent 工作流](../concepts/agent-workflow.md)
 - [一轮对话 Vibe Coding 出可直接上手玩的浏览器 3D 游戏](word-2-game.md)
 - [如何开发一个有手感的赛车游戏 demo](fable-pixel-game-vibe-coding.md)
 
-*维护：assistant（Codex），2026-08-12；lint 补游戏实践链，Cursor Agent，2026-09-02。*
+*维护：assistant（Codex），2026-08-12；lint 补游戏实践链，Cursor Agent，2026-09-02；补验收瓶颈，2026-09-07。*

@@ -45,7 +45,9 @@ Short practice note explaining why replying "ok" to an AI often fails to trigger
 - [提示词常用词汇](../sources/prompt-vocabulary-for-coding.md)
 - [常用开发提示词](../sources/common-programming-prompt-words.md)
 - [反向提示词工程](../sources/reverse-prompt-engineering.md)
+- [Agent 工作流](../concepts/agent-workflow.md)（对称失败：不问确认按推测继续）
+- [最新版 Codex 工作流的问题](ai-self-awareness.md)
 
 ---
 
-*草稿：assistant（claude-sonnet-4-6），2026-06-21。*
+*草稿：assistant（claude-sonnet-4-6），2026-06-21；补对称失败链，Cursor Agent，2026-09-07。*

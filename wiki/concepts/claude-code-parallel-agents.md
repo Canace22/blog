@@ -24,7 +24,7 @@
 - **`/batch` skill**：5–30 个子代理 + worktree + 各开 PR，是子代理模式的规模化打包。
 - **不是「并行代理」的**：后台 bash（只跑命令）、分叉子代理（spawn 方式）、Routine（云端定时，非本机并行）。
 
-并行会显著增加 token 消耗。
+并行会显著增加 token 消耗。仓库内实践补充：多会话编排的上限是人的验收带宽；同目录交叉改文件常见做法是目录锁或串行，worktree 合回来之后验收堆叠还在。见 [Agent 工作流](agent-workflow.md)、[Vibe Coding 开了一堆会话，验收不过来](../sources/ai-review-bottleneck.md)。
 
 ## 选型 checklist
 
@@ -45,6 +45,8 @@
 - [AI 角色分工：多角色专业化实践](ai-worker.md)：人为多角色隔离；Claude Code 子代理/团队是产品内建的并行角色。
 - [Claude Code 常见工作流](claude-code-workflows.md)：单会话内的 plan mode、headless、计划任务与并行互补。
 - [Cursor Cookbook](cursor-cookbook.md)：Agent Kanban / Cloud Agents 是 Cursor 侧的类似「多 agent 编排」对照。
+- [Agent 工作流](agent-workflow.md)：官方并行路径之外，还要设计分批、调度和验收；隔离只防文件冲突。
+- [Codex Agent Harness 套壳](../sources/how-can-i-use-codex-harness.md)：编排层做目录锁、串行与审批，是产品侧的并行治理。
 
 ## 综合结论
 
@@ -52,4 +54,4 @@
 
 ---
 
-*维护：Cursor Agent，2026-06-13。*
+*维护：Cursor Agent，2026-09-07。*

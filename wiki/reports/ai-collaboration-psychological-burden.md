@@ -21,6 +21,7 @@
 | 屏幕时间变长、vibe coding 堆低价值产出、需圈定 AI 任务范围 | [AI 如何让我们躺平](../sources/how-ai-lets-us-lie-flat.md) | 边界与「方向不对则越忙越空」 |
 | 边界定义、检查清单、费米化复盘 | [AI 使用边界与提效反噬](../concepts/ai-usage-boundary-and-efficiency-backfire.md) · [如何把「费米化」用在 AI 提效边界管理里](../queries/fermiization-for-ai-boundary.md) | 概念与可执行复盘 |
 | 心流 → DMN 抑制的生理机制、多 Agent 切换让心流消失、"高效"是透支注意力的假象、需靠冥想/低信息密度爱好补偿 | [Programmers need to start meditating now（Jake Gold）](../sources/jacob-gold-programmers-need-to-meditate.md) | 补生理机制视角 + 具体应对方案 |
+| 并行会话验收不过来、不问确认按推测继续会烧掉额度并把项目写偏 | [Vibe Coding 开了一堆会话，验收不过来](../sources/ai-review-bottleneck.md) · [最新版 Codex 工作流的问题](../sources/ai-self-awareness.md) · [Agent 工作流](../concepts/agent-workflow.md) | Agent 工作流设计失败会变成提效反噬 |
 
 **典型机制（合成）**
 
@@ -51,6 +52,8 @@
 | [我们是否需要AI知识库](../sources/AI-knowledge-base.md) | 是（部分） | 依赖 vs 内化 |
 | [程序员愿意为 Claude 写文档，但不愿为同事写](../sources/claude-handoff-doc-to-repo.md) | **相邻** | AI 协作文档线；折射「为 AI 优化 vs 为人协作」，非心理负担主文 |
 | [Programmers need to start meditating now（Jake Gold）](../sources/jacob-gold-programmers-need-to-meditate.md) | 是 | 提效反噬的生理机制侧写 + 应对方案（冥想、低信息密度爱好） |
+| [Vibe Coding 开了一堆会话，验收不过来](../sources/ai-review-bottleneck.md) | 是（部分） | 并行会话把审核角色打满，属提效反噬的工作流体感 |
+| [最新版 Codex 工作流的问题](../sources/ai-self-awareness.md) | 是（部分） | 不问确认自动续跑，额度与偏航同时放大 |
 | [知识焦虑](../sources/knowledge-anxiety.md) | 否 | 2022 生活随笔，与 AI 无关 |
 
 ## 合成结论
@@ -76,7 +79,8 @@
 
 - [AI 协作心理负担](../concepts/ai-collaboration-psychological-burden.md)（概念页：定义与入口）
 - [AI 辅助开发](../concepts/ai-assisted-development.md)（流程治理与质量责任）
+- [Agent 工作流](../concepts/agent-workflow.md)（单会话问/继续，多会话分批与验收）
 - [LLM 维护的知识库](../concepts/llm-maintained-wiki.md)（用 LLM **维护**知识，而非替代思考）
 
 ---
-_Edited by assistant (Composer) on 2026-06-15._
+_Edited by assistant (Composer) on 2026-06-15；主轴改为 Agent 工作流，Cursor Agent，2026-09-07。_

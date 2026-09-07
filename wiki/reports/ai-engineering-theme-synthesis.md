@@ -14,6 +14,7 @@
 | AI 赋能存量项目的三段论：项目规则 + 约束（角色/规则）+ 任务拆解；用 Code Review 与自动化测试守住质量。 | [ai-coding-share](../sources/ai-coding-share.md) |
 | `Claude.md` 不是越多越好；前沿模型也只能稳定遵守约 150–200 条指令；规则要宁缺毋滥、少于 300 行、少写代码风格、少模板生成。 | [writing-a-good-claude-md](../sources/writing-a-good-claude-md.md) |
 | 不同任务用不同 Agent 分组（翻译/周报/调研），隔离上下文 + 定制 Prompt 比单对话串问更稳。 | [ai-worker](../sources/ai-worker.md) |
+| Agent 工作流要设计两件事：单会话何时停下来问人，多会话如何分批才对得上人的验收带宽。跳过确认会按推测继续；并行上限是编排和验收，不是模型速度。 | [ai-self-awareness](../sources/ai-self-awareness.md) · [ai-review-bottleneck](../sources/ai-review-bottleneck.md) · [Agent 工作流](../concepts/agent-workflow.md) |
 | Agent 不稳常因「只给目标没给解法」；把个人调 bug、做新功能的固定步骤抽成 Skill 再喂回去，就是经验上下文。 | [agent-coding-stability](../sources/agent-coding-stability.md) · [概念：提升 AI Coding 稳定性的经验上下文模式](../concepts/agent-coding-stability.md) |
 | 对 LOP 六种姿势（Direct / Agent / CoV / RAG / Skeleton-Fill / Self-Heal）的整理，并畅想结构化文档驱动的剧本与玩法迭代。一次性 vibe 可做竖切原型；要手感就得先定规则、分阶段验收。 | [ai-coding-game](../sources/ai-coding-game.md) · [word-2-game](../sources/word-2-game.md) · [fable-pixel-game-vibe-coding](../sources/fable-pixel-game-vibe-coding.md) · [LOP 模式](../concepts/lop-patterns.md) |
 | 用 SUS、PUEU、HEART 等可量化模型当 prompt，让 AI 给 UI/UX 打分并迭代，把主观审美换成客观抓手。 | [ai-optimize-ui](../sources/ai-optimize-ui.md) |
@@ -66,4 +67,4 @@
 
 ---
 
-*草稿与编排：assistant（Cursor），2026-05-16；续补 Skill / 会话 / 执行环境：Cursor Agent，2026-08-14；lint 补 Codex Harness 与游戏实践：Cursor Agent，2026-09-02。*
+*草稿与编排：assistant（Cursor），2026-05-16；续补 Skill / 会话 / 执行环境：Cursor Agent，2026-08-14；lint 补 Codex Harness 与游戏实践：Cursor Agent，2026-09-02；两篇新文归入 Agent 工作流：Cursor Agent，2026-09-07。*

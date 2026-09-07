@@ -45,7 +45,7 @@
 
 这一路线更像：**把环境搭好，让 agent 在里面持续工作。**
 
-仓库内已有一篇产品向实践：[Codex Agent Harness 套壳实现自己的 AI 产品](../sources/how-can-i-use-codex-harness.md)。做法是自建产品层和任务编排，编码执行直接交给开源 Codex Harness；复杂任务先让 Claude 出计划，失败时把原始目标一并交给 Codex 灾备。这把「harness 是执行环境」落到了可套壳的产品分层上。
+仓库内已有一篇产品向实践：[Codex Agent Harness 套壳实现自己的 AI 产品](../sources/how-can-i-use-codex-harness.md)。做法是自建产品层和任务编排，编码执行直接交给开源 Codex Harness；复杂任务先让 Claude 出计划，失败时把原始目标一并交给 Codex 灾备。这把「harness 是执行环境」落到了可套壳的产品分层上。后续实践补充：harness 之上还要设计 Agent 工作流——同目录加锁或串行防交叉改文件，任务分批对齐人的验收带宽，意图不清时不能按推测继续（[Agent 工作流](agent-workflow.md)，[Vibe Coding 开了一堆会话，验收不过来](../sources/ai-review-bottleneck.md)，[最新版 Codex 工作流的问题](../sources/ai-self-awareness.md)）。
 
 ### 2. Anthropic 路线
 
@@ -112,6 +112,7 @@ Anthropic 明确提到：harness 中每个组件都隐含一个假设，即“�
 - [OpenClaw Memory Wiki](../sources/openclaw-memory-wiki.md)
 - [Pinecone Nexus：Knowledge Engine](../sources/pinecone-nexus-knowledge-engine.md)
 - [Codex Agent Harness 套壳实现自己的 AI 产品](../sources/how-can-i-use-codex-harness.md)
+- [Agent 工作流](agent-workflow.md)
 - [假设驱动 AI 调试](../concepts/hypothesis-driven-ai-debugging.md)（`DEBUG.md` / `program.md` 等外化假设与证据）
 
 其中 [Codex Agent Harness 套壳](../sources/how-can-i-use-codex-harness.md) 已经直接写 harness；其余篇目当时未用这个词，但已经涉及项目规则、经验上下文、工作流拆解、技能封装和长期记忆层，可看作邻近层或局部实现。
@@ -126,6 +127,7 @@ Anthropic 明确提到：harness 中每个组件都隐含一个假设，即“�
 - [从 Harness 到 Compiled Wiki：个人研究路线图](../reports/harness-to-compiled-wiki-roadmap.md)
 - [查询：我的文章涵盖 AI Coding 哪几方面](../queries/ai-coding-coverage.md)
 - [查询：AI 产品的形态分化与底层逻辑](../queries/ai-product-forms-and-models.md)
+- [Agent 工作流](agent-workflow.md)
 
 ## 来源
 
@@ -137,4 +139,4 @@ Anthropic 明确提到：harness 中每个组件都隐含一个假设，即“�
 
 ---
 
-*修订：Cursor Agent，2026-09-02。*
+*修订：Cursor Agent，2026-09-07。*

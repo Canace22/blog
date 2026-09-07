@@ -40,6 +40,8 @@ Vibe 适合做原型、demo、一次性玩具，以及先看方向。存量项�
 - [从函数助手到业务伙伴](../sources/ai-coding-share.md) 里，人更像项目经理或架构师，AI 是实习生。这套做法还停在 AI 编程里。
 - [一轮对话 Vibe Coding 出可直接上手玩的浏览器 3D 游戏](../sources/word-2-game.md) 更接近 Vibe。它用概念图加一条完整提示词，并要求不要再问设计决策，目的是尽快做出可玩原型。如果只是确认这个 demo 值不值得继续做，这样写是合适的。
 - [如何开发一个有手感的赛车游戏 demo](../sources/fable-pixel-game-vibe-coding.md) 则是切回 AI 编程的例子：先定视角和运动规则，分阶段验收，把代码量当负债。对照 Reddit 上那条 4 万行仍开不动车的帖子，差的不是工具，是预期和验收。
+- [Vibe Coding 开了一堆会话，验收不过来](../sources/ai-review-bottleneck.md) 把并行 Vibe 的上限写成人的验收带宽。一次开太多会话，任务还可能互相改文件；按不重叠模块分批，人负责验收。
+- [最新版 Codex 工作流的问题](../sources/ai-self-awareness.md) 是另一头：不问确认按推测继续，理解偏了整条进度就废。见 [Agent 工作流](../concepts/agent-workflow.md)。
 
 判断自己站在哪边，可以看这四件事。
 
@@ -66,9 +68,12 @@ AI 编程还把工程师身份留在手里。Vibe Coding 会暂时把这个身�
 - [我的 vibe coding 撞墙了，兄弟们](../sources/vibe-coding-problem.md)
 - [一轮对话 Vibe Coding 出可直接上手玩的浏览器 3D 游戏](../sources/word-2-game.md)
 - [如何开发一个有手感的赛车游戏 demo](../sources/fable-pixel-game-vibe-coding.md)
+- [Vibe Coding 开了一堆会话，验收不过来](../sources/ai-review-bottleneck.md)
+- [最新版 Codex 工作流的问题](../sources/ai-self-awareness.md)
+- [Agent 工作流](../concepts/agent-workflow.md)
 - [AI 使用边界与提效反噬](../concepts/ai-usage-boundary-and-efficiency-backfire.md)
 - [我的文章涵盖 AI Coding 哪几方面](ai-coding-coverage.md)
 - [如何把「费米化」用在 AI 提效边界管理里](fermiization-for-ai-boundary.md)
 - [从函数助手到业务伙伴](../sources/ai-coding-share.md)
 
-*Query 草稿由 Cursor Agent 按 human-writing 改过正文，2026-08-20；lint 补两篇游戏来源链，2026-09-02。*
+*Query 草稿由 Cursor Agent 按 human-writing 改过正文，2026-08-20；lint 补两篇游戏来源链，2026-09-02；补 Agent 工作流两篇来源，2026-09-07。*

@@ -56,6 +56,7 @@ Claude Code 官方文档归纳的**日常任务操作模式**：用结构化提�
 - [提升 AI Coding 稳定性的经验上下文模式](agent-coding-stability.md)：把个人流程封装成 Skill，与官方「提示工作流」互补——前者是自定义经验，后者是产品内置模式。
 - [Skill、会话与执行环境](skill-session-runtime.md)：跨设备时把 Skill、会话类型和真正跑脚本的环境分开。
 - 并行与隔离见 [Claude Code 并行代理](claude-code-parallel-agents.md)。
+- 跨工具的单会话问/继续、多会话分批与验收，见 [Agent 工作流](agent-workflow.md)。
 
 ## 综合结论
 
@@ -63,4 +64,4 @@ Claude Code 把常见开发动作模板化成可复制的提示与会话习惯�
 
 ---
 
-*维护：Cursor Agent，2026-08-14。*
+*维护：Cursor Agent，2026-09-07。*

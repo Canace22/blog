@@ -8,12 +8,12 @@
 
 - **项目上下文**：把技术栈、运行环境、风格与约定集中写清楚，让模型少「瞎猜」，更接近「第二次就顺手」的质量（[AI 辅助开发探索](../sources/ai-assisted-development-exploration.md)）。
 - **角色分工**：把工程师定位成智能体的编排者、输出的导师审阅者、问题的解决者，而不是唯一打字员（同上篇）。
-- **质量与安全**：始终以验证为先；留意状态、性能与安全；采用分层审阅——模型先做一遍、人在架构与业务上把关、团队照常守住质量线（[如何提升 AI 代码质量](../sources/improving-ai-code-quality.md)）。当产出增加而理解没有沉淀时，应把审查、追问、独立实践和复盘放回工作流（[我的 vibe coding 撞墙了](../sources/vibe-coding-problem.md)）。游戏或原型也一样：一次性 vibe 适合验证方向（[一轮对话 Vibe Coding 出 3D 游戏](../sources/word-2-game.md)）；要可玩可维护，就得先定视角和规则、分阶段验收、把代码量当负债（[如何开发一个有手感的赛车游戏 demo](../sources/fable-pixel-game-vibe-coding.md)，[AI编程和 Vibe Coding 的差异在哪](../queries/ai-programming-vs-vibe-coding.md)）。
+- **质量与安全**：始终以验证为先；留意状态、性能与安全；采用分层审阅——模型先做一遍、人在架构与业务上把关、团队照常守住质量线（[如何提升 AI 代码质量](../sources/improving-ai-code-quality.md)）。当产出增加而理解没有沉淀时，应把审查、追问、独立实践和复盘放回工作流（[我的 vibe coding 撞墙了](../sources/vibe-coding-problem.md)）。游戏或原型也一样：一次性 vibe 适合验证方向（[一轮对话 Vibe Coding 出 3D 游戏](../sources/word-2-game.md)）；要可玩可维护，就得先定视角和规则、分阶段验收、把代码量当负债（[如何开发一个有手感的赛车游戏 demo](../sources/fable-pixel-game-vibe-coding.md)，[AI编程和 Vibe Coding 的差异在哪](../queries/ai-programming-vs-vibe-coding.md)）。Agent 工作流要同时设计单会话「问还是继续」和多会话「怎么分批验收」（[Agent 工作流](agent-workflow.md)，[最新版 Codex 工作流的问题](../sources/ai-self-awareness.md)，[Vibe Coding 开了一堆会话，验收不过来](../sources/ai-review-bottleneck.md)）。
 - **迭代**：接受多轮循环；早期输出往往是在帮系统「弄清任务到底是什么」（[如何提升 AI 代码质量](../sources/improving-ai-code-quality.md)）。
 - **工具链**：在 Cursor 里通过 Playwright MCP 做浏览器自动化（[Cursor Playwright MCP](../sources/cursor-playwright-mcp.md)）；在 Claude Code 中把设计探索、原型导出和代码导入串起来（[在 CLI 里用 Claude Design 做原型设计](../sources/claude-design-cli-prototyping.md)）。
 - **Skill 沉淀**：把一次性解决方案补齐输入检查、异常处理和结果验收，再封装成可复用流程（[视频人脸打码 Skill](../sources/video-face-mosaic-skill.md)）。Skill 保存的是做法，不会带走本机依赖；跨设备能否继续，取决于会话跑在云端还是 Remote Control 本地会话（[Skill、会话与执行环境](skill-session-runtime.md)，[笔记本合上后手机继续执行 Skill](../sources/claude-skill-cross-device.md)）。
 - **流式可靠性**：连接恢复、内容重放和推理恢复是不同层次；结构化输出与工具调用必须在完整校验后执行（[AI 流式生成恢复](ai-stream-recovery.md)）。
-- **提示用语**：写提示词时英文动词尽量一致、减少歧义（[提示词常用词汇](../sources/prompt-vocabulary-for-coding.md)）；"go ahead"表许可，"continue"表状态延续，"ok"语义模糊常触发 AI 等待而非继续（[跟 AI 说 ok，它为什么有时不继续](../sources/go-ahead-vs-continue-ai-chat.md)）。
+- **提示用语**：写提示词时英文动词尽量一致、减少歧义（[提示词常用词汇](../sources/prompt-vocabulary-for-coding.md)）；"go ahead"表许可，"continue"表状态延续，"ok"语义模糊常触发 AI 等待而非继续（[跟 AI 说 ok，它为什么有时不继续](../sources/go-ahead-vs-continue-ai-chat.md)）。反过来，不问确认就按推测继续，会把一次误解执行成整条进度报废（[最新版 Codex 工作流的问题](../sources/ai-self-awareness.md)）。
 - **AI Native 四阶段**：AI 化（接 API）→ AI Workflow → AI Native System（架构从设计之初就以 AI 为核心）→ AI Native Organization；以业务实体为中心重建生产体系，知识图谱与标准化 SOP 是落地基石（[AI Native 不是接个 API](../sources/ai-native.md)）。
 - **延伸阅读**：提示工程读物与 Harness 工程化资料可当书签（[提示工程阅读清单](../sources/prompt-engineering-reading-list.md)，[Harness 工程化链接集](../sources/harness-engineering-links.md)）。
 - **Claude Code 官方工作流**：[常见工作流](claude-code-workflows.md)（读库/调试/PR/plan mode/计划任务）；[并行代理](claude-code-parallel-agents.md)（子代理、代理视图、团队、动态工作流）。
@@ -57,6 +57,9 @@
 - [如何开发一个有手感的赛车游戏 demo](../sources/fable-pixel-game-vibe-coding.md)
 - [一轮对话 Vibe Coding 出可直接上手玩的浏览器 3D 游戏](../sources/word-2-game.md)
 - [一个系统做得怎样，从来都不是技术问题](../sources/good-system.md)
+- [最新版 Codex 工作流的问题](../sources/ai-self-awareness.md)
+- [Vibe Coding 开了一堆会话，验收不过来](../sources/ai-review-bottleneck.md)
+- [Agent 工作流](agent-workflow.md)
 
 ## 综合结论
 
@@ -64,4 +67,4 @@
 
 ---
 
-*修订：Cursor Agent，2026-09-02。*
+*修订：Cursor Agent，2026-09-07。*

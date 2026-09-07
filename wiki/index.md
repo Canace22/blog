@@ -22,6 +22,7 @@
 - [软件开发范式演进](concepts/software-development-paradigms.md)
 - [AI 时代的贫富分化与劳动迁移](concepts/ai-wealth-labor-shift.md)
 - [AI 使用边界与提效反噬](concepts/ai-usage-boundary-and-efficiency-backfire.md)
+- [Agent 工作流](concepts/agent-workflow.md)
 - [AI 协作心理负担](concepts/ai-collaboration-psychological-burden.md)
 - [AI 角色分工：多角色专业化实践](concepts/ai-worker.md)
 - [Chat assistant user memory](concepts/chat-assistant-user-memory.md)
@@ -356,6 +357,8 @@
 
 ### AI工程化
 
+- [最新版 Codex 工作流的问题](sources/ai-self-awareness.md) — `source/_posts/ai-self-awareness.md`（Agent 工作流：跳过确认节点会按推测继续）
+- [Vibe Coding 开了一堆会话，验收不过来](sources/ai-review-bottleneck.md) — `source/_posts/ai-review-bottleneck.md`（Agent 工作流：并行会话、任务调度与验收瓶颈）
 - [Codex Agent Harness 套壳实现自己的 AI 产品](sources/how-can-i-use-codex-harness.md) — `source/_posts/how-can-i-use-codex-harness.md`（产品层与任务编排自建，编码执行交给 Codex Harness）
 - [如何开发一个有手感的赛车游戏 demo](sources/fable-pixel-game-vibe-coding.md) — `source/_posts/fable-pixel-game-vibe-coding.md`（Fable 吐槽帖 10 条准则 + 俯视赛车 demo）
 - [一轮对话 Vibe Coding 出可直接上手玩的浏览器 3D 游戏](sources/word-2-game.md) — `source/_posts/word-2-game.md`（概念图 + 一条提示词，one-shot 可玩原型）

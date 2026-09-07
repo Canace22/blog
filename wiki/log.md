@@ -1,5 +1,7 @@
 # Wiki Log
 
+- 2026-09-07：将两篇新博文主轴改回 Agent 工作流：概念页 `human-intervention-gates` 改为 `agent-workflow`（单会话问/继续 + 多会话编排）；来源页、`ai-coding-coverage`、`ai-engineering-theme-synthesis` 与相关互链同步。人介入是工作流约束，不是这两篇的主题。
+- 2026-09-07：Wiki lint + ingest：补齐 2 篇未入库 `source/_posts`（`ai-self-awareness`、`ai-review-bottleneck`）；新增概念 `human-intervention-gates`（随后改名为 `agent-workflow`）；更新 `ai-assisted-development`、`ai-usage-boundary-and-efficiency-backfire`、`claude-code-parallel-agents`、`harness-engineering`、`ai-coding-coverage`、`ai-programming-vs-vibe-coding`、`go-ahead-vs-continue-ai-chat`、`how-can-i-use-codex-harness`、`vibe-coding-problem`、`ai-engineering-theme-synthesis`、`ai-collaboration-psychological-burden` 与 `wiki/index.md`。验证索引覆盖、无未入库 posts、无 Clippings 回链。
 - 2026-09-02：Wiki lint：补齐 4 篇未入库 `source/_posts` 来源页（`how-can-i-use-codex-harness`、`fable-pixel-game-vibe-coding`、`word-2-game`、`good-system`）；修正 `ai-coding-coverage` 中「尚无 harness 长文」过时论断；`harness-engineering`、`ai-assisted-development`、`lop-patterns`、`ai-programming-vs-vibe-coding`、`ai-product-forms-and-models` 等补互链。验证索引覆盖、无断链、无 Clippings 回链。
 - 2026-08-20：Query「AI编程和 Vibe Coding 的差异在哪」（对话沉淀）→ 新增 `wiki/queries/ai-programming-vs-vibe-coding.md`；`ai-assisted-development`、`vibe-coding-problem`、`ai-usage-boundary-and-efficiency-backfire`、`ai-coding-coverage` 补互链；更新 `wiki/index.md` Queries。
 - 2026-08-14：Wiki lint：结构检查通过（索引覆盖、无断链、无 Clippings 回链、无零入链页）；补 `agent-coding-stability`、`claude-code-workflows`、`ai-stream-recovery`、`ai-assisted-development` 互链；规范近期 AI 工程化来源页相对路径；`content-create-thinking` 补心理负担互链。
