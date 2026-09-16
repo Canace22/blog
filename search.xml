@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Cursor 的网络协议，为什么选 HTTP/1.1 才能用 Claude</title>
+      <link href="/http-claude/"/>
+      <url>/http-claude/</url>
+      
+        <content type="html"><![CDATA[<p>我们都知道，Claude 对访问区域限制很严。</p><p>在用 Cursor 写代码时，不少人都遇到过这个奇怪的现象：开了代理，浏览器访问 Claude 也完全正常，但在 Cursor 里只要调用 Claude&#x2F;GPT 模型就会报错。而在设置里把网络协议从默认的 HTTP&#x2F;2 改成 HTTP&#x2F;1.1，又可以正常使用。</p><p>这涉及到网络协议和后台进程的一些知识。</p><h2 id="两套独立的-Node-js-网络接口"><a href="#两套独立的-Node-js-网络接口" class="headerlink" title="两套独立的 Node.js 网络接口"></a>两套独立的 Node.js 网络接口</h2><p>在 Cursor 较新版本中，AI 通信等核心请求由一个独立的后台进程负责。许多人以为在设置里切换协议只是在同一个连接上换个版本号，但在 Node.js 运行时中，HTTP&#x2F;1.1 与 HTTP&#x2F;2 完全是由两套独立的底层模块在支撑。</p><p>HTTP&#x2F;1.1 使用的是传统的 <code>node:http</code> 与 <code>node:https</code> 模块，以单次请求为核心，网络连接池挂载在 <code>Agent</code> 对象上。</p><p>HTTP&#x2F;2 使用的则是 <code>node:http2</code> 模块。它的核心是长连接会话（<code>Http2Session</code>），客户端调用 <code>http2.connect()</code> 先与目标源站建立连接，再在该连接上开启多路复用流发送数据。</p><p>这两套模块对代理的处理逻辑完全不同，直接导致了网络表现的巨大差异。</p><h2 id="HTTP-2-为什么绕过了本地代理？"><a href="#HTTP-2-为什么绕过了本地代理？" class="headerlink" title="HTTP&#x2F;2 为什么绕过了本地代理？"></a>HTTP&#x2F;2 为什么绕过了本地代理？</h2><p>我们在本机运行的 Clash、v2ray 等工具，提供的本地 <code>7890</code> 端口本质上是传统的 HTTP&#x2F;1.1 显式代理。</p><p>应用若想通过这种本地代理访问 HTTPS 目标，必须先遵循标准协议，向代理端口发送一条明文请求：</p><figure class="highlight http"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CONNECT</span> <span class="string">api.anthropic.com:443</span> <span class="meta">HTTP/1.1</span></span><br><span class="line"><span class="attribute">Host</span><span class="punctuation">: </span>api.anthropic.com:443</span><br></pre></td></tr></table></figure><p>本地代理收到这条指令后，会在远端替客户端与目标服务器建立 TCP 连接，并向客户端返回 <code>200 Connection Established</code>。只有在这条双向管道打通之后，客户端才能在管道内部启动 TLS 握手，安全传输业务数据。</p><p>浏览器访问网页之所以正常，是因为浏览器在发起 HTTP&#x2F;2 连接前，已经先通过本地代理完成了这条 <code>CONNECT</code> 隧道的搭建。</p><p>而 Node.js 的原生 <code>http2.connect()</code> 接口面向的是纯粹的目标源站。该接口没有内置类似 <code>Agent</code> 的代理钩子，默认不会读取系统代理，也不会主动向本地端口发起 <code>CONNECT</code> 握手。</p><p>同时，像 VS Code 体系中广泛使用的全局代理适配器（如 <code>@vscode/proxy-agent</code>），历史上主要通过劫持 <code>http.request</code> 和 <code>https.request</code> 来注入代理，并没有为 <code>http2.connect()</code> 提供全局透明支持。</p><p>结果就是，当 Cursor 启用 HTTP&#x2F;2 时，底层代码直接拿着源站域名做 DNS 解析并向目标发起直连。流量完全没有经过本地的 <code>127.0.0.1:7890</code>，请求带着本机的真实境内 IP 直奔 Anthropic 接口，自然触发了区域限制。</p><pre class="mermaid">flowchart TD    subgraph HTTP/2 默认路径        A1[Cursor 后台进程] -->|未发 CONNECT 握手| B1[本地物理网卡]        B1 -->|真实 IP 直连| C1[Anthropic 接口 / 被拒]    end    subgraph HTTP/1.1 路径        A2[Cursor 后台进程] -->|发送 CONNECT 握手| B2[本地代理 127.0.0.1:7890]        B2 -->|建立隧道并转发| C2[代理节点]        C2 -->|代理 IP 访问| D2[Anthropic 接口 / 正常通行]    end</pre><h2 id="切换到-HTTP-1-1-后，到底改变了什么？"><a href="#切换到-HTTP-1-1-后，到底改变了什么？" class="headerlink" title="切换到 HTTP&#x2F;1.1 后，到底改变了什么？"></a>切换到 HTTP&#x2F;1.1 后，到底改变了什么？</h2><p>所谓的传统传输模式，指的就是依托 <code>node:https</code> 搭配 HTTP CONNECT 隧道的网络链路。</p><p>当我们在设置中强制切换到 HTTP&#x2F;1.1 时，Cursor 底层将网络请求切回了 <code>node:https</code> 模块。</p><p>在这条成熟的通路上，请求能够完整接入 ProxyAgent 机制。客户端在发起真正请求前，会主动向本地代理端口发送 <code>CONNECT</code> 请求完成握手，随后在隧道内完成 TLS 加密传输。</p><p>本地代理接管了整条数据链路，出站流量顺利被转交至代理节点，出口 IP 被替换，Claude 自然恢复了可用状态。</p><h2 id="如何不降级协议，继续使用-HTTP-2"><a href="#如何不降级协议，继续使用-HTTP-2" class="headerlink" title="如何不降级协议，继续使用 HTTP&#x2F;2"></a>如何不降级协议，继续使用 HTTP&#x2F;2</h2><p>把协议切成 HTTP&#x2F;1.1 确实能救急，但这是一种妥协。HTTP&#x2F;1.1 缺乏单连接上的多路复用能力，在生成超长代码或者处理大上下文的时候，并发性能会下降，偶尔还会遇到响应变慢甚至连接中断的情况。</p><p>如果我们想继续享受 HTTP&#x2F;2 的完整性能，有以下两种解决办法。</p><h3 id="方案一：开启代理客户端的-TUN-模式（网络层接管）"><a href="#方案一：开启代理客户端的-TUN-模式（网络层接管）" class="headerlink" title="方案一：开启代理客户端的 TUN 模式（网络层接管）"></a>方案一：开启代理客户端的 TUN 模式（网络层接管）</h3><p>常规的系统代理只在应用层生效，管不到没有主动向本地端口发起握手的后台进程。而 <strong>TUN 模式（虚拟网卡模式）</strong> 直接工作在网络层。</p><p>它会在操作系统里创建一张虚拟网卡，把整台电脑所有软件的出站流量强制接管过来。开启 TUN 模式后，即使 Cursor 的后台进程直接发起 TCP 连接而不走应用层代理握手，数据包到达网络层依然会被虚拟网卡拦截并送入代理分流。这样一来，速度和稳定性就能兼顾。</p><blockquote><p>📌 <strong>避坑小贴士</strong><br>使用 TUN 模式时，建议顺手检查一下分流规则（Rule），确保 <code>cursor.sh</code>、<code>cursor.com</code> 和 <code>anthropic.com</code> 相关的域名都配置为走代理节点（PROXY），避免被默认规则判定为直连（DIRECT）。</p></blockquote><h3 id="方案二：配置系统环境变量与终端代理"><a href="#方案二：配置系统环境变量与终端代理" class="headerlink" title="方案二：配置系统环境变量与终端代理"></a>方案二：配置系统环境变量与终端代理</h3><p>如果你不想开启全局 TUN 模式（比如不想安装虚拟网卡驱动，或担心其他本地服务受到影响），也可以通过环境变量为应用注入代理地址。</p><p>需要说明的是，对于原生调用 <code>http2.connect()</code> 的旧版本后台进程，单纯配置环境变量并不一定能让它自动建立 HTTP&#x2F;2 代理隧道。但对于终端运行的 <code>claude-cli</code>、新版本 Cursor CLI、以及依赖标准库和 <code>fetch</code> 的工具链，底层会主动读取操作系统的代理环境变量并建立连接。</p><p>你可以获取代理软件的本地 HTTP 代理端口（以常见的 <code>7890</code> 为例），进行如下配置。</p><ul><li><p><strong>Windows 系统</strong><br>右键“此电脑” → 属性 → 高级系统设置 → 环境变量。在“用户变量”或“系统变量”中新建两个变量：</p><ul><li>变量名 <code>HTTP_PROXY</code> ｜ 变量值 <code>http://127.0.0.1:7890</code></li><li>变量名 <code>HTTPS_PROXY</code> ｜ 变量值 <code>http://127.0.0.1:7890</code><br><em>(配置完成后，需彻底重启 Cursor 才会生效)</em></li></ul></li><li><p><strong>Mac &#x2F; Linux 系统</strong><br>在终端配置文件（如 <code>~/.zshrc</code> 或 <code>~/.bash_profile</code>）中加入：</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> http_proxy=<span class="string">&quot;http://127.0.0.1:7890&quot;</span></span><br><span class="line"><span class="built_in">export</span> https_proxy=<span class="string">&quot;http://127.0.0.1:7890&quot;</span></span><br></pre></td></tr></table></figure><p>运行 <code>source ~/.zshrc</code> 刷新后，无论是从终端通过 <code>cursor .</code> 拉起编辑器，还是直接运行 <code>claude-cli</code>，都能正常通过代理环境访问。</p></li></ul><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul><li><strong>临时救急</strong><br>在 Cursor 设置中把网络协议切为 <strong>HTTP&#x2F;1.1</strong>，借由成熟的 <code>node:https</code> 模块走本地 HTTP CONNECT 隧道。</li><li><strong>一劳永逸</strong><br>开启代理软件的 <strong>TUN 模式</strong>，直接在网络层接管所有出站 TCP 流量。</li><li><strong>精准适配</strong><br>通过配置系统与终端<strong>环境变量</strong>，适配终端开发工具与具备代理识别能力的现代请求链路。</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> AI工程化 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> AI编程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>模型是怎么一步步走向生产环境的</title>
       <link href="/llm-to-harness/"/>
       <url>/llm-to-harness/</url>
@@ -8292,11 +8317,11 @@
     
     
     <entry>
-      <title>Git域名配置</title>
-      <link href="/git-domain-config/"/>
-      <url>/git-domain-config/</url>
+      <title>Git环境配置</title>
+      <link href="/git-environment-config/"/>
+      <url>/git-environment-config/</url>
       
-        <content type="html"><![CDATA[<p>git 域名配置</p><span id="more"></span><ol><li><p>在 Godaddy 购买的域名；</p></li><li><p>查找 DNSpod 解析域名，没什么难度，就是添加一条记录，保存而已，记得在添加域名到 DNSpod 之后，复制两个 NS 地址到 godaddy 的域名服务器下；</p></li><li><p>Git 项目根目录下创建 CNAME 文件，把域名填进去，push 就行了。</p></li></ol>]]></content>
+        <content type="html"><![CDATA[<p>结合了一些网上的方法，结合自己配置的实际情况写的文档。</p><span id="more"></span><ol><li><p>下载 git 主程序，下载地址：<a href="https://git-scm.com/downloads%EF%BC%8C">https://git-scm.com/downloads，</a> 双击安装包，一路 next 就行；</p></li><li><p>对于技术小白的我来说，命令行神马的太复杂了，所以就需要一个 git 界面画的软件来帮助我啦，这个软件就是 TortoiseGit，下载地址：<a href="https://tortoisegit.org/download/%EF%BC%8C">https://tortoisegit.org/download/，</a> 分为 32 位版和 64 位版，下载时要选好，安装的时候也是一路 next；</p></li><li><p>接下来就是解决怎么把本地项目关联发布到 git 上的问题了；</p></li></ol><p>(1) 首先打开 git 上的项目，复制 git 的 HTTP 地址；</p><p>(2) 然后创打开硬盘里的一个目录，最好是专门开发用的目录，点右键，选择“Git Clone…”，将地址复制进去，点击 OK；<br>(3) 出现 Success 提示，就代表 clone 成功了，close 掉对话框，然后就出现了名为 git 项目的文件夹了；</p><ol start="4"><li>本地改动保存为一个版本，我们以新建文件为例；</li></ol><p>(1) 首先，打开刚才生成文件夹，新建一个名为 readme.txt 的空文件；</p><p>(2) 然后在这里鼠标右击，选择 Git Commit -&gt; “master”…，会弹出一个对话框（注意：这里可能会提醒设置用户名、密码 和邮箱，点击确定，填写 git 账户的用户名和注册邮箱以及密码即可）；</p>]]></content>
       
       
       <categories>
@@ -8317,11 +8342,11 @@
     
     
     <entry>
-      <title>Git环境配置</title>
-      <link href="/git-environment-config/"/>
-      <url>/git-environment-config/</url>
+      <title>Git域名配置</title>
+      <link href="/git-domain-config/"/>
+      <url>/git-domain-config/</url>
       
-        <content type="html"><![CDATA[<p>结合了一些网上的方法，结合自己配置的实际情况写的文档。</p><span id="more"></span><ol><li><p>下载 git 主程序，下载地址：<a href="https://git-scm.com/downloads%EF%BC%8C">https://git-scm.com/downloads，</a> 双击安装包，一路 next 就行；</p></li><li><p>对于技术小白的我来说，命令行神马的太复杂了，所以就需要一个 git 界面画的软件来帮助我啦，这个软件就是 TortoiseGit，下载地址：<a href="https://tortoisegit.org/download/%EF%BC%8C">https://tortoisegit.org/download/，</a> 分为 32 位版和 64 位版，下载时要选好，安装的时候也是一路 next；</p></li><li><p>接下来就是解决怎么把本地项目关联发布到 git 上的问题了；</p></li></ol><p>(1) 首先打开 git 上的项目，复制 git 的 HTTP 地址；</p><p>(2) 然后创打开硬盘里的一个目录，最好是专门开发用的目录，点右键，选择“Git Clone…”，将地址复制进去，点击 OK；<br>(3) 出现 Success 提示，就代表 clone 成功了，close 掉对话框，然后就出现了名为 git 项目的文件夹了；</p><ol start="4"><li>本地改动保存为一个版本，我们以新建文件为例；</li></ol><p>(1) 首先，打开刚才生成文件夹，新建一个名为 readme.txt 的空文件；</p><p>(2) 然后在这里鼠标右击，选择 Git Commit -&gt; “master”…，会弹出一个对话框（注意：这里可能会提醒设置用户名、密码 和邮箱，点击确定，填写 git 账户的用户名和注册邮箱以及密码即可）；</p>]]></content>
+        <content type="html"><![CDATA[<p>git 域名配置</p><span id="more"></span><ol><li><p>在 Godaddy 购买的域名；</p></li><li><p>查找 DNSpod 解析域名，没什么难度，就是添加一条记录，保存而已，记得在添加域名到 DNSpod 之后，复制两个 NS 地址到 godaddy 的域名服务器下；</p></li><li><p>Git 项目根目录下创建 CNAME 文件，把域名填进去，push 就行了。</p></li></ol>]]></content>
       
       
       <categories>
