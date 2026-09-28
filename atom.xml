@@ -6,7 +6,7 @@
   <link href="https://canace.site/atom.xml" rel="self"/>
   
   <link href="https://canace.site/"/>
-  <updated>2026-09-28T03:21:13.021Z</updated>
+  <updated>2026-09-28T03:21:51.284Z</updated>
   <id>https://canace.site/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://canace.site/promt-cache/"/>
     <id>https://canace.site/promt-cache/</id>
     <published>2026-09-28T02:46:30.000Z</published>
-    <updated>2026-09-28T03:21:13.021Z</updated>
+    <updated>2026-09-28T03:21:51.284Z</updated>
     
     
     <summary type="html">梳理 Prompt Caching 的前缀匹配原理、提高命中率的策略，以及 Claude 与 OpenAI 在开启方式和计费上的差异。</summary>
