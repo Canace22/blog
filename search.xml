@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Prompt Caching 笔记：原理、命中策略和各家差异</title>
+      <link href="/promt-cache/"/>
+      <url>/promt-cache/</url>
+      
+        <content type="html"><![CDATA[<p>几天没上班，AI 又进步了不少。在向 Claude 询问最近的更新内容时，我注意到它的「缓存读取」降价非常明显（$0.50 → $0.20 &#x2F; 百万 token），而输入价只降了 20%。</p><p>这让我想起之前在做 Agent 开发时，为了省钱，自己写逻辑，截取部分信息再发给大模型。朋友发来一句灵魂拷问：「你这样频繁截取信息，考虑过缓存命中吗？」</p><p>这里梳理了一下 Prompt Caching（提示词缓存）的底层逻辑，简单做个笔记，提升下认知吧。</p><h2 id="一、它是什么？"><a href="#一、它是什么？" class="headerlink" title="一、它是什么？"></a>一、它是什么？</h2><p>在传统 API 调用中，每次请求都必须发送完整的上下文（系统提示、工具定义、历史对话、参考文档等）。模型需要从头处理这些内容，并按完整的输入 Token 计费。</p><p>然而，在多轮交互中，绝大部分前置上下文是静态的。Prompt Caching 就是让服务端将这段重复的<strong>前缀</strong>存储起来，当后续请求的开头部分完全一致时，直接复用已处理的计算结果。</p><p>以 Claude Opus 5.5 的计费为例：</p><ul><li><strong>缓存写入（Cache Write）</strong>：首次存入，比常规输入贵（5 分钟缓存是输入价的 1.25 倍，1 小时缓存是 2 倍）。</li><li><strong>缓存读取（Cache Read）</strong>：后续命中缓存，$0.20 &#x2F; 百万 Token，只有常规输入（$4）的 1&#x2F;20。</li></ul><h2 id="二、为什么对-Agent-尤为重要？"><a href="#二、为什么对-Agent-尤为重要？" class="headerlink" title="二、为什么对 Agent 尤为重要？"></a>二、为什么对 Agent 尤为重要？</h2><p>Agent（如 Claude Code、Codex CLI）在执行复杂任务时，往往需要与大模型进行数十甚至上百轮的交互。每一轮都必须携带之前积累的所有上下文，上下文越滚越大，累计的 Token 消耗增长得非常快。</p><p>粗略算一笔账：假设上下文累积达 10 万 Token，交互 50 轮，按 Opus 5.5 的定价：</p><ul><li><strong>无缓存机制</strong>：500 万输入 Token × $4&#x2F;百万 &#x3D; <strong>约 $20</strong></li><li><strong>充分命中缓存</strong>：首次写入约 $0.5，后续 49 轮读取约 $1，合计 &#x3D; <strong>约 $1.5</strong></li></ul><p>Agent 账单的大头往往源于「反复读取同一段长上下文」。因此，<strong>缓存读取的定价才是决定 Agent 运行成本的关键所在</strong>。</p><h2 id="三、核心原理：前缀匹配（Prefix-Matching）"><a href="#三、核心原理：前缀匹配（Prefix-Matching）" class="headerlink" title="三、核心原理：前缀匹配（Prefix Matching）"></a>三、核心原理：前缀匹配（Prefix Matching）</h2><p><strong>系统会从第一个 Token 开始逐一比对，一旦遇到第一个不同的地方，从该位置往后的所有缓存将全部失效。</strong></p><p>这是 Prompt Caching 的核心铁律，后续所有的优化策略均是基于此原则的推演。</p><h2 id="四、提高命中率的-8-个核心策略"><a href="#四、提高命中率的-8-个核心策略" class="headerlink" title="四、提高命中率的 8 个核心策略"></a>四、提高命中率的 8 个核心策略</h2><h3 id="1-静态内容靠前，动态内容置后"><a href="#1-静态内容靠前，动态内容置后" class="headerlink" title="1. 静态内容靠前，动态内容置后"></a>1. 静态内容靠前，动态内容置后</h3><p>Claude 的拼接顺序是 <code>tools → system → messages</code>。应将固定内容（工具定义、系统提示、参考文档）放在最前面，用户的最新消息放在最后。</p><p><em>常见踩坑</em>：在系统提示中注入当前时间、随机 ID 或动态用户名。这些变量一旦改变，后续缓存直接清零。这类信息应放在最后一条消息中。</p><h3 id="2-保证序列化的绝对稳定"><a href="#2-保证序列化的绝对稳定" class="headerlink" title="2. 保证序列化的绝对稳定"></a>2. 保证序列化的绝对稳定</h3><p>不仅要求「语义一致」，必须做到「<strong>字节级一致</strong>」：</p><ul><li>工具列表的排列顺序必须固定，切忌动态排序或按条件增减。</li><li>JSON 对象的 Key 顺序保持一致。</li><li>空格、换行等格式化拼接方式绝对统一。</li></ul><h3 id="3-历史对话「只追加，不修改」"><a href="#3-历史对话「只追加，不修改」" class="headerlink" title="3. 历史对话「只追加，不修改」"></a>3. 历史对话「只追加，不修改」</h3><p>每轮交互只在末尾追加新消息。删除中间的某条对话、截断早期消息、或改写前文，都会导致对应位置之后的缓存全部失效。如果必须压缩上下文，建议一次性截断并压缩一大段，避免每轮进行微调。</p><p>这也回答了开头朋友的那个问题：我之前每轮都自己截取信息再发，看起来少发了 Token，但前缀每轮都在变，缓存每轮都要重新写入。省下的那点 Token，很可能还不如丢掉的缓存值钱。</p><h3 id="4-精准放置断点（针对-Claude）"><a href="#4-精准放置断点（针对-Claude）" class="headerlink" title="4. 精准放置断点（针对 Claude）"></a>4. 精准放置断点（针对 Claude）</h3><p>调用 Claude API 时，需要通过 <code>cache_control</code> 手动标记缓存断点（最多支持 4 个）。常见的高效布局：</p><ul><li>系统提示的末尾放置 1 个。</li><li>对话历史的最后一条消息放置 1 个，并在每轮交互中向后滚动（实现增量缓存）。</li></ul><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 假设 msg.content 是字符串；如果已经是数组（带图片、工具结果等），</span></span><br><span class="line"><span class="comment">// 应把 cache_control 加在数组最后一个元素上</span></span><br><span class="line"><span class="attr">messages</span>: history.<span class="title function_">map</span>(<span class="function">(<span class="params">msg, i</span>) =&gt;</span></span><br><span class="line">  i === history.<span class="property">length</span> - <span class="number">1</span></span><br><span class="line">    ? &#123;</span><br><span class="line">        ...msg,</span><br><span class="line">        <span class="attr">content</span>: [</span><br><span class="line">          &#123;</span><br><span class="line">            <span class="attr">type</span>: <span class="string">&quot;text&quot;</span>,</span><br><span class="line">            <span class="attr">text</span>: msg.<span class="property">content</span>,</span><br><span class="line">            <span class="attr">cache_control</span>: &#123; <span class="attr">type</span>: <span class="string">&quot;ephemeral&quot;</span> &#125;,</span><br><span class="line">          &#125;,</span><br><span class="line">        ],</span><br><span class="line">      &#125;</span><br><span class="line">    : msg,</span><br><span class="line">);</span><br></pre></td></tr></table></figure><h3 id="5-关注缓存过期时间（TTL）"><a href="#5-关注缓存过期时间（TTL）" class="headerlink" title="5. 关注缓存过期时间（TTL）"></a>5. 关注缓存过期时间（TTL）</h3><p>Claude 默认缓存有效期为 5 分钟，命中后自动续期。如果 Agent 等待人工确认的时间可能超过 5 分钟，建议配置为 1 小时缓存模式。</p><h3 id="6-维持会话参数一致"><a href="#6-维持会话参数一致" class="headerlink" title="6. 维持会话参数一致"></a>6. 维持会话参数一致</h3><p>在同一会话中，切换模型型号、修改工具列表、调整推理思考（Reasoning）参数或增减图片，都会打破原有状态，导致缓存无法复用。</p><h3 id="7-并发请求前的「预热」"><a href="#7-并发请求前的「预热」" class="headerlink" title="7. 并发请求前的「预热」"></a>7. 并发请求前的「预热」</h3><p>如果同时发出 10 个相同前缀的请求，由于首个缓存尚未建立，这 10 个请求都会触发「缓存写入」。正确做法是：先发 1 个请求建立缓存（预热），收到响应后再并发剩余请求。</p><h3 id="8-留意最小长度阈值"><a href="#8-留意最小长度阈值" class="headerlink" title="8. 留意最小长度阈值"></a>8. 留意最小长度阈值</h3><p>极短的提示词通常不会被缓存。各大模型均有最小长度要求（一般在 1000 Token 以上，具体以官方文档为准）。</p><h2 id="五、如何验证缓存是否命中？"><a href="#五、如何验证缓存是否命中？" class="headerlink" title="五、如何验证缓存是否命中？"></a>五、如何验证缓存是否命中？</h2><table><thead><tr><th>平台</th><th>监控字段</th></tr></thead><tbody><tr><td><strong>Claude</strong></td><td><code>usage.cache_creation_input_tokens</code>（写入）<br><code>usage.cache_read_input_tokens</code>（命中）</td></tr><tr><td><strong>OpenAI</strong></td><td><code>usage.prompt_tokens_details.cached_tokens</code></td></tr></tbody></table><p>建议通过以下 5 个测试来验证代码的缓存逻辑是否严密：</p><ol><li><strong>基础命中</strong>：发送相同请求两次 → 第二次应显示大量命中。</li><li><strong>动态变量测试</strong>：在系统提示中加入时间戳 → 命中应归零（证明动态内容会破坏前缀）。</li><li><strong>多轮对话测试</strong>：第 N 轮的命中 Token 数，应约等于第 N-1 轮的总输入量。</li><li><strong>过期重置测试</strong>：等待超过有效时间后再发送 → 应显示重新写入。</li><li><strong>一致性测试</strong>：调换工具列表中两个工具的声明顺序 → 命中应归零。</li></ol><h2 id="六、各家厂商的区别"><a href="#六、各家厂商的区别" class="headerlink" title="六、各家厂商的区别"></a>六、各家厂商的区别</h2><p><strong>虽然底层原理（前缀匹配）完全一致，上述策略也是通用的</strong>，但在开启方式和计费逻辑上存在差异：</p><table><thead><tr><th>维度</th><th>Claude</th><th>OpenAI (Codex &#x2F; GPT)</th></tr></thead><tbody><tr><td><strong>启用方式</strong></td><td>需手动在特定区块标记 <code>cache_control</code></td><td>默认自动开启（也支持显式设置断点）</td></tr><tr><td><strong>写入成本</strong></td><td>比普通输入贵</td><td>无额外费用（按普通输入计价）</td></tr><tr><td><strong>过期机制</strong></td><td>5 分钟 &#x2F; 1 小时</td><td>内存模式 &#x2F; 扩展模式（最长 24 小时）</td></tr><tr><td><strong>特殊控制</strong></td><td>—</td><td><code>prompt_cache_key</code> 优化路由</td></tr></tbody></table><p><strong>OpenAI 生态的几个关键点：</strong></p><ul><li><strong><code>prompt_cache_key</code> 的重要性</strong>：OpenAI 会把请求路由到最近处理过相同前缀的服务器上。这个 Key 会和前缀哈希组合起来影响路由，让相关请求更容易落到同一处，从而提高命中率。在 GPT-5.6 及之后的模型上，<strong>必须设置</strong>这个 Key 才能使用更可靠的匹配方式。一般按用户或会话分配一个固定值即可。</li><li><strong>核心逻辑差异</strong>：简单来说，<strong>Claude 是显式命令「把这里缓存下来」，而 OpenAI 的 Key 是暗示「这几个请求是同一组的」</strong>。</li><li><strong>接口选择</strong>：在多轮 Agent 场景下，优先使用 Responses API。据 OpenAI 内部测试，它的缓存利用率比 Chat Completions 更高。</li></ul><p><em>注：Gemini、DeepSeek、Kimi 等大多也内置了自动前缀缓存。Gemini 额外提供了需要手动创建并按存储时长计费的 Context Caching 服务。</em></p><p><strong>避坑指南</strong>：如果通过某些第三方 OpenAI 兼容接口（中转网关）调用 Claude，可能用不上 Claude 的缓存。重度依赖缓存的场景，建议直连原生接口。</p><h2 id="七、总结"><a href="#七、总结" class="headerlink" title="七、总结"></a>七、总结</h2><ol><li><strong>官方工具省心</strong>：如果你使用的是 Claude Code、Codex CLI 等官方 Agent，它们已经处理好了缓存，开箱即用。</li><li><strong>自己调 API</strong>：<strong>保持前缀的绝对稳定</strong>是最高准则。Claude 记得在代码里精准标记断点，OpenAI 务必设置 <code>prompt_cache_key</code>。</li><li><strong>重新评估成本模型</strong>：在当前的 Agent 开发框架下，计算成本时应重点核算「缓存读取（Cache Read）」单价，而不能仅仅对比各家名义上的标准输入&#x2F;输出价格。</li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category>   </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag>   </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Cursor 的网络协议，为什么选 HTTP/1.1 才能用 Claude</title>
       <link href="/http-claude/"/>
       <url>/http-claude/</url>
@@ -8317,11 +8342,11 @@
     
     
     <entry>
-      <title>Git环境配置</title>
-      <link href="/git-environment-config/"/>
-      <url>/git-environment-config/</url>
+      <title>Git域名配置</title>
+      <link href="/git-domain-config/"/>
+      <url>/git-domain-config/</url>
       
-        <content type="html"><![CDATA[<p>结合了一些网上的方法，结合自己配置的实际情况写的文档。</p><span id="more"></span><ol><li><p>下载 git 主程序，下载地址：<a href="https://git-scm.com/downloads%EF%BC%8C">https://git-scm.com/downloads，</a> 双击安装包，一路 next 就行；</p></li><li><p>对于技术小白的我来说，命令行神马的太复杂了，所以就需要一个 git 界面画的软件来帮助我啦，这个软件就是 TortoiseGit，下载地址：<a href="https://tortoisegit.org/download/%EF%BC%8C">https://tortoisegit.org/download/，</a> 分为 32 位版和 64 位版，下载时要选好，安装的时候也是一路 next；</p></li><li><p>接下来就是解决怎么把本地项目关联发布到 git 上的问题了；</p></li></ol><p>(1) 首先打开 git 上的项目，复制 git 的 HTTP 地址；</p><p>(2) 然后创打开硬盘里的一个目录，最好是专门开发用的目录，点右键，选择“Git Clone…”，将地址复制进去，点击 OK；<br>(3) 出现 Success 提示，就代表 clone 成功了，close 掉对话框，然后就出现了名为 git 项目的文件夹了；</p><ol start="4"><li>本地改动保存为一个版本，我们以新建文件为例；</li></ol><p>(1) 首先，打开刚才生成文件夹，新建一个名为 readme.txt 的空文件；</p><p>(2) 然后在这里鼠标右击，选择 Git Commit -&gt; “master”…，会弹出一个对话框（注意：这里可能会提醒设置用户名、密码 和邮箱，点击确定，填写 git 账户的用户名和注册邮箱以及密码即可）；</p>]]></content>
+        <content type="html"><![CDATA[<p>git 域名配置</p><span id="more"></span><ol><li><p>在 Godaddy 购买的域名；</p></li><li><p>查找 DNSpod 解析域名，没什么难度，就是添加一条记录，保存而已，记得在添加域名到 DNSpod 之后，复制两个 NS 地址到 godaddy 的域名服务器下；</p></li><li><p>Git 项目根目录下创建 CNAME 文件，把域名填进去，push 就行了。</p></li></ol>]]></content>
       
       
       <categories>
@@ -8342,11 +8367,11 @@
     
     
     <entry>
-      <title>Git域名配置</title>
-      <link href="/git-domain-config/"/>
-      <url>/git-domain-config/</url>
+      <title>Git环境配置</title>
+      <link href="/git-environment-config/"/>
+      <url>/git-environment-config/</url>
       
-        <content type="html"><![CDATA[<p>git 域名配置</p><span id="more"></span><ol><li><p>在 Godaddy 购买的域名；</p></li><li><p>查找 DNSpod 解析域名，没什么难度，就是添加一条记录，保存而已，记得在添加域名到 DNSpod 之后，复制两个 NS 地址到 godaddy 的域名服务器下；</p></li><li><p>Git 项目根目录下创建 CNAME 文件，把域名填进去，push 就行了。</p></li></ol>]]></content>
+        <content type="html"><![CDATA[<p>结合了一些网上的方法，结合自己配置的实际情况写的文档。</p><span id="more"></span><ol><li><p>下载 git 主程序，下载地址：<a href="https://git-scm.com/downloads%EF%BC%8C">https://git-scm.com/downloads，</a> 双击安装包，一路 next 就行；</p></li><li><p>对于技术小白的我来说，命令行神马的太复杂了，所以就需要一个 git 界面画的软件来帮助我啦，这个软件就是 TortoiseGit，下载地址：<a href="https://tortoisegit.org/download/%EF%BC%8C">https://tortoisegit.org/download/，</a> 分为 32 位版和 64 位版，下载时要选好，安装的时候也是一路 next；</p></li><li><p>接下来就是解决怎么把本地项目关联发布到 git 上的问题了；</p></li></ol><p>(1) 首先打开 git 上的项目，复制 git 的 HTTP 地址；</p><p>(2) 然后创打开硬盘里的一个目录，最好是专门开发用的目录，点右键，选择“Git Clone…”，将地址复制进去，点击 OK；<br>(3) 出现 Success 提示，就代表 clone 成功了，close 掉对话框，然后就出现了名为 git 项目的文件夹了；</p><ol start="4"><li>本地改动保存为一个版本，我们以新建文件为例；</li></ol><p>(1) 首先，打开刚才生成文件夹，新建一个名为 readme.txt 的空文件；</p><p>(2) 然后在这里鼠标右击，选择 Git Commit -&gt; “master”…，会弹出一个对话框（注意：这里可能会提醒设置用户名、密码 和邮箱，点击确定，填写 git 账户的用户名和注册邮箱以及密码即可）；</p>]]></content>
       
       
       <categories>
