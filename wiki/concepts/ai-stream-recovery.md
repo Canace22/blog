@@ -40,11 +40,17 @@ AI 流式生成恢复，是在客户端连接、业务服务或模型请求中�
 
 KV Cache 不能替代事件日志，也不自动等于断点续传。第三方模型 API 通常不开放缓存管理，因此产品侧一般优先保证任务持久化和事件重放，再把语义续写作为降级方案。
 
+## 和 Prompt Caching 的区别
+
+- **KV Cache**留在推理服务内部，用来在恢复后少重算前文。
+- **Prompt Caching**是 API 对稳定前缀的计费复用：前缀字节一致才命中，读价远低于普通输入。自建恢复系统管的是任务事件；自己调 API 时还要另外保持前缀稳定。见 [Prompt Caching](prompt-caching.md)。
+
 ## 来源与关联
 
 - [AI 生成到 90% 突然断了：你的解决方案是？](../sources/ai-stream-recovery.md)
+- [Prompt Caching](prompt-caching.md)
 - [Claude Code 常见工作流](claude-code-workflows.md)（`--continue` / `--resume` 与会话恢复习惯）
 - [大语言模型工作原理概览](large-language-model-fundamentals.md)
 - [AI 辅助开发](ai-assisted-development.md)
 
-*维护：Cursor Agent，2026-08-12。*
+*维护：Cursor Agent，2026-09-28。*

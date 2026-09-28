@@ -24,5 +24,6 @@
 - [AI 流式生成恢复](../concepts/ai-stream-recovery.md)
 - [AI 辅助开发](../concepts/ai-assisted-development.md)
 - [大语言模型工作原理概览](../concepts/large-language-model-fundamentals.md)
+- [Prompt Caching](../concepts/prompt-caching.md)（API 前缀计费复用，不同于推理侧 KV Cache）
 
-*维护：Cursor Agent，2026-08-12。*
+*维护：Cursor Agent，2026-09-28。*

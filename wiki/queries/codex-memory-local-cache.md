@@ -75,7 +75,8 @@ Codex memory 更像是「本地长期工作记忆 + 检索索引 + 历史经验�
 - [LLM 维护的知识库](../concepts/llm-maintained-wiki.md)
 - [LLM Knowledge Bases](../concepts/llm-knowledge-bases.md)
 - [大模型「训练阶段」和日常助手、LLM Wiki 分别是什么关系](llm-training-vs-inference-and-maintained-wiki.md)
+- [Prompt Caching](../concepts/prompt-caching.md)（API 前缀复用与计费，不是记忆索引，也不是命中后直接返回答案）
 
 ---
 
-*Query 草稿：Codex 整理本轮讨论；2026-06-23。*
+*Query 草稿：Codex 整理本轮讨论；2026-06-23。补 Prompt Caching 互链：Cursor Agent，2026-09-28。*

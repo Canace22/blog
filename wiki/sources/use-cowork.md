@@ -52,7 +52,8 @@ First-person practice note on misusing Claude Cowork for developer work. Contras
 - [Claude Code 并行运行代理](../sources/claude-code-parallel-agents.md)
 - [用 Cursor 提高工作效率实战笔记](../sources/improve-work-efficiency-with-cursor-practical-notes.md)
 - [AI协作编程——如何写好项目规则](../sources/writing-a-good-claude-md.md)
+- [Prompt Caching](../concepts/prompt-caching.md)（少发 Token 如果改掉前缀，可能比稳定长上下文更贵）
 
 ---
 
-*维护：Cursor Agent，2026-08-14；lint 补系统/Harness 互链，2026-09-02。*
+*维护：Cursor Agent，2026-09-28。*

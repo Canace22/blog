@@ -4,8 +4,8 @@
 
 ## Purpose
 
-Turn Markdown files under `source/_posts/*.md` into a persistent, interlinked
-markdown wiki in `wiki/`.
+Turn Markdown files under `source/_posts/*.md` (plus external material the
+human hands over) into a persistent, interlinked markdown wiki in `wiki/`.
 
 Treat as **not** ingest sources: anything under `wiki/` (that is the maintained
 output) and `AGENTS.md` / `roles/*.md` (operational guides only).
@@ -33,13 +33,35 @@ output) and `AGENTS.md` / `roles/*.md` (operational guides only).
 - `wiki/queries/`: durable Q&A outputs worth saving.
 - `wiki/reports/`: longer analysis outputs.
 - `wiki/index.md`: catalog of wiki pages.
-- `wiki/log.md`: append-only operational log.
+- `wiki/log.md`: operational log. **Newest entry on top** (right under the
+  `# Wiki Log` heading), format `- YYYY-MM-DD：…`. Never edit or reorder old
+  entries.
 - `wiki/Clippings/`: **ephemeral** scratch or export files the human may delete
   anytime. Do **not** add markdown links from maintained wiki pages
   (`wiki/sources/`, `wiki/concepts/`, `wiki/queries/`, `wiki/reports/`,
   `wiki/index.md`) to paths under `wiki/Clippings/`. Ingest by copying the
   substance into `wiki/sources/` and concepts as needed; rely on external URLs
   or prose attribution instead.
+
+## Source Types
+
+| 类型 | 来源页头部写法 | 索引位置 |
+| --- | --- | --- |
+| 博文 | `- **源文件**：[\`source/_posts/xxx.md\`](../../source/_posts/xxx.md)` | `wiki/index.md` 对应分类（与博文 `categories` 一致） |
+| 外部文章 / 仓库 / 文档 | `- 原文：[标题或域名](URL)`，可加作者、发布日期 | `### 外部研究资料` |
+| 对话 / 会话沉淀（Cursor、Claude、Telegram 等） | `- **源**：说明出处（如「Cursor 会话 `~/.hermes`」），注明「无对应 source/_posts」 | 按主题放分类，条目末尾注明出处 |
+
+来源页文件名用英文 kebab-case；博文来源页与博文同名。
+
+## Publishing
+
+`npm run serve` / `npm run build` 会运行 `tools/sync-wiki-for-hexo.mjs`，把
+`wiki/`（除 `Clippings/`）同步到 `source/wiki/`，发布在站点 `/wiki/`。所以：
+
+- `wiki/` 里的内容都是**公开的**，不要写入密钥、内网地址、他人隐私。
+- 链接用相对路径：指向博文写 `../../source/_posts/xxx.md`，wiki 内部写
+  `../concepts/xxx.md` 这类 `.md` 路径，同步脚本会转换成站内 URL。
+- `source/wiki/` 是构建产物（已 gitignore），不要手改。
 
 ## Ingest Workflow
 
@@ -75,6 +97,12 @@ When asked to lint the wiki, check for:
 - Contradictions between source pages and concept pages.
 - Stale summaries that should be revised.
 - Useful query outputs that should become concept or report pages.
+- `source/_posts/*.md` without a matching `wiki/sources/` page (un-ingested
+  posts).
+- Markdown links to `wiki/Clippings/` from maintained pages.
+- Maintained pages missing the signature line. Only add signatures to pages
+  you actually touch in this lint; list the rest in the log entry as a count
+  instead of mass-editing them.
 
 ## Writing Style
 
@@ -87,7 +115,8 @@ When asked to lint the wiki, check for:
   `wiki/log.md` unless the human asks), append a brief **signature** at the end
   of the page body: who produced the draft or edit (assistant / model or tool
   identifier) and the date (ISO `YYYY-MM-DD` in UTC recommended), so
-  attribution is explicit.
+  attribution is explicit. Format: `*维护：<工具或模型>，YYYY-MM-DD。*`
+  （修订已有页可用 `*修订：…*`）.
 
 ## Common Calls
 
@@ -95,6 +124,7 @@ When asked to lint the wiki, check for:
 | --- | --- |
 | "ingest source/_posts/xxx.md" | 按 Ingest Workflow 1-5 步走 |
 | "ingest 这段 Clipping"（粘贴内容） | 同上，但不要链接到 `wiki/Clippings/` |
+| "ingest 这篇外部文章 / 这次对话" | 同上，按 Source Types 写来源页头部 |
 | "查一下 XX 的资料"或具体问题 | 按 Query Workflow 1-5 步走 |
 | "lint wiki" | 按 Lint Workflow 检查 5 类问题 |
 
@@ -107,7 +137,9 @@ When asked to lint the wiki, check for:
 - Do not use this role for translation or blog metadata drafts. Use
   `roles/translator.md` or `roles/blog-writer.md` instead.
 
-## Current Seed Topic
+## Current Focus
 
-This repo currently explores the idea of an "LLM-maintained wiki" as a
-compounding alternative to pure query-time RAG.
+The wiki covers all blog posts (programming basics, web, engineering, soft
+skills) plus external research. The main active thread is **AI 工程化**：
+AI 辅助开发、Agent 工作流、Harness Engineering、上下文与记忆、LLM 维护的知识库。
+See `wiki/reports/ai-engineering-theme-synthesis.md` for the current map.

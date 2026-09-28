@@ -90,6 +90,7 @@
   - [搞懂 GPT-5.6：Sol、Terra、Luna 和 Thinking Effort](../sources/gpt-5-6-sol-terra-luna.md)
   - [Claude Code 使用笔记](../sources/claude-note.md)
   - [原来我一直用错了 Cowork](../sources/use-cowork.md)
+  - [Prompt Caching 笔记：原理、命中策略和各家差异](../sources/promt-cache.md)（前缀命中与缓存读取计价）
   - [笔记本都合上了，Claude 为什么还能在手机上执行电脑上装的技能？](../sources/claude-skill-cross-device.md)
 
 ### 10. Harness 与产品套壳
@@ -123,8 +124,9 @@ eval harness、验收契约，以及多 Agent 编排里的锁与灾备细节，�
 - [AI编程和 Vibe Coding 的差异在哪](ai-programming-vs-vibe-coding.md)
 - [Harness Engineering](../concepts/harness-engineering.md)
 - [Agent 工作流](../concepts/agent-workflow.md)
+- [Prompt Caching](../concepts/prompt-caching.md)
 - [Codex Agent Harness 套壳实现自己的 AI 产品](../sources/how-can-i-use-codex-harness.md)
 
 ---
 
-*修订：Cursor Agent，2026-09-07。*
+*修订：Cursor Agent，2026-09-28。*

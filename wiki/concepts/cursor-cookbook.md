@@ -21,6 +21,7 @@ Cursor 官方维护的 SDK 示例仓库，提供 TypeScript API 在自建应用 
 ## 另见
 
 - [Cursor 使用 Playwright MCP](../sources/cursor-playwright-mcp.md)
+- [Cursor 的网络协议，为什么选 HTTP/1.1 才能用 Claude](../sources/http-claude.md)（HTTP/2 绕过本地代理）
 - [一个提升 AI Coding 稳定性的思路](../sources/agent-coding-stability.md)
 - [Claude Code 并行代理](claude-code-parallel-agents.md)（Agent Kanban / 多会话编排的对照）
 - [Claude Code 常见工作流](claude-code-workflows.md)
@@ -35,4 +36,4 @@ Cursor SDK 的定位是让开发者在自己产品里集成 Cursor agent 能力�
 
 ---
 
-*维护：Cursor Agent，2026-06-03。*
+*维护：Cursor Agent，2026-06-03；Claude（Cowork），2026-09-28。*

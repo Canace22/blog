@@ -1,69 +1,10 @@
-# LLM Wiki Operating Guide
+# Wiki 规则
 
-This repository is a personal knowledge base maintained by an LLM agent.
+Wiki 维护规则（目录约定、Ingest / Query / Lint 流程、写作风格）以 [`roles/wiki-curator.md`](../roles/wiki-curator.md) 为准，本文件不再重复。
 
-## Purpose
+## Blog 内访问
 
-The agent should turn all Markdown files under the `source/_posts/*.md`, into a persistent, interlinked markdown wiki in `wiki/`.
-
-Treat as **not** ingest sources: anything under `wiki/` (that is the maintained output) and this `AGENTS.md` file (operational guide only).
-
-## Ground Rules
-
-- Treat `source/_posts/*.md` as immutable source material. Read from it, but do not modify it.
-- Treat `wiki/` as the maintained knowledge layer. Create and update files there.
-- Prefer incremental updates over rewrites.
-- Preserve useful cross-links between pages.
-- When a new source changes an older claim, update the relevant pages and note the change.
-- Keep edits readable for humans browsing in Obsidian or a text editor.
-
-## Directory Conventions
-
-- `source/_posts/*.md`: notes, transcripts
-- `wiki/sources/`: one page per ingested source
-- `wiki/concepts/`: concept and topic pages synthesized across sources
-- `wiki/queries/`: durable Q&A outputs worth saving
-- `wiki/reports/`: longer analysis outputs
-- `wiki/index.md`: catalog of wiki pages
-- `wiki/log.md`: append-only operational log
-
-## Ingest Workflow
-
-When asked to ingest a source:
-
-1. Read the source file from the `source/_posts/*.md`.
-2. Create or update a source summary page in `wiki/sources/`.
-3. Update any relevant concept pages in `wiki/concepts/`.
-4. Update `wiki/index.md` so the new or changed pages are listed.
-5. Append an entry to `wiki/log.md`.
-
-## Query Workflow
-
-When asked a question:
-
-1. Read `wiki/index.md` first.
-2. Open the most relevant wiki pages.
-3. Synthesize an answer from the wiki.
-4. If the result seems durable, save it to `wiki/queries/` or `wiki/reports/`.
-5. Append a short entry to `wiki/log.md`.
-
-## Lint Workflow
-
-When asked to lint the wiki, check for:
-
-- pages with no inbound or outbound links
-- concepts mentioned repeatedly but lacking their own page
-- contradictions between source pages and concept pages
-- stale summaries that should be revised
-- useful query outputs that should become concept or report pages
-
-## Writing Style
-
-- Prefer short sections and explicit links.
-- Distinguish source-backed claims from synthesis.
-- Keep each page focused on one source or one concept.
-- Use bullet lists when they improve scanability.
-
-## Current Seed Topic
-
-This repo currently explores the idea of an "LLM-maintained wiki" as a compounding alternative to pure query-time RAG.
+- 仓库根目录 `wiki/` 是知识库原文，用 Obsidian 或编辑器浏览、维护。
+- `npm run serve` / `npm run build` 会先运行 `tools/sync-wiki-for-hexo.mjs`，把 `wiki/` 同步到 `source/wiki/`（构建产物，已 gitignore），再生成站点。
+- 同步时：指向 `source/_posts` 的链接改成博文地址 `/slug/`；wiki 内 `.md` 链接改成 `.html`；`wiki/index.md` 各分区按文件修改时间倒序，并加日期前缀；`wiki/Clippings/` 不同步。
+- 线上入口：主题菜单「知识库」→ `/wiki/`。

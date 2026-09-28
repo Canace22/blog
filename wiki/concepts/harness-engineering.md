@@ -32,6 +32,10 @@
 - `Verification / Evaluation`：测试、QA、代码审查、UI 验证、日志检查
 - `Task / Team / Worktree / MCP`：把单 agent 升级成多 agent、多能力、多执行车道的平台
 
+## 从单次调用到 Harness 的演进
+
+[模型是怎么一步步走向生产环境的](../sources/llm-to-harness.md) 给出一条按层叠加的路径：单次调用 → 上下文装配 → ReAct 循环 → 工具调用规范（Schema / Router / Result）→ 记忆分层（程序 / 语义 / 情景）→ Harness。每一层补的都是模型自己做不到的事，与上面「常见组成」一一对应。该文把 Pi、OpenCode、Codex、Hermes 放在同一张取舍表里：极简、可恢复可审计、沙箱确认、长期认知状态。
+
 ## 两类典型思路
 
 ### 1. OpenAI / Codex 路线
@@ -113,6 +117,7 @@ Anthropic 明确提到：harness 中每个组件都隐含一个假设，即“�
 - [Pinecone Nexus：Knowledge Engine](../sources/pinecone-nexus-knowledge-engine.md)
 - [Codex Agent Harness 套壳实现自己的 AI 产品](../sources/how-can-i-use-codex-harness.md)
 - [Agent 工作流](agent-workflow.md)
+- [模型是怎么一步步走向生产环境的](../sources/llm-to-harness.md)（按层叠加的演进路径）
 - [假设驱动 AI 调试](../concepts/hypothesis-driven-ai-debugging.md)（`DEBUG.md` / `program.md` 等外化假设与证据）
 
 其中 [Codex Agent Harness 套壳](../sources/how-can-i-use-codex-harness.md) 已经直接写 harness；其余篇目当时未用这个词，但已经涉及项目规则、经验上下文、工作流拆解、技能封装和长期记忆层，可看作邻近层或局部实现。
@@ -139,4 +144,4 @@ Anthropic 明确提到：harness 中每个组件都隐含一个假设，即“�
 
 ---
 
-*修订：Cursor Agent，2026-09-07。*
+*修订：Cursor Agent，2026-09-07；Claude（Cowork），2026-09-28。*

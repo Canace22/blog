@@ -13,6 +13,7 @@
 
 ## Concepts
 
+- [Prompt Caching](concepts/prompt-caching.md)（前缀匹配、命中策略、Claude / OpenAI 计费差异）
 - [Skill、会话与执行环境](concepts/skill-session-runtime.md)
 - [AI 流式生成恢复](concepts/ai-stream-recovery.md)
 - [提升 AI Coding 稳定性的经验上下文模式](concepts/agent-coding-stability.md)
@@ -357,6 +358,9 @@
 
 ### AI工程化
 
+- [Cursor 的网络协议，为什么选 HTTP/1.1 才能用 Claude](sources/http-claude.md) — `source/_posts/http-claude.md`（HTTP/2 绕过本地代理、TUN 模式、代理环境变量）
+- [模型是怎么一步步走向生产环境的](sources/llm-to-harness.md) — `source/_posts/llm-to-harness.md`（上下文装配 → ReAct → 工具规范 → 记忆 → Harness）
+- [Prompt Caching 笔记：原理、命中策略和各家差异](sources/promt-cache.md) — `source/_posts/promt-cache.md`（前缀匹配、命中策略、Claude / OpenAI 缓存差异）
 - [最新版 Codex 工作流的问题](sources/ai-self-awareness.md) — `source/_posts/ai-self-awareness.md`（Agent 工作流：跳过确认节点会按推测继续）
 - [Vibe Coding 开了一堆会话，验收不过来](sources/ai-review-bottleneck.md) — `source/_posts/ai-review-bottleneck.md`（Agent 工作流：并行会话、任务调度与验收瓶颈）
 - [Codex Agent Harness 套壳实现自己的 AI 产品](sources/how-can-i-use-codex-harness.md) — `source/_posts/how-can-i-use-codex-harness.md`（产品层与任务编排自建，编码执行交给 Codex Harness）

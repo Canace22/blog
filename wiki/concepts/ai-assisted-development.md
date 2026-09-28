@@ -13,6 +13,7 @@
 - **工具链**：在 Cursor 里通过 Playwright MCP 做浏览器自动化（[Cursor Playwright MCP](../sources/cursor-playwright-mcp.md)）；在 Claude Code 中把设计探索、原型导出和代码导入串起来（[在 CLI 里用 Claude Design 做原型设计](../sources/claude-design-cli-prototyping.md)）。
 - **Skill 沉淀**：把一次性解决方案补齐输入检查、异常处理和结果验收，再封装成可复用流程（[视频人脸打码 Skill](../sources/video-face-mosaic-skill.md)）。Skill 保存的是做法，不会带走本机依赖；跨设备能否继续，取决于会话跑在云端还是 Remote Control 本地会话（[Skill、会话与执行环境](skill-session-runtime.md)，[笔记本合上后手机继续执行 Skill](../sources/claude-skill-cross-device.md)）。
 - **流式可靠性**：连接恢复、内容重放和推理恢复是不同层次；结构化输出与工具调用必须在完整校验后执行（[AI 流式生成恢复](ai-stream-recovery.md)）。
+- **调用成本**：多轮 Agent 的大头是反复读取同一段长上下文。每轮截断或改写前缀会让缓存失效并重新写入；官方 Agent 已处理缓存，自建调用要保持前缀字节稳定（[Prompt Caching](prompt-caching.md)）。
 - **提示用语**：写提示词时英文动词尽量一致、减少歧义（[提示词常用词汇](../sources/prompt-vocabulary-for-coding.md)）；"go ahead"表许可，"continue"表状态延续，"ok"语义模糊常触发 AI 等待而非继续（[跟 AI 说 ok，它为什么有时不继续](../sources/go-ahead-vs-continue-ai-chat.md)）。反过来，不问确认就按推测继续，会把一次误解执行成整条进度报废（[最新版 Codex 工作流的问题](../sources/ai-self-awareness.md)）。
 - **AI Native 四阶段**：AI 化（接 API）→ AI Workflow → AI Native System（架构从设计之初就以 AI 为核心）→ AI Native Organization；以业务实体为中心重建生产体系，知识图谱与标准化 SOP 是落地基石（[AI Native 不是接个 API](../sources/ai-native.md)）。
 - **延伸阅读**：提示工程读物与 Harness 工程化资料可当书签（[提示工程阅读清单](../sources/prompt-engineering-reading-list.md)，[Harness 工程化链接集](../sources/harness-engineering-links.md)）。
@@ -42,6 +43,7 @@
 - [Claude Code 常见工作流程](../sources/claude-code-common-workflows.md)
 - [深入 Claude Code 的 Web 工具：WebFetch 与 WebSearch](../sources/claude-webfetch.md)
 - [AI 生成到 90% 突然断了：你的解决方案是？](../sources/ai-stream-recovery.md)
+- [Prompt Caching 笔记](../sources/promt-cache.md)
 - [Claude Code 并行运行代理](../sources/claude-code-parallel-agents.md)
 - [AI Native 不是接个 API](../sources/ai-native.md)
 - [跟 AI 说 ok，它为什么有时不继续](../sources/go-ahead-vs-continue-ai-chat.md)
@@ -67,4 +69,4 @@
 
 ---
 
-*修订：Cursor Agent，2026-09-07。*
+*修订：Cursor Agent，2026-09-28。*
