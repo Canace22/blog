@@ -6,7 +6,7 @@
   <link href="https://canace.site/atom.xml" rel="self"/>
   
   <link href="https://canace.site/"/>
-  <updated>2026-09-28T03:12:38.097Z</updated>
+  <updated>2026-09-28T03:21:13.021Z</updated>
   <id>https://canace.site/</id>
   
   <author>
@@ -21,17 +21,17 @@
     <link href="https://canace.site/promt-cache/"/>
     <id>https://canace.site/promt-cache/</id>
     <published>2026-09-28T02:46:30.000Z</published>
-    <updated>2026-09-28T03:12:38.097Z</updated>
+    <updated>2026-09-28T03:21:13.021Z</updated>
     
     
-    <summary type="html">A collection of Hello World applications from helloworld.org.</summary>
+    <summary type="html">梳理 Prompt Caching 的前缀匹配原理、提高命中率的策略，以及 Claude 与 OpenAI 在开启方式和计费上的差异。</summary>
     
     
     
-    <category term=" " scheme="https://canace.site/categories/"/>
+    <category term="AI工程化" scheme="https://canace.site/categories/AI%E5%B7%A5%E7%A8%8B%E5%8C%96/"/>
     
     
-    <category term=" " scheme="https://canace.site/tags/"/>
+    <category term="AI编程" scheme="https://canace.site/tags/AI%E7%BC%96%E7%A8%8B/"/>
     
   </entry>
   
