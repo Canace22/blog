@@ -6,7 +6,7 @@
   <link href="https://canace.site/atom.xml" rel="self"/>
   
   <link href="https://canace.site/"/>
-  <updated>2026-09-28T03:21:51.284Z</updated>
+  <updated>2026-10-08T03:59:14.094Z</updated>
   <id>https://canace.site/</id>
   
   <author>
@@ -15,6 +15,44 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>如何解决 AI 信任问题：基于 2026 Stack Overflow 开发者调查</title>
+    <link href="https://canace.site/ai-trust-verifiable-infra/"/>
+    <id>https://canace.site/ai-trust-verifiable-infra/</id>
+    <published>2026-10-08T03:40:00.000Z</published>
+    <updated>2026-10-08T03:59:14.094Z</updated>
+    
+    
+    <summary type="html">2026 年 Stack Overflow 调查显示开发者普遍在用 AI 却很少真正放权，分析信任缺口的成因，并给出证据包、自动验证、分级权限和记忆重构四个方向。</summary>
+    
+    
+    
+    <category term="AI工程化" scheme="https://canace.site/categories/AI%E5%B7%A5%E7%A8%8B%E5%8C%96/"/>
+    
+    
+    <category term="AI编程" scheme="https://canace.site/tags/AI%E7%BC%96%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>把项目文档写得人看得懂：AI 时代的维护指南</title>
+    <link href="https://canace.site/docs-in-ai-date/"/>
+    <id>https://canace.site/docs-in-ai-date/</id>
+    <published>2026-10-05T02:04:53.000Z</published>
+    <updated>2026-10-08T03:37:57.708Z</updated>
+    
+    
+    <summary type="html">AI 维护的项目文档越来越难懂，分析背后的三个原因，并分享一个强制 AI 站在新用户视角写文档的 Skill。</summary>
+    
+    
+    
+    <category term="AI工程化" scheme="https://canace.site/categories/AI%E5%B7%A5%E7%A8%8B%E5%8C%96/"/>
+    
+    
+    <category term="AI编程" scheme="https://canace.site/tags/AI%E7%BC%96%E7%A8%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>Prompt Caching 笔记：原理、命中策略和各家差异</title>
@@ -348,44 +386,6 @@
     
     
     <summary type="html">配置 Claude Design MCP 后，可在终端用自然语言生成设计系统、导出交互原型，并同步成前端组件代码。</summary>
-    
-    
-    
-    <category term="AI工程化" scheme="https://canace.site/categories/AI%E5%B7%A5%E7%A8%8B%E5%8C%96/"/>
-    
-    
-    <category term="AI编程" scheme="https://canace.site/tags/AI%E7%BC%96%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Vitest 笔记</title>
-    <link href="https://canace.site/vitest-vs-jest-advantages/"/>
-    <id>https://canace.site/vitest-vs-jest-advantages/</id>
-    <published>2026-06-29T02:00:00.000Z</published>
-    <updated>2026-06-29T03:22:09.517Z</updated>
-    
-    
-    <summary type="html">Vitest 相对 Jest 的配置复用、ESM 支持与开发体验对比，附 vi/beforeEach 用法、版本要求及 it/test 语法来源</summary>
-    
-    
-    
-    <category term="工程化与运维" scheme="https://canace.site/categories/cli/"/>
-    
-    
-    <category term="代码质量" scheme="https://canace.site/tags/code-quality/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>原来我一直用错了 Cowork</title>
-    <link href="https://canace.site/use-cowork/"/>
-    <id>https://canace.site/use-cowork/</id>
-    <published>2026-06-23T02:00:00.000Z</published>
-    <updated>2026-06-23T03:01:40.568Z</updated>
-    
-    
-    <summary type="html">Cowork、Claude Code 与 Cursor 定位不同，token 消耗差异大</summary>
     
     
     
