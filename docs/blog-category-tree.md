@@ -37,7 +37,8 @@
 │   ├── 项目管理 (Project Management)
 │   ├── 职业发展 (Career Development)
 │   ├── 笔记 (Notes)
-│   └── 随笔 (Essays & Musings)
+│   ├── 随笔 (Essays & Musings)
+│   └── 游戏设计与叙事 (Game Design & Narrative)
 │
 └── 7. 网站建设 (Site Meta) // 博客搭建、Hexo 配置等
 ```
