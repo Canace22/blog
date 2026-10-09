@@ -89,6 +89,8 @@
 
 OpenAI 的一个重要经验是：上下文是稀缺资源，超大的规则文件会挤掉真正重要的任务与代码信息。更好的做法是让 `AGENTS.md` 保持短小，把深层知识放进结构化文档中。
 
+反过来，给 AI 的文档写好了，不代表人也看得懂。[把项目文档写得人看得懂](../sources/docs-in-ai-date.md) 主张分层：README 给人看，`AGENTS.md` 给 AI 看，CHANGELOG 给维护者看；再用一份短 `PRODUCT.md` 写清方向，AI 维护前先读。
+
 ### 2. Harness 的核心不是“多加规则”，而是“多加可验证性”
 
 Anthropic 的文章里，真正拉开差距的不是更华丽的 prompt，而是：
@@ -99,6 +101,8 @@ Anthropic 的文章里，真正拉开差距的不是更华丽的 prompt，而是
 - 失败后回灌给生成者
 
 也就是把“能不能验收”前置成系统能力。
+
+[如何解决 AI 信任问题](../sources/ai-trust-verifiable-infra.md) 从用户信任角度得出同一结论：开发者只在结果容易验证时才信 AI，所以 harness 要让 Agent 自带证据包（出处、版本、适用范围），并自动跑测试、截图、返回原始查询。
 
 ### 3. Harness 不是越复杂越好
 
@@ -119,6 +123,8 @@ Anthropic 明确提到：harness 中每个组件都隐含一个假设，即“�
 - [Agent 工作流](agent-workflow.md)
 - [模型是怎么一步步走向生产环境的](../sources/llm-to-harness.md)（按层叠加的演进路径）
 - [假设驱动 AI 调试](../concepts/hypothesis-driven-ai-debugging.md)（`DEBUG.md` / `program.md` 等外化假设与证据）
+- [如何解决 AI 信任问题](../sources/ai-trust-verifiable-infra.md)（证据包、自动验证、分级权限、记忆分层）
+- [把项目文档写得人看得懂](../sources/docs-in-ai-date.md)（README / `AGENTS.md` / CHANGELOG 分层，`PRODUCT.md` 定方向）
 
 其中 [Codex Agent Harness 套壳](../sources/how-can-i-use-codex-harness.md) 已经直接写 harness；其余篇目当时未用这个词，但已经涉及项目规则、经验上下文、工作流拆解、技能封装和长期记忆层，可看作邻近层或局部实现。
 
@@ -144,4 +150,4 @@ Anthropic 明确提到：harness 中每个组件都隐含一个假设，即“�
 
 ---
 
-*修订：Cursor Agent，2026-09-07；Claude（Cowork），2026-09-28。*
+*修订：Cursor Agent，2026-09-07；Claude（Cowork），2026-09-28；Cursor Agent，2026-10-08。*

@@ -3,6 +3,7 @@
 ## Reports
 
 - [AI 工程化写作主轴：四主题索引与下一篇方向](reports/ai-engineering-theme-synthesis.md)（四组博文内核 + 共同主线 + 下一篇方向）
+- [叙事：从为什么在乎到谁在做选择](reports/narrative-theme-synthesis.md)（内核与结构、节奏与兑现、游戏里谁在选）
 - [消息推送：RSS、应用更新、网页版本更新与 diff 思维对照报告](reports/message-delivery-comparison-report.md)
 - [Harness Engineering 资料整理](reports/harness-engineering-reading-notes.md)
 - [从 Harness 到 Compiled Wiki：个人研究路线图](reports/harness-to-compiled-wiki-roadmap.md)
@@ -37,6 +38,7 @@
 - [LOP（面向大模型编程）模式](concepts/lop-patterns.md)
 - [叙事节奏心理学](concepts/narrative-pacing-psychology.md)
 - [叙事结构](concepts/narrative-structures.md)
+- [游戏叙事设计](concepts/game-narrative-design.md)（三层对齐、期待与兑现、内核四格、三幕如何落到关卡和对局）
 - [RSS / Telegram 自建推送](concepts/rss-telegram-selfhost.md)
 - [系统 crontab 与 OpenClaw 定时任务](concepts/crontab-and-openclaw-cron.md)
 - [Hermes：`/anthropic` 网关与模型名点号规范化](concepts/hermes-anthropic-endpoint-model-id-normalization.md)
@@ -358,6 +360,8 @@
 
 ### AI工程化
 
+- [如何解决 AI 信任问题：基于 2026 Stack Overflow 开发者调查](sources/ai-trust-verifiable-infra.md) — `source/_posts/ai-trust-verifiable-infra.md`（证据包、自动验证、分级权限、记忆重构）
+- [把项目文档写得人看得懂：AI 时代的维护指南](sources/docs-in-ai-date.md) — `source/_posts/docs-in-ai-date.md`（全知视角、状态快照、增量维护；README / `AGENTS.md` / `PRODUCT.md` 分层）
 - [Cursor 的网络协议，为什么选 HTTP/1.1 才能用 Claude](sources/http-claude.md) — `source/_posts/http-claude.md`（HTTP/2 绕过本地代理、TUN 模式、代理环境变量）
 - [模型是怎么一步步走向生产环境的](sources/llm-to-harness.md) — `source/_posts/llm-to-harness.md`（上下文装配 → ReAct → 工具规范 → 记忆 → Harness）
 - [Prompt Caching 笔记：原理、命中策略和各家差异](sources/promt-cache.md) — `source/_posts/promt-cache.md`（前缀匹配、命中策略、Claude / OpenAI 缓存差异）
@@ -411,7 +415,11 @@
 - [关于内容创作的一些思考](sources/content-create-thinking.md) — `source/_posts/content-create-thinking.md`（写作压力、平台偏好与内容运营边界）
 - [节奏心理学：叙事中的「情绪推手」](sources/rhythm-psychology.md) — `source/_posts/rhythm-psychology.md`
 - [三也：把想法丢给 AI 拎主线](sources/sanye-ai-organize-thoughts.md) — Telegram 群聊（2026-04-30）
-- [叙事研究](sources/narrative-research.md) — `source/_posts/narrative-research.md`
+- [叙事研究](sources/narrative-research.md) — 摘要归档（原博文已从 `source/_posts` 删除）
+- [期待与兑现：张力的高点放在哪](sources/expectation-payoff-tension-peak.md) — `source/_posts/expectation-payoff-tension-peak.md`
+- [叙事内核与结构](sources/narrative-kernel-and-structure.md) — `source/_posts/narrative-kernel-and-structure.md`
+- [三幕式](sources/three-act-structure.md) — `source/_posts/three-act-structure.md`
+- [三幕式与游戏设计](sources/three-act-and-game-design.md) — `source/_posts/three-act-and-game-design.md`
 - [产品更新、RSS订阅以及文件diff类需求实现模型](sources/product-updates-rss-file-diff-mental-model.md) — `source/_posts/product-updates-rss-file-diff-mental-model.md`
 - [AI 让人变得无趣](sources/ai-make-you-boring.md) — `source/_posts/ai-make-you-boring.md`
 - [AI 如何让我们躺平](sources/how-ai-lets-us-lie-flat.md) — `source/_posts/how-ai-lets-us-lie-flat.md`

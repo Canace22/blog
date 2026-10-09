@@ -2,7 +2,7 @@
 
 - **源文件**：[`source/_posts/rhythm-psychology.md`](../../source/_posts/rhythm-psychology.md)
 - **分类**：软技能与思考
-- **标签**：笔记
+- **标签**：游戏设计与叙事
 - **日期**：2026-04-22 12:00:00
 
 ## 摘要
@@ -13,3 +13,7 @@
 
 - [叙事节奏心理学](../concepts/narrative-pacing-psychology.md)
 - [叙事结构](../concepts/narrative-structures.md)
+
+---
+
+*修订：Cursor Agent，2026-10-09。*

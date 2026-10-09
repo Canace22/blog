@@ -95,6 +95,7 @@
 
 ## 另见
 
+- [叙事：从为什么在乎到谁在做选择](../reports/narrative-theme-synthesis.md)（结构、节奏、游戏设计这条线）
 - [叙事结构](../concepts/narrative-structures.md)（英雄之旅、三幕式、起承转合等骨架）
 - [叙事节奏心理学](../concepts/narrative-pacing-psychology.md)（爽点、断章、情绪推手）
 - [微信公众号阅读优化](wechat-official-account-read-optimization.md)（封面、标题、文末互动）
@@ -103,4 +104,4 @@
 - [叙事研究](../sources/narrative-research.md)（仓库内叙事结构来源笔记）
 - [三也：把想法丢给 AI 拎主线](../sources/sanye-ai-organize-thoughts.md)（思考复用流的实践样例）
 
-*维护：Cursor Agent，2026-06-30。*
+*维护：Cursor Agent，2026-06-30。修订：Cursor Agent，2026-10-09。*

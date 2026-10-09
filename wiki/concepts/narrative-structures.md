@@ -91,11 +91,18 @@ Christopher Booker 总结的故事原型：
 ## 仓库内笔记
 
 - [叙事研究](../sources/narrative-research.md)：在本文框架上补充菲希特曲线、跳房子结构、人物弧线、三层冲突、互动叙事与网文实战框架。
-- 节奏与情绪机制（爽点、断章、流体验等）见 [叙事节奏心理学](../concepts/narrative-pacing-psychology.md)。
+- [三幕式](../sources/three-act-structure.md)：激励事件和主动选择、第二幕逼近缺点、想要与需要。落到关卡和对局见 [游戏叙事设计](game-narrative-design.md)。
+- [叙事内核与结构](../sources/narrative-kernel-and-structure.md)：四格内核，以及线性 / 分支 / 开放谁来定顺序。
+- 节奏与情绪机制（爽点、断章、流体验等）见 [叙事节奏心理学](narrative-pacing-psychology.md)。
 - 写作框架选型（结构化写作 vs 故事流 vs 技术新媒体实战）见 [写作与思考框架全景图](../queries/writing-thinking-frameworks-panorama.md)。
+- 整条阅读顺序见 [叙事主题](../reports/narrative-theme-synthesis.md)。
 
 ## 资料来源
 
 - 约瑟夫·坎贝尔《千面英雄》
 - Christopher Vogler《作家之旅》
 - Christopher Booker《七种基本情节》
+
+---
+
+*修订：Cursor Agent，2026-10-09。*

@@ -1,8 +1,8 @@
 # 来源：叙事研究
 
-- **源文件**：[`source/_posts/narrative-research.md`](../../source/_posts/narrative-research.md)
+- **源文件**：原载 `source/_posts/narrative-research.md`（**已从 Hexo 移除**）；本页为知识库内保留的摘要归档，勿再依赖仓库内同名路径。
 - **分类**：软技能与思考
-- **标签**：笔记
+- **标签**：游戏设计与叙事
 - **日期**：2026-04-22 10:00:00
 
 ## 摘要
@@ -13,3 +13,8 @@
 
 - [叙事结构](../concepts/narrative-structures.md)
 - [叙事节奏心理学](../concepts/narrative-pacing-psychology.md)
+- [游戏叙事设计](../concepts/game-narrative-design.md)（内核四格、三幕操作、关卡与对局）
+
+---
+
+*修订：Cursor Agent，2026-10-09。*

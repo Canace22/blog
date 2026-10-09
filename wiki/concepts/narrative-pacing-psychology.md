@@ -32,6 +32,11 @@
 
 ## 来源与边界
 
-- 结构类总览见 [叙事结构](../concepts/narrative-structures.md)。
+- 结构类总览见 [叙事结构](narrative-structures.md)。
+- 关卡上把峰值放在哪、用哪根杠杆兑现，见 [游戏叙事设计](game-narrative-design.md) 与 [期待与兑现：张力的高点放在哪](../sources/expectation-payoff-tension-peak.md)。峰终定律在这里变成一条设计检查：最有分量的东西留到最后。
 - 仓库内笔记：[叙事研究](../sources/narrative-research.md)（结构、弧线、网文框架）、[节奏心理学：叙事中的「情绪推手」](../sources/rhythm-psychology.md)（本文主要依据）。
 - 文中心理学概念为通俗应用归纳，非临床诊断语境。
+
+---
+
+*修订：Cursor Agent，2026-10-09。*

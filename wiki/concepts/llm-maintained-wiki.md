@@ -40,6 +40,7 @@
 2. 是否需要给概念页加最小健康字段（例如 freshness、last-reviewed、confidence）？
 3. 当来源间冲突时，是否需要统一的 contradiction 记录格式？
 4. 是否要做一个轻量 `wiki lint`，自动检查缺 evidence 的 claim？
+5. 给 AI 维护的知识层，人读起来是否够顺？[把项目文档写得人看得懂](../sources/docs-in-ai-date.md) 的作者正是从「AI 维护的知识库结构清楚但人读着费神」出发，主张给人看的页面另写。概念页是否需要一段面向人的开头？
 
 ## 维护建议
 
@@ -61,7 +62,9 @@
 - [程序员愿意为 Claude 写文档，但不愿为同事写](../sources/claude-handoff-doc-to-repo.md) — handoff doc 审阅后入 repo
 - [OpenClaw Memory Wiki](../sources/openclaw-memory-wiki.md)
 - [OpenClaw 的一些使用体验](../sources/openclaw-usage-experience.md)
+- [把项目文档写得人看得懂：AI 时代的维护指南](../sources/docs-in-ai-date.md) — AI 维护的文档人读不下去的三个原因
 
 ---
 
 *相关区补链至 query `llm-training-vs-inference-and-maintained-wiki`；2026-05-10。*
+*修订：Cursor Agent，2026-10-08。*

@@ -25,12 +25,12 @@ Claude 还要自己放 `cache_control` 断点（最多 4 个）：系统提示�
 
 | 维度 | Claude | OpenAI |
 | --- | --- | --- |
-| 启用 | 手动 `cache_control` | 默认自动；GPT-5.6 及之后必须设 `prompt_cache_key` |
+| 启用 | 手动 `cache_control` | 默认自动，也可显式设断点 |
 | 写入 | 比普通输入贵 | 无额外写入费 |
 | 过期 | 5 分钟 / 1 小时 | 内存模式 / 扩展模式，最长 24 小时 |
 | 路由 | — | `prompt_cache_key` 与前缀哈希一起影响落到哪台机器 |
 
-Claude 是标明「把这里缓存下来」。OpenAI 的 Key 是标明「这些请求是同一组」。多轮 Agent 优先 Responses API。Gemini、DeepSeek、Kimi 大多自动做前缀缓存；Gemini 另有按存储时长计费的 Context Caching。走第三方 OpenAI 兼容网关调 Claude 时，缓存可能传不过去。
+Claude 是标明「把这里缓存下来」。OpenAI 的 Key 是标明「这些请求是同一组」；GPT-5.6 及之后必须设置它，才能用更可靠的匹配。多轮 Agent 优先 Responses API。Gemini、DeepSeek、Kimi 大多自动做前缀缓存；Gemini 另有按存储时长计费的 Context Caching。走第三方 OpenAI 兼容网关调 Claude 时，缓存可能传不过去。
 
 ## 和相近机制的区别
 
@@ -54,4 +54,4 @@ Claude 是标明「把这里缓存下来」。OpenAI 的 Key 是标明「这些�
 
 ---
 
-*维护：Cursor Agent，2026-09-28。*
+*修订：Cursor Agent，2026-09-28。*
