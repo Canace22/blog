@@ -4,6 +4,106 @@
   
     
     <entry>
+      <title>三幕式与游戏设计</title>
+      <link href="/three-act-and-game-design/"/>
+      <url>/three-act-and-game-design/</url>
+      
+        <content type="html"><![CDATA[<h2 id="游戏多出的变量：做选择的是玩家"><a href="#游戏多出的变量：做选择的是玩家" class="headerlink" title="游戏多出的变量：做选择的是玩家"></a>游戏多出的变量：做选择的是玩家</h2><p>电影里“选择推动故事”，选的是角色；游戏里选的是玩家，所以这条规律变成“玩家的操作推动故事”。而且玩家可以<strong>不选</strong>，正因为能不选，选了才算数，也才有策略和紧张感。</p><h2 id="没剧情的关卡也有三幕"><a href="#没剧情的关卡也有三幕" class="headerlink" title="没剧情的关卡也有三幕"></a>没剧情的关卡也有三幕</h2><p>有关卡、有 Boss 不等于剧情游戏。没剧情的关卡靠<strong>玩法机制</strong>推动三幕。</p><table><thead><tr><th></th><th>剧情的三幕</th><th>关卡的“三幕”</th></tr></thead><tbody><tr><td>第一幕</td><td>认识角色和他的缺点</td><td>安全地介绍一个新机制，让玩家学会</td></tr><tr><td>第二幕</td><td>阻碍升级，逼近缺点</td><td>机制变难、变形、和别的东西组合</td></tr><tr><td>第三幕</td><td>代价最大时突破缺点</td><td>最难的一段，考验玩家是否真的掌握</td></tr></tbody></table><p>例子：任天堂做《超级马里奥 3D 世界》时讲过，很多关卡按“起承转合”设计：一关只围绕一个机制，先教、再练、来个变化、最后收尾。</p><h2 id="竞技对局：系统搭好三幕的形状"><a href="#竞技对局：系统搭好三幕的形状" class="headerlink" title="竞技对局：系统搭好三幕的形状"></a>竞技对局：系统搭好三幕的形状</h2><p>王者荣耀没人写好每一局的剧情，设计师用系统把三幕的形状搭好，内容交给玩家填。</p><table><thead><tr><th></th><th>一局里大概是什么</th><th>系统怎么推着它走</th></tr></thead><tbody><tr><td>第一幕</td><td>对线期，各打各的</td><td>防御塔保护、经济慢慢攒</td></tr><tr><td>第二幕</td><td>中期抢龙、小规模团战</td><td>地图资源定时刷新，逼大家聚到一起</td></tr><tr><td>第三幕</td><td>后期高地决战</td><td>复活时间越来越长、强力资源出现，一波团战就能定输赢</td></tr></tbody></table><p>第三幕里死一次的代价越来越大，就是“代价在逼近”，靠的是复活时间和经济规则。</p><h2 id="对局里的激励事件与主动选择"><a href="#对局里的激励事件与主动选择" class="headerlink" title="对局里的激励事件与主动选择"></a>对局里的激励事件与主动选择</h2><p>龙刷出来是<strong>激励事件</strong>，玩家聚过去打团是<strong>主动选择</strong>。</p><ul><li><p><strong>经济是燃料，不是点火：</strong> 经济一直在慢慢涨，没有哪一秒突然变了，所以成不了一个“时刻”。它决定打团时强不强，不是去打团的理由。</p></li><li><p><strong>真正点火的事：</strong> 龙刷新、外塔被推掉、大家到了 4 级有大招。共同点是系统让“聚在一起”变得比“各打各的”更值钱。</p></li><li><p><strong>玩家可以不选：</strong> 放掉这条龙去推别的塔换资源，也是一种选择。</p></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 软技能与思考 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 游戏设计与叙事 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>三幕式</title>
+      <link href="/three-act-structure/"/>
+      <url>/three-act-structure/</url>
+      
+        <content type="html"><![CDATA[<h2 id="骨架"><a href="#骨架" class="headerlink" title="骨架"></a>骨架</h2><p>第一幕让观众认识角色和他想要的东西，第二幕让阻碍一次比一次大，第三幕正面决战、付出或躲开代价。</p><table><thead><tr><th>幕</th><th>《海底总动员》里发生了什么</th><th>这一步的作用</th></tr></thead><tbody><tr><td>第一幕</td><td>梗鱼袭击，马林只剩儿子尼莫；尼莫第一天上学，马林处处管着他</td><td>日常，立起缺点（胆小、过度保护）</td></tr><tr><td>第一幕</td><td>尼莫赌气碰船，被潜水员抓走</td><td>激励事件：事情找上门</td></tr><tr><td>第一幕结束</td><td>马林遇到多莉，第一次离开珊瑚礁游进大海</td><td>主动选择：主角接住问题</td></tr><tr><td>第二幕</td><td>鲨鱼聚会 → 水母群 → 鲸鱼嘴里放手多莉</td><td>外部升级，一步步逼近缺点</td></tr><tr><td>第三幕</td><td>多莉被渔网捞住，马林放手让尼莫钻进网里去救</td><td>代价最大时突破缺点</td></tr></tbody></table><h2 id="第一幕：激励事件-vs-主动选择"><a href="#第一幕：激励事件-vs-主动选择" class="headerlink" title="第一幕：激励事件 vs 主动选择"></a>第一幕：激励事件 vs 主动选择</h2><p><strong>事件推动开头，选择推动故事。</strong> 第一幕的终点是主角主动跨过门槛、回不了头的那一刻，不是打破日常的那件事。</p><figure class="highlight text"><table><tr><td class="code"><pre><span class="line">日常 ──→ 激励事件 ──→ 犹豫/挣扎 ──→ 主动选择 ══▶ 第二幕</span><br><span class="line">         事情找上门                    主角接住它</span><br></pre></td></tr></table></figure><ul><li><p><strong>我的第一反应选了“尼莫被抓”：</strong> 那是激励事件，马林是被动的。第一幕真正结束在马林自己游出珊瑚礁。</p></li><li><p><strong>洋流反例：</strong> 如果马林是被洋流冲出去的，胆小就被绕过去了，故事没让他为缺点付出任何东西，第一幕结尾就变弱。</p></li><li><p><strong>为什么选择重要：</strong> 角色在压力下的选择，是观众认识他最快的方式。主角越被动，观众越难站到他那边。</p></li></ul><h2 id="第二幕：外部升级-逼近缺点"><a href="#第二幕：外部升级-逼近缺点" class="headerlink" title="第二幕：外部升级 + 逼近缺点"></a>第二幕：外部升级 + 逼近缺点</h2><p>外部阻碍越来越大，同时一步步把主角逼到必须面对自己缺点的地方。</p><table><thead><tr><th>关卡</th><th>外部危险</th><th>马林这个人变了吗</th></tr></thead><tbody><tr><td>鲨鱼聚会</td><td>鲨鱼闻到血味失控</td><td>没有，只是逃命</td></tr><tr><td>水母群</td><td>多莉被蛰伤，差点失去她</td><td>没有，只是逃命</td></tr><tr><td>鲸鱼嘴里</td><td>可能被吞下去</td><td><strong>变了</strong>：第一次放手、相信别人，和“什么都要抓在手里”正面对撞</td></tr></tbody></table><p><strong>预演：</strong> 鲸鱼那关放的是多莉，等于提前给观众看了一次“他能放手”，第三幕再放手时就既意外又合理。</p><h2 id="第三幕：代价最大时突破缺点"><a href="#第三幕：代价最大时突破缺点" class="headerlink" title="第三幕：代价最大时突破缺点"></a>第三幕：代价最大时突破缺点</h2><p>多莉和一群鱼被渔网捞住，尼莫要自己钻进网里带大家往下游。马林可以拦住他，也可以放手；他选了放手。这一下同时做到三件事：</p><ol><li><p><strong>代价最大：</strong> 尼莫可能再次失去，这次是马林亲手放走的。</p></li><li><p><strong>缺点被彻底突破：</strong> 上次放的是多莉，这次放的是他最怕失去的儿子。</p></li><li><p><strong>预演兑现：</strong> 观众在鲸鱼那里已经看过他放手一次。</p></li></ol><h2 id="想要-vs-需要"><a href="#想要-vs-需要" class="headerlink" title="想要 vs 需要"></a>想要 vs 需要</h2><p>第一幕到第二幕追的是“想要”，第三幕兑现的是“需要”。好故事的高潮，往往是主角为了“需要”冒着失去“想要”的风险。</p><table><thead><tr><th></th><th>马林</th></tr></thead><tbody><tr><td>想要（他以为的目标）</td><td>找回尼莫</td></tr><tr><td>需要（他真正得学会的）</td><td>放手，相信儿子能行</td></tr></tbody></table><h2 id="自检清单"><a href="#自检清单" class="headerlink" title="自检清单"></a>自检清单</h2><ul><li><p>第一幕里缺点立起来了吗？</p></li><li><p>激励事件之后，主角是<strong>自己选择</strong>跨过门槛的吗？这个选择有没有让他为缺点付出什么？</p></li><li><p>第二幕的阻碍只是更危险，还是在一步步逼近缺点？</p></li><li><p>高潮前有没有一次预演？</p></li><li><p>高潮时，主角是否为了“需要”冒着失去“想要”的风险？</p></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 软技能与思考 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 游戏设计与叙事 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>叙事内核与结构</title>
+      <link href="/narrative-kernel-and-structure/"/>
+      <url>/narrative-kernel-and-structure/</url>
+      
+        <content type="html"><![CDATA[<h2 id="故事内核四格"><a href="#故事内核四格" class="headerlink" title="故事内核四格"></a>故事内核四格</h2><p>所有叙事框架底下都压着这一句：一个<strong>角色</strong>想要<strong>某样东西</strong>，但有<strong>阻碍</strong>挡着，如果失败会付出<strong>代价</strong>。阻碍让故事有戏可看，代价让人揪心。</p><table><thead><tr><th>角色</th><th>想要</th><th>阻碍</th><th>代价</th></tr></thead><tbody><tr><td>小丑鱼马林（《海底总动员》）</td><td>找回被抓走的儿子尼莫</td><td>大海很危险；他自己胆小又过度保护</td><td>永远失去唯一的家人</td></tr></tbody></table><p>马林的阻碍有一半在他自己身上（胆小），这种“内在阻碍”往往是故事最有味道的地方。</p><h2 id="检验代价：追问“那又怎样”"><a href="#检验代价：追问“那又怎样”" class="headerlink" title="检验代价：追问“那又怎样”"></a>检验代价：追问“那又怎样”</h2><p>代价不是“想要”的反面。对失败结果追问“那又怎样”，直到答案让人揪心为止。</p><ol><li><p>马林找不回尼莫 → 那又怎样？</p></li><li><p>他会失去尼莫 → 那又怎样？</p></li><li><p>尼莫是他在妻子和其他孩子遇害后<strong>仅剩的家人</strong>，他会彻底变成一个人。← 到这一层才揪心</p></li></ol><p><strong>我踩的坑：</strong> 林克的代价我填的是“失败了就救不出公主”，这只是把“想要”反过来说了一遍。往下追：塞尔达已压制盖侬 100 年、力量快耗尽，她撑不住海拉鲁就会毁灭。</p><h2 id="代价要被感受到，不是被说出来"><a href="#代价要被感受到，不是被说出来" class="headerlink" title="代价要被感受到，不是被说出来"></a>代价要被感受到，不是被说出来</h2><p>旷野之息把代价说出来了，但玩法上告诉你“不急”，所以听完还是“那又怎样”。让代价被感受到靠三点：</p><table><thead><tr><th></th><th>《姆吉拉的假面》的月亮</th><th>旷野之息的盖侬</th><th>卓拉领地的大雨</th></tr></thead><tbody><tr><td>看得见</td><td>天天挂在头顶</td><td>城堡在远处，平时注意不到</td><td>看得见</td></tr><tr><td>在逼近</td><td>3 天倒计时，一天比一天近</td><td>100 年都没事</td><td>挂多久都不变</td></tr><tr><td>真会发生</td><td>时间到了真砸下来</td><td>你不去，它永远不来</td><td>大坝永远不会垮</td></tr></tbody></table><ul><li><p><strong>开放世界和紧迫感天生打架：</strong> 一个承诺“想逛多久都行”，一个要求“快去”。旷野之息选了自由，整体放弃了事件层面的代价，连地区小危机也只做到了“看得见”。</p></li><li><p><strong>硬加倒计时有风险：</strong> 《辐射》初代找水芯片有期限，很多玩家逛着逛着时间耗尽，后来补丁把期限放宽了。</p></li><li><p><strong>让拖延真有后果：</strong> 《质量效应 2》船员被抓后若先去做别的任务，回来会有人已经死了。它放在接近结尾、地图已收窄的时候，没破坏前面的自由。</p></li></ul><h2 id="代价的三种类型"><a href="#代价的三种类型" class="headerlink" title="代价的三种类型"></a>代价的三种类型</h2><p>事件代价依赖时间压力，开放世界很难用；情感和内在代价不依赖时间，开放世界也能用。</p><table><thead><tr><th>类型</th><th>失去的是什么</th><th>例子</th><th>依赖时间压力</th></tr></thead><tbody><tr><td>事件代价</td><td>外部世界会发生的坏事</td><td>世界毁灭、大坝崩溃</td><td>是</td></tr><tr><td>情感代价</td><td>和某个人的关系</td><td>失去某人、辜负某人</td><td>否</td></tr><tr><td>内在代价</td><td>角色自己</td><td>变成自己讨厌的样子</td><td>否</td></tr></tbody></table><h2 id="内核-vs-结构"><a href="#内核-vs-结构" class="headerlink" title="内核 vs 结构"></a>内核 vs 结构</h2><p>原理不分类型，手段分。<strong>内核</strong>（四格）管“为什么让人在乎”，所有类型一样；<strong>结构</strong>管“按什么顺序、由谁决定顺序”，随类型变。</p><table><thead><tr><th>结构</th><th>顺序谁定</th><th>典型形态</th><th>例子</th></tr></thead><tbody><tr><td>线性</td><td>作者</td><td>三幕式：建立 → 对抗 → 解决</td><td>大多数电影、线性剧情游戏</td></tr><tr><td>分支</td><td>作者预设，玩家选</td><td>关键选择导致不同走向和结局</td><td>《底特律：变人》</td></tr><tr><td>开放&#x2F;模块化</td><td>玩家</td><td>松框架 + 能任意顺序完成的小块，每块自己有小闭环</td><td>旷野之息：四神兽任意顺序、回忆乱序收集</td></tr></tbody></table><p>越往下，作者对顺序的控制越少，“高潮放结尾”“代价逐步逼近”越难用，只能放进每个小块内部去做。</p><p><strong>案例：旷野之息的回忆。</strong> 内容本身有情感代价（塞尔达的挫败、对林克从排斥到信任），但顺序交给玩家，在乎很难一步步叠上去，这是<strong>结构</strong>问题。任天堂的补救：冒险日志按时间顺序重排回忆，最后一段关键回忆要找齐其他的才解锁——能让的顺序都让了，最重的一块还是锁在结尾。</p><h2 id="自检清单"><a href="#自检清单" class="headerlink" title="自检清单"></a>自检清单</h2><ul><li><p>四格都填得出来吗？阻碍里有没有一部分在角色自己身上？</p></li><li><p>代价是不是只是“想要”的反面？追问过“那又怎样”吗？</p></li><li><p>代价看得见、在逼近、真会发生吗？还是只是被说出来？</p></li><li><p>结构允许用事件代价吗？不允许的话，换成情感或内在代价了吗？</p></li><li><p>顺序交给玩家时，最重的那一块锁在结尾了吗？</p></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 软技能与思考 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 游戏设计与叙事 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>期待与兑现：张力的高点放在哪</title>
+      <link href="/expectation-payoff-tension-peak/"/>
+      <url>/expectation-payoff-tension-peak/</url>
+      
+        <content type="html"><![CDATA[<h2 id="起点：游戏设计的三层"><a href="#起点：游戏设计的三层" class="headerlink" title="起点：游戏设计的三层"></a>起点：游戏设计的三层</h2><p>好的设计是三层对齐的：剧情最紧张的时候，玩法也最难、节奏也最快。对不齐时，玩家会觉得“剧情很燃但我在跑腿”。</p><table><thead><tr><th>层</th><th>管的是什么</th><th>典型问题</th></tr></thead><tbody><tr><td>玩法循环</td><td>玩家每分钟在“做什么”，为什么想继续做</td><td>核心循环、反馈、奖励</td></tr><tr><td>关卡与节奏</td><td>这些“做”怎么排顺序、怎么变化</td><td>引导、难度曲线、紧张&#x2F;放松交替</td></tr><tr><td>叙事结构</td><td>玩家为什么在乎这件事</td><td>角色动机、冲突、三幕、环境叙事</td></tr></tbody></table><h2 id="案例一：塞尔达四神兽"><a href="#案例一：塞尔达四神兽" class="headerlink" title="案例一：塞尔达四神兽"></a>案例一：塞尔达四神兽</h2><p>神兽的张力峰值放在了开头，所以打完会觉得“也就那样”。我的原始感受：接近时有威慑感，打起来有点难，掌握技巧后就平了。</p><figure class="highlight text"><table><tr><td class="code"><pre><span class="line">情绪</span><br><span class="line"> ▲   威慑感</span><br><span class="line"> │   ╭──╮</span><br><span class="line"> │  ╱    ╲   难打</span><br><span class="line"> │ ╱      ╲──╮</span><br><span class="line"> │╱           ╲___ &quot;也就那样&quot;</span><br><span class="line"> └──────────────────▶ 时间</span><br><span class="line">  接近神兽   进入内部   打Boss   结束</span><br></pre></td></tr></table></figure><ul><li><p><strong>关键概念：期待与兑现。</strong> 前面做出的“承诺”越大，后面的“兑现”就得跟上，否则玩家觉得落空。</p></li><li><p><strong>接近阶段把承诺拉满：</strong> 巨大体型、对村镇的威胁、和希多&#x2F;提巴并肩作战，三层在这里是对齐的。</p></li><li><p><strong>高潮没有兑现：</strong> 四只灾厄盖侬套路很像，摸清规律后只剩“执行”，没有新东西冒出来。</p></li><li><p><strong>对照：《旺达与巨像》</strong> 威慑感和战斗是同一件事（爬在巨像身上打），敬畏感一直持续到最后一击。</p></li></ul><h2 id="误区：兑现感不够-≠-加难度"><a href="#误区：兑现感不够-≠-加难度" class="headerlink" title="误区：兑现感不够 ≠ 加难度"></a>误区：兑现感不够 ≠ 加难度</h2><p>难度只是五根杠杆里的一根，而且是最危险的一根：难度超过玩家能力会直接流失，比“也就那样”严重得多。很多让人记很久的 Boss 战一点都不难，靠的是后面几根。</p><table><thead><tr><th>杠杆</th><th>做法举例</th><th>难度变吗</th></tr></thead><tbody><tr><td>难度</td><td>Boss 血更厚、伤害更高</td><td>变</td></tr><tr><td>新鲜感</td><td>Boss 最后阶段来一招前面从没见过的</td><td>基本不变</td></tr><tr><td>叙事揭示</td><td>打赢的瞬间揭开一段关键剧情</td><td>不变</td></tr><tr><td>演出</td><td>音乐、镜头、场景在最后一刻突然变化</td><td>不变</td></tr><tr><td>身份变化</td><td>用刚夺回的神兽力量反打 Boss</td><td>甚至可以更简单</td></tr></tbody></table><h2 id="案例二：岩石巨人"><a href="#案例二：岩石巨人" class="headerlink" title="案例二：岩石巨人"></a>案例二：岩石巨人</h2><p>岩石巨人不难，却让人印象很深，因为它的张力峰值落在结尾。</p><table><thead><tr><th>时刻</th><th>发生了什么</th><th>起作用的杠杆</th></tr></thead><tbody><tr><td>开头</td><td>一堆石头走近了突然站起来</td><td>新鲜感 + 演出（期待在一瞬间制造，没有过长铺垫）</td></tr><tr><td>过程</td><td>打的过程本身有趣，还会掉宝物</td><td>奖励：即时、看得见</td></tr><tr><td>结尾</td><td>崩塌动画 + 矿石散一地</td><td>演出：情绪峰值放在最后一刻</td></tr></tbody></table><figure class="highlight text"><table><tr><td class="code"><pre><span class="line">神兽：    高 ──→ 中 ──→ 平      峰值在开头，越打越淡</span><br><span class="line">石头人：  低 ──→ 惊喜 ──→ 峰值   峰值在结尾，打完正爽</span><br></pre></td></tr></table></figure><h2 id="结论与自检清单"><a href="#结论与自检清单" class="headerlink" title="结论与自检清单"></a>结论与自检清单</h2><p>两个例子难度都不高，区别在于<strong>张力的高点放在哪</strong>。这条原则可以拿去检验任何关卡、任务，也可以检验剧本里的一场戏。</p><ul><li><p>最有分量的东西有没有留到最后？</p></li><li><p>前面的“承诺”和后面的“兑现”配得上吗？</p></li><li><p>奖励是不是即时、看得见？</p></li><li><p>想加强高潮时，先试了难度以外的杠杆吗？</p></li><li><p>高潮时玩法、节奏、叙事三层是否对齐？</p></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 软技能与思考 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 游戏设计与叙事 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>如何解决 AI 信任问题：基于 2026 Stack Overflow 开发者调查</title>
       <link href="/ai-trust-verifiable-infra/"/>
       <url>/ai-trust-verifiable-infra/</url>
@@ -745,32 +845,7 @@
       
         <tags>
             
-            <tag> 笔记 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>叙事研究</title>
-      <link href="/narrative-research/"/>
-      <url>/narrative-research/</url>
-      
-        <content type="html"><![CDATA[<h2 id="叙事结构"><a href="#叙事结构" class="headerlink" title="叙事结构"></a>叙事结构</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>叙事结构是故事讲述的组织方式，决定了故事如何展开、如何收尾。</p><h3 id="常见叙事结构"><a href="#常见叙事结构" class="headerlink" title="常见叙事结构"></a>常见叙事结构</h3><h4 id="三幕式（Three-Act-Structure）"><a href="#三幕式（Three-Act-Structure）" class="headerlink" title="三幕式（Three-Act Structure）"></a>三幕式（Three-Act Structure）</h4><p>影视商业作品最常用的框架，将故事分为：</p><ul><li><strong>第一幕（建置）</strong>：抛出问题，建立冲突</li><li><strong>第二幕（对抗）</strong>：主角面临考验，情节升级</li><li><strong>第三幕（解决）</strong>：高潮来临，尘埃落定</li></ul><h4 id="英雄之旅（Hero’s-Journey）"><a href="#英雄之旅（Hero’s-Journey）" class="headerlink" title="英雄之旅（Hero’s Journey）"></a>英雄之旅（Hero’s Journey）</h4><p>源于约瑟夫·坎贝尔《千面英雄》，基于全球神话分析得出的圆形结构。典型12步：</p><ol><li>普通世界</li><li>冒险召唤</li><li>拒绝冒险</li><li>遇见导师</li><li>跨越门槛</li><li>考验、盟友、敌人</li><li>接近最深处的洞穴</li><li>最大考验</li><li>获得奖赏</li><li>归来之路</li><li>复活</li><li>带回万灵丹</li></ol><blockquote><p>来源：Joseph Campbell《千面英雄》(1949)，Christopher Vogler《作家之旅》改编为剧本框架</p></blockquote><h4 id="七种基本情节（Seven-Basic-Plots）"><a href="#七种基本情节（Seven-Basic-Plots）" class="headerlink" title="七种基本情节（Seven Basic Plots）"></a>七种基本情节（Seven Basic Plots）</h4><p>Christopher Booker 总结的故事原型：</p><ul><li>白手创业（从零到成就）</li><li>征服禁区（探索冒险）</li><li>荒岛求生（脱离文明）</li><li>复仇（正义或破坏）</li><li>困境逃脱（逃离某种处境）</li><li>变节（坠落或堕落）</li><li>成长（内心转变）</li></ul><h4 id="起承转合（四段式）"><a href="#起承转合（四段式）" class="headerlink" title="起承转合（四段式）"></a>起承转合（四段式）</h4><p>中文传统叙事框架：</p><ul><li><strong>起</strong>：铺陈背景，抛出矛盾</li><li><strong>承</strong>：矛盾展开，主角入局</li><li><strong>转</strong>：局势逆转，高潮来临</li><li><strong>合</strong>：收束收尾，尘埃落定</li></ul><h4 id="环形结构"><a href="#环形结构" class="headerlink" title="环形结构"></a>环形结构</h4><p>故事从某点出发，结束时回到原点，但人物或认知已改变。<br>典型作品：《百年孤独》《鹿鼎记》</p><h4 id="非线性叙事"><a href="#非线性叙事" class="headerlink" title="非线性叙事"></a>非线性叙事</h4><p>不按时间顺序讲故事：</p><ul><li>倒叙：先说结局再说过去</li><li>插叙：回忆打断现实</li><li>碎片化：多视角切换<br>典型作品：《记忆碎片》《云图》</li></ul><h3 id="与创作类型的关系"><a href="#与创作类型的关系" class="headerlink" title="与创作类型的关系"></a>与创作类型的关系</h3><table><thead><tr><th>概念</th><th>性质</th><th>例子</th></tr></thead><tbody><tr><td>类型&#x2F;题材</td><td>故事内容范畴</td><td>修仙、科幻、言情</td></tr><tr><td>叙事结构</td><td>故事怎么讲</td><td>三幕式、英雄之旅</td></tr><tr><td>风格&#x2F;调性</td><td>文字&#x2F;情感气质</td><td>轻松、黑暗、史诗</td></tr></tbody></table><p><strong>结构是骨架，题材是血肉。</strong> 同一结构可以承载不同题材的故事（如英雄之旅既用于《星球大战》也用于《功夫熊猫》）。</p><p>你提供的链接《叙事结构》已经对<strong>三幕式、英雄之旅、七种基本情节、起承转合、非线性叙事</strong>以及<strong>网文实战框架</strong>做了非常系统化的梳理。</p><p>为了继续深化这个主题，我们可以从**“高级结构技巧”、“叙事动力学”<strong>以及</strong>“现代多媒体时代的变体”**三个维度进行扩展探索：</p><h2 id="结构深度：更高级的叙事变体"><a href="#结构深度：更高级的叙事变体" class="headerlink" title="结构深度：更高级的叙事变体"></a>结构深度：更高级的叙事变体</h2><p>在掌握了三幕式和英雄之旅后，创作者往往会尝试更复杂的“变体”来打破读者的预判：</p><h3 id="菲希特曲线（Fichtean-Curve）"><a href="#菲希特曲线（Fichtean-Curve）" class="headerlink" title="菲希特曲线（Fichtean Curve）"></a>菲希特曲线（Fichtean Curve）</h3><p>与三幕式不同，它省略了漫长的铺垫，直接进入一系列的小高潮。每解决一个危机，紧接着出现更大的危机，直到最终高潮。这在<strong>惊悚小说</strong>和<strong>硬核网文</strong>中非常有效。比如镜像结构（Chiasmus &#x2F; Ring Composition），故事的后半段是前半段的镜像翻转。例如：第一章对应的结尾章，第二章对应倒数第二章。这种结构常见于具有强烈<strong>宿命感</strong>或<strong>对称美</strong>的作品，如《星球大战》前六部。</p><h3 id="科塔萨尔式“跳房子”（Hopscotch-Structure）"><a href="#科塔萨尔式“跳房子”（Hopscotch-Structure）" class="headerlink" title="科塔萨尔式“跳房子”（Hopscotch Structure）"></a>科塔萨尔式“跳房子”（Hopscotch Structure）</h3><p>源自胡里奥·科塔萨尔的同名小说。故事提供多种阅读顺序，读者可以按常规顺序读，也可以根据作者提供的“跳跃指南”读，产生完全不同的故事体验。</p><h2 id="叙事动力：是什么在推动结构前进？"><a href="#叙事动力：是什么在推动结构前进？" class="headerlink" title="叙事动力：是什么在推动结构前进？"></a>叙事动力：是什么在推动结构前进？</h2><p>结构是骨架，但要让骨架动起来，需要理解<code>“节拍”（Beat）</code>和<code>“弧线”（Arc）</code>：</p><h3 id="人物弧线（Character-Arc）"><a href="#人物弧线（Character-Arc）" class="headerlink" title="人物弧线（Character Arc）"></a>人物弧线（Character Arc）</h3><ul><li><code>正向弧线</code>：主角克服弱点，获得成长（如《狮子王》）。</li><li><code>负向弧线</code>：主角在选择中堕落或毁灭（如《绝命毒师》）。</li><li><code>平淡弧线（状态弧线）</code>：主角不改变，但通过坚持自我改变了世界（如《福尔摩斯》或《大奉打更人》里的许七安）。</li></ul><h3 id="冲突的层级"><a href="#冲突的层级" class="headerlink" title="冲突的层级"></a>冲突的层级</h3><p>一个好的叙事结构必须同时处理三个层级的冲突：</p><ul><li><code>内在冲突</code>（自我怀疑、道德困境）。</li><li><code>人际冲突</code>（反派、情感对手）。</li><li><code>外在冲突</code>（自然灾害、社会体制、反派大军）。</li></ul><h2 id="节奏心理学"><a href="#节奏心理学" class="headerlink" title="节奏心理学"></a>节奏心理学</h2><p><a href="/rhythm-psychology/">节奏心理学</a></p><h2 id="互动叙事（Game-Narrative）"><a href="#互动叙事（Game-Narrative）" class="headerlink" title="互动叙事（Game Narrative）"></a>互动叙事（Game Narrative）</h2><p>如果你关注游戏开发或剧本杀，叙事结构会变成<code>“漏斗形”或“树状分支”</code>。</p><ul><li><p><code>漏斗结构</code>：允许玩家在中间阶段自由探索，但在关键剧情点必须回到主线。</p></li><li><p><code>涌现式叙事（Emergent Narrative）</code>：不预设具体情节，只设定规则和环境，让故事在交互中自然发生（如《我的世界》或《模拟人生》）。</p></li></ul><h2 id="网文实战框架"><a href="#网文实战框架" class="headerlink" title="网文实战框架"></a>网文实战框架</h2><p>中文网络小说另有几套实用框架，与传统戏剧结构不同：</p><table><thead><tr><th>框架</th><th>核心逻辑</th><th>典型代表</th></tr></thead><tbody><tr><td>升级流</td><td>境界突破为主线，每阶段一个副本</td><td>凡人修仙传、斗破苍穹</td></tr><tr><td>重生流</td><td>带着前世记忆弥补遗憾&#x2F;复仇</td><td>重生之都市修仙</td></tr><tr><td>穿越流</td><td>穿到异世界用现代知识降维打击</td><td>大量作品</td></tr><tr><td>无限流</td><td>多个副本&#x2F;位面依次闯关</td><td>末日类型</td></tr><tr><td>系统流</td><td>主角有个任务&#x2F;系统金手指</td><td>签到流</td></tr></tbody></table><h3 id="爽点节奏"><a href="#爽点节奏" class="headerlink" title="爽点节奏"></a>爽点节奏</h3><p>网文圈关键概念——情节单元（3-5章）内必须有1个以上爽点。<br>典型爽点：打脸、装逼、捡宝、突破、艳遇</p><h2 id="资料来源"><a href="#资料来源" class="headerlink" title="资料来源"></a>资料来源</h2><ul><li>约瑟夫·坎贝尔《千面英雄》</li><li>Christopher Vogler《作家之旅》</li><li>Christopher Booker《七种基本情节》</li></ul>]]></content>
-      
-      
-      <categories>
-          
-          <category> 软技能与思考 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 笔记 </tag>
+            <tag> 游戏设计与叙事 </tag>
             
         </tags>
       

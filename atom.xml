@@ -6,7 +6,7 @@
   <link href="https://canace.site/atom.xml" rel="self"/>
   
   <link href="https://canace.site/"/>
-  <updated>2026-10-08T03:59:14.094Z</updated>
+  <updated>2026-10-09T03:46:40.841Z</updated>
   <id>https://canace.site/</id>
   
   <author>
@@ -15,6 +15,82 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>三幕式与游戏设计</title>
+    <link href="https://canace.site/three-act-and-game-design/"/>
+    <id>https://canace.site/three-act-and-game-design/</id>
+    <published>2026-10-09T03:18:00.000Z</published>
+    <updated>2026-10-09T03:46:40.841Z</updated>
+    
+    
+    <summary type="html">游戏里做选择的是玩家。没剧情的关卡靠机制走完三幕；竞技对局则用系统把三幕的形状搭好，内容交给玩家填。</summary>
+    
+    
+    
+    <category term="软技能与思考" scheme="https://canace.site/categories/soft/"/>
+    
+    
+    <category term="游戏设计与叙事" scheme="https://canace.site/tags/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%8F%99%E4%BA%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>三幕式</title>
+    <link href="https://canace.site/three-act-structure/"/>
+    <id>https://canace.site/three-act-structure/</id>
+    <published>2026-10-09T02:40:00.000Z</published>
+    <updated>2026-10-09T03:46:40.824Z</updated>
+    
+    
+    <summary type="html">三幕式里事件推动开头、选择推动故事。第一幕立缺点并主动跨门槛，第二幕升级并逼近缺点，第三幕为了需要冒着失去想要的风险。</summary>
+    
+    
+    
+    <category term="软技能与思考" scheme="https://canace.site/categories/soft/"/>
+    
+    
+    <category term="游戏设计与叙事" scheme="https://canace.site/tags/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%8F%99%E4%BA%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>叙事内核与结构</title>
+    <link href="https://canace.site/narrative-kernel-and-structure/"/>
+    <id>https://canace.site/narrative-kernel-and-structure/</id>
+    <published>2026-10-09T02:30:00.000Z</published>
+    <updated>2026-10-09T03:46:40.834Z</updated>
+    
+    
+    <summary type="html">故事内核是角色、想要、阻碍和代价。代价要追问到揪心；开放世界更适合情感和内在代价，最重的一块仍应锁在结尾。</summary>
+    
+    
+    
+    <category term="软技能与思考" scheme="https://canace.site/categories/soft/"/>
+    
+    
+    <category term="游戏设计与叙事" scheme="https://canace.site/tags/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%8F%99%E4%BA%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>期待与兑现：张力的高点放在哪</title>
+    <link href="https://canace.site/expectation-payoff-tension-peak/"/>
+    <id>https://canace.site/expectation-payoff-tension-peak/</id>
+    <published>2026-10-09T02:20:00.000Z</published>
+    <updated>2026-10-09T03:45:20.963Z</updated>
+    
+    
+    <summary type="html">关卡的张力峰值要落在兑现处。玩法、节奏、叙事三层对齐，高潮优先用新鲜感、揭示和演出，而不是只加难度。</summary>
+    
+    
+    
+    <category term="软技能与思考" scheme="https://canace.site/categories/soft/"/>
+    
+    
+    <category term="游戏设计与叙事" scheme="https://canace.site/tags/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%8F%99%E4%BA%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>如何解决 AI 信任问题：基于 2026 Stack Overflow 开发者调查</title>
@@ -310,82 +386,6 @@
     
     
     <summary type="html">用 Claude 处理视频人脸打码，保留指定人物，顺便把轨迹补齐和 HDR 处理沉淀成可复用的 Skill。</summary>
-    
-    
-    
-    <category term="AI工程化" scheme="https://canace.site/categories/AI%E5%B7%A5%E7%A8%8B%E5%8C%96/"/>
-    
-    
-    <category term="AI编程" scheme="https://canace.site/tags/AI%E7%BC%96%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Claude Code 使用笔记</title>
-    <link href="https://canace.site/claude-note/"/>
-    <id>https://canace.site/claude-note/</id>
-    <published>2026-07-27T01:53:30.000Z</published>
-    <updated>2026-07-27T02:23:01.221Z</updated>
-    
-    
-    <summary type="html">记录 Claude Code 使用中的经验。</summary>
-    
-    
-    
-    <category term="AI工程化" scheme="https://canace.site/categories/AI%E5%B7%A5%E7%A8%8B%E5%8C%96/"/>
-    
-    
-    <category term="AI编程" scheme="https://canace.site/tags/AI%E7%BC%96%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>我的 Vibe Coding 撞墙了，兄弟们</title>
-    <link href="https://canace.site/vibe-coding-problem/"/>
-    <id>https://canace.site/vibe-coding-problem/</id>
-    <published>2026-07-20T01:37:03.000Z</published>
-    <updated>2026-07-20T02:54:44.047Z</updated>
-    
-    
-    <summary type="html">当 vibe coding 的产出涨了，理解却没跟上，我们该如何通过代码审查、复杂任务、偶尔裸写和追问设计理由，把 AI 协作从“传菜员模式”拉回学习与沉淀？</summary>
-    
-    
-    
-    <category term="AI工程化" scheme="https://canace.site/categories/AI%E5%B7%A5%E7%A8%8B%E5%8C%96/"/>
-    
-    
-    <category term="AI编程" scheme="https://canace.site/tags/AI%E7%BC%96%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>搞懂 GPT-5.6：Sol、Terra、Luna 和 Thinking Effort</title>
-    <link href="https://canace.site/gpt-5-6-sol-terra-luna/"/>
-    <id>https://canace.site/gpt-5-6-sol-terra-luna/</id>
-    <published>2026-07-10T02:49:12.000Z</published>
-    <updated>2026-07-12T04:03:04.272Z</updated>
-    
-    
-    <summary type="html">OpenAI 从 GPT-5.6 起用 Sol / Terra / Luna 表示能力层级，Thinking Effort 则是另一维的思考时长参数。</summary>
-    
-    
-    
-    <category term="AI探索" scheme="https://canace.site/categories/intelligent/"/>
-    
-    
-    <category term="AI原理" scheme="https://canace.site/tags/AI%E5%8E%9F%E7%90%86/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>在 CLI 里用 Claude Design 做原型设计</title>
-    <link href="https://canace.site/claude-design-cli-prototyping/"/>
-    <id>https://canace.site/claude-design-cli-prototyping/</id>
-    <published>2026-07-09T06:56:25.000Z</published>
-    <updated>2026-07-12T04:03:07.763Z</updated>
-    
-    
-    <summary type="html">配置 Claude Design MCP 后，可在终端用自然语言生成设计系统、导出交互原型，并同步成前端组件代码。</summary>
     
     
     

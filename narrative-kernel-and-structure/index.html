@@ -1,0 +1,162 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="canace 的博客"><title>叙事内核与结构 | Canace 的博客</title><link rel="stylesheet" type="text/css" href="../css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/normalize.css/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="../favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="../favicon.ico"><link rel="apple-touch-icon" href="../apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="../apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="../atom.xml"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/clipboard/dist/clipboard.min.js"></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.js"></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.css"><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">叙事内核与结构</h1><a id="logo" href="../.">Canace 的博客</a><p class="description">Tomorrow is another day</p></div><div id="nav-menu"><a class="current" href="../."><i class="fa fa-home"> 主页</i></a><a href="../archives/"><i class="fa fa-archive"> 文章归档</i></a><a href="../wiki/"><i class="fa fa-book"> 知识库</i></a><a href="../about/"><i class="fa fa-user"> 关于我</i></a><a href="../atom.xml"><i class="fa fa-rss"> 订阅</i></a><a id="nav-random-article" href="#" title="随机文章" aria-label="随机文章"><i class="fa fa-random"> 随机文章</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">叙事内核与结构</h1><div class="post-meta">2026-10-09<span> | </span><span class="category"><a href="../categories/soft/">软技能与思考</a></span><span> | </span><span class="tags-meta"><a href="../tags/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%8F%99%E4%BA%8B/">游戏设计与叙事</a></span><script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> 阅读</span></span><span class="post-time"><span class="post-meta-item-text"> | </span><span class="post-meta-item-icon"><i class="fa fa-keyboard-o"></i><span class="post-count"> 1.2k</span><span class="post-meta-item-text"> 字</span></span></span><span class="post-time"> | <span class="post-meta-item-icon"><i class="fa fa-clock-o"></i><span class="post-count"> 3</span><span class="post-meta-item-text"> 分钟</span></span></span></div><div class="clear"><div class="toc-article" id="toc"><div class="toc-title">目录</div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%85%E4%BA%8B%E5%86%85%E6%A0%B8%E5%9B%9B%E6%A0%BC"><span class="toc-text">故事内核四格</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A3%80%E9%AA%8C%E4%BB%A3%E4%BB%B7%EF%BC%9A%E8%BF%BD%E9%97%AE%E2%80%9C%E9%82%A3%E5%8F%88%E6%80%8E%E6%A0%B7%E2%80%9D"><span class="toc-text">检验代价：追问“那又怎样”</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E4%BB%B7%E8%A6%81%E8%A2%AB%E6%84%9F%E5%8F%97%E5%88%B0%EF%BC%8C%E4%B8%8D%E6%98%AF%E8%A2%AB%E8%AF%B4%E5%87%BA%E6%9D%A5"><span class="toc-text">代价要被感受到，不是被说出来</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E4%BB%B7%E7%9A%84%E4%B8%89%E7%A7%8D%E7%B1%BB%E5%9E%8B"><span class="toc-text">代价的三种类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%85%E6%A0%B8-vs-%E7%BB%93%E6%9E%84"><span class="toc-text">内核 vs 结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E6%A3%80%E6%B8%85%E5%8D%95"><span class="toc-text">自检清单</span></a></li></ol></div></div><div class="post-content"><h2 id="故事内核四格"><a href="#故事内核四格" class="headerlink" title="故事内核四格"></a>故事内核四格</h2><p>所有叙事框架底下都压着这一句：一个<strong>角色</strong>想要<strong>某样东西</strong>，但有<strong>阻碍</strong>挡着，如果失败会付出<strong>代价</strong>。阻碍让故事有戏可看，代价让人揪心。</p>
+<table>
+<thead>
+<tr>
+<th>角色</th>
+<th>想要</th>
+<th>阻碍</th>
+<th>代价</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>小丑鱼马林（《海底总动员》）</td>
+<td>找回被抓走的儿子尼莫</td>
+<td>大海很危险；他自己胆小又过度保护</td>
+<td>永远失去唯一的家人</td>
+</tr>
+</tbody></table>
+<p>马林的阻碍有一半在他自己身上（胆小），这种“内在阻碍”往往是故事最有味道的地方。</p>
+<h2 id="检验代价：追问“那又怎样”"><a href="#检验代价：追问“那又怎样”" class="headerlink" title="检验代价：追问“那又怎样”"></a>检验代价：追问“那又怎样”</h2><p>代价不是“想要”的反面。对失败结果追问“那又怎样”，直到答案让人揪心为止。</p>
+<ol>
+<li><p>马林找不回尼莫 → 那又怎样？</p>
+</li>
+<li><p>他会失去尼莫 → 那又怎样？</p>
+</li>
+<li><p>尼莫是他在妻子和其他孩子遇害后<strong>仅剩的家人</strong>，他会彻底变成一个人。← 到这一层才揪心</p>
+</li>
+</ol>
+<p><strong>我踩的坑：</strong> 林克的代价我填的是“失败了就救不出公主”，这只是把“想要”反过来说了一遍。往下追：塞尔达已压制盖侬 100 年、力量快耗尽，她撑不住海拉鲁就会毁灭。</p>
+<h2 id="代价要被感受到，不是被说出来"><a href="#代价要被感受到，不是被说出来" class="headerlink" title="代价要被感受到，不是被说出来"></a>代价要被感受到，不是被说出来</h2><p>旷野之息把代价说出来了，但玩法上告诉你“不急”，所以听完还是“那又怎样”。让代价被感受到靠三点：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>《姆吉拉的假面》的月亮</th>
+<th>旷野之息的盖侬</th>
+<th>卓拉领地的大雨</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>看得见</td>
+<td>天天挂在头顶</td>
+<td>城堡在远处，平时注意不到</td>
+<td>看得见</td>
+</tr>
+<tr>
+<td>在逼近</td>
+<td>3 天倒计时，一天比一天近</td>
+<td>100 年都没事</td>
+<td>挂多久都不变</td>
+</tr>
+<tr>
+<td>真会发生</td>
+<td>时间到了真砸下来</td>
+<td>你不去，它永远不来</td>
+<td>大坝永远不会垮</td>
+</tr>
+</tbody></table>
+<ul>
+<li><p><strong>开放世界和紧迫感天生打架：</strong> 一个承诺“想逛多久都行”，一个要求“快去”。旷野之息选了自由，整体放弃了事件层面的代价，连地区小危机也只做到了“看得见”。</p>
+</li>
+<li><p><strong>硬加倒计时有风险：</strong> 《辐射》初代找水芯片有期限，很多玩家逛着逛着时间耗尽，后来补丁把期限放宽了。</p>
+</li>
+<li><p><strong>让拖延真有后果：</strong> 《质量效应 2》船员被抓后若先去做别的任务，回来会有人已经死了。它放在接近结尾、地图已收窄的时候，没破坏前面的自由。</p>
+</li>
+</ul>
+<h2 id="代价的三种类型"><a href="#代价的三种类型" class="headerlink" title="代价的三种类型"></a>代价的三种类型</h2><p>事件代价依赖时间压力，开放世界很难用；情感和内在代价不依赖时间，开放世界也能用。</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>失去的是什么</th>
+<th>例子</th>
+<th>依赖时间压力</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>事件代价</td>
+<td>外部世界会发生的坏事</td>
+<td>世界毁灭、大坝崩溃</td>
+<td>是</td>
+</tr>
+<tr>
+<td>情感代价</td>
+<td>和某个人的关系</td>
+<td>失去某人、辜负某人</td>
+<td>否</td>
+</tr>
+<tr>
+<td>内在代价</td>
+<td>角色自己</td>
+<td>变成自己讨厌的样子</td>
+<td>否</td>
+</tr>
+</tbody></table>
+<h2 id="内核-vs-结构"><a href="#内核-vs-结构" class="headerlink" title="内核 vs 结构"></a>内核 vs 结构</h2><p>原理不分类型，手段分。<strong>内核</strong>（四格）管“为什么让人在乎”，所有类型一样；<strong>结构</strong>管“按什么顺序、由谁决定顺序”，随类型变。</p>
+<table>
+<thead>
+<tr>
+<th>结构</th>
+<th>顺序谁定</th>
+<th>典型形态</th>
+<th>例子</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>线性</td>
+<td>作者</td>
+<td>三幕式：建立 → 对抗 → 解决</td>
+<td>大多数电影、线性剧情游戏</td>
+</tr>
+<tr>
+<td>分支</td>
+<td>作者预设，玩家选</td>
+<td>关键选择导致不同走向和结局</td>
+<td>《底特律：变人》</td>
+</tr>
+<tr>
+<td>开放&#x2F;模块化</td>
+<td>玩家</td>
+<td>松框架 + 能任意顺序完成的小块，每块自己有小闭环</td>
+<td>旷野之息：四神兽任意顺序、回忆乱序收集</td>
+</tr>
+</tbody></table>
+<p>越往下，作者对顺序的控制越少，“高潮放结尾”“代价逐步逼近”越难用，只能放进每个小块内部去做。</p>
+<p><strong>案例：旷野之息的回忆。</strong> 内容本身有情感代价（塞尔达的挫败、对林克从排斥到信任），但顺序交给玩家，在乎很难一步步叠上去，这是<strong>结构</strong>问题。任天堂的补救：冒险日志按时间顺序重排回忆，最后一段关键回忆要找齐其他的才解锁——能让的顺序都让了，最重的一块还是锁在结尾。</p>
+<h2 id="自检清单"><a href="#自检清单" class="headerlink" title="自检清单"></a>自检清单</h2><ul>
+<li><p>四格都填得出来吗？阻碍里有没有一部分在角色自己身上？</p>
+</li>
+<li><p>代价是不是只是“想要”的反面？追问过“那又怎样”吗？</p>
+</li>
+<li><p>代价看得见、在逼近、真会发生吗？还是只是被说出来？</p>
+</li>
+<li><p>结构允许用事件代价吗？不允许的话，换成情感或内在代价了吗？</p>
+</li>
+<li><p>顺序交给玩家时，最重的那一块锁在结尾了吗？</p>
+</li>
+</ul>
+</div><div class="post-copyright"><script type="text/javascript" src="/js/copyright.js" successtext="复制成功!"></script><link rel="stylesheet" type="text/css" href="/css/copyright.css"><p><span>本文标题：</span>叙事内核与结构</p><p><span>文章作者：</span>Canace</p><p><span>发布时间：</span>2026-10-09</p><p><span>最后更新：</span>2026-10-09</p><p><span>原始链接：</span><a href="/narrative-kernel-and-structure/">https://canace.site/narrative-kernel-and-structure/</a><span class="copy-path"><i class="fa fa-clipboard" data-clipboard-text="https://canace.site/narrative-kernel-and-structure/"></i></span></p><p><span>版权声明：</span>转载请注明出处</p></div><br><script type="text/javascript" src="../js/share.js?v=0.0.0" async></script><a class="article-share-link" data-url="https://canace.site/narrative-kernel-and-structure/" data-id="cmv0fmyvf00pmn2v8gaxv5e2s" data-qrcode="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACKElEQVR42u3aQWrEMAwF0N7/0lMo3ZXxfEkpbTTPq0CCneeFkC19fMTj8TWS52cjn/n8/WhgYGDclpEs/3Pq8/LPvj9/M9oaDAyMN2BUQ+E5OCbbkcyZ/BsGBgZGnsDl1POXGBgYGL8RcCeBOAnKGBgYGPnUveuwR2v84lkcAwPjhoxrCwPXPv9ZfQMDA+PfMHpBMLm+z9edBOXvGTAwMFYzkvLkeflqk0QyQ69UgIGBsZuRJ4XzskGvLSyfDQMDYx+jeo1Vbf+6uJ2iWhLAwMBYwei1RFR/unpwzYM7BgYGRn7UrB5954H46XUbBgbGOsa1F/TVH82Psi82DgMD420Y1bJltZyZB9AyFQMD4w0YkzaIagpYyFjjJBUDA2M3I69z5ongpD1i1PaBgYGxlFENoL1krlcMKIdaDAyMpYzC6zilOwfNavJXDscYGBirGcnC1eNoHqyTFasbjYGBsY8xcfeu4Zq9Iec/xMDAWMroFRdzaq+cWW1Zw8DA2MqoXuInobNa/uyVJZr7hIGBcVvG5HnSSNELry+SQgwMjHWM6g/1Gi+uash4cZ2HgYGxlPEojkm4TKjNtxgYGKsZ+egFxEnKWA30GBgYuxmTBojJKXK+HVHmiIGBsYhR7bDK31YZ1YM0BgYGRlJo7F3AJfPkZU4MDAyMappYDdzJT18ccDEwMG7IqAbNXjmhF9CjozIGBsZqRu8AedVlWa8h44L6BgYGxj0Yn2Ip8C4frqVlAAAAAElFTkSuQmCC">分享</a><div class="tags"><a href="../tags/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%8F%99%E4%BA%8B/"><i class="fa fa-tag"></i>游戏设计与叙事</a></div><div class="post-nav"><a class="pre" href="../three-act-structure/">三幕式</a><a class="next" href="../expectation-payoff-tension-peak/">期待与兑现：张力的高点放在哪</a></div></div></div></div><div class="pure-u-1 pure-u-md-1-4"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 常用文档</i></div><ul></ul><a href="/git-common-commands" title="Git 文档" target="_blank">Git 文档</a><ul></ul><a href="/common-programming-prompt-words" title="常用开发提示词" target="_blank">常用开发提示词</a></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="../categories/soft/">软技能与思考</a><span class="category-list-count">56</span></li><li class="category-list-item"><a class="category-list-link" href="../categories/cli/">工程化与运维</a><span class="category-list-count">52</span></li><li class="category-list-item"><a class="category-list-link" href="../categories/intelligent/">AI探索</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="../categories/web/">Web开发</a><span class="category-list-count">142</span></li><li class="category-list-item"><a class="category-list-link" href="../categories/coding/">编程基础</a><span class="category-list-count">42</span></li><li class="category-list-item"><a class="category-list-link" href="../categories/AI%E5%B7%A5%E7%A8%8B%E5%8C%96/">AI工程化</a><span class="category-list-count">33</span></li><li class="category-list-item"><a class="category-list-link" href="../categories/site/">网站建设</a><span class="category-list-count">5</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="../tags/essays/" style="font-size: 15px; color: #2972a4">随笔</a> <a href="../tags/performance/" style="font-size: 15px; color: #7a9fb8">性能优化</a> <a href="../tags/AI%E5%8E%9F%E7%90%86/" style="font-size: 15px; color: #88a6bb">AI原理</a> <a href="../tags/JavaScript-TypeScript/" style="font-size: 15px; color: #0e639d">JavaScript&TypeScript</a> <a href="../tags/backend/" style="font-size: 15px; color: #5f90b1">后端</a> <a href="../tags/api-services/" style="font-size: 15px; color: #bec4c9">API&服务</a> <a href="../tags/computer-science/" style="font-size: 15px; color: #2972a4">计算机科学</a> <a href="../tags/Python-Go-%E5%85%B6%E4%BB%96/" style="font-size: 15px; color: #88a6bb">Python/Go/其他</a> <a href="../tags/%E8%81%8C%E4%B8%9A%E5%8F%91%E5%B1%95/" style="font-size: 15px; color: #7a9fb8">职业发展</a> <a href="../tags/AI%E7%BC%96%E7%A8%8B/" style="font-size: 15px; color: #3679a7">AI编程</a> <a href="../tags/%E7%BF%BB%E8%AF%91/" style="font-size: 15px; color: #ccc">翻译</a> <a href="../tags/notes/" style="font-size: 15px; color: #a3b5c2">笔记</a> <a href="../tags/frontend/" style="font-size: 15px; color: #005b9a">前端</a> <a href="../tags/frameworks-libs/" style="font-size: 15px; color: #5288ae">框架与库</a> <a href="../tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/" style="font-size: 15px; color: #88a6bb">系统设计</a> <a href="../tags/programming-languages/" style="font-size: 15px; color: #b1bdc5">编程语言</a> <a href="../tags/css-visualization/" style="font-size: 15px; color: #1b6aa1">CSS与可视化</a> <a href="../tags/build-deploy/" style="font-size: 15px; color: #6d97b5">构建与部署</a> <a href="../tags/dev-tools/" style="font-size: 15px; color: #4481ab">开发工具</a> <a href="../tags/Node-js/" style="font-size: 15px; color: #7a9fb8">Node.js</a> <a href="../tags/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%8F%99%E4%BA%8B/" style="font-size: 15px; color: #96aebf">游戏设计与叙事</a> <a href="../tags/cross-platform/" style="font-size: 15px; color: #88a6bb">跨端方案</a> <a href="../tags/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/" style="font-size: 15px; color: #ccc">项目管理</a> <a href="../tags/code-quality/" style="font-size: 15px; color: #b1bdc5">代码质量</a></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2026 <a href="../." rel="nofollow">Canace 的博客</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="../js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.js" async></script><script type="text/javascript" src="../js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.css"><link rel="stylesheet" type="text/css" href="../css/search.css?v=0.0.0"><script type="text/javascript" src="../js/search.js?v=0.0.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+   search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="/js/copycode.js" successtext="复制成功!"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/mermaid@11.14.0/dist/mermaid.min.js"></script><script type="text/javascript">document.addEventListener('DOMContentLoaded', function () {
+  if (!window.mermaid) return;
+  mermaid.initialize({"theme":"default","logLevel":5,"startOnLoad":true,"arrowMarkerAbsolute":false,"flowchart":{"htmlLabels":true,"useMaxWidth":true,"curve":"linear"},"sequence":{"diagramMarginX":50,"diagramMarginY":10,"actorMargin":50,"width":150,"height":65,"boxMargin":10,"boxTextMargin":5,"noteMargin":10,"messageMargin":35,"mirrorActors":true,"bottomMarginAdj":1,"useMaxWidth":true},"gantt":{"titleTopMargin":25,"barHeight":20,"barGap":4,"topPadding":50,"leftPadding":75,"gridLineStartPadding":35,"fontSize":11,"fontFamily":"\"Open-Sans\", \"sans-serif\"","numberSectionStyles":4,"axisFormat":"%Y-%m-%d"},"class":{},"git":{}});
+});
+</script><script type="text/javascript" src="../js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="../js/smartresize.js?v=0.0.0"></script><script type="text/javascript">(function () {
+  var urls = ["/../2024-year-end-summary/","/../6-common-website-usability-issues-and-solutions/","/../AI-knowledge-base/","/../JavaScript-call-apply-bind/","/../MySQL/","/../NP-P-NPC/","/../Django-channels/","/../about-doing-technology/","/../WebRTC/","/../agent-coding-stability/","/../add-skeleton-screen/","/../ai-coding-ide/","/../ai-coding-share/","/../ai-coding-game/","/../ai-make-you-boring/","/../ai-expansion/","/../ai-native/","/../ai-optimize-ui/","/../ai-self-awareness/","/../ai-review-bottleneck/","/../ai-stream-recovery/","/../ai-trust-verifiable-infra/","/../ai-worker/","/../angel-love/","/../algorithm-book-notes-for-everyone/","/../angular-navigation-content-linkage/","/../ants/","/../async-data-console-issues/","/../axios-network-request-encapsulation/","/../ant-design-pitfalls/","/../beego-getting-started/","/../bash-data-processing/","/../binary-search/","/../boolean-variables-in-project-application/","/../box-model/","/../bracket-matching/","/../blog-category/","/../brief-discussion-on-dns-pollution/","/../browser-kernel-and-writing/","/../build-django-blog-system/","/../brief-discussion-on-visual-form-design/","/../about-forgetfulness/","/../build-typescript-library/","/../build-tinymce-img-plugin/","/../calculate-rice-cooker-reservation-time/","/../canvas-draw-sprite-export/","/../canvas-draw-dynamic-path/","/../cascade/","/../centos-server-login-config/","/../ckeditor-usage-in-angular/","/../claude-design-cli-prototyping/","/../claude-note/","/../claude-handoff-doc-to-repo/","/../claude-skill-cross-device/","/../claude-webfetch/","/../climbing-stairs/","/../common-algorithm-ideas/","/../common-git-workflows/","/../common-image-format-comparison/","/../common-programming-prompt-words/","/../code-optimization/","/../common-regular-expressions/","/../common-terminal-commands/","/../computer-graphics-2/","/../computer-graphics-1/","/../content-create-thinking/","/../count-number-of-islands/","/../count-beautiful-subarrays/","/../count-total-elements-of-array-objects/","/../create-object-based-on-null/","/../css-background-image-application/","/../cross-origin-resource-sharing/","/../css-circular-progress-bar/","/../css-layout-guide/","/../css-positioning-detailed/","/../css-notes/","/../css-series-basics/","/../css-positioning/","/../css-series-box-dimensions/","/../css-series-cascade/","/../css-series-flow-destruction-and-protection/","/../css-series-history-and-document-flow/","/../css-series-flow-and-dimensions/","/../css-series-inline-elements-and-flow/","/../css-two-color-pie-chart/","/../css-series-text-processing/","/../css-tips/","/../css2-block-element-center/","/../css3-animation-vs-js-animation/","/../custom-github-activity/","/../cursor-debugger/","/../cursor-skill-web-search-download-movie/","/../deep-work-philosophy-interpretation/","/../deep-copy-of-arrays-and-objects/","/../disable-image-dragging/","/../docker-documentation/","/../docker-frontend-environment-setup/","/../docs-in-ai-date/","/../doing-things-with-vscode/","/../dropdown-list-implementation/","/../egg/","/../element-plus-table-component-scaling-issue-solution/","/../es2020-new-features/","/../extra-thick-chicken-soup/","/../expectation-payoff-tension-peak/","/../ffmpeg-extract-audio-track/","/../fable-pixel-game-vibe-coding/","/../file-naming-pitfalls-record/","/../find-median-sorted-arrays/","/../firefox-remove-various-dashed-borders/","/../first-day-morning-run/","/../first-screen-optimization/","/../first-screen-time-vs-white-screen-time/","/../fix-github-image-issue-on-mac/","/../flow-simple-tutorial/","/../flutter-learning-notes-quick-start/","/../flutter-learning-notes-dart-basics/","/../four-js-tips/","/../frontend-draw-graphic-captcha/","/../fun-console/","/../frontend-xx-dockerization/","/../frontend-performance-optimization/","/../fullscreen-solution-for-webpage-or-html-elements/","/../function-currying/","/../function-without-global-variable-counting/","/../functional-programming/","/../generate-random-array-in-specified-range/","/../gemini-new-session-memory/","/../get-css-style/","/../ghost-whitespace-nodes/","/../get-longest-common-prefix/","/../git-common-commands/","/../git-domain-config/","/../git-environment-config/","/../gitbook-generate-ebook/","/../github-action-auto-deploy-page/","/../git-usage-guide/","/../github-travis-auto-build-vue-to-gitpage/","/../gitlab-ci-config-template/","/../gitpage-hexo/","/../github-practical-tips/","/../go-getting-started/","/../good-system/","/../go-ahead-vs-continue-ai-chat/","/../gpt-5-6-sol-terra-luna/","/../hexo-getting-started/","/../hexo-math-formula-support/","/../homebrew-common-commands/","/../how-ai-lets-us-lie-flat/","/../hexo-blog-migration/","/../how-can-i-use-codex-harness/","/../how-to-create-a-robust-system/","/../how-to-optimize-animation/","/../html-notes/","/../html-to-text-js/","/../http-claude/","/../image-lazy-loading-implementation/","/../http-server/","/../implement-array-flatten/","/../http-notes/","/../improve-work-efficiency-with-cursor-practical-notes/","/../issue-05/","/../issue-06/","/../issue-07/","/../issue-08/","/../issue-09/","/../issue-1/","/../issue-04/","/../issue-10/","/../issue-11/","/../issue-12/","/../issue-13/","/../issue-14/","/../issue-15/","/../issue-2/","/../japanese-learning-notes/","/../javaScript-promise/","/../javascript-basics-primitive-vs-reference-types/","/../javascript-basics-type-conversion/","/../javascript-built-in-deep-copy/","/../javascript-common-code-snippets/","/../javascript-detect-caps-lock/","/../javascript-functions/","/../javascript-new-implementation-principle/","/../javascript-object-oriented-programming/","/../javascript-soul-questions/","/../javascript-tricks/","/../js-execution/","/../js-linked-list-implementation/","/../js-modal-blog/","/../js-overview/","/../js-string-to-base64/","/../js-timezone/","/../jump-to-specific-position-in-article/","/../key-value-role-in-vue-components/","/../kindness/","/../knowledge-anxiety/","/../knn-algorithm/","/../kpi-vs-okr/","/../leave-page-popup/","/../linux-background-script-execution/","/../llm-to-harness/","/../llm-training-truth/","/../llm-wiki/","/../lodash-source-analysis-array-slice/","/../lodash-source-analysis-array-chunk/","/../mac-debug-ios-web-page/","/../manchester-by-the-sea/","/../mac-install-mysql/","/../method-to-login-to-south-china-normal-university-campus-network/","/../model-training-steps/","/../modify-autofill-style/","/../modify-scrollbar-style-compatible/","/../module-specifications/","/../n-n-order-matrix-algorithm/","","/../node-notes-in-depth/","/../node-version-management/","/../nodeJs/","/../nodejs-config/","/../nodejs-module-mechanism/","/../nodejs-notes/","/../notes-about-writing-weekly-reports/","/../npm-common-commands/","/../number-precise-to-two-decimal-places/","/../object-property-value-monitoring/","/../one-click-generate-responsive-table/","/../openclaw-usage-experience/","/../package-json-field-list/","/../palindrome-number-judgment/","/../pagination-algorithm/","/../mini-program-tabs-sticky/","/../personal-knowledge-base/","/../pinyin-learning-project-notes/","/../pixi-basics/","/../pixi-js-sprite-loading-cache-removal/","/../port-number-modification/","/../pixijs-vertexData-null/","/../prisma-getting-started-guide/","/../product-updates-rss-file-diff-mental-model/","/../project-modularization-principles/","/../promt-cache/","/../proxy-observer-pattern/","/../python-pitfalls-collection/","/../python3-installation/","/../qwen-milk-tea-ui/","/../rag-vs-graph-rag/","/../react-hooks-create-movie-app/","/../record-service-degradation-due-to-emergency/","/../recursive-tree/","/../refactoring-vs-architecture/","/../regular-expressions/","/../remove-parent-nodes-with-duplicate-child-ids/","/../removeDuplicates/","/../reverse-integer/","/../reverse-words-in-string/","/../removeElement/","/../roman-numerals-to-integer/","/../interview-strategy/","/../rhythm-psychology/","/../scheduled-tasks/","/../science-popularization/","/../rss-telegram-selfhost/","/../scroll-pagination/","/../sentence-excerpts/","/../settimeout-simulate-setinterval/","/../singly-linked-list-concatenation/","/../software-version-number-definition/","/../solve-github-dns-pollution-issue/","/../some-concepts/","/../ss-installation/","/../systematic-method-for-fragmented-reading-knowledge/","/../string-and-code-rigor/","/../sublime-text-nodejs-config/","/../talking-about-vuex/","/../table-cell-equal-division/","/../talking-about-webpage-adaptive-and-responsive-layout/","/../tcp-ip-three-way-handshake/","/../thoughts-on-branch-management/","/../issue-03/","/../thoughts-on-ad-blocker-plugins/","/../thoughts-on-technical-growth/","/../three-act-and-game-design/","/../talking-about-browser-cache-mechanism/","/../three-act-structure/","/../three-js-basics-practice/","/../time-complexity-vs-space-complexity/","/../time-zero/","/../translate-use-claude-code/","/../two-sum-problem/","/../timestamp-to-date/","/../ubuntu-configure-frontend-environment/","/../ubuntu-configure-ss/","/../interesting-css-cascade-issues/","/../typescript-environment-config/","/../unavoidable-bug-chrome-translation-caused-trouble/","/../understanding-cookies/","/../understanding-byte-order/","/../ubuntu-install-tensorflow/","/../understanding-instanceof/","/../variables/","/../use-cowork/","/../validate-string/","/../vibe-coding-problem/","/../video-face-mosaic-skill/","/../vscode-code-formatting-summary/","/../vitest-vs-jest-advantages/","/../vue-data-driven-view-implementation/","/../vue-config-template/","/../vue-details-i-didnt-know/","/../vue-dynamic-change-title/","/../vue-project-setup-steps/","/../vue-test-unit/","/../vue3-notes/","/../web-performance-optimization-debounce/","/../webpack-dynamic-modify-resource-domain/","/../webpack-gulp-bundle-vue-component-library/","/../vue-dynamic-component-import-note-not-async/","/../webpack/","/../web-security-csrf/","/../web-security-xss-attack/","/../webpack5-new-features-module-federation-notes/","/../webpage-version-update-popup-implementation/","/../wechat-mini-program-pitfalls/","/../what-happens-from-url-to-display/","/../what-happened-to-vue/","/../why-graphics-card/","/../why-frontend-needs-framework/","/../why-not-let-ai-write-for-us/","/../why-we-need-to-read/","/../word-2-game/","/../windows-tricks/","/../wordpress-installation/","/../words-of-experience/","/../wsl-config/","/../why-write-wechat-official-account/","/../writing-a-good-claude-md/","/../yml-file-operations/","/../work-for/"];
+  var el = document.getElementById('nav-random-article');
+  if (!el) return;
+  el.addEventListener('click', function (e) {
+    e.preventDefault();
+    if (!urls.length) return;
+    var next = urls[Math.floor(Math.random() * urls.length)];
+    if (next) window.location.href = next;
+  });
+})();</script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":200,"height":200},"mobile":{"show":false},"react":{"opacity":0.7},"log":false});</script></body></html>
