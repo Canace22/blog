@@ -1,7 +1,7 @@
 ---
 title: 节奏心理学：叙事中的“情绪推手”
 categories: 软技能与思考
-tags: 笔记
+tags: 游戏设计与叙事
 description: “爽点节奏”不仅是网文的套路，更是大脑分配注意力与管理多巴胺的科学。本文将从心理学维度深度拆解叙事节奏的底层逻辑
 author: Canace
 comments: true
