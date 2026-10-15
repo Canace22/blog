@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>如何关掉 Cursor 提交里自动加上的签名</title>
+      <link href="/disable-cursor-commit-attribution/"/>
+      <url>/disable-cursor-commit-attribution/</url>
+      
+        <content type="html"><![CDATA[<p>用 Cursor 有一个很烦人的地方，那就是每次干完活自动 commit 都会带上他自己的签名，比如这样。</p><figure class="highlight text"><table><tr><td class="code"><pre><span class="line">Co-authored-by: Cursor &lt;cursoragent@cursor.com&gt;</span><br></pre></td></tr></table></figure><p>公司的项目，加一堆的 agent 签名，总感觉很奇怪。</p><p>因为这个我还专门写了项目规则不让提交带 AI 签名，但是这样有个问题，每次都要花费 token 去处理，也是一笔花费，有没有相关设置可以直接关掉呢？</p><p>今天研究了一下，是有的。不过改配置要分不同的产品去改，他们不互通。</p><p>首先这个签名怎么来的呢？</p><p>搜了一下，发现这是 Cursor 在提交信息写完之后，由工具再追加进去的。所以仓库里的 <code>AGENTS.md</code>、用户规则里写「不要带 AI 签名」，这种针对模型的规则，都约束不到这个行为。</p><p>官方把这个行为叫 Attribution，默认开启。编辑器、命令行、云端 Agent 各有一份开关，关了一处，另一处还会继续加。</p><h2 id="Cursor-编辑器里提交"><a href="#Cursor-编辑器里提交" class="headerlink" title="Cursor 编辑器里提交"></a>Cursor 编辑器里提交</h2><p>打开 <strong>Cursor Settings</strong>。这是 Cursor 自己的设置页，不是 VS Code 的 Settings（<code>Cmd+,</code>）。菜单路径是 Cursor → Settings → Cursor Settings，也可以在命令面板里搜 Cursor Settings。</p><p>找到 <strong>Git &amp; PRs → Attribution</strong>。Cursor 3.11 之前，这一项在 <strong>Agents → Attribution</strong>。</p><p>关掉两处：</p><ul><li><strong>Commit Attribution</strong>：Agent 创建的 commit 不再追加 trailer。</li><li><strong>PR Attribution</strong>：用 <code>gh pr create</code> 建拉取请求时，描述里不再出现 Made with Cursor。</li></ul><p>只关提交、不关 PR 的话，commit 干净了，PR 正文仍会带署名。</p><h2 id="命令行-cursor-agent"><a href="#命令行-cursor-agent" class="headerlink" title="命令行 cursor-agent"></a>命令行 <code>cursor-agent</code></h2><p>CLI 不读编辑器里那个开关。配置在 <code>~/.cursor/cli-config.json</code>（Windows 是 <code>%USERPROFILE%\.cursor\cli-config.json</code>）。文件里没有 <code>attribution</code> 字段时，两项都按默认开启处理。我本机这份配置就是这样，所以即使用编辑器关过，终端里的 agent 提交仍会带签名。</p><p>在 JSON 里补上：</p><figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="attr">&quot;attribution&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;attributeCommitsToAgent&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;attributePRsToAgent&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure><p>这两项是全局的。CLI 里能按项目区分的主要是权限，署名开关不分仓库。</p><h2 id="关了还会出现的时候"><a href="#关了还会出现的时候" class="headerlink" title="关了还会出现的时候"></a>关了还会出现的时候</h2><table><thead><tr><th>从哪提交</th><th>去哪关</th></tr></thead><tbody><tr><td>Cursor 编辑器里的 Agent</td><td>Cursor Settings → Git &amp; PRs → Attribution</td></tr><tr><td>终端里的 <code>cursor-agent</code></td><td><code>~/.cursor/cli-config.json</code> 的 <code>attribution</code></td></tr><tr><td>Cloud Agent</td><td>本地没有对应开关，合并时从 merge message 里删掉那一行</td></tr><tr><td>企业账号</td><td>管理员可在 Admin Dashboard → Settings 里对全员强制开或关，个人设置会被盖掉</td></tr></tbody></table><p>Cloud Agent 在 Cursor 的服务器上提交，本机的设置和 git hook 都不会跑到那边。截至 2026 年 10 月，公开说明里没有给云端单独关掉署名的选项。需要干净历史时，在合并说明里去掉那一行再合。</p><h2 id="已经写进历史之后"><a href="#已经写进历史之后" class="headerlink" title="已经写进历史之后"></a>已经写进历史之后</h2><p>设置只影响之后的提交。已经落在 <code>git log</code> 里的那一行，要改提交对象本身。</p><p>还没推送、并且就是最新一条时，可以用 <code>git commit-tree</code> 重写这条提交：保留原来的 tree、parent、作者和时间，只换掉提交说明，再用 <code>git reset --soft</code> 把 HEAD 指到新对象。不要顺手改作者日期，也不要靠 <code>--amend</code> 碰已经推送过的提交。</p><p>本地还想再兜一层的话，可以在 <code>commit-msg</code> hook 里删掉这两行。Cursor 是在 hook 运行前把 trailer 写进提交说明文件的，所以 hook 看得到、也删得掉：</p><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line">file=<span class="string">&quot;<span class="variable">$1</span>&quot;</span></span><br><span class="line">tmp=<span class="string">&quot;<span class="variable">$&#123;file&#125;</span>.tmp&quot;</span></span><br><span class="line">grep -v -e <span class="string">&#x27;^Co-authored-by: Cursor &#x27;</span> -e <span class="string">&#x27;^Made-with: Cursor&#x27;</span> <span class="string">&quot;<span class="variable">$file</span>&quot;</span> &gt; <span class="string">&quot;<span class="variable">$tmp</span>&quot;</span> &amp;&amp; <span class="built_in">mv</span> <span class="string">&quot;<span class="variable">$tmp</span>&quot;</span> <span class="string">&quot;<span class="variable">$file</span>&quot;</span></span><br></pre></td></tr></table></figure><p>这个 hook 只管本机仓库。Cloud Agent 的提交不会经过它。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> AI工程化 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> AI编程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>三幕式与游戏设计</title>
       <link href="/three-act-and-game-design/"/>
       <url>/three-act-and-game-design/</url>

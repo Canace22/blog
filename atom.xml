@@ -6,7 +6,7 @@
   <link href="https://canace.site/atom.xml" rel="self"/>
   
   <link href="https://canace.site/"/>
-  <updated>2026-10-09T03:46:40.841Z</updated>
+  <updated>2026-10-15T03:34:09.980Z</updated>
   <id>https://canace.site/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>如何关掉 Cursor 提交里自动加上的签名</title>
+    <link href="https://canace.site/disable-cursor-commit-attribution/"/>
+    <id>https://canace.site/disable-cursor-commit-attribution/</id>
+    <published>2026-10-15T02:50:00.000Z</published>
+    <updated>2026-10-15T03:34:09.980Z</updated>
+    
+    
+    <summary type="html">Agent 提交会在信息末尾追加 Co-authored-by 或 Made-with。项目规则拦不住，要在 Cursor 设置和 CLI 配置里分别关掉。</summary>
+    
+    
+    
+    <category term="AI工程化" scheme="https://canace.site/categories/AI%E5%B7%A5%E7%A8%8B%E5%8C%96/"/>
+    
+    
+    <category term="AI编程" scheme="https://canace.site/tags/AI%E7%BC%96%E7%A8%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>三幕式与游戏设计</title>
@@ -367,25 +386,6 @@
     
     
     <summary type="html">从内容损坏、断点定位到事件重放和 KV Cache，讲清 AI 流式生成中断后真正发生了什么。</summary>
-    
-    
-    
-    <category term="AI工程化" scheme="https://canace.site/categories/AI%E5%B7%A5%E7%A8%8B%E5%8C%96/"/>
-    
-    
-    <category term="AI编程" scheme="https://canace.site/tags/AI%E7%BC%96%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>我让 Claude 给视频里的人脸打码，顺手做成了一个 Skill</title>
-    <link href="https://canace.site/video-face-mosaic-skill/"/>
-    <id>https://canace.site/video-face-mosaic-skill/</id>
-    <published>2026-08-02T08:46:26.000Z</published>
-    <updated>2026-08-02T08:49:15.689Z</updated>
-    
-    
-    <summary type="html">用 Claude 处理视频人脸打码，保留指定人物，顺便把轨迹补齐和 HDR 处理沉淀成可复用的 Skill。</summary>
     
     
     
