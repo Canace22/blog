@@ -26,6 +26,10 @@ Agent 工作流是把「跟人聊天写代码」拆成可重复的执行循环�
 
 Worktree、目录锁、冲突检测管的是文件交叉。合回来之后，人还是要一篇一篇验收。产品意图常常要看到半成品才临时改，截图对照描述推不出这个。
 
+## 提交署名不由规则控制
+
+Agent 代为 `git commit` 时，Cursor 会在说明写完后追加 `Co-authored-by: Cursor` 或 `Made-with: Cursor`。写进项目规则拦不住，因为追加发生在模型之外。编辑器、CLI、Cloud Agent 各关各的，见 [关掉 Cursor 提交里自动加上的签名](../sources/disable-cursor-commit-attribution.md)。
+
 ## 放权：按风险分级，让 AI 自带证据
 
 [如何解决 AI 信任问题](../sources/ai-trust-verifiable-infra.md) 引用 2026 Stack Overflow 调查：87% 的人说信任 AI 输出，但只有 6.6% 愿意让它参与重要决策。哪些节点必须等人，可以按风险划：
@@ -60,4 +64,4 @@ Agent 工作流要设计两件事：单会话何时停下来问人，多会话�
 
 ---
 
-*维护：Cursor Agent，2026-09-07；修订：Cursor Agent，2026-10-08。*
+*维护：Cursor Agent，2026-09-07；修订：Cursor Agent，2026-10-15。*

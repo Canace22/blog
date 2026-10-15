@@ -12,7 +12,7 @@
 - **信任与放权**：开发者普遍在用 AI 却很少放权，瓶颈是「AI 能不能证明自己写得对」。做法是让 AI 带证据包、自动跑验证，按操作风险分级放权，记忆区分事实、决策、偏好和临时状态（[如何解决 AI 信任问题](../sources/ai-trust-verifiable-infra.md)）。
 - **项目文档**：AI 维护的文档容易是全知视角、状态快照、不断增量追加，人读不下去。前三句话说清是什么、给谁用、怎么开始；README / `AGENTS.md` / CHANGELOG 分层；产品方向由人写进 `PRODUCT.md`（[把项目文档写得人看得懂](../sources/docs-in-ai-date.md)）。
 - **迭代**：接受多轮循环；早期输出往往是在帮系统「弄清任务到底是什么」（[如何提升 AI 代码质量](../sources/improving-ai-code-quality.md)）。
-- **工具链**：在 Cursor 里通过 Playwright MCP 做浏览器自动化（[Cursor Playwright MCP](../sources/cursor-playwright-mcp.md)）；在 Claude Code 中把设计探索、原型导出和代码导入串起来（[在 CLI 里用 Claude Design 做原型设计](../sources/claude-design-cli-prototyping.md)）。
+- **工具链**：在 Cursor 里通过 Playwright MCP 做浏览器自动化（[Cursor Playwright MCP](../sources/cursor-playwright-mcp.md)）；在 Claude Code 中把设计探索、原型导出和代码导入串起来（[在 CLI 里用 Claude Design 做原型设计](../sources/claude-design-cli-prototyping.md)）。Agent 提交末尾的 `Co-authored-by: Cursor` 由产品追加，规则文件去不掉，要在编辑器和 CLI 里分别关 Attribution（[关掉 Cursor 提交里自动加上的签名](../sources/disable-cursor-commit-attribution.md)）。
 - **Skill 沉淀**：把一次性解决方案补齐输入检查、异常处理和结果验收，再封装成可复用流程（[视频人脸打码 Skill](../sources/video-face-mosaic-skill.md)）。Skill 保存的是做法，不会带走本机依赖；跨设备能否继续，取决于会话跑在云端还是 Remote Control 本地会话（[Skill、会话与执行环境](skill-session-runtime.md)，[笔记本合上后手机继续执行 Skill](../sources/claude-skill-cross-device.md)）。
 - **流式可靠性**：连接恢复、内容重放和推理恢复是不同层次；结构化输出与工具调用必须在完整校验后执行（[AI 流式生成恢复](ai-stream-recovery.md)）。
 - **调用成本**：多轮 Agent 的大头是反复读取同一段长上下文。每轮截断或改写前缀会让缓存失效并重新写入；官方 Agent 已处理缓存，自建调用要保持前缀字节稳定（[Prompt Caching](prompt-caching.md)）。
@@ -66,6 +66,7 @@
 - [如何解决 AI 信任问题：基于 2026 Stack Overflow 开发者调查](../sources/ai-trust-verifiable-infra.md)
 - [把项目文档写得人看得懂：AI 时代的维护指南](../sources/docs-in-ai-date.md)
 - [Agent 工作流](agent-workflow.md)
+- [关掉 Cursor 提交里自动加上的签名](../sources/disable-cursor-commit-attribution.md)
 
 ## 综合结论
 
@@ -73,4 +74,4 @@
 
 ---
 
-*修订：Cursor Agent，2026-10-08。*
+*修订：Cursor Agent，2026-10-15。*

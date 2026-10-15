@@ -1,5 +1,7 @@
 # Wiki Log
 
+- 2026-10-15：发布 `source/_posts/disable-cursor-commit-attribution.md`（自 `_drafts` 移入）；来源页与 `wiki/index.md` 改为指向已发布博文。
+- 2026-10-15：Ingest Cursor 会话「关掉提交自动签名」→ 草稿 `source/_drafts/disable-cursor-commit-attribution.md`（未进 `_posts`）；新增 `wiki/sources/disable-cursor-commit-attribution.md`；更新 `agent-workflow`、`ai-assisted-development` 与 `wiki/index.md`（AI工程化）。
 - 2026-10-09：Wiki lint。结构通过：维护页均有入链、无零出链、索引无漏页、无 Clippings 回链、无未入库 `source/_posts`。断链 1 处：`source/_posts/narrative-research.md` 已删除，`wiki/sources/narrative-research.md` 与 `wiki/index.md` 改为摘要归档，不再链到缺失路径。约 384 个维护页无签名行（存量，只改到的页保留原签名）。未把现有 query 升格为概念页。
 - 2026-10-09：叙事主题六篇博文标签由「笔记」改为「游戏设计与叙事」；`docs/categories-tags.md`、`docs/blog-category-tree.md`、`wiki/sources/blog-category.md` 与六个来源页同步。
 - 2026-10-09：叙事收成主题 → 新增 `wiki/reports/narrative-theme-synthesis.md`（内核与结构、节奏与兑现、游戏里谁在选）；`narrative-structures`、`game-narrative-design`、`writing-thinking-frameworks-panorama` 与 `wiki/index.md` 补链。

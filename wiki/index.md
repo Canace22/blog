@@ -362,6 +362,7 @@
 
 - [如何解决 AI 信任问题：基于 2026 Stack Overflow 开发者调查](sources/ai-trust-verifiable-infra.md) — `source/_posts/ai-trust-verifiable-infra.md`（证据包、自动验证、分级权限、记忆重构）
 - [把项目文档写得人看得懂：AI 时代的维护指南](sources/docs-in-ai-date.md) — `source/_posts/docs-in-ai-date.md`（全知视角、状态快照、增量维护；README / `AGENTS.md` / `PRODUCT.md` 分层）
+- [关掉 Cursor 提交里自动加上的签名](sources/disable-cursor-commit-attribution.md) — `source/_posts/disable-cursor-commit-attribution.md`（编辑器 / CLI / Cloud Agent 的 Attribution 开关）
 - [Cursor 的网络协议，为什么选 HTTP/1.1 才能用 Claude](sources/http-claude.md) — `source/_posts/http-claude.md`（HTTP/2 绕过本地代理、TUN 模式、代理环境变量）
 - [模型是怎么一步步走向生产环境的](sources/llm-to-harness.md) — `source/_posts/llm-to-harness.md`（上下文装配 → ReAct → 工具规范 → 记忆 → Harness）
 - [Prompt Caching 笔记：原理、命中策略和各家差异](sources/promt-cache.md) — `source/_posts/promt-cache.md`（前缀匹配、命中策略、Claude / OpenAI 缓存差异）
