@@ -6,7 +6,7 @@
   <link href="https://canace.site/atom.xml" rel="self"/>
   
   <link href="https://canace.site/"/>
-  <updated>2026-10-15T03:34:09.980Z</updated>
+  <updated>2026-10-16T02:07:05.623Z</updated>
   <id>https://canace.site/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Electron vs Tauri</title>
+    <link href="https://canace.site/electron-vs-tauri/"/>
+    <id>https://canace.site/electron-vs-tauri/</id>
+    <published>2026-10-16T01:42:17.000Z</published>
+    <updated>2026-10-16T02:07:05.623Z</updated>
+    
+    
+    <summary type="html">对比体积、启动速度、Rust 成本和 WebView 一致性之后，个人工作台从 Electron 切到了 Tauri，安装包从三四百兆降到 20 兆。</summary>
+    
+    
+    
+    <category term="Web开发" scheme="https://canace.site/categories/web/"/>
+    
+    
+    <category term="前端" scheme="https://canace.site/tags/frontend/"/>
+    
+    <category term="跨端方案" scheme="https://canace.site/tags/cross-platform/"/>
+    
+  </entry>
   
   <entry>
     <title>如何关掉 Cursor 提交里自动加上的签名</title>
@@ -367,25 +388,6 @@
     
     
     <summary type="html">拆解 Claude Code 的 WebFetch 与 WebSearch，了解它们的输入结构、执行流程和设计取舍。</summary>
-    
-    
-    
-    <category term="AI工程化" scheme="https://canace.site/categories/AI%E5%B7%A5%E7%A8%8B%E5%8C%96/"/>
-    
-    
-    <category term="AI编程" scheme="https://canace.site/tags/AI%E7%BC%96%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>AI 生成到 90% 突然断了：你的解决方案是？</title>
-    <link href="https://canace.site/ai-stream-recovery/"/>
-    <id>https://canace.site/ai-stream-recovery/</id>
-    <published>2026-08-03T08:33:58.000Z</published>
-    <updated>2026-08-03T10:05:33.026Z</updated>
-    
-    
-    <summary type="html">从内容损坏、断点定位到事件重放和 KV Cache，讲清 AI 流式生成中断后真正发生了什么。</summary>
     
     
     
