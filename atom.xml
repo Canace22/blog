@@ -6,7 +6,7 @@
   <link href="https://canace.site/atom.xml" rel="self"/>
   
   <link href="https://canace.site/"/>
-  <updated>2026-10-16T02:07:05.623Z</updated>
+  <updated>2026-10-16T02:48:32.394Z</updated>
   <id>https://canace.site/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://canace.site/electron-vs-tauri/"/>
     <id>https://canace.site/electron-vs-tauri/</id>
     <published>2026-10-16T01:42:17.000Z</published>
-    <updated>2026-10-16T02:07:05.623Z</updated>
+    <updated>2026-10-16T02:48:32.394Z</updated>
     
     
     <summary type="html">对比体积、启动速度、Rust 成本和 WebView 一致性之后，个人工作台从 Electron 切到了 Tauri，安装包从三四百兆降到 20 兆。</summary>
