@@ -28,7 +28,8 @@
 - [LLM 维护的知识库](../concepts/llm-maintained-wiki.md)（与「结构化沉淀、再喂给模型」一致）
 - [一轮对话 Vibe Coding 出可直接上手玩的浏览器 3D 游戏](word-2-game.md)
 - [如何开发一个有手感的赛车游戏 demo](fable-pixel-game-vibe-coding.md)
+- [一个保持 AI 生成 2D 素材一致的技巧](consistent-2d-game-assets.md)
 
 ---
 
-*修订：Cursor Agent，2026-09-02。*
+*修订：Cursor Agent，2026-10-22。*

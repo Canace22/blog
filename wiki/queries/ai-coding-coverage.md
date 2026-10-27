@@ -74,6 +74,7 @@
   - [面向大模型编程(LOP)在游戏制作流程中的应用畅想](../sources/ai-coding-game.md)
   - [一轮对话 Vibe Coding 出可直接上手玩的浏览器 3D 游戏](../sources/word-2-game.md)
   - [如何开发一个有手感的赛车游戏 demo](../sources/fable-pixel-game-vibe-coding.md)
+  - [一个保持 AI 生成 2D 素材一致的技巧](../sources/consistent-2d-game-assets.md)
 
 ### 8. AI Coding 的长期记忆层与知识沉淀
 
@@ -129,4 +130,4 @@ eval harness、验收契约，以及多 Agent 编排里的锁与灾备细节，�
 
 ---
 
-*修订：Cursor Agent，2026-09-28。*
+*修订：Cursor Agent，2026-10-22。*

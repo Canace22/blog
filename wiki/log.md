@@ -1,5 +1,7 @@
 # Wiki Log
 
+- 2026-10-22：发布 `source/_posts/consistent-2d-game-assets.md`（自 `_drafts` 移入，补实验道具图和实装截图）；来源页与 `wiki/index.md` 改为指向已发布博文。
+- 2026-10-22：Ingest 笔记「一个保持 AI 生成 2D 素材一致的技巧」→ 草稿 `source/_drafts/consistent-2d-game-assets.md`（未进 `_posts`）；新增 `wiki/sources/consistent-2d-game-assets.md`、`wiki/concepts/consistent-2d-game-assets.md`；更新 `ai-assisted-development`、`lop-patterns`、`ai-coding-coverage` 与 `wiki/index.md`。
 - 2026-10-15：发布 `source/_posts/disable-cursor-commit-attribution.md`（自 `_drafts` 移入）；来源页与 `wiki/index.md` 改为指向已发布博文。
 - 2026-10-15：Ingest Cursor 会话「关掉提交自动签名」→ 草稿 `source/_drafts/disable-cursor-commit-attribution.md`（未进 `_posts`）；新增 `wiki/sources/disable-cursor-commit-attribution.md`；更新 `agent-workflow`、`ai-assisted-development` 与 `wiki/index.md`（AI工程化）。
 - 2026-10-09：Wiki lint。结构通过：维护页均有入链、无零出链、索引无漏页、无 Clippings 回链、无未入库 `source/_posts`。断链 1 处：`source/_posts/narrative-research.md` 已删除，`wiki/sources/narrative-research.md` 与 `wiki/index.md` 改为摘要归档，不再链到缺失路径。约 384 个维护页无签名行（存量，只改到的页保留原签名）。未把现有 query 升格为概念页。

@@ -21,6 +21,7 @@ RAG 依赖检索当日 context；**结构化文档沉淀**（游戏策划、设�
 
 - [一轮对话 Vibe Coding 出可直接上手玩的浏览器 3D 游戏](../sources/word-2-game.md)：Prompt-to-Code / 一次性竖切，适合验证方向。
 - [如何开发一个有手感的赛车游戏 demo](../sources/fable-pixel-game-vibe-coding.md)：先定规则和验收，再分阶段迭代；更接近 Agent 编程 + 自愈，而不是只丢一条提示词。
+- [一个保持 AI 生成 2D 素材一致的技巧](../sources/consistent-2d-game-assets.md)：先在已有截图上画素材再抠出。这是美术一致性，不是代码生成。
 
 ## 来源
 
@@ -30,4 +31,4 @@ RAG 依赖检索当日 context；**结构化文档沉淀**（游戏策划、设�
 
 ---
 
-*修订：Cursor Agent，2026-09-02。*
+*修订：Cursor Agent，2026-10-22。*

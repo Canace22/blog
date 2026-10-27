@@ -8,7 +8,7 @@
 
 - **项目上下文**：把技术栈、运行环境、风格与约定集中写清楚，让模型少「瞎猜」，更接近「第二次就顺手」的质量（[AI 辅助开发探索](../sources/ai-assisted-development-exploration.md)）。
 - **角色分工**：把工程师定位成智能体的编排者、输出的导师审阅者、问题的解决者，而不是唯一打字员（同上篇）。
-- **质量与安全**：始终以验证为先；留意状态、性能与安全；采用分层审阅——模型先做一遍、人在架构与业务上把关、团队照常守住质量线（[如何提升 AI 代码质量](../sources/improving-ai-code-quality.md)）。当产出增加而理解没有沉淀时，应把审查、追问、独立实践和复盘放回工作流（[我的 vibe coding 撞墙了](../sources/vibe-coding-problem.md)）。游戏或原型也一样：一次性 vibe 适合验证方向（[一轮对话 Vibe Coding 出 3D 游戏](../sources/word-2-game.md)）；要可玩可维护，就得先定视角和规则、分阶段验收、把代码量当负债（[如何开发一个有手感的赛车游戏 demo](../sources/fable-pixel-game-vibe-coding.md)，[AI编程和 Vibe Coding 的差异在哪](../queries/ai-programming-vs-vibe-coding.md)）。Agent 工作流要同时设计单会话「问还是继续」和多会话「怎么分批验收」（[Agent 工作流](agent-workflow.md)，[最新版 Codex 工作流的问题](../sources/ai-self-awareness.md)，[Vibe Coding 开了一堆会话，验收不过来](../sources/ai-review-bottleneck.md)）。
+- **质量与安全**：始终以验证为先；留意状态、性能与安全；采用分层审阅——模型先做一遍、人在架构与业务上把关、团队照常守住质量线（[如何提升 AI 代码质量](../sources/improving-ai-code-quality.md)）。当产出增加而理解没有沉淀时，应把审查、追问、独立实践和复盘放回工作流（[我的 vibe coding 撞墙了](../sources/vibe-coding-problem.md)）。游戏或原型也一样：一次性 vibe 适合验证方向（[一轮对话 Vibe Coding 出 3D 游戏](../sources/word-2-game.md)）；要可玩可维护，就得先定视角和规则、分阶段验收、把代码量当负债（[如何开发一个有手感的赛车游戏 demo](../sources/fable-pixel-game-vibe-coding.md)，[AI编程和 Vibe Coding 的差异在哪](../queries/ai-programming-vs-vibe-coding.md)）。2D 素材要和现有画面一致，就把新东西画进游戏截图再抠出，而不是只靠文字或堆参考图（[一致的 AI 2D 游戏素材](consistent-2d-game-assets.md)）。Agent 工作流要同时设计单会话「问还是继续」和多会话「怎么分批验收」（[Agent 工作流](agent-workflow.md)，[最新版 Codex 工作流的问题](../sources/ai-self-awareness.md)，[Vibe Coding 开了一堆会话，验收不过来](../sources/ai-review-bottleneck.md)）。
 - **信任与放权**：开发者普遍在用 AI 却很少放权，瓶颈是「AI 能不能证明自己写得对」。做法是让 AI 带证据包、自动跑验证，按操作风险分级放权，记忆区分事实、决策、偏好和临时状态（[如何解决 AI 信任问题](../sources/ai-trust-verifiable-infra.md)）。
 - **项目文档**：AI 维护的文档容易是全知视角、状态快照、不断增量追加，人读不下去。前三句话说清是什么、给谁用、怎么开始；README / `AGENTS.md` / CHANGELOG 分层；产品方向由人写进 `PRODUCT.md`（[把项目文档写得人看得懂](../sources/docs-in-ai-date.md)）。
 - **迭代**：接受多轮循环；早期输出往往是在帮系统「弄清任务到底是什么」（[如何提升 AI 代码质量](../sources/improving-ai-code-quality.md)）。
@@ -67,6 +67,8 @@
 - [把项目文档写得人看得懂：AI 时代的维护指南](../sources/docs-in-ai-date.md)
 - [Agent 工作流](agent-workflow.md)
 - [关掉 Cursor 提交里自动加上的签名](../sources/disable-cursor-commit-attribution.md)
+- [一个保持 AI 生成 2D 素材一致的技巧](../sources/consistent-2d-game-assets.md)
+- [一致的 AI 2D 游戏素材](consistent-2d-game-assets.md)
 
 ## 综合结论
 
@@ -74,4 +76,4 @@
 
 ---
 
-*修订：Cursor Agent，2026-10-15。*
+*修订：Cursor Agent，2026-10-22。*

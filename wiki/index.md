@@ -39,6 +39,7 @@
 - [叙事节奏心理学](concepts/narrative-pacing-psychology.md)
 - [叙事结构](concepts/narrative-structures.md)
 - [游戏叙事设计](concepts/game-narrative-design.md)（三层对齐、期待与兑现、内核四格、三幕如何落到关卡和对局）
+- [一致的 AI 2D 游戏素材](concepts/consistent-2d-game-assets.md)（截图上绘制再抠出、关键姿势加视频模型抽帧）
 - [RSS / Telegram 自建推送](concepts/rss-telegram-selfhost.md)
 - [系统 crontab 与 OpenClaw 定时任务](concepts/crontab-and-openclaw-cron.md)
 - [Hermes：`/anthropic` 网关与模型名点号规范化](concepts/hermes-anthropic-endpoint-model-id-normalization.md)
@@ -360,6 +361,7 @@
 
 ### AI工程化
 
+- [一个保持 AI 生成 2D 素材一致的技巧](sources/consistent-2d-game-assets.md) — `source/_posts/consistent-2d-game-assets.md`（截图上绘制再抠出，道具实装进场景，行走循环用关键姿势加视频模型抽帧）
 - [如何解决 AI 信任问题：基于 2026 Stack Overflow 开发者调查](sources/ai-trust-verifiable-infra.md) — `source/_posts/ai-trust-verifiable-infra.md`（证据包、自动验证、分级权限、记忆重构）
 - [把项目文档写得人看得懂：AI 时代的维护指南](sources/docs-in-ai-date.md) — `source/_posts/docs-in-ai-date.md`（全知视角、状态快照、增量维护；README / `AGENTS.md` / `PRODUCT.md` 分层）
 - [关掉 Cursor 提交里自动加上的签名](sources/disable-cursor-commit-attribution.md) — `source/_posts/disable-cursor-commit-attribution.md`（编辑器 / CLI / Cloud Agent 的 Attribution 开关）
