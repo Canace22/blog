@@ -6,7 +6,7 @@
   <link href="https://canace.site/atom.xml" rel="self"/>
   
   <link href="https://canace.site/"/>
-  <updated>2026-10-16T02:48:32.394Z</updated>
+  <updated>2026-10-22T08:19:28.632Z</updated>
   <id>https://canace.site/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>一个保持 AI 生成 2D 素材一致的技巧</title>
+    <link href="https://canace.site/consistent-2d-game-assets/"/>
+    <id>https://canace.site/consistent-2d-game-assets/</id>
+    <published>2026-10-22T08:18:00.000Z</published>
+    <updated>2026-10-22T08:19:28.632Z</updated>
+    
+    
+    <summary type="html">先在游戏截图上画出新素材再抠出来，比只写文字或堆参考图更容易保住画风。</summary>
+    
+    
+    
+    <category term="AI工程化" scheme="https://canace.site/categories/AI%E5%B7%A5%E7%A8%8B%E5%8C%96/"/>
+    
+    
+    <category term="AI编程" scheme="https://canace.site/tags/AI%E7%BC%96%E7%A8%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>Electron vs Tauri</title>
@@ -376,25 +395,6 @@
     
     
     <category term="随笔" scheme="https://canace.site/tags/essays/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>深入 Claude Code 的 Web 工具：WebFetch 与 WebSearch</title>
-    <link href="https://canace.site/claude-webfetch/"/>
-    <id>https://canace.site/claude-webfetch/</id>
-    <published>2026-08-10T03:24:36.000Z</published>
-    <updated>2026-08-10T04:04:08.871Z</updated>
-    
-    
-    <summary type="html">拆解 Claude Code 的 WebFetch 与 WebSearch，了解它们的输入结构、执行流程和设计取舍。</summary>
-    
-    
-    
-    <category term="AI工程化" scheme="https://canace.site/categories/AI%E5%B7%A5%E7%A8%8B%E5%8C%96/"/>
-    
-    
-    <category term="AI编程" scheme="https://canace.site/tags/AI%E7%BC%96%E7%A8%8B/"/>
     
   </entry>
   
